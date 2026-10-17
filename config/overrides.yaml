@@ -1,0 +1,6 @@
+# 人工覆盖（DEV_DOCUMENT §3.5 规则 V8）
+# - offering: "official:alibaba/qwen-max"
+#   action: approve        # approve 强制放行 | block 屏蔽 | pin 钉住价格（需填 price）
+#   until: 2026-11-01      # 过期自动失效
+#   reason: "官方公告降价，已人工确认"
+[]

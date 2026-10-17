@@ -1,0 +1,30 @@
+{
+  "name": "@aipb/site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@aipb/shared": "workspace:*",
+    "@astrojs/react": "^7.1.0",
+    "@nanostores/react": "^1.0.0",
+    "@tailwindcss/vite": "^4.1.0",
+    "astro": "^7.4.0",
+    "nanostores": "^1.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.0",
+    "uplot": "^1.6.32"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.0",
+    "@playwright/test": "^1.64.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  }
+}

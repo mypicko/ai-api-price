@@ -1,0 +1,5 @@
+# 规范 slug（vendor/model）: [别名列表]
+# 别名可以是原始模型名或规范化后的 ID，匹配时不区分大小写
+# 示例：
+# deepseek/deepseek-chat: [deepseek-v3, deepseek-chat-v3]
+{}
