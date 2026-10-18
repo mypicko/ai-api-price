@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "39175115450",
-    "startedAt": "2026-10-18T23:07:30Z",
-    "finishedAt": "2026-10-18T23:07:35Z",
-    "durationMs": 4895,
+    "id": "39175886915",
+    "startedAt": "2026-10-18T23:17:59Z",
+    "finishedAt": "2026-10-18T23:18:04Z",
+    "durationMs": 4712,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 1552,
+      "durationMs": 2267,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 292,
+      "durationMs": 705,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -35,10 +35,10 @@
       "status": "ok",
       "offeringCount": 258,
       "mediaOfferingCount": 66,
-      "durationMs": 705,
+      "durationMs": 1236,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -46,10 +46,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 55,
+      "durationMs": 59,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -57,10 +57,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 25,
-      "durationMs": 62,
+      "durationMs": 67,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -68,10 +68,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 17,
-      "durationMs": 824,
+      "durationMs": 1445,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -79,10 +79,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 825,
+      "durationMs": 1446,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -90,10 +90,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 4,
-      "durationMs": 726,
+      "durationMs": 1056,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -102,10 +102,10 @@
       "status": "ok",
       "offeringCount": 363,
       "mediaOfferingCount": 29,
-      "durationMs": 1799,
+      "durationMs": 2824,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -113,10 +113,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 54,
-      "durationMs": 1158,
+      "durationMs": 1040,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -124,10 +124,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 4494,
+      "durationMs": 4347,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     },
     {
@@ -135,10 +135,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 1268,
+      "durationMs": 1584,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:07:30Z",
+      "lastSuccessAt": "2026-10-18T23:17:59Z",
       "consecutiveFailures": 0
     }
   ],
@@ -149,8 +149,8 @@
         {
           "field": "input",
           "old": 0.1,
-          "new": 0.0086,
-          "pct": -0.914
+          "new": 0.0065,
+          "pct": -0.935
         },
         {
           "field": "output",
@@ -161,18 +161,18 @@
         {
           "field": "cacheRead",
           "old": 0.03,
-          "new": 0.0086,
-          "pct": -0.7133
+          "new": 0.0065,
+          "pct": -0.7833
         }
       ],
       "candidate": {
-        "input": 0.0086,
+        "input": 0.0065,
         "output": 0.45,
-        "cacheRead": 0.0086,
+        "cacheRead": 0.0065,
         "cacheWrite": null
       },
-      "firstSeenAt": "2026-10-18T23:07:30Z",
-      "lastSeenAt": "2026-10-18T23:07:30Z",
+      "firstSeenAt": "2026-10-18T23:17:59Z",
+      "lastSeenAt": "2026-10-18T23:17:59Z",
       "confirmations": 1
     }
   ],
@@ -193,7 +193,7 @@
       "code": "W3003",
       "sourceId": null,
       "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
-      "message": "价格突变，已进入隔离区：input 0.1 → 0.0086（-91%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0086（-71%）"
+      "message": "价格突变，已进入隔离区：input 0.1 → 0.0065（-93%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0065（-78%）"
     },
     {
       "code": "W3007",
