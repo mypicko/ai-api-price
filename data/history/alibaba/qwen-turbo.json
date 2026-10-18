@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen-turbo",
+  "series": {
+    "official-cn:alibaba/qwen-turbo": [
+      {
+        "input": 0.044,
+        "output": 0.087,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

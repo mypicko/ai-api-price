@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/siliconflow-deepseek-v3.1-terminus",
+  "series": {
+    "official-cn:alibaba/siliconflow-deepseek-v3.1-terminus": [
+      {
+        "input": 0.27,
+        "output": 1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen2-5-math-7b-instruct",
+  "series": {
+    "official-cn:alibaba/qwen2-5-math-7b-instruct": [
+      {
+        "input": 0.144,
+        "output": 0.287,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

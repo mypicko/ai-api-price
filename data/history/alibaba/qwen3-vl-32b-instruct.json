@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen3-vl-32b-instruct",
   "series": {
+    "siliconflow-cn:alibaba/qwen3-vl-32b-instruct": [
+      {
+        "input": 0.2,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "siliconflow:alibaba/qwen3-vl-32b-instruct": [
       {
         "input": 0.2,

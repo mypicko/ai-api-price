@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3.5-4b",
+  "series": {
+    "siliconflow-cn:alibaba/qwen3.5-4b": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

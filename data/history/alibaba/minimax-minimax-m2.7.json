@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/minimax-minimax-m2.7",
+  "series": {
+    "official-cn:alibaba/minimax-minimax-m2.7": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.06,
+        "cacheWrite": 0.375,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

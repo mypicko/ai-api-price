@@ -10,6 +10,15 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "siliconflow-cn:deepseek/deepseek-v3": [
+      {
+        "input": 0.25,
+        "output": 1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "siliconflow:deepseek/deepseek-v3": [
       {
         "input": 0.25,

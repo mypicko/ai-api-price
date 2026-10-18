@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen2.5-7b-instruct",
   "series": {
+    "siliconflow-cn:alibaba/qwen2.5-7b-instruct": [
+      {
+        "input": 0.05,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "siliconflow:alibaba/qwen2.5-7b-instruct": [
       {
         "input": 0.05,

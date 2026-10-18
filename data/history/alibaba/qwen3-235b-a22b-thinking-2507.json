@@ -9,6 +9,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
       }
+    ],
+    "siliconflow-cn:alibaba/qwen3-235b-a22b-thinking-2507": [
+      {
+        "input": 0.13,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
     ]
   }
 }

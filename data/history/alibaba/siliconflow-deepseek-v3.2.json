@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/siliconflow-deepseek-v3.2",
+  "series": {
+    "official-cn:alibaba/siliconflow-deepseek-v3.2": [
+      {
+        "input": 0.27,
+        "output": 0.42,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

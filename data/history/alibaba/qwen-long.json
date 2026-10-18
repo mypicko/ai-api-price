@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen-long",
+  "series": {
+    "official-cn:alibaba/qwen-long": [
+      {
+        "input": 0.072,
+        "output": 0.287,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

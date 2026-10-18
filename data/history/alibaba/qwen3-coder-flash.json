@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen3-coder-flash",
   "series": {
+    "official-cn:alibaba/qwen3-coder-flash": [
+      {
+        "input": 0.144,
+        "output": 0.574,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "official:alibaba/qwen3-coder-flash": [
       {
         "input": 0.144,

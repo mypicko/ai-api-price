@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qvq-max",
+  "series": {
+    "official-cn:alibaba/qvq-max": [
+      {
+        "input": 1.147,
+        "output": 4.588,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

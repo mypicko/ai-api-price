@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-235b-a22b",
+  "series": {
+    "official-cn:alibaba/qwen3-235b-a22b": [
+      {
+        "input": 0.287,
+        "output": 1.147,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

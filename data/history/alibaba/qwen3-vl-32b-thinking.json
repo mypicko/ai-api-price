@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen3-vl-32b-thinking",
   "series": {
+    "siliconflow-cn:alibaba/qwen3-vl-32b-thinking": [
+      {
+        "input": 0.2,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "siliconflow:alibaba/qwen3-vl-32b-thinking": [
       {
         "input": 0.2,

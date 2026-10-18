@@ -1,0 +1,14 @@
+{
+  "modelSlug": "stepfun/step-3.5-flash-2603",
+  "series": {
+    "official-cn:stepfun/step-3.5-flash-2603": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

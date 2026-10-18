@@ -1,6 +1,15 @@
 {
   "modelSlug": "minimax/minimax-m3",
   "series": {
+    "official-cn:minimax/minimax-m3": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "official:minimax/minimax-m3": [
       {
         "input": 0.3,

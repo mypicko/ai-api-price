@@ -1,0 +1,14 @@
+{
+  "modelSlug": "minimax/minimax-m2.7-highspeed",
+  "series": {
+    "official-cn:minimax/minimax-m2.7-highspeed": [
+      {
+        "input": 0.6,
+        "output": 2.4,
+        "cacheRead": 0.06,
+        "cacheWrite": 0.375,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

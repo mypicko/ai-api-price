@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "siliconflow-cn:zhipu/glm-5.2": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": 0,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "siliconflow:zhipu/glm-5.2": [
       {
         "input": 1.302,

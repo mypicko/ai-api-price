@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen2-5-vl-7b-instruct",
+  "series": {
+    "official-cn:alibaba/qwen2-5-vl-7b-instruct": [
+      {
+        "input": 0.287,
+        "output": 0.717,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

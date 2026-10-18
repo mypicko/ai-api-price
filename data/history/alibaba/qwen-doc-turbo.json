@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen-doc-turbo",
   "series": {
+    "official-cn:alibaba/qwen-doc-turbo": [
+      {
+        "input": 0.087,
+        "output": 0.144,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "official:alibaba/qwen-doc-turbo": [
       {
         "input": 0.087,

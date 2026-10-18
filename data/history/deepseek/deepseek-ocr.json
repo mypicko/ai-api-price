@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-ocr",
+  "series": {
+    "siliconflow-cn:deepseek/deepseek-ocr": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

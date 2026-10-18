@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "39131973309",
-    "startedAt": "2026-10-18T13:32:41Z",
-    "finishedAt": "2026-10-18T13:32:46Z",
-    "durationMs": 5151,
+    "id": "39133629635",
+    "startedAt": "2026-10-18T13:55:23Z",
+    "finishedAt": "2026-10-18T13:55:28Z",
+    "durationMs": 5255,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 1549,
+      "durationMs": 1327,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:32:41Z",
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 1379,
+      "durationMs": 436,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:32:41Z",
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -34,10 +34,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 258,
-      "durationMs": 1466,
+      "durationMs": 613,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:32:41Z",
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -45,10 +45,32 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 7,
+      "durationMs": 10,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:32:41Z",
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "modelsdev-cn",
+      "kind": "api",
+      "status": "ok",
+      "offeringCount": 84,
+      "durationMs": 1052,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "modelsdev-siliconflow-cn",
+      "kind": "api",
+      "status": "ok",
+      "offeringCount": 33,
+      "durationMs": 1056,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -56,32 +78,32 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 4,
-      "durationMs": 1246,
+      "durationMs": 636,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:32:41Z",
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
       "consecutiveFailures": 0
     },
     {
       "id": "openrouter",
       "kind": "api",
       "status": "ok",
-      "offeringCount": 360,
-      "durationMs": 1393,
+      "offeringCount": 363,
+      "durationMs": 661,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:32:41Z",
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
       "consecutiveFailures": 0
     },
     {
       "id": "siliconflow",
       "kind": "html",
       "status": "ok",
-      "offeringCount": 53,
-      "durationMs": 1234,
+      "offeringCount": 54,
+      "durationMs": 965,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:32:41Z",
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -89,10 +111,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 4826,
+      "durationMs": 4946,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:32:41Z",
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -100,10 +122,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 1323,
+      "durationMs": 1183,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:32:41Z",
+      "lastSuccessAt": "2026-10-18T13:55:23Z",
       "consecutiveFailures": 0
     }
   ],
@@ -114,8 +136,8 @@
         {
           "field": "input",
           "old": 0.1,
-          "new": 0.0199,
-          "pct": -0.801
+          "new": 0.0151,
+          "pct": -0.849
         },
         {
           "field": "output",
@@ -126,18 +148,18 @@
         {
           "field": "cacheRead",
           "old": 0.03,
-          "new": 0.0199,
-          "pct": -0.3367
+          "new": 0.0151,
+          "pct": -0.4967
         }
       ],
       "candidate": {
-        "input": 0.0199,
+        "input": 0.0151,
         "output": 0.45,
-        "cacheRead": 0.0199,
+        "cacheRead": 0.0151,
         "cacheWrite": null
       },
-      "firstSeenAt": "2026-10-18T13:32:41Z",
-      "lastSeenAt": "2026-10-18T13:32:41Z",
+      "firstSeenAt": "2026-10-18T13:55:23Z",
+      "lastSeenAt": "2026-10-18T13:55:23Z",
       "confirmations": 1
     }
   ],
@@ -150,15 +172,21 @@
     },
     {
       "code": "W2003",
+      "sourceId": "modelsdev-cn",
+      "offeringId": null,
+      "message": "厂商无法识别，已跳过：alibaba 转售的 deepseek-r1, alibaba 转售的 deepseek-r1-0528, alibaba 转售的 deepseek-r1-distill-llama-70b, alibaba 转售的 deepseek-r1-distill-llama-8b, alibaba 转售的 deepseek-r1-distill-qwen-1-5b, alibaba 转售的 deepseek-r1-distill-qwen-14b, alibaba 转售的 deepseek-r1-distill-qwen-32b, alibaba 转售的 deepseek-r1-distill-qwen-7b, alibaba 转售的 deepseek-v3, alibaba 转售的 deepseek-v3-1, alibaba 转售的 deepseek-v3-2-exp, alibaba 转售的 deepseek-v4-flash, alibaba 转售的 deepseek-v4-pro, alibaba 转售的 deepseek-v4.1-flash, alibaba 转售的 glm-5, alibaba 转售的 glm-5.1, alibaba 转售的 glm-5.2, alibaba 转售的 glm-5.3, alibaba 转售的 kimi-k2-thinking, alibaba 转售的 kimi-k2.5, alibaba 转售的 kimi-k2.6, alibaba 转售的 kimi-k3, alibaba 转售的 kimi-kimi-k2.5"
+    },
+    {
+      "code": "W2003",
       "sourceId": "siliconflow",
       "offeringId": null,
-      "message": "厂商无法识别，已跳过：inclusionai, meituan-longcat, stepfun-ai"
+      "message": "厂商无法识别，已跳过：inclusionai, meituan-longcat"
     },
     {
       "code": "W3003",
       "sourceId": null,
       "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
-      "message": "价格突变，已进入隔离区：input 0.1 → 0.0199（-80%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0199（-34%）"
+      "message": "价格突变，已进入隔离区：input 0.1 → 0.0151（-85%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0151（-50%）"
     },
     {
       "code": "W3007",
@@ -308,7 +336,7 @@
       "code": "W3007",
       "sourceId": null,
       "offeringId": "official:zhipu/glm-5.3",
-      "message": "官方价与 OpenRouter 价差过大：input 93%，output 40%"
+      "message": "官方价与 OpenRouter 价差过大：input 93%，output 57%"
     },
     {
       "code": "W3007",

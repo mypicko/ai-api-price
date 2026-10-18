@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-coder-plus",
+  "series": {
+    "official-cn:alibaba/qwen3-coder-plus": [
+      {
+        "input": 0.574,
+        "output": 2.296,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-max",
+  "series": {
+    "official-cn:alibaba/qwen3-max": [
+      {
+        "input": 0.359,
+        "output": 1.434,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}
