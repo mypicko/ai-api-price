@@ -9,12 +9,18 @@ function collectErrors(page: Page): string[] {
   return errors;
 }
 
+/** 打开页面并等待所有 island 水合完成，避免水合前的点击/输入不生效（DEV §14 #9） */
+async function gotoHydrated(page: Page, path: string): Promise<void> {
+  await page.goto(path);
+  await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
+}
+
 const bodyRows = (page: Page) => page.getByTestId("price-table").locator("tbody tr");
 
 test.describe("首页", () => {
   test("加载价格榜和今日变动，没有控制台错误（含 CSP）", async ({ page }) => {
     const errors = collectErrors(page);
-    await page.goto("/");
+    await gotoHydrated(page, "/");
     await expect(page).toHaveTitle(/AI API 价格榜/);
     await expect(page.locator("html")).toHaveAttribute("lang", "zh-CN");
     await expect(page.getByTestId("today-changes").locator("> ul > li")).toHaveCount(6);
@@ -28,7 +34,7 @@ test.describe("首页", () => {
   });
 
   test("默认按混合价升序，点击表头切换升序 → 降序 → 默认", async ({ page }) => {
-    await page.goto("/");
+    await gotoHydrated(page, "/");
     const header = page.locator("th", { has: page.getByRole("button", { name: /^输出/ }) });
     await expect(header).toHaveAttribute("aria-sort", "none");
     // 默认排序中免费模型排在付费模型之后
@@ -45,7 +51,7 @@ test.describe("首页", () => {
   });
 
   test("筛选：搜索、地区、仅免费、厂商，并同步到 URL", async ({ page }) => {
-    await page.goto("/");
+    await gotoHydrated(page, "/");
     await page.getByPlaceholder(/搜索模型/).fill("deepseek v3");
     await expect(bodyRows(page)).toHaveCount(3);
     await expect(page).toHaveURL(/q=deepseek\+v3/);
@@ -66,7 +72,7 @@ test.describe("首页", () => {
   });
 
   test("模型筛选：下拉框盖在表头之上，跟随厂商联动并同步到 URL", async ({ page }) => {
-    await page.goto("/");
+    await gotoHydrated(page, "/");
     const picker = page.getByTestId("model-filter");
     await picker.locator("summary").click();
     // 下拉列表中心点上方的元素必须属于下拉框，而不是被表格的 sticky 表头盖住
@@ -120,8 +126,7 @@ test.describe("首页", () => {
   });
 
   test("暗色模式：切换后加 html.dark，刷新不闪白", async ({ page }) => {
-    await page.goto("/");
-    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
+    await gotoHydrated(page, "/");
     await page.getByTestId("theme-toggle").getByRole("button", { name: "深色" }).click();
     await expect(page.locator("html")).toHaveClass(/dark/);
     const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
@@ -196,7 +201,7 @@ test.describe("其他页面", () => {
 
   test("视频/图像：独立页面，按秒 / 按张计价，标签切换同步到 URL", async ({ page }) => {
     const errors = collectErrors(page);
-    await page.goto("/");
+    await gotoHydrated(page, "/");
     await page.getByRole("link", { name: "视频/图像" }).click();
     await expect(page).toHaveURL(/\/media\/$/);
     const table = page.getByTestId("media-table");
@@ -229,7 +234,7 @@ test.describe("其他页面", () => {
   });
 
   test("视频/图像不进入文本价格榜和计算器", async ({ page }) => {
-    await page.goto("/");
+    await gotoHydrated(page, "/");
     await expect(page.getByTestId("price-table")).not.toContainText("MiniMax-H3");
     await page.goto("/en/media/");
     await expect(page.getByTestId("media-table").locator("thead")).toContainText("Per second");
@@ -237,8 +242,7 @@ test.describe("其他页面", () => {
 
   test("统一搜索：首页搜索命中视频/图像模型时给出入口，跳转后带上关键字", async ({ page }) => {
     const errors = collectErrors(page);
-    await page.goto("/");
-    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
+    await gotoHydrated(page, "/");
     await expect(page.getByTestId("media-matches")).toHaveCount(0);
     await page.getByPlaceholder(/搜索模型/).fill("MiniMax H3");
     const matches = page.getByTestId("media-matches");
@@ -253,8 +257,7 @@ test.describe("其他页面", () => {
     await expect(table.locator("tbody tr")).toHaveCount(2);
     await page.getByPlaceholder("搜索模型或厂商").fill("");
     await expect(page).toHaveURL(/\/media\/$/);
-    await page.goto("/en/");
-    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
+    await gotoHydrated(page, "/en/");
     await page.getByPlaceholder(/Search models/).fill("flux");
     await page
       .getByTestId("media-matches")
@@ -274,7 +277,7 @@ test.describe("其他页面", () => {
 
 test.describe("手机 375px @mobile", () => {
   test("表格第一列固定，其余列横向滚动；筛选收进抽屉 @mobile", async ({ page }) => {
-    await page.goto("/");
+    await gotoHydrated(page, "/");
     const scroll = page.getByTestId("table-scroll");
     const overflow = await scroll.evaluate((el) => el.scrollWidth > el.clientWidth);
     expect(overflow).toBe(true);
