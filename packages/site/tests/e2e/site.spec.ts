@@ -31,7 +31,8 @@ test.describe("首页", () => {
     await page.goto("/");
     const header = page.locator("th", { has: page.getByRole("button", { name: /^输出/ }) });
     await expect(header).toHaveAttribute("aria-sort", "none");
-    await expect(bodyRows(page).first()).toContainText("免费");
+    // 默认排序中免费模型排在付费模型之后
+    await expect(bodyRows(page).first()).not.toContainText("免费");
     await header.getByRole("button").click();
     await expect(header).toHaveAttribute("aria-sort", "ascending");
     await header.getByRole("button").click();
