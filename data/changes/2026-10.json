@@ -112,6 +112,110 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-18T13:55:23Z"
+    },
+    {
+      "id": "2026-10-19-openrouter:moonshot/kimi-k3-1",
+      "type": "price_down",
+      "offeringId": "openrouter:moonshot/kimi-k3",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3",
+      "displayName": "Kimi K3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.304,
+          "new": 0.279,
+          "pct": -0.08224
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T19:08:24Z"
+    },
+    {
+      "id": "2026-10-19-openrouter:tencent/hy3-1",
+      "type": "price_down",
+      "offeringId": "openrouter:tencent/hy3",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy3",
+      "displayName": "Hy3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.132,
+          "new": 0.0825,
+          "pct": -0.375
+        },
+        {
+          "field": "output",
+          "old": 0.528,
+          "new": 0.33,
+          "pct": -0.375
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.033,
+          "new": 0.020625,
+          "pct": -0.375
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T19:08:24Z"
+    },
+    {
+      "id": "2026-10-19-openrouter:tencent/hy4-preview-1",
+      "type": "price_down",
+      "offeringId": "openrouter:tencent/hy4-preview",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy4-preview",
+      "displayName": "Hy4 preview",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.834,
+          "new": 0.7506,
+          "pct": -0.1
+        },
+        {
+          "field": "output",
+          "old": 2.501,
+          "new": 2.2509,
+          "pct": -0.1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.042,
+          "new": 0.0378,
+          "pct": -0.1
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T19:08:24Z"
+    },
+    {
+      "id": "2026-10-19-openrouter:zhipu/glm-5.3-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "output",
+          "old": 1.8,
+          "new": 1.4,
+          "pct": -0.2222
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T19:08:24Z"
     }
   ]
 }
