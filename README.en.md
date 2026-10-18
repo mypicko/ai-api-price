@@ -232,13 +232,34 @@ pnpm dev
 
 See [DEV_DOCUMENT.md §7](DEV_DOCUMENT.md#7-环境变量) for the full list and `.env.example` for a template. The most common ones:
 
-| Variable                                       | Required                      | Purpose                                                |
-| ---------------------------------------------- | ----------------------------- | ------------------------------------------------------ |
-| `FEISHU_WEBHOOK_URL` / `FEISHU_WEBHOOK_SECRET` | Recommended                   | Feishu group bot                                       |
-| `SITE_URL` / `BASE_PATH`                       | Inferred automatically online | Only set these for a custom domain                     |
-| `NOTIFY_ON_SUCCESS`                            | No                            | Notify even when nothing changed                       |
-| `ANOMALY_THRESHOLD`                            | No                            | Threshold for holding back sudden changes, default 0.8 |
-| `SOURCES_ENABLED`                              | No                            | Run only some sources                                  |
+| Variable                                       | Required                      | Purpose                                                 |
+| ---------------------------------------------- | ----------------------------- | ------------------------------------------------------- |
+| `FEISHU_WEBHOOK_URL` / `FEISHU_WEBHOOK_SECRET` | Recommended                   | Feishu group bot                                        |
+| `SITE_URL` / `BASE_PATH`                       | Inferred automatically online | Only set these for a custom domain                      |
+| `NOTIFY_ON_SUCCESS`                            | No                            | Notify even when nothing changed                        |
+| `ANOMALY_THRESHOLD`                            | No                            | Threshold for holding back sudden changes, default 0.8  |
+| `SOURCES_ENABLED`                              | No                            | Run only some sources                                   |
+| `ANALYTICS_PROVIDER` / `ANALYTICS_TOKEN`       | No                            | Visitor analytics, see "Enable visitor analytics" below |
+
+### Enable visitor analytics (optional)
+
+The site supports two cookie-free analytics services; both are off by default. Using Cloudflare Web Analytics (free) as an example:
+
+1. In the Cloudflare dashboard → **Web Analytics** → **Add a site**, enter your site's address (for example `mypicko.github.io`)
+2. In the JS snippet it shows, copy the 32-character value from `"token": "…"`
+3. Set two variables (the analytics token appears in public pages, so it is not a secret; use a variable, not a secret):
+
+```bash
+gh variable set ANALYTICS_PROVIDER --body cloudflare
+```
+
+```bash
+gh variable set ANALYTICS_TOKEN --body your-token
+```
+
+4. It takes effect after the next daily run, or right away with `gh workflow run daily`
+
+For Umami, set `ANALYTICS_PROVIDER` to `umami` and `ANALYTICS_TOKEN` to the website ID; for a self-hosted Umami, also set `ANALYTICS_SCRIPT_URL`.
 
 ### Common errors
 

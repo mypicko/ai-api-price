@@ -228,13 +228,34 @@ pnpm dev
 
 完整说明见 [DEV_DOCUMENT.md §7](DEV_DOCUMENT.md#7-环境变量)，模板见 `.env.example`。常用的几个：
 
-| 变量                                           | 必填         | 说明                   |
-| ---------------------------------------------- | ------------ | ---------------------- |
-| `FEISHU_WEBHOOK_URL` / `FEISHU_WEBHOOK_SECRET` | 推荐         | 飞书群机器人           |
-| `SITE_URL` / `BASE_PATH`                       | 线上自动推断 | 绑定自定义域名时再设置 |
-| `NOTIFY_ON_SUCCESS`                            | 否           | 没有变动也推送         |
-| `ANOMALY_THRESHOLD`                            | 否           | 突变拦截阈值，默认 0.8 |
-| `SOURCES_ENABLED`                              | 否           | 只运行部分源           |
+| 变量                                           | 必填         | 说明                             |
+| ---------------------------------------------- | ------------ | -------------------------------- |
+| `FEISHU_WEBHOOK_URL` / `FEISHU_WEBHOOK_SECRET` | 推荐         | 飞书群机器人                     |
+| `SITE_URL` / `BASE_PATH`                       | 线上自动推断 | 绑定自定义域名时再设置           |
+| `NOTIFY_ON_SUCCESS`                            | 否           | 没有变动也推送                   |
+| `ANOMALY_THRESHOLD`                            | 否           | 突变拦截阈值，默认 0.8           |
+| `SOURCES_ENABLED`                              | 否           | 只运行部分源                     |
+| `ANALYTICS_PROVIDER` / `ANALYTICS_TOKEN`       | 否           | 访问统计，见下方「开启访问统计」 |
+
+### 开启访问统计（可选）
+
+网站支持两种不使用 Cookie 的统计服务，默认关闭。以 Cloudflare Web Analytics（免费）为例：
+
+1. 登录 Cloudflare 控制台 → **Web Analytics** → **Add a site**，填入网站地址（例如 `mypicko.github.io`）
+2. 在给出的 JS 代码片段里，复制 `"token": "…"` 中的那串 32 位字符
+3. 设置两个变量（统计 token 会出现在公开页面里，不是密钥，用 variable 而不是 secret）：
+
+```bash
+gh variable set ANALYTICS_PROVIDER --body cloudflare
+```
+
+```bash
+gh variable set ANALYTICS_TOKEN --body 你复制的token
+```
+
+4. 下次 daily 运行后生效；也可以执行 `gh workflow run daily` 立即生效
+
+使用 Umami 时，把 `ANALYTICS_PROVIDER` 设为 `umami`，`ANALYTICS_TOKEN` 设为网站 ID；自建 Umami 再设置 `ANALYTICS_SCRIPT_URL`。
 
 ### 常见报错
 

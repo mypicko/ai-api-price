@@ -817,29 +817,32 @@ sequenceDiagram
 
 本地开发写在 `.env`（已加入 `.gitignore`，参考 `.env.example`）；线上写在 GitHub 仓库 **Settings → Secrets and variables → Actions**。
 
-| 变量                    | 必填 | 类型     | 放在           | 默认值                 | 示例                                                | 用途                                                |
-| ----------------------- | ---- | -------- | -------------- | ---------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `SITE_URL`              | ✅   | URL      | Variables      | —                      | `https://alice.github.io`                           | 网站根地址，用于 RSS、sitemap、通知中的链接         |
-| `BASE_PATH`             | ✅   | 路径     | Variables      | `/`                    | `/ai-api-price/`                                    | 部署在 `xxx.github.io/<仓库名>/` 时必须设置成仓库名 |
-| `NOTIFY_CHANNELS`       | ❌   | 逗号列表 | Variables      | 自动（有配置的都启用） | `feishu,telegram`                                   | 指定启用哪些推送渠道                                |
-| `FEISHU_WEBHOOK_URL`    | ❌   | URL      | **Secrets**    | —                      | `https://open.feishu.cn/open-apis/bot/v2/hook/xxxx` | 飞书群机器人 Webhook                                |
-| `FEISHU_WEBHOOK_SECRET` | ❌   | 字符串   | **Secrets**    | —                      | `aBcD...`                                           | 飞书"签名校验"密钥（建议开启）                      |
-| `TELEGRAM_BOT_TOKEN`    | ❌   | 字符串   | **Secrets**    | —                      | `123456:ABC-DEF...`                                 | Telegram Bot Token                                  |
-| `TELEGRAM_CHAT_ID`      | ❌   | 字符串   | **Secrets**    | —                      | `987654321`                                         | 接收消息的 chat id                                  |
-| `SMTP_HOST`             | ❌   | 主机名   | Secrets        | —                      | `smtp.qq.com`                                       | 邮件服务器                                          |
-| `SMTP_PORT`             | ❌   | 数字     | Secrets        | `465`                  | `465`                                               | —                                                   |
-| `SMTP_USER`             | ❌   | 字符串   | Secrets        | —                      | `bot@example.com`                                   | —                                                   |
-| `SMTP_PASS`             | ❌   | 字符串   | **Secrets**    | —                      | （授权码）                                          | 邮箱授权码，不是登录密码                            |
-| `NOTIFY_EMAIL_TO`       | ❌   | 邮箱     | Secrets        | —                      | `me@example.com`                                    | 收件人                                              |
-| `NOTIFY_ON_SUCCESS`     | ❌   | bool     | Variables      | `false`                | `true`                                              | 没有变动也推送"一切正常"                            |
-| `ANOMALY_THRESHOLD`     | ❌   | 0~1      | Variables      | `0.8`                  | `0.8`                                               | V3 突变阈值                                         |
-| `STALE_ALERT_DAYS`      | ❌   | 整数     | Variables      | `3`                    | `3`                                                 | 连续失败几天后高优先级告警                          |
-| `STALE_WARN_DAYS`       | ❌   | 整数     | Variables      | `7`                    | `7`                                                 | 连续失败几天后网站显示过期提示                      |
-| `FX_FALLBACK_RATE`      | ❌   | 数字     | Variables      | `7.1`                  | `7.1`                                               | 汇率接口长期失败时的兜底汇率                        |
-| `SOURCES_ENABLED`       | ❌   | 逗号列表 | Variables      | 全部                   | `litellm,openrouter,deepseek`                       | 只运行部分源（调试用）                              |
-| `DRY_RUN`               | ❌   | bool     | 本地           | `false`                | `true`                                              | 只抓取和打印，不写 data/、不推送                    |
-| `LOG_LEVEL`             | ❌   | 枚举     | 本地/Variables | `info`                 | `debug`                                             | `debug/info/warn/error`                             |
-| `TZ`                    | ❌   | 时区     | workflow env   | `Asia/Shanghai`        | —                                                   | 日志和"今天"按北京时间算                            |
+| 变量                    | 必填 | 类型                   | 放在           | 默认值                 | 示例                                                | 用途                                                                               |
+| ----------------------- | ---- | ---------------------- | -------------- | ---------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `SITE_URL`              | ✅   | URL                    | Variables      | —                      | `https://alice.github.io`                           | 网站根地址，用于 RSS、sitemap、通知中的链接                                        |
+| `BASE_PATH`             | ✅   | 路径                   | Variables      | `/`                    | `/ai-api-price/`                                    | 部署在 `xxx.github.io/<仓库名>/` 时必须设置成仓库名                                |
+| `NOTIFY_CHANNELS`       | ❌   | 逗号列表               | Variables      | 自动（有配置的都启用） | `feishu,telegram`                                   | 指定启用哪些推送渠道                                                               |
+| `FEISHU_WEBHOOK_URL`    | ❌   | URL                    | **Secrets**    | —                      | `https://open.feishu.cn/open-apis/bot/v2/hook/xxxx` | 飞书群机器人 Webhook                                                               |
+| `FEISHU_WEBHOOK_SECRET` | ❌   | 字符串                 | **Secrets**    | —                      | `aBcD...`                                           | 飞书"签名校验"密钥（建议开启）                                                     |
+| `TELEGRAM_BOT_TOKEN`    | ❌   | 字符串                 | **Secrets**    | —                      | `123456:ABC-DEF...`                                 | Telegram Bot Token                                                                 |
+| `TELEGRAM_CHAT_ID`      | ❌   | 字符串                 | **Secrets**    | —                      | `987654321`                                         | 接收消息的 chat id                                                                 |
+| `SMTP_HOST`             | ❌   | 主机名                 | Secrets        | —                      | `smtp.qq.com`                                       | 邮件服务器                                                                         |
+| `SMTP_PORT`             | ❌   | 数字                   | Secrets        | `465`                  | `465`                                               | —                                                                                  |
+| `SMTP_USER`             | ❌   | 字符串                 | Secrets        | —                      | `bot@example.com`                                   | —                                                                                  |
+| `SMTP_PASS`             | ❌   | 字符串                 | **Secrets**    | —                      | （授权码）                                          | 邮箱授权码，不是登录密码                                                           |
+| `NOTIFY_EMAIL_TO`       | ❌   | 邮箱                   | Secrets        | —                      | `me@example.com`                                    | 收件人                                                                             |
+| `NOTIFY_ON_SUCCESS`     | ❌   | bool                   | Variables      | `false`                | `true`                                              | 没有变动也推送"一切正常"                                                           |
+| `ANOMALY_THRESHOLD`     | ❌   | 0~1                    | Variables      | `0.8`                  | `0.8`                                               | V3 突变阈值                                                                        |
+| `STALE_ALERT_DAYS`      | ❌   | 整数                   | Variables      | `3`                    | `3`                                                 | 连续失败几天后高优先级告警                                                         |
+| `STALE_WARN_DAYS`       | ❌   | 整数                   | Variables      | `7`                    | `7`                                                 | 连续失败几天后网站显示过期提示                                                     |
+| `FX_FALLBACK_RATE`      | ❌   | 数字                   | Variables      | `7.1`                  | `7.1`                                               | 汇率接口长期失败时的兜底汇率                                                       |
+| `SOURCES_ENABLED`       | ❌   | 逗号列表               | Variables      | 全部                   | `litellm,openrouter,deepseek`                       | 只运行部分源（调试用）                                                             |
+| `DRY_RUN`               | ❌   | bool                   | 本地           | `false`                | `true`                                              | 只抓取和打印，不写 data/、不推送                                                   |
+| `LOG_LEVEL`             | ❌   | 枚举                   | 本地/Variables | `info`                 | `debug`                                             | `debug/info/warn/error`                                                            |
+| `ANALYTICS_PROVIDER`    | ❌   | `cloudflare` / `umami` | Variables      | 空（关闭）             | `cloudflare`                                        | 可选访问统计，不使用 Cookie；只在构建网站时读取                                    |
+| `ANALYTICS_TOKEN`       | ❌   | 字符串                 | Variables      | —                      | `0123…cdef`                                         | Cloudflare beacon token（32 位十六进制）或 Umami 网站 ID（UUID）。公开值，不是密钥 |
+| `ANALYTICS_SCRIPT_URL`  | ❌   | URL                    | Variables      | Umami 官方云           | `https://stats.example.com/script.js`               | 仅 Umami 自建实例需要，必须 https                                                  |
+| `TZ`                    | ❌   | 时区                   | workflow env   | `Asia/Shanghai`        | —                                                   | 日志和"今天"按北京时间算                                                           |
 
 启动时由 `packages/pipeline/src/config.ts` 用 Zod 校验：格式不对直接退出（`E0001`）；某个推送渠道配置不完整（例如只填了 Telegram Token 没填 Chat ID）给出 `W0002` 并禁用该渠道。
 
