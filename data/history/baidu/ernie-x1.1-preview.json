@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/ernie-x1.1-preview",
+  "series": {
+    "official-cn:baidu/ernie-x1.1-preview": [
+      {
+        "input": 1,
+        "output": 4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

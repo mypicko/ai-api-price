@@ -8,6 +8,13 @@
         "cacheRead": 0.16,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 6.5,
+        "output": 27,
+        "cacheRead": 1.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ],
     "official:moonshot/kimi-k2.6": [

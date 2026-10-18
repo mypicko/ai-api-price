@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hy-mt2-pro",
+  "series": {
+    "official-cn:tencent/hy-mt2-pro": [
+      {
+        "input": 0.5,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

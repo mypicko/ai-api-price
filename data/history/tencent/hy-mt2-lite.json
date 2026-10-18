@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hy-mt2-lite",
+  "series": {
+    "official-cn:tencent/hy-mt2-lite": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

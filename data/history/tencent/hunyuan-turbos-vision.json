@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hunyuan-turbos-vision",
+  "series": {
+    "official-cn:tencent/hunyuan-turbos-vision": [
+      {
+        "input": 3,
+        "output": 9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

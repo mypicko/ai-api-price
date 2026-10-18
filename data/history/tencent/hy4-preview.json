@@ -1,6 +1,15 @@
 {
   "modelSlug": "tencent/hy4-preview",
   "series": {
+    "official-cn:tencent/hy4-preview": [
+      {
+        "input": 6,
+        "output": 18,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:tencent/hy4-preview": [
       {
         "input": 0.834,

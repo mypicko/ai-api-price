@@ -114,6 +114,58 @@
       "detectedAt": "2026-10-18T13:55:23Z"
     },
     {
+      "id": "2026-10-19-openrouter:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.04,
+          "new": 0.06,
+          "pct": 0.5
+        },
+        {
+          "field": "output",
+          "old": 0.144,
+          "new": 0.12,
+          "pct": -0.1667
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T22:37:28Z"
+    },
+    {
+      "id": "2026-10-19-openrouter:meta/llama-3.2-3b-instruct-1",
+      "type": "price_up",
+      "offeringId": "openrouter:meta/llama-3.2-3b-instruct",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-3.2-3b-instruct",
+      "displayName": "Llama 3.2 3B Instruct",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.05,
+          "new": 0.0509,
+          "pct": 0.018
+        },
+        {
+          "field": "output",
+          "old": 0.33,
+          "new": 0.335,
+          "pct": 0.01515
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T22:37:28Z"
+    },
+    {
       "id": "2026-10-19-openrouter:moonshot/kimi-k3-1",
       "type": "price_down",
       "offeringId": "openrouter:moonshot/kimi-k3",
@@ -132,6 +184,26 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-18T19:08:24Z"
+    },
+    {
+      "id": "2026-10-19-openrouter:moonshot/kimi-k3-2",
+      "type": "price_down",
+      "offeringId": "openrouter:moonshot/kimi-k3",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3",
+      "displayName": "Kimi K3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.279,
+          "new": 0.249,
+          "pct": -0.1075
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T22:37:28Z"
     },
     {
       "id": "2026-10-19-openrouter:tencent/hy3-1",

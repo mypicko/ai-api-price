@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/ernie-4.5-turbo-vl-32k",
+  "series": {
+    "official-cn:baidu/ernie-4.5-turbo-vl-32k": [
+      {
+        "input": 3,
+        "output": 9,
+        "cacheRead": 0.75,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}
