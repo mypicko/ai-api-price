@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "local-20261018025929",
-    "startedAt": "2026-10-18T02:59:29Z",
-    "finishedAt": "2026-10-18T02:59:33Z",
-    "durationMs": 3564,
+    "id": "39131025841",
+    "startedAt": "2026-10-18T13:19:57Z",
+    "finishedAt": "2026-10-18T13:20:02Z",
+    "durationMs": 4556,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 1635,
+      "durationMs": 1435,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T02:59:29Z",
+      "lastSuccessAt": "2026-10-18T13:19:57Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 159,
+      "durationMs": 412,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T02:59:29Z",
+      "lastSuccessAt": "2026-10-18T13:19:57Z",
       "consecutiveFailures": 0
     },
     {
@@ -34,10 +34,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 258,
-      "durationMs": 321,
+      "durationMs": 924,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T02:59:29Z",
+      "lastSuccessAt": "2026-10-18T13:19:57Z",
       "consecutiveFailures": 0
     },
     {
@@ -45,10 +45,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 3,
+      "durationMs": 6,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T02:59:29Z",
+      "lastSuccessAt": "2026-10-18T13:19:57Z",
       "consecutiveFailures": 0
     },
     {
@@ -56,10 +56,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 4,
-      "durationMs": 823,
+      "durationMs": 845,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T02:59:29Z",
+      "lastSuccessAt": "2026-10-18T13:19:57Z",
       "consecutiveFailures": 0
     },
     {
@@ -67,10 +67,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 360,
-      "durationMs": 279,
+      "durationMs": 947,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T02:59:29Z",
+      "lastSuccessAt": "2026-10-18T13:19:57Z",
       "consecutiveFailures": 0
     },
     {
@@ -78,10 +78,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 53,
-      "durationMs": 437,
+      "durationMs": 830,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T02:59:29Z",
+      "lastSuccessAt": "2026-10-18T13:19:57Z",
       "consecutiveFailures": 0
     },
     {
@@ -89,10 +89,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 3394,
+      "durationMs": 4256,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T02:59:29Z",
+      "lastSuccessAt": "2026-10-18T13:19:57Z",
       "consecutiveFailures": 0
     },
     {
@@ -100,14 +100,47 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 470,
+      "durationMs": 2339,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T02:59:29Z",
+      "lastSuccessAt": "2026-10-18T13:19:57Z",
       "consecutiveFailures": 0
     }
   ],
-  "quarantine": [],
+  "quarantine": [
+    {
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.1,
+          "new": 0.0049,
+          "pct": -0.951
+        },
+        {
+          "field": "output",
+          "old": 0.3,
+          "new": 0.45,
+          "pct": 0.5
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.03,
+          "new": 0.0049,
+          "pct": -0.8367
+        }
+      ],
+      "candidate": {
+        "input": 0.0049,
+        "output": 0.45,
+        "cacheRead": 0.0049,
+        "cacheWrite": null
+      },
+      "firstSeenAt": "2026-10-18T13:19:57Z",
+      "lastSeenAt": "2026-10-18T13:19:57Z",
+      "confirmations": 1
+    }
+  ],
   "warnings": [
     {
       "code": "W2003",
@@ -120,6 +153,12 @@
       "sourceId": "siliconflow",
       "offeringId": null,
       "message": "厂商无法识别，已跳过：inclusionai, meituan-longcat, stepfun-ai"
+    },
+    {
+      "code": "W3003",
+      "sourceId": null,
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
+      "message": "价格突变，已进入隔离区：input 0.1 → 0.0049（-95%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0049（-84%）"
     },
     {
       "code": "W3007",
@@ -269,7 +308,7 @@
       "code": "W3007",
       "sourceId": null,
       "offeringId": "official:zhipu/glm-5.3",
-      "message": "官方价与 OpenRouter 价差过大：input 93%"
+      "message": "官方价与 OpenRouter 价差过大：input 93%，output 40%"
     },
     {
       "code": "W3007",

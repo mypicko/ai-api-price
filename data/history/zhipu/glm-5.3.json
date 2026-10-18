@@ -13,7 +13,7 @@
     "openrouter:zhipu/glm-5.3": [
       {
         "input": 0.079,
-        "output": 4.8,
+        "output": 2.5,
         "cacheRead": 0.078,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
