@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "39134674619",
-    "startedAt": "2026-10-18T14:09:25Z",
-    "finishedAt": "2026-10-18T14:09:30Z",
-    "durationMs": 5310,
+    "id": "39135135743",
+    "startedAt": "2026-10-18T14:15:32Z",
+    "finishedAt": "2026-10-18T14:15:37Z",
+    "durationMs": 4608,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 2030,
+      "durationMs": 1420,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 273,
+      "durationMs": 350,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -34,10 +34,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 258,
-      "durationMs": 1064,
+      "durationMs": 702,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -45,10 +45,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 9,
+      "durationMs": 6,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -56,10 +56,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 17,
-      "durationMs": 1449,
+      "durationMs": 1159,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -67,10 +67,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 1450,
+      "durationMs": 1160,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -78,10 +78,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 4,
-      "durationMs": 951,
+      "durationMs": 967,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -89,10 +89,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 363,
-      "durationMs": 1091,
+      "durationMs": 726,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -100,10 +100,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 54,
-      "durationMs": 1380,
+      "durationMs": 956,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -111,10 +111,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 4962,
+      "durationMs": 4357,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     },
     {
@@ -122,10 +122,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 932,
+      "durationMs": 1031,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T14:09:25Z",
+      "lastSuccessAt": "2026-10-18T14:15:32Z",
       "consecutiveFailures": 0
     }
   ],
@@ -136,8 +136,8 @@
         {
           "field": "input",
           "old": 0.1,
-          "new": 0.0114,
-          "pct": -0.886
+          "new": 0.0086,
+          "pct": -0.914
         },
         {
           "field": "output",
@@ -148,18 +148,18 @@
         {
           "field": "cacheRead",
           "old": 0.03,
-          "new": 0.0114,
-          "pct": -0.62
+          "new": 0.0086,
+          "pct": -0.7133
         }
       ],
       "candidate": {
-        "input": 0.0114,
+        "input": 0.0086,
         "output": 0.45,
-        "cacheRead": 0.0114,
+        "cacheRead": 0.0086,
         "cacheWrite": null
       },
-      "firstSeenAt": "2026-10-18T14:09:25Z",
-      "lastSeenAt": "2026-10-18T14:09:25Z",
+      "firstSeenAt": "2026-10-18T14:15:32Z",
+      "lastSeenAt": "2026-10-18T14:15:32Z",
       "confirmations": 1
     }
   ],
@@ -180,7 +180,7 @@
       "code": "W3003",
       "sourceId": null,
       "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
-      "message": "价格突变，已进入隔离区：input 0.1 → 0.0114（-89%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0114（-62%）"
+      "message": "价格突变，已进入隔离区：input 0.1 → 0.0086（-91%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0086（-71%）"
     },
     {
       "code": "W3007",
