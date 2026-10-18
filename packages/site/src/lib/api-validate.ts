@@ -5,6 +5,8 @@
 import {
   ChangeEventSchema,
   FxRateSchema,
+  MediaOfferingSchema,
+  MediaTierSchema,
   OfferingSchema,
   PricePointSchema,
   PriceSetSchema,
@@ -20,12 +22,29 @@ interface Parser {
 }
 
 export type EndpointKind =
-  "latest" | "providers" | "model" | "changes" | "changesIndex" | "fx" | "status";
+  | "latest"
+  | "providers"
+  | "model"
+  | "changes"
+  | "changesIndex"
+  | "fx"
+  | "status"
+  | "media"
+  | "mediaChanges";
 
 const PublicOfferingBase = OfferingSchema.omit({
   modalities: true,
   missingDays: true,
   firstSeenAt: true,
+});
+
+const PublicMediaBase = MediaOfferingSchema.omit({
+  modalities: true,
+  missingDays: true,
+  firstSeenAt: true,
+});
+const MediaPricesSchema = PriceSetSchema.pick({ input: true, output: true }).extend({
+  tiers: MediaTierSchema.array().nullable(),
 });
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -73,6 +92,17 @@ function checkOffering(errors: string[], path: string, value: unknown): void {
   );
 }
 
+function checkMediaOffering(errors: string[], path: string, value: unknown): void {
+  if (!isRecord(value)) return void errors.push(`${path}: 不是对象`);
+  const { converted, change7d, ...rest } = value;
+  check(errors, path, PublicMediaBase.strict(), rest);
+  expect(errors, value["status"] !== "removed", `${path}: 公开列表不应包含 removed`);
+  expect(errors, isNullableNumber(change7d), `${path}.change7d: 格式错误`);
+  if (!isRecord(converted)) return void errors.push(`${path}.converted: 缺失`);
+  check(errors, `${path}.converted.usd`, MediaPricesSchema.strict(), converted["usd"]);
+  check(errors, `${path}.converted.cny`, MediaPricesSchema.strict(), converted["cny"]);
+}
+
 function checkArray(
   errors: string[],
   path: string,
@@ -116,7 +146,12 @@ function checkData(errors: string[], kind: EndpointKind, data: Record<string, un
       return Object.entries(data["history"]).forEach(([id, series]) =>
         checkArray(errors, `data.history.${id}`, series, schemaItem(PricePointSchema)),
       );
+    case "media":
+      return checkArray(errors, "data.offerings", data["offerings"], (p, v) =>
+        checkMediaOffering(errors, p, v),
+      );
     case "changes":
+    case "mediaChanges":
       return checkArray(errors, "data.events", data["events"], schemaItem(ChangeEventSchema));
     case "changesIndex":
       return checkArray(errors, "data.months", data["months"], (p, v) =>

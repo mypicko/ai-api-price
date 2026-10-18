@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import type { RawOffering } from "@aipb/shared";
+import type { SourceItem } from "../../src/sources/types";
 import { describe, expect, it } from "vitest";
 import { silentLogger } from "../../src/core/logger";
 import {
@@ -18,7 +18,7 @@ const options = {
   today: "2026-10-18",
   pricingUrlFor: (hint: string) => (hint === "minimax" ? null : `https://${hint}.example/pricing`),
 };
-const find = (list: readonly RawOffering[], vendorHint: string, modelName: string) =>
+const find = <T extends SourceItem>(list: readonly T[], vendorHint: string, modelName: string) =>
   list.find((o) => o.vendorHint === vendorHint && o.modelName === modelName);
 
 describe("source/litellm", () => {
@@ -146,9 +146,24 @@ describe("source/litellm", () => {
     expect(find(offerings, "gemini", "gemini-2.5-pro")?.sourceUrl).toBe(
       "https://ai.google.dev/gemini-api/docs/pricing",
     );
+    expect(offerings.some((o) => "media" in o)).toBe(false);
     const empty = createFakeHttp({ [LITELLM_URL]: "{}" });
     await expect(litellmSource.fetch({ ...ctx, http: empty })).rejects.toMatchObject({
       code: "E2001",
     });
+  });
+
+  it("fetch：视频/图像条目与文本报价一起返回，证据链接用条目自带的官方 source", async () => {
+    const ctx = { browser: noopBrowser, logger: silentLogger, now: NOW, rootDir: ROOT_DIR };
+    const text = JSON.parse(await readFile(FIXTURE, "utf8")) as Record<string, unknown>;
+    const media = JSON.parse(
+      await readFile(path.join(FIXTURES_DIR, "litellm/2026-10-18-media.json"), "utf8"),
+    ) as Record<string, unknown>;
+    const http = createFakeHttp({ [LITELLM_URL]: JSON.stringify({ ...text, ...media }) });
+    const items = await litellmSource.fetch({ ...ctx, http });
+    const h3 = find(items, "minimax", "MiniMax-H3");
+    expect(h3 && "media" in h3 ? h3.media : null).toEqual({ kind: "video", unit: "per_second" });
+    expect(h3?.sourceUrl).toBe("https://platform.minimax.io/docs/guides/pricing-paygo");
+    expect(items.filter((o) => !("media" in o))).toHaveLength(14);
   });
 });

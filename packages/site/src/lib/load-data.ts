@@ -10,6 +10,7 @@ import {
   FxFileSchema,
   HistoryFileSchema,
   LatestFileSchema,
+  MediaLatestFileSchema,
   ProvidersConfigSchema,
   QuarantineFileSchema,
   StatusFileSchema,
@@ -17,12 +18,22 @@ import {
   type FxFile,
   type HistoryFile,
   type LatestFile,
+  type MediaLatestFile,
   type ProvidersConfig,
   type QuarantineFile,
   type StatusFile,
 } from "@aipb/shared";
 import { DataLoadError, formatIssues, type IssueLike } from "./data-errors";
 import { shanghaiDate } from "./i18n";
+
+/** data/media/：视频/图像报价（与文本报价完全分开） */
+export interface MediaData {
+  readonly latest: MediaLatestFile | null;
+  /** key = modelSlug */
+  readonly histories: ReadonlyMap<string, HistoryFile>;
+  /** 按月份升序 */
+  readonly changeMonths: readonly ChangesMonthFile[];
+}
 
 export interface SiteData {
   readonly latest: LatestFile | null;
@@ -34,6 +45,7 @@ export interface SiteData {
   readonly status: StatusFile | null;
   readonly quarantine: QuarantineFile;
   readonly providers: ProvidersConfig;
+  readonly media: MediaData;
 }
 
 export interface LoadOptions {
@@ -140,6 +152,19 @@ export function loadProviders(file: string): ProvidersConfig {
   return parseWith(ProvidersConfigSchema, parseYaml(text), file);
 }
 
+export const EMPTY_MEDIA: MediaData = { latest: null, histories: new Map(), changeMonths: [] };
+
+/** data/media/ 不存在时（管线还没产出视频/图像数据）返回空数据 */
+export function loadMediaData(dataDir: string): MediaData {
+  const dir = join(dataDir, "media");
+  if (!existsSync(dir)) return EMPTY_MEDIA;
+  return {
+    latest: readOptional(MediaLatestFileSchema, join(dir, "latest.json")),
+    histories: loadHistories(dir),
+    changeMonths: loadChangeMonths(dir),
+  };
+}
+
 export function loadSiteData(options: LoadOptions): SiteData {
   const { dataDir } = options;
   const latest = readOptional(LatestFileSchema, join(dataDir, "latest.json"));
@@ -159,5 +184,6 @@ export function loadSiteData(options: LoadOptions): SiteData {
     status,
     quarantine,
     providers: loadProviders(options.providersFile),
+    media: loadMediaData(dataDir),
   };
 }

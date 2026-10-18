@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-image-1",
+  "series": {
+    "official:openai/gpt-image-1": [
+      {
+        "input": null,
+        "output": 0.011,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-01"
+      }
+    ]
+  }
+}

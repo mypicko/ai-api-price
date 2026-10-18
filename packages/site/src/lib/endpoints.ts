@@ -32,7 +32,7 @@ export function rssResponse(locale: Locale, site: URL | undefined): Response {
   return new Response(xml, { headers: { "Content-Type": "application/rss+xml; charset=utf-8" } });
 }
 
-export const STATIC_PAGES = ["", "calculator/", "changes/", "about/"] as const;
+export const STATIC_PAGES = ["", "calculator/", "media/", "changes/", "about/"] as const;
 
 export function sitemapPaths(model: SiteModel): readonly string[] {
   return [...STATIC_PAGES, ...model.models.map((m) => modelPath(m.slug))];

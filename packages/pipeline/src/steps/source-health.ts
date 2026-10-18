@@ -39,6 +39,7 @@ function toResult(
     kind: outcome.kind,
     status: outcome.state === "rejected" ? "rejected" : isOk ? "ok" : "failed",
     offeringCount: outcome.offeringCount,
+    ...(outcome.media ? { mediaOfferingCount: outcome.media.offeringCount } : {}),
     durationMs: Math.max(0, Math.round(outcome.durationMs)),
     errorCode: isOk ? null : errorCode,
     errorMessage: isOk

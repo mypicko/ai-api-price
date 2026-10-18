@@ -1,0 +1,21 @@
+{
+  "modelSlug": "minimax/minimax-h3",
+  "series": {
+    "official:minimax/minimax-h3": [
+      {
+        "input": 0.04,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-09-01"
+      },
+      {
+        "input": 0.04,
+        "output": 0.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

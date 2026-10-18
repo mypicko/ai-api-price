@@ -1,7 +1,15 @@
 /**
  * 运行报告：推送用的 DailyReport + GitHub Actions job summary（Markdown）。
  */
-import type { ChangeEvent, Offering, QuarantineEntry, StatusFile, Warning } from "@aipb/shared";
+import type {
+  ChangeEvent,
+  MediaOffering,
+  MediaUnit,
+  Offering,
+  QuarantineEntry,
+  StatusFile,
+  Warning,
+} from "@aipb/shared";
 import { buildReportText } from "../notify/format";
 import type { DailyReport } from "../notify/types";
 
@@ -15,16 +23,25 @@ export interface ReportInput {
   readonly events: readonly ChangeEvent[];
   readonly newlyQuarantined: readonly QuarantineEntry[];
   readonly offerings: readonly Offering[];
+  /** 视频/图像线的结果；没有时报告里不出现这一节 */
+  readonly media?: {
+    readonly offerings: readonly MediaOffering[];
+    readonly events: readonly ChangeEvent[];
+    readonly units: Readonly<Record<string, MediaUnit>>;
+  };
   readonly siteUrl: string;
 }
 
 export function buildDailyReport(input: ReportInput): DailyReport {
-  const names = Object.fromEntries(input.offerings.map((o) => [o.id, o.displayName] as const));
+  const named = [...(input.media?.offerings ?? []), ...input.offerings];
+  const names = Object.fromEntries(named.map((o) => [o.id, o.displayName] as const));
   return {
     date: input.today,
     run: input.status.run,
     sources: input.status.sources.filter((s) => input.ranSourceIds.has(s.id)),
     changes: input.events,
+    mediaChanges: input.media?.events ?? [],
+    mediaUnits: input.media?.units ?? {},
     quarantined: input.newlyQuarantined,
     errors: input.status.warnings
       .filter((w) => w.code.startsWith("E"))
@@ -76,6 +93,7 @@ export interface SummaryInput {
   readonly report: DailyReport;
   readonly status: StatusFile;
   readonly offerings: readonly Offering[];
+  readonly mediaOfferings?: readonly MediaOffering[];
   readonly written: readonly string[];
   readonly latestUnchanged: boolean;
   readonly dryRun: boolean;
@@ -85,6 +103,9 @@ export function buildSummaryMarkdown(input: SummaryInput): string {
   const { report, status, offerings } = input;
   const count = (s: Offering["status"]): number => offerings.filter((o) => o.status === s).length;
   const stale = offerings.filter((o) => o.stale && o.status !== "removed").length;
+  const media = input.mediaOfferings ?? [];
+  const mediaLive = (kind: MediaOffering["kind"]): number =>
+    media.filter((o) => o.kind === kind && o.status !== "removed").length;
   const icon =
     status.run.result === "success" ? "🟢" : status.run.result === "partial" ? "🟡" : "🔴";
   const text = buildReportText(report);
@@ -96,6 +117,8 @@ export function buildSummaryMarkdown(input: SummaryInput): string {
     "",
     `${icon} **${status.run.result}** · 耗时 ${(status.run.durationMs / 1000).toFixed(1)}s · ` +
       `Offering：在售 ${count("active")} / 待确认下架 ${count("missing")} / 已下架 ${count("removed")} / 过期 ${stale}`,
+    "",
+    `视频/图像：视频 ${mediaLive("video")} / 图像 ${mediaLive("image")}`,
     "",
     ...sourcesTable(report),
     "",

@@ -211,6 +211,51 @@ vendors:
       matchers: [tencent, hunyuan, 腾讯],
       allowedSourceDomains: [tencent.com],
     }
+  # ── 以下厂商目前只有视频/图像生成模型（data/media/） ──
+  - {
+      id: black-forest-labs,
+      nameZh: Black Forest Labs,
+      nameEn: Black Forest Labs,
+      region: intl,
+      website: "https://bfl.ai",
+      pricingUrl: "https://bfl.ai/pricing",
+      logo: null,
+      matchers: [black-forest-labs, black_forest_labs, bfl],
+      allowedSourceDomains: [bfl.ai],
+    }
+  - {
+      id: stability,
+      nameZh: Stability AI,
+      nameEn: Stability AI,
+      region: intl,
+      website: "https://stability.ai",
+      pricingUrl: "https://platform.stability.ai/pricing",
+      logo: null,
+      matchers: [stability, stabilityai, stability-ai],
+      allowedSourceDomains: [stability.ai],
+    }
+  - {
+      id: recraft,
+      nameZh: Recraft,
+      nameEn: Recraft,
+      region: intl,
+      website: "https://www.recraft.ai",
+      pricingUrl: "https://www.recraft.ai/pricing",
+      logo: null,
+      matchers: [recraft],
+      allowedSourceDomains: [recraft.ai],
+    }
+  - {
+      id: runway,
+      nameZh: Runway,
+      nameEn: Runway,
+      region: intl,
+      website: "https://runwayml.com",
+      pricingUrl: "https://docs.dev.runwayml.com/guides/pricing/",
+      logo: null,
+      matchers: [runway, runwayml],
+      allowedSourceDomains: [runwayml.com],
+    }
 platforms:
   - {
       id: official,

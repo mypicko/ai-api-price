@@ -172,6 +172,8 @@ test.describe("其他页面", () => {
 
   test("变动日志：按类型和厂商筛选", async ({ page }) => {
     await page.goto("/changes/");
+    // ChangeLog 是 client:idle，并行跑测试时水合可能晚于第一次 selectOption
+    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
     const items = page.getByTestId("change-log").locator("ol > li");
     const total = await items.count();
     expect(total).toBeGreaterThan(10);
@@ -189,6 +191,45 @@ test.describe("其他页面", () => {
     await expect(failed).toContainText("8");
     await expect(failed).toContainText("E1003");
     await expect(page.getByTestId("quarantine")).toContainText("Qwen Plus");
+  });
+
+  test("视频/图像：独立页面，按秒 / 按张计价，标签切换同步到 URL", async ({ page }) => {
+    const errors = collectErrors(page);
+    await page.goto("/");
+    await page.getByRole("link", { name: "视频/图像" }).click();
+    await expect(page).toHaveURL(/\/media\/$/);
+    const table = page.getByTestId("media-table");
+    await expect(table).toHaveAttribute("data-kind", "video");
+    await expect(table.locator("tbody tr")).toHaveCount(5);
+    await expect(table.locator("thead")).toContainText("每秒");
+    const h3 = table.locator('tr[data-id="official:minimax/minimax-h3"]');
+    await expect(h3).toContainText("MiniMax-H3");
+    await expect(h3).toContainText("768p");
+    await expect(h3).toContainText("2k");
+    await page.getByRole("button", { name: "$ USD" }).click();
+    await expect(h3.locator("td").nth(1).locator(".cur-USD")).toHaveText("$0.0800");
+    await expect(h3.locator("td").nth(1).locator(".cur-CNY")).toBeHidden();
+    // 默认按每秒价格升序
+    await expect(table.locator("tbody tr").first()).toContainText("MiniMax-H3");
+    await page.getByRole("tab", { name: /图像/ }).click();
+    await expect(page).toHaveURL(/kind=image/);
+    await expect(table).toHaveAttribute("data-kind", "image");
+    await expect(table.locator("thead")).toContainText("每张");
+    await expect(table.locator("tbody tr")).toHaveCount(5);
+    await page.getByPlaceholder("搜索模型或厂商").fill("stability");
+    await expect(table.locator("tbody tr")).toHaveCount(1);
+    await expect(page.getByTestId("media-changes")).toContainText("MiniMax-H3");
+    await page.reload();
+    await expect(page.getByRole("tab", { name: /图像/ })).toHaveAttribute("aria-selected", "true");
+    await page.waitForLoadState("networkidle");
+    expect(errors).toEqual([]);
+  });
+
+  test("视频/图像不进入文本价格榜和计算器", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByTestId("price-table")).not.toContainText("MiniMax-H3");
+    await page.goto("/en/media/");
+    await expect(page.getByTestId("media-table").locator("thead")).toContainText("Per second");
   });
 
   test("404 页面", async ({ page }) => {

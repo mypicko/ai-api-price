@@ -2,7 +2,7 @@
 
 | 项       | 内容                                                                 |
 | -------- | -------------------------------------------------------------------- |
-| 文档版本 | v1.0（规划版）                                                       |
+| 文档版本 | v1.1（新增视频/图像生成模型，§3.13）                                 |
 | 创建日期 | 2026-10-18                                                           |
 | 状态     | 规划已确认，待开发                                                   |
 | 配套文档 | `AI_API_价格榜_API.md`（数据接口）· `AI_API_价格榜_STYLE.md`（规范） |
@@ -52,6 +52,7 @@
 - 用户注册登录、评论、收藏（纯静态站，没有后端）
 - 模型能力评测/跑分（只做价格，最多附上下文长度等基础参数）
 - 图片/语音/视频模型的复杂计费（第一版只做**文本 LLM 的 token 计费**；Embedding 作为 P2）
+  - **1.1 起**：视频（按秒）和图像（按张）生成模型单独收录，见 §3.13。仍然不做：语音、按 token 计价的图像输出、按分辨率 × 时长的组合计费、OpenRouter 的视频报价
 - 实时价格（每天更新一次）
 
 ### 1.4 用户画像
@@ -64,12 +65,13 @@
 
 ### 1.5 数据覆盖（第一版）
 
-| 类别     | 厂商/平台                                                                                   | 数据来源方式                                     |
-| -------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| 国际主流 | OpenAI、Anthropic、Google Gemini、xAI、Mistral、Cohere、DeepSeek（国际站）                  | LiteLLM 开源价格库（主）+ OpenRouter（交叉核对） |
-| 国内大厂 | DeepSeek、阿里通义（百炼）、智谱 GLM、月之暗面 Kimi、字节豆包（火山方舟）、百度文心（千帆） | 官网定价页抓取                                   |
-| 聚合平台 | OpenRouter、硅基流动 SiliconFlow                                                            | OpenRouter 官方接口；硅基流动抓定价页            |
-| 汇率     | USD ↔ CNY                                                                                   | Frankfurter（主）/ open.er-api.com（备）         |
+| 类别             | 厂商/平台                                                                                           | 数据来源方式                                     |
+| ---------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| 国际主流         | OpenAI、Anthropic、Google Gemini、xAI、Mistral、Cohere、DeepSeek（国际站）                          | LiteLLM 开源价格库（主）+ OpenRouter（交叉核对） |
+| 国内大厂         | DeepSeek、阿里通义（百炼）、智谱 GLM、月之暗面 Kimi、字节豆包（火山方舟）、百度文心（千帆）         | 官网定价页抓取                                   |
+| 聚合平台         | OpenRouter、硅基流动 SiliconFlow                                                                    | OpenRouter 官方接口；硅基流动抓定价页            |
+| 汇率             | USD ↔ CNY                                                                                           | Frankfurter（主）/ open.er-api.com（备）         |
+| 视频/图像（1.1） | MiniMax、Google、xAI、OpenAI、阿里、字节、Runway、Black Forest Labs、Stability AI、Recraft（§3.13） | LiteLLM 开源价格库中厂商直连的条目               |
 
 ---
 
@@ -160,6 +162,7 @@ AI_API_价格榜/
 │   │   │   │   └── errors.ts    # PipelineError + 错误码
 │   │   │   ├── sources/         # 每个数据源一个文件，实现 Source 接口
 │   │   │   │   ├── litellm.ts
+│   │   │   │   ├── litellm-media.ts  # LiteLLM 里的视频/图像生成条目
 │   │   │   │   ├── openrouter.ts
 │   │   │   │   ├── deepseek.ts
 │   │   │   │   ├── aliyun.ts
@@ -175,7 +178,9 @@ AI_API_价格榜/
 │   │   │   │   ├── normalize.ts
 │   │   │   │   ├── validate.ts
 │   │   │   │   ├── diff.ts
-│   │   │   │   └── persist.ts
+│   │   │   │   ├── persist.ts
+│   │   │   │   ├── media-normalize.ts  # 视频/图像的 V1/normalize/V2/V5
+│   │   │   │   └── media-lane.ts       # 视频/图像的 reconcile/diff/history/落盘
 │   │   │   └── notify/
 │   │   │       ├── feishu.ts
 │   │   │       ├── telegram.ts
@@ -191,6 +196,7 @@ AI_API_价格榜/
 │       │   │   ├── models/[vendor]/[model].astro
 │       │   │   ├── calculator.astro
 │       │   │   ├── changes.astro
+│       │   │   ├── media.astro              # 视频/图像价格（1.1）
 │       │   │   ├── about.astro
 │       │   │   ├── en/...                   # 英文镜像路由
 │       │   │   ├── api/v1/[...path].json.ts # 生成静态 JSON 接口
@@ -212,7 +218,8 @@ AI_API_价格榜/
 │   ├── changes/<YYYY-MM>.json   # 按月的变动事件
 │   ├── quarantine.json          # 隔离区：疑似异常、待确认
 │   ├── fx.json                  # 最近汇率 + 历史
-│   └── status.json              # 最近一次运行报告
+│   ├── status.json              # 最近一次运行报告
+│   └── media/                   # 视频/图像（1.1）：latest / quarantine / history / changes，结构同上
 ├── DEV_DOCUMENT.md
 ├── AI_API_价格榜_API.md
 ├── AI_API_价格榜_STYLE.md
@@ -241,8 +248,8 @@ export interface Source {
   readonly kind: "api" | "html" | "browser" | "manual";
   /** 单次抓取超时（毫秒） */
   readonly timeoutMs: number;
-  /** 返回原始报价（尚未归一化）；失败时抛 PipelineError */
-  fetch(ctx: SourceContext): Promise<RawOffering[]>;
+  /** 返回原始报价（尚未归一化）；失败时抛 PipelineError。1.1 起可以混有带 media 字段的视频/图像报价 */
+  fetch(ctx: SourceContext): Promise<(RawOffering | RawMediaOffering)[]>;
 }
 
 export interface SourceContext {
@@ -275,20 +282,20 @@ export interface RawOffering {
 
 > 节点 3 于 2026-10-18 实测。**重要**：开发机和 GitHub Actions 都在海外，阿里、Kimi、硅基流动、百度的国内站在海外无法连接（TCP 超时）。阿里改抓阿里云国际站的中文文档，只取其中的**「华北2（北京）」地域价**（国际站以美元标价，价格本身就是北京地域的国内价）；Kimi、硅基流动改抓国际站，价格为国际站美元价。国内站价格由 models.dev 补充（见下表）。如果需要人民币原价，见 §15 和 §14 #1。
 
-| Source ID                  | 平台                               | 方式   | 实际入口                                                                                                                                                                            | 币种                        | 原始单位            | 模型数 | 风险                                                                              |
-| -------------------------- | ---------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ------------------- | ------ | --------------------------------------------------------------------------------- |
-| `litellm`                  | 各国际厂商官方                     | api    | `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json`                                                                                       | USD                         | per_token           | 258    | 低；社区维护，可能滞后 1~3 天                                                     |
-| `openrouter`               | OpenRouter                         | api    | `https://openrouter.ai/api/v1/models`（公开，无需 Key）                                                                                                                             | USD                         | per_token（字符串） | 360    | 低；分时段价格只记在 notes                                                        |
-| `deepseek`                 | DeepSeek 官方                      | html   | `https://api-docs.deepseek.com/zh-cn/quick_start/pricing/`                                                                                                                          | CNY                         | per_1m              | 2      | 中；表格行列转置，标准价 = 高峰价，错峰价写入 notes                               |
-| `zhipu`                    | 智谱开放平台                       | html   | `https://docs.bigmodel.cn/cn/guide/start/pricing`（Mintlify 静态页）                                                                                                                | CNY                         | per_1m              | 32     | 中；按输出长度分档的只取第一档，其余写入 notes                                    |
-| `moonshot`                 | 月之暗面 Kimi                      | html   | 抓取 `https://platform.kimi.ai/docs/pricing/chat.md`，证据链接 `https://platform.moonshot.ai/docs/pricing/chat`                                                                     | **USD（国际站）**           | per_1m              | 4      | 中；国内站海外不可达                                                              |
-| `aliyun`                   | 阿里云百炼                         | html   | `https://www.alibabacloud.com/help/zh/model-studio/model-pricing`（国际站中文文档，只取「华北2（北京）」文本生成）                                                                  | **USD（北京地域价）**       | per_1m              | 64     | 中；限时折扣取基础价，写入 notes                                                  |
-| `volcengine`               | 火山方舟（豆包）                   | api    | 定价页 `https://www.volcengine.com/pricing?product=ark_bd&tab=1` 背后的公开匿名接口（GetNavigationV2 → ListTemplate → GetTable）                                                    | CNY                         | per_1k              | 8      | 中；只收主力文本模型，32k/128k/256k 分档                                          |
-| `siliconflow`              | 硅基流动                           | html   | `https://www.siliconflow.com/models`（国际站）                                                                                                                                      | **USD（国际站）**           | per_1m              | 53     | 中；页面只列出约 79 个模型，不是完整目录                                          |
-| `qianfan`                  | 百度千帆（文心）                   | —      | **已从注册表移除**                                                                                                                                                                  | —                           | —                   | 0      | 海外无法访问任何百度定价页；需要国内网络人工核对后写 `config/manual/qianfan.yaml` |
-| `modelsdev-cn`             | 官方（国内站）`official-cn`        | api    | `https://models.dev/api.json` 的 `moonshotai-cn` / `minimax-cn` / `stepfun`（MIT 社区数据库，github.com/anomalyco/models.dev）；**不收 `alibaba-cn`**，与 `aliyun` 的北京地域价重复 | USD（社区由人民币原价换算） | per_1m              | 17     | 中；社区维护，可能滞后；notes 注明「以官网为准」                                  |
-| `modelsdev-siliconflow-cn` | 硅基流动（国内站）`siliconflow-cn` | api    | 同上，`siliconflow-cn`；厂商取模型 ID 前缀（如 `Qwen/Qwen3-8B`）                                                                                                                    | USD（同上）                 | per_1m              | 33     | 同上；两个源共用一次下载                                                          |
-| `manual`                   | 官方                               | manual | `config/manual/*.yaml`                                                                                                                                                              | 任意                        | 任意                | 0      | 无；需人工维护                                                                    |
+| Source ID                  | 平台                               | 方式   | 实际入口                                                                                                                                                                            | 币种                        | 原始单位            | 模型数                     | 风险                                                                              |
+| -------------------------- | ---------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ------------------- | -------------------------- | --------------------------------------------------------------------------------- |
+| `litellm`                  | 各国际厂商官方                     | api    | `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json`                                                                                       | USD                         | per_token           | 258（+ 视频 30 / 图像 36） | 低；社区维护，可能滞后 1~3 天                                                     |
+| `openrouter`               | OpenRouter                         | api    | `https://openrouter.ai/api/v1/models`（公开，无需 Key）                                                                                                                             | USD                         | per_token（字符串） | 360                        | 低；分时段价格只记在 notes                                                        |
+| `deepseek`                 | DeepSeek 官方                      | html   | `https://api-docs.deepseek.com/zh-cn/quick_start/pricing/`                                                                                                                          | CNY                         | per_1m              | 2                          | 中；表格行列转置，标准价 = 高峰价，错峰价写入 notes                               |
+| `zhipu`                    | 智谱开放平台                       | html   | `https://docs.bigmodel.cn/cn/guide/start/pricing`（Mintlify 静态页）                                                                                                                | CNY                         | per_1m              | 32                         | 中；按输出长度分档的只取第一档，其余写入 notes                                    |
+| `moonshot`                 | 月之暗面 Kimi                      | html   | 抓取 `https://platform.kimi.ai/docs/pricing/chat.md`，证据链接 `https://platform.moonshot.ai/docs/pricing/chat`                                                                     | **USD（国际站）**           | per_1m              | 4                          | 中；国内站海外不可达                                                              |
+| `aliyun`                   | 阿里云百炼                         | html   | `https://www.alibabacloud.com/help/zh/model-studio/model-pricing`（国际站中文文档，只取「华北2（北京）」文本生成）                                                                  | **USD（北京地域价）**       | per_1m              | 64                         | 中；限时折扣取基础价，写入 notes                                                  |
+| `volcengine`               | 火山方舟（豆包）                   | api    | 定价页 `https://www.volcengine.com/pricing?product=ark_bd&tab=1` 背后的公开匿名接口（GetNavigationV2 → ListTemplate → GetTable）                                                    | CNY                         | per_1k              | 8                          | 中；只收主力文本模型，32k/128k/256k 分档                                          |
+| `siliconflow`              | 硅基流动                           | html   | `https://www.siliconflow.com/models`（国际站）                                                                                                                                      | **USD（国际站）**           | per_1m              | 53                         | 中；页面只列出约 79 个模型，不是完整目录                                          |
+| `qianfan`                  | 百度千帆（文心）                   | —      | **已从注册表移除**                                                                                                                                                                  | —                           | —                   | 0                          | 海外无法访问任何百度定价页；需要国内网络人工核对后写 `config/manual/qianfan.yaml` |
+| `modelsdev-cn`             | 官方（国内站）`official-cn`        | api    | `https://models.dev/api.json` 的 `moonshotai-cn` / `minimax-cn` / `stepfun`（MIT 社区数据库，github.com/anomalyco/models.dev）；**不收 `alibaba-cn`**，与 `aliyun` 的北京地域价重复 | USD（社区由人民币原价换算） | per_1m              | 17                         | 中；社区维护，可能滞后；notes 注明「以官网为准」                                  |
+| `modelsdev-siliconflow-cn` | 硅基流动（国内站）`siliconflow-cn` | api    | 同上，`siliconflow-cn`；厂商取模型 ID 前缀（如 `Qwen/Qwen3-8B`）                                                                                                                    | USD（同上）                 | per_1m              | 33                         | 同上；两个源共用一次下载                                                          |
+| `manual`                   | 官方                               | manual | `config/manual/*.yaml`                                                                                                                                                              | 任意                        | 任意                | 0                          | 无；需人工维护                                                                    |
 
 **来源优先级**（同一个"厂商官方直供"报价被多个源提供时）：
 
@@ -344,16 +351,16 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 
 每条 Offering 依次经过以下规则：
 
-| 规则            | 条件                                                               | 处理                                                                      |
-| --------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| V1 结构         | 不符合 Zod schema                                                  | 丢弃该条，记 `E3001`                                                      |
-| V2 取值范围     | 价格 < 0，或 > 1000 USD/1M                                         | 丢弃该条，记 `E3002`                                                      |
-| V3 单日突变     | 与上次已发布值相比变动 > `ANOMALY_THRESHOLD`（默认 80%），涨跌都算 | 进入**隔离区**，网站继续显示旧值，推送告警 `W3003`                        |
-| V4 隔离自动放行 | 隔离中的新值**连续 2 次运行**都抓到同一个值                        | 视为真实调价，放行发布，并在变动日志中标记"已确认"                        |
-| V5 模型数骤降   | 某个源本次的模型数 < 上次的 50%                                    | **整个源**视为失败，沿用旧数据，告警 `E3004`                              |
-| V6 下架防抖     | 某个模型本次没抓到                                                 | 连续 3 天都没有才判定下架；期间沿用旧值                                   |
-| V7 交叉核对     | 同一模型的官方价与 OpenRouter 价相差 > 30%                         | 不拦截，在 `status.json` 记录 `W3007`，方便人工抽查                       |
-| V8 人工覆盖     | `config/overrides.yaml` 中有对应条目                               | 按配置执行：`approve`（强制放行）/ `block`（屏蔽）/ `pin`（钉住某个价格） |
+| 规则            | 条件                                                               | 处理                                                                          |
+| --------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| V1 结构         | 不符合 Zod schema                                                  | 丢弃该条，记 `E3001`                                                          |
+| V2 取值范围     | 价格 < 0，或 > 1000 USD/1M（视频/图像：> 50 USD/秒或张）           | 丢弃该条，记 `E3002`                                                          |
+| V3 单日突变     | 与上次已发布值相比变动 > `ANOMALY_THRESHOLD`（默认 80%），涨跌都算 | 进入**隔离区**，网站继续显示旧值，推送告警 `W3003`                            |
+| V4 隔离自动放行 | 隔离中的新值**连续 2 次运行**都抓到同一个值                        | 视为真实调价，放行发布，并在变动日志中标记"已确认"                            |
+| V5 模型数骤降   | 某个源本次的模型数 < 上次的 50%                                    | **整个源**视为失败，沿用旧数据，告警 `E3004`；视频/图像单独计数，只拒绝这条线 |
+| V6 下架防抖     | 某个模型本次没抓到                                                 | 连续 3 天都没有才判定下架；期间沿用旧值                                       |
+| V7 交叉核对     | 同一模型的官方价与 OpenRouter 价相差 > 30%                         | 不拦截，在 `status.json` 记录 `W3007`，方便人工抽查                           |
+| V8 人工覆盖     | `config/overrides.yaml` 中有对应条目                               | 按配置执行：`approve`（强制放行）/ `block`（屏蔽）/ `pin`（钉住某个价格）     |
 
 `overrides.yaml` 示例：
 
@@ -431,15 +438,16 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 
 ### 3.10 网站页面
 
-| 路由（中文 / 英文）        | 内容                                                     | 交互组件                                   |
-| -------------------------- | -------------------------------------------------------- | ------------------------------------------ |
-| `/` · `/en/`               | 价格总榜；顶部"今日变动"卡片（最近 24h 事件，最多 6 条） | `PriceTable`（排序、筛选、搜索、币种切换） |
-| `/models/<vendor>/<model>` | 模型详情：各平台报价对比、阶梯价、价格走势图、变动记录   | `PriceChart`、`OfferingCompare`            |
-| `/calculator`              | 成本计算器                                               | `Calculator`                               |
-| `/changes`                 | 变动日志（按日期分组，可按类型/厂商筛选）                | `ChangeFilter`                             |
-| `/about`                   | 数据来源说明、更新时间、免责声明、各源健康状态           | —                                          |
-| `/rss.xml` · `/en/rss.xml` | 变动 RSS（最近 100 条事件）                              | —                                          |
-| `/api/v1/*.json`           | 开放数据接口（见 API 文档）                              | —                                          |
+| 路由（中文 / 英文）        | 内容                                                             | 交互组件                                   |
+| -------------------------- | ---------------------------------------------------------------- | ------------------------------------------ |
+| `/` · `/en/`               | 价格总榜；顶部"今日变动"卡片（最近 24h 事件，最多 6 条）         | `PriceTable`（排序、筛选、搜索、币种切换） |
+| `/models/<vendor>/<model>` | 模型详情：各平台报价对比、阶梯价、价格走势图、变动记录           | `PriceChart`、`OfferingCompare`            |
+| `/calculator`              | 成本计算器                                                       | `Calculator`                               |
+| `/changes`                 | 变动日志（按日期分组，可按类型/厂商筛选）                        | `ChangeFilter`                             |
+| `/media`                   | 视频/图像生成价格（视频 / 图像两个标签页，各自的单位）、最近变动 | `MediaTable`（标签、搜索、排序、`?kind=`） |
+| `/about`                   | 数据来源说明、更新时间、免责声明、各源健康状态                   | —                                          |
+| `/rss.xml` · `/en/rss.xml` | 变动 RSS（最近 100 条事件）                                      | —                                          |
+| `/api/v1/*.json`           | 开放数据接口（见 API 文档）                                      | —                                          |
 
 **价格总榜列**：厂商 · 模型 · 平台 · 输入价 · 输出价 · 缓存读价 · 上下文 · 7 日变化 · 更新时间
 **筛选项**：厂商（多选）、模型（多选，可搜索，选项跟随已选厂商联动，URL 参数 `model=vendor/model,...`）、地区（国际/国内）、平台（官方/OpenRouter/硅基流动）、仅免费、上下文 ≥ N。下拉框点击外部或按 Esc 关闭
@@ -482,6 +490,35 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 - 币种默认：中文页 CNY，英文页 USD；用户手动切换后以用户选择为准
 - 日期：中文页 `2026年10月19日`，英文页 `Oct 19, 2026`；时区统一按 `Asia/Shanghai` 显示
 
+### 3.13 视频/图像生成模型（1.1）
+
+**为什么单独一条线**：视频按「每秒生成时长」、图像按「每张」计费，和文本的「每百万 tokens」不能放在同一列比较，也不能进成本计算器。为了不影响 `latest.json` 的老用户（他们会把所有价格当成每百万 token），视频/图像写在 `data/media/` 下，结构与文本完全平行：
+
+| 文件                                       | 内容                                                                 | schema                   |
+| ------------------------------------------ | -------------------------------------------------------------------- | ------------------------ |
+| `data/media/latest.json`                   | 全部视频/图像报价（含 removed）                                      | `MediaLatestFileSchema`  |
+| `data/media/quarantine.json`               | 视频/图像隔离区                                                      | `QuarantineFileSchema`   |
+| `data/media/history/<vendor>/<model>.json` | 变更点序列（`input` = 输入图价，`output` = 生成价，cache\* 为 null） | `HistoryFileSchema`      |
+| `data/media/changes/<YYYY-MM>.json`        | 视频/图像变动事件                                                    | `ChangesMonthFileSchema` |
+
+**数据来源（LiteLLM，2026-10-18 实测字段）**：
+
+| mode               | 计价字段                                                                                                           | 档位                                                                                           |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| `video_generation` | `output_cost_per_second`（默认档），个别用 `output_cost_per_video_per_second`；`input_cost_per_image` = 每张参考图 | `output_cost_per_second_<480p/720p/1080p/2k/4k…>`                                              |
+| `image_generation` | `output_cost_per_image`；OpenAI/xAI 把单张生成价写在 `input_cost_per_image`                                        | `output_cost_per_image_<尺寸>`；OpenAI 的 `<quality>/<W>-x-<H>/<model>` 键合并成同一模型的档位 |
+
+- 只收厂商直连（`MEDIA_PROVIDERS`）：openai、gemini、xai、minimax、dashscope（阿里，北京价）、volcengine（字节）、black_forest_labs、stability、recraft、runwayml。排除 fal_ai / azure / bedrock / vertex 等转售方；Runway 只收自研的 `gen*` / `aleph*`
+- 只按 token 计价的图像模型（如 gpt-image-1 的基础条目）没有按张价格，不收；qwencloud / qwen_ai_platform 与 dashscope 重复，不收
+- 证据链接：条目自带的 `source`（官方定价页）在厂商白名单内时优先使用，否则用 providers.yaml 的 `pricingUrl`，再否则用 LiteLLM 的 raw URL
+- 默认价 `output`：来源的默认档；只有质量/尺寸变体（没有默认档）时取最低档
+
+**管线**：`media-normalize.ts` 借用文本的 `normalizeOne`（厂商匹配、别名、S8 白名单），价格不做单位换算；V2 上限 `MAX_MEDIA_PRICE_USD = 50`；V5 单独计数，骤降时只拒绝该源的视频/图像，文本照常更新。`media-lane.ts` 把视频/图像报价转成内部的 Offering 形状（cache\*、tiers、contextWindow 恒为 null，媒体字段放在 `kind` / `unit` / `mediaTiers`），直接复用 `reconcile`（V3/V4/V6/V8）、`diffOfferings`、`planHistoryUpdates` 和原子写入。某个源**第一次**产出视频/图像时只建立基线，不生成 `new_model`。人工覆盖（overrides.yaml）按 Offering ID 同样作用于视频/图像。
+
+**推送**：日报多一节「🎬 视频/图像变动」，价格带单位（`$0.0800/秒`、`$0.0400/张`）。
+
+**网站**：`/media/`（英文 `/en/media/`），视频 / 图像两个标签页，列：模型 · 厂商 · 每秒（或每张）· 分辨率（或质量/尺寸）分档 · 输入参考图 · 7 日变化 · 更新；默认按价格升序；币种切换与文本页共用；页面下方列出最近 90 天的视频/图像变动。接口：`/api/v1/media.json`、`/api/v1/media/changes.json`（API 文档 §2.9、§2.10）。
+
 ---
 
 ## 4. 数据模型（ER 图）
@@ -499,6 +536,8 @@ erDiagram
     RUN ||--o{ SOURCE_RESULT : "包含"
     SOURCE ||--o{ SOURCE_RESULT : "每次运行结果"
     FX_RATE }o--|| RUN : "当次使用"
+    PLATFORM ||--o{ MEDIA_OFFERING : "售卖（1.1）"
+    SOURCE ||--o{ MEDIA_OFFERING : "提供数据"
 
     VENDOR {
       string id PK "openai / alibaba ..."
@@ -579,6 +618,16 @@ erDiagram
       int durationMs
       string errorCode "可空"
     }
+    MEDIA_OFFERING {
+      string id PK "platform:vendor/model（独立命名空间）"
+      string kind "video | image"
+      string unit "per_second | per_image"
+      decimal input "每张输入参考图，可空"
+      decimal output "每秒 / 每张生成价，可空"
+      json tiers "[{label, output}] 分辨率或质量/尺寸档位"
+      bool stale
+      string status "active | missing | removed"
+    }
     FX_RATE {
       date date PK
       decimal usdCny
@@ -588,15 +637,17 @@ erDiagram
 
 ### 4.1 文件 ↔ 实体映射
 
-| 文件                                 | 内容                                            | 大小预估                | 索引/查找方式               |
-| ------------------------------------ | ----------------------------------------------- | ----------------------- | --------------------------- |
-| `config/providers.yaml`              | VENDOR + PLATFORM                               | < 10KB                  | 按 id                       |
-| `data/latest.json`                   | 全部当前 OFFERING（含 MODEL 字段冗余）          | ~300KB（gzip 后 ~40KB） | 数组 + 构建时生成 `Map<id>` |
-| `data/history/<vendor>/<model>.json` | 该模型所有 Offering 的 PRICE_POINT 序列         | 每个 < 5KB              | 文件路径即索引              |
-| `data/changes/<YYYY-MM>.json`        | 当月 CHANGE_EVENT                               | 每月 < 100KB            | 按月分片                    |
-| `data/quarantine.json`               | 隔离中的候选值 + 首次出现时间                   | < 10KB                  | 按 offeringId               |
-| `data/fx.json`                       | 最近 90 天 FX_RATE                              | < 10KB                  | 按日期                      |
-| `data/status.json`                   | 最近一次 RUN + SOURCE_RESULT + 各 SOURCE 健康度 | < 20KB                  | —                           |
+| 文件                                                           | 内容                                            | 大小预估                | 索引/查找方式               |
+| -------------------------------------------------------------- | ----------------------------------------------- | ----------------------- | --------------------------- |
+| `config/providers.yaml`                                        | VENDOR + PLATFORM                               | < 10KB                  | 按 id                       |
+| `data/latest.json`                                             | 全部当前 OFFERING（含 MODEL 字段冗余）          | ~300KB（gzip 后 ~40KB） | 数组 + 构建时生成 `Map<id>` |
+| `data/history/<vendor>/<model>.json`                           | 该模型所有 Offering 的 PRICE_POINT 序列         | 每个 < 5KB              | 文件路径即索引              |
+| `data/changes/<YYYY-MM>.json`                                  | 当月 CHANGE_EVENT                               | 每月 < 100KB            | 按月分片                    |
+| `data/quarantine.json`                                         | 隔离中的候选值 + 首次出现时间                   | < 10KB                  | 按 offeringId               |
+| `data/fx.json`                                                 | 最近 90 天 FX_RATE                              | < 10KB                  | 按日期                      |
+| `data/status.json`                                             | 最近一次 RUN + SOURCE_RESULT + 各 SOURCE 健康度 | < 20KB                  | —                           |
+| `data/media/latest.json`                                       | 全部视频/图像 MEDIA_OFFERING（1.1，§3.13）      | ~40KB                   | 数组                        |
+| `data/media/{history,changes}/…`、`data/media/quarantine.json` | 与文本同结构，只含视频/图像                     | 同上                    | 同上                        |
 
 ### 4.2 约束
 
@@ -967,18 +1018,36 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 实测指标：首页 HTML gzip 50KB，首页 JS gzip 84.5KB，管线 3.7s，构建 1.07s。
 
+### 节点记录（2026-10-18 · 视频/图像 1.1）
+
+起因：用户问为什么没有 MiniMax H3。它是视频模型（LiteLLM `mode = video_generation`），第一版只收按 token 计价的文本模型。
+
+| 项     | 内容                                                                                                                                                                                                                              |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| schema | `SCHEMA_VERSION` 1.0.0 → 1.1.0，只做加法：`MediaKind` / `MediaUnit` / `MediaTier` / `RawMediaOffering` / `MediaOffering` / `MediaLatestFile`；`SourceResult.mediaOfferingCount`（可选）                                           |
+| 管线   | `sources/litellm-media.ts`、`steps/media-normalize.ts`、`steps/media-lane.ts`；`fetch-sources` 按 `media` 字段分流；日报新增视频/图像一节；`validate` / `quarantine:list` 支持 `data/media/`                                      |
+| 配置   | providers.yaml 新增 black-forest-labs、stability、recraft、runway 四个厂商                                                                                                                                                        |
+| 网站   | `/media/`、`/en/media/`、`MediaTable`、导航「视频/图像」、`/api/v1/media.json`、`/api/v1/media/changes.json`、providers.json 的 `mediaModelCount`、sitemap                                                                        |
+| 实测   | `pnpm pipeline run --only litellm --dry-run`：文本 258 条不变，视频 30 / 图像 36，没有新增警告；MiniMax-H3 $0.08/秒（768p $0.08、2k $0.13，输入图 $0.04/张），MiniMax-H3-Max $0.08/秒（480p $0.05、768p $0.08，输入图 $0.074/张） |
+| 测试   | 全仓 418 个单元/集成测试，覆盖率行 99% / 分支 90%；E2E 31 个（新增视频/图像页 2 个、接口 3 个）                                                                                                                                   |
+
+第一次在 main 上运行时会创建 `data/media/`，所有视频/图像报价只建立基线，不推送 `new_model`。
+
 ---
 
 ## 14. 问题汇总
 
-| #   | 发现于 | 问题                                                                                                             | 解决方案                                                                                                                                                                                                                                      | 状态     |
-| --- | ------ | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| 1   | 节点 3 | 阿里、Kimi、硅基流动的国内站在海外不可达；阿里改抓国际站文档中的北京地域价（USD 标价），Kimi、硅基流动为国际站价 | 2026-10-18 接入 models.dev：Kimi、MiniMax、阶跃、硅基流动的国内站报价以「官方（国内站）」「硅基流动（国内站）」平台补充展示（社区换算的美元价）；阿里的北京地域价已由 aliyun 抓取，不重复收录。如需人民币原价，仍需国内网络运行或 manual 维护 | 部分解决 |
-| 2   | 节点 3 | 百度千帆没有任何海外可访问的定价页                                                                               | 已移出注册表；需要国内网络人工核对后写 `config/manual/qianfan.yaml`                                                                                                                                                                           | 待处理   |
-| 3   | 节点 5 | 官方价和 OpenRouter 价普遍差 30% 以上（W3007 共 27 条），抽查确认是真实差价，不是换算错误                        | W3007 只做提示，不拦截                                                                                                                                                                                                                        | 已确认   |
-| 4   | 节点 6 | 第一次运行把全部模型标成 new_model，刷屏                                                                         | 首次成功运行的源只建立基线                                                                                                                                                                                                                    | 已解决   |
-| 5   | 节点 6 | `astro preview` 检测到 AI Agent 时会转入后台运行                                                                 | Playwright 配置和 `.claude/launch.json` 都加了 `--ignore-lock`                                                                                                                                                                                | 已解决   |
-| 6   | 节点 3 | 智谱 GLM-4.7 等按输出长度分档的价格，tiers 无法表达                                                              | 写入 notes                                                                                                                                                                                                                                    | 已知限制 |
+| #   | 发现于 | 问题                                                                                                                                                       | 解决方案                                                                                                                                                                                                                                      | 状态     |
+| --- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| 1   | 节点 3 | 阿里、Kimi、硅基流动的国内站在海外不可达；阿里改抓国际站文档中的北京地域价（USD 标价），Kimi、硅基流动为国际站价                                           | 2026-10-18 接入 models.dev：Kimi、MiniMax、阶跃、硅基流动的国内站报价以「官方（国内站）」「硅基流动（国内站）」平台补充展示（社区换算的美元价）；阿里的北京地域价已由 aliyun 抓取，不重复收录。如需人民币原价，仍需国内网络运行或 manual 维护 | 部分解决 |
+| 2   | 节点 3 | 百度千帆没有任何海外可访问的定价页                                                                                                                         | 已移出注册表；需要国内网络人工核对后写 `config/manual/qianfan.yaml`                                                                                                                                                                           | 待处理   |
+| 3   | 节点 5 | 官方价和 OpenRouter 价普遍差 30% 以上（W3007 共 27 条），抽查确认是真实差价，不是换算错误                                                                  | W3007 只做提示，不拦截                                                                                                                                                                                                                        | 已确认   |
+| 4   | 节点 6 | 第一次运行把全部模型标成 new_model，刷屏                                                                                                                   | 首次成功运行的源只建立基线                                                                                                                                                                                                                    | 已解决   |
+| 5   | 节点 6 | `astro preview` 检测到 AI Agent 时会转入后台运行                                                                                                           | Playwright 配置和 `.claude/launch.json` 都加了 `--ignore-lock`                                                                                                                                                                                | 已解决   |
+| 6   | 节点 3 | 智谱 GLM-4.7 等按输出长度分档的价格，tiers 无法表达                                                                                                        | 写入 notes                                                                                                                                                                                                                                    | 已知限制 |
+| 7   | 1.1    | MiniMax H3 等视频/图像模型缺失（第一版只收 token 计价）                                                                                                    | 新增视频/图像线（§3.13），数据写在 `data/media/`                                                                                                                                                                                              | 已解决   |
+| 8   | 1.1    | OpenRouter 的视频报价在单独的 `/api/v1/videos/models` 接口，`pricing_skus` 各家字段不统一（`cents_per_video_output_second_720p`、`duration_seconds_2k` …） | 暂不接入；需要逐个 SKU 写解析规则                                                                                                                                                                                                             | 待处理   |
+| 9   | 1.1    | `/changes/` 的 E2E 在并行运行时偶发失败：`ChangeLog` 是 `client:idle`，水合前的 `selectOption` 不生效                                                      | 测试先等待所有 `astro-island[ssr]` 水合完成                                                                                                                                                                                                   | 已解决   |
 
 ---
 
