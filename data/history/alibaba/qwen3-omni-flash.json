@@ -1,15 +1,6 @@
 {
   "modelSlug": "alibaba/qwen3-omni-flash",
   "series": {
-    "official-cn:alibaba/qwen3-omni-flash": [
-      {
-        "input": 0.058,
-        "output": 0.23,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-18"
-      }
-    ],
     "official:alibaba/qwen3-omni-flash": [
       {
         "input": 0.258,

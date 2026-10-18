@@ -1,15 +1,6 @@
 {
   "modelSlug": "alibaba/qwen3-32b",
   "series": {
-    "official-cn:alibaba/qwen3-32b": [
-      {
-        "input": 0.287,
-        "output": 1.147,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-18"
-      }
-    ],
     "openrouter:alibaba/qwen3-32b": [
       {
         "input": 0.08,

@@ -1,15 +1,6 @@
 {
   "modelSlug": "alibaba/qwen3-next-80b-a3b-instruct",
   "series": {
-    "official-cn:alibaba/qwen3-next-80b-a3b-instruct": [
-      {
-        "input": 0.144,
-        "output": 0.574,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-18"
-      }
-    ],
     "openrouter:alibaba/qwen3-next-80b-a3b-instruct": [
       {
         "input": 0.09,
