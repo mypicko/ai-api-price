@@ -530,6 +530,7 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 - 证据链接为 `https://openrouter.ai/<vendor>/<model>`；`supported_frame_images` 非空时 modalities 为 `["text", "image"]`
 - 视频接口抓取失败时只记 warn、返回文本报价；视频/图像线随后由 V5 骤降检测拒绝本次 OpenRouter 媒体数据，沿用旧值
 - 与厂商直连同名不同写法的模型用 `config/aliases.yaml` 对齐（`hailuo-3-max` → `minimax-h3-max`、`veo-3.1` → `veo-3.1-generate-001` 等），这样 `/media/` 上同一 `modelSlug` 的官方价和 OpenRouter 价并列
+- 展示名：视频/图像线用 `unifyDisplayNames`，同一 `modelSlug` 的所有报价统一成一个名称：带空格的友好名称（`H3 Max`、`Veo 3.1`）优先于 ID 写法（`MiniMax-H3-Max`、`veo-3.1-generate-001`），同等时官方 > OpenRouter。文本线仍用 `harmonizeDisplayNames`（只替换全小写的原始 ID）
 
 **管线**：`media-normalize.ts` 借用文本的 `normalizeOne`（厂商匹配、别名、S8 白名单），价格不做单位换算；V2 上限 `MAX_MEDIA_PRICE_USD = 50`；V5 单独计数，骤降时只拒绝该源的视频/图像，文本照常更新。`media-lane.ts` 把视频/图像报价转成内部的 Offering 形状（cache\*、tiers、contextWindow 恒为 null，媒体字段放在 `kind` / `unit` / `mediaTiers`），直接复用 `reconcile`（V3/V4/V6/V8）、`diffOfferings`、`planHistoryUpdates` 和原子写入。某个源**第一次**产出视频/图像时只建立基线，不生成 `new_model`。人工覆盖（overrides.yaml）按 Offering ID 同样作用于视频/图像。
 

@@ -25,7 +25,7 @@ import {
 import { crossCheck } from "./cross-check";
 import { monthOf, shanghaiDate, toIsoSeconds } from "./dates";
 import { diffOfferings } from "./diff";
-import { harmonizeDisplayNames } from "./display-names";
+import { harmonizeDisplayNames, unifyDisplayNames } from "./display-names";
 import { enrichMetadata, resolveMetadata, type ModelMetadata } from "./metadata";
 import { createAliasResolver, createVendorMatcher } from "./normalize";
 import { fetchModelsDevMetadata } from "../sources/modelsdev";
@@ -250,7 +250,7 @@ async function analyze(opts: RunOptions, g: Gathered): Promise<Analyzed> {
   const media = await analyzeMedia({
     dataDir: opts.dataDir,
     prev: g.prevMedia,
-    rec: { ...g.mediaRec, offerings: harmonizeDisplayNames(g.mediaRec.offerings) },
+    rec: { ...g.mediaRec, offerings: unifyDisplayNames(g.mediaRec.offerings) },
     outcomes: g.outcomes,
     baselineSources: baselineSources(g),
     nowIso,
