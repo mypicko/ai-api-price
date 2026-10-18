@@ -140,6 +140,26 @@
       "detectedAt": "2026-10-18T22:37:28Z"
     },
     {
+      "id": "2026-10-19-openrouter:deepseek/deepseek-v4.1-flash-2",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.06,
+          "new": 0.0632,
+          "pct": 0.05333
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T23:07:30Z"
+    },
+    {
       "id": "2026-10-19-openrouter:meta/llama-3.2-3b-instruct-1",
       "type": "price_up",
       "offeringId": "openrouter:meta/llama-3.2-3b-instruct",

@@ -10,7 +10,7 @@
         "effectiveDate": "2026-10-18"
       },
       {
-        "input": 0.06,
+        "input": 0.0632,
         "output": 0.12,
         "cacheRead": 0.0016,
         "cacheWrite": null,
