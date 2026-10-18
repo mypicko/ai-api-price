@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/o3",
   "series": {
+    "azure:openai/o3": [
+      {
+        "input": 2,
+        "output": 8,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:openai/o3": [
       {
         "input": 2,
@@ -17,6 +26,15 @@
         "cacheRead": 0.5,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vercel:openai/o3": [
+      {
+        "input": 2,
+        "output": 8,
+        "cacheRead": 0.5,
+        "cacheWrite": 0,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

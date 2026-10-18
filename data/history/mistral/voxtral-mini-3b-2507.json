@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/voxtral-mini-3b-2507",
+  "series": {
+    "bedrock:mistral/voxtral-mini-3b-2507": [
+      {
+        "input": 0.04,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

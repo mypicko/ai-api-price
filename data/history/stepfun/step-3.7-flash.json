@@ -1,6 +1,15 @@
 {
   "modelSlug": "stepfun/step-3.7-flash",
   "series": {
+    "novita:stepfun/step-3.7-flash": [
+      {
+        "input": 0.2,
+        "output": 1.15,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official-cn:stepfun/step-3.7-flash": [
       {
         "input": 0.185,

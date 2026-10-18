@@ -9,6 +9,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
       }
+    ],
+    "vertex:google/gemini-omni-flash-preview": [
+      {
+        "input": 1.5,
+        "output": 9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }

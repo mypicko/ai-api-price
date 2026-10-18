@@ -1,6 +1,105 @@
 {
   "modelSlug": "meta/llama-3.1-8b-instruct",
   "series": {
+    "bedrock:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.22,
+        "output": 0.22,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cloudflare:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.152,
+        "output": 0.287,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "coreweave:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.22,
+        "output": 0.22,
+        "cacheRead": 0.22,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.15001,
+        "output": 0.45003,
+        "cacheRead": 0.15001,
+        "cacheWrite": 0.15001,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.02,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "groq:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.05,
+        "output": 0.08,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "hyperbolic:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.12,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "lambda:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.025,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.02,
+        "output": 0.06,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.02,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.72,
+        "output": 0.72,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:meta/llama-3.1-8b-instruct": [
       {
         "input": 0.05,
@@ -8,6 +107,24 @@
         "cacheRead": 0.025,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.22,
+        "output": 0.22,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

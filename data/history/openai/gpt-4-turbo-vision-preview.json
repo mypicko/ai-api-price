@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-4-turbo-vision-preview",
+  "series": {
+    "azure:openai/gpt-4-turbo-vision-preview": [
+      {
+        "input": 11,
+        "output": 33,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

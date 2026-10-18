@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen2p5-coder-14b-instruct",
+  "series": {
+    "fireworks:alibaba/qwen2p5-coder-14b-instruct": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

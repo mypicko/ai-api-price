@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-large-3-675b-instruct",
+  "series": {
+    "bedrock:mistral/mistral-large-3-675b-instruct": [
+      {
+        "input": 0.5,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

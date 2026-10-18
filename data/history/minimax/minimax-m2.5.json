@@ -1,6 +1,60 @@
 {
   "modelSlug": "minimax/minimax-m2.5",
   "series": {
+    "baseten:minimax/minimax-m2.5": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:minimax/minimax-m2.5": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "digitalocean:minimax/minimax-m2.5": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:minimax/minimax-m2.5": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:minimax/minimax-m2.5": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:minimax/minimax-m2.5": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official-cn:minimax/minimax-m2.5": [
       {
         "input": 0.3,

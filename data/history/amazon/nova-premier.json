@@ -1,0 +1,14 @@
+{
+  "modelSlug": "amazon/nova-premier",
+  "series": {
+    "bedrock:amazon/nova-premier": [
+      {
+        "input": 2.5,
+        "output": 12.5,
+        "cacheRead": 0.625,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

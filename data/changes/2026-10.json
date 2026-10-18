@@ -146,6 +146,32 @@
       "detectedAt": "2026-10-18T23:24:10Z"
     },
     {
+      "id": "2026-10-19-openrouter:deepseek/deepseek-v4-flash-0731-2",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash-0731",
+      "displayName": "DeepSeek V4 Flash 0731",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0065,
+          "new": 0.0199,
+          "pct": 2.062
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0065,
+          "new": 0.0199,
+          "pct": 2.062
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T23:51:49Z"
+    },
+    {
       "id": "2026-10-19-openrouter:deepseek/deepseek-v4.1-flash-1",
       "type": "price_up",
       "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",

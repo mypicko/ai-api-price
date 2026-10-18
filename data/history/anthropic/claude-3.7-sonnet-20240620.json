@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-3.7-sonnet-20240620",
+  "series": {
+    "bedrock:anthropic/claude-3.7-sonnet-20240620": [
+      {
+        "input": 3.6,
+        "output": 18,
+        "cacheRead": 0.36,
+        "cacheWrite": 4.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

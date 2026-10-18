@@ -1,0 +1,23 @@
+{
+  "modelSlug": "meta/llama-3.3-70b-instruct-turbo",
+  "series": {
+    "deepinfra:meta/llama-3.3-70b-instruct-turbo": [
+      {
+        "input": 0.1,
+        "output": 0.32,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "together:meta/llama-3.3-70b-instruct-turbo": [
+      {
+        "input": 1.04,
+        "output": 1.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,24 @@
 {
   "modelSlug": "alibaba/qwen3.7-max",
   "series": {
+    "deepinfra:alibaba/qwen3.7-max": [
+      {
+        "input": 2.5,
+        "output": 7.5,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3.7-max": [
+      {
+        "input": 1.25,
+        "output": 3.75,
+        "cacheRead": 0.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:alibaba/qwen3.7-max": [
       {
         "input": 1.65,
@@ -17,6 +35,15 @@
         "cacheRead": 0.295,
         "cacheWrite": 1.84375,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:alibaba/qwen3.7-max": [
+      {
+        "input": 1.5,
+        "output": 4.5,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

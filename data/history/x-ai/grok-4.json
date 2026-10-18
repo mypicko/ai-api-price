@@ -1,0 +1,32 @@
+{
+  "modelSlug": "x-ai/grok-4",
+  "series": {
+    "azure:x-ai/grok-4": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:x-ai/grok-4": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:x-ai/grok-4": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

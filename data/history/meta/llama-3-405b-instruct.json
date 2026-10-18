@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-3-405b-instruct",
+  "series": {
+    "vertex:meta/llama-3-405b-instruct": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

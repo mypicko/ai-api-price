@@ -1,0 +1,41 @@
+{
+  "modelSlug": "deepseek/deepseek-r1-distill-qwen-32b",
+  "series": {
+    "cloudflare:deepseek/deepseek-r1-distill-qwen-32b": [
+      {
+        "input": 0.497,
+        "output": 4.881,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:deepseek/deepseek-r1-distill-qwen-32b": [
+      {
+        "input": 0.27,
+        "output": 0.27,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:deepseek/deepseek-r1-distill-qwen-32b": [
+      {
+        "input": 0.9,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:deepseek/deepseek-r1-distill-qwen-32b": [
+      {
+        "input": 0.3,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nvidia-nemotron-3-nano-30b-a3b",
+  "series": {
+    "nebius:nvidia/nvidia-nemotron-3-nano-30b-a3b": [
+      {
+        "input": 0.06,
+        "output": 0.24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

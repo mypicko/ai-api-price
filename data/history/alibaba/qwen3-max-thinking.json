@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-max-thinking",
+  "series": {
+    "deepinfra:alibaba/qwen3-max-thinking": [
+      {
+        "input": 1.2,
+        "output": 6,
+        "cacheRead": 0.24,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

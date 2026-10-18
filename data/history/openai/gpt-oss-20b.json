@@ -1,6 +1,87 @@
 {
   "modelSlug": "openai/gpt-oss-20b",
   "series": {
+    "bedrock:openai/gpt-oss-20b": [
+      {
+        "input": 0.07,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cloudflare:openai/gpt-oss-20b": [
+      {
+        "input": 0.2,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "coreweave:openai/gpt-oss-20b": [
+      {
+        "input": 0.03,
+        "output": 0.13,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:openai/gpt-oss-20b": [
+      {
+        "input": 0.07,
+        "output": 0.30002,
+        "cacheRead": 0.07,
+        "cacheWrite": 0.07,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:openai/gpt-oss-20b": [
+      {
+        "input": 0.03,
+        "output": 0.14,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:openai/gpt-oss-20b": [
+      {
+        "input": 0.07,
+        "output": 0.3,
+        "cacheRead": 0.035,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "groq:openai/gpt-oss-20b": [
+      {
+        "input": 0.075,
+        "output": 0.3,
+        "cacheRead": 0.0375,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:openai/gpt-oss-20b": [
+      {
+        "input": 0.04,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:openai/gpt-oss-20b": [
+      {
+        "input": 0.07,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:openai/gpt-oss-20b": [
       {
         "input": 0.018,
@@ -10,6 +91,15 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "parasail:openai/gpt-oss-20b": [
+      {
+        "input": 0.03,
+        "output": 0.15,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow:openai/gpt-oss-20b": [
       {
         "input": 0.04,
@@ -17,6 +107,24 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:openai/gpt-oss-20b": [
+      {
+        "input": 0.07,
+        "output": 0.25,
+        "cacheRead": 0.007,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:openai/gpt-oss-20b": [
+      {
+        "input": 0.03,
+        "output": 0.13,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

@@ -1,6 +1,24 @@
 {
   "modelSlug": "google/gemma-3-4b-it",
   "series": {
+    "bedrock:google/gemma-3-4b-it": [
+      {
+        "input": 0.04,
+        "output": 0.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:google/gemma-3-4b-it": [
+      {
+        "input": 0.05,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:google/gemma-3-4b-it": [
       {
         "input": 0.05,
@@ -8,6 +26,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:google/gemma-3-4b-it": [
+      {
+        "input": 0.04,
+        "output": 0.05,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

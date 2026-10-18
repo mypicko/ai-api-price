@@ -1,6 +1,15 @@
 {
   "modelSlug": "anthropic/claude-mythos-5",
   "series": {
+    "bedrock:anthropic/claude-mythos-5": [
+      {
+        "input": 11,
+        "output": 55,
+        "cacheRead": 1.1,
+        "cacheWrite": 13.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:anthropic/claude-mythos-5": [
       {
         "input": 10,

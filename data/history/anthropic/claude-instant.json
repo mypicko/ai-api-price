@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-instant",
+  "series": {
+    "bedrock:anthropic/claude-instant": [
+      {
+        "input": 0.8,
+        "output": 2.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

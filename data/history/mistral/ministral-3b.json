@@ -1,0 +1,23 @@
+{
+  "modelSlug": "mistral/ministral-3b",
+  "series": {
+    "azure:mistral/ministral-3b": [
+      {
+        "input": 0.04,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:mistral/ministral-3b": [
+      {
+        "input": 0.04,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "modelSlug": "meta/llama-3-70b-instruct",
+  "series": {
+    "bedrock:meta/llama-3-70b-instruct": [
+      {
+        "input": 2.65,
+        "output": 3.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "hyperbolic:meta/llama-3-70b-instruct": [
+      {
+        "input": 0.12,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:meta/llama-3-70b-instruct": [
+      {
+        "input": 0.51,
+        "output": 0.74,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:meta/llama-3-70b-instruct": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

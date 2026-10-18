@@ -1,6 +1,24 @@
 {
   "modelSlug": "alibaba/qwen3.5-35b-a3b",
   "series": {
+    "deepinfra:alibaba/qwen3.5-35b-a3b": [
+      {
+        "input": 0.14,
+        "output": 1,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3.5-35b-a3b": [
+      {
+        "input": 0.25,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:alibaba/qwen3.5-35b-a3b": [
       {
         "input": 0.057,
@@ -17,6 +35,15 @@
         "cacheRead": 0.05,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:alibaba/qwen3.5-35b-a3b": [
+      {
+        "input": 0.15,
+        "output": 1,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ],
     "siliconflow-cn:alibaba/qwen3.5-35b-a3b": [

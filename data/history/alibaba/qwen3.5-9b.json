@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen3.5-9b",
   "series": {
+    "deepinfra:alibaba/qwen3.5-9b": [
+      {
+        "input": 0.1,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:alibaba/qwen3.5-9b": [
       {
         "input": 0.1,
@@ -8,6 +17,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:alibaba/qwen3.5-9b": [
+      {
+        "input": 0.1,
+        "output": 0.25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ],
     "siliconflow-cn:alibaba/qwen3.5-9b": [
@@ -26,6 +44,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:alibaba/qwen3.5-9b": [
+      {
+        "input": 0.17,
+        "output": 0.25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

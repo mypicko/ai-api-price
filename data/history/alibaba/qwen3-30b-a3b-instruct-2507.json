@@ -1,6 +1,24 @@
 {
   "modelSlug": "alibaba/qwen3-30b-a3b-instruct-2507",
   "series": {
+    "fireworks:alibaba/qwen3-30b-a3b-instruct-2507": [
+      {
+        "input": 0.5,
+        "output": 0.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:alibaba/qwen3-30b-a3b-instruct-2507": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:alibaba/qwen3-30b-a3b-instruct-2507": [
       {
         "input": 0.09,

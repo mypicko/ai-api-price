@@ -1,6 +1,42 @@
 {
   "modelSlug": "anthropic/claude-sonnet-4.6",
   "series": {
+    "azure:anthropic/claude-sonnet-4.6": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": 3.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:anthropic/claude-sonnet-4.6": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": 3.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:anthropic/claude-sonnet-4.6": [
+      {
+        "input": 2.99999,
+        "output": 15,
+        "cacheRead": 0.30002,
+        "cacheWrite": 3.74997,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:anthropic/claude-sonnet-4.6": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:anthropic/claude-sonnet-4.6": [
       {
         "input": 3,
@@ -17,6 +53,15 @@
         "cacheRead": 0.3,
         "cacheWrite": 3.75,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:anthropic/claude-sonnet-4.6": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": 3.75,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

@@ -1,6 +1,15 @@
 {
   "modelSlug": "deepseek/deepseek-ocr",
   "series": {
+    "novita:deepseek/deepseek-ocr": [
+      {
+        "input": 0.03,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow-cn:deepseek/deepseek-ocr": [
       {
         "input": 0,

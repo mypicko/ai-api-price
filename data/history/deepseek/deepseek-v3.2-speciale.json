@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-v3.2-speciale",
+  "series": {
+    "azure:deepseek/deepseek-v3.2-speciale": [
+      {
+        "input": 0.58,
+        "output": 1.68,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

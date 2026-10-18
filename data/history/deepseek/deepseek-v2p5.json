@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-v2p5",
+  "series": {
+    "fireworks:deepseek/deepseek-v2p5": [
+      {
+        "input": 1.2,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

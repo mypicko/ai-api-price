@@ -1,6 +1,33 @@
 {
   "modelSlug": "alibaba/qwen3-vl-235b-a22b-instruct",
   "series": {
+    "deepinfra:alibaba/qwen3-vl-235b-a22b-instruct": [
+      {
+        "input": 0.2,
+        "output": 0.88,
+        "cacheRead": 0.11,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:alibaba/qwen3-vl-235b-a22b-instruct": [
+      {
+        "input": 0.22,
+        "output": 0.88,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3-vl-235b-a22b-instruct": [
+      {
+        "input": 0.3,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:alibaba/qwen3-vl-235b-a22b-instruct": [
       {
         "input": 0.21,
@@ -8,6 +35,15 @@
         "cacheRead": 0.1,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:alibaba/qwen3-vl-235b-a22b-instruct": [
+      {
+        "input": 0.21,
+        "output": 1.9,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

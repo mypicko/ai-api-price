@@ -1,0 +1,23 @@
+{
+  "modelSlug": "nvidia/nvidia-nemotron-3.5-super-vl-120b-a12b",
+  "series": {
+    "baseten:nvidia/nvidia-nemotron-3.5-super-vl-120b-a12b": [
+      {
+        "input": 0.2,
+        "output": 0.5,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:nvidia/nvidia-nemotron-3.5-super-vl-120b-a12b": [
+      {
+        "input": 0.15,
+        "output": 0.75,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

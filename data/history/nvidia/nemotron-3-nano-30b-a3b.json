@@ -1,6 +1,33 @@
 {
   "modelSlug": "nvidia/nemotron-3-nano-30b-a3b",
   "series": {
+    "deepinfra:nvidia/nemotron-3-nano-30b-a3b": [
+      {
+        "input": 0.05,
+        "output": 0.2,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:nvidia/nemotron-3-nano-30b-a3b": [
+      {
+        "input": 0.06,
+        "output": 0.24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:nvidia/nemotron-3-nano-30b-a3b": [
+      {
+        "input": 0.05,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:nvidia/nemotron-3-nano-30b-a3b": [
       {
         "input": 0.06,

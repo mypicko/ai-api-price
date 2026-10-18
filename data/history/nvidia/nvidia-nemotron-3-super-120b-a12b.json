@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nvidia-nemotron-3-super-120b-a12b",
+  "series": {
+    "deepinfra:nvidia/nvidia-nemotron-3-super-120b-a12b": [
+      {
+        "input": 0.085,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

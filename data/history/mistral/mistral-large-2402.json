@@ -1,0 +1,23 @@
+{
+  "modelSlug": "mistral/mistral-large-2402",
+  "series": {
+    "azure:mistral/mistral-large-2402": [
+      {
+        "input": 8,
+        "output": 24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:mistral/mistral-large-2402": [
+      {
+        "input": 4,
+        "output": 12,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

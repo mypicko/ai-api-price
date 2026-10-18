@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen3-coder-480b-a35b",
   "series": {
+    "bedrock:alibaba/qwen3-coder-480b-a35b": [
+      {
+        "input": 0.45,
+        "output": 1.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow:alibaba/qwen3-coder-480b-a35b": [
       {
         "input": 0.25,

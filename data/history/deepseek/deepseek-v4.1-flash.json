@@ -1,6 +1,96 @@
 {
   "modelSlug": "deepseek/deepseek-v4.1-flash",
   "series": {
+    "azure:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "baseten:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.007,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "coreweave:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.15,
+        "output": 0.65,
+        "cacheRead": 0.002,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "crusoe:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.29,
+        "output": 1.2,
+        "cacheRead": 0.007,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.112,
+        "output": 0.336,
+        "cacheRead": 0.00336,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "digitalocean:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.195,
+        "output": 0.78,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.18,
+        "output": 0.72,
+        "cacheRead": 0.0036,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.195,
+        "output": 0.78,
+        "cacheRead": 0.0039,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:deepseek/deepseek-v4.1-flash": [
       {
         "input": 0.04,
@@ -17,6 +107,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "parasail:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow:deepseek/deepseek-v4.1-flash": [
       {
         "input": 0.15,
@@ -24,6 +123,33 @@
         "cacheRead": 0.003,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 0.2,
+        "output": 0.65,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

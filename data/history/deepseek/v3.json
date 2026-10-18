@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/v3",
+  "series": {
+    "bedrock:deepseek/v3": [
+      {
+        "input": 0.58,
+        "output": 1.68,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

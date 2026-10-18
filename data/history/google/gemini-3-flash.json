@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-3-flash",
+  "series": {
+    "databricks:google/gemini-3-flash": [
+      {
+        "input": 0.62503,
+        "output": 3.74997,
+        "cacheRead": 0.06251,
+        "cacheWrite": 0.62503,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

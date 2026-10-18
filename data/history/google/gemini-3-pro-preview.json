@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-3-pro-preview",
+  "series": {
+    "vertex:google/gemini-3-pro-preview": [
+      {
+        "input": 2,
+        "output": 12,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

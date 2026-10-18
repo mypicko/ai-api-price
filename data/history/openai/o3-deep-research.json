@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/o3-deep-research",
+  "series": {
+    "azure:openai/o3-deep-research": [
+      {
+        "input": 10,
+        "output": 40,
+        "cacheRead": 2.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

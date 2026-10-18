@@ -1,6 +1,33 @@
 {
   "modelSlug": "zhipu/glm-4.7",
   "series": {
+    "baseten:zhipu/glm-4.7": [
+      {
+        "input": 0.6,
+        "output": 2.2,
+        "cacheRead": 0.12,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:zhipu/glm-4.7": [
+      {
+        "input": 0.32,
+        "output": 1.4,
+        "cacheRead": 0.064,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:zhipu/glm-4.7": [
+      {
+        "input": 0.54,
+        "output": 1.98,
+        "cacheRead": 0.099,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:zhipu/glm-4.7": [
       {
         "input": 2,
@@ -17,6 +44,15 @@
         "cacheRead": 0.099,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:zhipu/glm-4.7": [
+      {
+        "input": 0.6,
+        "output": 2.2,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3-4b",
+  "series": {
+    "fireworks:alibaba/qwen3-4b": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:alibaba/qwen3-4b": [
+      {
+        "input": 0.08,
+        "output": 0.24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

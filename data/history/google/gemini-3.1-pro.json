@@ -1,0 +1,23 @@
+{
+  "modelSlug": "google/gemini-3.1-pro",
+  "series": {
+    "databricks:google/gemini-3.1-pro": [
+      {
+        "input": 2.49998,
+        "output": 15,
+        "cacheRead": 0.24997,
+        "cacheWrite": 2.49998,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:google/gemini-3.1-pro": [
+      {
+        "input": 2,
+        "output": 12,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

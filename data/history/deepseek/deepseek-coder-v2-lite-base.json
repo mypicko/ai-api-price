@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-coder-v2-lite-base",
+  "series": {
+    "fireworks:deepseek/deepseek-coder-v2-lite-base": [
+      {
+        "input": 0.5,
+        "output": 0.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

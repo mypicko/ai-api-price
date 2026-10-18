@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen3-coder",
   "series": {
+    "deepinfra:alibaba/qwen3-coder": [
+      {
+        "input": 0.3,
+        "output": 1,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:alibaba/qwen3-coder": [
       {
         "input": 0.3,
@@ -8,6 +17,15 @@
         "cacheRead": 0.1,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vercel:alibaba/qwen3-coder": [
+      {
+        "input": 0.4,
+        "output": 1.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

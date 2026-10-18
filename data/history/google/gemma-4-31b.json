@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-4-31b",
+  "series": {
+    "cerebras:google/gemma-4-31b": [
+      {
+        "input": 0.99,
+        "output": 1.49,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

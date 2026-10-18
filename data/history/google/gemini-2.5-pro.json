@@ -1,6 +1,24 @@
 {
   "modelSlug": "google/gemini-2.5-pro",
   "series": {
+    "deepinfra:google/gemini-2.5-pro": [
+      {
+        "input": 1.25,
+        "output": 10,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:google/gemini-2.5-pro": [
+      {
+        "input": 1.25,
+        "output": 10,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:google/gemini-2.5-pro": [
       {
         "input": 1.25,
@@ -17,6 +35,24 @@
         "cacheRead": 0.125,
         "cacheWrite": 0.375,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vercel:google/gemini-2.5-pro": [
+      {
+        "input": 1.25,
+        "output": 10,
+        "cacheRead": 0.125,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:google/gemini-2.5-pro": [
+      {
+        "input": 1.25,
+        "output": 10,
+        "cacheRead": 0.125,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

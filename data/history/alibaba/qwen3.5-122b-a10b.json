@@ -1,6 +1,24 @@
 {
   "modelSlug": "alibaba/qwen3.5-122b-a10b",
   "series": {
+    "deepinfra:alibaba/qwen3.5-122b-a10b": [
+      {
+        "input": 0.29,
+        "output": 2.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3.5-122b-a10b": [
+      {
+        "input": 0.4,
+        "output": 3.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:alibaba/qwen3.5-122b-a10b": [
       {
         "input": 0.115,

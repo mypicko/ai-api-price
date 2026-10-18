@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-3.7-sonnet",
+  "series": {
+    "vercel:anthropic/claude-3.7-sonnet": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": 3.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

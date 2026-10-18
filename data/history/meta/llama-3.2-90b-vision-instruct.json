@@ -1,0 +1,23 @@
+{
+  "modelSlug": "meta/llama-3.2-90b-vision-instruct",
+  "series": {
+    "oci:meta/llama-3.2-90b-vision-instruct": [
+      {
+        "input": 2,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:meta/llama-3.2-90b-vision-instruct": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

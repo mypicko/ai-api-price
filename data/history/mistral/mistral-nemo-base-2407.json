@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-nemo-base-2407",
+  "series": {
+    "fireworks:mistral/mistral-nemo-base-2407": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

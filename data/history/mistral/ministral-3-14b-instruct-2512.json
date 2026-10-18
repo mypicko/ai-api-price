@@ -1,0 +1,23 @@
+{
+  "modelSlug": "mistral/ministral-3-14b-instruct-2512",
+  "series": {
+    "fireworks:mistral/ministral-3-14b-instruct-2512": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "together:mistral/ministral-3-14b-instruct-2512": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude",
+  "series": {
+    "bedrock:anthropic/claude": [
+      {
+        "input": 8,
+        "output": 24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

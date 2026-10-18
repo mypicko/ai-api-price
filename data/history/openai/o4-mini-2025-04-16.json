@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/o4-mini-2025-04-16",
   "series": {
+    "azure:openai/o4-mini-2025-04-16": [
+      {
+        "input": 1.1,
+        "output": 4.4,
+        "cacheRead": 0.275,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:openai/o4-mini-2025-04-16": [
       {
         "input": 1.1,

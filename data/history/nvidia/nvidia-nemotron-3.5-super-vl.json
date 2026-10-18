@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nvidia-nemotron-3.5-super-vl",
+  "series": {
+    "together:nvidia/nvidia-nemotron-3.5-super-vl": [
+      {
+        "input": 0.15,
+        "output": 0.5,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

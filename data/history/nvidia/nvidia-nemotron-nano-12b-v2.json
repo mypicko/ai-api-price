@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nvidia-nemotron-nano-12b-v2",
+  "series": {
+    "fireworks:nvidia/nvidia-nemotron-nano-12b-v2": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

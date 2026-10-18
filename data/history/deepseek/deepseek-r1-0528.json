@@ -1,6 +1,69 @@
 {
   "modelSlug": "deepseek/deepseek-r1-0528",
   "series": {
+    "crusoe:deepseek/deepseek-r1-0528": [
+      {
+        "input": 3,
+        "output": 7,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:deepseek/deepseek-r1-0528": [
+      {
+        "input": 0.5,
+        "output": 2.15,
+        "cacheRead": 0.35,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:deepseek/deepseek-r1-0528": [
+      {
+        "input": 3,
+        "output": 8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "hyperbolic:deepseek/deepseek-r1-0528": [
+      {
+        "input": 0.25,
+        "output": 0.25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "lambda:deepseek/deepseek-r1-0528": [
+      {
+        "input": 0.2,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:deepseek/deepseek-r1-0528": [
+      {
+        "input": 0.8,
+        "output": 2.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:deepseek/deepseek-r1-0528": [
+      {
+        "input": 0.7,
+        "output": 2.5,
+        "cacheRead": 0.35,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:deepseek/deepseek-r1-0528": [
       {
         "input": 0.5,
@@ -8,6 +71,24 @@
         "cacheRead": 0.35,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:deepseek/deepseek-r1-0528": [
+      {
+        "input": 3,
+        "output": 7,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:deepseek/deepseek-r1-0528": [
+      {
+        "input": 1.35,
+        "output": 5.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

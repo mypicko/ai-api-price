@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-3.5-turbo-0613",
   "series": {
+    "azure:openai/gpt-3.5-turbo-0613": [
+      {
+        "input": 1,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:openai/gpt-3.5-turbo-0613": [
       {
         "input": 1,

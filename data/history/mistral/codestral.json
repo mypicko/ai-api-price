@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/codestral",
+  "series": {
+    "vercel:mistral/codestral": [
+      {
+        "input": 0.3,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

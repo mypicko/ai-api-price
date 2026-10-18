@@ -1,0 +1,23 @@
+{
+  "modelSlug": "openai/gpt-oss-safeguard-120b",
+  "series": {
+    "bedrock:openai/gpt-oss-safeguard-120b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:openai/gpt-oss-safeguard-120b": [
+      {
+        "input": 1.2,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

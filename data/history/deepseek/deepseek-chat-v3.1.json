@@ -1,6 +1,24 @@
 {
   "modelSlug": "deepseek/deepseek-chat-v3.1",
   "series": {
+    "coreweave:deepseek/deepseek-chat-v3.1": [
+      {
+        "input": 0.55,
+        "output": 1.65,
+        "cacheRead": 0.55,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:deepseek/deepseek-chat-v3.1": [
+      {
+        "input": 0.25,
+        "output": 0.95,
+        "cacheRead": 0.13,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:deepseek/deepseek-chat-v3.1": [
       {
         "input": 0.25,
@@ -8,6 +26,15 @@
         "cacheRead": 0.13,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "sambanova:deepseek/deepseek-chat-v3.1": [
+      {
+        "input": 0.65,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

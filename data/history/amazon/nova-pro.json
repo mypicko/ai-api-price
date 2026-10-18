@@ -1,0 +1,23 @@
+{
+  "modelSlug": "amazon/nova-pro",
+  "series": {
+    "bedrock:amazon/nova-pro": [
+      {
+        "input": 0.8,
+        "output": 3.2,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:amazon/nova-pro": [
+      {
+        "input": 0.8,
+        "output": 3.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

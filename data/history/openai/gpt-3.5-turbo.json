@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-3.5-turbo",
   "series": {
+    "azure:openai/gpt-3.5-turbo": [
+      {
+        "input": 0.5,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:openai/gpt-3.5-turbo": [
       {
         "input": 0.5,
@@ -17,6 +26,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vercel:openai/gpt-3.5-turbo": [
+      {
+        "input": 0.5,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

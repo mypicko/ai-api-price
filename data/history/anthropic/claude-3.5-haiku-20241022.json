@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-3.5-haiku-20241022",
+  "series": {
+    "bedrock:anthropic/claude-3.5-haiku-20241022": [
+      {
+        "input": 0.8,
+        "output": 4,
+        "cacheRead": 0.08,
+        "cacheWrite": 1,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

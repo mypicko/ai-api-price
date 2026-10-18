@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-6-astra-pro",
   "series": {
+    "azure:openai/gpt-6-astra-pro": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:openai/gpt-6-astra-pro": [
       {
         "input": 10,

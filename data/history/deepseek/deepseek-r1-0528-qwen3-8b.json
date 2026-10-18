@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-r1-0528-qwen3-8b",
+  "series": {
+    "novita:deepseek/deepseek-r1-0528-qwen3-8b": [
+      {
+        "input": 0.06,
+        "output": 0.09,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

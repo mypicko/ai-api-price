@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-5p3-fast",
+  "series": {
+    "fireworks:zhipu/glm-5p3-fast": [
+      {
+        "input": 2.1,
+        "output": 6.6,
+        "cacheRead": 0.39,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

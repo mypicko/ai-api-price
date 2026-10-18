@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3-vl-235b-a22b-thinking",
+  "series": {
+    "fireworks:alibaba/qwen3-vl-235b-a22b-thinking": [
+      {
+        "input": 0.22,
+        "output": 0.88,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3-vl-235b-a22b-thinking": [
+      {
+        "input": 0.98,
+        "output": 3.95,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-saba-24b",
+  "series": {
+    "vercel:mistral/mistral-saba-24b": [
+      {
+        "input": 0.79,
+        "output": 0.79,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

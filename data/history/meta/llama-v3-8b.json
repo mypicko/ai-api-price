@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-v3-8b",
+  "series": {
+    "fireworks:meta/llama-v3-8b": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

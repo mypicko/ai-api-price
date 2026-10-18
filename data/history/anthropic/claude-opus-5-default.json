@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-opus-5-default",
+  "series": {
+    "vertex:anthropic/claude-opus-5-default": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

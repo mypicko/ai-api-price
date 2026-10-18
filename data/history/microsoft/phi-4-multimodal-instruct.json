@@ -1,0 +1,14 @@
+{
+  "modelSlug": "microsoft/phi-4-multimodal-instruct",
+  "series": {
+    "azure:microsoft/phi-4-multimodal-instruct": [
+      {
+        "input": 0.08,
+        "output": 0.32,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

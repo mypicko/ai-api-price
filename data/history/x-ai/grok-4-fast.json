@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-4-fast",
+  "series": {
+    "oci:x-ai/grok-4-fast": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

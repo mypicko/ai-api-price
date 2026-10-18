@@ -1,6 +1,33 @@
 {
   "modelSlug": "tencent/hy3",
   "series": {
+    "deepinfra:tencent/hy3": [
+      {
+        "input": 0.14,
+        "output": 0.58,
+        "cacheRead": 0.035,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:tencent/hy3": [
+      {
+        "input": 0.14,
+        "output": 0.58,
+        "cacheRead": 0.035,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:tencent/hy3": [
+      {
+        "input": 0.14,
+        "output": 0.58,
+        "cacheRead": 0.035,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official-cn:tencent/hy3": [
       {
         "input": 1,

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-small-3.2-24b-instruct-2506",
+  "series": {
+    "deepinfra:mistral/mistral-small-3.2-24b-instruct-2506": [
+      {
+        "input": 0.075,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

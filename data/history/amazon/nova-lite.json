@@ -1,0 +1,23 @@
+{
+  "modelSlug": "amazon/nova-lite",
+  "series": {
+    "bedrock:amazon/nova-lite": [
+      {
+        "input": 0.06,
+        "output": 0.24,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:amazon/nova-lite": [
+      {
+        "input": 0.06,
+        "output": 0.24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

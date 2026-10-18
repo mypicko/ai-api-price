@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nvidia.nemotron-nano-3-30b",
+  "series": {
+    "bedrock:nvidia/nvidia.nemotron-nano-3-30b": [
+      {
+        "input": 0.072,
+        "output": 0.288,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

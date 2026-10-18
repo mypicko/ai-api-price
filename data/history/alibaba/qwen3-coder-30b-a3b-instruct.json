@@ -1,6 +1,33 @@
 {
   "modelSlug": "alibaba/qwen3-coder-30b-a3b-instruct",
   "series": {
+    "bedrock:alibaba/qwen3-coder-30b-a3b-instruct": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:alibaba/qwen3-coder-30b-a3b-instruct": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3-coder-30b-a3b-instruct": [
+      {
+        "input": 0.07,
+        "output": 0.27,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:alibaba/qwen3-coder-30b-a3b-instruct": [
       {
         "input": 0.07,

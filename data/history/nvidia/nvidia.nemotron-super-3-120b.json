@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nvidia.nemotron-super-3-120b",
+  "series": {
+    "bedrock:nvidia/nvidia.nemotron-super-3-120b": [
+      {
+        "input": 0.23,
+        "output": 1.01,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,42 @@
 {
   "modelSlug": "alibaba/qwen3-next-80b-a3b-instruct",
   "series": {
+    "databricks:alibaba/qwen3-next-80b-a3b-instruct": [
+      {
+        "input": 0.15001,
+        "output": 1.20001,
+        "cacheRead": 0.15001,
+        "cacheWrite": 0.15001,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:alibaba/qwen3-next-80b-a3b-instruct": [
+      {
+        "input": 0.072,
+        "output": 0.88,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:alibaba/qwen3-next-80b-a3b-instruct": [
+      {
+        "input": 0.9,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3-next-80b-a3b-instruct": [
+      {
+        "input": 0.15,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:alibaba/qwen3-next-80b-a3b-instruct": [
       {
         "input": 0.09,
@@ -8,6 +44,24 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:alibaba/qwen3-next-80b-a3b-instruct": [
+      {
+        "input": 0.1,
+        "output": 1.1,
+        "cacheRead": 0.07,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:alibaba/qwen3-next-80b-a3b-instruct": [
+      {
+        "input": 0.15,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

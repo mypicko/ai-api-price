@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen-3-14b",
+  "series": {
+    "vercel:alibaba/qwen-3-14b": [
+      {
+        "input": 0.08,
+        "output": 0.24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

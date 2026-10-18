@@ -1,6 +1,33 @@
 {
   "modelSlug": "alibaba/qwen3-coder-480b-a35b-instruct",
   "series": {
+    "deepinfra:alibaba/qwen3-coder-480b-a35b-instruct": [
+      {
+        "input": 0.4,
+        "output": 1.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:alibaba/qwen3-coder-480b-a35b-instruct": [
+      {
+        "input": 0.45,
+        "output": 1.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3-coder-480b-a35b-instruct": [
+      {
+        "input": 0.38,
+        "output": 1.55,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow-cn:alibaba/qwen3-coder-480b-a35b-instruct": [
       {
         "input": 0.25,
@@ -8,6 +35,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:alibaba/qwen3-coder-480b-a35b-instruct": [
+      {
+        "input": 0.22,
+        "output": 1.8,
+        "cacheRead": 0.022,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

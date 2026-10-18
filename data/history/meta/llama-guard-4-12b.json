@@ -1,6 +1,15 @@
 {
   "modelSlug": "meta/llama-guard-4-12b",
   "series": {
+    "deepinfra:meta/llama-guard-4-12b": [
+      {
+        "input": 0.144,
+        "output": 0.144,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:meta/llama-guard-4-12b": [
       {
         "input": 0.18,

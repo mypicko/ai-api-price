@@ -1,6 +1,15 @@
 {
   "modelSlug": "stepfun/step-5-preview",
   "series": {
+    "deepinfra:stepfun/step-5-preview": [
+      {
+        "input": 1,
+        "output": 2.7,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official-cn:stepfun/step-5-preview": [
       {
         "input": 0.959,

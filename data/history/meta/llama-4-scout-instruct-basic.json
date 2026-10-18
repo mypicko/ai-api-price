@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-4-scout-instruct-basic",
+  "series": {
+    "fireworks:meta/llama-4-scout-instruct-basic": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-2-7b-chat-fp16",
+  "series": {
+    "cloudflare:meta/llama-2-7b-chat-fp16": [
+      {
+        "input": 1.923,
+        "output": 1.923,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-prover-v2",
+  "series": {
+    "fireworks:deepseek/deepseek-prover-v2": [
+      {
+        "input": 1.2,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

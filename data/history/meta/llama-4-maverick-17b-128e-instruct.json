@@ -1,0 +1,23 @@
+{
+  "modelSlug": "meta/llama-4-maverick-17b-128e-instruct",
+  "series": {
+    "sambanova:meta/llama-4-maverick-17b-128e-instruct": [
+      {
+        "input": 0.63,
+        "output": 1.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:meta/llama-4-maverick-17b-128e-instruct": [
+      {
+        "input": 0.35,
+        "output": 1.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-4-31b-it-ultra",
+  "series": {
+    "deepinfra:google/gemma-4-31b-it-ultra": [
+      {
+        "input": 0.27,
+        "output": 0.76,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

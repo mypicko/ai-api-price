@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-fable-5-default",
+  "series": {
+    "vertex:anthropic/claude-fable-5-default": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

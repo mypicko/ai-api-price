@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mixtral-8x7b-instruct-v0.1",
+  "series": {
+    "deepinfra:mistral/mixtral-8x7b-instruct-v0.1": [
+      {
+        "input": 0.4,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

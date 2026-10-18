@@ -1,6 +1,24 @@
 {
   "modelSlug": "meta/llama-3.2-1b-instruct",
   "series": {
+    "cloudflare:meta/llama-3.2-1b-instruct": [
+      {
+        "input": 0.027,
+        "output": 0.201,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:meta/llama-3.2-1b-instruct": [
+      {
+        "input": 0.02,
+        "output": 0.02,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:meta/llama-3.2-1b-instruct": [
       {
         "input": 0.027,
@@ -8,6 +26,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:meta/llama-3.2-1b-instruct": [
+      {
+        "input": 0.06,
+        "output": 0.06,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

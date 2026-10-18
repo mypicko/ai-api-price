@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-2b-it",
+  "series": {
+    "fireworks:google/gemma-2b-it": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

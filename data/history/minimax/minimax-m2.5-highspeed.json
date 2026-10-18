@@ -1,6 +1,15 @@
 {
   "modelSlug": "minimax/minimax-m2.5-highspeed",
   "series": {
+    "novita:minimax/minimax-m2.5-highspeed": [
+      {
+        "input": 0.6,
+        "output": 2.4,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official-cn:minimax/minimax-m2.5-highspeed": [
       {
         "input": 0.6,

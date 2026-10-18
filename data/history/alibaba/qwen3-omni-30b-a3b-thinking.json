@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-omni-30b-a3b-thinking",
+  "series": {
+    "novita:alibaba/qwen3-omni-30b-a3b-thinking": [
+      {
+        "input": 0.25,
+        "output": 0.97,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,33 @@
 {
   "modelSlug": "meta/llama-4-maverick",
   "series": {
+    "databricks:meta/llama-4-maverick": [
+      {
+        "input": 0.50001,
+        "output": 1.50003,
+        "cacheRead": 0.50001,
+        "cacheWrite": 0.50001,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "digitalocean:meta/llama-4-maverick": [
+      {
+        "input": 0.1875,
+        "output": 0.6525,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:meta/llama-4-maverick": [
+      {
+        "input": 0.27,
+        "output": 0.85,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:meta/llama-4-maverick": [
       {
         "input": 0.1875,
@@ -8,6 +35,24 @@
         "cacheRead": 0.05,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:meta/llama-4-maverick": [
+      {
+        "input": 0.35,
+        "output": 1,
+        "cacheRead": 0.17,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:meta/llama-4-maverick": [
+      {
+        "input": 0.2,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

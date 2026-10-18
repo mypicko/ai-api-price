@@ -1,6 +1,15 @@
 {
   "modelSlug": "x-ai/grok-4.20-reasoning",
   "series": {
+    "oci:x-ai/grok-4.20-reasoning": [
+      {
+        "input": 1.25,
+        "output": 2.5,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:x-ai/grok-4.20-reasoning": [
       {
         "input": 1.25,
@@ -8,6 +17,15 @@
         "cacheRead": 0.2,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:x-ai/grok-4.20-reasoning": [
+      {
+        "input": 1.25,
+        "output": 2.5,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

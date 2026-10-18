@@ -1,0 +1,23 @@
+{
+  "modelSlug": "meta/llama-3.3-70b",
+  "series": {
+    "cerebras:meta/llama-3.3-70b": [
+      {
+        "input": 0.85,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:meta/llama-3.3-70b": [
+      {
+        "input": 0.72,
+        "output": 0.72,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

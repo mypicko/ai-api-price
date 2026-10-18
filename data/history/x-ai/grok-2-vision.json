@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-2-vision",
+  "series": {
+    "vercel:x-ai/grok-2-vision": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

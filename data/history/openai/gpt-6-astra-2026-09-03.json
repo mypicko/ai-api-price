@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-6-astra-2026-09-03",
+  "series": {
+    "azure:openai/gpt-6-astra-2026-09-03": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

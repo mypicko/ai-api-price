@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "39176326398",
-    "startedAt": "2026-10-18T23:24:10Z",
-    "finishedAt": "2026-10-18T23:24:16Z",
-    "durationMs": 5224,
+    "id": "39178227382",
+    "startedAt": "2026-10-18T23:51:49Z",
+    "finishedAt": "2026-10-18T23:53:11Z",
+    "durationMs": 82614,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 2469,
+      "durationMs": 1731,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 362,
+      "durationMs": 360,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -35,10 +35,21 @@
       "status": "ok",
       "offeringCount": 258,
       "mediaOfferingCount": 66,
-      "durationMs": 1309,
+      "durationMs": 784,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "litellm-resellers",
+      "kind": "api",
+      "status": "ok",
+      "offeringCount": 1175,
+      "durationMs": 1835,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -46,10 +57,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 71,
+      "durationMs": 117,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -57,10 +68,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 25,
-      "durationMs": 83,
+      "durationMs": 135,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -68,10 +79,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 17,
-      "durationMs": 1658,
+      "durationMs": 1410,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -79,10 +90,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 1659,
+      "durationMs": 1410,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -90,10 +101,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 4,
-      "durationMs": 1146,
+      "durationMs": 984,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -102,10 +113,21 @@
       "status": "ok",
       "offeringCount": 363,
       "mediaOfferingCount": 29,
-      "durationMs": 2486,
+      "durationMs": 1342,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "openrouter-endpoints",
+      "kind": "api",
+      "status": "ok",
+      "offeringCount": 379,
+      "durationMs": 82212,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -113,10 +135,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 54,
-      "durationMs": 1113,
+      "durationMs": 1252,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -124,10 +146,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 4886,
+      "durationMs": 4494,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     },
     {
@@ -135,10 +157,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 793,
+      "durationMs": 977,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T23:24:10Z",
+      "lastSuccessAt": "2026-10-18T23:51:49Z",
       "consecutiveFailures": 0
     }
   ],
@@ -149,6 +171,12 @@
       "sourceId": "litellm",
       "offeringId": null,
       "message": "厂商无法识别，已跳过：mistral 转售的 glm-5.2, mistral 转售的 zai-glm-5, mistral 转售的 zai-glm-5.2, mistral 转售的 zai-glm-5.3, mistral 转售的 zai-glm-latest"
+    },
+    {
+      "code": "W2003",
+      "sourceId": "litellm-resellers",
+      "offeringId": null,
+      "message": "厂商无法识别，已跳过：nvidia 转售的 llama-3.1-nemotron-70b-instruct, nvidia 转售的 llama-3.1-nemotron-70b-instruct-fp8, nvidia 转售的 llama-3.1-nemotron-ultra-253b-v1, nvidia 转售的 llama-3.3-nemotron-super-49b-v1, nvidia 转售的 llama-3.3-nemotron-super-49b-v1.5, nvidia 转售的 llama-v3p1-nemotron-70b-instruct"
     },
     {
       "code": "W2003",

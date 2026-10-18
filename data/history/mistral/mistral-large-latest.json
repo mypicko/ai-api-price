@@ -1,6 +1,15 @@
 {
   "modelSlug": "mistral/mistral-large-latest",
   "series": {
+    "azure:mistral/mistral-large-latest": [
+      {
+        "input": 8,
+        "output": 24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:mistral/mistral-large-latest": [
       {
         "input": 0.5,
@@ -8,6 +17,15 @@
         "cacheRead": 0.05,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:mistral/mistral-large-latest": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

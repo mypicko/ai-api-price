@@ -18,6 +18,15 @@
         "cacheWrite": 0.40625,
         "effectiveDate": "2026-10-18"
       }
+    ],
+    "together:alibaba/qwen3.6-plus": [
+      {
+        "input": 0.5,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }

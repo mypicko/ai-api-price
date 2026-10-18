@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-2-7b-chat-int8",
+  "series": {
+    "cloudflare:meta/llama-2-7b-chat-int8": [
+      {
+        "input": 1.923,
+        "output": 1.923,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/ernie-4.5-vl-424b-a47b",
+  "series": {
+    "novita:baidu/ernie-4.5-vl-424b-a47b": [
+      {
+        "input": 0.42,
+        "output": 1.25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,33 @@
 {
   "modelSlug": "nvidia/nemotron-3-super-120b-a12b",
   "series": {
+    "crusoe:nvidia/nemotron-3-super-120b-a12b": [
+      {
+        "input": 0.3,
+        "output": 2.4,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:nvidia/nemotron-3-super-120b-a12b": [
+      {
+        "input": 0.085,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:nvidia/nemotron-3-super-120b-a12b": [
+      {
+        "input": 0.3,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:nvidia/nemotron-3-super-120b-a12b": [
       {
         "input": 0.08,

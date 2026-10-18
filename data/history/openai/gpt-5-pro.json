@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-5-pro",
   "series": {
+    "azure:openai/gpt-5-pro": [
+      {
+        "input": 15,
+        "output": 120,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:openai/gpt-5-pro": [
       {
         "input": 15,

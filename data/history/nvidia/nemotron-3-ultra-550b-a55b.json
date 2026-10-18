@@ -1,6 +1,33 @@
 {
   "modelSlug": "nvidia/nemotron-3-ultra-550b-a55b",
   "series": {
+    "baseten:nvidia/nemotron-3-ultra-550b-a55b": [
+      {
+        "input": 0.6,
+        "output": 2.4,
+        "cacheRead": 0.12,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:nvidia/nemotron-3-ultra-550b-a55b": [
+      {
+        "input": 0.4,
+        "output": 1.76,
+        "cacheRead": 0.08,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:nvidia/nemotron-3-ultra-550b-a55b": [
+      {
+        "input": 1,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b": [
       {
         "input": 0.6,

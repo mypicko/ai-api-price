@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-guard-3-1b",
+  "series": {
+    "fireworks:meta/llama-guard-3-1b": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

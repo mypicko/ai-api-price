@@ -1,0 +1,14 @@
+{
+  "modelSlug": "amazon/nova-2-pro-preview-20251202",
+  "series": {
+    "bedrock:amazon/nova-2-pro-preview-20251202": [
+      {
+        "input": 1.25,
+        "output": 10,
+        "cacheRead": 0.3125,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

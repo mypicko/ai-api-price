@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-large-3-fp8",
+  "series": {
+    "fireworks:mistral/mistral-large-3-fp8": [
+      {
+        "input": 1.2,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

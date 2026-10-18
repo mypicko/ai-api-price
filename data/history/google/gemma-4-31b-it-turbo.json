@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-4-31b-it-turbo",
+  "series": {
+    "deepinfra:google/gemma-4-31b-it-turbo": [
+      {
+        "input": 0.09,
+        "output": 0.34,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,87 @@
 {
   "modelSlug": "moonshot/kimi-k3",
   "series": {
+    "baseten:moonshot/kimi-k3": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:moonshot/kimi-k3": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": 3.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "chutes:moonshot/kimi-k3": [
+      {
+        "input": 1.85,
+        "output": 9.5,
+        "cacheRead": 0.185,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:moonshot/kimi-k3": [
+      {
+        "input": 2.99999,
+        "output": 15,
+        "cacheRead": 0.30002,
+        "cacheWrite": 2.99999,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:moonshot/kimi-k3": [
+      {
+        "input": 2.85,
+        "output": 14.25,
+        "cacheRead": 0.285,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "digitalocean:moonshot/kimi-k3": [
+      {
+        "input": 2.55,
+        "output": 12.95,
+        "cacheRead": 0.255,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:moonshot/kimi-k3": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:moonshot/kimi-k3": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:moonshot/kimi-k3": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official-cn:moonshot/kimi-k3": [
       {
         "input": 3,
@@ -42,6 +123,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "parasail:moonshot/kimi-k3": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow:moonshot/kimi-k3": [
       {
         "input": 2.7,
@@ -49,6 +139,15 @@
         "cacheRead": 0.27,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:moonshot/kimi-k3": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

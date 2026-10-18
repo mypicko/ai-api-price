@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-3-opus-20240229",
+  "series": {
+    "bedrock:anthropic/claude-3-opus-20240229": [
+      {
+        "input": 15,
+        "output": 75,
+        "cacheRead": 1.5,
+        "cacheWrite": 18.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-2-13b-chat",
+  "series": {
+    "bedrock:meta/llama-2-13b-chat": [
+      {
+        "input": 0.75,
+        "output": 1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

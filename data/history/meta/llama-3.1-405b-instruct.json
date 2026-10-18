@@ -1,0 +1,50 @@
+{
+  "modelSlug": "meta/llama-3.1-405b-instruct",
+  "series": {
+    "hyperbolic:meta/llama-3.1-405b-instruct": [
+      {
+        "input": 0.12,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:meta/llama-3.1-405b-instruct": [
+      {
+        "input": 1,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:meta/llama-3.1-405b-instruct": [
+      {
+        "input": 10.68,
+        "output": 10.68,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "together:meta/llama-3.1-405b-instruct": [
+      {
+        "input": 3.5,
+        "output": 3.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:meta/llama-3.1-405b-instruct": [
+      {
+        "input": 5,
+        "output": 16,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

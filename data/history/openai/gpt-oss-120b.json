@@ -1,6 +1,141 @@
 {
   "modelSlug": "openai/gpt-oss-120b",
   "series": {
+    "azure:openai/gpt-oss-120b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "baseten:openai/gpt-oss-120b": [
+      {
+        "input": 0.1,
+        "output": 0.5,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:openai/gpt-oss-120b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cerebras:openai/gpt-oss-120b": [
+      {
+        "input": 0.35,
+        "output": 0.75,
+        "cacheRead": 0.35,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cloudflare:openai/gpt-oss-120b": [
+      {
+        "input": 0.35,
+        "output": 0.75,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "coreweave:openai/gpt-oss-120b": [
+      {
+        "input": 0.03,
+        "output": 0.17,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "crusoe:openai/gpt-oss-120b": [
+      {
+        "input": 0.05,
+        "output": 0.25,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:openai/gpt-oss-120b": [
+      {
+        "input": 0.15001,
+        "output": 0.59997,
+        "cacheRead": 0.15001,
+        "cacheWrite": 0.15001,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:openai/gpt-oss-120b": [
+      {
+        "input": 0.037,
+        "output": 0.17,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "digitalocean:openai/gpt-oss-120b": [
+      {
+        "input": 0.06,
+        "output": 0.42,
+        "cacheRead": 0.012,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:openai/gpt-oss-120b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "groq:openai/gpt-oss-120b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:openai/gpt-oss-120b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:openai/gpt-oss-120b": [
+      {
+        "input": 0.05,
+        "output": 0.25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:openai/gpt-oss-120b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:openai/gpt-oss-120b": [
       {
         "input": 0.15,
@@ -10,6 +145,24 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "parasail:openai/gpt-oss-120b": [
+      {
+        "input": 0.1,
+        "output": 0.75,
+        "cacheRead": 0.055,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "sambanova:openai/gpt-oss-120b": [
+      {
+        "input": 0.14,
+        "output": 0.95,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow:openai/gpt-oss-120b": [
       {
         "input": 0.05,
@@ -17,6 +170,33 @@
         "cacheRead": 0.075,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:openai/gpt-oss-120b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:openai/gpt-oss-120b": [
+      {
+        "input": 0.09,
+        "output": 0.36,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:openai/gpt-oss-120b": [
+      {
+        "input": 0.03,
+        "output": 0.17,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

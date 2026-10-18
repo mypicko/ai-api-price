@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/seed-1.8",
+  "series": {
+    "deepinfra:bytedance/seed-1.8": [
+      {
+        "input": 0.25,
+        "output": 2,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

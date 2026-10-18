@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-4p5v",
+  "series": {
+    "fireworks:zhipu/glm-4p5v": [
+      {
+        "input": 1.2,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

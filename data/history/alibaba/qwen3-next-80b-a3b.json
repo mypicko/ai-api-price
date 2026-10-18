@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-next-80b-a3b",
+  "series": {
+    "bedrock:alibaba/qwen3-next-80b-a3b": [
+      {
+        "input": 0.15,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

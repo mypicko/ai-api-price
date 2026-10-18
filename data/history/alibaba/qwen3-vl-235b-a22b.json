@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-vl-235b-a22b",
+  "series": {
+    "bedrock:alibaba/qwen3-vl-235b-a22b": [
+      {
+        "input": 0.53,
+        "output": 2.66,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

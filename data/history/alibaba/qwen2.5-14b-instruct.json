@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen2.5-14b-instruct",
+  "series": {
+    "together:alibaba/qwen2.5-14b-instruct": [
+      {
+        "input": 0.8,
+        "output": 0.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

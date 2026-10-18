@@ -1,0 +1,50 @@
+{
+  "modelSlug": "meta/llama-4-maverick-17b-128e-instruct-fp8",
+  "series": {
+    "azure:meta/llama-4-maverick-17b-128e-instruct-fp8": [
+      {
+        "input": 0.25,
+        "output": 1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:meta/llama-4-maverick-17b-128e-instruct-fp8": [
+      {
+        "input": 0.2,
+        "output": 0.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "lambda:meta/llama-4-maverick-17b-128e-instruct-fp8": [
+      {
+        "input": 0.05,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:meta/llama-4-maverick-17b-128e-instruct-fp8": [
+      {
+        "input": 0.27,
+        "output": 0.85,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:meta/llama-4-maverick-17b-128e-instruct-fp8": [
+      {
+        "input": 0.72,
+        "output": 0.72,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "modelSlug": "amazon/nova-micro",
+  "series": {
+    "bedrock:amazon/nova-micro": [
+      {
+        "input": 0.035,
+        "output": 0.14,
+        "cacheRead": 0.00875,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:amazon/nova-micro": [
+      {
+        "input": 0.035,
+        "output": 0.14,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

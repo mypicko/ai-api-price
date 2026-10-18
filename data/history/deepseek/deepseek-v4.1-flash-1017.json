@@ -1,6 +1,51 @@
 {
   "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
   "series": {
+    "baseten:deepseek/deepseek-v4.1-flash-1017": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.007,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cloudflare:deepseek/deepseek-v4.1-flash-1017": [
+      {
+        "input": 0.1,
+        "output": 0.6,
+        "cacheRead": 0.003,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "crusoe:deepseek/deepseek-v4.1-flash-1017": [
+      {
+        "input": 0.29,
+        "output": 1.2,
+        "cacheRead": 0.007,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:deepseek/deepseek-v4.1-flash-1017": [
+      {
+        "input": 0.0784,
+        "output": 0.2352,
+        "cacheRead": 0.002352,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:deepseek/deepseek-v4.1-flash-1017": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:deepseek/deepseek-v4.1-flash-1017": [
       {
         "input": 0.15,
@@ -8,6 +53,15 @@
         "cacheRead": 0.003,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:deepseek/deepseek-v4.1-flash-1017": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

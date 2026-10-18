@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/pixtral-12b",
+  "series": {
+    "vercel:mistral/pixtral-12b": [
+      {
+        "input": 0.15,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

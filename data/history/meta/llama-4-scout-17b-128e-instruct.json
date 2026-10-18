@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-4-scout-17b-128e-instruct",
+  "series": {
+    "vertex:meta/llama-4-scout-17b-128e-instruct": [
+      {
+        "input": 0.25,
+        "output": 0.7,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,24 @@
 {
   "modelSlug": "alibaba/qwen2.5-7b-instruct",
   "series": {
+    "deepinfra:alibaba/qwen2.5-7b-instruct": [
+      {
+        "input": 0.04,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen2.5-7b-instruct": [
+      {
+        "input": 0.07,
+        "output": 0.07,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow-cn:alibaba/qwen2.5-7b-instruct": [
       {
         "input": 0.05,

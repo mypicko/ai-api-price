@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-large-2411",
+  "series": {
+    "vertex:mistral/mistral-large-2411": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

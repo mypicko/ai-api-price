@@ -1,0 +1,14 @@
+{
+  "modelSlug": "minimax/minimax.minimax-m2.1",
+  "series": {
+    "bedrock:minimax/minimax.minimax-m2.1": [
+      {
+        "input": 0.36,
+        "output": 1.44,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,24 @@
 {
   "modelSlug": "x-ai/grok-code-fast-1",
   "series": {
+    "azure:x-ai/grok-code-fast-1": [
+      {
+        "input": 0.2,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:x-ai/grok-code-fast-1": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:x-ai/grok-code-fast-1": [
       {
         "input": 1,

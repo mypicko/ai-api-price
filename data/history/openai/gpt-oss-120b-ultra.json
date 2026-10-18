@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-oss-120b-ultra",
+  "series": {
+    "deepinfra:openai/gpt-oss-120b-ultra": [
+      {
+        "input": 0.2,
+        "output": 0.95,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

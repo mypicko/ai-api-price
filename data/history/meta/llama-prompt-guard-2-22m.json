@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-prompt-guard-2-22m",
+  "series": {
+    "groq:meta/llama-prompt-guard-2-22m": [
+      {
+        "input": 0.03,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

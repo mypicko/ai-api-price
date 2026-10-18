@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-medium-2505",
+  "series": {
+    "azure:mistral/mistral-medium-2505": [
+      {
+        "input": 0.4,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

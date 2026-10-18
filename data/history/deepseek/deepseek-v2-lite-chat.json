@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-v2-lite-chat",
+  "series": {
+    "fireworks:deepseek/deepseek-v2-lite-chat": [
+      {
+        "input": 0.5,
+        "output": 0.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,15 @@
 {
   "modelSlug": "google/gemini-3.5-flash-lite",
   "series": {
+    "databricks:google/gemini-3.5-flash-lite": [
+      {
+        "input": 0.37499,
+        "output": 3.12501,
+        "cacheRead": 0.03752,
+        "cacheWrite": 0.37499,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:google/gemini-3.5-flash-lite": [
       {
         "input": 0.3,
@@ -17,6 +26,15 @@
         "cacheRead": 0.03,
         "cacheWrite": 0.0833333,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:google/gemini-3.5-flash-lite": [
+      {
+        "input": 0.3,
+        "output": 2.5,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

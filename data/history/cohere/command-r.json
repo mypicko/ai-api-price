@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/command-r",
+  "series": {
+    "vercel:cohere/command-r": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,51 @@
 {
   "modelSlug": "google/gemma-4-31b-it",
   "series": {
+    "chutes:google/gemma-4-31b-it": [
+      {
+        "input": 0.12,
+        "output": 0.37,
+        "cacheRead": 0.012,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "coreweave:google/gemma-4-31b-it": [
+      {
+        "input": 0.1,
+        "output": 0.34,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "crusoe:google/gemma-4-31b-it": [
+      {
+        "input": 0.14,
+        "output": 0.4,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:google/gemma-4-31b-it": [
+      {
+        "input": 0.135,
+        "output": 0.51,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:google/gemma-4-31b-it": [
+      {
+        "input": 0.14,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:google/gemma-4-31b-it": [
       {
         "input": 0,
@@ -19,6 +64,24 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "parasail:google/gemma-4-31b-it": [
+      {
+        "input": 0.15,
+        "output": 0.4,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "sambanova:google/gemma-4-31b-it": [
+      {
+        "input": 0.38,
+        "output": 1.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow:google/gemma-4-31b-it": [
       {
         "input": 0.75,
@@ -26,6 +89,15 @@
         "cacheRead": 0.25,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "wandb:google/gemma-4-31b-it": [
+      {
+        "input": 0.1,
+        "output": 0.34,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral.mistral-7b-instruct",
+  "series": {
+    "bedrock:mistral/mistral.mistral-7b-instruct": [
+      {
+        "input": 0.2,
+        "output": 0.26,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

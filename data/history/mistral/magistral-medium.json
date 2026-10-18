@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/magistral-medium",
+  "series": {
+    "vercel:mistral/magistral-medium": [
+      {
+        "input": 2,
+        "output": 5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

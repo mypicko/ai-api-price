@@ -1,0 +1,14 @@
+{
+  "modelSlug": "microsoft/phi-3-vision-128k-instruct",
+  "series": {
+    "fireworks:microsoft/phi-3-vision-128k-instruct": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

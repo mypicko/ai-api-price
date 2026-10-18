@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-4-scout-17b-instruct",
+  "series": {
+    "bedrock:meta/llama-4-scout-17b-instruct": [
+      {
+        "input": 0.17,
+        "output": 0.66,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

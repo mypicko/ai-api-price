@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mixtral-8x22b-instruct-hf",
+  "series": {
+    "fireworks:mistral/mixtral-8x22b-instruct-hf": [
+      {
+        "input": 1.2,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

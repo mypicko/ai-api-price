@@ -1,6 +1,78 @@
 {
   "modelSlug": "deepseek/deepseek-v4-flash",
   "series": {
+    "azure:deepseek/deepseek-v4-flash": [
+      {
+        "input": 0.21,
+        "output": 0.56,
+        "cacheRead": 0.031,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cloudflare:deepseek/deepseek-v4-flash": [
+      {
+        "input": 0.44,
+        "output": 1.32,
+        "cacheRead": 0.014,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:deepseek/deepseek-v4-flash": [
+      {
+        "input": 0.09,
+        "output": 0.18,
+        "cacheRead": 0.018,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "digitalocean:deepseek/deepseek-v4-flash": [
+      {
+        "input": 0.098,
+        "output": 0.196,
+        "cacheRead": 0.0196,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:deepseek/deepseek-v4-flash": [
+      {
+        "input": 0.14,
+        "output": 0.28,
+        "cacheRead": 0.028,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:deepseek/deepseek-v4-flash": [
+      {
+        "input": 0.091,
+        "output": 0.182,
+        "cacheRead": 0.0182,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:deepseek/deepseek-v4-flash": [
+      {
+        "input": 0.14,
+        "output": 0.28,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:deepseek/deepseek-v4-flash": [
+      {
+        "input": 0.14,
+        "output": 0.28,
+        "cacheRead": 0.028,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:deepseek/deepseek-v4-flash": [
       {
         "input": 0.3,
@@ -17,6 +89,15 @@
         "cacheRead": 0.0182,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:deepseek/deepseek-v4-flash": [
+      {
+        "input": 0.14,
+        "output": 0.28,
+        "cacheRead": 0.07,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ],
     "siliconflow-cn:deepseek/deepseek-v4-flash": [

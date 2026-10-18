@@ -1,0 +1,23 @@
+{
+  "modelSlug": "x-ai/grok-3-mini",
+  "series": {
+    "oci:x-ai/grok-3-mini": [
+      {
+        "input": 0.3,
+        "output": 0.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:x-ai/grok-3-mini": [
+      {
+        "input": 0.3,
+        "output": 0.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

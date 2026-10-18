@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-4",
   "series": {
+    "azure:openai/gpt-4": [
+      {
+        "input": 30,
+        "output": 60,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:openai/gpt-4": [
       {
         "input": 30,

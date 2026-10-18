@@ -1,6 +1,42 @@
 {
   "modelSlug": "anthropic/claude-haiku-4.5",
   "series": {
+    "azure:anthropic/claude-haiku-4.5": [
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": 0.1,
+        "cacheWrite": 1.25,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:anthropic/claude-haiku-4.5": [
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": 0.1,
+        "cacheWrite": 1.25,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:anthropic/claude-haiku-4.5": [
+      {
+        "input": 1.00002,
+        "output": 5.00003,
+        "cacheRead": 0.10003,
+        "cacheWrite": 1.24999,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:anthropic/claude-haiku-4.5": [
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:anthropic/claude-haiku-4.5": [
       {
         "input": 1,
@@ -17,6 +53,15 @@
         "cacheRead": 0.1,
         "cacheWrite": 1.25,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vercel:anthropic/claude-haiku-4.5": [
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": 0.1,
+        "cacheWrite": 1.25,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

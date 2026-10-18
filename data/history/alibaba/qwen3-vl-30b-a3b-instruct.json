@@ -1,6 +1,33 @@
 {
   "modelSlug": "alibaba/qwen3-vl-30b-a3b-instruct",
   "series": {
+    "deepinfra:alibaba/qwen3-vl-30b-a3b-instruct": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:alibaba/qwen3-vl-30b-a3b-instruct": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3-vl-30b-a3b-instruct": [
+      {
+        "input": 0.2,
+        "output": 0.7,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:alibaba/qwen3-vl-30b-a3b-instruct": [
       {
         "input": 0.15,

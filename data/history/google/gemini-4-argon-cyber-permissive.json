@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-4-argon-cyber-permissive",
+  "series": {
+    "vertex:google/gemini-4-argon-cyber-permissive": [
+      {
+        "input": 4,
+        "output": 20,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

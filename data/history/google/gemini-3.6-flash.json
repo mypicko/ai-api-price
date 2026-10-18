@@ -1,6 +1,15 @@
 {
   "modelSlug": "google/gemini-3.6-flash",
   "series": {
+    "databricks:google/gemini-3.6-flash": [
+      {
+        "input": 1.87502,
+        "output": 9.37503,
+        "cacheRead": 0.18753,
+        "cacheWrite": 1.87502,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:google/gemini-3.6-flash": [
       {
         "input": 0.75,
@@ -17,6 +26,15 @@
         "cacheRead": 0.075,
         "cacheWrite": 0.0416667,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:google/gemini-3.6-flash": [
+      {
+        "input": 0.75,
+        "output": 3.75,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

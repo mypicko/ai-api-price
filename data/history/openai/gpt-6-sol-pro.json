@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-6-sol-pro",
   "series": {
+    "azure:openai/gpt-6-sol-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": 2.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:openai/gpt-6-sol-pro": [
       {
         "input": 2,

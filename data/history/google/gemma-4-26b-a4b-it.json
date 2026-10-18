@@ -1,6 +1,42 @@
 {
   "modelSlug": "google/gemma-4-26b-a4b-it",
   "series": {
+    "cloudflare:google/gemma-4-26b-a4b-it": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "coreweave:google/gemma-4-26b-a4b-it": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:google/gemma-4-26b-a4b-it": [
+      {
+        "input": 0.07,
+        "output": 0.34,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:google/gemma-4-26b-a4b-it": [
+      {
+        "input": 0.13,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:google/gemma-4-26b-a4b-it": [
       {
         "input": 0,
@@ -19,6 +55,15 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "parasail:google/gemma-4-26b-a4b-it": [
+      {
+        "input": 0.13,
+        "output": 0.4,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow:google/gemma-4-26b-a4b-it": [
       {
         "input": 0.14,
@@ -26,6 +71,24 @@
         "cacheRead": 0.05,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:google/gemma-4-26b-a4b-it": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:google/gemma-4-26b-a4b-it": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

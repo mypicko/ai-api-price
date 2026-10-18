@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-2b-it-lora",
+  "series": {
+    "cloudflare:google/gemma-2b-it-lora": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

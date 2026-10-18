@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-4-maverick-17b-16e-instruct",
+  "series": {
+    "vertex:meta/llama-4-maverick-17b-16e-instruct": [
+      {
+        "input": 0.35,
+        "output": 1.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

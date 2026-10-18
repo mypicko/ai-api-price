@@ -27,6 +27,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
       }
+    ],
+    "together:alibaba/qwen3.8-flash": [
+      {
+        "input": 0.15,
+        "output": 0.47,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }

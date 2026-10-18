@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-4-20-non-reasoning",
+  "series": {
+    "azure:x-ai/grok-4-20-non-reasoning": [
+      {
+        "input": 1.25,
+        "output": 2.5,
+        "cacheRead": 1.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

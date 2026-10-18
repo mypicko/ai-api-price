@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-3.1-8b-instruct-fp8",
+  "series": {
+    "cloudflare:meta/llama-3.1-8b-instruct-fp8": [
+      {
+        "input": 0.152,
+        "output": 0.287,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

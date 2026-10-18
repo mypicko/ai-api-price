@@ -1,6 +1,15 @@
 {
   "modelSlug": "zhipu/glm-4.6v",
   "series": {
+    "novita:zhipu/glm-4.6v": [
+      {
+        "input": 0.3,
+        "output": 0.9,
+        "cacheRead": 0.055,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:zhipu/glm-4.6v": [
       {
         "input": 1,

@@ -1,6 +1,33 @@
 {
   "modelSlug": "alibaba/qwen2.5-72b-instruct",
   "series": {
+    "deepinfra:alibaba/qwen2.5-72b-instruct": [
+      {
+        "input": 0.36,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "hyperbolic:alibaba/qwen2.5-72b-instruct": [
+      {
+        "input": 0.12,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:alibaba/qwen2.5-72b-instruct": [
+      {
+        "input": 0.13,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow-cn:alibaba/qwen2.5-72b-instruct": [
       {
         "input": 0.59,
@@ -17,6 +44,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:alibaba/qwen2.5-72b-instruct": [
+      {
+        "input": 1.2,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

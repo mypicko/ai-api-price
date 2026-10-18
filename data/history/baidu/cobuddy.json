@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/cobuddy",
+  "series": {
+    "novita:baidu/cobuddy": [
+      {
+        "input": 0.28,
+        "output": 1.13,
+        "cacheRead": 0.07,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

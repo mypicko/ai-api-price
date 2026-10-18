@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/autoglm-phone-9b-multilingual",
+  "series": {
+    "novita:zhipu/autoglm-phone-9b-multilingual": [
+      {
+        "input": 0.035,
+        "output": 0.138,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

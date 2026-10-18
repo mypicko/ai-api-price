@@ -1,6 +1,15 @@
 {
   "modelSlug": "x-ai/grok-4.20-multi-agent",
   "series": {
+    "oci:x-ai/grok-4.20-multi-agent": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:x-ai/grok-4.20-multi-agent": [
       {
         "input": 1.25,

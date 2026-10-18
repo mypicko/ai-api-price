@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-v4p1-flash-1017",
+  "series": {
+    "fireworks:deepseek/deepseek-v4p1-flash-1017": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

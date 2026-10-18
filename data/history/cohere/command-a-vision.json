@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/command-a-vision",
+  "series": {
+    "oci:cohere/command-a-vision": [
+      {
+        "input": 1.56,
+        "output": 1.56,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

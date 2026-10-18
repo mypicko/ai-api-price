@@ -1,6 +1,24 @@
 {
   "modelSlug": "mistral/mistral-nemo",
   "series": {
+    "deepinfra:mistral/mistral-nemo": [
+      {
+        "input": 0.029,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:mistral/mistral-nemo": [
+      {
+        "input": 0.04,
+        "output": 0.17,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:mistral/mistral-nemo": [
       {
         "input": 0.029,
@@ -8,6 +26,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:mistral/mistral-nemo": [
+      {
+        "input": 0.03,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

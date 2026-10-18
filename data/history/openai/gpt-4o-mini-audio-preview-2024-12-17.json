@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-4o-mini-audio-preview-2024-12-17",
   "series": {
+    "azure:openai/gpt-4o-mini-audio-preview-2024-12-17": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:openai/gpt-4o-mini-audio-preview-2024-12-17": [
       {
         "input": 0.15,

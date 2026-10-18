@@ -1,6 +1,24 @@
 {
   "modelSlug": "anthropic/claude-opus-4.1",
   "series": {
+    "bedrock:anthropic/claude-opus-4.1": [
+      {
+        "input": 15,
+        "output": 75,
+        "cacheRead": 1.5,
+        "cacheWrite": 18.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:anthropic/claude-opus-4.1": [
+      {
+        "input": 15,
+        "output": 75,
+        "cacheRead": 1.50003,
+        "cacheWrite": 18.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:anthropic/claude-opus-4.1": [
       {
         "input": 15,
@@ -8,6 +26,15 @@
         "cacheRead": 1.5,
         "cacheWrite": 18.75,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vercel:anthropic/claude-opus-4.1": [
+      {
+        "input": 15,
+        "output": 75,
+        "cacheRead": 1.5,
+        "cacheWrite": 18.75,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

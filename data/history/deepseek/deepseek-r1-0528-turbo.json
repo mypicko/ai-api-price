@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-r1-0528-turbo",
+  "series": {
+    "deepinfra:deepseek/deepseek-r1-0528-turbo": [
+      {
+        "input": 1,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

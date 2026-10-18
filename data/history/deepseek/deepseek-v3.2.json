@@ -1,6 +1,51 @@
 {
   "modelSlug": "deepseek/deepseek-v3.2",
   "series": {
+    "azure:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.58,
+        "output": 1.68,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.26,
+        "output": 0.38,
+        "cacheRead": 0.13,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "digitalocean:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.3,
+        "output": 0.96,
+        "cacheRead": 0.09,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.2088,
+        "output": 0.3096,
+        "cacheRead": 0.0216,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.269,
+        "output": 0.4,
+        "cacheRead": 0.1345,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:deepseek/deepseek-v3.2": [
       {
         "input": 0.28,
@@ -19,6 +64,15 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "sambanova:deepseek/deepseek-v3.2": [
+      {
+        "input": 3,
+        "output": 4.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow-cn:deepseek/deepseek-v3.2": [
       {
         "input": 0.27,
@@ -35,6 +89,15 @@
         "cacheRead": 0.135,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.56,
+        "output": 1.68,
+        "cacheRead": 0.056,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

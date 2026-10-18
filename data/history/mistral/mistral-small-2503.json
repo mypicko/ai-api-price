@@ -1,0 +1,23 @@
+{
+  "modelSlug": "mistral/mistral-small-2503",
+  "series": {
+    "azure:mistral/mistral-small-2503": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:mistral/mistral-small-2503": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

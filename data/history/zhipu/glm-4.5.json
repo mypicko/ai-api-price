@@ -1,6 +1,24 @@
 {
   "modelSlug": "zhipu/glm-4.5",
   "series": {
+    "deepinfra:zhipu/glm-4.5": [
+      {
+        "input": 0.4,
+        "output": 1.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:zhipu/glm-4.5": [
+      {
+        "input": 0.6,
+        "output": 2.2,
+        "cacheRead": 0.11,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:zhipu/glm-4.5": [
       {
         "input": 0.6,
@@ -8,6 +26,15 @@
         "cacheRead": 0.11,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vercel:zhipu/glm-4.5": [
+      {
+        "input": 0.6,
+        "output": 2.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

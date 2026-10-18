@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-sonnet-4.1",
+  "series": {
+    "databricks:anthropic/claude-sonnet-4.1": [
+      {
+        "input": 2.99999,
+        "output": 15,
+        "cacheRead": 0.30002,
+        "cacheWrite": 3.74997,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

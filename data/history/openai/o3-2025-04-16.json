@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/o3-2025-04-16",
   "series": {
+    "azure:openai/o3-2025-04-16": [
+      {
+        "input": 2,
+        "output": 8,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:openai/o3-2025-04-16": [
       {
         "input": 2,

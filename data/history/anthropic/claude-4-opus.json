@@ -1,0 +1,23 @@
+{
+  "modelSlug": "anthropic/claude-4-opus",
+  "series": {
+    "deepinfra:anthropic/claude-4-opus": [
+      {
+        "input": 16.5,
+        "output": 82.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:anthropic/claude-4-opus": [
+      {
+        "input": 15,
+        "output": 75,
+        "cacheRead": 1.5,
+        "cacheWrite": 18.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

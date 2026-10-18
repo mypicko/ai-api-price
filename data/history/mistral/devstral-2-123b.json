@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/devstral-2-123b",
+  "series": {
+    "bedrock:mistral/devstral-2-123b": [
+      {
+        "input": 0.4,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

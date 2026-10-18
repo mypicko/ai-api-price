@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-3.7-sonnet-latest",
+  "series": {
+    "deepinfra:anthropic/claude-3.7-sonnet-latest": [
+      {
+        "input": 3.3,
+        "output": 16.5,
+        "cacheRead": 0.33,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

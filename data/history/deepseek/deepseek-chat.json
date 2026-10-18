@@ -1,6 +1,15 @@
 {
   "modelSlug": "deepseek/deepseek-chat",
   "series": {
+    "deepinfra:deepseek/deepseek-chat": [
+      {
+        "input": 0.256,
+        "output": 0.712,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:deepseek/deepseek-chat": [
       {
         "input": 0.32,

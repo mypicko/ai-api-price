@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-coder-480b-a35b-instruct-turbo",
+  "series": {
+    "deepinfra:alibaba/qwen3-coder-480b-a35b-instruct-turbo": [
+      {
+        "input": 0.3,
+        "output": 1,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

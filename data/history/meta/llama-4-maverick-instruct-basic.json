@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-4-maverick-instruct-basic",
+  "series": {
+    "fireworks:meta/llama-4-maverick-instruct-basic": [
+      {
+        "input": 0.22,
+        "output": 0.88,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

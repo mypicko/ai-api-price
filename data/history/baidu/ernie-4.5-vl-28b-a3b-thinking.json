@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/ernie-4.5-vl-28b-a3b-thinking",
+  "series": {
+    "novita:baidu/ernie-4.5-vl-28b-a3b-thinking": [
+      {
+        "input": 0.39,
+        "output": 0.39,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

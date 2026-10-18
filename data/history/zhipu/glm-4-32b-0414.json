@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-4-32b-0414",
+  "series": {
+    "novita:zhipu/glm-4-32b-0414": [
+      {
+        "input": 0.55,
+        "output": 1.66,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

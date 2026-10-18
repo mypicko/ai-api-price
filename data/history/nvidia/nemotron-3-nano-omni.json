@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nemotron-3-nano-omni",
+  "series": {
+    "nebius:nvidia/nemotron-3-nano-omni": [
+      {
+        "input": 0.06,
+        "output": 0.24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

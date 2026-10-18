@@ -1,0 +1,14 @@
+{
+  "modelSlug": "microsoft/phi-4-reasoning",
+  "series": {
+    "azure:microsoft/phi-4-reasoning": [
+      {
+        "input": 0.125,
+        "output": 0.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

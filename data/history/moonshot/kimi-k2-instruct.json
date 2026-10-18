@@ -1,0 +1,50 @@
+{
+  "modelSlug": "moonshot/kimi-k2-instruct",
+  "series": {
+    "deepinfra:moonshot/kimi-k2-instruct": [
+      {
+        "input": 0.5,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:moonshot/kimi-k2-instruct": [
+      {
+        "input": 0.6,
+        "output": 2.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "hyperbolic:moonshot/kimi-k2-instruct": [
+      {
+        "input": 2,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:moonshot/kimi-k2-instruct": [
+      {
+        "input": 0.57,
+        "output": 2.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "together:moonshot/kimi-k2-instruct": [
+      {
+        "input": 1,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

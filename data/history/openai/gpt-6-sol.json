@@ -1,6 +1,24 @@
 {
   "modelSlug": "openai/gpt-6-sol",
   "series": {
+    "azure:openai/gpt-6-sol": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": 2.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:openai/gpt-6-sol": [
+      {
+        "input": 2.2,
+        "output": 11,
+        "cacheRead": 0.22,
+        "cacheWrite": 2.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:openai/gpt-6-sol": [
       {
         "input": 2,

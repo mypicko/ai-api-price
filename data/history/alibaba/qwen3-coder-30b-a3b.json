@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-coder-30b-a3b",
+  "series": {
+    "bedrock:alibaba/qwen3-coder-30b-a3b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

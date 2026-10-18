@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/command-text",
+  "series": {
+    "bedrock:cohere/command-text": [
+      {
+        "input": 1,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

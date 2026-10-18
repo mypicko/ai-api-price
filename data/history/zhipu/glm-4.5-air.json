@@ -1,6 +1,15 @@
 {
   "modelSlug": "zhipu/glm-4.5-air",
   "series": {
+    "novita:zhipu/glm-4.5-air": [
+      {
+        "input": 0.13,
+        "output": 0.85,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:zhipu/glm-4.5-air": [
       {
         "input": 0.8,
@@ -35,6 +44,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vercel:zhipu/glm-4.5-air": [
+      {
+        "input": 0.2,
+        "output": 1.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

@@ -1,6 +1,51 @@
 {
   "modelSlug": "zhipu/glm-5",
   "series": {
+    "baseten:zhipu/glm-5": [
+      {
+        "input": 0.95,
+        "output": 3.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:zhipu/glm-5": [
+      {
+        "input": 1,
+        "output": 3.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:zhipu/glm-5": [
+      {
+        "input": 0.6,
+        "output": 2.08,
+        "cacheRead": 0.12,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:zhipu/glm-5": [
+      {
+        "input": 0.6,
+        "output": 1.92,
+        "cacheRead": 0.12,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:zhipu/glm-5": [
+      {
+        "input": 1,
+        "output": 3.2,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:zhipu/glm-5": [
       {
         "input": 4,
@@ -26,6 +71,15 @@
         "cacheRead": 0.2,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:zhipu/glm-5": [
+      {
+        "input": 1,
+        "output": 3.2,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

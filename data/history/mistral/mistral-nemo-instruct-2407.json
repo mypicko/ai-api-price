@@ -1,0 +1,32 @@
+{
+  "modelSlug": "mistral/mistral-nemo-instruct-2407",
+  "series": {
+    "deepinfra:mistral/mistral-nemo-instruct-2407": [
+      {
+        "input": 0.019,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:mistral/mistral-nemo-instruct-2407": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:mistral/mistral-nemo-instruct-2407": [
+      {
+        "input": 0.04,
+        "output": 0.12,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

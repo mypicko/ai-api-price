@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-sea-lion-v4-27b-it",
+  "series": {
+    "cloudflare:google/gemma-sea-lion-v4-27b-it": [
+      {
+        "input": 0.351,
+        "output": 0.555,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "modelSlug": "meta/llama-3.2-11b-vision-instruct",
+  "series": {
+    "cloudflare:meta/llama-3.2-11b-vision-instruct": [
+      {
+        "input": 0.0485,
+        "output": 0.676,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:meta/llama-3.2-11b-vision-instruct": [
+      {
+        "input": 0.049,
+        "output": 0.049,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "lambda:meta/llama-3.2-11b-vision-instruct": [
+      {
+        "input": 0.015,
+        "output": 0.025,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:meta/llama-3.2-11b-vision-instruct": [
+      {
+        "input": 2,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

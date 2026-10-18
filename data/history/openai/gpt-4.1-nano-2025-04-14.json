@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-4.1-nano-2025-04-14",
   "series": {
+    "azure:openai/gpt-4.1-nano-2025-04-14": [
+      {
+        "input": 0.1,
+        "output": 0.4,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:openai/gpt-4.1-nano-2025-04-14": [
       {
         "input": 0.1,

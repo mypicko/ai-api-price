@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-chat-latest",
   "series": {
+    "azure:openai/gpt-chat-latest": [
+      {
+        "input": 5,
+        "output": 30,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:openai/gpt-chat-latest": [
       {
         "input": 5,

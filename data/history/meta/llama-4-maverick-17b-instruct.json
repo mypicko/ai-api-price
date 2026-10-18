@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-4-maverick-17b-instruct",
+  "series": {
+    "bedrock:meta/llama-4-maverick-17b-instruct": [
+      {
+        "input": 0.24,
+        "output": 0.97,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,51 @@
 {
   "modelSlug": "meta/llama-3.2-3b-instruct",
   "series": {
+    "cloudflare:meta/llama-3.2-3b-instruct": [
+      {
+        "input": 0.0509,
+        "output": 0.335,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:meta/llama-3.2-3b-instruct": [
+      {
+        "input": 0.02,
+        "output": 0.02,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "hyperbolic:meta/llama-3.2-3b-instruct": [
+      {
+        "input": 0.12,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "lambda:meta/llama-3.2-3b-instruct": [
+      {
+        "input": 0.015,
+        "output": 0.025,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:meta/llama-3.2-3b-instruct": [
+      {
+        "input": 0.03,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:meta/llama-3.2-3b-instruct": [
       {
         "input": 0.05,
@@ -12,6 +57,24 @@
       {
         "input": 0.0509,
         "output": 0.335,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "parasail:meta/llama-3.2-3b-instruct": [
+      {
+        "input": 0.05,
+        "output": 0.33,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "together:meta/llama-3.2-3b-instruct": [
+      {
+        "input": 0.06,
+        "output": 0.06,
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"

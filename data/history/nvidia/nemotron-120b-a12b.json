@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nemotron-120b-a12b",
+  "series": {
+    "baseten:nvidia/nemotron-120b-a12b": [
+      {
+        "input": 0.3,
+        "output": 0.75,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

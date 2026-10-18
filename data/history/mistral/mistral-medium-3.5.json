@@ -1,6 +1,15 @@
 {
   "modelSlug": "mistral/mistral-medium-3.5",
   "series": {
+    "azure:mistral/mistral-medium-3.5": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:mistral/mistral-medium-3.5": [
       {
         "input": 1.5,

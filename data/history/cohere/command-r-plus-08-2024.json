@@ -1,6 +1,15 @@
 {
   "modelSlug": "cohere/command-r-plus-08-2024",
   "series": {
+    "oci:cohere/command-r-plus-08-2024": [
+      {
+        "input": 1.56,
+        "output": 1.56,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:cohere/command-r-plus-08-2024": [
       {
         "input": 2.5,

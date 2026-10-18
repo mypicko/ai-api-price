@@ -1,6 +1,33 @@
 {
   "modelSlug": "alibaba/qwen3.6-27b",
   "series": {
+    "chutes:alibaba/qwen3.6-27b": [
+      {
+        "input": 0.25,
+        "output": 2,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:alibaba/qwen3.6-27b": [
+      {
+        "input": 0.32,
+        "output": 3.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3.6-27b": [
+      {
+        "input": 0.6,
+        "output": 3.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:alibaba/qwen3.6-27b": [
       {
         "input": 0.412564,

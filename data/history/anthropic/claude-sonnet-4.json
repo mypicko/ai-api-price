@@ -1,0 +1,23 @@
+{
+  "modelSlug": "anthropic/claude-sonnet-4",
+  "series": {
+    "gmi:anthropic/claude-sonnet-4": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:anthropic/claude-sonnet-4": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": 3.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

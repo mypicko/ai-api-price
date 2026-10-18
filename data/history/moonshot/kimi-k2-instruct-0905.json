@@ -1,0 +1,32 @@
+{
+  "modelSlug": "moonshot/kimi-k2-instruct-0905",
+  "series": {
+    "baseten:moonshot/kimi-k2-instruct-0905": [
+      {
+        "input": 0.6,
+        "output": 2.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:moonshot/kimi-k2-instruct-0905": [
+      {
+        "input": 0.5,
+        "output": 2,
+        "cacheRead": 0.4,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:moonshot/kimi-k2-instruct-0905": [
+      {
+        "input": 0.6,
+        "output": 2.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

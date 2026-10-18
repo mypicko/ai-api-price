@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-4b-fp8",
+  "series": {
+    "novita:alibaba/qwen3-4b-fp8": [
+      {
+        "input": 0.03,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

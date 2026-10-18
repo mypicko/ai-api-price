@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-nemo-2407",
+  "series": {
+    "vertex:mistral/mistral-nemo-2407": [
+      {
+        "input": 3,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

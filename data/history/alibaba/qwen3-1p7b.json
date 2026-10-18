@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-1p7b",
+  "series": {
+    "fireworks:alibaba/qwen3-1p7b": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

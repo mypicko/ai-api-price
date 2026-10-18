@@ -1,6 +1,33 @@
 {
   "modelSlug": "alibaba/qwen3.6-35b-a3b",
   "series": {
+    "coreweave:alibaba/qwen3.6-35b-a3b": [
+      {
+        "input": 0.25,
+        "output": 1.25,
+        "cacheRead": 0.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:alibaba/qwen3.6-35b-a3b": [
+      {
+        "input": 0.1,
+        "output": 0.95,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3.6-35b-a3b": [
+      {
+        "input": 0.248,
+        "output": 1.485,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:alibaba/qwen3.6-35b-a3b": [
       {
         "input": 0.248,
@@ -19,6 +46,15 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "parasail:alibaba/qwen3.6-35b-a3b": [
+      {
+        "input": 0.15,
+        "output": 1,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow-cn:alibaba/qwen3.6-35b-a3b": [
       {
         "input": 0.23,
@@ -35,6 +71,15 @@
         "cacheRead": 0.15,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "wandb:alibaba/qwen3.6-35b-a3b": [
+      {
+        "input": 0.25,
+        "output": 1.25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

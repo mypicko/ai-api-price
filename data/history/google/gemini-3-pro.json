@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-3-pro",
+  "series": {
+    "databricks:google/gemini-3-pro": [
+      {
+        "input": 2.49998,
+        "output": 15,
+        "cacheRead": 0.24997,
+        "cacheWrite": 2.49998,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

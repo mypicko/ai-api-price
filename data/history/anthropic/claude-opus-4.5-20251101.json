@@ -1,6 +1,15 @@
 {
   "modelSlug": "anthropic/claude-opus-4.5-20251101",
   "series": {
+    "bedrock:anthropic/claude-opus-4.5-20251101": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:anthropic/claude-opus-4.5-20251101": [
       {
         "input": 5,
@@ -8,6 +17,15 @@
         "cacheRead": 0.5,
         "cacheWrite": 6.25,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:anthropic/claude-opus-4.5-20251101": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

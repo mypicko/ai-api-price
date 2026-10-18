@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-3.8-flash-cyber",
+  "series": {
+    "vertex:google/gemini-3.8-flash-cyber": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "modelSlug": "deepseek/deepseek-r1-distill-qwen-14b",
+  "series": {
+    "fireworks:deepseek/deepseek-r1-distill-qwen-14b": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:deepseek/deepseek-r1-distill-qwen-14b": [
+      {
+        "input": 0.15,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

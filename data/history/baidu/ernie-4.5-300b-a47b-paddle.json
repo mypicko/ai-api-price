@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/ernie-4.5-300b-a47b-paddle",
+  "series": {
+    "novita:baidu/ernie-4.5-300b-a47b-paddle": [
+      {
+        "input": 0.28,
+        "output": 1.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

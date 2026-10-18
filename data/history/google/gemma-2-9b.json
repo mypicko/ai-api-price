@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-2-9b",
+  "series": {
+    "vercel:google/gemma-2-9b": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

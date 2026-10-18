@@ -1,0 +1,41 @@
+{
+  "modelSlug": "alibaba/qwen3-235b-a22b",
+  "series": {
+    "deepinfra:alibaba/qwen3-235b-a22b": [
+      {
+        "input": 0.18,
+        "output": 0.54,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:alibaba/qwen3-235b-a22b": [
+      {
+        "input": 0.22,
+        "output": 0.88,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "hyperbolic:alibaba/qwen3-235b-a22b": [
+      {
+        "input": 2,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:alibaba/qwen3-235b-a22b": [
+      {
+        "input": 0.2,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

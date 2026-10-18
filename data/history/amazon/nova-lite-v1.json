@@ -1,6 +1,15 @@
 {
   "modelSlug": "amazon/nova-lite-v1",
   "series": {
+    "bedrock:amazon/nova-lite-v1": [
+      {
+        "input": 0.06,
+        "output": 0.24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:amazon/nova-lite-v1": [
       {
         "input": 0.06,

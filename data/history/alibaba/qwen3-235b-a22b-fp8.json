@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-235b-a22b-fp8",
+  "series": {
+    "novita:alibaba/qwen3-235b-a22b-fp8": [
+      {
+        "input": 0.2,
+        "output": 0.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

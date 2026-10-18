@@ -1,6 +1,60 @@
 {
   "modelSlug": "minimax/minimax-m3",
   "series": {
+    "coreweave:minimax/minimax-m3": [
+      {
+        "input": 0.23,
+        "output": 0.96,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:minimax/minimax-m3": [
+      {
+        "input": 0.224,
+        "output": 0.88,
+        "cacheRead": 0.0448,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:minimax/minimax-m3": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:minimax/minimax-m3": [
+      {
+        "input": 0.24,
+        "output": 0.96,
+        "cacheRead": 0.048,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:minimax/minimax-m3": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:minimax/minimax-m3": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official-cn:minimax/minimax-m3": [
       {
         "input": 0.3,
@@ -28,6 +82,24 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "parasail:minimax/minimax-m3": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "sambanova:minimax/minimax-m3": [
+      {
+        "input": 0.6,
+        "output": 2.4,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow:minimax/minimax-m3": [
       {
         "input": 0.3,
@@ -35,6 +107,24 @@
         "cacheRead": 0.06,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:minimax/minimax-m3": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:minimax/minimax-m3": [
+      {
+        "input": 0.23,
+        "output": 0.96,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

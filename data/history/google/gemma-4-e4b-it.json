@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-4-e4b-it",
+  "series": {
+    "deepinfra:google/gemma-4-e4b-it": [
+      {
+        "input": 0.02,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

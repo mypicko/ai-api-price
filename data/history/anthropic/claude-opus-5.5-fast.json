@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-opus-5.5-fast",
+  "series": {
+    "azure:anthropic/claude-opus-5.5-fast": [
+      {
+        "input": 8,
+        "output": 40,
+        "cacheRead": 0.4,
+        "cacheWrite": 10,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

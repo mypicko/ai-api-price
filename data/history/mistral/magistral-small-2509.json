@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/magistral-small-2509",
+  "series": {
+    "bedrock:mistral/magistral-small-2509": [
+      {
+        "input": 0.5,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-r1-671b",
+  "series": {
+    "lambda:deepseek/deepseek-r1-671b": [
+      {
+        "input": 0.8,
+        "output": 0.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

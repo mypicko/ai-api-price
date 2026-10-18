@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3-32b-fp8",
+  "series": {
+    "lambda:alibaba/qwen3-32b-fp8": [
+      {
+        "input": 0.05,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3-32b-fp8": [
+      {
+        "input": 0.1,
+        "output": 0.45,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

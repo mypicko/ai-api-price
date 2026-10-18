@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/command-a-reasoning",
+  "series": {
+    "oci:cohere/command-a-reasoning": [
+      {
+        "input": 1.56,
+        "output": 1.56,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

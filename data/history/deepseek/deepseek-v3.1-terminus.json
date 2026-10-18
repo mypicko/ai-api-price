@@ -1,6 +1,24 @@
 {
   "modelSlug": "deepseek/deepseek-v3.1-terminus",
   "series": {
+    "deepinfra:deepseek/deepseek-v3.1-terminus": [
+      {
+        "input": 0.27,
+        "output": 1,
+        "cacheRead": 0.216,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:deepseek/deepseek-v3.1-terminus": [
+      {
+        "input": 0.27,
+        "output": 1,
+        "cacheRead": 0.135,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:deepseek/deepseek-v3.1-terminus": [
       {
         "input": 0.27,

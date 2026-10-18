@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen2.5-coder-7b",
+  "series": {
+    "nebius:alibaba/qwen2.5-coder-7b": [
+      {
+        "input": 0.01,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

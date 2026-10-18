@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-vl-235b-a22b-instruct-fp8",
+  "series": {
+    "gmi:alibaba/qwen3-vl-235b-a22b-instruct-fp8": [
+      {
+        "input": 0.3,
+        "output": 1.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

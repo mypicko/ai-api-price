@@ -1,6 +1,24 @@
 {
   "modelSlug": "alibaba/qwen3.5-27b",
   "series": {
+    "deepinfra:alibaba/qwen3.5-27b": [
+      {
+        "input": 0.26,
+        "output": 2.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3.5-27b": [
+      {
+        "input": 0.3,
+        "output": 2.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:alibaba/qwen3.5-27b": [
       {
         "input": 0.086,

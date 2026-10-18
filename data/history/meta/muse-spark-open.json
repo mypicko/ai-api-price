@@ -1,6 +1,33 @@
 {
   "modelSlug": "meta/muse-spark-open",
   "series": {
+    "baseten:meta/muse-spark-open": [
+      {
+        "input": 1.25,
+        "output": 4.25,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:meta/muse-spark-open": [
+      {
+        "input": 1.25,
+        "output": 4.25,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:meta/muse-spark-open": [
+      {
+        "input": 1.25,
+        "output": 4.25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:meta/muse-spark-open": [
       {
         "input": 1.25,
@@ -8,6 +35,15 @@
         "cacheRead": 0.15,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:meta/muse-spark-open": [
+      {
+        "input": 1.25,
+        "output": 4.25,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

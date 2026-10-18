@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-omni-1.1-flash-preview",
+  "series": {
+    "vertex:google/gemini-omni-1.1-flash-preview": [
+      {
+        "input": 1.5,
+        "output": 9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

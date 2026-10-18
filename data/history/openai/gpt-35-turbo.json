@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-35-turbo",
+  "series": {
+    "azure:openai/gpt-35-turbo": [
+      {
+        "input": 0.5,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

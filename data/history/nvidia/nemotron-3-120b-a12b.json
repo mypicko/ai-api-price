@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nemotron-3-120b-a12b",
+  "series": {
+    "cloudflare:nvidia/nemotron-3-120b-a12b": [
+      {
+        "input": 0.5,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

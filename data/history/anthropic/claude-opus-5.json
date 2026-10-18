@@ -1,6 +1,42 @@
 {
   "modelSlug": "anthropic/claude-opus-5",
   "series": {
+    "azure:anthropic/claude-opus-5": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:anthropic/claude-opus-5": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:anthropic/claude-opus-5": [
+      {
+        "input": 5.00003,
+        "output": 25,
+        "cacheRead": 0.50001,
+        "cacheWrite": 6.25002,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:anthropic/claude-opus-5": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:anthropic/claude-opus-5": [
       {
         "input": 5,
@@ -17,6 +53,15 @@
         "cacheRead": 0.5,
         "cacheWrite": 6.25,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:anthropic/claude-opus-5": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

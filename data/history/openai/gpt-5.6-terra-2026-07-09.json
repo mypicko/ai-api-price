@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-5.6-terra-2026-07-09",
+  "series": {
+    "azure:openai/gpt-5.6-terra-2026-07-09": [
+      {
+        "input": 2,
+        "output": 12,
+        "cacheRead": 0.2,
+        "cacheWrite": 2.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "modelSlug": "meta/llama-guard-3-8b",
+  "series": {
+    "cloudflare:meta/llama-guard-3-8b": [
+      {
+        "input": 0.484,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:meta/llama-guard-3-8b": [
+      {
+        "input": 0.055,
+        "output": 0.055,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:meta/llama-guard-3-8b": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:meta/llama-guard-3-8b": [
+      {
+        "input": 0.02,
+        "output": 0.06,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

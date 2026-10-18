@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-7b-instruct-v0.3",
+  "series": {
+    "together:mistral/mistral-7b-instruct-v0.3": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

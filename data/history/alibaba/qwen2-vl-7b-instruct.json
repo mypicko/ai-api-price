@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen2-vl-7b-instruct",
+  "series": {
+    "fireworks:alibaba/qwen2-vl-7b-instruct": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:alibaba/qwen2-vl-7b-instruct": [
+      {
+        "input": 0.02,
+        "output": 0.06,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

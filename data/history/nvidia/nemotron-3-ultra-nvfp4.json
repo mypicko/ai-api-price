@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nemotron-3-ultra-nvfp4",
+  "series": {
+    "fireworks:nvidia/nemotron-3-ultra-nvfp4": [
+      {
+        "input": 0.6,
+        "output": 2.4,
+        "cacheRead": 0.12,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

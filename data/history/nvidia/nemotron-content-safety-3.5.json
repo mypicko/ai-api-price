@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nemotron-content-safety-3.5",
+  "series": {
+    "deepinfra:nvidia/nemotron-content-safety-3.5": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

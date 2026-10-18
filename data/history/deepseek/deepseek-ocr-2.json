@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-ocr-2",
+  "series": {
+    "novita:deepseek/deepseek-ocr-2": [
+      {
+        "input": 0.03,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

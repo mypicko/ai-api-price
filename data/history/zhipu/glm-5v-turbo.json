@@ -1,6 +1,15 @@
 {
   "modelSlug": "zhipu/glm-5v-turbo",
   "series": {
+    "novita:zhipu/glm-5v-turbo": [
+      {
+        "input": 1.2,
+        "output": 4,
+        "cacheRead": 0.24,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:zhipu/glm-5v-turbo": [
       {
         "input": 5,

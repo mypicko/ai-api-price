@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/pixtral-large-2502",
+  "series": {
+    "bedrock:mistral/pixtral-large-2502": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

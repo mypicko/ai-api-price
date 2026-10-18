@@ -1,6 +1,33 @@
 {
   "modelSlug": "anthropic/claude-fable-5.1",
   "series": {
+    "azure:anthropic/claude-fable-5.1": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 0.25,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:anthropic/claude-fable-5.1": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 0.25,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:anthropic/claude-fable-5.1": [
+      {
+        "input": 10.0001,
+        "output": 50,
+        "cacheRead": 0.25004,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:anthropic/claude-fable-5.1": [
       {
         "input": 10,
@@ -17,6 +44,15 @@
         "cacheRead": 0.25,
         "cacheWrite": 12.5,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vertex:anthropic/claude-fable-5.1": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 0.25,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

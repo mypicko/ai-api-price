@@ -1,6 +1,24 @@
 {
   "modelSlug": "alibaba/qwen2.5-vl-72b-instruct",
   "series": {
+    "nebius:alibaba/qwen2.5-vl-72b-instruct": [
+      {
+        "input": 0.25,
+        "output": 0.75,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen2.5-vl-72b-instruct": [
+      {
+        "input": 0.8,
+        "output": 0.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:alibaba/qwen2.5-vl-72b-instruct": [
       {
         "input": 0.8,
@@ -8,6 +26,15 @@
         "cacheRead": 0.4,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:alibaba/qwen2.5-vl-72b-instruct": [
+      {
+        "input": 0.8,
+        "output": 1,
+        "cacheRead": 0.4,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

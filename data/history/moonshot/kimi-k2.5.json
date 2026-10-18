@@ -1,6 +1,51 @@
 {
   "modelSlug": "moonshot/kimi-k2.5",
   "series": {
+    "azure:moonshot/kimi-k2.5": [
+      {
+        "input": 0.6,
+        "output": 3,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "baseten:moonshot/kimi-k2.5": [
+      {
+        "input": 0.6,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:moonshot/kimi-k2.5": [
+      {
+        "input": 0.6,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:moonshot/kimi-k2.5": [
+      {
+        "input": 0.45,
+        "output": 2.25,
+        "cacheRead": 0.07,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:moonshot/kimi-k2.5": [
+      {
+        "input": 0.57,
+        "output": 2.85,
+        "cacheRead": 0.095,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:moonshot/kimi-k2.5": [
       {
         "input": 0.5,
@@ -17,6 +62,15 @@
         "cacheRead": 0.07,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "wandb:moonshot/kimi-k2.5": [
+      {
+        "input": 0.6,
+        "output": 3,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

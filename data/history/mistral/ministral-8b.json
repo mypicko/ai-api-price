@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/ministral-8b",
+  "series": {
+    "vercel:mistral/ministral-8b": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

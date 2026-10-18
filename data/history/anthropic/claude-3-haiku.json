@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-3-haiku",
+  "series": {
+    "vercel:anthropic/claude-3-haiku": [
+      {
+        "input": 0.25,
+        "output": 1.25,
+        "cacheRead": 0.03,
+        "cacheWrite": 0.3,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

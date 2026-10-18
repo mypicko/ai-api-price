@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen2.5-7b-instruct-turbo",
+  "series": {
+    "together:alibaba/qwen2.5-7b-instruct-turbo": [
+      {
+        "input": 0.3,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

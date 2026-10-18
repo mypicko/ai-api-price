@@ -1,0 +1,23 @@
+{
+  "modelSlug": "mistral/codestral-2501",
+  "series": {
+    "azure:mistral/codestral-2501": [
+      {
+        "input": 0.3,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:mistral/codestral-2501": [
+      {
+        "input": 0.2,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

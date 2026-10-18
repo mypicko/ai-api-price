@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen-mt-plus",
   "series": {
+    "novita:alibaba/qwen-mt-plus": [
+      {
+        "input": 0.25,
+        "output": 0.75,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:alibaba/qwen-mt-plus": [
       {
         "input": 0.259,

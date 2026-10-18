@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/command-light-text",
+  "series": {
+    "bedrock:cohere/command-light-text": [
+      {
+        "input": 0.3,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

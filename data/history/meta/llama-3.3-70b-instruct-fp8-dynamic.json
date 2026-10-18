@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-3.3-70b-instruct-fp8-dynamic",
+  "series": {
+    "oci:meta/llama-3.3-70b-instruct-fp8-dynamic": [
+      {
+        "input": 0.72,
+        "output": 0.72,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

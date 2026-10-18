@@ -1,0 +1,68 @@
+{
+  "modelSlug": "meta/llama-4-scout-17b-16e-instruct",
+  "series": {
+    "azure:meta/llama-4-scout-17b-16e-instruct": [
+      {
+        "input": 0.2,
+        "output": 0.78,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cloudflare:meta/llama-4-scout-17b-16e-instruct": [
+      {
+        "input": 0.27,
+        "output": 0.85,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:meta/llama-4-scout-17b-16e-instruct": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "lambda:meta/llama-4-scout-17b-16e-instruct": [
+      {
+        "input": 0.05,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:meta/llama-4-scout-17b-16e-instruct": [
+      {
+        "input": 0.18,
+        "output": 0.59,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:meta/llama-4-scout-17b-16e-instruct": [
+      {
+        "input": 0.72,
+        "output": 0.72,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:meta/llama-4-scout-17b-16e-instruct": [
+      {
+        "input": 0.25,
+        "output": 0.7,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

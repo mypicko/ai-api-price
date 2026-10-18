@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/fw-nemotron-lightning-3.5-30b-a3b",
+  "series": {
+    "azure:nvidia/fw-nemotron-lightning-3.5-30b-a3b": [
+      {
+        "input": 0.06,
+        "output": 0.22,
+        "cacheRead": 0.01,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,15 @@
 {
   "modelSlug": "mistral/voxtral-small-24b-2507",
   "series": {
+    "bedrock:mistral/voxtral-small-24b-2507": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:mistral/voxtral-small-24b-2507": [
       {
         "input": 0.1,

@@ -1,6 +1,51 @@
 {
   "modelSlug": "google/gemma-3-27b-it",
   "series": {
+    "bedrock:google/gemma-3-27b-it": [
+      {
+        "input": 0.23,
+        "output": 0.38,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:google/gemma-3-27b-it": [
+      {
+        "input": 0.08,
+        "output": 0.16,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:google/gemma-3-27b-it": [
+      {
+        "input": 0.9,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:google/gemma-3-27b-it": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:google/gemma-3-27b-it": [
+      {
+        "input": 0.119,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:google/gemma-3-27b-it": [
       {
         "input": 0,
@@ -17,6 +62,15 @@
         "cacheRead": 0.04,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:google/gemma-3-27b-it": [
+      {
+        "input": 0.08,
+        "output": 0.45,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

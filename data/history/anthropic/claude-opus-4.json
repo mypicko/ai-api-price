@@ -1,0 +1,32 @@
+{
+  "modelSlug": "anthropic/claude-opus-4",
+  "series": {
+    "databricks:anthropic/claude-opus-4": [
+      {
+        "input": 15,
+        "output": 75,
+        "cacheRead": 1.50003,
+        "cacheWrite": 18.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:anthropic/claude-opus-4": [
+      {
+        "input": 15,
+        "output": 75,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:anthropic/claude-opus-4": [
+      {
+        "input": 15,
+        "output": 75,
+        "cacheRead": 1.5,
+        "cacheWrite": 18.75,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

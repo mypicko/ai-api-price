@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/command-latest",
+  "series": {
+    "oci:cohere/command-latest": [
+      {
+        "input": 1.56,
+        "output": 1.56,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "modelSlug": "deepseek/deepseek-r1-distill-llama-70b",
+  "series": {
+    "deepinfra:deepseek/deepseek-r1-distill-llama-70b": [
+      {
+        "input": 0.2,
+        "output": 0.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:deepseek/deepseek-r1-distill-llama-70b": [
+      {
+        "input": 0.9,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:deepseek/deepseek-r1-distill-llama-70b": [
+      {
+        "input": 0.25,
+        "output": 0.75,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:deepseek/deepseek-r1-distill-llama-70b": [
+      {
+        "input": 0.8,
+        "output": 0.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:deepseek/deepseek-r1-distill-llama-70b": [
+      {
+        "input": 0.75,
+        "output": 0.99,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

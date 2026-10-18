@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-7b-instruct-v0.1",
+  "series": {
+    "cloudflare:mistral/mistral-7b-instruct-v0.1": [
+      {
+        "input": 1.923,
+        "output": 1.923,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

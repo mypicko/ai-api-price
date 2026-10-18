@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/seed-2.0-pro",
+  "series": {
+    "deepinfra:bytedance/seed-2.0-pro": [
+      {
+        "input": 0.5,
+        "output": 3,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

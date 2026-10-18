@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-prover-v2-671b",
+  "series": {
+    "novita:deepseek/deepseek-prover-v2-671b": [
+      {
+        "input": 0.7,
+        "output": 2.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,114 @@
 {
   "modelSlug": "meta/llama-3.3-70b-instruct",
   "series": {
+    "azure:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.71,
+        "output": 0.71,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.72,
+        "output": 0.72,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cloudflare:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.293,
+        "output": 2.253,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "coreweave:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.71,
+        "output": 0.71,
+        "cacheRead": 0.71,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "crusoe:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.50001,
+        "output": 1.50003,
+        "cacheRead": 0.50001,
+        "cacheWrite": 0.50001,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.1,
+        "output": 0.32,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "groq:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.59,
+        "output": 0.79,
+        "cacheRead": 0.295,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "hyperbolic:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.12,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.13,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.135,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "oci:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.72,
+        "output": 0.72,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "openrouter:meta/llama-3.3-70b-instruct": [
       {
         "input": 0.1,
@@ -8,6 +116,51 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.22,
+        "output": 0.5,
+        "cacheRead": 0.11,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "sambanova:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.45,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "together:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 1.04,
+        "output": 1.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.72,
+        "output": 0.72,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.71,
+        "output": 0.71,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

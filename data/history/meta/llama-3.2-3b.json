@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-3.2-3b",
+  "series": {
+    "vercel:meta/llama-3.2-3b": [
+      {
+        "input": 0.15,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,6 +1,15 @@
 {
   "modelSlug": "mistral/mistral-large-3",
   "series": {
+    "azure:mistral/mistral-large-3": [
+      {
+        "input": 0.5,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:mistral/mistral-large-3": [
       {
         "input": 0.5,

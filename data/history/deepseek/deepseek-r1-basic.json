@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-r1-basic",
+  "series": {
+    "fireworks:deepseek/deepseek-r1-basic": [
+      {
+        "input": 0.55,
+        "output": 2.19,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

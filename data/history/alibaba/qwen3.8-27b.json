@@ -1,6 +1,78 @@
 {
   "modelSlug": "alibaba/qwen3.8-27b",
   "series": {
+    "cerebras:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.99,
+        "output": 1.49,
+        "cacheRead": 0.99,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "chutes:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.039,
+        "output": 1.25,
+        "cacheRead": 0.0039,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cloudflare:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.45,
+        "output": 3.2,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "coreweave:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.4,
+        "output": 3,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.15,
+        "output": 1.875,
+        "cacheRead": 0.0375,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "groq:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.8,
+        "output": 4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.45,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.42,
+        "output": 3,
+        "cacheRead": 0.085,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:alibaba/qwen3.8-27b": [
       {
         "input": 0.424,
@@ -17,6 +89,24 @@
         "cacheRead": 0.05,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "parasail:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.24,
+        "output": 2.2,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.4,
+        "output": 3,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

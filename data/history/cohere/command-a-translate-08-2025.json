@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/command-a-translate-08-2025",
+  "series": {
+    "oci:cohere/command-a-translate-08-2025": [
+      {
+        "input": 0.09,
+        "output": 0.09,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

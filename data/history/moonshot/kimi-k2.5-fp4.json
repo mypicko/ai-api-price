@@ -1,0 +1,14 @@
+{
+  "modelSlug": "moonshot/kimi-k2.5-fp4",
+  "series": {
+    "together:moonshot/kimi-k2.5-fp4": [
+      {
+        "input": 0.5,
+        "output": 2.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-v3p1-405b-instruct-long",
+  "series": {
+    "fireworks:meta/llama-v3p1-405b-instruct-long": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

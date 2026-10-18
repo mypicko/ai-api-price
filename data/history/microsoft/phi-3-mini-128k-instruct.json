@@ -1,0 +1,14 @@
+{
+  "modelSlug": "microsoft/phi-3-mini-128k-instruct",
+  "series": {
+    "fireworks:microsoft/phi-3-mini-128k-instruct": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

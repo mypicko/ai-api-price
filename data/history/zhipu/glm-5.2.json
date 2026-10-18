@@ -1,6 +1,87 @@
 {
   "modelSlug": "zhipu/glm-5.2",
   "series": {
+    "baseten:zhipu/glm-5.2": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "cloudflare:zhipu/glm-5.2": [
+      {
+        "input": 0.19,
+        "output": 8,
+        "cacheRead": 0.19,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "coreweave:zhipu/glm-5.2": [
+      {
+        "input": 0.62,
+        "output": 2.42,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "databricks:zhipu/glm-5.2": [
+      {
+        "input": 1.4,
+        "output": 4.39999,
+        "cacheRead": 0.25998,
+        "cacheWrite": 1.4,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:zhipu/glm-5.2": [
+      {
+        "input": 0.45,
+        "output": 1.44,
+        "cacheRead": 0.084,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "digitalocean:zhipu/glm-5.2": [
+      {
+        "input": 0.7,
+        "output": 2.2,
+        "cacheRead": 0.105,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:zhipu/glm-5.2": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "nebius:zhipu/glm-5.2": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "novita:zhipu/glm-5.2": [
+      {
+        "input": 0.6496,
+        "output": 2.0416,
+        "cacheRead": 0.12064,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "official:zhipu/glm-5.2": [
       {
         "input": 8,
@@ -19,6 +100,15 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "parasail:zhipu/glm-5.2": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "siliconflow-cn:zhipu/glm-5.2": [
       {
         "input": 1.4,
@@ -35,6 +125,33 @@
         "cacheRead": 0.26,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "together:zhipu/glm-5.2": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vertex:zhipu/glm-5.2": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:zhipu/glm-5.2": [
+      {
+        "input": 0.76,
+        "output": 2.42,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

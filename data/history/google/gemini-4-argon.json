@@ -18,6 +18,15 @@
         "cacheWrite": 0.1875,
         "effectiveDate": "2026-10-18"
       }
+    ],
+    "vertex:google/gemini-4-argon": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }
