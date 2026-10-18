@@ -25,6 +25,9 @@ import { crossCheck } from "./cross-check";
 import { monthOf, shanghaiDate, toIsoSeconds } from "./dates";
 import { diffOfferings } from "./diff";
 import { harmonizeDisplayNames } from "./display-names";
+import { enrichMetadata, resolveMetadata, type ModelMetadata } from "./metadata";
+import { createAliasResolver, createVendorMatcher } from "./normalize";
+import { fetchModelsDevMetadata } from "../sources/modelsdev";
 import { planHistoryUpdates } from "./history";
 import { persistFiles, type PlannedFile } from "./persist";
 import { reconcile, type ReconcileResult } from "./reconcile";
@@ -85,6 +88,7 @@ interface Gathered {
   readonly fx: ResolveFxResult;
   readonly outcomes: readonly SourceOutcome[];
   readonly rec: ReconcileResult;
+  readonly metadata: readonly ModelMetadata[];
 }
 
 async function gather(opts: RunOptions): Promise<Gathered> {
@@ -125,7 +129,12 @@ async function gather(opts: RunOptions): Promise<Gathered> {
     nowIso,
     today,
   });
-  return { startedAt, nowIso, today, files, prev, fx, outcomes, rec };
+  const metadata = resolveMetadata(
+    await fetchModelsDevMetadata(opts.http, logger),
+    createVendorMatcher(files.providers),
+    createAliasResolver(files.aliases),
+  );
+  return { startedAt, nowIso, today, files, prev, fx, outcomes, rec, metadata };
 }
 
 function collectWarnings(
@@ -186,8 +195,9 @@ function baselineSources(g: Gathered): ReadonlySet<string> {
 
 async function analyze(opts: RunOptions, g: Gathered): Promise<Analyzed> {
   const { today, nowIso } = g;
-  const rec = { ...g.rec, offerings: harmonizeDisplayNames(g.rec.offerings) };
   const previous = g.prev.latest?.offerings ?? [];
+  const enriched = enrichMetadata(g.rec.offerings, g.metadata, previous);
+  const rec = { ...g.rec, offerings: harmonizeDisplayNames(enriched) };
   const month = monthOf(today);
   const existingMonth = await loadChangesMonth(opts.dataDir, month);
   const events = diffOfferings({

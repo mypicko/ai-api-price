@@ -296,6 +296,8 @@ export interface RawOffering {
 厂商官网抓取 > LiteLLM > manual
 
 models.dev 的国内站数据使用独立平台 `official-cn` / `siliconflow-cn`，与国际站报价并列展示，不参与上面的优先级竞争。
+
+**元数据补全**（`steps/metadata.ts`）：阿里官网抓取器拿不到展示名和上下文长度，管线从 models.dev 的 `alibaba-cn` 只借用名称、上下文长度、最大输出（**不收价格**）；带日期的快照借用基础模型名称并附上日期（上下文不借）。只填空缺字段；models.dev 某天下载失败时沿用上一次已发布的值，避免字段来回变动。
 厂商平台上转售的别家模型（如阿里国内站上的 DeepSeek、GLM、Kimi）由 `isForeignModel` 过滤。
 ```
 

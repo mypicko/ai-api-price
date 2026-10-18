@@ -2,14 +2,19 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { RawOfferingSchema } from "@aipb/shared";
 import { describe, expect, it } from "vitest";
+import { loadProviders } from "../../src/config-files";
 import { silentLogger } from "../../src/core/logger";
 import {
+  fetchModelsDevMetadata,
   MODELSDEV_URL,
   modelsdevCnSource,
   modelsdevSiliconflowCnSource,
   parseModelsDev,
+  parseModelsDevMetadata,
   toTiers,
 } from "../../src/sources/modelsdev";
+import { resolveMetadata } from "../../src/steps/metadata";
+import { createAliasResolver, createVendorMatcher } from "../../src/steps/normalize";
 import { createFakeHttp, FIXTURES_DIR, noopBrowser, NOW, ROOT_DIR } from "../helpers";
 
 const FIXTURE = path.join(FIXTURES_DIR, "modelsdev/2026-10-18-1.json");
@@ -144,5 +149,57 @@ describe("source/modelsdev 抓取", () => {
     await expect(modelsdevCnSource.fetch({ ...ctx, http })).rejects.toMatchObject({
       code: "E2001",
     });
+  });
+});
+
+describe("source/modelsdev 元数据（只借名称和上下文，不收价格）", () => {
+  it("从 alibaba-cn 解析名称、上下文和最大输出，跳过语音和已弃用模型", async () => {
+    const meta = parseModelsDevMetadata(await loadFixture());
+    expect(meta.every((m) => m.vendorHint === "alibaba")).toBe(true);
+    expect(meta.find((m) => m.modelName === "qwen-flash")).toEqual({
+      vendorHint: "alibaba",
+      modelName: "qwen-flash",
+      displayName: "Qwen Flash",
+      contextWindow: 1000000,
+      maxOutput: 32768,
+    });
+    expect(parseModelsDevMetadata("nope")).toEqual([]);
+  });
+
+  it("下载失败时返回空数组，不抛错", async () => {
+    const http = createFakeHttp({});
+    await expect(fetchModelsDevMetadata(http, silentLogger)).resolves.toEqual([]);
+  });
+
+  it("映射到规范 modelSlug，未知厂商丢弃", async () => {
+    const providers = await loadProviders(ROOT_DIR);
+    const meta = resolveMetadata(
+      [
+        {
+          vendorHint: "alibaba",
+          modelName: "Qwen3-Coder-Plus",
+          displayName: "Qwen3 Coder Plus",
+          contextWindow: 1000000,
+          maxOutput: null,
+        },
+        {
+          vendorHint: "nobody",
+          modelName: "x",
+          displayName: null,
+          contextWindow: null,
+          maxOutput: null,
+        },
+      ],
+      createVendorMatcher(providers),
+      createAliasResolver({}),
+    );
+    expect(meta).toEqual([
+      {
+        modelSlug: "alibaba/qwen3-coder-plus",
+        displayName: "Qwen3 Coder Plus",
+        contextWindow: 1000000,
+        maxOutput: null,
+      },
+    ]);
   });
 });

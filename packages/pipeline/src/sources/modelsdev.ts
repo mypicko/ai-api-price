@@ -6,7 +6,8 @@
  * - cost.tiers[].tier = { type: "context", size }：上下文超过 size 后使用该档价格
  * - 只收文本输入、文本输出且有价格的模型；跳过 status = deprecated
  * - 两个源（official-cn、siliconflow-cn）共用同一次下载
- * - 不收 alibaba-cn：aliyun 抓取器读的已经是「华北2（北京）」地域价，两者重复
+ * - 不收 alibaba-cn 的价格：aliyun 抓取器读的已经是「华北2（北京）」地域价，两者重复；
+ *   只借用它的展示名、上下文长度、最大输出（见 parseModelsDevMetadata 和 steps/metadata）
  * 最后核对：2026-10-18
  */
 import type { RawOffering, RawTier } from "@aipb/shared";
@@ -113,14 +114,17 @@ export function toTiers(
   }));
 }
 
-function isTextChatModel(model: ModelsDevModel): model is ModelsDevModel & { cost: Cost } {
+function isTextModel(model: ModelsDevModel): boolean {
   const io = model.modalities;
   return (
-    model.cost !== undefined &&
     model.status !== "deprecated" &&
     (io?.input.includes("text") ?? false) &&
     (io?.output.includes("text") ?? false)
   );
+}
+
+function isTextChatModel(model: ModelsDevModel): model is ModelsDevModel & { cost: Cost } {
+  return model.cost !== undefined && isTextModel(model);
 }
 
 function splitOrgId(id: string): { vendorHint: string; modelName: string } | null {
@@ -245,3 +249,50 @@ export const modelsdevSiliconflowCnSource = createModelsDevSource(
   "modelsdev-siliconflow-cn",
   "siliconflow-cn",
 );
+
+/** 只借元数据、不收价格的 provider → vendorHint */
+const METADATA_PROVIDERS: Readonly<Record<string, string>> = { "alibaba-cn": "alibaba" };
+
+export interface RawModelMetadata {
+  readonly vendorHint: string;
+  readonly modelName: string;
+  readonly displayName: string | null;
+  readonly contextWindow: number | null;
+  readonly maxOutput: number | null;
+}
+
+export function parseModelsDevMetadata(data: unknown): RawModelMetadata[] {
+  const root = z.record(z.string(), z.unknown()).safeParse(data);
+  if (!root.success || Array.isArray(data)) return [];
+  return Object.entries(METADATA_PROVIDERS).flatMap(([providerId, vendorHint]) => {
+    const provider = ProviderSchema.safeParse(root.data[providerId]);
+    if (!provider.success) return [];
+    return Object.values(provider.data.models).flatMap((item) => {
+      const parsed = ModelSchema.safeParse(item);
+      if (!parsed.success || !isTextModel(parsed.data)) return [];
+      const m = parsed.data;
+      return [
+        {
+          vendorHint,
+          modelName: m.id,
+          displayName: m.name ?? null,
+          contextWindow: positiveOrNull(m.limit?.context),
+          maxOutput: positiveOrNull(m.limit?.output),
+        },
+      ];
+    });
+  });
+}
+
+/** 下载失败不影响主流程：记 warn 日志，返回空数组 */
+export async function fetchModelsDevMetadata(
+  http: HttpClient,
+  logger: Logger,
+): Promise<RawModelMetadata[]> {
+  try {
+    return parseModelsDevMetadata(await download(http));
+  } catch (error) {
+    logger.warn("modelsdev：元数据获取失败，本次只沿用上次的名称和上下文", { error });
+    return [];
+  }
+}
