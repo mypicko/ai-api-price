@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { silentLogger } from "../../src/core/logger";
-import { collectManualOfferings, manualSource } from "../../src/sources/manual";
+import { collectManualOfferings, manualCnSource, manualSource } from "../../src/sources/manual";
 import { createFakeHttp, noopBrowser, NOW } from "../helpers";
 
 let root: string;
@@ -33,6 +33,22 @@ models:
   - model: doubao-lite
     input: 0.3
     output: 0.6
+`;
+
+const CN_YAML = `source: manual-qianfan
+platform: official-cn
+vendor: baidu
+currency: CNY
+unit: per_1k
+sourceUrl: https://cloud.baidu.com/doc/qianfan/s/wmh4sv6ya
+verifiedAt: 2026-10-19
+models:
+  - model: ernie-5.1
+    input: 0.004
+    output: 0.018
+    tiers:
+      - { minInputTokens: 0, maxInputTokens: 32000, input: 0.004, output: 0.018 }
+      - { minInputTokens: 32000, maxInputTokens: 128000, input: 0.006, output: 0.022 }
 `;
 
 beforeEach(async () => {
@@ -76,6 +92,32 @@ describe("source/manual", () => {
     await mkdir(path.join(root, "config/manual"), { recursive: true });
     await writeFile(path.join(root, "config/manual/bad.yaml"), "source: 1\n");
     await expect(manualSource.fetch(ctx())).rejects.toMatchObject({ code: "E3001" });
+  });
+
+  it("按平台分流：official 文件只进 manual，official-cn 文件只进 manual-cn", async () => {
+    await mkdir(path.join(root, "config/manual"), { recursive: true });
+    await writeFile(path.join(root, "config/manual/volcengine.yaml"), YAML);
+    await writeFile(path.join(root, "config/manual/kimi-cn.yaml"), CN_YAML);
+    const official = await manualSource.fetch(ctx());
+    const cn = await manualCnSource.fetch(ctx());
+    expect(official.map((o) => o.modelName)).toEqual(["doubao-pro-32k", "doubao-lite"]);
+    expect(cn.map((o) => o.modelName)).toEqual(["ernie-5.1"]);
+    expect(manualCnSource).toMatchObject({ id: "manual-cn", platform: "official-cn" });
+  });
+
+  it("阶梯价原样传给 RawOffering", async () => {
+    await mkdir(path.join(root, "config/manual"), { recursive: true });
+    await writeFile(path.join(root, "config/manual/kimi-cn.yaml"), CN_YAML);
+    const [ernie] = await manualCnSource.fetch(ctx());
+    expect(ernie).toMatchObject({
+      unit: "per_1k",
+      input: 0.004,
+      output: 0.018,
+      tiers: [
+        { minInputTokens: 0, maxInputTokens: 32000, input: 0.004, output: 0.018 },
+        { minInputTokens: 32000, maxInputTokens: 128000, input: 0.006, output: 0.022 },
+      ],
+    });
   });
 
   it("非 official 平台的文件跳过", () => {

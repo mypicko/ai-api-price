@@ -397,6 +397,8 @@ export const ManualSourceConfigSchema = z.object({
       contextWindow: z.number().int().positive().nullable().optional(),
       maxOutput: z.number().int().positive().nullable().optional(),
       notes: z.string().optional(),
+      /** 阶梯价（按单次输入长度分档），单位与文件的 unit 相同 */
+      tiers: z.array(RawTierSchema).optional(),
     }),
   ),
 });

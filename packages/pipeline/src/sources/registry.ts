@@ -1,7 +1,7 @@
 import { aliyunSource } from "./aliyun";
 import { deepseekSource } from "./deepseek";
 import { litellmSource } from "./litellm";
-import { manualSource } from "./manual";
+import { manualCnSource, manualSource } from "./manual";
 import { modelsdevCnSource, modelsdevSiliconflowCnSource } from "./modelsdev";
 import { moonshotSource } from "./moonshot";
 import { openrouterSource } from "./openrouter";
@@ -25,6 +25,7 @@ export const ALL_SOURCES: readonly Source[] = [
   modelsdevCnSource,
   modelsdevSiliconflowCnSource,
   manualSource,
+  manualCnSource,
 ];
 
 export function selectSources(enabled: readonly string[] | null): readonly Source[] {

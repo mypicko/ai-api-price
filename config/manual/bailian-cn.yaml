@@ -1,0 +1,49 @@
+# 阿里云百炼国内站人民币价格（华北2（北京）地域），人工核对。
+# 来源：模型调用计费页；限时折扣按原价记录，在 notes 中注明。Batch 调用一般为半价，未单独收录。
+source: manual-bailian
+platform: official-cn
+vendor: alibaba
+currency: CNY
+unit: per_1m
+sourceUrl: https://help.aliyun.com/zh/model-studio/model-pricing
+verifiedAt: 2026-10-19
+models:
+  - model: qwen3.8-max
+    displayName: Qwen3.8-Max
+    input: 12
+    output: 36
+    notes: 单次输入 ≤1M；思考与非思考同价；上下文缓存另有折扣
+  - model: qwen3.7-plus
+    displayName: Qwen3.7-Plus
+    input: 2
+    output: 8
+    notes: 当前限时 8 折（此处为原价）；思考模式输出同价
+    tiers:
+      - { minInputTokens: 0, maxInputTokens: 256000, input: 2, output: 8 }
+      - { minInputTokens: 256000, maxInputTokens: 1000000, input: 6, output: 24 }
+  - model: qwen3.8-flash
+    displayName: Qwen3.8-Flash
+    input: 0.8
+    output: 2.7
+    notes: 单次输入 ≤1M；思考与非思考同价
+  - model: qwen-long
+    displayName: Qwen-Long
+    input: 0.5
+    output: 2
+  - model: qwen3-vl-plus
+    displayName: Qwen3-VL-Plus
+    input: 1
+    output: 10
+    tiers:
+      - { minInputTokens: 0, maxInputTokens: 32000, input: 1, output: 10 }
+      - { minInputTokens: 32000, maxInputTokens: 128000, input: 1.5, output: 15 }
+      - { minInputTokens: 128000, maxInputTokens: 256000, input: 3, output: 30 }
+  - model: qwen3-coder-flash
+    displayName: Qwen3-Coder-Flash
+    input: 1
+    output: 4
+    tiers:
+      - { minInputTokens: 0, maxInputTokens: 32000, input: 1, output: 4 }
+      - { minInputTokens: 32000, maxInputTokens: 128000, input: 1.5, output: 6 }
+      - { minInputTokens: 128000, maxInputTokens: 256000, input: 2.5, output: 10 }
+      - { minInputTokens: 256000, maxInputTokens: 1000000, input: 5, output: 25 }

@@ -27,7 +27,15 @@ export const MAX_NAME_LENGTH = 100;
 export const MAX_NOTES_LENGTH = 200;
 
 /** 同一个 Offering ID 被多个源提供时的优先级：厂商官网抓取 > LiteLLM > manual（DEV §3.2） */
-export const SOURCE_PRIORITY: Readonly<Record<string, number>> = { litellm: 2, manual: 1 };
+/**
+ * 数值越大越优先；未列出的（各厂商官网抓取器、models.dev 等）默认 3。
+ * manual-cn 只产出 official-cn 报价，人工核对的国内站价格要压过 models.dev 社区数据。
+ */
+export const SOURCE_PRIORITY: Readonly<Record<string, number>> = {
+  litellm: 2,
+  manual: 1,
+  "manual-cn": 4,
+};
 const DEFAULT_SOURCE_PRIORITY = 3;
 
 export function sourcePriority(sourceId: string): number {

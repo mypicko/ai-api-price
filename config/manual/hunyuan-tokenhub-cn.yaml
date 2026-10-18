@@ -1,0 +1,22 @@
+# 腾讯混元国内站人民币价格（TokenHub，广州地域），人工核对。
+# 混元模型正在迁移到 TokenHub；旧平台的型号见 hunyuan-legacy-cn.yaml。
+source: manual-hunyuan-tokenhub
+platform: official-cn
+vendor: tencent
+currency: CNY
+unit: per_1m
+sourceUrl: https://cloud.tencent.com/document/product/1823/130055
+verifiedAt: 2026-10-19
+models:
+  - { model: hy4-preview, displayName: Hy4 Preview, input: 6, output: 18, cacheRead: 0.3 }
+  - { model: hy3, displayName: Hy3, input: 1, output: 4, cacheRead: 0.25 }
+  - { model: hy-mt2-pro, displayName: Hy-MT2-Pro, input: 0.5, output: 2, notes: 翻译模型 }
+  - { model: hy-mt2-plus, displayName: Hy-MT2-Plus, input: 0.5, output: 2, notes: 翻译模型 }
+  - { model: hy-mt2-lite, displayName: Hy-MT2-Lite, input: 0.3, output: 1.2, notes: 翻译模型 }
+  - {
+      model: hy-role-latest,
+      displayName: Hy-Role-Latest,
+      input: 2.4,
+      output: 9.6,
+      notes: 角色扮演模型,
+    }

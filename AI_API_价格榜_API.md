@@ -864,7 +864,7 @@ platforms:
 
 ```yaml
 source: manual-volcengine
-platform: official
+platform: official # official = 厂商直供（源 manual）；official-cn = 国内站人民币原价（源 manual-cn）
 vendor: bytedance
 currency: CNY
 unit: per_1m
@@ -875,7 +875,14 @@ models:
     input: 0.8
     output: 2.0
     contextWindow: 32000
+    tiers: # 可选：阶梯价（按单次输入长度分档），单位同上
+      - { minInputTokens: 0, maxInputTokens: 32000, input: 0.8, output: 2.0 }
+      - { minInputTokens: 32000, maxInputTokens: 128000, input: 1.2, output: 4.8 }
 ```
+
+- `platform: official` 的文件由 `manual` 源读取，优先级最低（官网抓取 > LiteLLM > manual）
+- `platform: official-cn` 的文件由 `manual-cn` 源读取，显示为「官方（国内站）」，优先级高于 models.dev 社区数据（`modelsdev-cn`）
+- 其他平台的文件会被跳过并记录日志
 
 **`config/overrides.yaml`**：见 `DEV_DOCUMENT.md §3.5`。
 

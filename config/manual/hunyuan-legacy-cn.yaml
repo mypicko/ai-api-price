@@ -1,0 +1,31 @@
+# 腾讯混元旧平台（混元生文计费概述，页面更新 2026-06-26）人民币刊例价，人工核对。
+# 官方说明：混元正在迁移到 TokenHub，旧平台不再新增模型、停止新购。
+source: manual-hunyuan-legacy
+platform: official-cn
+vendor: tencent
+currency: CNY
+unit: per_1m
+sourceUrl: https://cloud.tencent.com/document/product/1729/97731
+verifiedAt: 2026-10-19
+models:
+  - {
+      model: hunyuan-a13b-instruct,
+      displayName: Hunyuan-A13B,
+      input: 0.5,
+      output: 2,
+      notes: 旧平台型号，新购请用 TokenHub,
+    }
+  - {
+      model: hunyuan-turbos-vision,
+      displayName: Hunyuan-TurboS-Vision,
+      input: 3,
+      output: 9,
+      notes: 旧平台型号，新购请用 TokenHub,
+    }
+  - {
+      model: hunyuan-t1-vision,
+      displayName: Hunyuan-T1-Vision,
+      input: 3,
+      output: 9,
+      notes: 旧平台型号，新购请用 TokenHub,
+    }

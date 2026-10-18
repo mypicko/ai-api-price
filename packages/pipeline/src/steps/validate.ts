@@ -22,7 +22,7 @@ import { makeWarning } from "./types";
 
 export const MODEL_COUNT_DROP_RATIO = 0.5;
 /** 不适用 V5 的源 */
-export const V5_EXEMPT_SOURCES: ReadonlySet<string> = new Set(["manual"]);
+export const V5_EXEMPT_SOURCES: ReadonlySet<string> = new Set(["manual", "manual-cn"]);
 
 export interface StructureResult<T = RawOffering> {
   readonly valid: readonly T[];

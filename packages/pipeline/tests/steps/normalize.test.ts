@@ -186,6 +186,8 @@ describe("normalize", () => {
   it("来源优先级：厂商官网 > litellm > manual", () => {
     expect(sourcePriority("deepseek")).toBeGreaterThan(sourcePriority("litellm"));
     expect(sourcePriority("litellm")).toBeGreaterThan(sourcePriority("manual"));
+    // 国内站：人工核对的价格优先于 models.dev 社区数据
+    expect(sourcePriority("manual-cn")).toBeGreaterThan(sourcePriority("modelsdev-cn"));
   });
 });
 

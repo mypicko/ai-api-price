@@ -1,0 +1,53 @@
+# 百度千帆（文心）国内站人民币价格，人工核对。
+# 来源：千帆「模型服务计费」→ 文本生成 → 按量后付费 → 在线推理列（页面更新时间 2026-10-18）
+# 千帆上的 DeepSeek 等第三方模型属于转售，不收录在这里。
+source: manual-qianfan
+platform: official-cn
+vendor: baidu
+currency: CNY
+unit: per_1k
+sourceUrl: https://cloud.baidu.com/doc/qianfan/s/wmh4sv6ya
+verifiedAt: 2026-10-19
+models:
+  - model: ERNIE-5.1
+    displayName: ERNIE 5.1
+    input: 0.004
+    output: 0.018
+    contextWindow: 128000
+    tiers:
+      - { minInputTokens: 0, maxInputTokens: 32000, input: 0.004, output: 0.018 }
+      - { minInputTokens: 32000, maxInputTokens: 128000, input: 0.006, output: 0.022 }
+  - model: ERNIE-5.0
+    displayName: ERNIE 5.0
+    input: 0.006
+    output: 0.024
+    contextWindow: 128000
+    notes: ERNIE-5.0-Thinking 系列同价
+    tiers:
+      - { minInputTokens: 0, maxInputTokens: 32000, input: 0.006, output: 0.024 }
+      - { minInputTokens: 32000, maxInputTokens: 128000, input: 0.01, output: 0.04 }
+  - model: ERNIE-4.5-Turbo-32K
+    displayName: ERNIE 4.5 Turbo 32K
+    input: 0.0008
+    output: 0.0032
+    cacheRead: 0.0002
+    contextWindow: 32000
+    notes: 搜索增强另计 0.004 元/次
+  - model: ERNIE-4.5-Turbo-128K-Preview
+    displayName: ERNIE 4.5 Turbo 128K Preview
+    input: 0.0008
+    output: 0.0032
+    cacheRead: 0.0002
+    contextWindow: 128000
+    notes: 搜索增强另计 0.004 元/次
+  - model: ERNIE-4.5-Turbo-VL-32K
+    displayName: ERNIE 4.5 Turbo VL 32K
+    input: 0.003
+    output: 0.009
+    cacheRead: 0.00075
+    contextWindow: 32000
+  - model: ERNIE-X1.1-Preview
+    displayName: ERNIE X1.1 Preview
+    input: 0.001
+    output: 0.004
+    notes: 官方标注即将下线

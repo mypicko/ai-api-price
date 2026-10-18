@@ -178,7 +178,9 @@ function collectWarnings(
   g: Gathered,
   healthWarnings: readonly Warning[],
 ): Warning[] {
-  const ranManual = g.outcomes.some((o) => o.id === "manual" && o.state !== "skipped");
+  const ranManual = g.outcomes.some(
+    (o) => (o.id === "manual" || o.id === "manual-cn") && o.state !== "skipped",
+  );
   return sortWarnings([
     ...opts.configWarnings,
     ...g.fx.warnings,
