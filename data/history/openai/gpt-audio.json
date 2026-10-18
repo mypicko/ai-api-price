@@ -1,0 +1,23 @@
+{
+  "modelSlug": "openai/gpt-audio",
+  "series": {
+    "official:openai/gpt-audio": [
+      {
+        "input": 2.5,
+        "output": 10,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:openai/gpt-audio": [
+      {
+        "input": 2.5,
+        "output": 10,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

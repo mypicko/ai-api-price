@@ -1,0 +1,23 @@
+{
+  "modelSlug": "google/gemini-2.5-pro",
+  "series": {
+    "official:google/gemini-2.5-pro": [
+      {
+        "input": 1.25,
+        "output": 10,
+        "cacheRead": 0.125,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:google/gemini-2.5-pro": [
+      {
+        "input": 1.25,
+        "output": 10,
+        "cacheRead": 0.125,
+        "cacheWrite": 0.375,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-oss-120b-batch",
+  "series": {
+    "openrouter:openai/gpt-oss-120b-batch": [
+      {
+        "input": 0.0296,
+        "output": 0.136,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

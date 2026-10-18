@@ -1,0 +1,14 @@
+{
+  "modelSlug": "moonshot/kimi-k2",
+  "series": {
+    "openrouter:moonshot/kimi-k2": [
+      {
+        "input": 0.57,
+        "output": 2.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

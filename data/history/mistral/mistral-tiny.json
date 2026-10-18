@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-tiny",
+  "series": {
+    "official:mistral/mistral-tiny": [
+      {
+        "input": 0.25,
+        "output": 0.25,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

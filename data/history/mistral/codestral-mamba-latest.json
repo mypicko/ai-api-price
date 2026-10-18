@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/codestral-mamba-latest",
+  "series": {
+    "official:mistral/codestral-mamba-latest": [
+      {
+        "input": 0.25,
+        "output": 0.25,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

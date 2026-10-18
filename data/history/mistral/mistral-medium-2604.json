@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-medium-2604",
+  "series": {
+    "official:mistral/mistral-medium-2604": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

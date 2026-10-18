@@ -1,0 +1,23 @@
+{
+  "modelSlug": "openai/gpt-oss-120b",
+  "series": {
+    "openrouter:openai/gpt-oss-120b": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:openai/gpt-oss-120b": [
+      {
+        "input": 0.05,
+        "output": 0.45,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

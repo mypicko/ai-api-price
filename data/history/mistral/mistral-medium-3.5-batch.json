@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-medium-3.5-batch",
+  "series": {
+    "openrouter:mistral/mistral-medium-3.5-batch": [
+      {
+        "input": 0.75,
+        "output": 3.75,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

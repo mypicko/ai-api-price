@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/voxtral-small-latest",
+  "series": {
+    "official:mistral/voxtral-small-latest": [
+      {
+        "input": 0.1,
+        "output": 0.4,
+        "cacheRead": 0.01,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

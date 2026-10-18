@@ -1,0 +1,23 @@
+{
+  "modelSlug": "tencent/hy3",
+  "series": {
+    "openrouter:tencent/hy3": [
+      {
+        "input": 0.132,
+        "output": 0.528,
+        "cacheRead": 0.033,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:tencent/hy3": [
+      {
+        "input": 0.132,
+        "output": 0.528,
+        "cacheRead": 0.033,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

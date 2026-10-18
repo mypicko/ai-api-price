@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hy3-preview",
+  "series": {
+    "openrouter:tencent/hy3-preview": [
+      {
+        "input": 0.18,
+        "output": 0.6,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

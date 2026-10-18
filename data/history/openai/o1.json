@@ -1,0 +1,23 @@
+{
+  "modelSlug": "openai/o1",
+  "series": {
+    "official:openai/o1": [
+      {
+        "input": 15,
+        "output": 60,
+        "cacheRead": 7.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:openai/o1": [
+      {
+        "input": 15,
+        "output": 60,
+        "cacheRead": 7.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

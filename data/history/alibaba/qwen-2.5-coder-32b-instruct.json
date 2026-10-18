@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen-2.5-coder-32b-instruct",
+  "series": {
+    "openrouter:alibaba/qwen-2.5-coder-32b-instruct": [
+      {
+        "input": 0.66,
+        "output": 1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

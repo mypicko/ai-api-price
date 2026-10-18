@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/muse-spark-1.2",
+  "series": {
+    "openrouter:meta/muse-spark-1.2": [
+      {
+        "input": 1.25,
+        "output": 4.25,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "amazon/nova-2-lite-v1",
+  "series": {
+    "openrouter:amazon/nova-2-lite-v1": [
+      {
+        "input": 0.3,
+        "output": 2.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

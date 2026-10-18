@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-small-2603-batch",
+  "series": {
+    "openrouter:mistral/mistral-small-2603-batch": [
+      {
+        "input": 0.075,
+        "output": 0.3,
+        "cacheRead": 0.0075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

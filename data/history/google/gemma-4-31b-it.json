@@ -1,0 +1,32 @@
+{
+  "modelSlug": "google/gemma-4-31b-it",
+  "series": {
+    "official:google/gemma-4-31b-it": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:google/gemma-4-31b-it": [
+      {
+        "input": 0.2,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:google/gemma-4-31b-it": [
+      {
+        "input": 0.75,
+        "output": 1,
+        "cacheRead": 0.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

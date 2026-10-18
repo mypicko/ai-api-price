@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/north-mini-code-free",
+  "series": {
+    "openrouter:cohere/north-mini-code-free": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

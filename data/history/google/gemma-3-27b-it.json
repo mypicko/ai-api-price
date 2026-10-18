@@ -1,0 +1,23 @@
+{
+  "modelSlug": "google/gemma-3-27b-it",
+  "series": {
+    "official:google/gemma-3-27b-it": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:google/gemma-3-27b-it": [
+      {
+        "input": 0.08,
+        "output": 0.35,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

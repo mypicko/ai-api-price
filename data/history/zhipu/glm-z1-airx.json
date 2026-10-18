@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-z1-airx",
+  "series": {
+    "official:zhipu/glm-z1-airx": [
+      {
+        "input": 5,
+        "output": 5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

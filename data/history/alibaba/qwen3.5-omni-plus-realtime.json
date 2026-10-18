@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3.5-omni-plus-realtime",
+  "series": {
+    "official:alibaba/qwen3.5-omni-plus-realtime": [
+      {
+        "input": 1.38,
+        "output": 8.25,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

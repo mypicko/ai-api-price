@@ -1,0 +1,32 @@
+{
+  "modelSlug": "deepseek/deepseek-r1",
+  "series": {
+    "official:deepseek/deepseek-r1": [
+      {
+        "input": 0.55,
+        "output": 2.19,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:deepseek/deepseek-r1": [
+      {
+        "input": 0.7,
+        "output": 2.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:deepseek/deepseek-r1": [
+      {
+        "input": 0.5,
+        "output": 2.18,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

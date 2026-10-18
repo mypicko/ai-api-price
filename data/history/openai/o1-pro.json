@@ -1,0 +1,23 @@
+{
+  "modelSlug": "openai/o1-pro",
+  "series": {
+    "official:openai/o1-pro": [
+      {
+        "input": 150,
+        "output": 600,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:openai/o1-pro": [
+      {
+        "input": 150,
+        "output": 600,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

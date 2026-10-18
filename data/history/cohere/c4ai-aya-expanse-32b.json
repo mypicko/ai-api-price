@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/c4ai-aya-expanse-32b",
+  "series": {
+    "official:cohere/c4ai-aya-expanse-32b": [
+      {
+        "input": 0.5,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

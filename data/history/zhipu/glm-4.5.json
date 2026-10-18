@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-4.5",
+  "series": {
+    "openrouter:zhipu/glm-4.5": [
+      {
+        "input": 0.6,
+        "output": 2.2,
+        "cacheRead": 0.11,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

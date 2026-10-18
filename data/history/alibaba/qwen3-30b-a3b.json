@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-30b-a3b",
+  "series": {
+    "openrouter:alibaba/qwen3-30b-a3b": [
+      {
+        "input": 0.12,
+        "output": 0.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

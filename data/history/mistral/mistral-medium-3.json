@@ -1,0 +1,23 @@
+{
+  "modelSlug": "mistral/mistral-medium-3",
+  "series": {
+    "official:mistral/mistral-medium-3": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:mistral/mistral-medium-3": [
+      {
+        "input": 0.4,
+        "output": 2,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

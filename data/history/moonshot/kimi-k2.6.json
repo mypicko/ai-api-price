@@ -1,0 +1,32 @@
+{
+  "modelSlug": "moonshot/kimi-k2.6",
+  "series": {
+    "official:moonshot/kimi-k2.6": [
+      {
+        "input": 0.95,
+        "output": 4,
+        "cacheRead": 0.16,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:moonshot/kimi-k2.6": [
+      {
+        "input": 0.65,
+        "output": 3.41,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:moonshot/kimi-k2.6": [
+      {
+        "input": 0.77,
+        "output": 3.4,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3.7-plus-2026-05-26",
+  "series": {
+    "official:alibaba/qwen3.7-plus-2026-05-26": [
+      {
+        "input": 0.276,
+        "output": 1.101,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

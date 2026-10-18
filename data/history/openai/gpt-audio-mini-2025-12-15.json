@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-audio-mini-2025-12-15",
+  "series": {
+    "official:openai/gpt-audio-mini-2025-12-15": [
+      {
+        "input": 0.6,
+        "output": 2.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/o3-pro-2025-06-10",
+  "series": {
+    "official:openai/o3-pro-2025-06-10": [
+      {
+        "input": 20,
+        "output": 80,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

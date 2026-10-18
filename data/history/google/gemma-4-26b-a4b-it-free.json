@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-4-26b-a4b-it-free",
+  "series": {
+    "openrouter:google/gemma-4-26b-a4b-it-free": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

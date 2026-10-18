@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-rosalind-discovery",
+  "series": {
+    "official:openai/gpt-rosalind-discovery": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "modelSlug": "anthropic/claude-haiku-4.5",
+  "series": {
+    "official:anthropic/claude-haiku-4.5": [
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": 0.1,
+        "cacheWrite": 1.25,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:anthropic/claude-haiku-4.5": [
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": 0.1,
+        "cacheWrite": 1.25,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

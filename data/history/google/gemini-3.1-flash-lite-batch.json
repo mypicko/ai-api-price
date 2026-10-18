@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-3.1-flash-lite-batch",
+  "series": {
+    "openrouter:google/gemini-3.1-flash-lite-batch": [
+      {
+        "input": 0.125,
+        "output": 0.75,
+        "cacheRead": 0.0125,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

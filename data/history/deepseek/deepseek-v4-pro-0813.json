@@ -1,0 +1,23 @@
+{
+  "modelSlug": "deepseek/deepseek-v4-pro-0813",
+  "series": {
+    "openrouter:deepseek/deepseek-v4-pro-0813": [
+      {
+        "input": 0.66,
+        "output": 1.98,
+        "cacheRead": 0.022,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:deepseek/deepseek-v4-pro-0813": [
+      {
+        "input": 1.32,
+        "output": 3.96,
+        "cacheRead": 0.044,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

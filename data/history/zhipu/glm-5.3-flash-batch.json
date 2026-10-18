@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-5.3-flash-batch",
+  "series": {
+    "openrouter:zhipu/glm-5.3-flash-batch": [
+      {
+        "input": 0.05,
+        "output": 0.18,
+        "cacheRead": 0.01,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

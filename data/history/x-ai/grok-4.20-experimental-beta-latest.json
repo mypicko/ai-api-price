@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-4.20-experimental-beta-latest",
+  "series": {
+    "official:x-ai/grok-4.20-experimental-beta-latest": [
+      {
+        "input": 1.25,
+        "output": 2.5,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-4-plus",
+  "series": {
+    "official:zhipu/glm-4-plus": [
+      {
+        "input": 5,
+        "output": 5,
+        "cacheRead": 2.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/codestral-2405",
+  "series": {
+    "official:mistral/codestral-2405": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

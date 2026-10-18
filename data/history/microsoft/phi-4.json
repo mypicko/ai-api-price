@@ -1,0 +1,14 @@
+{
+  "modelSlug": "microsoft/phi-4",
+  "series": {
+    "openrouter:microsoft/phi-4": [
+      {
+        "input": 0.07,
+        "output": 0.14,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

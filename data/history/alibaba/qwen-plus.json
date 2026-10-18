@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen-plus",
+  "series": {
+    "official:alibaba/qwen-plus": [
+      {
+        "input": 0.115,
+        "output": 0.287,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:alibaba/qwen-plus": [
+      {
+        "input": 0.26,
+        "output": 0.78,
+        "cacheRead": 0.052,
+        "cacheWrite": 0.325,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

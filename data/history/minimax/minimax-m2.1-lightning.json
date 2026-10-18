@@ -1,0 +1,14 @@
+{
+  "modelSlug": "minimax/minimax-m2.1-lightning",
+  "series": {
+    "official:minimax/minimax-m2.1-lightning": [
+      {
+        "input": 0.3,
+        "output": 2.4,
+        "cacheRead": 0.03,
+        "cacheWrite": 0.375,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

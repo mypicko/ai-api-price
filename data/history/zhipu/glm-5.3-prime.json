@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-5.3-prime",
+  "series": {
+    "openrouter:zhipu/glm-5.3-prime": [
+      {
+        "input": 2.8,
+        "output": 8.8,
+        "cacheRead": 0.56,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

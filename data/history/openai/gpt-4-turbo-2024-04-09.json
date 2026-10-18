@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-4-turbo-2024-04-09",
+  "series": {
+    "official:openai/gpt-4-turbo-2024-04-09": [
+      {
+        "input": 10,
+        "output": 30,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

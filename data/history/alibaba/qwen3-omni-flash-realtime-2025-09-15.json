@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-omni-flash-realtime-2025-09-15",
+  "series": {
+    "official:alibaba/qwen3-omni-flash-realtime-2025-09-15": [
+      {
+        "input": 0.315,
+        "output": 1.19,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-coder",
+  "series": {
+    "official:deepseek/deepseek-coder": [
+      {
+        "input": 0.14,
+        "output": 0.28,
+        "cacheRead": 0.014,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

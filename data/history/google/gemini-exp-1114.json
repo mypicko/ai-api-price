@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-exp-1114",
+  "series": {
+    "official:google/gemini-exp-1114": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

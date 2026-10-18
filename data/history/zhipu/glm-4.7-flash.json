@@ -1,0 +1,23 @@
+{
+  "modelSlug": "zhipu/glm-4.7-flash",
+  "series": {
+    "official:zhipu/glm-4.7-flash": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:zhipu/glm-4.7-flash": [
+      {
+        "input": 0.0605,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

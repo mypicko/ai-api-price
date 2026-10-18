@@ -1,0 +1,32 @@
+{
+  "modelSlug": "alibaba/qwen3.5-122b-a10b",
+  "series": {
+    "official:alibaba/qwen3.5-122b-a10b": [
+      {
+        "input": 0.115,
+        "output": 0.917,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:alibaba/qwen3.5-122b-a10b": [
+      {
+        "input": 0.26,
+        "output": 2.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:alibaba/qwen3.5-122b-a10b": [
+      {
+        "input": 0.26,
+        "output": 2.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

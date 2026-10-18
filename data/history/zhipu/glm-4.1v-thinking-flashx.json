@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-4.1v-thinking-flashx",
+  "series": {
+    "official:zhipu/glm-4.1v-thinking-flashx": [
+      {
+        "input": 2,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "modelSlug": "x-ai/grok-build-0.1",
+  "series": {
+    "official:x-ai/grok-build-0.1": [
+      {
+        "input": 1,
+        "output": 2,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:x-ai/grok-build-0.1": [
+      {
+        "input": 1,
+        "output": 2,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

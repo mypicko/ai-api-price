@@ -1,0 +1,32 @@
+{
+  "modelSlug": "deepseek/deepseek-v4-pro",
+  "series": {
+    "official:deepseek/deepseek-v4-pro": [
+      {
+        "input": 9,
+        "output": 27,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:deepseek/deepseek-v4-pro": [
+      {
+        "input": 0.2088,
+        "output": 0.4176,
+        "cacheRead": 0.0174,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:deepseek/deepseek-v4-pro": [
+      {
+        "input": 1.50162,
+        "output": 3.135,
+        "cacheRead": 0.135,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

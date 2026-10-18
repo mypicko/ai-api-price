@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3.8-omni-flash",
+  "series": {
+    "official:alibaba/qwen3.8-omni-flash": [
+      {
+        "input": 0.113,
+        "output": 0.382,
+        "cacheRead": 0.014,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:alibaba/qwen3.8-omni-flash": [
+      {
+        "input": 0.15,
+        "output": 0.47,
+        "cacheRead": 0.016,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

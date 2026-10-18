@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-4-assistant",
+  "series": {
+    "official:zhipu/glm-4-assistant": [
+      {
+        "input": 5,
+        "output": 5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

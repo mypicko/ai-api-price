@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/devstral-medium-latest",
+  "series": {
+    "official:mistral/devstral-medium-latest": [
+      {
+        "input": 0.4,
+        "output": 2,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

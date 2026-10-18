@@ -1,0 +1,14 @@
+{
+  "modelSlug": "minimax/minimax-01",
+  "series": {
+    "openrouter:minimax/minimax-01": [
+      {
+        "input": 0.2,
+        "output": 1.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

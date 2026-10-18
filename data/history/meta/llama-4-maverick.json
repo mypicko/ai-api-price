@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-4-maverick",
+  "series": {
+    "openrouter:meta/llama-4-maverick": [
+      {
+        "input": 0.1875,
+        "output": 0.6525,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

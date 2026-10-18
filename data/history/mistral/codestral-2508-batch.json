@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/codestral-2508-batch",
+  "series": {
+    "openrouter:mistral/codestral-2508-batch": [
+      {
+        "input": 0.15,
+        "output": 0.45,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

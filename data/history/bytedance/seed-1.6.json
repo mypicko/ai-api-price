@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/seed-1.6",
+  "series": {
+    "openrouter:bytedance/seed-1.6": [
+      {
+        "input": 0.25,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

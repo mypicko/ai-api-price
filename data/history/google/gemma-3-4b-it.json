@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemma-3-4b-it",
+  "series": {
+    "openrouter:google/gemma-3-4b-it": [
+      {
+        "input": 0.05,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-vl-235b-a22b-instruct",
+  "series": {
+    "openrouter:alibaba/qwen3-vl-235b-a22b-instruct": [
+      {
+        "input": 0.21,
+        "output": 1.9,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

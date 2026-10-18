@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-sonnet-5.5-batch",
+  "series": {
+    "openrouter:anthropic/claude-sonnet-5.5-batch": [
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": 0.05,
+        "cacheWrite": 1.25,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

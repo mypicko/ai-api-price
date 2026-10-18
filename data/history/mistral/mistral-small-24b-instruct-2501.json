@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-small-24b-instruct-2501",
+  "series": {
+    "openrouter:mistral/mistral-small-24b-instruct-2501": [
+      {
+        "input": 0.05,
+        "output": 0.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

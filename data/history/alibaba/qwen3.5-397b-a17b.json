@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3.5-397b-a17b",
+  "series": {
+    "official:alibaba/qwen3.5-397b-a17b": [
+      {
+        "input": 0.172,
+        "output": 1.032,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:alibaba/qwen3.5-397b-a17b": [
+      {
+        "input": 0.5,
+        "output": 3.6,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

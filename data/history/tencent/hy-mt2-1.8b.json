@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hy-mt2-1.8b",
+  "series": {
+    "openrouter:tencent/hy-mt2-1.8b": [
+      {
+        "input": 0.044,
+        "output": 0.177,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

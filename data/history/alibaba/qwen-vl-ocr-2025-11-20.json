@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen-vl-ocr-2025-11-20",
+  "series": {
+    "official:alibaba/qwen-vl-ocr-2025-11-20": [
+      {
+        "input": 0.043,
+        "output": 0.072,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

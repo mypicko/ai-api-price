@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3.5-ocr",
+  "series": {
+    "official:alibaba/qwen3.5-ocr": [
+      {
+        "input": 0.069,
+        "output": 0.275,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "modelSlug": "moonshot/kimi-k2.7-code",
+  "series": {
+    "official:moonshot/kimi-k2.7-code": [
+      {
+        "input": 0.95,
+        "output": 4,
+        "cacheRead": 0.19,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:moonshot/kimi-k2.7-code": [
+      {
+        "input": 0.6712,
+        "output": 3.35,
+        "cacheRead": 0.18,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:moonshot/kimi-k2.7-code": [
+      {
+        "input": 0.85916,
+        "output": 3.8,
+        "cacheRead": 0.17993,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

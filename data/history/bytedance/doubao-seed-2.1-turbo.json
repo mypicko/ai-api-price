@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/doubao-seed-2.1-turbo",
+  "series": {
+    "official:bytedance/doubao-seed-2.1-turbo": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.6,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-2.5-flash-image",
+  "series": {
+    "openrouter:google/gemini-2.5-flash-image": [
+      {
+        "input": 0.3,
+        "output": 2.5,
+        "cacheRead": 0.03,
+        "cacheWrite": 0.0833333,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

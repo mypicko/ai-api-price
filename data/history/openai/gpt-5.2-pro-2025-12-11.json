@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-5.2-pro-2025-12-11",
+  "series": {
+    "official:openai/gpt-5.2-pro-2025-12-11": [
+      {
+        "input": 21,
+        "output": 168,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

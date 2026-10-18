@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-gemma-2-27b-it",
+  "series": {
+    "official:google/gemini-gemma-2-27b-it": [
+      {
+        "input": 0.35,
+        "output": 1.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

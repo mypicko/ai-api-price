@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/learnlm-1.5-pro-experimental",
+  "series": {
+    "official:google/learnlm-1.5-pro-experimental": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

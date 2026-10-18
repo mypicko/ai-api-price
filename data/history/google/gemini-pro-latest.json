@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-pro-latest",
+  "series": {
+    "official:google/gemini-pro-latest": [
+      {
+        "input": 2,
+        "output": 12,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

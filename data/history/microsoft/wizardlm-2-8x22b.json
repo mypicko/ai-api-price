@@ -1,0 +1,14 @@
+{
+  "modelSlug": "microsoft/wizardlm-2-8x22b",
+  "series": {
+    "openrouter:microsoft/wizardlm-2-8x22b": [
+      {
+        "input": 0.62,
+        "output": 0.62,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

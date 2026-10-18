@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nemotron-3.5-super-vl",
+  "series": {
+    "openrouter:nvidia/nemotron-3.5-super-vl": [
+      {
+        "input": 0.1,
+        "output": 0.4,
+        "cacheRead": 0.08,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

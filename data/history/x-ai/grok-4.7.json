@@ -1,0 +1,23 @@
+{
+  "modelSlug": "x-ai/grok-4.7",
+  "series": {
+    "official:x-ai/grok-4.7": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:x-ai/grok-4.7": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

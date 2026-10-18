@@ -1,0 +1,23 @@
+{
+  "modelSlug": "openai/o3-mini",
+  "series": {
+    "official:openai/o3-mini": [
+      {
+        "input": 1.1,
+        "output": 4.4,
+        "cacheRead": 0.55,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:openai/o3-mini": [
+      {
+        "input": 1.1,
+        "output": 4.4,
+        "cacheRead": 0.55,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

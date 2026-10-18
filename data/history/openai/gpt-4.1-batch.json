@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-4.1-batch",
+  "series": {
+    "openrouter:openai/gpt-4.1-batch": [
+      {
+        "input": 1,
+        "output": 4,
+        "cacheRead": 0.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

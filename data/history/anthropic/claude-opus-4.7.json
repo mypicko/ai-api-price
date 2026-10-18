@@ -1,0 +1,23 @@
+{
+  "modelSlug": "anthropic/claude-opus-4.7",
+  "series": {
+    "official:anthropic/claude-opus-4.7": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:anthropic/claude-opus-4.7": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

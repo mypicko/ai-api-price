@@ -1,0 +1,23 @@
+{
+  "modelSlug": "google/gemini-3-flash-preview",
+  "series": {
+    "official:google/gemini-3-flash-preview": [
+      {
+        "input": 0.5,
+        "output": 3,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:google/gemini-3-flash-preview": [
+      {
+        "input": 0.5,
+        "output": 3,
+        "cacheRead": 0.05,
+        "cacheWrite": 0.0833333,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

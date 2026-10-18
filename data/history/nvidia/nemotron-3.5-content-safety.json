@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nemotron-3.5-content-safety",
+  "series": {
+    "openrouter:nvidia/nemotron-3.5-content-safety": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

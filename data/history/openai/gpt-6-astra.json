@@ -1,0 +1,23 @@
+{
+  "modelSlug": "openai/gpt-6-astra",
+  "series": {
+    "official:openai/gpt-6-astra": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:openai/gpt-6-astra": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

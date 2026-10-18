@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-guard-4-12b",
+  "series": {
+    "openrouter:meta/llama-guard-4-12b": [
+      {
+        "input": 0.18,
+        "output": 0.18,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

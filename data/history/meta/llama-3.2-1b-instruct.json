@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/llama-3.2-1b-instruct",
+  "series": {
+    "openrouter:meta/llama-3.2-1b-instruct": [
+      {
+        "input": 0.027,
+        "output": 0.201,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

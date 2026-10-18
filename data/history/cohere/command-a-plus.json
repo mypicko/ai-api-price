@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/command-a-plus",
+  "series": {
+    "openrouter:cohere/command-a-plus": [
+      {
+        "input": 0.3,
+        "output": 1.5,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

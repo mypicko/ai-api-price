@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-build-latest",
+  "series": {
+    "official:x-ai/grok-build-latest": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3.7-max",
+  "series": {
+    "official:alibaba/qwen3.7-max": [
+      {
+        "input": 1.65,
+        "output": 4.951,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:alibaba/qwen3.7-max": [
+      {
+        "input": 1.475,
+        "output": 4.425,
+        "cacheRead": 0.295,
+        "cacheWrite": 1.84375,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

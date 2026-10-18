@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/doubao-seed-2.0-mini",
+  "series": {
+    "official:bytedance/doubao-seed-2.0-mini": [
+      {
+        "input": 0.2,
+        "output": 2,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

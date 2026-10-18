@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/o3-mini-batch",
+  "series": {
+    "openrouter:openai/o3-mini-batch": [
+      {
+        "input": 0.55,
+        "output": 2.2,
+        "cacheRead": 0.275,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

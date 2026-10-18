@@ -1,0 +1,32 @@
+{
+  "modelSlug": "zhipu/glm-5v-turbo",
+  "series": {
+    "official:zhipu/glm-5v-turbo": [
+      {
+        "input": 5,
+        "output": 22,
+        "cacheRead": 1.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:zhipu/glm-5v-turbo": [
+      {
+        "input": 1.2,
+        "output": 4,
+        "cacheRead": 0.24,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:zhipu/glm-5v-turbo": [
+      {
+        "input": 1.2,
+        "output": 4,
+        "cacheRead": 0.24,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

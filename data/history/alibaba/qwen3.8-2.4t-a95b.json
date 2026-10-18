@@ -1,0 +1,32 @@
+{
+  "modelSlug": "alibaba/qwen3.8-2.4t-a95b",
+  "series": {
+    "official:alibaba/qwen3.8-2.4t-a95b": [
+      {
+        "input": 1.65,
+        "output": 4.951,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:alibaba/qwen3.8-2.4t-a95b": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:alibaba/qwen3.8-2.4t-a95b": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

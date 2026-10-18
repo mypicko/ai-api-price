@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-4-0613",
+  "series": {
+    "official:openai/gpt-4-0613": [
+      {
+        "input": 30,
+        "output": 60,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

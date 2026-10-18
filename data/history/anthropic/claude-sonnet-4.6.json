@@ -1,0 +1,23 @@
+{
+  "modelSlug": "anthropic/claude-sonnet-4.6",
+  "series": {
+    "official:anthropic/claude-sonnet-4.6": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": 3.75,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:anthropic/claude-sonnet-4.6": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": 3.75,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

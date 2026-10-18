@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-z1-flash",
+  "series": {
+    "official:zhipu/glm-z1-flash": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

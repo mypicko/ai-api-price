@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nemotron-3-ultra-550b-a55b",
+  "series": {
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b": [
+      {
+        "input": 0.6,
+        "output": 2.4,
+        "cacheRead": 0.12,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

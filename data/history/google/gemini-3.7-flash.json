@@ -1,0 +1,23 @@
+{
+  "modelSlug": "google/gemini-3.7-flash",
+  "series": {
+    "official:google/gemini-3.7-flash": [
+      {
+        "input": 0.75,
+        "output": 3.75,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:google/gemini-3.7-flash": [
+      {
+        "input": 0.75,
+        "output": 3.75,
+        "cacheRead": 0.075,
+        "cacheWrite": 0.0416667,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

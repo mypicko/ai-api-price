@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/chat-latest",
+  "series": {
+    "official:openai/chat-latest": [
+      {
+        "input": 5,
+        "output": 30,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

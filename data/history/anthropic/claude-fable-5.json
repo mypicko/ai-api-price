@@ -1,0 +1,23 @@
+{
+  "modelSlug": "anthropic/claude-fable-5",
+  "series": {
+    "official:anthropic/claude-fable-5": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:anthropic/claude-fable-5": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

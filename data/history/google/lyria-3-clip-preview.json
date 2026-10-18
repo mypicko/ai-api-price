@@ -1,0 +1,23 @@
+{
+  "modelSlug": "google/lyria-3-clip-preview",
+  "series": {
+    "official:google/lyria-3-clip-preview": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:google/lyria-3-clip-preview": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

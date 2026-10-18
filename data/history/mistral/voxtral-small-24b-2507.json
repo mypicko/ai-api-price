@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/voxtral-small-24b-2507",
+  "series": {
+    "openrouter:mistral/voxtral-small-24b-2507": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": 0.01,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

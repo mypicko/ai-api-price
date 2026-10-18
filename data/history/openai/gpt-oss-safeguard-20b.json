@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-oss-safeguard-20b",
+  "series": {
+    "openrouter:openai/gpt-oss-safeguard-20b": [
+      {
+        "input": 0.075,
+        "output": 0.3,
+        "cacheRead": 0.0375,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

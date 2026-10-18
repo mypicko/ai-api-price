@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3-vl-30b-a3b-thinking",
+  "series": {
+    "openrouter:alibaba/qwen3-vl-30b-a3b-thinking": [
+      {
+        "input": 0.29,
+        "output": 1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:alibaba/qwen3-vl-30b-a3b-thinking": [
+      {
+        "input": 0.29,
+        "output": 1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

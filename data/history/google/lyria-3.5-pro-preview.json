@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/lyria-3.5-pro-preview",
+  "series": {
+    "official:google/lyria-3.5-pro-preview": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

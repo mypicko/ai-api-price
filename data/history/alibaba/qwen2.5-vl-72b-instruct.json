@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen2.5-vl-72b-instruct",
+  "series": {
+    "openrouter:alibaba/qwen2.5-vl-72b-instruct": [
+      {
+        "input": 0.8,
+        "output": 1,
+        "cacheRead": 0.4,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

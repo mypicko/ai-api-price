@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-r1-0528",
+  "series": {
+    "openrouter:deepseek/deepseek-r1-0528": [
+      {
+        "input": 0.5,
+        "output": 2.15,
+        "cacheRead": 0.35,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

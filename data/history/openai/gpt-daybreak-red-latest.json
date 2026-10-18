@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-daybreak-red-latest",
+  "series": {
+    "official:openai/gpt-daybreak-red-latest": [
+      {
+        "input": 12.5,
+        "output": 75,
+        "cacheRead": 1.25,
+        "cacheWrite": 15.625,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-flash-latest",
+  "series": {
+    "official:google/gemini-flash-latest": [
+      {
+        "input": 0.75,
+        "output": 3.75,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

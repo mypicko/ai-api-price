@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/ministral-3b-latest",
+  "series": {
+    "official:mistral/ministral-3b-latest": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": 0.01,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

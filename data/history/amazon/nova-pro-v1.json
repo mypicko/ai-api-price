@@ -1,0 +1,23 @@
+{
+  "modelSlug": "amazon/nova-pro-v1",
+  "series": {
+    "official:amazon/nova-pro-v1": [
+      {
+        "input": 0.8,
+        "output": 3.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:amazon/nova-pro-v1": [
+      {
+        "input": 0.8,
+        "output": 3.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

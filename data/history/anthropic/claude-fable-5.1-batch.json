@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-fable-5.1-batch",
+  "series": {
+    "openrouter:anthropic/claude-fable-5.1-batch": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.125,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

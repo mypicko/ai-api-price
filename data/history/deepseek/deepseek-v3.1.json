@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-v3.1",
+  "series": {
+    "siliconflow:deepseek/deepseek-v3.1": [
+      {
+        "input": 0.27,
+        "output": 1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

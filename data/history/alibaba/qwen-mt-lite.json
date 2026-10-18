@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen-mt-lite",
+  "series": {
+    "official:alibaba/qwen-mt-lite": [
+      {
+        "input": 0.086,
+        "output": 0.229,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

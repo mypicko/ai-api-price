@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-4.1-mini-2025-04-14",
+  "series": {
+    "official:openai/gpt-4.1-mini-2025-04-14": [
+      {
+        "input": 0.4,
+        "output": 1.6,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

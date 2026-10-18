@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/seed-2.0-mini",
+  "series": {
+    "openrouter:bytedance/seed-2.0-mini": [
+      {
+        "input": 0.1,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

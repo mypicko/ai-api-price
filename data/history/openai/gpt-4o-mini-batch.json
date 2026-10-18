@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-4o-mini-batch",
+  "series": {
+    "openrouter:openai/gpt-4o-mini-batch": [
+      {
+        "input": 0.075,
+        "output": 0.3,
+        "cacheRead": 0.0375,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

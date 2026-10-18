@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-4.1-nano-batch",
+  "series": {
+    "openrouter:openai/gpt-4.1-nano-batch": [
+      {
+        "input": 0.05,
+        "output": 0.2,
+        "cacheRead": 0.0125,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

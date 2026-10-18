@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3.6-flash-2026-04-16",
+  "series": {
+    "official:alibaba/qwen3.6-flash-2026-04-16": [
+      {
+        "input": 0.165,
+        "output": 0.99,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

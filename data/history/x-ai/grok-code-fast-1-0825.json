@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-code-fast-1-0825",
+  "series": {
+    "official:x-ai/grok-code-fast-1-0825": [
+      {
+        "input": 1,
+        "output": 2,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

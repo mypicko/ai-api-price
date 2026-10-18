@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen-math-plus-2024-09-19",
+  "series": {
+    "official:alibaba/qwen-math-plus-2024-09-19": [
+      {
+        "input": 0.574,
+        "output": 1.721,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/ministral-8b-2512-batch",
+  "series": {
+    "openrouter:mistral/ministral-8b-2512-batch": [
+      {
+        "input": 0.075,
+        "output": 0.075,
+        "cacheRead": 0.0075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

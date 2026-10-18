@@ -1,0 +1,23 @@
+{
+  "modelSlug": "google/gemini-4-argon",
+  "series": {
+    "official:google/gemini-4-argon": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:google/gemini-4-argon": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": 0.1875,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

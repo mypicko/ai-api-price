@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3.8-max-prime",
+  "series": {
+    "official:alibaba/qwen3.8-max-prime": [
+      {
+        "input": 3.301,
+        "output": 9.902,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:alibaba/qwen3.8-max-prime": [
+      {
+        "input": 4,
+        "output": 12,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

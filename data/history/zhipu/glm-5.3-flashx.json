@@ -1,0 +1,23 @@
+{
+  "modelSlug": "zhipu/glm-5.3-flashx",
+  "series": {
+    "official:zhipu/glm-5.3-flashx": [
+      {
+        "input": 2,
+        "output": 7,
+        "cacheRead": 0.57,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:zhipu/glm-5.3-flashx": [
+      {
+        "input": 0.37,
+        "output": 1.25,
+        "cacheRead": 0.09,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

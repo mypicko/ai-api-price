@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-nano-banana-2.1",
+  "series": {
+    "openrouter:google/gemini-nano-banana-2.1": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

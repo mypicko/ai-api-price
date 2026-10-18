@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/o1-2024-12-17",
+  "series": {
+    "official:openai/o1-2024-12-17": [
+      {
+        "input": 15,
+        "output": 60,
+        "cacheRead": 7.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

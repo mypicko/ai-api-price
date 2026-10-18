@@ -1,0 +1,23 @@
+{
+  "modelSlug": "openai/gpt-4o-2024-05-13",
+  "series": {
+    "official:openai/gpt-4o-2024-05-13": [
+      {
+        "input": 5,
+        "output": 15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:openai/gpt-4o-2024-05-13": [
+      {
+        "input": 5,
+        "output": 15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

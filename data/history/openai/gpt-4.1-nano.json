@@ -1,0 +1,23 @@
+{
+  "modelSlug": "openai/gpt-4.1-nano",
+  "series": {
+    "official:openai/gpt-4.1-nano": [
+      {
+        "input": 0.1,
+        "output": 0.4,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:openai/gpt-4.1-nano": [
+      {
+        "input": 0.1,
+        "output": 0.4,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-v4.1-flash-batch",
+  "series": {
+    "openrouter:deepseek/deepseek-v4.1-flash-batch": [
+      {
+        "input": 0.05,
+        "output": 0.15,
+        "cacheRead": 0.004,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

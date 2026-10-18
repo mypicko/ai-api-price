@@ -1,0 +1,23 @@
+{
+  "modelSlug": "google/gemini-3.1-pro-preview-customtools",
+  "series": {
+    "official:google/gemini-3.1-pro-preview-customtools": [
+      {
+        "input": 2,
+        "output": 12,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:google/gemini-3.1-pro-preview-customtools": [
+      {
+        "input": 2,
+        "output": 12,
+        "cacheRead": 0.2,
+        "cacheWrite": 0.375,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

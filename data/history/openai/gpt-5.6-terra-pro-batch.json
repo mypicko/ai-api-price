@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-5.6-terra-pro-batch",
+  "series": {
+    "openrouter:openai/gpt-5.6-terra-pro-batch": [
+      {
+        "input": 1,
+        "output": 6,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

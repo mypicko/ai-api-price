@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/command-a-plus-05-2026",
+  "series": {
+    "official:cohere/command-a-plus-05-2026": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

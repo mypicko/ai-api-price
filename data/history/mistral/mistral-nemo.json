@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-nemo",
+  "series": {
+    "openrouter:mistral/mistral-nemo": [
+      {
+        "input": 0.029,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

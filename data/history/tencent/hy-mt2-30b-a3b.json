@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hy-mt2-30b-a3b",
+  "series": {
+    "openrouter:tencent/hy-mt2-30b-a3b": [
+      {
+        "input": 0.074,
+        "output": 0.295,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

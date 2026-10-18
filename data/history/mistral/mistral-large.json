@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-large",
+  "series": {
+    "openrouter:mistral/mistral-large": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

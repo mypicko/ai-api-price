@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/deep-research-pro-preview-12-2025",
+  "series": {
+    "official:google/deep-research-pro-preview-12-2025": [
+      {
+        "input": 2,
+        "output": 12,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

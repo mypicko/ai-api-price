@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-opus-5-batch",
+  "series": {
+    "openrouter:anthropic/claude-opus-5-batch": [
+      {
+        "input": 2.5,
+        "output": 12.5,
+        "cacheRead": 0.25,
+        "cacheWrite": 3.125,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

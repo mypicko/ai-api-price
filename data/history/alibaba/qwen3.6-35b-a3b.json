@@ -1,0 +1,32 @@
+{
+  "modelSlug": "alibaba/qwen3.6-35b-a3b",
+  "series": {
+    "official:alibaba/qwen3.6-35b-a3b": [
+      {
+        "input": 0.248,
+        "output": 1.485,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:alibaba/qwen3.6-35b-a3b": [
+      {
+        "input": 0.15,
+        "output": 1,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:alibaba/qwen3.6-35b-a3b": [
+      {
+        "input": 0.24,
+        "output": 1.8,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

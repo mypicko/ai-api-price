@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-vl-plus",
+  "series": {
+    "official:alibaba/qwen3-vl-plus": [
+      {
+        "input": 0.143,
+        "output": 1.434,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

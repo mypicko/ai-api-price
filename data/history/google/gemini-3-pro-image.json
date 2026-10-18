@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-3-pro-image",
+  "series": {
+    "openrouter:google/gemini-3-pro-image": [
+      {
+        "input": 2,
+        "output": 12,
+        "cacheRead": 0.2,
+        "cacheWrite": 0.375,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

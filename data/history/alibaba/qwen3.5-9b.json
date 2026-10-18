@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3.5-9b",
+  "series": {
+    "openrouter:alibaba/qwen3.5-9b": [
+      {
+        "input": 0.1,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:alibaba/qwen3.5-9b": [
+      {
+        "input": 0.1,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

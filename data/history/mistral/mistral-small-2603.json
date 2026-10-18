@@ -1,0 +1,23 @@
+{
+  "modelSlug": "mistral/mistral-small-2603",
+  "series": {
+    "official:mistral/mistral-small-2603": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:mistral/mistral-small-2603": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

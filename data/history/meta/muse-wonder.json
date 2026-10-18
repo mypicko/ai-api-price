@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/muse-wonder",
+  "series": {
+    "openrouter:meta/muse-wonder": [
+      {
+        "input": 4,
+        "output": 20,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

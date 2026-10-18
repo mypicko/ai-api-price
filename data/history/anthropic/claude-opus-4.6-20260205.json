@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-opus-4.6-20260205",
+  "series": {
+    "official:anthropic/claude-opus-4.6-20260205": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": 6.25,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

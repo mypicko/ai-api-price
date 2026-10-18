@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-code-fim-latest",
+  "series": {
+    "official:mistral/mistral-code-fim-latest": [
+      {
+        "input": 0.3,
+        "output": 0.9,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-6-sol-pro-batch",
+  "series": {
+    "openrouter:openai/gpt-6-sol-pro-batch": [
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": 0.1,
+        "cacheWrite": 1.25,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-coder-flash-2025-07-28",
+  "series": {
+    "official:alibaba/qwen3-coder-flash-2025-07-28": [
+      {
+        "input": 0.144,
+        "output": 0.574,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

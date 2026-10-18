@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-robotics-er-2-preview",
+  "series": {
+    "official:google/gemini-robotics-er-2-preview": [
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

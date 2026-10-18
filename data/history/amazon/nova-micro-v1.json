@@ -1,0 +1,23 @@
+{
+  "modelSlug": "amazon/nova-micro-v1",
+  "series": {
+    "official:amazon/nova-micro-v1": [
+      {
+        "input": 0.035,
+        "output": 0.14,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:amazon/nova-micro-v1": [
+      {
+        "input": 0.035,
+        "output": 0.14,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

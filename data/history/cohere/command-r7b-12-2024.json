@@ -1,0 +1,23 @@
+{
+  "modelSlug": "cohere/command-r7b-12-2024",
+  "series": {
+    "official:cohere/command-r7b-12-2024": [
+      {
+        "input": 0.0375,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:cohere/command-r7b-12-2024": [
+      {
+        "input": 0.0375,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

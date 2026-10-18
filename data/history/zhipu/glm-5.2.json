@@ -1,0 +1,32 @@
+{
+  "modelSlug": "zhipu/glm-5.2",
+  "series": {
+    "official:zhipu/glm-5.2": [
+      {
+        "input": 8,
+        "output": 28,
+        "cacheRead": 2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:zhipu/glm-5.2": [
+      {
+        "input": 0.62,
+        "output": 2.42,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:zhipu/glm-5.2": [
+      {
+        "input": 1.302,
+        "output": 4.092,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

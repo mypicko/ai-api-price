@@ -1,0 +1,23 @@
+{
+  "modelSlug": "alibaba/qwen3-vl-8b-instruct",
+  "series": {
+    "openrouter:alibaba/qwen3-vl-8b-instruct": [
+      {
+        "input": 0.25,
+        "output": 0.75,
+        "cacheRead": 0.12,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:alibaba/qwen3-vl-8b-instruct": [
+      {
+        "input": 0.18,
+        "output": 0.68,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

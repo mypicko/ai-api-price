@@ -1,0 +1,32 @@
+{
+  "modelSlug": "zhipu/glm-4.5-air",
+  "series": {
+    "official:zhipu/glm-4.5-air": [
+      {
+        "input": 0.8,
+        "output": 2,
+        "cacheRead": 0.16,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:zhipu/glm-4.5-air": [
+      {
+        "input": 0.13,
+        "output": 0.85,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:zhipu/glm-4.5-air": [
+      {
+        "input": 0.14,
+        "output": 0.86,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}
