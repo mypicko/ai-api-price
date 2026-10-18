@@ -166,7 +166,7 @@ gh variable set BASE_PATH --body /
 
 - **What is the "blended price"?** Blended price = (3 × input price + 1 × output price) ÷ 4. Most applications send roughly three times as many input tokens as output tokens, so sorting by this tracks real-world cost more closely.
 - **Why are free models listed last?** Free models are mostly limited-time or experimental versions, so the default sort puts them after paid models. Tick "Free only" to see them on their own.
-- **Why are Alibaba, Kimi and SiliconFlow shown in USD?** The "Official" platform rows are their international-site prices. Rows labelled "Official (China)" and "SiliconFlow (China)" come from [models.dev](https://models.dev) community data: original CNY prices converted to USD. Always check the vendor's own site.
+- **Why are Alibaba, Kimi and SiliconFlow shown in USD?** Alibaba's "Official" rows are the **Beijing region** prices published on Alibaba Cloud's international site (listed in USD). Kimi's "Official" and the "SiliconFlow" rows are international-site prices. Rows labelled "Official (China)" and "SiliconFlow (China)" come from [models.dev](https://models.dev) community data: original CNY prices converted to USD. Always check the vendor's own site.
 - **What does ⚠ next to a price mean?** The latest scrape of that source failed, so the price shown is from the last successful scrape.
 - **Are the prices accurate?** Every price links to its source and passes automatic checks; any price that moves more than 80% in a day is held back until it is confirmed. Prices are still for reference only. **The vendor's official site always wins.**
 
@@ -262,6 +262,6 @@ See [DEV_DOCUMENT.md §7](DEV_DOCUMENT.md#7-环境变量) for the full list and 
 
 ### Known limitations
 
-- Alibaba, Kimi and SiliconFlow are scraped from their international sites, so those prices are in USD. China-site prices are filled in from [models.dev](https://models.dev) community data (shown as "Official (China)" and "SiliconFlow (China)", converted from CNY to USD). Baidu Qianfan has no data yet. The reason is that GitHub Actions runs outside mainland China and cannot reach these China sites. If you need CNY prices from the China sites, run the pipeline on a machine in mainland China or maintain them by hand in `config/manual/`
+- Alibaba is scraped from the Beijing region prices on Alibaba Cloud's international site (listed in USD). Kimi and SiliconFlow are scraped from their international sites, so those prices are in USD. China-site prices for Kimi, MiniMax, StepFun and SiliconFlow are filled in from [models.dev](https://models.dev) community data (shown as "Official (China)" and "SiliconFlow (China)", converted from CNY to USD). Baidu Qianfan has no data yet. The reason is that GitHub Actions runs outside mainland China and cannot reach these China sites. If you need CNY prices from the China sites, run the pipeline on a machine in mainland China or maintain them by hand in `config/manual/`
 - `github.io` can be slow to load from mainland China; consider also deploying to Cloudflare Pages
 - See [DEV_DOCUMENT.md §14](DEV_DOCUMENT.md#14-问题汇总) for the full list of known issues
