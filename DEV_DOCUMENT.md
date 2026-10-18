@@ -536,9 +536,11 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 
 **管线**：`media-normalize.ts` 借用文本的 `normalizeOne`（厂商匹配、别名、S8 白名单），价格不做单位换算；V2 上限 `MAX_MEDIA_PRICE_USD = 50`；V5 单独计数，骤降时只拒绝该源的视频/图像，文本照常更新。`media-lane.ts` 把视频/图像报价转成内部的 Offering 形状（cache\*、tiers、contextWindow 恒为 null，媒体字段放在 `kind` / `unit` / `mediaTiers`），直接复用 `reconcile`（V3/V4/V6/V8）、`diffOfferings`、`planHistoryUpdates` 和原子写入。某个源**第一次**产出视频/图像时只建立基线，不生成 `new_model`。人工覆盖（overrides.yaml）按 Offering ID 同样作用于视频/图像。
 
+**统一搜索入口**：首页搜索框同时搜索视频/图像报价（`MediaMatches`，水合数据只带 `MediaSearchItem` 精简字段）。命中时在价格榜上方列出最多 6 条（视频在前，同类按价格升序），带每秒/每张价格，并链接到 `/media/?q=<关键字>`（图像加 `kind=image`）。视频/图像仍不进入文本价格榜和成本计算器。
+
 **推送**：日报多一节「🎬 视频/图像变动」，价格带单位（`$0.0800/秒`、`$0.0400/张`）。
 
-**网站**：`/media/`（英文 `/en/media/`），视频 / 图像两个标签页，列：模型 · 厂商 · 平台 · 每秒（或每张）· 分辨率（或质量/尺寸）分档 · 输入参考图 · 7 日变化 · 更新；默认按价格升序；搜索匹配名称、模型 ID、厂商和平台；币种切换与文本页共用；页面下方列出最近 90 天的视频/图像变动。接口：`/api/v1/media.json`、`/api/v1/media/changes.json`（API 文档 §2.9、§2.10）。
+**网站**：`/media/`（英文 `/en/media/`），视频 / 图像两个标签页，列：模型 · 厂商 · 平台 · 每秒（或每张）· 分辨率（或质量/尺寸）分档 · 输入参考图 · 7 日变化 · 更新；默认按价格升序；搜索按空格拆词，每个词都要命中名称、模型 ID、厂商或平台；`?kind=` 和 `?q=` 与 URL 同步；币种切换与文本页共用；页面下方列出最近 90 天的视频/图像变动。接口：`/api/v1/media.json`、`/api/v1/media/changes.json`（API 文档 §2.9、§2.10）。
 
 ---
 

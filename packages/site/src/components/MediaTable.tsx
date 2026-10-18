@@ -8,12 +8,14 @@ import type { Locale } from "../lib/locale";
 import { createT, formatDateTime, formatRelative, type MessageKey } from "../lib/i18n";
 import {
   DEFAULT_MEDIA_SORT,
+  MAX_MEDIA_QUERY_LENGTH,
   MEDIA_KINDS,
   countByKind,
   filterMediaRows,
   mediaAriaSort,
   nextMediaSort,
   parseMediaKind,
+  parseMediaQuery,
   sortMediaRows,
   type MediaRow,
   type MediaSort,
@@ -220,21 +222,30 @@ function Row({ row, props }: { row: MediaRow; props: MediaTableProps }) {
   );
 }
 
-function useKind(): [MediaKind, (kind: MediaKind) => void] {
-  const [kind, setKind] = useState<MediaKind>("video");
+interface MediaUrlState {
+  readonly kind: MediaKind;
+  readonly query: string;
+}
+
+/** ?kind= 和 ?q= 与 URL 双向同步（首页统一搜索会带着关键字跳过来） */
+function useMediaUrlState(): [MediaUrlState, (next: MediaUrlState) => void] {
+  const [state, setState] = useState<MediaUrlState>({ kind: "video", query: "" });
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    setKind(parseMediaKind(window.location.search));
+    const search = window.location.search;
+    setState({ kind: parseMediaKind(search), query: parseMediaQuery(search) });
     setReady(true);
   }, []);
   useEffect(() => {
     if (!ready) return;
     const url = new URL(window.location.href);
-    if (kind === "video") url.searchParams.delete("kind");
-    else url.searchParams.set("kind", kind);
+    if (state.kind === "video") url.searchParams.delete("kind");
+    else url.searchParams.set("kind", state.kind);
+    if (state.query.trim() === "") url.searchParams.delete("q");
+    else url.searchParams.set("q", state.query.trim());
     window.history.replaceState(window.history.state, "", url);
-  }, [kind, ready]);
-  return [kind, setKind];
+  }, [state, ready]);
+  return [state, setState];
 }
 
 function Tabs(props: {
@@ -283,8 +294,9 @@ function Tabs(props: {
 export function MediaTable(props: MediaTableProps) {
   const { rows, locale } = props;
   const t = createT(locale);
-  const [kind, setKind] = useKind();
-  const [query, setQuery] = useState("");
+  const [{ kind, query }, setUrlState] = useMediaUrlState();
+  const setKind = (next: MediaKind): void => setUrlState({ kind: next, query });
+  const setQuery = (next: string): void => setUrlState({ kind, query: next });
   const [sort, setSort] = useState<MediaSort>(DEFAULT_MEDIA_SORT);
   const counts = useMemo(() => countByKind(rows), [rows]);
   const shown = useMemo(
@@ -301,7 +313,7 @@ export function MediaTable(props: MediaTableProps) {
           placeholder={t("media.search")}
           aria-label={t("media.search")}
           value={query}
-          maxLength={100}
+          maxLength={MAX_MEDIA_QUERY_LENGTH}
           onChange={(e) => setQuery(e.target.value)}
         />
         <p className="text-small text-text-muted" aria-live="polite" data-testid="media-count">

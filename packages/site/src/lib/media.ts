@@ -13,7 +13,9 @@ import type {
 } from "@aipb/shared";
 import { addDays } from "./dates";
 import { priceAt } from "./derive";
+import type { Locale } from "./locale";
 import { convertCurrency, pctChange } from "./shared-client";
+import { pageHref } from "./url";
 
 export interface MediaPrices {
   readonly input: number | null;
@@ -178,20 +180,26 @@ export interface MediaFilters {
   readonly query: string;
 }
 
-/** 搜索匹配展示名、模型 ID、厂商名和平台名（不区分大小写） */
+/** 参与关键字搜索的字段 */
+interface SearchFields {
+  readonly displayName: string;
+  readonly model: string;
+  readonly vendorName: string;
+  readonly platformName: string;
+}
+
+/** 关键字按空格拆词，每个词都要出现在展示名、模型 ID、厂商名或平台名里（不区分大小写） */
+function matchesQuery(row: SearchFields, query: string): boolean {
+  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const haystack = `${row.displayName} ${row.model} ${row.vendorName} ${row.platformName}`;
+  return terms.every((term) => haystack.toLowerCase().includes(term));
+}
+
 export function filterMediaRows(
   rows: readonly MediaRow[],
   filters: MediaFilters,
 ): readonly MediaRow[] {
-  const q = filters.query.trim().toLowerCase();
-  return rows.filter(
-    (r) =>
-      r.kind === filters.kind &&
-      (q === "" ||
-        [r.displayName, r.model, r.vendorName, r.platformName].some((s) =>
-          s.toLowerCase().includes(q),
-        )),
-  );
+  return rows.filter((r) => r.kind === filters.kind && matchesQuery(r, filters.query));
 }
 
 function sortValue(row: MediaRow, key: MediaSortKey): string | number | null {
@@ -249,4 +257,65 @@ export function countByKind(rows: readonly MediaRow[]): Readonly<Record<MediaKin
     video: rows.filter((r) => r.kind === "video").length,
     image: rows.filter((r) => r.kind === "image").length,
   };
+}
+
+export const MAX_MEDIA_QUERY_LENGTH = 100;
+
+export function parseMediaQuery(search: string): string {
+  return (new URLSearchParams(search).get("q") ?? "").slice(0, MAX_MEDIA_QUERY_LENGTH);
+}
+
+/** 首页统一搜索用的精简条目（首页不需要分档、7 日变化等字段，减小水合数据） */
+export interface MediaSearchItem extends SearchFields {
+  readonly id: string;
+  readonly kind: MediaKind;
+  readonly unit: MediaUnit;
+  readonly currency: Currency;
+  readonly usd: number | null;
+  readonly cny: number | null;
+}
+
+export function toMediaSearchItem(row: MediaRow): MediaSearchItem {
+  return {
+    id: row.id,
+    kind: row.kind,
+    unit: row.unit,
+    displayName: row.displayName,
+    model: row.model,
+    vendorName: row.vendorName,
+    platformName: row.platformName,
+    currency: row.currency,
+    usd: row.usd[0],
+    cny: row.cny[0],
+  };
+}
+
+/** 首页搜索命中的视频/图像报价：空关键字不返回；视频在前，同类按生成价升序 */
+export function searchMedia(
+  items: readonly MediaSearchItem[],
+  query: string,
+): readonly MediaSearchItem[] {
+  if (query.trim() === "") return [];
+  return items
+    .filter((item) => matchesQuery(item, query))
+    .toSorted(
+      (a, b) =>
+        MEDIA_KINDS.indexOf(a.kind) - MEDIA_KINDS.indexOf(b.kind) ||
+        (a.usd ?? Infinity) - (b.usd ?? Infinity) ||
+        a.id.localeCompare(b.id),
+    );
+}
+
+/** 视频/图像页链接，带上关键字和类型（视频是默认类型，不写进 URL） */
+export function mediaSearchHref(
+  base: string,
+  locale: Locale,
+  query: string,
+  kind: MediaKind,
+): string {
+  const params = new URLSearchParams();
+  if (kind !== "video") params.set("kind", kind);
+  if (query.trim() !== "") params.set("q", query.trim());
+  const search = params.toString();
+  return `${pageHref(base, locale, "media/")}${search ? `?${search}` : ""}`;
 }
