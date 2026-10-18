@@ -7,7 +7,10 @@
  * - cents_per_second_video_continuation_<分辨率>：续写，美分/秒
  * - cents_per_image_input（美分/张）、reference_input_images / reference_images（美元/张）：输入参考图
  * - minimum_cents_per_generation：每次最低收费，写入 notes
- * - video_tokens*（按 token）、cents_per_megapixel_second_*（按百万像素·秒）无法换算成每秒，跳过并记 W2003
+ * - video_tokens[_<分辨率>][_without_audio]（Seedance，美元/token）：按 BytePlus ModelArk 的公式
+ *   tokens = 宽 × 高 × 帧率 × 秒数 / 1024，取 16:9 标准尺寸、24fps 换算成美元/秒，每个 supported_resolutions
+ *   一档；无声价不同时另加「无声 <分辨率>」档；*_with_video_input（含视频输入）不收，notes 注明换算前提
+ * - cents_per_megapixel_second_*（按百万像素·秒）以及分辨率无法换算的 video_tokens：跳过并记 W2003
  * 没有不带前缀和分辨率的默认价时，默认价取最便宜的一档。
  */
 import { roundSig, type MediaTier, type RawMediaOffering } from "@aipb/shared";
@@ -32,6 +35,19 @@ const USD_OUTPUT = new RegExp(
   `^(?:(text_to_video|image_to_video|reference)_)?duration_seconds(?:_(with_audio|without_audio))?(?:_${RES})?$`,
 );
 const USD_INPUT = /^(?:reference_input_images|reference_images)$/;
+const TOKEN_SKU = /^video_tokens/;
+
+/** video_tokens 换算：16:9 标准尺寸（BytePlus ModelArk 计费示例所用）、24fps、每 1024 像素·帧 1 token */
+const TOKEN_FPS = 24;
+const PIXELS_PER_TOKEN = 1024;
+const FRAME_SIZES: Readonly<Record<string, readonly [number, number]>> = {
+  "480p": [854, 480],
+  "720p": [1280, 720],
+  "1080p": [1920, 1080],
+  "4k": [3840, 2160],
+};
+export const TOKEN_NOTE =
+  "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计";
 
 export type SkuRole = "output" | "input" | "minimum";
 
@@ -70,10 +86,44 @@ export function parseSku(key: string, value: unknown): ParsedSku | null {
   return { role: kind.role, label: kind.label, usd: roundSig(kind.cents ? amount / 100 : amount) };
 }
 
+/** 每秒视频的 token 数；没有标准尺寸的分辨率（如 768p、2k）返回 null */
+export function videoTokensPerSecond(resolution: string): number | null {
+  const size = FRAME_SIZES[resolution.toLowerCase()];
+  return size ? (size[0] * size[1] * TOKEN_FPS) / PIXELS_PER_TOKEN : null;
+}
+
+function tokenRate(value: unknown): number | null {
+  const amount = typeof value === "number" ? value : Number(value);
+  return value === undefined || value === "" || !Number.isFinite(amount) || amount < 0
+    ? null
+    : amount;
+}
+
+/** 一个分辨率的有声价和无声价（美元/秒）；分辨率自己的单价优先于通用单价 */
+function tokenTiersAt(resolution: string, skus: Readonly<Record<string, unknown>>): ParsedSku[] {
+  const perSecond = videoTokensPerSecond(resolution);
+  if (perSecond === null) return [];
+  const own = tokenRate(skus[`video_tokens_${resolution}`]);
+  const voiced = own ?? tokenRate(skus["video_tokens"]);
+  const silent =
+    tokenRate(skus[`video_tokens_${resolution}_without_audio`]) ??
+    (own === null ? tokenRate(skus["video_tokens_without_audio"]) : null);
+  const tier = (label: string, rate: number): ParsedSku => ({
+    role: "output",
+    label,
+    usd: roundSig(rate * perSecond),
+  });
+  return [
+    ...(voiced === null ? [] : [tier(resolution, voiced)]),
+    ...(silent === null || silent === voiced ? [] : [tier(`无声 ${resolution}`, silent)]),
+  ];
+}
+
 const ModelSchema = z
   .object({
     id: z.string().regex(/^[^/\s]+\/[^\s]+$/),
     name: z.string().optional(),
+    supported_resolutions: z.array(z.string()).nullable().optional(),
     supported_frame_images: z.array(z.string()).nullable().optional(),
     pricing_skus: z.record(z.string(), z.unknown()).nullable().optional(),
   })
@@ -92,25 +142,53 @@ function sortTiers(tiers: readonly MediaTier[]): MediaTier[] {
 interface SkuSplit {
   readonly parsed: readonly ParsedSku[];
   readonly unknown: readonly string[];
+  /** 是否有按 token 换算出的档位（需要在 notes 里注明换算前提） */
+  readonly tokenPriced: boolean;
+}
+
+function splitTokenSkus(model: VideoModel, skus: Readonly<Record<string, unknown>>): SkuSplit {
+  const keys = Object.keys(skus).filter((k) => TOKEN_SKU.test(k));
+  if (keys.length === 0) return { parsed: [], unknown: [], tokenPriced: false };
+  const resolutions = (model.supported_resolutions ?? []).map((r) => r.toLowerCase());
+  const parsed = resolutions.flatMap((r) => tokenTiersAt(r, skus));
+  return parsed.length === 0
+    ? { parsed: [], unknown: keys, tokenPriced: false }
+    : { parsed, unknown: [], tokenPriced: true };
 }
 
 function splitSkus(model: VideoModel): SkuSplit {
-  const entries = Object.entries(model.pricing_skus ?? {});
-  const results = entries.map(([key, value]) => ({ key, sku: parseSku(key, value) }));
+  const skus = Object.fromEntries(
+    Object.entries(model.pricing_skus ?? {}).map(([k, v]) => [k.toLowerCase(), v] as const),
+  );
+  const results = Object.entries(skus)
+    .filter(([key]) => !TOKEN_SKU.test(key))
+    .map(([key, value]) => ({ key, sku: parseSku(key, value) }));
+  const tokens = splitTokenSkus(model, skus);
   return {
-    parsed: results.flatMap((r) => (r.sku ? [r.sku] : [])),
-    unknown: results.flatMap((r) => (r.sku ? [] : [r.key])),
+    parsed: [...results.flatMap((r) => (r.sku ? [r.sku] : [])), ...tokens.parsed],
+    unknown: [...results.flatMap((r) => (r.sku ? [] : [r.key])), ...tokens.unknown],
+    tokenPriced: tokens.tokenPriced,
   };
 }
 
-function toRaw(model: VideoModel, skus: readonly ParsedSku[]): RawMediaOffering | null {
+function buildNotes(skus: readonly ParsedSku[], tokenPriced: boolean): string | null {
+  const minimum = skus.find((s) => s.role === "minimum");
+  const parts = [
+    ...(minimum ? [`每次生成最低 ${minimum.usd} USD`] : []),
+    ...(tokenPriced ? [TOKEN_NOTE] : []),
+  ];
+  return parts.length === 0 ? null : parts.join("；");
+}
+
+function toRaw(model: VideoModel, split: SkuSplit): RawMediaOffering | null {
+  const skus = split.parsed;
   const outputs = skus.filter((s) => s.role === "output");
   const tiers = sortTiers(outputs.filter((s) => s.label !== "").map(toTier));
   const output = outputs.find((s) => s.label === "")?.usd ?? tiers[0]?.output ?? null;
   if (output === null) return null;
   const { vendor, model: name, baseId } = parseModelId(model.id);
   const displayName = cleanDisplayName(model.name);
-  const minimum = skus.find((s) => s.role === "minimum");
+  const notes = buildNotes(skus, split.tokenPriced);
   const raw: RawMediaOffering = {
     vendorHint: vendor,
     modelName: name,
@@ -121,7 +199,7 @@ function toRaw(model: VideoModel, skus: readonly ParsedSku[]): RawMediaOffering 
     output,
     modalities: (model.supported_frame_images?.length ?? 0) > 0 ? ["text", "image"] : ["text"],
     sourceUrl: `https://openrouter.ai/${baseId}`,
-    ...(minimum ? { notes: `每次生成最低 ${minimum.usd} USD` } : {}),
+    ...(notes === null ? {} : { notes }),
   };
   // 只有一档且等于默认价时没有意义，不输出
   const meaningful = tiers.length > 1 || (tiers[0] !== undefined && tiers[0].output !== output);
@@ -138,8 +216,9 @@ export interface OpenRouterVideosParseOptions {
 }
 
 function parseModel(model: VideoModel, logger: Logger): RawMediaOffering | null {
-  const { parsed, unknown } = splitSkus(model);
-  const raw = toRaw(model, parsed);
+  const split = splitSkus(model);
+  const { unknown } = split;
+  const raw = toRaw(model, split);
   if (unknown.length > 0 || !raw) {
     logger.warn(
       raw ? "openrouter：跳过无法识别的视频 SKU" : "openrouter：视频模型的计价方式无法识别，已跳过",

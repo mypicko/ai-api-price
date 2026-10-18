@@ -8,6 +8,7 @@ import {
   OPENROUTER_VIDEOS_URL,
   parseOpenRouterVideos,
   parseSku,
+  videoTokensPerSecond,
 } from "../../src/sources/openrouter-videos";
 import { createFakeHttp, FIXTURES_DIR, noopBrowser, NOW, ROOT_DIR } from "../helpers";
 
@@ -85,16 +86,79 @@ describe("source/openrouter 视频", () => {
     expect(aleph).toMatchObject({ output: 0.28, notes: "每次生成最低 0.56 USD" });
   });
 
-  it("按 token / 按百万像素·秒计价的 SKU 无法换算：跳过并记 W2003", async () => {
+  it("Seedance：video_tokens 按 16:9、24fps 换算成美元/秒，各分辨率写进 tiers", async () => {
+    const seedance = find(await parse(), "seedance-2.0");
+    // 480p = 854×480×24/1024 = 9607.5 token/秒；1080p、4k 有各自的单价
+    expect(seedance).toMatchObject({
+      vendorHint: "bytedance",
+      displayName: "Seedance 2.0",
+      input: null,
+      output: 0.0672525,
+      tiers: [
+        { label: "480p", output: 0.0672525 },
+        { label: "720p", output: 0.1512 },
+        { label: "1080p", output: 0.37422 },
+        { label: "4k", output: 0.7776 },
+      ],
+    });
+    expect(seedance?.notes).toContain("16:9");
+    expect(seedance?.notes).toContain("24fps");
+    expect(find(await parse(), "seedance-2.5")?.tiers).toEqual([
+      { label: "480p", output: 0.1028 },
+      { label: "720p", output: 0.23112 },
+    ]);
+  });
+
+  it("Seedance：无声价不同时加「无声」档位", async () => {
+    const pro = find(await parse(), "seedance-1-5-pro");
+    expect(pro?.output).toBe(0.011529);
+    expect(pro?.tiers).toEqual(
+      expect.arrayContaining([
+        { label: "720p", output: 0.05184 },
+        { label: "无声 720p", output: 0.02592 },
+      ]),
+    );
+    expect(find(await parse(), "seedance-2.0-fast")?.tiers?.map((t) => t.label)).toEqual([
+      "480p",
+      "720p",
+    ]);
+  });
+
+  it("videoTokensPerSecond：已知分辨率按标准 16:9 尺寸，未知为 null", () => {
+    expect(videoTokensPerSecond("480p")).toBe(9607.5);
+    expect(videoTokensPerSecond("720P")).toBe(21600);
+    expect(videoTokensPerSecond("4k")).toBe(194400);
+    expect(videoTokensPerSecond("768p")).toBeNull();
+  });
+
+  it("按 token 计价但分辨率无法换算、按百万像素·秒计价的 SKU：跳过并记 W2003", async () => {
     const lines: string[] = [];
     const list = await parse(createLogger({ level: "warn", write: (l) => lines.push(l) }));
-    expect(list.some((o) => o.modelName.startsWith("seedance"))).toBe(false);
     expect(find(list, "flux-video-upscale")).toBeUndefined();
     const warnings = lines.map((l) => JSON.parse(l) as { code?: string; skus?: string[] });
     expect(warnings.every((w) => w.code === "W2003")).toBe(true);
-    expect(warnings.flatMap((w) => w.skus ?? [])).toEqual(
-      expect.arrayContaining(["video_tokens", "cents_per_megapixel_second_precise"]),
-    );
+    const skus = warnings.flatMap((w) => w.skus ?? []);
+    expect(skus).toContain("cents_per_megapixel_second_precise");
+    expect(skus.some((s) => s.startsWith("video_tokens"))).toBe(false);
+
+    const odd = {
+      data: [
+        {
+          id: "bytedance/seedance-x",
+          supported_resolutions: ["768p"],
+          pricing_skus: { video_tokens: "0.000007" },
+        },
+        { id: "bytedance/seedance-y", pricing_skus: { video_tokens: "0.000007" } },
+      ],
+    };
+    const oddLines: string[] = [];
+    const none = parseOpenRouterVideos(odd, {
+      isKnownVendor: () => true,
+      logger: createLogger({ level: "warn", write: (l) => oddLines.push(l) }),
+    });
+    expect(none).toEqual([]);
+    expect(oddLines).toHaveLength(2);
+    expect(oddLines.every((l) => l.includes('"W2003"') && l.includes("video_tokens"))).toBe(true);
   });
 
   it("只保留已知厂商；全部输出符合 RawMediaOffering", async () => {
@@ -128,7 +192,6 @@ describe("source/openrouter 视频", () => {
       label: "",
       usd: 0.56,
     });
-    expect(parseSku("video_tokens", "0.000007")).toBeNull();
     expect(parseSku("duration_seconds", "-1")).toBeNull();
     expect(parseSku("duration_seconds", "abc")).toBeNull();
   });
