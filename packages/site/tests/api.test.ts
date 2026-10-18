@@ -42,7 +42,13 @@ describe("api", () => {
       "region",
       "website",
     ]);
-    expect(body.data.platforms.map((p) => p.id)).toEqual(["official", "openrouter", "siliconflow"]);
+    expect(body.data.platforms.map((p) => p.id)).toEqual([
+      "official",
+      "official-cn",
+      "openrouter",
+      "siliconflow",
+      "siliconflow-cn",
+    ]);
     expect(body.meta.count).toBe(body.data.vendors.length);
     expect(validateEnvelope("providers", body)).toEqual([]);
   });

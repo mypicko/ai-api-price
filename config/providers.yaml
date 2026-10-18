@@ -190,6 +190,17 @@ vendors:
       allowedSourceDomains: [minimaxi.com, minimax.io],
     }
   - {
+      id: stepfun,
+      nameZh: 阶跃星辰,
+      nameEn: StepFun,
+      region: cn,
+      website: "https://platform.stepfun.com",
+      pricingUrl: "https://platform.stepfun.com/docs/zh/pricing/details",
+      logo: null,
+      matchers: [stepfun, stepfun-ai, 阶跃星辰],
+      allowedSourceDomains: [stepfun.com],
+    }
+  - {
       id: tencent,
       nameZh: 腾讯混元,
       nameEn: Tencent Hunyuan,
@@ -209,6 +220,13 @@ platforms:
       allowedSourceDomains: [githubusercontent.com],
     }
   - {
+      id: official-cn,
+      nameZh: 官方（国内站）,
+      nameEn: Official (China),
+      website: null,
+      allowedSourceDomains: [models.dev],
+    }
+  - {
       id: openrouter,
       nameZh: OpenRouter,
       nameEn: OpenRouter,
@@ -221,4 +239,11 @@ platforms:
       nameEn: SiliconFlow,
       website: "https://siliconflow.cn",
       allowedSourceDomains: [siliconflow.cn, siliconflow.com],
+    }
+  - {
+      id: siliconflow-cn,
+      nameZh: 硅基流动（国内站）,
+      nameEn: SiliconFlow (China),
+      website: "https://siliconflow.cn",
+      allowedSourceDomains: [siliconflow.cn, siliconflow.com, models.dev],
     }
