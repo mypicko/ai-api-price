@@ -1,0 +1,14 @@
+{
+  "modelSlug": "black-forest-labs/flux-video-edit",
+  "series": {
+    "openrouter:black-forest-labs/flux-video-edit": [
+      {
+        "input": null,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

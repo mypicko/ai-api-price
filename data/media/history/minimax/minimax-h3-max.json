@@ -1,0 +1,23 @@
+{
+  "modelSlug": "minimax/minimax-h3-max",
+  "series": {
+    "official:minimax/minimax-h3-max": [
+      {
+        "input": 0.074,
+        "output": 0.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:minimax/minimax-h3-max": [
+      {
+        "input": null,
+        "output": 0.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

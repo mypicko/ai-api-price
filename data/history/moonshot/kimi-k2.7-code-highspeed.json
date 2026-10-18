@@ -1,6 +1,15 @@
 {
   "modelSlug": "moonshot/kimi-k2.7-code-highspeed",
   "series": {
+    "official-cn:moonshot/kimi-k2.7-code-highspeed": [
+      {
+        "input": 1.9,
+        "output": 8,
+        "cacheRead": 0.38,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "official:moonshot/kimi-k2.7-code-highspeed": [
       {
         "input": 1.9,

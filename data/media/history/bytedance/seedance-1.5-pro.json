@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/seedance-1.5-pro",
+  "series": {
+    "openrouter:bytedance/seedance-1.5-pro": [
+      {
+        "input": null,
+        "output": 0.011529,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

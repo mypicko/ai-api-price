@@ -1,0 +1,14 @@
+{
+  "modelSlug": "runway/aleph-2",
+  "series": {
+    "openrouter:runway/aleph-2": [
+      {
+        "input": null,
+        "output": 0.28,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

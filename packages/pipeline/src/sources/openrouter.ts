@@ -6,15 +6,17 @@
  * - 忽略按时段计价的 pricing.overrides，notes 标注「分时段计价」
  * - :free / :batch 等变体作为独立模型：model 加 "-<variant>" 后缀
  * - 只保留 vendor 能匹配 providers.yaml 的条目，未知 vendor 汇总数量后丢弃
+ * - 视频报价在单独的 /api/v1/videos/models，解析见 openrouter-videos.ts；该接口失败时只返回文本报价
  * 最后核对：2026-10-18
  */
-import type { RawOffering } from "@aipb/shared";
+import type { RawMediaOffering, RawOffering } from "@aipb/shared";
 import { z } from "zod";
 import { loadProviders } from "../config-files";
 import { PipelineError } from "../core/errors";
 import type { Logger } from "../core/logger";
 import { createVendorMatcher } from "../steps/normalize";
-import type { Source } from "./types";
+import { OPENROUTER_VIDEOS_URL, parseOpenRouterVideos } from "./openrouter-videos";
+import type { Source, SourceContext } from "./types";
 
 export const OPENROUTER_URL = "https://openrouter.ai/api/v1/models";
 export const TIME_BASED_PRICING_NOTE = "分时段计价";
@@ -134,6 +136,23 @@ export function parseOpenRouter(data: unknown, options: OpenRouterParseOptions):
   return known;
 }
 
+/** 视频接口是附加数据：失败时记日志、返回空数组，不影响文本报价 */
+async function fetchVideos(
+  ctx: SourceContext,
+  isKnownVendor: (vendor: string) => boolean,
+): Promise<readonly RawMediaOffering[]> {
+  try {
+    const data = await ctx.http.getJson(OPENROUTER_VIDEOS_URL, { timeoutMs: 30_000 });
+    return parseOpenRouterVideos(data, { isKnownVendor, logger: ctx.logger });
+  } catch (error) {
+    ctx.logger.warn("openrouter：视频接口抓取失败，本次只返回文本报价", {
+      sourceId: "openrouter",
+      error,
+    });
+    return [];
+  }
+}
+
 export const openrouterSource: Source = {
   id: "openrouter",
   platform: "openrouter",
@@ -141,16 +160,21 @@ export const openrouterSource: Source = {
   timeoutMs: 45_000,
   async fetch(ctx) {
     const matchVendor = createVendorMatcher(await loadProviders(ctx.rootDir));
-    const data = await ctx.http.getJson(OPENROUTER_URL, { timeoutMs: 30_000 });
-    const offerings = parseOpenRouter(data, {
-      isKnownVendor: (v) => matchVendor(v) !== null,
-      logger: ctx.logger,
-    });
+    const isKnownVendor = (v: string): boolean => matchVendor(v) !== null;
+    const [data, videos] = await Promise.all([
+      ctx.http.getJson(OPENROUTER_URL, { timeoutMs: 30_000 }),
+      fetchVideos(ctx, isKnownVendor),
+    ]);
+    const offerings = parseOpenRouter(data, { isKnownVendor, logger: ctx.logger });
     if (offerings.length === 0)
       throw new PipelineError("E2001", "openrouter：没有解析出任何报价", {
         sourceId: "openrouter",
       });
-    ctx.logger.info("openrouter 解析完成", { sourceId: "openrouter", count: offerings.length });
-    return offerings;
+    ctx.logger.info("openrouter 解析完成", {
+      sourceId: "openrouter",
+      count: offerings.length,
+      videoCount: videos.length,
+    });
+    return [...offerings, ...videos];
   },
 };

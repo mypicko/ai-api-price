@@ -196,6 +196,9 @@ describe("isForeignModel", () => {
     expect(isForeignModel("zhipu", "glm-5.2")).toBe(false);
     expect(isForeignModel("deepseek", "deepseek-chat")).toBe(false);
     expect(isForeignModel("openai", "gpt-4o")).toBe(false);
+    expect(isForeignModel("alibaba", "minimax-m2.5")).toBe(true);
+    expect(isForeignModel("alibaba", "moonshot-kimi-k2-instruct")).toBe(true);
+    expect(isForeignModel("minimax", "minimax-m3")).toBe(false);
   });
 
   it("normalizeOne 丢弃转售模型", () => {

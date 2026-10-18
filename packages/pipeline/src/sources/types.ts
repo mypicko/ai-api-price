@@ -3,7 +3,7 @@
  * 抓取器只返回原始数据：不做单位换算、币种换算、slug 规范化，不写文件。
  * 失败时抛 PipelineError，不要返回空数组冒充成功。
  */
-import type { RawOffering, SourceKind } from "@aipb/shared";
+import type { RawMediaOffering, RawOffering, SourceKind } from "@aipb/shared";
 import type { BrowserClient } from "../core/browser";
 import type { HttpClient } from "../core/http";
 import type { Logger } from "../core/logger";
@@ -17,6 +17,9 @@ export interface SourceContext {
   readonly rootDir: string;
 }
 
+/** 抓取器的单条输出：文本 token 报价，或带 media 字段的视频/图像报价 */
+export type SourceItem = RawOffering | RawMediaOffering;
+
 export interface Source {
   /** 唯一 ID，例如 "deepseek"、"openrouter" */
   readonly id: string;
@@ -25,5 +28,5 @@ export interface Source {
   readonly kind: SourceKind;
   /** 单次抓取总超时（毫秒） */
   readonly timeoutMs: number;
-  fetch(ctx: SourceContext): Promise<readonly RawOffering[]>;
+  fetch(ctx: SourceContext): Promise<readonly SourceItem[]>;
 }

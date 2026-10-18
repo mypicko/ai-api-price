@@ -21,6 +21,7 @@ import { ALL_SOURCES } from "./sources/registry";
 import { runPipeline } from "./steps/run";
 import { parseRunFlags } from "./tools/cli-args";
 import { runNotifyTest } from "./tools/notify-test";
+import { MEDIA_DIR } from "./steps/media-lane";
 import { formatQuarantine, loadQuarantine } from "./tools/quarantine-list";
 import { runSnapshot } from "./tools/snapshot";
 import { validateDataDir } from "./tools/validate-data";
@@ -157,6 +158,7 @@ async function dispatch(command: string | undefined, args: readonly string[]): P
   if (command === "validate") return commandValidate();
   if (command === "quarantine:list") {
     out(formatQuarantine(await loadQuarantine(DATA_DIR)));
+    out(formatQuarantine(await loadQuarantine(DATA_DIR, MEDIA_DIR), "视频/图像隔离区"));
     return 0;
   }
   const rt = createRuntime();

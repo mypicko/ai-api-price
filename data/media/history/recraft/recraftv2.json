@@ -1,0 +1,14 @@
+{
+  "modelSlug": "recraft/recraftv2",
+  "series": {
+    "official:recraft/recraftv2": [
+      {
+        "input": null,
+        "output": 0.022,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

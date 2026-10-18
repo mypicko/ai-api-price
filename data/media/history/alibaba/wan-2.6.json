@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/wan-2.6",
+  "series": {
+    "openrouter:alibaba/wan-2.6": [
+      {
+        "input": null,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

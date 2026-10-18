@@ -1,6 +1,15 @@
 {
   "modelSlug": "minimax/minimax-m2.1",
   "series": {
+    "official-cn:minimax/minimax-m2.1": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.03,
+        "cacheWrite": 0.375,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "official:minimax/minimax-m2.1": [
       {
         "input": 0.3,

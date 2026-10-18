@@ -1,0 +1,14 @@
+{
+  "modelSlug": "kling/kling-v3.0-pro",
+  "series": {
+    "openrouter:kling/kling-v3.0-pro": [
+      {
+        "input": null,
+        "output": 0.112,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

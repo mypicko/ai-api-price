@@ -1,0 +1,14 @@
+{
+  "modelSlug": "stability/stable-image-ultra",
+  "series": {
+    "official:stability/stable-image-ultra": [
+      {
+        "input": null,
+        "output": 0.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

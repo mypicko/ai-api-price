@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/veo-3.1-lite-generate-preview",
+  "series": {
+    "official:google/veo-3.1-lite-generate-preview": [
+      {
+        "input": null,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

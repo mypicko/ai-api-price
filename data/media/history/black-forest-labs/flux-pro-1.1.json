@@ -1,0 +1,14 @@
+{
+  "modelSlug": "black-forest-labs/flux-pro-1.1",
+  "series": {
+    "official:black-forest-labs/flux-pro-1.1": [
+      {
+        "input": null,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

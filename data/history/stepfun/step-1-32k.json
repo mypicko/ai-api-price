@@ -1,0 +1,14 @@
+{
+  "modelSlug": "stepfun/step-1-32k",
+  "series": {
+    "official-cn:stepfun/step-1-32k": [
+      {
+        "input": 2.05,
+        "output": 9.59,
+        "cacheRead": 0.41,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

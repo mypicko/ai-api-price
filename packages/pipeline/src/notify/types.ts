@@ -1,7 +1,13 @@
 /**
  * Notifier 推送契约（API 文档 §3.2）。
  */
-import type { ChangeEvent, QuarantineEntry, RunSummary, SourceResult } from "@aipb/shared";
+import type {
+  ChangeEvent,
+  MediaUnit,
+  QuarantineEntry,
+  RunSummary,
+  SourceResult,
+} from "@aipb/shared";
 import type { AppConfig, ChannelId } from "../config";
 
 export interface ReportError {
@@ -17,6 +23,10 @@ export interface DailyReport {
   readonly sources: readonly SourceResult[];
   /** 本次新增的变动 */
   readonly changes: readonly ChangeEvent[];
+  /** 本次新增的视频/图像变动（价格按秒 / 按张） */
+  readonly mediaChanges?: readonly ChangeEvent[];
+  /** 视频/图像 offeringId → 计价单位 */
+  readonly mediaUnits?: Readonly<Record<string, MediaUnit>>;
   /** 本次新进入隔离区的条目 */
   readonly quarantined: readonly QuarantineEntry[];
   readonly errors: readonly ReportError[];

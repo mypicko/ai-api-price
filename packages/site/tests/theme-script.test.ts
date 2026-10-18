@@ -112,7 +112,8 @@ describe("endpoints", () => {
       "Sitemap: https://a.github.io/sitemap.xml",
     );
     const model = fixtureModel();
-    expect(sitemapPaths(model)).toHaveLength(4 + model.models.length);
+    expect(sitemapPaths(model)).toHaveLength(5 + model.models.length);
+    expect(sitemapPaths(model)).toContain("media/");
     expect(rssXml(model, "zh", "https://a.io", "/x/")).toContain("https://a.io/x/models/");
   });
 });

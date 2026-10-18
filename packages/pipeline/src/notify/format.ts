@@ -3,10 +3,12 @@
  * 输出纯文本行，各渠道自行转义。
  */
 import {
+  formatMediaPrice,
   formatPct,
   formatPrice,
   type ChangeEvent,
   type ChangeField,
+  type MediaUnit,
   type QuarantineEntry,
 } from "@aipb/shared";
 import type { DailyReport } from "./types";
@@ -36,16 +38,38 @@ function platformLabel(platform: string): string {
   return PLATFORM_LABEL[platform] ?? platform;
 }
 
-function describeField(field: ChangeField, currency: ChangeEvent["currency"]): string {
-  const label = FIELD_LABEL[field.field];
-  const fmt = (v: number | null): string =>
-    field.field === "contextWindow" ? String(v ?? "—") : formatPrice(v, currency);
+/** 视频/图像：input = 输入参考图，output = 生成价 */
+const MEDIA_FIELD_LABEL: Readonly<Partial<Record<ChangeField["field"], string>>> = {
+  input: "输入图",
+  output: "生成",
+};
+const MEDIA_EVENT_ICON: Readonly<Record<ChangeEvent["type"], string>> = {
+  price_down: "🔻",
+  price_up: "🔺",
+  new_model: "🆕",
+  removed: "⛔",
+  restored: "♻️",
+  context_change: "",
+};
+
+function describeField(
+  field: ChangeField,
+  currency: ChangeEvent["currency"],
+  unit?: MediaUnit,
+): string {
+  const label = (unit && MEDIA_FIELD_LABEL[field.field]) ?? FIELD_LABEL[field.field];
+  const fmt = (v: number | null): string => {
+    if (field.field === "contextWindow") return String(v ?? "—");
+    if (!unit) return formatPrice(v, currency);
+    // 输入参考图总是按张计价
+    return formatMediaPrice(v, currency, field.field === "input" ? "per_image" : unit);
+  };
   return `${label} ${fmt(field.old)}→${fmt(field.new)}（${formatPct(field.pct)}）`;
 }
 
-function describeEvent(event: ChangeEvent): string {
+function describeEvent(event: ChangeEvent, unit?: MediaUnit): string {
   const name = `${event.displayName}（${platformLabel(event.platform)}）`;
-  const fields = event.fields.map((f) => describeField(f, event.currency)).join("，");
+  const fields = event.fields.map((f) => describeField(f, event.currency, unit)).join("，");
   const confirmed = event.confirmedFromQuarantine ? " [隔离后确认]" : "";
   return fields === "" ? name : `${name} ${fields}${confirmed}`;
 }
@@ -77,7 +101,15 @@ function statusLine(report: DailyReport): string {
 }
 
 function eventsOf(report: DailyReport, type: ChangeEvent["type"]): readonly string[] {
-  return report.changes.filter((e) => e.type === type).map(describeEvent);
+  return report.changes.filter((e) => e.type === type).map((e) => describeEvent(e));
+}
+
+/** 视频/图像变动合成一节，每条前面带类型图标 */
+function mediaEvents(report: DailyReport): readonly string[] {
+  const units = report.mediaUnits ?? {};
+  return (report.mediaChanges ?? [])
+    .filter((e) => e.type !== "context_change")
+    .map((e) => `${MEDIA_EVENT_ICON[e.type]} ${describeEvent(e, units[e.offeringId])}`);
 }
 
 export function buildReportText(report: DailyReport): ReportText {
@@ -94,6 +126,7 @@ export function buildReportText(report: DailyReport): ReportText {
     section("🆕", "新模型", eventsOf(report, "new_model")),
     section("⛔", "下架", eventsOf(report, "removed")),
     section("♻️", "重新上架", eventsOf(report, "restored")),
+    section("🎬", "视频/图像变动", mediaEvents(report)),
     section(
       "🚧",
       "隔离待确认",
@@ -111,7 +144,7 @@ export function buildReportText(report: DailyReport): ReportText {
 
 /** 是否值得推送：有变动、有告警、隔离区新增，或 NOTIFY_ON_SUCCESS */
 export function shouldNotify(report: DailyReport, notifyOnSuccess: boolean): boolean {
-  const notable = report.changes.some((e) =>
+  const notable = [...report.changes, ...(report.mediaChanges ?? [])].some((e) =>
     ["price_down", "price_up", "new_model", "removed"].includes(e.type),
   );
   const hasErrors =

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/imagen-3.0-generate-001",
+  "series": {
+    "official:google/imagen-3.0-generate-001": [
+      {
+        "input": null,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

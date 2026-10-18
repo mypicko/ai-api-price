@@ -117,6 +117,42 @@ describe("notify/format", () => {
     expect(text.lines.find((l) => l.startsWith("❗"))).toBe("❗ 告警 1：E1005 zhipu 连续失败");
   });
 
+  it("视频/图像变动单独一节，价格带每秒 / 每张单位", () => {
+    const h3 = "official:minimax/minimax-h3";
+    const text = buildReportText(
+      report({
+        mediaChanges: [
+          event({
+            offeringId: h3,
+            displayName: "MiniMax-H3",
+            currency: "USD",
+            fields: [
+              { field: "output", old: 0.08, new: 0.06, pct: -0.25 },
+              { field: "input", old: 0.04, new: 0.05, pct: 0.25 },
+            ],
+          }),
+          event({ type: "new_model", fields: [], displayName: "Veo 4", currency: "USD" }),
+          event({ type: "context_change", displayName: "ignored" }),
+        ],
+        mediaUnits: { [h3]: "per_second" },
+      }),
+    );
+    expect(text.lines).toContain(
+      "🎬 视频/图像变动 2：🔻 MiniMax-H3（官方） 生成 $0.0800/秒→$0.0600/秒（-25%），" +
+        "输入图 $0.0400/张→$0.0500/张（+25%）；🆕 Veo 4（官方）",
+    );
+    const quiet = report({
+      changes: [],
+      quarantined: [],
+      errors: [],
+      sources: [source("a", "ok")],
+    });
+    expect(shouldNotify({ ...quiet, mediaChanges: [event({ type: "new_model" })] }, false)).toBe(
+      true,
+    );
+    expect(shouldNotify(quiet, false)).toBe(false);
+  });
+
   it("超过 5 条时折叠；无变动时说明", () => {
     const many = Array.from({ length: 7 }, (_, i) => event({ id: `e${i}`, displayName: `M${i}` }));
     const line = buildReportText(report({ changes: many })).lines.find((l) => l.startsWith("🔻"));

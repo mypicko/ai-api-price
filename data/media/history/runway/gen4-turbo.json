@@ -1,0 +1,14 @@
+{
+  "modelSlug": "runway/gen4-turbo",
+  "series": {
+    "official:runway/gen4-turbo": [
+      {
+        "input": null,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

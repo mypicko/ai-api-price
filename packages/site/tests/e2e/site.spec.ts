@@ -31,7 +31,8 @@ test.describe("首页", () => {
     await page.goto("/");
     const header = page.locator("th", { has: page.getByRole("button", { name: /^输出/ }) });
     await expect(header).toHaveAttribute("aria-sort", "none");
-    await expect(bodyRows(page).first()).toContainText("免费");
+    // 默认排序中免费模型排在付费模型之后
+    await expect(bodyRows(page).first()).not.toContainText("免费");
     await header.getByRole("button").click();
     await expect(header).toHaveAttribute("aria-sort", "ascending");
     await header.getByRole("button").click();
@@ -64,6 +65,36 @@ test.describe("首页", () => {
     await expect(bodyRows(page)).toHaveCount(8);
   });
 
+  test("模型筛选：下拉框盖在表头之上，跟随厂商联动并同步到 URL", async ({ page }) => {
+    await page.goto("/");
+    const picker = page.getByTestId("model-filter");
+    await picker.locator("summary").click();
+    // 下拉列表中心点上方的元素必须属于下拉框，而不是被表格的 sticky 表头盖住
+    const list = picker.locator("fieldset");
+    const box = await list.boundingBox();
+    expect(box).not.toBeNull();
+    const onTop = await page.evaluate(
+      ([x, y]) =>
+        document.elementFromPoint(x ?? 0, y ?? 0)?.closest("[data-testid=model-filter]") !== null,
+      [(box?.x ?? 0) + 40, (box?.y ?? 0) + 20],
+    );
+    expect(onTop).toBe(true);
+    await picker.getByPlaceholder("输入名称过滤").fill("deepseek");
+    await picker.getByLabel(/DeepSeek-V3/).check();
+    await expect(page).toHaveURL(/model=deepseek%2Fdeepseek-chat/);
+    const count = await bodyRows(page).count();
+    expect(count).toBeGreaterThan(0);
+    for (const row of await bodyRows(page).all()) await expect(row).toContainText("DeepSeek-V3");
+    // 点击外部关闭下拉框
+    await page.locator("h1").click();
+    await expect(picker).not.toHaveAttribute("open", "");
+    // 换成别的厂商时，已选的 DeepSeek 模型被自动清掉
+    await page.getByTestId("vendor-filter").locator("summary").click();
+    await page.getByTestId("vendor-filter").getByLabel("OpenAI").check();
+    await expect(page).not.toHaveURL(/model=/);
+    await expect(page).toHaveURL(/vendor=openai/);
+  });
+
   test("币种切换：价格换算，选择保存在 localStorage", async ({ page }) => {
     await page.goto("/?q=gpt-4o");
     const cell = bodyRows(page).first().locator("td").nth(2);
@@ -90,6 +121,7 @@ test.describe("首页", () => {
 
   test("暗色模式：切换后加 html.dark，刷新不闪白", async ({ page }) => {
     await page.goto("/");
+    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
     await page.getByTestId("theme-toggle").getByRole("button", { name: "深色" }).click();
     await expect(page.locator("html")).toHaveClass(/dark/);
     const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
@@ -141,6 +173,8 @@ test.describe("其他页面", () => {
 
   test("变动日志：按类型和厂商筛选", async ({ page }) => {
     await page.goto("/changes/");
+    // ChangeLog 是 client:idle，并行跑测试时水合可能晚于第一次 selectOption
+    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
     const items = page.getByTestId("change-log").locator("ol > li");
     const total = await items.count();
     expect(total).toBeGreaterThan(10);
@@ -158,6 +192,77 @@ test.describe("其他页面", () => {
     await expect(failed).toContainText("8");
     await expect(failed).toContainText("E1003");
     await expect(page.getByTestId("quarantine")).toContainText("Qwen Plus");
+  });
+
+  test("视频/图像：独立页面，按秒 / 按张计价，标签切换同步到 URL", async ({ page }) => {
+    const errors = collectErrors(page);
+    await page.goto("/");
+    await page.getByRole("link", { name: "视频/图像" }).click();
+    await expect(page).toHaveURL(/\/media\/$/);
+    const table = page.getByTestId("media-table");
+    await expect(table).toHaveAttribute("data-kind", "video");
+    await expect(table.locator("tbody tr")).toHaveCount(5);
+    await expect(table.locator("thead")).toContainText("每秒");
+    const h3 = table.locator('tr[data-id="official:minimax/minimax-h3"]');
+    await expect(h3).toContainText("MiniMax-H3");
+    await expect(h3).toContainText("768p");
+    await expect(h3).toContainText("2k");
+    await page.getByRole("button", { name: "$ USD" }).click();
+    // 列：厂商 · 平台 · 每秒 …
+    await expect(h3.locator("td").nth(1)).toHaveText("官方");
+    await expect(h3.locator("td").nth(2).locator(".cur-USD")).toHaveText("$0.0800");
+    await expect(h3.locator("td").nth(2).locator(".cur-CNY")).toBeHidden();
+    // 默认按每秒价格升序
+    await expect(table.locator("tbody tr").first()).toContainText("MiniMax-H3");
+    await page.getByRole("tab", { name: /图像/ }).click();
+    await expect(page).toHaveURL(/kind=image/);
+    await expect(table).toHaveAttribute("data-kind", "image");
+    await expect(table.locator("thead")).toContainText("每张");
+    await expect(table.locator("tbody tr")).toHaveCount(5);
+    await page.getByPlaceholder("搜索模型或厂商").fill("stability");
+    await expect(table.locator("tbody tr")).toHaveCount(1);
+    await expect(page.getByTestId("media-changes")).toContainText("MiniMax-H3");
+    await page.reload();
+    await expect(page.getByRole("tab", { name: /图像/ })).toHaveAttribute("aria-selected", "true");
+    await page.waitForLoadState("networkidle");
+    expect(errors).toEqual([]);
+  });
+
+  test("视频/图像不进入文本价格榜和计算器", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByTestId("price-table")).not.toContainText("MiniMax-H3");
+    await page.goto("/en/media/");
+    await expect(page.getByTestId("media-table").locator("thead")).toContainText("Per second");
+  });
+
+  test("统一搜索：首页搜索命中视频/图像模型时给出入口，跳转后带上关键字", async ({ page }) => {
+    const errors = collectErrors(page);
+    await page.goto("/");
+    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
+    await expect(page.getByTestId("media-matches")).toHaveCount(0);
+    await page.getByPlaceholder(/搜索模型/).fill("MiniMax H3");
+    const matches = page.getByTestId("media-matches");
+    await expect(matches).toContainText("2 个报价匹配「MiniMax H3」");
+    await expect(matches).toContainText("MiniMax-H3");
+    await expect(matches).toContainText("/秒");
+    await expect(page.getByTestId("price-table")).not.toContainText("MiniMax-H3");
+    await matches.getByRole("link", { name: /查看全部/ }).click();
+    await expect(page).toHaveURL(/\/media\/\?q=MiniMax\+H3$/);
+    await expect(page.getByPlaceholder("搜索模型或厂商")).toHaveValue("MiniMax H3");
+    const table = page.getByTestId("media-table");
+    await expect(table.locator("tbody tr")).toHaveCount(2);
+    await page.getByPlaceholder("搜索模型或厂商").fill("");
+    await expect(page).toHaveURL(/\/media\/$/);
+    await page.goto("/en/");
+    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
+    await page.getByPlaceholder(/Search models/).fill("flux");
+    await page
+      .getByTestId("media-matches")
+      .getByRole("link", { name: /View all/ })
+      .click();
+    await expect(page).toHaveURL(/\/en\/media\/\?kind=image&q=flux$/);
+    await expect(page.getByTestId("media-table")).toHaveAttribute("data-kind", "image");
+    expect(errors).toEqual([]);
   });
 
   test("404 页面", async ({ page }) => {

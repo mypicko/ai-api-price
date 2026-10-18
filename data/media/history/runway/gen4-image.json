@@ -1,0 +1,14 @@
+{
+  "modelSlug": "runway/gen4-image",
+  "series": {
+    "official:runway/gen4-image": [
+      {
+        "input": 0.05,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

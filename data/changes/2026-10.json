@@ -1,0 +1,117 @@
+{
+  "month": "2026-10",
+  "events": [
+    {
+      "id": "2026-10-18-openrouter:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.072,
+          "new": 0.04,
+          "pct": -0.4444
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T13:19:57Z"
+    },
+    {
+      "id": "2026-10-18-openrouter:stepfun/step-3.5-flash-1",
+      "type": "new_model",
+      "offeringId": "openrouter:stepfun/step-3.5-flash",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-3.5-flash",
+      "displayName": "Step 3.5 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T13:55:23Z"
+    },
+    {
+      "id": "2026-10-18-openrouter:stepfun/step-3.7-flash-1",
+      "type": "new_model",
+      "offeringId": "openrouter:stepfun/step-3.7-flash",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-3.7-flash",
+      "displayName": "Step 3.7 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T13:55:23Z"
+    },
+    {
+      "id": "2026-10-18-openrouter:stepfun/step-5-preview-1",
+      "type": "new_model",
+      "offeringId": "openrouter:stepfun/step-5-preview",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-5-preview",
+      "displayName": "Step 5 Preview",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T13:55:23Z"
+    },
+    {
+      "id": "2026-10-18-openrouter:zhipu/glm-5.3-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "output",
+          "old": 4.8,
+          "new": 2.5,
+          "pct": -0.4792
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T13:19:57Z"
+    },
+    {
+      "id": "2026-10-18-openrouter:zhipu/glm-5.3-2",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "output",
+          "old": 2.5,
+          "new": 1.8,
+          "pct": -0.28
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T13:55:23Z"
+    },
+    {
+      "id": "2026-10-18-siliconflow:stepfun/step-3.5-flash-1",
+      "type": "new_model",
+      "offeringId": "siliconflow:stepfun/step-3.5-flash",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-3.5-flash",
+      "displayName": "Step-3.5-Flash",
+      "platform": "siliconflow",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T13:55:23Z"
+    }
+  ]
+}

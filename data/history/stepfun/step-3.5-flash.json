@@ -1,0 +1,41 @@
+{
+  "modelSlug": "stepfun/step-3.5-flash",
+  "series": {
+    "official-cn:stepfun/step-3.5-flash": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:stepfun/step-3.5-flash": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow-cn:stepfun/step-3.5-flash": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "siliconflow:stepfun/step-3.5-flash": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

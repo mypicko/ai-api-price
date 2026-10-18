@@ -12,6 +12,7 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 13,
+      "mediaOfferingCount": 11,
       "durationMs": 2310,
       "errorCode": null,
       "errorMessage": null,

@@ -1,0 +1,3472 @@
+{
+  "schemaVersion": "1.1.0",
+  "generatedAt": "2026-10-18T15:04:20Z",
+  "dataDate": "2026-10-18",
+  "offerings": [
+    {
+      "id": "official:alibaba/happyhorse-1.0-i2v",
+      "vendor": "alibaba",
+      "model": "happyhorse-1.0-i2v",
+      "modelSlug": "alibaba/happyhorse-1.0-i2v",
+      "displayName": "happyhorse-1.0-i2v",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.220034,
+      "tiers": [
+        {
+          "label": "720p",
+          "output": 0.123769
+        },
+        {
+          "label": "1080p",
+          "output": 0.220034
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-0-i2v",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/happyhorse-1.0-r2v",
+      "vendor": "alibaba",
+      "model": "happyhorse-1.0-r2v",
+      "modelSlug": "alibaba/happyhorse-1.0-r2v",
+      "displayName": "happyhorse-1.0-r2v",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.220034,
+      "tiers": [
+        {
+          "label": "720p",
+          "output": 0.123769
+        },
+        {
+          "label": "1080p",
+          "output": 0.220034
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-0-r2v",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/happyhorse-1.0-t2v",
+      "vendor": "alibaba",
+      "model": "happyhorse-1.0-t2v",
+      "modelSlug": "alibaba/happyhorse-1.0-t2v",
+      "displayName": "happyhorse-1.0-t2v",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.220034,
+      "tiers": [
+        {
+          "label": "720p",
+          "output": 0.123769
+        },
+        {
+          "label": "1080p",
+          "output": 0.220034
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-0-t2v",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/happyhorse-1.1-i2v",
+      "vendor": "alibaba",
+      "model": "happyhorse-1.1-i2v",
+      "modelSlug": "alibaba/happyhorse-1.1-i2v",
+      "displayName": "happyhorse-1.1-i2v",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.165026,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0618845
+        },
+        {
+          "label": "720p",
+          "output": 0.123769
+        },
+        {
+          "label": "1080p",
+          "output": 0.165026
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-1-i2v",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/happyhorse-1.1-r2v",
+      "vendor": "alibaba",
+      "model": "happyhorse-1.1-r2v",
+      "modelSlug": "alibaba/happyhorse-1.1-r2v",
+      "displayName": "happyhorse-1.1-r2v",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.165026,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0618845
+        },
+        {
+          "label": "720p",
+          "output": 0.123769
+        },
+        {
+          "label": "1080p",
+          "output": 0.165026
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-1-r2v",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/happyhorse-1.1-t2v",
+      "vendor": "alibaba",
+      "model": "happyhorse-1.1-t2v",
+      "modelSlug": "alibaba/happyhorse-1.1-t2v",
+      "displayName": "happyhorse-1.1-t2v",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.165026,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0618845
+        },
+        {
+          "label": "720p",
+          "output": 0.123769
+        },
+        {
+          "label": "1080p",
+          "output": 0.165026
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-1-t2v",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/wan2.7-i2v",
+      "vendor": "alibaba",
+      "model": "wan2.7-i2v",
+      "modelSlug": "alibaba/wan2.7-i2v",
+      "displayName": "wan2.7-i2v",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.143353,
+      "tiers": [
+        {
+          "label": "720p",
+          "output": 0.086012
+        },
+        {
+          "label": "1080p",
+          "output": 0.143353
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan2-7-i2v",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/wan2.7-r2v",
+      "vendor": "alibaba",
+      "model": "wan2.7-r2v",
+      "modelSlug": "alibaba/wan2.7-r2v",
+      "displayName": "wan2.7-r2v",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.143353,
+      "tiers": [
+        {
+          "label": "720p",
+          "output": 0.086012
+        },
+        {
+          "label": "1080p",
+          "output": 0.143353
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan2-7-r2v",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/wan2.7-t2v",
+      "vendor": "alibaba",
+      "model": "wan2.7-t2v",
+      "modelSlug": "alibaba/wan2.7-t2v",
+      "displayName": "wan2.7-t2v",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.143353,
+      "tiers": [
+        {
+          "label": "720p",
+          "output": 0.086012
+        },
+        {
+          "label": "1080p",
+          "output": 0.143353
+        }
+      ],
+      "modalities": [
+        "audio",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan2-7-t2v",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/wan3.0-video",
+      "vendor": "alibaba",
+      "model": "wan3.0-video",
+      "modelSlug": "alibaba/wan3.0-video",
+      "displayName": "wan3.0-video",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.165025,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.041256
+        },
+        {
+          "label": "720p",
+          "output": 0.082513
+        },
+        {
+          "label": "1080p",
+          "output": 0.165025
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan3-0-video",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:alibaba/wan3.0-video-prime",
+      "vendor": "alibaba",
+      "model": "wan3.0-video-prime",
+      "modelSlug": "alibaba/wan3.0-video-prime",
+      "displayName": "wan3.0-video-prime",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.254399,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0636
+        },
+        {
+          "label": "720p",
+          "output": 0.127199
+        },
+        {
+          "label": "1080p",
+          "output": 0.254399
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan3-0-video-prime",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:black-forest-labs/flux-dev",
+      "vendor": "black-forest-labs",
+      "model": "flux-dev",
+      "modelSlug": "black-forest-labs/flux-dev",
+      "displayName": "flux-dev",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.025,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://bfl.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:black-forest-labs/flux-pro",
+      "vendor": "black-forest-labs",
+      "model": "flux-pro",
+      "modelSlug": "black-forest-labs/flux-pro",
+      "displayName": "flux-pro",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.05,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://bfl.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:black-forest-labs/flux-pro-1.1",
+      "vendor": "black-forest-labs",
+      "model": "flux-pro-1.1",
+      "modelSlug": "black-forest-labs/flux-pro-1.1",
+      "displayName": "flux-pro-1.1",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.04,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://bfl.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:black-forest-labs/flux-pro-1.1-ultra",
+      "vendor": "black-forest-labs",
+      "model": "flux-pro-1.1-ultra",
+      "modelSlug": "black-forest-labs/flux-pro-1.1-ultra",
+      "displayName": "flux-pro-1.1-ultra",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.06,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://bfl.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:bytedance/doubao-seedance-2.0-260128",
+      "vendor": "bytedance",
+      "model": "doubao-seedance-2.0-260128",
+      "modelSlug": "bytedance/doubao-seedance-2.0-260128",
+      "displayName": "Seedance 2.0",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.141943,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0660034
+        },
+        {
+          "label": "720p",
+          "output": 0.141943
+        },
+        {
+          "label": "1080p",
+          "output": 0.354086
+        },
+        {
+          "label": "4k",
+          "output": 0.722057
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.volcengine.com/docs/82379/1544106",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:bytedance/doubao-seedance-2.0-fast-260128",
+      "vendor": "bytedance",
+      "model": "doubao-seedance-2.0-fast-260128",
+      "modelSlug": "bytedance/doubao-seedance-2.0-fast-260128",
+      "displayName": "Seedance 2.0 Fast",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.114171,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0530897
+        },
+        {
+          "label": "720p",
+          "output": 0.114171
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.volcengine.com/docs/82379/1544106",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:bytedance/doubao-seedance-2.0-mini-260615",
+      "vendor": "bytedance",
+      "model": "doubao-seedance-2.0-mini-260615",
+      "modelSlug": "bytedance/doubao-seedance-2.0-mini-260615",
+      "displayName": "Seedance 2.0 Mini",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.0709714,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0330017
+        },
+        {
+          "label": "720p",
+          "output": 0.0709714
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.volcengine.com/docs/82379/1544106",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:bytedance/doubao-seedance-2.5-260628",
+      "vendor": "bytedance",
+      "model": "doubao-seedance-2.5-260628",
+      "modelSlug": "bytedance/doubao-seedance-2.5-260628",
+      "displayName": "Seedance 2.5",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.216,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.096075
+        },
+        {
+          "label": "720p",
+          "output": 0.216
+        },
+        {
+          "label": "1080p",
+          "output": 0.5346
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.volcengine.com/docs/82379/1544106",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/gemini-2.5-flash-image",
+      "vendor": "google",
+      "model": "gemini-2.5-flash-image",
+      "modelSlug": "google/gemini-2.5-flash-image",
+      "displayName": "gemini-2.5-flash-image",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.039,
+      "tiers": null,
+      "modalities": [
+        "audio",
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/gemini-3-pro-image",
+      "vendor": "google",
+      "model": "gemini-3-pro-image",
+      "modelSlug": "google/gemini-3-pro-image",
+      "displayName": "gemini-3-pro-image",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": 0.0011,
+      "output": 0.134,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/gemini-3.1-flash-image",
+      "vendor": "google",
+      "model": "gemini-3.1-flash-image",
+      "modelSlug": "google/gemini-3.1-flash-image",
+      "displayName": "gemini-3.1-flash-image",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.045,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/gemini-3.1-flash-lite-image",
+      "vendor": "google",
+      "model": "gemini-3.1-flash-lite-image",
+      "modelSlug": "google/gemini-3.1-flash-lite-image",
+      "displayName": "gemini-3.1-flash-lite-image",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": 0.00028,
+      "output": 0.0336,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/gemini-nano-banana-2.1",
+      "vendor": "google",
+      "model": "gemini-nano-banana-2.1",
+      "modelSlug": "google/gemini-nano-banana-2.1",
+      "displayName": "gemini-nano-banana-2.1",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.0336,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/imagen-3.0-fast-generate-001",
+      "vendor": "google",
+      "model": "imagen-3.0-fast-generate-001",
+      "modelSlug": "google/imagen-3.0-fast-generate-001",
+      "displayName": "imagen-3.0-fast-generate-001",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.02,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/imagen-3.0-generate-001",
+      "vendor": "google",
+      "model": "imagen-3.0-generate-001",
+      "modelSlug": "google/imagen-3.0-generate-001",
+      "displayName": "imagen-3.0-generate-001",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.04,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/nano-banana-pro-preview",
+      "vendor": "google",
+      "model": "nano-banana-pro-preview",
+      "modelSlug": "google/nano-banana-pro-preview",
+      "displayName": "nano-banana-pro-preview",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": 0.0011,
+      "output": 0.134,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/veo-3.1-fast-generate-001",
+      "vendor": "google",
+      "model": "veo-3.1-fast-generate-001",
+      "modelSlug": "google/veo-3.1-fast-generate-001",
+      "displayName": "veo-3.1-fast-generate-001",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.1,
+      "tiers": [
+        {
+          "label": "1080p",
+          "output": 0.12
+        },
+        {
+          "label": "4k",
+          "output": 0.3
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/veo-3.1-fast-generate-preview",
+      "vendor": "google",
+      "model": "veo-3.1-fast-generate-preview",
+      "modelSlug": "google/veo-3.1-fast-generate-preview",
+      "displayName": "veo-3.1-fast-generate-preview",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.1,
+      "tiers": [
+        {
+          "label": "1080p",
+          "output": 0.12
+        },
+        {
+          "label": "4k",
+          "output": 0.3
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/veo-3.1-generate-001",
+      "vendor": "google",
+      "model": "veo-3.1-generate-001",
+      "modelSlug": "google/veo-3.1-generate-001",
+      "displayName": "Veo 3.1",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.4,
+      "tiers": [
+        {
+          "label": "4k",
+          "output": 0.6
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/veo-3.1-generate-preview",
+      "vendor": "google",
+      "model": "veo-3.1-generate-preview",
+      "modelSlug": "google/veo-3.1-generate-preview",
+      "displayName": "veo-3.1-generate-preview",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.4,
+      "tiers": [
+        {
+          "label": "4k",
+          "output": 0.6
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:google/veo-3.1-lite-generate-preview",
+      "vendor": "google",
+      "model": "veo-3.1-lite-generate-preview",
+      "modelSlug": "google/veo-3.1-lite-generate-preview",
+      "displayName": "veo-3.1-lite-generate-preview",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.05,
+      "tiers": [
+        {
+          "label": "1080p",
+          "output": 0.08
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/video",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:minimax/minimax-h3",
+      "vendor": "minimax",
+      "model": "minimax-h3",
+      "modelSlug": "minimax/minimax-h3",
+      "displayName": "H3",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.04,
+      "output": 0.08,
+      "tiers": [
+        {
+          "label": "768p",
+          "output": 0.08
+        },
+        {
+          "label": "2k",
+          "output": 0.13
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:minimax/minimax-h3-max",
+      "vendor": "minimax",
+      "model": "minimax-h3-max",
+      "modelSlug": "minimax/minimax-h3-max",
+      "displayName": "H3 Max",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.074,
+      "output": 0.08,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.05
+        },
+        {
+          "label": "768p",
+          "output": 0.08
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:openai/gpt-image-1",
+      "vendor": "openai",
+      "model": "gpt-image-1",
+      "modelSlug": "openai/gpt-image-1",
+      "displayName": "gpt-image-1",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.011,
+      "tiers": [
+        {
+          "label": "low 1024x1024",
+          "output": 0.011
+        },
+        {
+          "label": "low 1024x1536",
+          "output": 0.016
+        },
+        {
+          "label": "low 1536x1024",
+          "output": 0.016
+        },
+        {
+          "label": "medium 1024x1024",
+          "output": 0.042
+        },
+        {
+          "label": "medium 1024x1536",
+          "output": 0.063
+        },
+        {
+          "label": "medium 1536x1024",
+          "output": 0.063
+        },
+        {
+          "label": "high 1024x1024",
+          "output": 0.167
+        },
+        {
+          "label": "high 1024x1536",
+          "output": 0.25
+        },
+        {
+          "label": "high 1536x1024",
+          "output": 0.25
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:openai/gpt-image-1-mini",
+      "vendor": "openai",
+      "model": "gpt-image-1-mini",
+      "modelSlug": "openai/gpt-image-1-mini",
+      "displayName": "gpt-image-1-mini",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.005,
+      "tiers": [
+        {
+          "label": "low 1024x1024",
+          "output": 0.005
+        },
+        {
+          "label": "low 1024x1536",
+          "output": 0.006
+        },
+        {
+          "label": "low 1536x1024",
+          "output": 0.006
+        },
+        {
+          "label": "medium 1024x1024",
+          "output": 0.011
+        },
+        {
+          "label": "medium 1024x1536",
+          "output": 0.015
+        },
+        {
+          "label": "medium 1536x1024",
+          "output": 0.015
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:openai/gpt-image-1.5",
+      "vendor": "openai",
+      "model": "gpt-image-1.5",
+      "modelSlug": "openai/gpt-image-1.5",
+      "displayName": "gpt-image-1.5",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.009,
+      "tiers": [
+        {
+          "label": "1024x1024",
+          "output": 0.009
+        },
+        {
+          "label": "low 1024x1024",
+          "output": 0.009
+        },
+        {
+          "label": "standard 1024x1024",
+          "output": 0.009
+        },
+        {
+          "label": "1024x1536",
+          "output": 0.013
+        },
+        {
+          "label": "1536x1024",
+          "output": 0.013
+        },
+        {
+          "label": "low 1024x1536",
+          "output": 0.013
+        },
+        {
+          "label": "low 1536x1024",
+          "output": 0.013
+        },
+        {
+          "label": "standard 1024x1536",
+          "output": 0.013
+        },
+        {
+          "label": "standard 1536x1024",
+          "output": 0.013
+        },
+        {
+          "label": "medium 1024x1024",
+          "output": 0.034
+        },
+        {
+          "label": "medium 1024x1536",
+          "output": 0.05
+        },
+        {
+          "label": "medium 1536x1024",
+          "output": 0.05
+        },
+        {
+          "label": "high 1024x1024",
+          "output": 0.133
+        },
+        {
+          "label": "high 1024x1536",
+          "output": 0.2
+        },
+        {
+          "label": "high 1536x1024",
+          "output": 0.2
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:openai/gpt-image-1.5-2025-12-16",
+      "vendor": "openai",
+      "model": "gpt-image-1.5-2025-12-16",
+      "modelSlug": "openai/gpt-image-1.5-2025-12-16",
+      "displayName": "gpt-image-1.5-2025-12-16",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.009,
+      "tiers": [
+        {
+          "label": "1024x1024",
+          "output": 0.009
+        },
+        {
+          "label": "low 1024x1024",
+          "output": 0.009
+        },
+        {
+          "label": "standard 1024x1024",
+          "output": 0.009
+        },
+        {
+          "label": "1024x1536",
+          "output": 0.013
+        },
+        {
+          "label": "1536x1024",
+          "output": 0.013
+        },
+        {
+          "label": "low 1024x1536",
+          "output": 0.013
+        },
+        {
+          "label": "low 1536x1024",
+          "output": 0.013
+        },
+        {
+          "label": "standard 1024x1536",
+          "output": 0.013
+        },
+        {
+          "label": "standard 1536x1024",
+          "output": 0.013
+        },
+        {
+          "label": "medium 1024x1024",
+          "output": 0.034
+        },
+        {
+          "label": "medium 1024x1536",
+          "output": 0.05
+        },
+        {
+          "label": "medium 1536x1024",
+          "output": 0.05
+        },
+        {
+          "label": "high 1024x1024",
+          "output": 0.133
+        },
+        {
+          "label": "high 1024x1536",
+          "output": 0.2
+        },
+        {
+          "label": "high 1536x1024",
+          "output": 0.2
+        }
+      ],
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:recraft/recraftv2",
+      "vendor": "recraft",
+      "model": "recraftv2",
+      "modelSlug": "recraft/recraftv2",
+      "displayName": "recraftv2",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.022,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.recraft.ai/docs#pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:recraft/recraftv3",
+      "vendor": "recraft",
+      "model": "recraftv3",
+      "modelSlug": "recraft/recraftv3",
+      "displayName": "recraftv3",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.04,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://www.recraft.ai/docs#pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:runway/aleph2",
+      "vendor": "runway",
+      "model": "aleph2",
+      "modelSlug": "runway/aleph2",
+      "displayName": "aleph2",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.28,
+      "tiers": null,
+      "modalities": [
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:runway/gen4-image",
+      "vendor": "runway",
+      "model": "gen4-image",
+      "modelSlug": "runway/gen4-image",
+      "displayName": "gen4_image",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": 0.05,
+      "output": 0.05,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:runway/gen4-image-turbo",
+      "vendor": "runway",
+      "model": "gen4-image-turbo",
+      "modelSlug": "runway/gen4-image-turbo",
+      "displayName": "gen4_image_turbo",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": 0.02,
+      "output": 0.02,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:runway/gen4-turbo",
+      "vendor": "runway",
+      "model": "gen4-turbo",
+      "modelSlug": "runway/gen4-turbo",
+      "displayName": "gen4_turbo",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.05,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:runway/gen4.5",
+      "vendor": "runway",
+      "model": "gen4.5",
+      "modelSlug": "runway/gen4.5",
+      "displayName": "Gen-4.5",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.12,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:stability/sd3",
+      "vendor": "stability",
+      "model": "sd3",
+      "modelSlug": "stability/sd3",
+      "displayName": "sd3",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.065,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.stability.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:stability/sd3-large",
+      "vendor": "stability",
+      "model": "sd3-large",
+      "modelSlug": "stability/sd3-large",
+      "displayName": "sd3-large",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.065,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.stability.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:stability/sd3-large-turbo",
+      "vendor": "stability",
+      "model": "sd3-large-turbo",
+      "modelSlug": "stability/sd3-large-turbo",
+      "displayName": "sd3-large-turbo",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.04,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.stability.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:stability/sd3-medium",
+      "vendor": "stability",
+      "model": "sd3-medium",
+      "modelSlug": "stability/sd3-medium",
+      "displayName": "sd3-medium",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.035,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.stability.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:stability/sd3.5-large",
+      "vendor": "stability",
+      "model": "sd3.5-large",
+      "modelSlug": "stability/sd3.5-large",
+      "displayName": "sd3.5-large",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.065,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.stability.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:stability/sd3.5-large-turbo",
+      "vendor": "stability",
+      "model": "sd3.5-large-turbo",
+      "modelSlug": "stability/sd3.5-large-turbo",
+      "displayName": "sd3.5-large-turbo",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.04,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.stability.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:stability/sd3.5-medium",
+      "vendor": "stability",
+      "model": "sd3.5-medium",
+      "modelSlug": "stability/sd3.5-medium",
+      "displayName": "sd3.5-medium",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.035,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.stability.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:stability/stable-image-core",
+      "vendor": "stability",
+      "model": "stable-image-core",
+      "modelSlug": "stability/stable-image-core",
+      "displayName": "stable-image-core",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.03,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.stability.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:stability/stable-image-ultra",
+      "vendor": "stability",
+      "model": "stable-image-ultra",
+      "modelSlug": "stability/stable-image-ultra",
+      "displayName": "stable-image-ultra",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.08,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://platform.stability.ai/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-image",
+      "vendor": "x-ai",
+      "model": "grok-imagine-image",
+      "modelSlug": "x-ai/grok-imagine-image",
+      "displayName": "grok-imagine-image",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.02,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-image-2.0",
+      "vendor": "x-ai",
+      "model": "grok-imagine-image-2.0",
+      "modelSlug": "x-ai/grok-imagine-image-2.0",
+      "displayName": "grok-imagine-image-2.0",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.06,
+      "tiers": [
+        {
+          "label": "low 1024x1024",
+          "output": 0.04
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-image-2026-03-02",
+      "vendor": "x-ai",
+      "model": "grok-imagine-image-2026-03-02",
+      "modelSlug": "x-ai/grok-imagine-image-2026-03-02",
+      "displayName": "grok-imagine-image-2026-03-02",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.02,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-image-pro",
+      "vendor": "x-ai",
+      "model": "grok-imagine-image-pro",
+      "modelSlug": "x-ai/grok-imagine-image-pro",
+      "displayName": "grok-imagine-image-pro",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.05,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-image-quality",
+      "vendor": "x-ai",
+      "model": "grok-imagine-image-quality",
+      "modelSlug": "x-ai/grok-imagine-image-quality",
+      "displayName": "grok-imagine-image-quality",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.05,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-image-quality-20260403",
+      "vendor": "x-ai",
+      "model": "grok-imagine-image-quality-20260403",
+      "modelSlug": "x-ai/grok-imagine-image-quality-20260403",
+      "displayName": "grok-imagine-image-quality-20260403",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.05,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-image-quality-latest",
+      "vendor": "x-ai",
+      "model": "grok-imagine-image-quality-latest",
+      "modelSlug": "x-ai/grok-imagine-image-quality-latest",
+      "displayName": "grok-imagine-image-quality-latest",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "image",
+      "unit": "per_image",
+      "input": null,
+      "output": 0.05,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-video",
+      "vendor": "x-ai",
+      "model": "grok-imagine-video",
+      "modelSlug": "x-ai/grok-imagine-video",
+      "displayName": "Grok Imagine Video",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.002,
+      "output": 0.05,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.05
+        },
+        {
+          "label": "720p",
+          "output": 0.07
+        }
+      ],
+      "modalities": [
+        "image",
+        "text",
+        "video"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models/grok-imagine-video",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-video-1.5",
+      "vendor": "x-ai",
+      "model": "grok-imagine-video-1.5",
+      "modelSlug": "x-ai/grok-imagine-video-1.5",
+      "displayName": "Grok Imagine Video 1.5",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.01,
+      "output": 0.08,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.08
+        },
+        {
+          "label": "720p",
+          "output": 0.14
+        },
+        {
+          "label": "1080p",
+          "output": 0.25
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models/grok-imagine-video-1.5",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-video-1.5-2026-05-30",
+      "vendor": "x-ai",
+      "model": "grok-imagine-video-1.5-2026-05-30",
+      "modelSlug": "x-ai/grok-imagine-video-1.5-2026-05-30",
+      "displayName": "grok-imagine-video-1.5-2026-05-30",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.01,
+      "output": 0.08,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.08
+        },
+        {
+          "label": "720p",
+          "output": 0.14
+        },
+        {
+          "label": "1080p",
+          "output": 0.25
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models/grok-imagine-video-1.5",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-video-1.5-lite",
+      "vendor": "x-ai",
+      "model": "grok-imagine-video-1.5-lite",
+      "modelSlug": "x-ai/grok-imagine-video-1.5-lite",
+      "displayName": "Grok Imagine Video 1.5 Lite",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.01,
+      "output": 0.02,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.02
+        },
+        {
+          "label": "720p",
+          "output": 0.03
+        },
+        {
+          "label": "1080p",
+          "output": 0.14
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/developers/pricing",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "official:x-ai/grok-imagine-video-1.5-preview",
+      "vendor": "x-ai",
+      "model": "grok-imagine-video-1.5-preview",
+      "modelSlug": "x-ai/grok-imagine-video-1.5-preview",
+      "displayName": "grok-imagine-video-1.5-preview",
+      "platform": "official",
+      "source": "litellm",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.01,
+      "output": 0.08,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.08
+        },
+        {
+          "label": "720p",
+          "output": 0.14
+        },
+        {
+          "label": "1080p",
+          "output": 0.25
+        }
+      ],
+      "modalities": [
+        "audio",
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://docs.x.ai/docs/models/grok-imagine-video-1.5",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:alibaba/happyhorse-1.0",
+      "vendor": "alibaba",
+      "model": "happyhorse-1.0",
+      "modelSlug": "alibaba/happyhorse-1.0",
+      "displayName": "HappyHorse 1.0",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.0988,
+      "tiers": [
+        {
+          "label": "720p",
+          "output": 0.0988
+        },
+        {
+          "label": "1080p",
+          "output": 0.1694
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/alibaba/happyhorse-1.0",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:alibaba/happyhorse-1.1",
+      "vendor": "alibaba",
+      "model": "happyhorse-1.1",
+      "modelSlug": "alibaba/happyhorse-1.1",
+      "displayName": "HappyHorse 1.1",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.0988,
+      "tiers": [
+        {
+          "label": "720p",
+          "output": 0.0988
+        },
+        {
+          "label": "1080p",
+          "output": 0.1278
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/alibaba/happyhorse-1.1",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:alibaba/wan-2.6",
+      "vendor": "alibaba",
+      "model": "wan-2.6",
+      "modelSlug": "alibaba/wan-2.6",
+      "displayName": "Wan 2.6",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.04,
+      "tiers": [
+        {
+          "label": "文生 480p",
+          "output": 0.04
+        },
+        {
+          "label": "文生 720p",
+          "output": 0.08
+        },
+        {
+          "label": "图生 720p",
+          "output": 0.1
+        },
+        {
+          "label": "文生 1080p",
+          "output": 0.12
+        },
+        {
+          "label": "图生 1080p",
+          "output": 0.15
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/alibaba/wan-2.6",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:alibaba/wan-2.7",
+      "vendor": "alibaba",
+      "model": "wan-2.7",
+      "modelSlug": "alibaba/wan-2.7",
+      "displayName": "Wan 2.7",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.1,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/alibaba/wan-2.7",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:alibaba/wan-3.0",
+      "vendor": "alibaba",
+      "model": "wan-3.0",
+      "modelSlug": "alibaba/wan-3.0",
+      "displayName": "Wan 3.0",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.05,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.05
+        },
+        {
+          "label": "720p",
+          "output": 0.1
+        },
+        {
+          "label": "1080p",
+          "output": 0.2
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/alibaba/wan-3.0",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:alibaba/wan-3.0-prime",
+      "vendor": "alibaba",
+      "model": "wan-3.0-prime",
+      "modelSlug": "alibaba/wan-3.0-prime",
+      "displayName": "Wan 3.0 Prime",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.068,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.068
+        },
+        {
+          "label": "720p",
+          "output": 0.14
+        },
+        {
+          "label": "1080p",
+          "output": 0.28
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/alibaba/wan-3.0-prime",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:black-forest-labs/flux-3-video",
+      "vendor": "black-forest-labs",
+      "model": "flux-3-video",
+      "modelSlug": "black-forest-labs/flux-3-video",
+      "displayName": "FLUX 3 Video",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.17,
+      "tiers": [
+        {
+          "label": "720p",
+          "output": 0.17
+        },
+        {
+          "label": "2k",
+          "output": 0.28
+        },
+        {
+          "label": "1080p",
+          "output": 0.29
+        },
+        {
+          "label": "续写 2k",
+          "output": 0.31
+        },
+        {
+          "label": "4k",
+          "output": 0.41
+        },
+        {
+          "label": "续写 720p",
+          "output": 0.41
+        },
+        {
+          "label": "续写 4k",
+          "output": 0.45
+        },
+        {
+          "label": "续写 1080p",
+          "output": 0.53
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/black-forest-labs/flux-3-video",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:black-forest-labs/flux-video-edit",
+      "vendor": "black-forest-labs",
+      "model": "flux-video-edit",
+      "modelSlug": "black-forest-labs/flux-video-edit",
+      "displayName": "FLUX Video Edit",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.03,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/black-forest-labs/flux-video-edit",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:bytedance/doubao-seedance-2.0-260128",
+      "vendor": "bytedance",
+      "model": "doubao-seedance-2.0-260128",
+      "modelSlug": "bytedance/doubao-seedance-2.0-260128",
+      "displayName": "Seedance 2.0",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.0672525,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0672525
+        },
+        {
+          "label": "720p",
+          "output": 0.1512
+        },
+        {
+          "label": "1080p",
+          "output": 0.37422
+        },
+        {
+          "label": "4k",
+          "output": 0.7776
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/bytedance/seedance-2.0",
+      "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:bytedance/doubao-seedance-2.0-fast-260128",
+      "vendor": "bytedance",
+      "model": "doubao-seedance-2.0-fast-260128",
+      "modelSlug": "bytedance/doubao-seedance-2.0-fast-260128",
+      "displayName": "Seedance 2.0 Fast",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.0403515,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0403515
+        },
+        {
+          "label": "720p",
+          "output": 0.09072
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/bytedance/seedance-2.0-fast",
+      "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:bytedance/doubao-seedance-2.0-mini-260615",
+      "vendor": "bytedance",
+      "model": "doubao-seedance-2.0-mini-260615",
+      "modelSlug": "bytedance/doubao-seedance-2.0-mini-260615",
+      "displayName": "Seedance 2.0 Mini",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.0336262,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.0336262
+        },
+        {
+          "label": "720p",
+          "output": 0.0756
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/bytedance/seedance-2.0-mini",
+      "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:bytedance/doubao-seedance-2.5-260628",
+      "vendor": "bytedance",
+      "model": "doubao-seedance-2.5-260628",
+      "modelSlug": "bytedance/doubao-seedance-2.5-260628",
+      "displayName": "Seedance 2.5",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.1028,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.1028
+        },
+        {
+          "label": "720p",
+          "output": 0.23112
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/bytedance/seedance-2.5",
+      "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:bytedance/seedance-1.5-pro",
+      "vendor": "bytedance",
+      "model": "seedance-1.5-pro",
+      "modelSlug": "bytedance/seedance-1.5-pro",
+      "displayName": "Seedance 1.5 Pro",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.011529,
+      "tiers": [
+        {
+          "label": "无声 480p",
+          "output": 0.011529
+        },
+        {
+          "label": "480p",
+          "output": 0.023058
+        },
+        {
+          "label": "无声 720p",
+          "output": 0.02592
+        },
+        {
+          "label": "720p",
+          "output": 0.05184
+        },
+        {
+          "label": "无声 1080p",
+          "output": 0.05832
+        },
+        {
+          "label": "1080p",
+          "output": 0.11664
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/bytedance/seedance-1-5-pro",
+      "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:google/veo-3.1-fast",
+      "vendor": "google",
+      "model": "veo-3.1-fast",
+      "modelSlug": "google/veo-3.1-fast",
+      "displayName": "Veo 3.1 Fast",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.08,
+      "tiers": [
+        {
+          "label": "无声 720p",
+          "output": 0.08
+        },
+        {
+          "label": "无声",
+          "output": 0.1
+        },
+        {
+          "label": "有声 720p",
+          "output": 0.1
+        },
+        {
+          "label": "有声",
+          "output": 0.12
+        },
+        {
+          "label": "无声 4k",
+          "output": 0.25
+        },
+        {
+          "label": "有声 4k",
+          "output": 0.3
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/google/veo-3.1-fast",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:google/veo-3.1-generate-001",
+      "vendor": "google",
+      "model": "veo-3.1-generate-001",
+      "modelSlug": "google/veo-3.1-generate-001",
+      "displayName": "Veo 3.1",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.2,
+      "tiers": [
+        {
+          "label": "无声",
+          "output": 0.2
+        },
+        {
+          "label": "无声 4k",
+          "output": 0.4
+        },
+        {
+          "label": "有声",
+          "output": 0.4
+        },
+        {
+          "label": "有声 4k",
+          "output": 0.6
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/google/veo-3.1",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:google/veo-3.1-lite",
+      "vendor": "google",
+      "model": "veo-3.1-lite",
+      "modelSlug": "google/veo-3.1-lite",
+      "displayName": "Veo 3.1 Lite",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.03,
+      "tiers": [
+        {
+          "label": "无声 720p",
+          "output": 0.03
+        },
+        {
+          "label": "无声",
+          "output": 0.05
+        },
+        {
+          "label": "有声 720p",
+          "output": 0.05
+        },
+        {
+          "label": "有声",
+          "output": 0.08
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/google/veo-3.1-lite",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:heygen/avatar-iv",
+      "vendor": "heygen",
+      "model": "avatar-iv",
+      "modelSlug": "heygen/avatar-iv",
+      "displayName": "Avatar IV",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.05,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/heygen/avatar-iv",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:heygen/heygen-video-1",
+      "vendor": "heygen",
+      "model": "heygen-video-1",
+      "modelSlug": "heygen/heygen-video-1",
+      "displayName": "HeyGen Video",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.04,
+      "output": 0.02,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.02
+        },
+        {
+          "label": "768p",
+          "output": 0.036
+        },
+        {
+          "label": "参考 480p",
+          "output": 0.07
+        },
+        {
+          "label": "2k",
+          "output": 0.1
+        },
+        {
+          "label": "参考 768p",
+          "output": 0.1
+        },
+        {
+          "label": "参考 2k",
+          "output": 0.18
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/heygen/heygen-video-1",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:kling/kling-v3.0-pro",
+      "vendor": "kling",
+      "model": "kling-v3.0-pro",
+      "modelSlug": "kling/kling-v3.0-pro",
+      "displayName": "Video v3.0 Pro",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.112,
+      "tiers": [
+        {
+          "label": "图生 1080p",
+          "output": 0.112
+        },
+        {
+          "label": "图生 720p",
+          "output": 0.112
+        },
+        {
+          "label": "文生 1080p",
+          "output": 0.112
+        },
+        {
+          "label": "文生 480p",
+          "output": 0.112
+        },
+        {
+          "label": "文生 720p",
+          "output": 0.112
+        },
+        {
+          "label": "有声",
+          "output": 0.168
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/kwaivgi/kling-v3.0-pro",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:kling/kling-v3.0-std",
+      "vendor": "kling",
+      "model": "kling-v3.0-std",
+      "modelSlug": "kling/kling-v3.0-std",
+      "displayName": "Video v3.0 Standard",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.084,
+      "tiers": [
+        {
+          "label": "图生 1080p",
+          "output": 0.084
+        },
+        {
+          "label": "图生 720p",
+          "output": 0.084
+        },
+        {
+          "label": "文生 1080p",
+          "output": 0.084
+        },
+        {
+          "label": "文生 480p",
+          "output": 0.084
+        },
+        {
+          "label": "文生 720p",
+          "output": 0.084
+        },
+        {
+          "label": "有声",
+          "output": 0.126
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/kwaivgi/kling-v3.0-std",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:kling/kling-video-o1",
+      "vendor": "kling",
+      "model": "kling-video-o1",
+      "modelSlug": "kling/kling-video-o1",
+      "displayName": "Video O1",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.112,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/kwaivgi/kling-video-o1",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:minimax/hailuo-2.3",
+      "vendor": "minimax",
+      "model": "hailuo-2.3",
+      "modelSlug": "minimax/hailuo-2.3",
+      "displayName": "Hailuo 2.3",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.0817,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/minimax/hailuo-2.3",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:minimax/minimax-h3",
+      "vendor": "minimax",
+      "model": "minimax-h3",
+      "modelSlug": "minimax/minimax-h3",
+      "displayName": "H3",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.04,
+      "output": 0.13,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/minimax/hailuo-3",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:minimax/minimax-h3-max",
+      "vendor": "minimax",
+      "model": "minimax-h3-max",
+      "modelSlug": "minimax/minimax-h3-max",
+      "displayName": "H3 Max",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.08,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.05
+        },
+        {
+          "label": "768p",
+          "output": 0.08
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/minimax/hailuo-3-max",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:runway/aleph-2",
+      "vendor": "runway",
+      "model": "aleph-2",
+      "modelSlug": "runway/aleph-2",
+      "displayName": "Aleph 2.0",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.28,
+      "tiers": null,
+      "modalities": [
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/runway/aleph-2",
+      "notes": "每次生成最低 0.56 USD",
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:runway/gen4.5",
+      "vendor": "runway",
+      "model": "gen4.5",
+      "modelSlug": "runway/gen4.5",
+      "displayName": "Gen-4.5",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.12,
+      "tiers": null,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/runway/gen-4.5",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:x-ai/grok-imagine-video",
+      "vendor": "x-ai",
+      "model": "grok-imagine-video",
+      "modelSlug": "x-ai/grok-imagine-video",
+      "displayName": "Grok Imagine Video",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.002,
+      "output": 0.05,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.05
+        },
+        {
+          "label": "720p",
+          "output": 0.07
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/x-ai/grok-imagine-video",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:x-ai/grok-imagine-video-1.5",
+      "vendor": "x-ai",
+      "model": "grok-imagine-video-1.5",
+      "modelSlug": "x-ai/grok-imagine-video-1.5",
+      "displayName": "Grok Imagine Video 1.5",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.01,
+      "output": 0.08,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.08
+        },
+        {
+          "label": "720p",
+          "output": 0.14
+        },
+        {
+          "label": "1080p",
+          "output": 0.25
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/x-ai/grok-imagine-video-1.5",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:x-ai/grok-imagine-video-1.5-lite",
+      "vendor": "x-ai",
+      "model": "grok-imagine-video-1.5-lite",
+      "modelSlug": "x-ai/grok-imagine-video-1.5-lite",
+      "displayName": "Grok Imagine Video 1.5 Lite",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": 0.01,
+      "output": 0.02,
+      "tiers": [
+        {
+          "label": "480p",
+          "output": 0.02
+        },
+        {
+          "label": "720p",
+          "output": 0.03
+        },
+        {
+          "label": "1080p",
+          "output": 0.14
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/x-ai/grok-imagine-video-1.5-lite",
+      "notes": null,
+      "firstSeenAt": "2026-10-18",
+      "fetchedAt": "2026-10-18T15:04:20Z",
+      "publishedAt": "2026-10-18T15:04:20Z"
+    }
+  ]
+}

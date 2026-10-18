@@ -1,6 +1,15 @@
 {
   "modelSlug": "moonshot/kimi-k3",
   "series": {
+    "official-cn:moonshot/kimi-k3": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": 3,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
     "official:moonshot/kimi-k3": [
       {
         "input": 3,

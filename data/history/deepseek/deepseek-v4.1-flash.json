@@ -3,7 +3,7 @@
   "series": {
     "openrouter:deepseek/deepseek-v4.1-flash": [
       {
-        "input": 0.072,
+        "input": 0.04,
         "output": 0.144,
         "cacheRead": 0.0016,
         "cacheWrite": null,

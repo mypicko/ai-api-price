@@ -1,17 +1,20 @@
 /**
  * 并发执行数据源（Promise.allSettled 语义：单个源失败不影响其他源），
  * 然后对每个成功的源依次执行 S6 截断 → V1 → normalize → V2 → V5。
+ * 视频/图像报价（带 media 字段）走同样的规则，单独计数（见 media-normalize.ts）。
  */
-import type { AliasesConfig, Offering, ProvidersConfig, RawOffering, Warning } from "@aipb/shared";
+import type { AliasesConfig, Offering, ProvidersConfig, Warning } from "@aipb/shared";
 import { PipelineError, toPipelineError } from "../core/errors";
-import type { Source, SourceContext } from "../sources/types";
+import type { Source, SourceContext, SourceItem } from "../sources/types";
+import { buildMediaLane, isRawMedia, type MediaLaneResult } from "./media-normalize";
 import {
   createAliasResolver,
   createVendorMatcher,
   normalizeOfferings,
   sanitizeRaw,
+  type NormalizeContext,
 } from "./normalize";
-import type { SourceOutcome } from "./types";
+import type { Candidate, SourceOutcome } from "./types";
 import { makeWarning } from "./types";
 import { checkModelCountDrop, checkPriceRange, checkStructure } from "./validate";
 
@@ -24,6 +27,8 @@ export interface RunSourcesInput {
   readonly aliases: AliasesConfig;
   readonly usdCny: number;
   readonly previous: readonly Offering[];
+  /** 上次已发布的视频/图像报价（内部形状），用于 V5 */
+  readonly previousMedia?: readonly Offering[];
   /** 毫秒时钟，用于计算耗时 */
   readonly clock: () => number;
 }
@@ -70,9 +75,62 @@ function failedOutcome(source: Source, error: unknown, durationMs: number): Sour
   return { ...baseOutcome(source), state: "failed", durationMs, error: err, warnings: [warning] };
 }
 
+interface TextLane {
+  readonly candidates: readonly Candidate[];
+  readonly invalidIds: readonly string[];
+  readonly offeringCount: number;
+  readonly warnings: readonly Warning[];
+  readonly drop: Warning | null;
+}
+
+function activeCount(previous: readonly Offering[] | undefined, sourceId: string): number {
+  return (previous ?? []).filter((o) => o.source === sourceId && o.status !== "removed").length;
+}
+
+function processText(
+  raws: readonly unknown[],
+  input: RunSourcesInput,
+  ctx: NormalizeContext,
+): TextLane {
+  const structure = checkStructure(raws, ctx.sourceId);
+  const normalized = normalizeOfferings(structure.valid, ctx);
+  const range = checkPriceRange(normalized.candidates, input.usdCny);
+  const unknownWarning: Warning[] =
+    normalized.unknownVendors.length === 0
+      ? []
+      : [
+          makeWarning("W2003", `厂商无法识别，已跳过：${normalized.unknownVendors.join(", ")}`, {
+            sourceId: ctx.sourceId,
+          }),
+        ];
+  const offeringCount = range.valid.length;
+  return {
+    candidates: range.valid,
+    invalidIds: range.invalidIds,
+    offeringCount,
+    warnings: [...structure.warnings, ...normalized.warnings, ...unknownWarning, ...range.warnings],
+    drop: checkModelCountDrop(
+      ctx.sourceId,
+      offeringCount,
+      activeCount(input.previous, ctx.sourceId),
+    ),
+  };
+}
+
+/** 本次和上次都没有视频/图像报价的源不建 media 线，避免把它的旧数据误判成下架 */
+function processMedia(
+  raws: readonly unknown[],
+  input: RunSourcesInput,
+  ctx: NormalizeContext,
+): MediaLaneResult | null {
+  const previousCount = activeCount(input.previousMedia, ctx.sourceId);
+  if (raws.length === 0 && previousCount === 0) return null;
+  return buildMediaLane({ raws, ctx, usdCny: input.usdCny, previousCount });
+}
+
 function processRaw(
   source: Source,
-  raws: readonly RawOffering[],
+  raws: readonly SourceItem[],
   input: RunSourcesInput,
   durationMs: number,
 ): SourceOutcome {
@@ -84,37 +142,35 @@ function processRaw(
       durationMs,
     );
   }
-  const sanitized = raws.map((r: unknown) => sanitizeRaw(r));
-  const structure = checkStructure(sanitized, source.id);
-  const normalized = normalizeOfferings(structure.valid, {
+  const ctx: NormalizeContext = {
     sourceId: source.id,
     platform,
     matchVendor: createVendorMatcher(input.providers),
     resolveAlias: createAliasResolver(input.aliases),
-  });
-  const range = checkPriceRange(normalized.candidates, input.usdCny);
-  const unknownWarning: Warning[] =
-    normalized.unknownVendors.length === 0
-      ? []
-      : [
-          makeWarning("W2003", `厂商无法识别，已跳过：${normalized.unknownVendors.join(", ")}`, {
-            sourceId: source.id,
-          }),
-        ];
-  const warnings = [
-    ...structure.warnings,
-    ...normalized.warnings,
-    ...unknownWarning,
-    ...range.warnings,
-  ];
-  const previousCount = input.previous.filter(
-    (o) => o.source === source.id && o.status !== "removed",
-  ).length;
-  const offeringCount = range.valid.length;
-  const drop = checkModelCountDrop(source.id, offeringCount, previousCount);
-  const base = { ...baseOutcome(source), offeringCount, durationMs, error: null };
-  if (drop) return { ...base, state: "rejected", warnings: [...warnings, drop] };
-  return { ...base, state: "ok", candidates: range.valid, invalidIds: range.invalidIds, warnings };
+  };
+  const sanitized = raws.map((r: unknown) => sanitizeRaw(r));
+  const text = processText(
+    sanitized.filter((r) => !isRawMedia(r)),
+    input,
+    ctx,
+  );
+  const media = processMedia(sanitized.filter(isRawMedia), input, ctx);
+  const warnings = [...text.warnings, ...(media?.warnings ?? [])];
+  const base = {
+    ...baseOutcome(source),
+    offeringCount: text.offeringCount,
+    durationMs,
+    error: null,
+    ...(media ? { media: media.lane } : {}),
+  };
+  if (text.drop) return { ...base, state: "rejected", warnings: [...warnings, text.drop] };
+  return {
+    ...base,
+    state: "ok",
+    candidates: text.candidates,
+    invalidIds: text.invalidIds,
+    warnings,
+  };
 }
 
 async function runOne(source: Source, input: RunSourcesInput): Promise<SourceOutcome> {

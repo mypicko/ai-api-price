@@ -1,3 +1,4 @@
 data/
 pnpm-lock.yaml
 packages/pipeline/tests/fixtures/
+.claude/

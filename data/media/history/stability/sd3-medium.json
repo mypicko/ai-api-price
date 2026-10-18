@@ -1,0 +1,14 @@
+{
+  "modelSlug": "stability/sd3-medium",
+  "series": {
+    "official:stability/sd3-medium": [
+      {
+        "input": null,
+        "output": 0.035,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

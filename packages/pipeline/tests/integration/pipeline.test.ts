@@ -6,9 +6,12 @@ import { copyFile, mkdir, mkdtemp, readFile, rm, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import type {
+  ChangesMonthFile,
   HistoryFile,
   LatestFile,
+  MediaLatestFile,
   QuarantineFile,
+  RawMediaOffering,
   RawOffering,
   StatusFile,
 } from "@aipb/shared";
@@ -17,14 +20,14 @@ import { PipelineError } from "../../src/core/errors";
 import { silentLogger } from "../../src/core/logger";
 import { FRANKFURTER_URL } from "../../src/fx/fx";
 import type { DailyReport, Notifier } from "../../src/notify/types";
-import type { Source } from "../../src/sources/types";
+import type { Source, SourceItem } from "../../src/sources/types";
 import { runPipeline, type RunResult } from "../../src/steps/run";
 import { createFakeHttp, makeConfig, noopBrowser, ROOT_DIR } from "../helpers";
 
 let root: string;
 let dataDir: string;
 
-type Behaviour = readonly RawOffering[] | PipelineError;
+type Behaviour = readonly SourceItem[] | PipelineError;
 
 function raw(
   model: string,
@@ -142,6 +145,8 @@ describe("集成：完整管线", () => {
       "history/openai/gpt-4o.json",
       "history/openai/o3.json",
       "latest.json",
+      "media/latest.json",
+      "media/quarantine.json",
       "quarantine.json",
       "status.json",
     ]);
@@ -332,5 +337,154 @@ describe("集成：完整管线", () => {
     expect(await exists("latest.json")).toBe(false);
     expect(sent).toEqual([]);
     expect(result.summary).toContain("DRY RUN");
+  });
+});
+
+function video(
+  model: string,
+  output: number,
+  extra: Partial<RawMediaOffering> = {},
+): RawMediaOffering {
+  return {
+    vendorHint: "openai",
+    modelName: model,
+    currency: "USD",
+    media: { kind: "video", unit: "per_second" },
+    input: null,
+    output,
+    tiers: [
+      { label: "1080p", output: output * 2 },
+      { label: "720p", output },
+    ],
+    sourceUrl: "https://openai.com/api/pricing/",
+    ...extra,
+  };
+}
+
+const image = (model: string, output: number): RawMediaOffering => ({
+  ...video(model, output),
+  media: { kind: "image", unit: "per_image" },
+  tiers: [],
+});
+
+const BASE_MEDIA = [video("sora-3", 0.1), video("sora-3-pro", 0.3), image("gpt-image-3", 0.04)];
+const SORA = "official:openai/sora-3";
+const mediaOf = (latest: MediaLatestFile, id: string) => latest.offerings.find((o) => o.id === id);
+
+describe("集成：视频/图像", () => {
+  const withMedia = (media: readonly RawMediaOffering[]): readonly SourceItem[] => [
+    ...BASE_OFFICIAL,
+    ...media,
+  ];
+
+  it("第一次产出视频/图像：写入 data/media/，只建立基线，文本数据不受影响", async () => {
+    await runDay(1);
+    const result = await runDay(2, { official: withMedia(BASE_MEDIA) });
+    expect(result.events).toEqual([]);
+    expect(result.mediaEvents).toEqual([]);
+    const media = await readData<MediaLatestFile>("media/latest.json");
+    expect(media.offerings.map((o) => [o.id, o.kind, o.unit, o.output])).toEqual([
+      ["official:openai/gpt-image-3", "image", "per_image", 0.04],
+      ["official:openai/sora-3", "video", "per_second", 0.1],
+      ["official:openai/sora-3-pro", "video", "per_second", 0.3],
+    ]);
+    expect(mediaOf(media, SORA)?.tiers).toEqual([
+      { label: "720p", output: 0.1 },
+      { label: "1080p", output: 0.2 },
+    ]);
+    expect(mediaOf(media, "official:openai/gpt-image-3")?.tiers).toBeNull();
+    expect(result.written).toContain("media/history/openai/sora-3.json");
+    const latest = await readData<LatestFile>("latest.json");
+    expect(latest.offerings).toHaveLength(4);
+    expect(latest.offerings.some((o) => o.model.startsWith("sora"))).toBe(false);
+    expect(result.status.sources.find((s) => s.id === "litellm")).toMatchObject({
+      offeringCount: 3,
+      mediaOfferingCount: 3,
+    });
+    expect(result.summary).toContain("视频/图像：视频 2 / 图像 1");
+  });
+
+  it("基线之后：小幅降价生成 price_down（写在 media/changes），新模型生成 new_model 并推送", async () => {
+    await runDay(1, { official: withMedia(BASE_MEDIA) });
+    const cheaper = [video("sora-3", 0.08), ...BASE_MEDIA.slice(1), video("sora-4", 0.5)];
+    const result = await runDay(2, { official: withMedia(cheaper) });
+    expect(result.events).toEqual([]);
+    expect(result.mediaEvents.map((e) => [e.type, e.offeringId])).toEqual([
+      ["price_down", SORA],
+      ["new_model", "official:openai/sora-4"],
+    ]);
+    const changes = await readData<ChangesMonthFile>("media/changes/2026-10.json");
+    expect(changes.events).toHaveLength(2);
+    expect(await exists("changes/2026-10.json")).toBe(false);
+    const history = await readData<HistoryFile>("media/history/openai/sora-3.json");
+    expect(history.series[SORA]?.map((p) => [p.effectiveDate, p.output])).toEqual([
+      ["2026-10-18", 0.1],
+      ["2026-10-19", 0.08],
+    ]);
+    const report = sent.at(-1);
+    expect(report?.mediaChanges).toHaveLength(2);
+    expect(report?.mediaUnits?.[SORA]).toBe("per_second");
+  });
+
+  it("没有变化时不重写 media/latest.json", async () => {
+    await runDay(1, { official: withMedia(BASE_MEDIA) });
+    const result = await runDay(2, { official: withMedia(BASE_MEDIA) });
+    expect(result.written).not.toContain("media/latest.json");
+    expect(result.written).toContain("media/quarantine.json");
+  });
+
+  it("突变：进入 media 隔离区并保留旧值；第二次同一值后放行", async () => {
+    await runDay(1, { official: withMedia(BASE_MEDIA) });
+    const crashed = withMedia([video("sora-3", 0.01), ...BASE_MEDIA.slice(1)]);
+    const day2 = await runDay(2, { official: crashed });
+    expect(day2.mediaEvents).toEqual([]);
+    expect(mediaOf(await readData<MediaLatestFile>("media/latest.json"), SORA)?.output).toBe(0.1);
+    const quarantine = await readData<QuarantineFile>("media/quarantine.json");
+    expect(quarantine.entries.map((e) => e.offeringId)).toEqual([SORA]);
+    expect((await readData<QuarantineFile>("quarantine.json")).entries).toEqual([]);
+    expect(sent.at(-1)?.quarantined.map((e) => e.offeringId)).toEqual([SORA]);
+    const day3 = await runDay(3, { official: crashed });
+    expect(day3.mediaEvents).toEqual([
+      expect.objectContaining({ type: "price_down", confirmedFromQuarantine: true }),
+    ]);
+    expect(mediaOf(await readData<MediaLatestFile>("media/latest.json"), SORA)?.output).toBe(0.01);
+  });
+
+  it("源失败：视频/图像同样沿用旧值并标记 stale", async () => {
+    await runDay(1, { official: withMedia(BASE_MEDIA) });
+    await runDay(2, { official: new PipelineError("E1001", "HTTP 503") });
+    const media = await readData<MediaLatestFile>("media/latest.json");
+    expect(mediaOf(media, SORA)).toMatchObject({ stale: true, status: "active", output: 0.1 });
+  });
+
+  it("V5：视频/图像骤降只拒绝这条线，文本照常更新", async () => {
+    await runDay(1, { official: withMedia(BASE_MEDIA) });
+    const result = await runDay(2, {
+      official: [raw("gpt-4o", 2, 10), ...BASE_OFFICIAL.slice(1), image("gpt-image-3", 0.04)],
+    });
+    expect(result.status.sources.find((s) => s.id === "litellm")?.status).toBe("ok");
+    expect(result.status.warnings.some((w) => w.code === "E3004")).toBe(true);
+    expect(result.events.map((e) => e.type)).toEqual(["price_down"]);
+    const media = await readData<MediaLatestFile>("media/latest.json");
+    expect(mediaOf(media, SORA)).toMatchObject({ stale: true, status: "active" });
+  });
+
+  it("下架防抖：连续 3 天没抓到才 removed", async () => {
+    await runDay(1, { official: withMedia(BASE_MEDIA) });
+    const without = withMedia([BASE_MEDIA[0], BASE_MEDIA[1]].filter((m) => m !== undefined));
+    await runDay(2, { official: without });
+    await runDay(3, { official: without });
+    const day4 = await runDay(4, { official: without });
+    expect(day4.mediaEvents).toEqual([
+      expect.objectContaining({ type: "removed", offeringId: "official:openai/gpt-image-3" }),
+    ]);
+  });
+
+  it("V2：每秒价格超过上限的条目被丢弃", async () => {
+    const result = await runDay(1, { official: withMedia([...BASE_MEDIA, video("gold", 500)]) });
+    expect(
+      result.status.warnings.some((w) => w.code === "E3002" && w.message.includes("gold")),
+    ).toBe(true);
+    expect(result.mediaOfferings.map((o) => o.model)).not.toContain("gold");
   });
 });

@@ -1,6 +1,6 @@
 import type { Offering } from "@aipb/shared";
 import { describe, expect, it } from "vitest";
-import { harmonizeDisplayNames, isRawName } from "../../src/steps/display-names";
+import { harmonizeDisplayNames, isRawName, unifyDisplayNames } from "../../src/steps/display-names";
 
 function offering(platform: string, model: string, displayName: string): Offering {
   return { platform, model, modelSlug: `anthropic/${model}`, displayName } as Offering;
@@ -49,5 +49,43 @@ describe("display-names", () => {
       "DeepSeek-V3.2",
       "DeepSeek-V3.2",
     ]);
+  });
+
+  it("视频/图像：同一 modelSlug 统一成一个名称，带空格的名称优先于 ID 写法", () => {
+    const media = (platform: string, model: string, displayName: string): Offering =>
+      ({ platform, model, modelSlug: `minimax/${model}`, displayName }) as Offering;
+    const result = unifyDisplayNames([
+      media("official", "minimax-h3-max", "MiniMax-H3-Max"),
+      media("openrouter", "minimax-h3-max", "H3 Max"),
+      media("official", "veo-3.1-generate-001", "veo-3.1-generate-001"),
+      media("openrouter", "veo-3.1-generate-001", "Veo 3.1"),
+      media("official", "minimax-h3", "MiniMax H3"),
+      media("openrouter", "minimax-h3", "H3"),
+      media("official", "sora-2", "sora-2"),
+    ]);
+    expect(result.map((o) => o.displayName)).toEqual([
+      "H3 Max",
+      "H3 Max",
+      "Veo 3.1",
+      "Veo 3.1",
+      "MiniMax H3",
+      "MiniMax H3",
+      "sora-2",
+    ]);
+  });
+
+  it("视频/图像：都是 ID 写法时按平台优先级取名称", () => {
+    const media = (platform: string, displayName: string): Offering =>
+      ({
+        platform,
+        model: "wan3.0-video",
+        modelSlug: "alibaba/wan3.0-video",
+        displayName,
+      }) as Offering;
+    const result = unifyDisplayNames([
+      media("openrouter", "wan3.0-video"),
+      media("official", "Wan3.0-Video"),
+    ]);
+    expect(result.map((o) => o.displayName)).toEqual(["Wan3.0-Video", "Wan3.0-Video"]);
   });
 });

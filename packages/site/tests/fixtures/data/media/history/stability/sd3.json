@@ -1,0 +1,21 @@
+{
+  "modelSlug": "stability/sd3",
+  "series": {
+    "official:stability/sd3": [
+      {
+        "input": null,
+        "output": 0.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-01"
+      },
+      {
+        "input": null,
+        "output": 0.065,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-01"
+      }
+    ]
+  }
+}

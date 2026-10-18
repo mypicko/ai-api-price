@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/happyhorse-1.1-i2v",
+  "series": {
+    "official:alibaba/happyhorse-1.1-i2v": [
+      {
+        "input": null,
+        "output": 0.165026,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}
