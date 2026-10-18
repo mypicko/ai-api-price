@@ -5,7 +5,7 @@
 A daily-updated price board for mainstream AI model APIs. Prices are scraped automatically every day and published as a free, bilingual (Chinese/English) comparison site.
 
 - **Coverage**: 17 vendors including OpenAI, Anthropic, Google, xAI, Mistral, DeepSeek, Alibaba Qwen, Zhipu GLM, Moonshot Kimi and ByteDance Doubao, plus two aggregators: OpenRouter and SiliconFlow. The first run collected 779 offerings
-- **Features**: price comparison table (sort, filter, search), model detail pages with price history, cost calculator, change log, RSS feed, open JSON API, USD/CNY toggle, dark mode
+- **Features**: price comparison table (sort, filter, search), model detail pages with price history, cost calculator, video/image generation prices (per second / per image), change log, RSS feed, open JSON API, USD/CNY toggle, dark mode
 - **Runs on**: GitHub Actions updates the data every day at 08:00 Beijing time (00:00 UTC); GitHub Pages hosts the site for free, so no server is needed
 - **Alerts**: price changes and scraping failures are pushed to a Feishu (Lark) group
 
@@ -142,17 +142,18 @@ gh variable set BASE_PATH --body /
 
 ### Features
 
-| Feature            | In one sentence                                                                                                     |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| Price board (home) | Input, output and cache prices for every model in one table, sorted cheapest first by blended price                 |
-| Today's changes    | Cards at the top of the home page listing price drops, price increases and new models in the last 24 hours          |
-| Filter and search  | Filter by vendor, model, international/China, platform and context length; show free models only; or search by name |
-| Currency toggle    | ¥ CNY / $ USD in the top-right corner; prices marked ≈ are converted at the day's exchange rate                     |
-| Model details      | Click any row to compare the model across platforms and see tiered pricing and price history                        |
-| Cost calculator    | Enter input/output tokens per request and requests per day to get each model's monthly cost                         |
-| Change log         | Every price increase, price drop, new model and removal, grouped by date                                            |
-| RSS feed           | The RSS link in the footer lets any feed reader follow price changes                                                |
-| About              | Data sources, the health of each source, and suspicious prices awaiting confirmation                                |
+| Feature            | In one sentence                                                                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Price board (home) | Input, output and cache prices for every model in one table, sorted cheapest first by blended price                                        |
+| Today's changes    | Cards at the top of the home page listing price drops, price increases and new models in the last 24 hours                                 |
+| Filter and search  | Filter by vendor, model, international/China, platform and context length; show free models only; or search by name                        |
+| Currency toggle    | ¥ CNY / $ USD in the top-right corner; prices marked ≈ are converted at the day's exchange rate                                            |
+| Model details      | Click any row to compare the model across platforms and see tiered pricing and price history                                               |
+| Cost calculator    | Enter input/output tokens per request and requests per day to get each model's monthly cost                                                |
+| Video & image      | Switch the price board to the "Video" or "Image" tab: video models are priced per second and image models per image, with resolution tiers |
+| Change log         | Every price increase, price drop, new model and removal, grouped by date                                                                   |
+| RSS feed           | The RSS link in the footer lets any feed reader follow price changes                                                                       |
+| About              | Data sources, the health of each source, and suspicious prices awaiting confirmation                                                       |
 
 ### How to use it
 

@@ -27,6 +27,7 @@ import { PctBadge, StatusBadge } from "./ChangeBadge";
 import { DualPrice, DualUnit } from "./DualPrice";
 import { FilterBar, type Option } from "./FilterBar";
 import { MediaMatches } from "./MediaMatches";
+import type { MediaKind } from "@aipb/shared";
 import type { MediaSearchItem } from "../lib/media";
 
 export interface PriceTableProps {
@@ -39,6 +40,8 @@ export interface PriceTableProps {
   readonly platforms: readonly Option[];
   /** 视频/图像报价：搜索命中时在价格榜上方列出（统一搜索入口） */
   readonly media?: readonly MediaSearchItem[];
+  /** 搜索命中视频/图像时，切换到价格榜对应标签 */
+  readonly onSelectMedia?: (kind: MediaKind, query: string) => void;
 }
 
 interface Column {
@@ -269,6 +272,7 @@ export function PriceTable(props: PriceTableProps) {
           locale={locale}
           base={props.base}
           fxNote={props.fxNote}
+          {...(props.onSelectMedia ? { onSelect: props.onSelectMedia } : {})}
         />
       )}
       <p className="text-small text-text-muted" aria-live="polite" data-testid="result-count">

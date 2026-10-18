@@ -32,7 +32,8 @@ export function rssResponse(locale: Locale, site: URL | undefined): Response {
   return new Response(xml, { headers: { "Content-Type": "application/rss+xml; charset=utf-8" } });
 }
 
-export const STATIC_PAGES = ["", "calculator/", "media/", "changes/", "about/"] as const;
+/** media/ 已并入首页价格榜标签，只保留跳转页，不进 sitemap */
+export const STATIC_PAGES = ["", "calculator/", "changes/", "about/"] as const;
 
 export function sitemapPaths(model: SiteModel): readonly string[] {
   return [...STATIC_PAGES, ...model.models.map((m) => modelPath(m.slug))];

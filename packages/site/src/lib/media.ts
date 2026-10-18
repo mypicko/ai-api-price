@@ -306,16 +306,14 @@ export function searchMedia(
     );
 }
 
-/** 视频/图像页链接，带上关键字和类型（视频是默认类型，不写进 URL） */
+/** 价格榜上视频/图像标签的链接，带上关键字（价格榜默认是文本标签，所以 kind 总要写） */
 export function mediaSearchHref(
   base: string,
   locale: Locale,
   query: string,
   kind: MediaKind,
 ): string {
-  const params = new URLSearchParams();
-  if (kind !== "video") params.set("kind", kind);
+  const params = new URLSearchParams({ kind });
   if (query.trim() !== "") params.set("q", query.trim());
-  const search = params.toString();
-  return `${pageHref(base, locale, "media/")}${search ? `?${search}` : ""}`;
+  return `${pageHref(base, locale, "")}?${params.toString()}`;
 }

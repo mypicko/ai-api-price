@@ -1,8 +1,9 @@
 /**
- * 首页统一搜索：关键字命中视频/图像模型时，在文本价格榜上方列出来并链接到视频/图像页（DEV §3.13）。
- * 视频/图像按秒 / 按张计价，不进文本价格榜，这里只做入口。
+ * 首页统一搜索：在文本标签下，关键字命中视频/图像模型时列出来，点击切换到价格榜对应标签（DEV §3.13）。
+ * 视频/图像按秒 / 按张计价，不进文本表格，这里只做入口。
  */
-import { useMemo } from "react";
+import { useMemo, type MouseEvent } from "react";
+import type { MediaKind } from "@aipb/shared";
 import type { Locale } from "../lib/locale";
 import { createT } from "../lib/i18n";
 import { mediaSearchHref, searchMedia, type MediaSearchItem } from "../lib/media";
@@ -14,9 +15,19 @@ export interface MediaMatchesProps {
   readonly locale: Locale;
   readonly base: string;
   readonly fxNote: string;
+  /** 由价格榜提供：在当前页切换标签，不刷新页面；没有时按普通链接跳转 */
+  readonly onSelect?: (kind: MediaKind, query: string) => void;
 }
 
 const MAX_SHOWN = 6;
+
+function selectHandler(props: MediaMatchesProps, kind: MediaKind, query: string) {
+  return (event: MouseEvent<HTMLAnchorElement>): void => {
+    if (!props.onSelect || event.metaKey || event.ctrlKey || event.shiftKey) return;
+    event.preventDefault();
+    props.onSelect(kind, query);
+  };
+}
 
 function Item({ item, props }: { item: MediaSearchItem; props: MediaMatchesProps }) {
   const t = createT(props.locale);
@@ -25,6 +36,7 @@ function Item({ item, props }: { item: MediaSearchItem; props: MediaMatchesProps
     <li className="flex flex-wrap items-baseline gap-x-2">
       <a
         href={mediaSearchHref(props.base, props.locale, item.displayName, item.kind)}
+        onClick={selectHandler(props, item.kind, item.displayName)}
         className="font-medium hover:text-accent hover:underline"
       >
         {item.displayName}
@@ -66,6 +78,7 @@ export function MediaMatches(props: MediaMatchesProps) {
         </h3>
         <a
           href={mediaSearchHref(props.base, locale, query, first.kind)}
+          onClick={selectHandler(props, first.kind, query)}
           className="text-small text-accent hover:underline"
         >
           {t("home.mediaMatches.viewAll")}

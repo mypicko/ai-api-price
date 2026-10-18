@@ -177,10 +177,10 @@ describe("site/media 统一搜索（首页）", () => {
     });
   });
 
-  it("跳转链接带上关键字和类型", () => {
+  it("跳转到价格榜对应标签，带上关键字和类型", () => {
     expect(mediaSearchHref("/ai-api-price/", "zh", "minimax h3", "video")).toBe(
-      "/ai-api-price/media/?q=minimax+h3",
+      "/ai-api-price/?kind=video&q=minimax+h3",
     );
-    expect(mediaSearchHref("/", "en", "flux", "image")).toBe("/en/media/?kind=image&q=flux");
+    expect(mediaSearchHref("/", "en", "flux", "image")).toBe("/en/?kind=image&q=flux");
   });
 });

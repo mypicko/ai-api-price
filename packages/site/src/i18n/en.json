@@ -5,7 +5,6 @@
   "nav.home": "Prices",
   "nav.calculator": "Calculator",
   "nav.changes": "Changes",
-  "nav.media": "Video & Image",
   "nav.about": "About",
   "nav.skip": "Skip to content",
   "nav.primary": "Primary",
@@ -249,6 +248,11 @@
   "media.field.input": "Input image",
   "media.field.output": "Output",
   "home.mediaMatches": "Video/image models: {count} quotes match “{query}”",
-  "home.mediaMatches.viewAll": "View all on the video/image page →",
-  "home.mediaMatches.more": "{count} more"
+  "home.mediaMatches.viewAll": "View all in the matching tab →",
+  "home.mediaMatches.more": "{count} more",
+  "board.tabs": "Model type",
+  "board.tab.text": "Text",
+  "board.tab.video": "Video",
+  "board.tab.image": "Image",
+  "media.moved": "Video & image prices are now on the main price board. Redirecting…"
 }

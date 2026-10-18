@@ -5,7 +5,6 @@
   "nav.home": "价格榜",
   "nav.calculator": "计算器",
   "nav.changes": "变动",
-  "nav.media": "视频/图像",
   "nav.about": "关于",
   "nav.skip": "跳到正文",
   "nav.primary": "主导航",
@@ -249,6 +248,11 @@
   "media.field.input": "输入参考图",
   "media.field.output": "生成价",
   "home.mediaMatches": "视频/图像模型：{count} 个报价匹配「{query}」",
-  "home.mediaMatches.viewAll": "在视频/图像页查看全部 →",
-  "home.mediaMatches.more": "另有 {count} 个"
+  "home.mediaMatches.viewAll": "切换到对应标签查看全部 →",
+  "home.mediaMatches.more": "另有 {count} 个",
+  "board.tabs": "模型类型",
+  "board.tab.text": "文本模型",
+  "board.tab.video": "视频",
+  "board.tab.image": "图像",
+  "media.moved": "视频/图像价格已合并到价格榜，正在跳转…"
 }

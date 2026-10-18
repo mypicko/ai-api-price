@@ -29,6 +29,8 @@ export interface MediaTableProps {
   readonly locale: Locale;
   readonly nowIso: string;
   readonly fxNote: string;
+  /** 嵌入首页价格榜时由外层标签决定类型：隐藏自带的视频/图像标签，URL 里始终写 kind */
+  readonly kind?: MediaKind;
 }
 
 interface Column {
@@ -227,24 +229,30 @@ interface MediaUrlState {
   readonly query: string;
 }
 
-/** ?kind= 和 ?q= 与 URL 双向同步（首页统一搜索会带着关键字跳过来） */
-function useMediaUrlState(): [MediaUrlState, (next: MediaUrlState) => void] {
-  const [state, setState] = useState<MediaUrlState>({ kind: "video", query: "" });
+/**
+ * ?kind= 和 ?q= 与 URL 双向同步（首页统一搜索会带着关键字跳过来）。
+ * fixedKind 有值时（嵌入首页价格榜）类型由外层决定，URL 里始终写 kind，
+ * 因为首页没有 kind 参数时显示的是文本模型。
+ */
+function useMediaUrlState(
+  fixedKind: MediaKind | undefined,
+): [MediaUrlState, (next: MediaUrlState) => void] {
+  const [state, setState] = useState<MediaUrlState>({ kind: fixedKind ?? "video", query: "" });
   const [ready, setReady] = useState(false);
   useEffect(() => {
     const search = window.location.search;
-    setState({ kind: parseMediaKind(search), query: parseMediaQuery(search) });
+    setState({ kind: fixedKind ?? parseMediaKind(search), query: parseMediaQuery(search) });
     setReady(true);
-  }, []);
+  }, [fixedKind]);
   useEffect(() => {
     if (!ready) return;
     const url = new URL(window.location.href);
-    if (state.kind === "video") url.searchParams.delete("kind");
+    if (state.kind === "video" && !fixedKind) url.searchParams.delete("kind");
     else url.searchParams.set("kind", state.kind);
     if (state.query.trim() === "") url.searchParams.delete("q");
     else url.searchParams.set("q", state.query.trim());
     window.history.replaceState(window.history.state, "", url);
-  }, [state, ready]);
+  }, [state, ready, fixedKind]);
   return [state, setState];
 }
 
@@ -294,7 +302,7 @@ function Tabs(props: {
 export function MediaTable(props: MediaTableProps) {
   const { rows, locale } = props;
   const t = createT(locale);
-  const [{ kind, query }, setUrlState] = useMediaUrlState();
+  const [{ kind, query }, setUrlState] = useMediaUrlState(props.kind);
   const setKind = (next: MediaKind): void => setUrlState({ kind: next, query });
   const setQuery = (next: string): void => setUrlState({ kind, query: next });
   const [sort, setSort] = useState<MediaSort>(DEFAULT_MEDIA_SORT);
@@ -305,7 +313,7 @@ export function MediaTable(props: MediaTableProps) {
   );
   return (
     <div className="flex flex-col gap-3">
-      <Tabs kind={kind} counts={counts} locale={locale} onChange={setKind} />
+      {!props.kind && <Tabs kind={kind} counts={counts} locale={locale} onChange={setKind} />}
       <div className="flex flex-wrap items-center gap-3">
         <input
           type="search"
@@ -321,9 +329,10 @@ export function MediaTable(props: MediaTableProps) {
         </p>
       </div>
       <div
-        id="media-panel"
-        role="tabpanel"
-        aria-labelledby={`media-tab-${kind}`}
+        // 嵌入首页时由外层价格榜提供 tabpanel，这里只是普通容器
+        {...(props.kind
+          ? {}
+          : { id: "media-panel", role: "tabpanel", "aria-labelledby": `media-tab-${kind}` })}
         className="overflow-x-auto rounded-lg border border-border sm:max-h-[78vh] sm:overflow-y-auto"
       >
         <table className="w-full border-collapse" data-testid="media-table" data-kind={kind}>
