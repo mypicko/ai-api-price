@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { findModel } from "../src/lib/site-model";
 import {
   calcOfferings,
+  MAX_CHART_SERIES,
   chartOfferings,
   fxNote,
   platformOptions,
@@ -49,6 +50,37 @@ describe("views", () => {
     const list = calcOfferings(model, "zh");
     expect(list.some((o) => o.id === "official:amazon/nova-micro")).toBe(false);
     expect(list.length).toBe(model.offerings.length - 1);
+  });
+
+  it("走势图最多 MAX_CHART_SERIES 条线：官方优先，其余按价格", () => {
+    const info = findModel(model, "deepseek/deepseek-chat");
+    if (!info) throw new Error("缺少模型");
+    const first = info.offerings[0];
+    if (!first) throw new Error("缺少报价");
+    const many = {
+      ...info,
+      offerings: Array.from({ length: 10 }, (_, i) => ({
+        ...first,
+        id: `p${i}:deepseek/deepseek-chat`,
+        platform: i === 9 ? "official" : `p${i}`,
+        blended: { usd: 10 - i, cny: 70 - i },
+      })),
+    };
+    const histories = new Map(model.data.histories);
+    histories.set(info.slug, {
+      modelSlug: info.slug,
+      series: Object.fromEntries(
+        many.offerings.map((o) => [
+          o.id,
+          [{ effectiveDate: "2026-10-01", input: 1, output: 2, cacheRead: null, cacheWrite: null }],
+        ]),
+      ),
+    });
+    const patched = { ...model, data: { ...model.data, histories } };
+    const ids = chartOfferings(patched, many, "en").map((c) => c.id);
+    expect(ids).toHaveLength(MAX_CHART_SERIES);
+    expect(ids[0]).toBe("p9:deepseek/deepseek-chat");
+    expect(ids[1]).toBe("p8:deepseek/deepseek-chat");
   });
 
   it("走势图按平台生成序列", () => {

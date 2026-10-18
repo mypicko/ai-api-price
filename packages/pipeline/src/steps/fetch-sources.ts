@@ -5,7 +5,7 @@
  */
 import type { AliasesConfig, Offering, ProvidersConfig, Warning } from "@aipb/shared";
 import { PipelineError, toPipelineError } from "../core/errors";
-import type { Source, SourceContext, SourceItem } from "../sources/types";
+import { MULTI_PLATFORM, type Source, type SourceContext, type SourceItem } from "../sources/types";
 import { buildMediaLane, isRawMedia, type MediaLaneResult } from "./media-normalize";
 import {
   createAliasResolver,
@@ -134,8 +134,9 @@ function processRaw(
   input: RunSourcesInput,
   durationMs: number,
 ): SourceOutcome {
-  const platform = input.providers.platforms.find((p) => p.id === source.platform);
-  if (!platform) {
+  const platforms = new Map(input.providers.platforms.map((p) => [p.id, p] as const));
+  const platform = platforms.get(source.platform) ?? null;
+  if (!platform && source.platform !== MULTI_PLATFORM) {
     return failedOutcome(
       source,
       new PipelineError("E3001", `providers.yaml 中没有平台 ${source.platform}`),
@@ -145,6 +146,7 @@ function processRaw(
   const ctx: NormalizeContext = {
     sourceId: source.id,
     platform,
+    platforms,
     matchVendor: createVendorMatcher(input.providers),
     resolveAlias: createAliasResolver(input.aliases),
   };

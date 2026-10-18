@@ -124,17 +124,25 @@ describe("table URL 参数", () => {
         minContext: 128000,
       },
       sort: { key: "input" as const, dir: "desc" as const },
+      view: "offers" as const,
     };
     const query = serializeTableState(state);
     expect(query).toBe(
-      "q=qwen&vendor=alibaba%2Czhipu&model=alibaba%2Fqwen-plus%2Czhipu%2Fglm-4.6&region=cn&platform=official&free=1&ctx=128000&sort=input&dir=desc",
+      "view=offers&q=qwen&vendor=alibaba%2Czhipu&model=alibaba%2Fqwen-plus%2Czhipu%2Fglm-4.6&region=cn&platform=official&free=1&ctx=128000&sort=input&dir=desc",
     );
     expect(parseTableState(`?${query}`)).toEqual(state);
   });
 
   it("默认状态生成空查询", () => {
-    expect(serializeTableState({ filters: DEFAULT_FILTERS, sort: DEFAULT_SORT })).toBe("");
-    expect(parseTableState("")).toEqual({ filters: DEFAULT_FILTERS, sort: DEFAULT_SORT });
+    expect(
+      serializeTableState({ filters: DEFAULT_FILTERS, sort: DEFAULT_SORT, view: "models" }),
+    ).toBe("");
+    expect(parseTableState("")).toEqual({
+      filters: DEFAULT_FILTERS,
+      sort: DEFAULT_SORT,
+      view: "models",
+    });
+    expect(parseTableState("?view=hack").view).toBe("models");
   });
 
   it("忽略非法参数", () => {

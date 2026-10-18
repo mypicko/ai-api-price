@@ -65,7 +65,8 @@ function createRuntime(): Runtime {
     config,
     configWarnings: warnings,
     logger,
-    http: createHttpClient({ userAgent }),
+    // OpenRouter 是公开 API，服务商报价要逐个模型请求（几百次），间隔放宽到 200ms
+    http: createHttpClient({ userAgent, hostIntervalMs: { "openrouter.ai": 200 } }),
     browser: createBrowserClient({ userAgent }),
   };
 }

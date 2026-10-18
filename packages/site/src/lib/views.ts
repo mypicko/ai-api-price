@@ -12,6 +12,8 @@ import { platformName, vendorName, type ModelInfo, type SiteModel } from "./site
 export interface Option {
   readonly id: string;
   readonly name: string;
+  /** 下拉框分组（平台类型：官方 / 聚合平台 / 云平台 / 推理服务商） */
+  readonly group?: string;
 }
 
 export interface EventView {
@@ -47,11 +49,27 @@ export function vendorOptions(
 }
 
 /** 平台按配置文件的顺序 */
+const CATEGORY_ORDER = ["official", "aggregator", "cloud", "inference"] as const;
+
+/** 有报价的平台，按类型分组（官方 → 聚合平台 → 云平台 → 推理服务商），组内按配置顺序 */
 export function platformOptions(model: SiteModel, locale: Locale): readonly Option[] {
   const used = new Set(model.offerings.map((o) => o.platform));
+  const categoryOf = (id: string): (typeof CATEGORY_ORDER)[number] =>
+    model.platforms.get(id)?.category ?? "official";
   const configured = model.data.providers.platforms.map((p) => p.id).filter((id) => used.has(id));
   const extra = [...used].filter((id) => !configured.includes(id)).toSorted();
-  return [...configured, ...extra].map((id) => ({ id, name: platformName(model, id, locale) }));
+  return [...configured, ...extra]
+    .map((id, order) => ({ id, order, category: categoryOf(id) }))
+    .toSorted(
+      (a, b) =>
+        CATEGORY_ORDER.indexOf(a.category) - CATEGORY_ORDER.indexOf(b.category) ||
+        a.order - b.order,
+    )
+    .map(({ id, category }) => ({
+      id,
+      name: platformName(model, id, locale),
+      group: t(locale, `platform.category.${category}`),
+    }));
 }
 
 export function toEventView(model: SiteModel, event: ChangeEvent, locale: Locale): EventView {
@@ -96,20 +114,37 @@ export function calcOfferings(model: SiteModel, locale: Locale): readonly CalcOf
     }));
 }
 
+/** 混合价（USD）升序；未知排最后。用于平台对比表和走势图选线 */
+export function byBlendedUsd(
+  a: { readonly blended: { readonly usd: number | null } | null; readonly id: string },
+  b: { readonly blended: { readonly usd: number | null } | null; readonly id: string },
+): number {
+  const pa = a.blended?.usd ?? Infinity;
+  const pb = b.blended?.usd ?? Infinity;
+  return pa - pb || a.id.localeCompare(b.id);
+}
+
+/** 走势图最多画几条线：平台多（转售价）时只画官方 + 最便宜的几家，避免挤成一团 */
+export const MAX_CHART_SERIES = 6;
+
 export function chartOfferings(
   model: SiteModel,
   info: ModelInfo,
   locale: Locale,
 ): readonly ChartOffering[] {
   const series = model.data.histories.get(info.slug)?.series ?? {};
-  return info.offerings
-    .filter((o) => (series[o.id]?.length ?? 0) > 0)
-    .map((o) => ({
-      id: o.id,
-      label: platformName(model, o.platform, locale),
-      currency: o.currency,
-      points: series[o.id] ?? [],
-    }));
+  const withHistory = info.offerings.filter((o) => (series[o.id]?.length ?? 0) > 0);
+  // 只有配置里明确标为官方的平台才算官方；未知平台按转售处理
+  const isOfficial = (platform: string): boolean =>
+    model.platforms.get(platform)?.category === "official";
+  const official = withHistory.filter((o) => isOfficial(o.platform));
+  const others = withHistory.filter((o) => !isOfficial(o.platform)).toSorted(byBlendedUsd);
+  return [...official, ...others].slice(0, MAX_CHART_SERIES).map((o) => ({
+    id: o.id,
+    label: platformName(model, o.platform, locale),
+    currency: o.currency,
+    points: series[o.id] ?? [],
+  }));
 }
 
 export interface MediaEventView {

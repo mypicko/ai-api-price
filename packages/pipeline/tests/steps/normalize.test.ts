@@ -208,3 +208,43 @@ describe("isForeignModel", () => {
     expect(result.kind).toBe("unknown-vendor");
   });
 });
+
+describe("normalize：多平台数据源（转售价）", () => {
+  const azure = {
+    id: "azure",
+    nameZh: "Azure",
+    nameEn: "Azure",
+    website: "https://azure.microsoft.com",
+    allowedSourceDomains: ["azure.microsoft.com"],
+  };
+  const multi = (): NormalizeContext => ({
+    ...ctx(),
+    sourceId: "litellm-resellers",
+    platform: null,
+    platforms: new Map([[azure.id, azure]]),
+  });
+  const azureRaw = raw({
+    platform: "azure",
+    sourceUrl: "https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/",
+  });
+
+  it("按报价自带的 platform 生成 ID，并用该平台的域名白名单", () => {
+    const result = normalizeOne(azureRaw, multi());
+    expect(result.kind).toBe("ok");
+    expect(result.kind === "ok" && result.candidate).toMatchObject({
+      id: "azure:openai/gpt-4o",
+      platform: "azure",
+      source: "litellm-resellers",
+    });
+  });
+
+  it("平台无法识别，或多平台源的报价没带 platform 时跳过", () => {
+    expect(normalizeOne(raw({ platform: "nope" }), multi()).kind).toBe("unknown-vendor");
+    expect(normalizeOne(raw(), multi()).kind).toBe("unknown-vendor");
+  });
+
+  it("单平台源忽略不了自带的 platform：以报价为准", () => {
+    const result = normalizeOne(azureRaw, { ...ctx(), platforms: new Map([[azure.id, azure]]) });
+    expect(result.kind === "ok" && result.candidate.platform).toBe("azure");
+  });
+});

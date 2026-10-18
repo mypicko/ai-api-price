@@ -4,7 +4,10 @@ import { createHttpClient, looksLikeChallenge } from "../../src/core/http";
 
 type Handler = (url: string, init: RequestInit) => Response | Promise<Response>;
 
-function setup(handler: Handler, extra: { minIntervalMs?: number } = {}) {
+function setup(
+  handler: Handler,
+  extra: { minIntervalMs?: number; hostIntervalMs?: Record<string, number> } = {},
+) {
   const calls: { url: string; init: RequestInit }[] = [];
   const sleeps: number[] = [];
   let clock = 0;
@@ -113,6 +116,22 @@ describe("core/http", () => {
       client.getText("https://a.example/2"),
     ]);
     expect(sleeps).toEqual([1000]);
+  });
+
+  it("hostIntervalMs 按主机覆盖间隔，其他主机仍用 minIntervalMs", async () => {
+    const { client, sleeps } = setup(() => new Response("ok"), {
+      minIntervalMs: 1000,
+      hostIntervalMs: { "fast.example": 200 },
+    });
+    await Promise.all([
+      client.getText("https://fast.example/1"),
+      client.getText("https://fast.example/2"),
+    ]);
+    await Promise.all([
+      client.getText("https://a.example/1"),
+      client.getText("https://a.example/2"),
+    ]);
+    expect(sleeps).toEqual([200, 1000]);
   });
 
   it("超时转成 E1002 并可重试", async () => {

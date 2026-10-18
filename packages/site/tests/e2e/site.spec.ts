@@ -24,7 +24,9 @@ test.describe("首页", () => {
     await expect(page).toHaveTitle(/AI API 价格榜/);
     await expect(page.locator("html")).toHaveAttribute("lang", "zh-CN");
     await expect(page.getByTestId("today-changes").locator("> ul > li")).toHaveCount(6);
-    await expect(bodyRows(page)).toHaveCount(34);
+    // 默认按模型聚合：27 个模型、34 条报价
+    await expect(bodyRows(page)).toHaveCount(27);
+    await expect(page.getByTestId("result-count")).toHaveText("共 27 个模型 · 34 个报价");
     await expect(page.locator('link[hreflang="en"]')).toHaveAttribute("href", /\/en\/$/);
     await expect(page.locator('meta[http-equiv="content-security-policy"]')).toHaveCount(1);
     // 抓来的文本按纯文本渲染（S5）
@@ -50,8 +52,8 @@ test.describe("首页", () => {
     await expect(page).toHaveURL(/\/$/);
   });
 
-  test("筛选：搜索、地区、仅免费、厂商，并同步到 URL", async ({ page }) => {
-    await gotoHydrated(page, "/");
+  test("筛选：搜索、地区、仅免费、厂商，并同步到 URL（按报价视图）", async ({ page }) => {
+    await gotoHydrated(page, "/?view=offers");
     await page.getByPlaceholder(/搜索模型/).fill("deepseek v3");
     await expect(bodyRows(page)).toHaveCount(3);
     await expect(page).toHaveURL(/q=deepseek\+v3/);
@@ -64,11 +66,43 @@ test.describe("首页", () => {
     await page.reload();
     await expect(bodyRows(page)).toHaveCount(2);
     await expect(page.getByLabel("仅免费")).toBeChecked();
-    await page.goto("/?vendor=openai");
+    await page.goto("/?view=offers&vendor=openai");
     await expect(bodyRows(page)).toHaveCount(4);
     await page.getByTestId("vendor-filter").locator("summary").click();
     await page.getByTestId("vendor-filter").getByLabel("Anthropic").check();
     await expect(bodyRows(page)).toHaveCount(8);
+  });
+
+  test("按模型聚合：显示最低价和平台数，可展开各平台报价，可切到按报价", async ({ page }) => {
+    const errors = collectErrors(page);
+    await gotoHydrated(page, "/");
+    await page.getByPlaceholder(/搜索模型/).fill("deepseek v3");
+    await expect(bodyRows(page)).toHaveCount(1);
+    const count = page.getByTestId("platform-count");
+    await expect(count).toHaveText(/3 个平台/);
+    await expect(count).toHaveAttribute("aria-expanded", "false");
+    await count.click();
+    await expect(count).toHaveAttribute("aria-expanded", "true");
+    const nested = page.getByTestId("price-table").locator('tbody tr[data-nested="true"]');
+    await expect(nested).toHaveCount(3);
+    // 展开的子行按价格从低到高，第一条就是代表行的平台
+    const bestPlatform = await bodyRows(page).first().locator("td").nth(1).innerText();
+    await expect(nested.first()).toContainText(bestPlatform.replace(/\s*3 个平台.*$/s, "").trim());
+    await count.click();
+    await expect(nested).toHaveCount(0);
+    // 切到按报价：3 条
+    await page.getByTestId("view-toggle").getByRole("button", { name: "按报价" }).click();
+    await expect(page).toHaveURL(/view=offers/);
+    await expect(bodyRows(page)).toHaveCount(3);
+    await expect(page.getByTestId("result-count")).toHaveText("共 3 个报价");
+    // 选定平台后，每个模型显示的就是该平台的价格
+    await page.getByTestId("view-toggle").getByRole("button", { name: "按模型" }).click();
+    await page.getByLabel("平台", { exact: true }).selectOption({ label: "OpenRouter" });
+    await expect(bodyRows(page)).toHaveCount(1);
+    await expect(bodyRows(page).first()).toContainText("OpenRouter");
+    await expect(page.getByTestId("platform-count")).toHaveCount(0);
+    await page.waitForLoadState("networkidle");
+    expect(errors).toEqual([]);
   });
 
   test("模型筛选：下拉框盖在表头之上，跟随厂商联动并同步到 URL", async ({ page }) => {

@@ -8,14 +8,16 @@ import type { Locale } from "../lib/locale";
 import { formatTokens } from "../lib/shared-client";
 import { getSiteModel } from "../lib/site-data";
 import { platformName } from "../lib/site-model";
-import { fxNote } from "../lib/views";
+import { byBlendedUsd, fxNote } from "../lib/views";
 
 interface Props {
   locale: Locale;
   offerings: readonly PublicOffering[];
 }
 
-const { locale, offerings } = Astro.props;
+const { locale } = Astro.props;
+// 平台多时最便宜的排前面，方便比价
+const offerings = Astro.props.offerings.toSorted(byBlendedUsd);
 const model = getSiteModel();
 const note = fxNote(model, locale);
 const priceCols = ["input", "output", "cacheRead", "cacheWrite"] as const;

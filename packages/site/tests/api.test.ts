@@ -48,13 +48,15 @@ describe("api", () => {
       "region",
       "website",
     ]);
-    expect(body.data.platforms.map((p) => p.id)).toEqual([
+    expect(body.data.platforms.map((p) => p.id).slice(0, 5)).toEqual([
       "official",
       "official-cn",
       "openrouter",
       "siliconflow",
       "siliconflow-cn",
     ]);
+    expect(body.data.platforms.find((p) => p.id === "azure")?.category).toBe("cloud");
+    expect(body.data.platforms.find((p) => p.id === "official")?.category).toBe("official");
     expect(body.meta.count).toBe(body.data.vendors.length);
     expect(validateEnvelope("providers", body)).toEqual([]);
   });

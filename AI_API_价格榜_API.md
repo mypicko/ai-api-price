@@ -239,7 +239,13 @@ curl -s https://alice.github.io/ai-api-price/api/v1/latest.json | jq '.data.offe
       }
     ],
     "platforms": [
-      { "id": "official", "nameZh": "官方", "nameEn": "Official", "website": null },
+      {
+        "id": "official",
+        "nameZh": "官方",
+        "nameEn": "Official",
+        "website": null,
+        "category": "official"
+      },
       {
         "id": "openrouter",
         "nameZh": "OpenRouter",

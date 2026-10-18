@@ -17,13 +17,16 @@ export interface SourceContext {
   readonly rootDir: string;
 }
 
+/** 多平台数据源（转售价）：平台由每条报价的 platform 字段决定 */
+export const MULTI_PLATFORM = "*";
+
 /** 抓取器的单条输出：文本 token 报价，或带 media 字段的视频/图像报价 */
 export type SourceItem = RawOffering | RawMediaOffering;
 
 export interface Source {
   /** 唯一 ID，例如 "deepseek"、"openrouter" */
   readonly id: string;
-  /** 报价所属平台：official = 厂商直供 */
+  /** 报价所属平台：official = 厂商直供；MULTI_PLATFORM = 每条报价自带 platform */
   readonly platform: string;
   readonly kind: SourceKind;
   /** 单次抓取总超时（毫秒） */

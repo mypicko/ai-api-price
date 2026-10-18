@@ -8,10 +8,14 @@ import type { MediaKind } from "@aipb/shared";
 import { BOARD_TABS, boardTabSearch, parseBoardTab, type BoardTab } from "../lib/board";
 import { createT } from "../lib/i18n";
 import { countByKind, type MediaRow } from "../lib/media";
+import { unpackRows, type PackedRows } from "../lib/pack";
+import type { TableRow } from "../lib/table";
 import { MediaTable } from "./MediaTable";
 import { PriceTable, type PriceTableProps } from "./PriceTable";
 
-export interface PriceBoardProps extends PriceTableProps {
+export interface PriceBoardProps extends Omit<PriceTableProps, "rows"> {
+  /** 文本报价，按列打包以减小首页 HTML（见 lib/pack.ts） */
+  readonly packedRows: PackedRows;
   readonly mediaRows: readonly MediaRow[];
 }
 
@@ -67,12 +71,14 @@ function TabList(props: {
 }
 
 export function PriceBoard(props: PriceBoardProps) {
-  const { mediaRows, ...tableProps } = props;
+  const { mediaRows, packedRows, ...rest } = props;
+  const rows = useMemo(() => unpackRows<TableRow>(packedRows), [packedRows]);
+  const tableProps: PriceTableProps = { ...rest, rows };
   const [tab, setTab] = useState<BoardTab>("text");
   useEffect(() => setTab(parseBoardTab(window.location.search)), []);
   const counts = useMemo(
-    () => ({ text: props.rows.length, ...countByKind(mediaRows) }),
-    [props.rows, mediaRows],
+    () => ({ text: rows.length, ...countByKind(mediaRows) }),
+    [rows, mediaRows],
   );
   const select = (next: BoardTab, query?: string): void => {
     const search = query === undefined ? window.location.search : `?q=${encodeURIComponent(query)}`;

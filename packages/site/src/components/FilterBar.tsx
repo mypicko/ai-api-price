@@ -29,6 +29,18 @@ export interface FilterBarProps {
 
 const REGIONS: readonly RegionFilter[] = ["all", "intl", "cn"];
 
+/** 按 group 分组，保持原有顺序；没有 group 的放在一组 null 里 */
+function groupOptions(options: readonly Option[]): readonly [string | null, readonly Option[]][] {
+  const groups = new Map<string | null, Option[]>();
+  for (const option of options) {
+    const key = option.group ?? null;
+    const list = groups.get(key);
+    if (list) list.push(option);
+    else groups.set(key, [option]);
+  }
+  return [...groups.entries()];
+}
+
 /** 下拉列表一次最多渲染的条目数，避免几百个模型时卡顿；更多的用搜索定位 */
 const MAX_VISIBLE_OPTIONS = 200;
 
@@ -229,11 +241,23 @@ export function FilterBar(props: FilterBarProps) {
             onChange={(e) => onChange({ ...filters, platform: e.target.value })}
           >
             <option value="all">{t("filter.platform.all")}</option>
-            {platforms.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.name}
-              </option>
-            ))}
+            {groupOptions(platforms).map(([group, options]) =>
+              group === null ? (
+                options.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name}
+                  </option>
+                ))
+              ) : (
+                <optgroup key={group} label={group}>
+                  {options.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.name}
+                    </option>
+                  ))}
+                </optgroup>
+              ),
+            )}
           </select>
         </div>
         <div className="flex items-center gap-2">

@@ -106,6 +106,8 @@ export interface PublicPlatform {
   readonly nameZh: string;
   readonly nameEn: string;
   readonly website: string | null;
+  /** official 官方 / aggregator 聚合平台 / cloud 云平台 / inference 推理服务商 */
+  readonly category: "official" | "aggregator" | "cloud" | "inference";
 }
 
 /** 2.2 厂商与平台；modelCount = 当前在售的去重模型数 */
@@ -134,6 +136,7 @@ export function providersPayload(
     nameZh: p.nameZh,
     nameEn: p.nameEn,
     website: p.website,
+    category: p.category ?? "official",
   }));
   return envelope({ vendors, platforms }, baseMeta(model, { count: vendors.length }));
 }

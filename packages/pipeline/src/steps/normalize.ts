@@ -33,6 +33,8 @@ export const MAX_NOTES_LENGTH = 200;
  */
 export const SOURCE_PRIORITY: Readonly<Record<string, number>> = {
   litellm: 2,
+  // 同一平台同一模型：OpenRouter 服务商列表（实时，默认 3）优先于 LiteLLM 社区价格表
+  "litellm-resellers": 2,
   manual: 1,
   "manual-cn": 4,
 };
@@ -167,7 +169,10 @@ function buildPrices(
 
 export interface NormalizeContext {
   readonly sourceId: string;
-  readonly platform: PlatformConfig;
+  /** 源自身的平台；多平台数据源（Source.platform = "*"）为 null，平台由每条报价的 platform 决定 */
+  readonly platform: PlatformConfig | null;
+  /** 全部平台配置，用于解析报价自带的 platform */
+  readonly platforms?: ReadonlyMap<string, PlatformConfig>;
   readonly matchVendor: VendorMatcher;
   readonly resolveAlias: AliasResolver;
 }
@@ -199,7 +204,14 @@ export function isForeignModel(vendorId: string, model: string): boolean {
   return owner !== undefined && owner !== vendorId;
 }
 
+function resolvePlatform(raw: RawOffering, ctx: NormalizeContext): PlatformConfig | null {
+  if (raw.platform === undefined) return ctx.platform;
+  return ctx.platforms?.get(raw.platform) ?? null;
+}
+
 export function normalizeOne(raw: RawOffering, ctx: NormalizeContext): NormalizeOneResult {
+  const platform = resolvePlatform(raw, ctx);
+  if (!platform) return { kind: "unknown-vendor", hint: `平台 ${raw.platform ?? "（未指定）"}` };
   const vendor = ctx.matchVendor(raw.vendorHint);
   if (!vendor) return { kind: "unknown-vendor", hint: raw.vendorHint };
   const model = ctx.resolveAlias(vendor.id, raw.modelName);
@@ -210,8 +222,8 @@ export function normalizeOne(raw: RawOffering, ctx: NormalizeContext): Normalize
     const message = `模型名无法规范化为合法 ID：${raw.modelName}`;
     return { kind: "invalid", warning: makeWarning("E3001", message, { sourceId: ctx.sourceId }) };
   }
-  const id = makeOfferingId(ctx.platform.id, vendor.id, model);
-  const domains = [...vendor.allowedSourceDomains, ...ctx.platform.allowedSourceDomains];
+  const id = makeOfferingId(platform.id, vendor.id, model);
+  const domains = [...vendor.allowedSourceDomains, ...platform.allowedSourceDomains];
   if (!isAllowedSourceUrl(raw.sourceUrl, domains)) {
     const message = `sourceUrl 域名不在白名单内，已丢弃：${raw.sourceUrl}`;
     return {
@@ -225,7 +237,7 @@ export function normalizeOne(raw: RawOffering, ctx: NormalizeContext): Normalize
     model,
     modelSlug: makeModelSlug(vendor.id, model),
     displayName: truncate(raw.displayName ?? raw.modelName, MAX_NAME_LENGTH),
-    platform: ctx.platform.id,
+    platform: platform.id,
     source: ctx.sourceId,
     currency: raw.currency,
     ...buildPrices(raw),

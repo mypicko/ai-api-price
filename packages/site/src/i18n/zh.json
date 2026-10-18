@@ -22,7 +22,7 @@
   "footer.api": "开放数据接口",
   "footer.noData": "暂无数据",
   "home.title": "AI 模型 API 价格榜",
-  "home.lead": "{count} 个报价 · {vendors} 个厂商 · 价格单位：每百万 tokens",
+  "home.lead": "{models} 个模型 · {count} 个报价 · {platforms} 个平台 · 价格单位：每百万 tokens",
   "home.todayChanges.title": "今日变动",
   "home.todayChanges.empty": "最近 24 小时没有价格变动。",
   "home.todayChanges.viewAll": "查看全部变动",
@@ -254,5 +254,18 @@
   "board.tab.text": "文本模型",
   "board.tab.video": "视频",
   "board.tab.image": "图像",
-  "media.moved": "视频/图像价格已合并到价格榜，正在跳转…"
+  "media.moved": "视频/图像价格已合并到价格榜，正在跳转…",
+  "platform.category.official": "官方",
+  "platform.category.aggregator": "聚合平台",
+  "platform.category.cloud": "云平台",
+  "platform.category.inference": "推理服务商",
+  "table.view": "视图",
+  "table.view.models": "按模型",
+  "table.view.offers": "按报价",
+  "table.platformCount": "{count} 个平台",
+  "table.expand": "展开 {count} 个平台的报价",
+  "table.collapse": "收起",
+  "table.cheapestOn": "最低价来自 {platform}",
+  "table.resultCount.models": "共 {models} 个模型 · {count} 个报价",
+  "table.column.cheapest": "最低价平台"
 }

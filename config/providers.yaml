@@ -281,6 +281,7 @@ vendors:
 platforms:
   - {
       id: official,
+      category: official,
       nameZh: 官方,
       nameEn: Official,
       website: null,
@@ -288,6 +289,7 @@ platforms:
     }
   - {
       id: official-cn,
+      category: official,
       nameZh: 官方（国内站）,
       nameEn: Official (China),
       website: null,
@@ -295,6 +297,7 @@ platforms:
     }
   - {
       id: openrouter,
+      category: aggregator,
       nameZh: OpenRouter,
       nameEn: OpenRouter,
       website: "https://openrouter.ai",
@@ -302,6 +305,7 @@ platforms:
     }
   - {
       id: siliconflow,
+      category: aggregator,
       nameZh: 硅基流动,
       nameEn: SiliconFlow,
       website: "https://siliconflow.cn",
@@ -309,8 +313,263 @@ platforms:
     }
   - {
       id: siliconflow-cn,
+      category: aggregator,
       nameZh: 硅基流动（国内站）,
       nameEn: SiliconFlow (China),
       website: "https://siliconflow.cn",
       allowedSourceDomains: [siliconflow.cn, siliconflow.com, models.dev],
+    }
+  # ── 转售：云平台（cloud）与推理服务商（inference），由 litellm-resellers / openrouter-endpoints 读取 ──
+  # matchers：LiteLLM 的 litellm_provider（支持末尾 * 前缀匹配）或 OpenRouter 的 provider_name，不区分大小写
+  # allowedSourceDomains 都含 openrouter.ai：经 OpenRouter 服务商列表得到的报价以 OpenRouter 页面为证据
+  # 不收国内中转站（aihubmix 等）；厂商以自身身份出现在 OpenRouter 上的（DeepSeek、Moonshot AI…）是官方价，不在这里
+  - {
+      id: azure,
+      nameZh: "Azure",
+      nameEn: "Azure",
+      website: "https://azure.microsoft.com",
+      pricingUrl: "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      category: cloud,
+      matchers: ["azure", "azure_ai", "Azure"],
+      allowedSourceDomains: [azure.microsoft.com, openrouter.ai],
+    }
+  - {
+      id: bedrock,
+      nameZh: "Amazon Bedrock",
+      nameEn: "Amazon Bedrock",
+      website: "https://aws.amazon.com/bedrock/",
+      pricingUrl: "https://aws.amazon.com/bedrock/pricing/",
+      category: cloud,
+      matchers: ["bedrock", "bedrock_converse", "Amazon Bedrock"],
+      allowedSourceDomains: [aws.amazon.com, openrouter.ai],
+    }
+  - {
+      id: vertex,
+      nameZh: "Google Vertex AI",
+      nameEn: "Google Vertex AI",
+      website: "https://cloud.google.com/vertex-ai",
+      pricingUrl: "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+      category: cloud,
+      matchers: ["vertex_ai*", "Google Vertex"],
+      allowedSourceDomains: [cloud.google.com, openrouter.ai],
+    }
+  - {
+      id: oci,
+      nameZh: "Oracle OCI",
+      nameEn: "Oracle OCI",
+      website: "https://www.oracle.com/artificial-intelligence/generative-ai/",
+      pricingUrl: "https://www.oracle.com/artificial-intelligence/generative-ai/generative-ai-service/pricing/",
+      category: cloud,
+      matchers: ["oci"],
+      allowedSourceDomains: [oracle.com, openrouter.ai],
+    }
+  - {
+      id: databricks,
+      nameZh: "Databricks",
+      nameEn: "Databricks",
+      website: "https://www.databricks.com",
+      pricingUrl: "https://www.databricks.com/product/pricing/foundation-model-serving",
+      category: cloud,
+      matchers: ["databricks", "Databricks"],
+      allowedSourceDomains: [databricks.com, openrouter.ai],
+    }
+  - {
+      id: cloudflare,
+      nameZh: "Cloudflare Workers AI",
+      nameEn: "Cloudflare Workers AI",
+      website: "https://developers.cloudflare.com/workers-ai/",
+      pricingUrl: "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+      category: cloud,
+      matchers: ["cloudflare", "Cloudflare"],
+      allowedSourceDomains: [cloudflare.com, openrouter.ai],
+    }
+  - {
+      id: digitalocean,
+      nameZh: "DigitalOcean",
+      nameEn: "DigitalOcean",
+      website: "https://www.digitalocean.com",
+      pricingUrl: "https://www.digitalocean.com/pricing/gradient-platform",
+      category: cloud,
+      matchers: ["DigitalOcean"],
+      allowedSourceDomains: [digitalocean.com, openrouter.ai],
+    }
+  - {
+      id: coreweave,
+      nameZh: "CoreWeave",
+      nameEn: "CoreWeave",
+      website: "https://www.coreweave.com",
+      pricingUrl: null,
+      category: cloud,
+      matchers: ["CoreWeave"],
+      allowedSourceDomains: [coreweave.com, openrouter.ai],
+    }
+  - {
+      id: together,
+      nameZh: "Together AI",
+      nameEn: "Together AI",
+      website: "https://www.together.ai",
+      pricingUrl: "https://www.together.ai/pricing",
+      category: inference,
+      matchers: ["together_ai", "Together"],
+      allowedSourceDomains: [together.ai, openrouter.ai],
+    }
+  - {
+      id: fireworks,
+      nameZh: "Fireworks AI",
+      nameEn: "Fireworks AI",
+      website: "https://fireworks.ai",
+      pricingUrl: "https://fireworks.ai/pricing",
+      category: inference,
+      matchers: ["fireworks_ai", "Fireworks"],
+      allowedSourceDomains: [fireworks.ai, openrouter.ai],
+    }
+  - {
+      id: deepinfra,
+      nameZh: "DeepInfra",
+      nameEn: "DeepInfra",
+      website: "https://deepinfra.com",
+      pricingUrl: "https://deepinfra.com/pricing",
+      category: inference,
+      matchers: ["deepinfra", "DeepInfra"],
+      allowedSourceDomains: [deepinfra.com, openrouter.ai],
+    }
+  - {
+      id: groq,
+      nameZh: "Groq",
+      nameEn: "Groq",
+      website: "https://groq.com",
+      pricingUrl: "https://groq.com/pricing",
+      category: inference,
+      matchers: ["groq", "Groq"],
+      allowedSourceDomains: [groq.com, openrouter.ai],
+    }
+  - {
+      id: cerebras,
+      nameZh: "Cerebras",
+      nameEn: "Cerebras",
+      website: "https://www.cerebras.ai",
+      pricingUrl: "https://www.cerebras.ai/pricing",
+      category: inference,
+      matchers: ["cerebras", "Cerebras"],
+      allowedSourceDomains: [cerebras.ai, openrouter.ai],
+    }
+  - {
+      id: sambanova,
+      nameZh: "SambaNova",
+      nameEn: "SambaNova",
+      website: "https://sambanova.ai",
+      pricingUrl: null,
+      category: inference,
+      matchers: ["sambanova", "SambaNova"],
+      allowedSourceDomains: [sambanova.ai, openrouter.ai],
+    }
+  - {
+      id: novita,
+      nameZh: "Novita AI",
+      nameEn: "Novita AI",
+      website: "https://novita.ai",
+      pricingUrl: "https://novita.ai/pricing",
+      category: inference,
+      matchers: ["novita", "Novita", "NovitaAI"],
+      allowedSourceDomains: [novita.ai, openrouter.ai],
+    }
+  - {
+      id: nebius,
+      nameZh: "Nebius",
+      nameEn: "Nebius",
+      website: "https://nebius.com",
+      pricingUrl: null,
+      category: inference,
+      matchers: ["nebius", "Nebius", "Nebius AI Studio", "Nebius Token Factory"],
+      allowedSourceDomains: [nebius.com, openrouter.ai],
+    }
+  - {
+      id: baseten,
+      nameZh: "Baseten",
+      nameEn: "Baseten",
+      website: "https://www.baseten.co",
+      pricingUrl: "https://www.baseten.co/pricing/",
+      category: inference,
+      matchers: ["baseten", "BaseTen", "Baseten"],
+      allowedSourceDomains: [baseten.co, openrouter.ai],
+    }
+  - {
+      id: lambda,
+      nameZh: "Lambda",
+      nameEn: "Lambda",
+      website: "https://lambda.ai",
+      pricingUrl: "https://lambda.ai/inference",
+      category: inference,
+      matchers: ["lambda_ai", "Lambda"],
+      allowedSourceDomains: [lambda.ai, openrouter.ai],
+    }
+  - {
+      id: parasail,
+      nameZh: "Parasail",
+      nameEn: "Parasail",
+      website: "https://www.parasail.io",
+      pricingUrl: null,
+      category: inference,
+      matchers: ["Parasail"],
+      allowedSourceDomains: [parasail.io, openrouter.ai],
+    }
+  - {
+      id: crusoe,
+      nameZh: "Crusoe",
+      nameEn: "Crusoe",
+      website: "https://crusoe.ai",
+      pricingUrl: null,
+      category: inference,
+      matchers: ["Crusoe"],
+      allowedSourceDomains: [crusoe.ai, openrouter.ai],
+    }
+  - {
+      id: hyperbolic,
+      nameZh: "Hyperbolic",
+      nameEn: "Hyperbolic",
+      website: "https://hyperbolic.ai",
+      pricingUrl: null,
+      category: inference,
+      matchers: ["hyperbolic", "Hyperbolic"],
+      allowedSourceDomains: [hyperbolic.ai, hyperbolic.xyz, openrouter.ai],
+    }
+  - {
+      id: wandb,
+      nameZh: "Weights & Biases",
+      nameEn: "Weights & Biases",
+      website: "https://wandb.ai",
+      pricingUrl: null,
+      category: inference,
+      matchers: ["wandb", "WandB"],
+      allowedSourceDomains: [wandb.ai, openrouter.ai],
+    }
+  - {
+      id: gmi,
+      nameZh: "GMI Cloud",
+      nameEn: "GMI Cloud",
+      website: "https://www.gmicloud.ai",
+      pricingUrl: null,
+      category: inference,
+      matchers: ["gmi", "GMICloud"],
+      allowedSourceDomains: [gmicloud.ai, openrouter.ai],
+    }
+  - {
+      id: chutes,
+      nameZh: "Chutes",
+      nameEn: "Chutes",
+      website: "https://chutes.ai",
+      pricingUrl: null,
+      category: inference,
+      matchers: ["Chutes"],
+      allowedSourceDomains: [chutes.ai, openrouter.ai],
+    }
+  - {
+      id: vercel,
+      nameZh: "Vercel AI Gateway",
+      nameEn: "Vercel AI Gateway",
+      website: "https://vercel.com/ai-gateway",
+      pricingUrl: null,
+      category: aggregator,
+      matchers: ["vercel_ai_gateway"],
+      allowedSourceDomains: [vercel.com, openrouter.ai],
     }

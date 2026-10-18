@@ -76,6 +76,8 @@ export const RawOfferingSchema = z.object({
   modalities: z.array(z.string()).optional(),
   sourceUrl: z.url({ protocol: /^https$/ }),
   notes: z.string().optional(),
+  /** 报价所属平台；多平台数据源（转售价）必填，单平台源省略时用源自身的平台 */
+  platform: IdSchema.optional(),
 });
 export type RawOffering = z.infer<typeof RawOfferingSchema>;
 
@@ -348,12 +350,24 @@ export const VendorConfigSchema = z.object({
 });
 export type VendorConfig = z.infer<typeof VendorConfigSchema>;
 
+export const PlatformCategorySchema = z.enum(["official", "aggregator", "cloud", "inference"]);
+export type PlatformCategory = z.infer<typeof PlatformCategorySchema>;
+
 export const PlatformConfigSchema = z.object({
   id: IdSchema,
   nameZh: z.string(),
   nameEn: z.string(),
   website: z.url().nullable(),
   allowedSourceDomains: z.array(z.string()),
+  /** official 官方 / aggregator 聚合平台 / cloud 云平台 / inference 推理服务商；缺省按 official 处理 */
+  category: PlatformCategorySchema.optional(),
+  /** 平台定价页，作为转售报价的证据链接 */
+  pricingUrl: z
+    .url({ protocol: /^https$/ })
+    .nullable()
+    .optional(),
+  /** 转售数据源用来识别平台的名称：LiteLLM 的 litellm_provider、OpenRouter 的 provider_name（不区分大小写） */
+  matchers: z.array(z.string()).optional(),
 });
 export type PlatformConfig = z.infer<typeof PlatformConfigSchema>;
 

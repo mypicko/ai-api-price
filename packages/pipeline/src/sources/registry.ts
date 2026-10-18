@@ -1,10 +1,12 @@
 import { aliyunSource } from "./aliyun";
 import { deepseekSource } from "./deepseek";
 import { litellmSource } from "./litellm";
+import { litellmResellersSource } from "./litellm-resellers";
 import { manualCnSource, manualSource } from "./manual";
 import { modelsdevCnSource, modelsdevSiliconflowCnSource } from "./modelsdev";
 import { moonshotSource } from "./moonshot";
 import { openrouterSource } from "./openrouter";
+import { openrouterEndpointsSource } from "./openrouter-endpoints";
 import { siliconflowSource } from "./siliconflow";
 import type { Source } from "./types";
 import { volcengineSource } from "./volcengine";
@@ -15,7 +17,9 @@ import { zhipuSource } from "./zhipu";
  * 顺序无关（并发执行），但优先级见 steps/normalize 的 SOURCE_PRIORITY */
 export const ALL_SOURCES: readonly Source[] = [
   litellmSource,
+  litellmResellersSource,
   openrouterSource,
+  openrouterEndpointsSource,
   deepseekSource,
   aliyunSource,
   zhipuSource,

@@ -3,7 +3,7 @@
  * - 超时：AbortSignal.timeout
  * - 重试：网络错误 / 5xx / 408，指数退避 1s → 3s → 9s
  * - 反爬：401/403/429 或挑战页 → E1003，不重试
- * - 限速：同一主机请求间隔 ≥ minIntervalMs，串行
+ * - 限速：同一主机请求间隔 ≥ minIntervalMs（可按主机用 hostIntervalMs 覆盖），串行
  * - 跳转：只跟随同主机跳转
  */
 import { PipelineError } from "./errors";
@@ -26,6 +26,8 @@ export interface HttpClient {
 export interface HttpClientOptions {
   readonly userAgent: string;
   readonly minIntervalMs?: number;
+  /** 按主机覆盖请求间隔，例如公开 API 可以比网页抓取更快：{ "openrouter.ai": 200 } */
+  readonly hostIntervalMs?: Readonly<Record<string, number>>;
   readonly retries?: number;
   readonly backoffMs?: readonly number[];
   readonly defaultTimeoutMs?: number;
@@ -73,7 +75,8 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
       .then(async () => {
         const last = hostLastAt.get(host);
         if (last !== undefined) {
-          const wait = last + minIntervalMs - now();
+          const interval = options.hostIntervalMs?.[host] ?? minIntervalMs;
+          const wait = last + interval - now();
           if (wait > 0) await sleep(wait);
         }
         try {

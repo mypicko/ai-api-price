@@ -7,6 +7,7 @@ import type { Locale } from "../lib/locale";
 import { getSiteModel } from "../lib/site-data";
 import { toMediaSearchItem } from "../lib/media";
 import { toMediaTableRow, toTableRow } from "../lib/site-model";
+import { packRows } from "../lib/pack";
 import { fxNote, platformOptions, vendorOptions } from "../lib/views";
 
 interface Props {
@@ -18,6 +19,8 @@ const base = import.meta.env.BASE_URL;
 const model = getSiteModel();
 const rows = model.offerings.map((o) => toTableRow(model, o, locale));
 const vendors = vendorOptions(model, locale);
+const platforms = platformOptions(model, locale);
+const modelCount = new Set(rows.map((r) => r.modelSlug)).size;
 const mediaRows = model.media.offerings.map((o) => toMediaTableRow(model, o, locale));
 const media = mediaRows.map(toMediaSearchItem);
 ---
@@ -29,7 +32,7 @@ const media = mediaRows.map(toMediaSearchItem);
       {
         model.hasData && (
           <p class="text-text-muted tabular">
-            {t(locale, "home.lead", { count: rows.length, vendors: vendors.length })} ·{" "}
+            {t(locale, "home.lead", { models: modelCount, count: rows.length, platforms: platforms.length })} ·{" "}
             <time datetime={model.generatedAt}>{t(locale, "footer.updated", { time: formatRelative(model.generatedAt, model.generatedAt, locale) })}</time>
           </p>
         )
@@ -46,13 +49,13 @@ const media = mediaRows.map(toMediaSearchItem);
             <PriceBoard
               client:load
               mediaRows={mediaRows}
-              rows={rows}
+              packedRows={packRows(rows)}
               locale={locale}
               base={base}
               nowIso={model.generatedAt}
               fxNote={fxNote(model, locale)}
               vendors={vendors}
-              platforms={platformOptions(model, locale)}
+              platforms={platforms}
               media={media}
             />
           </section>

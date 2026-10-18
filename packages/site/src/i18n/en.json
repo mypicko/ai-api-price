@@ -22,7 +22,7 @@
   "footer.api": "Open data API",
   "footer.noData": "No data yet",
   "home.title": "AI Model API Prices",
-  "home.lead": "{count} offerings · {vendors} vendors · prices per 1M tokens",
+  "home.lead": "{models} models · {count} offers · {platforms} platforms · prices per 1M tokens",
   "home.todayChanges.title": "Today's changes",
   "home.todayChanges.empty": "No price changes in the last 24 hours.",
   "home.todayChanges.viewAll": "View all changes",
@@ -254,5 +254,18 @@
   "board.tab.text": "Text",
   "board.tab.video": "Video",
   "board.tab.image": "Image",
-  "media.moved": "Video & image prices are now on the main price board. Redirecting…"
+  "media.moved": "Video & image prices are now on the main price board. Redirecting…",
+  "platform.category.official": "Official",
+  "platform.category.aggregator": "Aggregators",
+  "platform.category.cloud": "Cloud platforms",
+  "platform.category.inference": "Inference providers",
+  "table.view": "View",
+  "table.view.models": "By model",
+  "table.view.offers": "All offers",
+  "table.platformCount": "{count} platforms",
+  "table.expand": "Show prices on {count} platforms",
+  "table.collapse": "Hide",
+  "table.cheapestOn": "Lowest price on {platform}",
+  "table.resultCount.models": "{models} models · {count} offers",
+  "table.column.cheapest": "Cheapest on"
 }

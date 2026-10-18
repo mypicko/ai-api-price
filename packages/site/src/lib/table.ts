@@ -208,9 +208,14 @@ function isSortKey(value: string): value is SortKey {
   return (SORT_KEYS as readonly string[]).includes(value);
 }
 
+/** models = 按模型聚合（默认）；offers = 逐条报价 */
+export type TableView = "models" | "offers";
+export const DEFAULT_VIEW: TableView = "models";
+
 export interface TableState {
   readonly filters: TableFilters;
   readonly sort: TableSort;
+  readonly view: TableView;
 }
 
 const MAX_QUERY_LENGTH = 100;
@@ -242,13 +247,15 @@ export function parseTableState(search: string): TableState {
       minContext: Number.isInteger(ctx) && ctx > 0 ? ctx : null,
     },
     sort: isSortKey(sortKey) ? { key: sortKey, dir } : DEFAULT_SORT,
+    view: params.get("view") === "offers" ? "offers" : DEFAULT_VIEW,
   };
 }
 
 /** 状态 → URL 查询参数（默认值不写，保持链接简短）；返回值不含 ? */
 export function serializeTableState(state: TableState): string {
-  const { filters, sort } = state;
+  const { filters, sort, view } = state;
   const entries: [string, string][] = [
+    ["view", view === DEFAULT_VIEW ? "" : view],
     ["q", filters.q.trim()],
     ["vendor", filters.vendors.join(",")],
     ["model", filters.models.join(",")],
