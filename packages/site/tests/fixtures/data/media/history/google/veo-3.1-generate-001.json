@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/veo-3.1-generate-001",
+  "series": {
+    "official:google/veo-3.1-generate-001": [
+      {
+        "input": null,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-01"
+      }
+    ]
+  }
+}

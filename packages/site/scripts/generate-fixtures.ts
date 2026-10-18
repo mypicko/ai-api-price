@@ -24,6 +24,7 @@ import {
   type QuarantineEntry,
   type Tier,
 } from "@aipb/shared";
+import { writeMediaFixtures } from "./media-fixtures";
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), "..", "tests", "fixtures", "data");
 const GENERATED_AT = "2026-10-18T00:04:12Z";
@@ -722,7 +723,7 @@ function main(): void {
         result: "partial",
       },
       sources: [
-        ok("litellm", "api", 13, 2310),
+        { ...ok("litellm", "api", 13, 2310), mediaOfferingCount: 11 },
         ok("openrouter", "api", 6, 1840),
         ok("deepseek", "html", 2, 1830),
         ok("aliyun", "browser", 3, 21_400),
@@ -770,6 +771,7 @@ function main(): void {
       ],
     }),
   );
+  writeMediaFixtures(write);
   process.stdout.write(
     `fixtures: ${offerings.length} offerings, ${events.length} events → ${OUT}\n`,
   );

@@ -1,0 +1,71 @@
+{
+  "month": "2026-10",
+  "events": [
+    {
+      "id": "2026-10-01-official:stability/sd3-1",
+      "type": "price_down",
+      "offeringId": "official:stability/sd3",
+      "vendor": "stability",
+      "modelSlug": "stability/sd3",
+      "displayName": "sd3",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "output",
+          "old": 0.08,
+          "new": 0.065,
+          "pct": -0.1875
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-01T00:02:10Z"
+    },
+    {
+      "id": "2026-10-05-official:minimax/minimax-h3-max-1",
+      "type": "new_model",
+      "offeringId": "official:minimax/minimax-h3-max",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-h3-max",
+      "displayName": "MiniMax-H3-Max",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-05T00:02:10Z"
+    },
+    {
+      "id": "2026-10-05-official:black-forest-labs/flux-pro-1.1-1",
+      "type": "new_model",
+      "offeringId": "official:black-forest-labs/flux-pro-1.1",
+      "vendor": "black-forest-labs",
+      "modelSlug": "black-forest-labs/flux-pro-1.1",
+      "displayName": "flux-pro-1.1",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-05T00:02:10Z"
+    },
+    {
+      "id": "2026-10-18-official:minimax/minimax-h3-1",
+      "type": "price_down",
+      "offeringId": "official:minimax/minimax-h3",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-h3",
+      "displayName": "MiniMax-H3",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "output",
+          "old": 0.1,
+          "new": 0.08,
+          "pct": -0.2
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T00:02:10Z"
+    }
+  ]
+}

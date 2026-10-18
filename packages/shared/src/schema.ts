@@ -4,10 +4,13 @@
  */
 import { z } from "zod";
 
-export const SCHEMA_VERSION = "1.0.0";
+/** 1.1.0：新增视频/图像生成模型（media/*.json），原有文件结构不变 */
+export const SCHEMA_VERSION = "1.1.0";
 
 /** 价格合理上限：USD / 1M tokens（校验规则 V2） */
 export const MAX_PRICE_USD_PER_1M = 1000;
+/** 视频/图像价格合理上限：USD / 秒 或 USD / 张（校验规则 V2） */
+export const MAX_MEDIA_PRICE_USD = 50;
 
 export const CurrencySchema = z.enum(["USD", "CNY"]);
 export type Currency = z.infer<typeof CurrencySchema>;
@@ -76,6 +79,41 @@ export const RawOfferingSchema = z.object({
 });
 export type RawOffering = z.infer<typeof RawOfferingSchema>;
 
+// ───────────────────────── 视频/图像生成（按秒 / 按张计费） ─────────────────────────
+
+export const MediaKindSchema = z.enum(["video", "image"]);
+export type MediaKind = z.infer<typeof MediaKindSchema>;
+
+/** per_second = 每秒生成视频；per_image = 每张生成图片 */
+export const MediaUnitSchema = z.enum(["per_second", "per_image"]);
+export type MediaUnit = z.infer<typeof MediaUnitSchema>;
+
+/** 分档价：按分辨率（"720p"、"4k"）或质量 + 尺寸（"high 1024x1536"）计费 */
+export const MediaTierSchema = z.object({
+  label: z.string().min(1).max(40),
+  output: PriceSchema,
+});
+export type MediaTier = z.infer<typeof MediaTierSchema>;
+
+/**
+ * 抓取器输出的视频/图像报价。价格不做单位换算：
+ * output = 每秒 / 每张的生成价（默认档），input = 每张输入参考图的价格。
+ */
+export const RawMediaOfferingSchema = z.object({
+  vendorHint: z.string().min(1).max(100),
+  modelName: z.string().min(1).max(100),
+  displayName: z.string().min(1).max(100).optional(),
+  currency: CurrencySchema,
+  media: z.object({ kind: MediaKindSchema, unit: MediaUnitSchema }),
+  input: PriceSchema,
+  output: PriceSchema,
+  tiers: z.array(MediaTierSchema).optional(),
+  modalities: z.array(z.string()).optional(),
+  sourceUrl: z.url({ protocol: /^https$/ }),
+  notes: z.string().optional(),
+});
+export type RawMediaOffering = z.infer<typeof RawMediaOfferingSchema>;
+
 // ───────────────────────── 已发布实体 ─────────────────────────
 
 export const OfferingStatusSchema = z.enum(["active", "missing", "removed"]);
@@ -117,6 +155,47 @@ export const LatestFileSchema = z.object({
   offerings: z.array(OfferingSchema),
 });
 export type LatestFile = z.infer<typeof LatestFileSchema>;
+
+/** 视频/图像报价（data/media/latest.json），价格为原币种、按 unit 计价 */
+export const MediaOfferingSchema = z.object({
+  /** platform:vendor/model（与 latest.json 是两个独立的命名空间） */
+  id: z.string().min(3),
+  vendor: IdSchema,
+  model: IdSchema,
+  modelSlug: z.string().min(3),
+  displayName: z.string().min(1).max(100),
+  platform: IdSchema,
+  source: IdSchema,
+  currency: CurrencySchema,
+  kind: MediaKindSchema,
+  unit: MediaUnitSchema,
+  /** 每张输入参考图的价格 */
+  input: PriceSchema,
+  /** 每秒 / 每张的生成价（默认档；来源没有默认档时为最低档） */
+  output: PriceSchema,
+  /** 按 output 升序 */
+  tiers: z.array(MediaTierSchema).nullable(),
+  modalities: z.array(z.string()),
+  isFree: z.boolean(),
+  stale: z.boolean(),
+  status: OfferingStatusSchema,
+  missingDays: z.number().int().nonnegative(),
+  sourceUrl: z.url({ protocol: /^https$/ }),
+  notes: z.string().max(200).nullable(),
+  firstSeenAt: IsoDateSchema,
+  fetchedAt: IsoDateTimeSchema,
+  publishedAt: IsoDateTimeSchema,
+});
+export type MediaOffering = z.infer<typeof MediaOfferingSchema>;
+
+/** data/media/latest.json：结构同 latest.json，offerings 换成 MediaOffering */
+export const MediaLatestFileSchema = z.object({
+  schemaVersion: z.string(),
+  generatedAt: IsoDateTimeSchema,
+  dataDate: IsoDateSchema,
+  offerings: z.array(MediaOfferingSchema),
+});
+export type MediaLatestFile = z.infer<typeof MediaLatestFileSchema>;
 
 export const PricePointSchema = PriceSetSchema.extend({
   effectiveDate: IsoDateSchema,
@@ -216,6 +295,8 @@ export const SourceResultSchema = z.object({
   kind: SourceKindSchema,
   status: SourceResultStatusSchema,
   offeringCount: z.number().int().nonnegative(),
+  /** 视频/图像报价条数（1.1.0 新增；只有提供视频/图像的源才有） */
+  mediaOfferingCount: z.number().int().nonnegative().optional(),
   durationMs: z.number().int().nonnegative(),
   errorCode: z.string().nullable(),
   errorMessage: z.string().nullable(),

@@ -9,6 +9,7 @@ import {
   FxFileSchema,
   HistoryFileSchema,
   LatestFileSchema,
+  MediaLatestFileSchema,
   QuarantineFileSchema,
   StatusFileSchema,
 } from "@aipb/shared";
@@ -27,11 +28,18 @@ const FIXED_SCHEMAS: Readonly<Record<string, z.ZodType>> = {
   "quarantine.json": QuarantineFileSchema,
   "fx.json": FxFileSchema,
   "status.json": StatusFileSchema,
+  "media/latest.json": MediaLatestFileSchema,
+  "media/quarantine.json": QuarantineFileSchema,
 };
 
 export function schemaFor(relative: string): z.ZodType | null {
   const fixed = FIXED_SCHEMAS[relative];
   if (fixed) return fixed;
+  // media/history、media/changes 与文本的结构相同
+  if (relative.startsWith("media/")) {
+    const inner = relative.slice("media/".length);
+    return inner.startsWith("history/") || inner.startsWith("changes/") ? schemaFor(inner) : null;
+  }
   if (/^history\/[a-z0-9][a-z0-9.-]*\/[a-z0-9][a-z0-9.-]*\.json$/.test(relative))
     return HistoryFileSchema;
   if (/^changes\/\d{4}-\d{2}\.json$/.test(relative)) return ChangesMonthFileSchema;

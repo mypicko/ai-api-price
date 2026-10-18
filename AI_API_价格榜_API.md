@@ -2,7 +2,7 @@
 
 | 项       | 内容                                         |
 | -------- | -------------------------------------------- |
-| 文档版本 | v1.0（规划版）                               |
+| 文档版本 | v1.1（新增视频/图像接口）                    |
 | 接口版本 | `v1`                                         |
 | 创建日期 | 2026-10-18                                   |
 | 配套文档 | `DEV_DOCUMENT.md` · `AI_API_价格榜_STYLE.md` |
@@ -26,6 +26,8 @@
    - 2.6 `GET /api/v1/fx.json` 汇率
    - 2.7 `GET /api/v1/status.json` 数据源健康状态
    - 2.8 `GET /rss.xml` · `GET /en/rss.xml` RSS 订阅
+   - 2.9 `GET /api/v1/media.json` 视频/图像生成报价（1.1）
+   - 2.10 `GET /api/v1/media/changes.json` 视频/图像最近变动（1.1）
 3. [内部接口](#3-内部接口)
    - 3.1 Source 抓取器契约
    - 3.2 Notifier 推送契约
@@ -222,7 +224,8 @@ curl -s https://alice.github.io/ai-api-price/api/v1/latest.json | jq '.data.offe
         "region": "intl",
         "website": "https://www.anthropic.com",
         "logo": "/logos/anthropic.svg",
-        "modelCount": 14
+        "modelCount": 14,
+        "mediaModelCount": 0
       },
       {
         "id": "alibaba",
@@ -231,7 +234,8 @@ curl -s https://alice.github.io/ai-api-price/api/v1/latest.json | jq '.data.offe
         "region": "cn",
         "website": "https://bailian.console.aliyun.com",
         "logo": "/logos/alibaba.svg",
-        "modelCount": 38
+        "modelCount": 38,
+        "mediaModelCount": 11
       }
     ],
     "platforms": [
@@ -260,10 +264,11 @@ curl -s https://alice.github.io/ai-api-price/api/v1/latest.json | jq '.data.offe
 }
 ```
 
-| 字段         | 说明                                         |
-| ------------ | -------------------------------------------- |
-| `region`     | `intl` 国际 / `cn` 国内                      |
-| `modelCount` | 当前在售的模型数（去重后，不按平台重复计数） |
+| 字段              | 说明                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| `region`          | `intl` 国际 / `cn` 国内                                                              |
+| `modelCount`      | 当前在售的模型数（去重后，不按平台重复计数）                                         |
+| `mediaModelCount` | 当前在售的视频/图像生成模型数（1.1 新增）；只有视频/图像模型的厂商 `modelCount` 为 0 |
 
 ---
 
@@ -565,6 +570,8 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
 | `failed`           | 抓取或解析失败，沿用旧数据                    |
 | `rejected`         | 抓到了，但触发 V5（模型数骤降），整个源被拒绝 |
 
+`sources[].mediaOfferingCount`（1.1 新增，可选）：该源本次产出的视频/图像报价条数，只有提供视频/图像的源（目前是 `litellm`）才有。视频/图像的 V5 单独判断，触发时 `status` 仍为 `ok`，只在 `warnings` 里记 `E3004`。
+
 `quarantine[]`：`confirmations` 达到 2 时自动放行（DEV §5.2）；`fields` 是候选值与当前已发布值的差异。
 
 | `run.result` | 含义                                                     |
@@ -612,6 +619,94 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
 | `removed`    | `⛔ 已下架：{name}（{platform}）`                             | `⛔ Removed: ...`                                      |
 | `restored`   | `♻️ 重新上架：{name}（{platform}）`                           | `♻️ Restored: ...`                                     |
 
+### 2.9 `GET /api/v1/media.json` — 视频/图像生成报价（1.1 新增）
+
+视频按**每秒生成时长**、图像按**每张**计价，与 `latest.json`（每百万 tokens）完全分开，不含 `removed`。数据来自 `data/media/latest.json`（DEV §3.13）。
+
+报价来自两个平台：`official`（LiteLLM 收录的厂商直连价，视频和图像）和 `openrouter`（OpenRouter 的视频接口，只有视频）。同一模型在两个平台都有报价时 `modelSlug` 相同、`id` 不同（如 `official:minimax/minimax-h3-max` 和 `openrouter:minimax/minimax-h3-max`）。OpenRouter 的价格已从美分换算成美元/秒；Seedance 按 token 计价，按 16:9 标准尺寸、24fps 换算成每秒价格（见 `notes`）。
+
+```json
+{
+  "success": true,
+  "data": {
+    "offerings": [
+      {
+        "id": "official:minimax/minimax-h3",
+        "vendor": "minimax",
+        "model": "minimax-h3",
+        "modelSlug": "minimax/minimax-h3",
+        "displayName": "MiniMax-H3",
+        "platform": "official",
+        "source": "litellm",
+        "currency": "USD",
+        "kind": "video",
+        "unit": "per_second",
+        "input": 0.04,
+        "output": 0.08,
+        "tiers": [
+          { "label": "768p", "output": 0.08 },
+          { "label": "2k", "output": 0.13 }
+        ],
+        "converted": {
+          "usd": {
+            "input": 0.04,
+            "output": 0.08,
+            "tiers": [
+              { "label": "768p", "output": 0.08 },
+              { "label": "2k", "output": 0.13 }
+            ]
+          },
+          "cny": {
+            "input": 0.267448,
+            "output": 0.534896,
+            "tiers": [
+              { "label": "768p", "output": 0.534896 },
+              { "label": "2k", "output": 0.869206 }
+            ]
+          }
+        },
+        "isFree": false,
+        "stale": false,
+        "status": "active",
+        "change7d": null,
+        "sourceUrl": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "notes": null,
+        "fetchedAt": "2026-10-18T13:50:46Z",
+        "publishedAt": "2026-10-18T13:50:46Z"
+      }
+    ]
+  },
+  "error": null,
+  "meta": {
+    "schemaVersion": "1.1.0",
+    "generatedAt": "2026-10-18T13:50:46Z",
+    "dataDate": "2026-10-18",
+    "count": 66,
+    "fxRate": { "usdCny": 6.6862, "date": "2026-10-16", "provider": "frankfurter" }
+  }
+}
+```
+
+| 字段        | 类型                          | 说明                                                                                                                                                                                                                                                             |
+| ----------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `kind`      | `"video" \| "image"`          | 视频生成 / 图像生成                                                                                                                                                                                                                                              |
+| `unit`      | `"per_second" \| "per_image"` | `output` 和 `tiers[].output` 的计价单位                                                                                                                                                                                                                          |
+| `output`    | number \| null                | 每秒（或每张）生成价，原币种。来源有默认档时为默认档，否则为最低档                                                                                                                                                                                               |
+| `input`     | number \| null                | 每张输入参考图的价格（图生视频、图像编辑），**总是按张**                                                                                                                                                                                                         |
+| `tiers`     | array \| null                 | 分档价，按 `output` 升序。视频的 `label` 是分辨率（`480p`、`720p`、`1080p`、`2k`、`4k`），OpenRouter 报价可能带前缀：`有声` / `无声`、`文生` / `图生`、`参考`（参考视频模式）、`续写`，如 `有声 4k`、`图生 1080p`；图像是尺寸或「质量 尺寸」（`high 1024x1536`） |
+| `notes`     | string \| null                | 补充说明；OpenRouter 有每次最低收费时为「每次生成最低 X USD」；Seedance 等按 token 计价的模型为换算前提（16:9 标准尺寸、24fps，其他画幅按像素数增减）                                                                                                            |
+| `converted` | object                        | 换算后的 `input` / `output` / `tiers`，规则同 §2.1                                                                                                                                                                                                               |
+| `change7d`  | number \| null                | 生成价与 7 天前相比的相对变化；7 天前没有记录时为 null                                                                                                                                                                                                           |
+| `isFree`    | boolean                       | `output = 0`                                                                                                                                                                                                                                                     |
+
+其余字段含义同 §2.1。ID 与 `latest.json` 是两个独立的命名空间，同一个 ID 不会同时表示文本和视频/图像报价。
+
+---
+
+### 2.10 `GET /api/v1/media/changes.json` — 视频/图像最近变动（1.1 新增）
+
+结构与 §2.4 相同，只包含视频/图像报价的事件（最近 90 天）。`fields[].field` 只会是 `input`（输入参考图）或 `output`（生成价），价格单位见 `media.json` 里对应报价的 `unit`。原始按月数据在仓库的 `data/media/changes/<YYYY-MM>.json`。
+
 ---
 
 ## 3. 内部接口
@@ -656,6 +751,21 @@ export const exampleSource: Source = {
 };
 ```
 
+**视频/图像报价（1.1）**：抓取器可以在同一个数组里返回带 `media` 字段的 `RawMediaOffering`（schema 见 `shared/src/schema.ts`），管线按 `media` 字段分流，写到 `data/media/`：
+
+```ts
+{
+  vendorHint: "minimax",
+  modelName: "MiniMax-H3",
+  currency: "USD",
+  media: { kind: "video", unit: "per_second" },
+  input: 0.04,   // 每张输入参考图
+  output: 0.08,  // 每秒生成价（默认档），不做单位换算
+  tiers: [{ label: "768p", output: 0.08 }, { label: "2k", output: 0.13 }],
+  sourceUrl: "https://platform.minimax.io/docs/guides/pricing-paygo",
+}
+```
+
 **抓取器约束**
 
 | 约束                                       | 说明                                                                         |
@@ -682,7 +792,9 @@ export interface DailyReport {
   run: RunSummary; // 同 status.json 的 run
   sources: SourceResult[];
   changes: ChangeEvent[]; // 本次新增的变动
-  quarantined: QuarantineEntry[]; // 本次新进入隔离区的条目
+  mediaChanges?: ChangeEvent[]; // 本次新增的视频/图像变动（1.1）
+  mediaUnits?: Record<string, "per_second" | "per_image">; // offeringId → 计价单位
+  quarantined: QuarantineEntry[]; // 本次新进入隔离区的条目（含视频/图像）
   errors: { code: string; sourceId?: string; message: string }[];
   siteUrl: string;
 }
@@ -793,6 +905,7 @@ models:
 
 ## 5. 变更记录
 
-| 版本  | 日期       | 变更     |
-| ----- | ---------- | -------- |
-| 1.0.0 | 2026-10-18 | 初版规划 |
+| 版本  | 日期       | 变更                                                                                                                                                                                                                  |
+| ----- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.0.0 | 2026-10-18 | 初版规划                                                                                                                                                                                                              |
+| 1.1.0 | 2026-10-18 | 新增视频/图像生成报价：`/api/v1/media.json`、`/api/v1/media/changes.json`、`data/media/`；providers.json 增加 `mediaModelCount`；status.json 的 `sources[]` 增加可选的 `mediaOfferingCount`。原有接口的字段和含义不变 |

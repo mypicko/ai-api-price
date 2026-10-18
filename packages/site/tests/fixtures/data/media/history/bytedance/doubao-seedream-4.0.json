@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/doubao-seedream-4.0",
+  "series": {
+    "official:bytedance/doubao-seedream-4.0": [
+      {
+        "input": null,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-01"
+      }
+    ]
+  }
+}

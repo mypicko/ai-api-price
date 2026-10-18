@@ -36,3 +36,28 @@ export function harmonizeDisplayNames(offerings: readonly Offering[]): readonly 
       : o;
   });
 }
+
+/** 名称质量：0 = 友好名称（与 ID 写法不同），1 = 带大小写的 ID 写法，2 = 原始 ID */
+function nameQuality(displayName: string, model: string): number {
+  if (isRawName(displayName, model)) return 2;
+  return !/\s/.test(displayName) && normalizeModelId(displayName) === model ? 1 : 0;
+}
+
+/**
+ * 视频/图像线：同一 modelSlug 的所有报价用同一个名称（表格里官方价和 OpenRouter 价并列，名称不同会像两个模型）。
+ * 先比名称质量，再比平台优先级；例如官方的「MiniMax-H3-Max」和 OpenRouter 的「H3 Max」统一为「H3 Max」。
+ */
+export function unifyDisplayNames(offerings: readonly Offering[]): readonly Offering[] {
+  const better = (a: Offering, b: Offering): boolean =>
+    (nameQuality(a.displayName, a.model) - nameQuality(b.displayName, b.model) ||
+      namePriority(a.platform) - namePriority(b.platform)) < 0;
+  const best = new Map<string, Offering>();
+  for (const o of offerings) {
+    const current = best.get(o.modelSlug);
+    if (!current || better(o, current)) best.set(o.modelSlug, o);
+  }
+  return offerings.map((o) => {
+    const name = best.get(o.modelSlug)?.displayName ?? o.displayName;
+    return name === o.displayName ? o : { ...o, displayName: name };
+  });
+}

@@ -1,7 +1,7 @@
 /**
  * 管线内部类型。对外的数据结构一律来自 @aipb/shared 的 schema。
  */
-import type { Offering, SourceKind, Warning } from "@aipb/shared";
+import type { MediaKind, MediaTier, MediaUnit, Offering, SourceKind, Warning } from "@aipb/shared";
 import type { PipelineError } from "../core/errors";
 
 /** 归一化后、校验前的报价：还没有发布相关的状态字段 */
@@ -9,6 +9,28 @@ export type Candidate = Omit<
   Offering,
   "isFree" | "stale" | "status" | "missingDays" | "firstSeenAt" | "fetchedAt" | "publishedAt"
 >;
+
+/**
+ * 视频/图像报价在管线内部复用 Offering 的形状（input = 输入图价，output = 生成单价，
+ * cacheRead / cacheWrite / tiers / contextWindow / maxOutput 恒为 null），
+ * 这样隔离区、下架防抖、diff、history 可以原样复用；媒体特有字段放在 MediaExtras。
+ */
+export interface MediaExtras {
+  readonly kind: MediaKind;
+  readonly unit: MediaUnit;
+  readonly mediaTiers: readonly MediaTier[] | null;
+}
+export type MediaCandidate = Candidate & MediaExtras;
+export type LaneOffering = Offering & MediaExtras;
+
+/** 一个源在「视频/图像」这条线上的结果；V5 与文本分开判断 */
+export interface MediaLane {
+  /** ok 或 rejected（V5）；源整体失败时不会有 media 字段 */
+  readonly state: "ok" | "rejected";
+  readonly candidates: readonly MediaCandidate[];
+  readonly offeringCount: number;
+  readonly invalidIds: readonly string[];
+}
 
 /**
  * 源在本次运行中的状态：
@@ -33,6 +55,8 @@ export interface SourceOutcome {
   readonly durationMs: number;
   readonly error: PipelineError | null;
   readonly warnings: readonly Warning[];
+  /** 视频/图像报价；只有本次或上次产出过视频/图像的源才有 */
+  readonly media?: MediaLane;
 }
 
 export function makeWarning(

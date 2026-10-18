@@ -1,0 +1,18 @@
+{
+  "month": "2026-09",
+  "events": [
+    {
+      "id": "2026-09-01-official:minimax/minimax-h3-1",
+      "type": "new_model",
+      "offeringId": "official:minimax/minimax-h3",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-h3",
+      "displayName": "MiniMax-H3",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-09-01T00:02:10Z"
+    }
+  ]
+}

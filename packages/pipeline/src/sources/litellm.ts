@@ -5,6 +5,7 @@
  * - 只收 mode = chat / responses，且 litellm_provider 是厂商直连（排除 bedrock/azure/vertex/openrouter 等转售方）
  * - 价格单位 per_token；*_above_<N>k_tokens 字段转成阶梯价
  * - 去掉 sample_spec、fine-tune（ft:）条目，以及 deprecation_date 早于今天的条目
+ * - 视频/图像生成条目见 litellm-media.ts，与文本报价一起返回
  * 最后核对：2026-10-18
  */
 import type { RawOffering, RawTier } from "@aipb/shared";
@@ -12,11 +13,12 @@ import { z } from "zod";
 import { loadProviders } from "../config-files";
 import { PipelineError } from "../core/errors";
 import { shanghaiDate } from "../steps/dates";
-import { createVendorMatcher } from "../steps/normalize";
+import { createVendorMatcher, isAllowedSourceUrl } from "../steps/normalize";
+import { parseLitellmMedia } from "./litellm-media";
+import { LITELLM_URL, isDeprecated, type LitellmParseOptions } from "./litellm-shared";
 import type { Source } from "./types";
 
-export const LITELLM_URL =
-  "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json";
+export { LITELLM_URL, isDeprecated, type LitellmParseOptions };
 
 /** litellm_provider → vendorHint（与 providers.yaml 的 matchers 对应） */
 export const DIRECT_PROVIDERS: Readonly<Record<string, string>> = {
@@ -62,12 +64,6 @@ const EntrySchema = z
   .loose();
 type Entry = z.infer<typeof EntrySchema>;
 
-export interface LitellmParseOptions {
-  readonly today: string;
-  /** 根据 vendorHint 返回厂商定价页；null 时用 LiteLLM 的 raw URL */
-  readonly pricingUrlFor: (vendorHint: string) => string | null;
-}
-
 /** "gemini/gemini-2.5-pro" → "gemini-2.5-pro" */
 export function stripProviderPrefix(key: string): string {
   return key.split("/").at(-1) ?? key;
@@ -110,11 +106,6 @@ export function buildTiers(entry: Entry): RawTier[] | undefined {
     cacheWrite: at("cacheWrite", threshold),
   }));
   return [base, ...upper];
-}
-
-function isDeprecated(entry: Entry, today: string): boolean {
-  const date = entry.deprecation_date;
-  return date !== undefined && /^\d{4}-\d{2}-\d{2}/.test(date) && date.slice(0, 10) < today;
 }
 
 function toRaw(key: string, entry: Entry, options: LitellmParseOptions): RawOffering | null {
@@ -170,13 +161,22 @@ export const litellmSource: Source = {
     const providers = await loadProviders(ctx.rootDir);
     const matchVendor = createVendorMatcher(providers);
     const data = await ctx.http.getJson(LITELLM_URL, { timeoutMs: 45_000 });
-    const offerings = parseLitellm(data, {
+    const options = {
       today: shanghaiDate(ctx.now),
-      pricingUrlFor: (hint) => matchVendor(hint)?.pricingUrl ?? null,
-    });
+      pricingUrlFor: (hint: string) => matchVendor(hint)?.pricingUrl ?? null,
+      isAllowedUrl: (hint: string, url: string) =>
+        isAllowedSourceUrl(url, matchVendor(hint)?.allowedSourceDomains ?? []),
+    };
+    const offerings = parseLitellm(data, options);
     if (offerings.length === 0)
       throw new PipelineError("E2001", "litellm：没有解析出任何报价", { sourceId: "litellm" });
-    ctx.logger.info("litellm 解析完成", { sourceId: "litellm", count: offerings.length });
-    return offerings;
+    // parseLitellm 已确认 data 是对象
+    const media = parseLitellmMedia(data as Readonly<Record<string, unknown>>, options);
+    ctx.logger.info("litellm 解析完成", {
+      sourceId: "litellm",
+      count: offerings.length,
+      mediaCount: media.length,
+    });
+    return [...offerings, ...media];
   },
 };
