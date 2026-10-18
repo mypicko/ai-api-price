@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-2.5-pro",
+  "series": {
+    "official:google/gemini-2.5-pro": [
+      {
+        "input": 1.25,
+        "output": 10,
+        "cacheRead": 0.31,
+        "cacheWrite": null,
+        "effectiveDate": "2026-06-01"
+      }
+    ]
+  }
+}

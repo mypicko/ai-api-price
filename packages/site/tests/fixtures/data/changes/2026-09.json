@@ -1,0 +1,89 @@
+{
+  "month": "2026-09",
+  "events": [
+    {
+      "id": "2026-09-01-official:google/gemini-2.5-flash-1",
+      "type": "price_up",
+      "offeringId": "official:google/gemini-2.5-flash",
+      "vendor": "google",
+      "modelSlug": "google/gemini-2.5-flash",
+      "displayName": "Gemini 2.5 Flash",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.3,
+          "pct": 1
+        },
+        {
+          "field": "output",
+          "old": 0.6,
+          "new": 2.5,
+          "pct": 3.167
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0375,
+          "new": 0.075,
+          "pct": 1
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-09-01T00:02:10Z"
+    },
+    {
+      "id": "2026-09-01-official:tencent/hunyuan-turbos-1",
+      "type": "new_model",
+      "offeringId": "official:tencent/hunyuan-turbos",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hunyuan-turbos",
+      "displayName": "Hunyuan TurboS",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-09-01T00:02:10Z"
+    },
+    {
+      "id": "2026-09-10-openrouter:alibaba/qwen3-max-1",
+      "type": "new_model",
+      "offeringId": "openrouter:alibaba/qwen3-max",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-max",
+      "displayName": "Qwen3 Max",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-09-10T00:02:10Z"
+    },
+    {
+      "id": "2026-09-10-official:alibaba/qwen3-max-1",
+      "type": "new_model",
+      "offeringId": "official:alibaba/qwen3-max",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-max",
+      "displayName": "Qwen3 Max",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-09-10T00:02:10Z"
+    },
+    {
+      "id": "2026-09-30-official:zhipu/glm-4.6-1",
+      "type": "new_model",
+      "offeringId": "official:zhipu/glm-4.6",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.6",
+      "displayName": "GLM-4.6",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-09-30T00:02:10Z"
+    }
+  ]
+}

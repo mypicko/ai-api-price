@@ -1,0 +1,57 @@
+---
+import { HeaderControls } from "./HeaderControls";
+import { t, type MessageKey } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { pageHref } from "../lib/url";
+
+interface Props {
+  locale: Locale;
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const other: Locale = locale === "zh" ? "en" : "zh";
+const nav: readonly { path: string; label: MessageKey }[] = [
+  { path: "", label: "nav.home" },
+  { path: "calculator/", label: "nav.calculator" },
+  { path: "changes/", label: "nav.changes" },
+  { path: "about/", label: "nav.about" },
+];
+const isCurrent = (p: string): boolean => (p === "" ? path === "" || path.startsWith("models/") : path.startsWith(p));
+---
+
+<header class="border-b border-border">
+  <div class="page flex flex-wrap items-center gap-x-6 gap-y-2 py-3">
+    <a href={pageHref(base, locale)} class="flex items-center gap-2 text-h3 font-bold tracking-tight">
+      <svg viewBox="0 0 32 32" class="size-6" aria-hidden="true"
+        ><rect width="32" height="32" rx="8" class="fill-accent"></rect><path
+          d="M8 22V12m5.5 10V8m5.5 14v-7m5.5 7V10"
+          class="stroke-bg"
+          stroke-width="3"
+          stroke-linecap="round"></path></svg
+      >
+      <span>{t(locale, "site.name")}</span>
+    </a>
+    <nav aria-label={t(locale, "nav.primary")} class="order-3 -mx-2 w-full overflow-x-auto md:order-none md:w-auto">
+      <ul class="flex gap-1 px-2 md:px-0">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={pageHref(base, locale, item.path)}
+                aria-current={isCurrent(item.path) ? "page" : undefined}
+                class="inline-flex h-9 items-center rounded-md px-3 text-table whitespace-nowrap text-text-muted hover:bg-surface-hover hover:text-text aria-[current=page]:font-semibold aria-[current=page]:text-text"
+              >
+                {t(locale, item.label)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="ml-auto">
+      <HeaderControls client:idle locale={locale} altHref={pageHref(base, other, path)} />
+    </div>
+  </div>
+</header>

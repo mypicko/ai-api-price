@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen2.5-7b-instruct",
+  "series": {
+    "siliconflow:alibaba/qwen2.5-7b-instruct": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-06-01"
+      }
+    ]
+  }
+}

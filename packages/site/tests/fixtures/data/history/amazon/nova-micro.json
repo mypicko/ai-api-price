@@ -1,0 +1,14 @@
+{
+  "modelSlug": "amazon/nova-micro",
+  "series": {
+    "official:amazon/nova-micro": [
+      {
+        "input": 0.035,
+        "output": null,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-06-01"
+      }
+    ]
+  }
+}

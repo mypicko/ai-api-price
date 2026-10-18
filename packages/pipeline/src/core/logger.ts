@@ -3,7 +3,12 @@
  */
 export type LogLevel = "debug" | "info" | "warn" | "error";
 
-const LEVEL_ORDER: Readonly<Record<LogLevel, number>> = { debug: 10, info: 20, warn: 30, error: 40 };
+const LEVEL_ORDER: Readonly<Record<LogLevel, number>> = {
+  debug: 10,
+  info: 20,
+  warn: 30,
+  error: 40,
+};
 
 export interface Logger {
   debug(msg: string, ctx?: Record<string, unknown>): void;

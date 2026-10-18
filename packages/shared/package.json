@@ -2,7 +2,15 @@
   "name": "@aipb/shared",
   "private": true,
   "type": "module",
-  "exports": { ".": "./src/index.ts" },
-  "scripts": { "typecheck": "tsc -p tsconfig.json" },
-  "dependencies": { "zod": "^4.6.0" }
+  "exports": {
+    ".": "./src/index.ts",
+    "./format": "./src/format.ts",
+    "./units": "./src/units.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "zod": "^4.6.0"
+  }
 }

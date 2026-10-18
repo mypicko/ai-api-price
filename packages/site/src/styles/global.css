@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+/* 暗色模式：html.dark（STYLE §4.5） */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 设计令牌（STYLE §4、§5、§6）。暗色值在下面的 .dark 中覆盖 */
+@theme static {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-bg: #ffffff;
+  --color-surface: #f7f8fa;
+  --color-surface-hover: #f1f3f6;
+  --color-border: #e5e7eb;
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-text-faint: #9ca3af;
+
+  --color-accent: #2563eb;
+  --color-accent-soft: #eff6ff;
+  --color-focus: #2563eb;
+
+  --color-down: #047857;
+  --color-down-bg: #ecfdf5;
+  --color-up: #b91c1c;
+  --color-up-bg: #fef2f2;
+  --color-new: #6d28d9;
+  --color-new-bg: #f5f3ff;
+  --color-warn: #b45309;
+  --color-warn-bg: #fffbeb;
+  --color-free: #0e7490;
+  --color-free-bg: #ecfeff;
+
+  --color-chart-1: #2563eb;
+  --color-chart-2: #d97706;
+  --color-chart-3: #059669;
+  --color-chart-4: #dc2626;
+  --color-chart-5: #7c3aed;
+  --color-chart-6: #0891b2;
+  --color-chart-7: #db2777;
+  --color-chart-8: #4b5563;
+
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-display: 32px;
+  --text-display--line-height: 40px;
+  --text-display--font-weight: 700;
+  --text-h1: 24px;
+  --text-h1--line-height: 32px;
+  --text-h1--font-weight: 700;
+  --text-h2: 20px;
+  --text-h2--line-height: 28px;
+  --text-h2--font-weight: 600;
+  --text-h3: 16px;
+  --text-h3--line-height: 24px;
+  --text-h3--font-weight: 600;
+  --text-body: 15px;
+  --text-body--line-height: 24px;
+  --text-table: 14px;
+  --text-table--line-height: 20px;
+  --text-small: 13px;
+  --text-small--line-height: 18px;
+  --text-micro: 12px;
+  --text-micro--line-height: 16px;
+  --text-micro--font-weight: 500;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.05);
+
+  --container-page: 1280px;
+}
+
+.dark {
+  --color-bg: #0b0d10;
+  --color-surface: #14171c;
+  --color-surface-hover: #1b1f26;
+  --color-border: #262b33;
+  --color-text: #e6e8eb;
+  --color-text-muted: #9aa3ae;
+  --color-text-faint: #5f6873;
+  --color-accent: #60a5fa;
+  --color-accent-soft: #172554;
+  --color-focus: #93c5fd;
+  --color-down: #34d399;
+  --color-down-bg: #052e22;
+  --color-up: #f87171;
+  --color-up-bg: #3b0d0d;
+  --color-new: #a78bfa;
+  --color-new-bg: #24124a;
+  --color-warn: #fbbf24;
+  --color-warn-bg: #3a2a06;
+  --color-free: #22d3ee;
+  --color-free-bg: #08303a;
+  --color-chart-1: #60a5fa;
+  --color-chart-2: #fbbf24;
+  --color-chart-3: #34d399;
+  --color-chart-4: #f87171;
+  --color-chart-5: #a78bfa;
+  --color-chart-6: #22d3ee;
+  --color-chart-7: #f472b6;
+  --color-chart-8: #9ca3af;
+  --shadow-1: none;
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 24px;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
+  }
+  body {
+    min-height: 100dvh;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  ::selection {
+    background: var(--color-accent-soft);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    a,
+    button,
+    input,
+    select,
+    tr {
+      transition:
+        color 150ms ease-out,
+        background-color 150ms ease-out,
+        border-color 150ms ease-out,
+        opacity 150ms ease-out;
+    }
+  }
+}
+
+/* 币种切换：所有价格同时渲染 USD/CNY 两份，按 <html data-currency> 只显示一份（零 JS、不闪烁） */
+html[data-currency="USD"] .cur-CNY,
+html[data-currency="CNY"] .cur-USD {
+  display: none;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility link {
+  color: var(--color-accent);
+  text-underline-offset: 3px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@utility page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-page);
+  padding-inline: 16px;
+  @media (width >= 640px) {
+    padding-inline: 32px;
+  }
+}
+
+@utility card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-1);
+}
+
+@utility input-base {
+  height: 36px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding-inline: 10px;
+  font-size: 14px;
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 0;
+    border-color: transparent;
+  }
+  &::placeholder {
+    color: var(--color-text-faint);
+  }
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding-inline: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  &:hover {
+    background: var(--color-surface-hover);
+  }
+}
+
+@utility btn-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+  &:hover {
+    background: var(--color-accent);
+    opacity: 0.9;
+  }
+  .dark & {
+    color: #0b0d10;
+  }
+}
+
+/* 分段切换（STYLE §7.3） */
+@utility segmented {
+  display: inline-flex;
+  padding: 2px;
+  gap: 2px;
+  border-radius: 999px;
+  background: var(--color-surface-hover);
+  & > button,
+  & > a {
+    height: 28px;
+    min-width: 32px;
+    padding-inline: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    cursor: pointer;
+  }
+  & > [aria-pressed="true"],
+  & > [aria-current="page"] {
+    background: var(--color-bg);
+    color: var(--color-text);
+    box-shadow: var(--shadow-1);
+  }
+  .dark & > [aria-pressed="true"],
+  .dark & > [aria-current="page"] {
+    background: var(--color-border);
+  }
+}
+
+@media (width < 640px) {
+  :root {
+    --text-display: 26px;
+    --text-display--line-height: 34px;
+    --text-h1: 22px;
+    --text-h1--line-height: 30px;
+  }
+}
+
+/* uPlot 主题适配 */
+.aipb-chart .uplot {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+}
+.aipb-chart .u-legend {
+  font-size: 13px;
+  text-align: left;
+  margin-top: 8px;
+}
+.aipb-chart .u-legend .u-series {
+  padding: 2px 6px;
+}
+.aipb-chart .u-legend .u-value {
+  font-variant-numeric: tabular-nums;
+}
+.aipb-chart .u-legend .u-off {
+  opacity: 0.35;
+}

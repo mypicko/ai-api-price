@@ -1,0 +1,221 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { PctBadge } from "../components/ChangeBadge";
+import { formatDateTime, t, type MessageKey } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { formatPrice } from "../lib/shared-client";
+import { getSiteModel } from "../lib/site-data";
+import { platformName } from "../lib/site-model";
+import { joinBase, pageHref } from "../lib/url";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const model = getSiteModel();
+const status = model.data.status;
+const quarantine = model.data.quarantine.entries;
+const fx = model.data.fx.latest;
+const raw = new Map((model.data.latest?.offerings ?? []).map((o) => [o.id, o]));
+const statusTone = { ok: "text-down", failed: "text-up", rejected: "text-warn" } as const;
+const statusIcon = { ok: "●", failed: "✕", rejected: "!" } as const;
+const endpoints = [
+  "latest.json",
+  "providers.json",
+  "changes.json",
+  "changes/index.json",
+  "fx.json",
+  "status.json",
+];
+const fieldLabel = (f: string): string => t(locale, `change.field.${f}` as MessageKey);
+---
+
+<BaseLayout locale={locale} path="about/" title={t(locale, "about.title")} description={t(locale, "about.lead")}>
+  <div class="flex max-w-4xl flex-col gap-10">
+    <header class="flex flex-col gap-2">
+      <h1 class="text-h1">{t(locale, "about.title")}</h1>
+      <p class="text-text-muted">{t(locale, "about.lead")}</p>
+      <p class="text-small text-text-muted">
+        {t(locale, "about.updated")}：{model.hasData ? formatDateTime(model.generatedAt, locale) : t(locale, "footer.noData")}
+        · {t(locale, "footer.timezone")}
+      </p>
+    </header>
+
+    <section aria-labelledby="sources" class="flex flex-col gap-3" data-testid="source-health">
+      <h2 id="sources" class="text-h2">{t(locale, "about.sources")}</h2>
+      {
+        status ? (
+          <>
+            <p class="text-small text-text-muted">
+              {t(locale, "about.run", {
+                time: formatDateTime(status.run.finishedAt, locale),
+                seconds: Math.round(status.run.durationMs / 1000),
+                result: t(locale, `about.run.${status.run.result}`),
+              })}
+            </p>
+            <div class="overflow-x-auto rounded-lg border border-border">
+              <table class="w-full border-collapse text-table">
+                <thead class="bg-surface text-small whitespace-nowrap text-text-muted">
+                  <tr>
+                    <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "about.source.id")}</th>
+                    <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "about.source.status")}</th>
+                    <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "about.source.count")}</th>
+                    <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "about.source.failures")}</th>
+                    <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "about.source.lastSuccess")}</th>
+                    <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "about.source.error")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {status.sources.map((s) => (
+                    <tr class="h-11 border-t border-border" data-status={s.status}>
+                      <th scope="row" class="px-3 text-left font-normal">
+                        <code class="font-mono">{s.id}</code>
+                        <span class="ml-2 text-micro text-text-faint">{s.kind}</span>
+                      </th>
+                      <td class={`px-3 whitespace-nowrap ${statusTone[s.status]}`}>
+                        <span aria-hidden="true">{statusIcon[s.status]}</span> {t(locale, `about.status.${s.status}`)}
+                      </td>
+                      <td class="px-3 text-right tabular">{s.offeringCount}</td>
+                      <td class={`px-3 text-right tabular ${s.consecutiveFailures > 0 ? "font-semibold text-up" : "text-text-muted"}`}>
+                        {s.consecutiveFailures}
+                      </td>
+                      <td class="px-3 text-small whitespace-nowrap text-text-muted tabular">
+                        {s.lastSuccessAt ? formatDateTime(s.lastSuccessAt, locale) : "—"}
+                      </td>
+                      <td class="px-3 text-small">
+                        {s.errorCode ? (
+                          <span title={s.errorMessage ?? undefined}>
+                            <code class="font-mono">{s.errorCode}</code>
+                            {s.errorMessage && <span class="ml-2 text-text-muted">{s.errorMessage}</span>}
+                          </span>
+                        ) : (
+                          <span class="text-text-faint">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {status.warnings.length > 0 && (
+              <details class="text-small">
+                <summary class="link cursor-pointer">
+                  {t(locale, "about.warnings")} ({status.warnings.length})
+                </summary>
+                <ul class="mt-2 flex flex-col gap-1 text-text-muted">
+                  {status.warnings.map((w) => (
+                    <li>
+                      <code class="font-mono">{w.code}</code> {w.offeringId && <code class="font-mono">{w.offeringId}</code>} {w.message}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
+          </>
+        ) : (
+          <p class="text-text-muted">{t(locale, "about.noStatus")}</p>
+        )
+      }
+    </section>
+
+    <section aria-labelledby="quarantine" class="flex flex-col gap-3" data-testid="quarantine">
+      <h2 id="quarantine" class="text-h2">{t(locale, "about.quarantine")}</h2>
+      <p class="text-small text-text-muted">{t(locale, "about.quarantine.lead")}</p>
+      {
+        quarantine.length === 0 ? (
+          <p class="text-text-muted">{t(locale, "about.quarantine.empty")}</p>
+        ) : (
+          <div class="overflow-x-auto rounded-lg border border-border">
+            <table class="w-full border-collapse text-table">
+              <thead class="bg-surface text-small whitespace-nowrap text-text-muted">
+                <tr>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "about.quarantine.offering")}</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "about.quarantine.change")}</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "about.quarantine.firstSeen")}</th>
+                  <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "about.quarantine.confirmations")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {quarantine.map((q) => {
+                  const offering = raw.get(q.offeringId);
+                  const currency = offering?.currency ?? "USD";
+                  return (
+                    <tr class="border-t border-border align-top">
+                      <th scope="row" class="px-3 py-2 text-left font-normal">
+                        {offering ? (
+                          <a class="link" href={pageHref(base, locale, `models/${offering.modelSlug}/`)}>
+                            {offering.displayName}
+                          </a>
+                        ) : (
+                          <code class="font-mono">{q.offeringId}</code>
+                        )}
+                        {offering && <span class="ml-2 text-small text-text-muted">{platformName(model, offering.platform, locale)}</span>}
+                      </th>
+                      <td class="px-3 py-2">
+                        <ul class="flex flex-col gap-1">
+                          {q.fields.map((f) => (
+                            <li class="flex flex-wrap items-center gap-2 tabular">
+                              <span class="text-text-muted">{fieldLabel(f.field)}</span>
+                              <span>
+                                {formatPrice(f.old, currency, { locale })} → {formatPrice(f.new, currency, { locale })}
+                              </span>
+                              <PctBadge pct={f.pct} locale={locale} />
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                      <td class="px-3 py-2 text-small whitespace-nowrap text-text-muted tabular">{formatDateTime(q.firstSeenAt, locale)}</td>
+                      <td class="px-3 py-2 text-right tabular">{q.confirmations}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )
+      }
+    </section>
+
+    <section aria-labelledby="method" class="flex flex-col gap-3">
+      <h2 id="method" class="text-h2">{t(locale, "about.method")}</h2>
+      <ul class="flex list-disc flex-col gap-1 pl-5 text-text-muted">
+        <li>{t(locale, "about.method.unit")}</li>
+        <li>{t(locale, "about.method.blended")}</li>
+        <li>{t(locale, "about.method.stale")}</li>
+        <li>
+          {
+            t(locale, "about.fx.body", {
+              rate: fx.usdCny.toFixed(4),
+              date: fx.date,
+              provider: fx.provider,
+            })
+          }
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="open-data" class="flex flex-col gap-3">
+      <h2 id="open-data" class="text-h2">{t(locale, "about.api")}</h2>
+      <p class="text-text-muted">{t(locale, "about.api.body")}</p>
+      <ul class="flex flex-col gap-1 font-mono text-small">
+        {
+          endpoints.map((e) => (
+            <li>
+              <a class="link" href={joinBase(base, `api/v1/${e}`)}>
+                {joinBase(base, `api/v1/${e}`)}
+              </a>
+            </li>
+          ))
+        }
+        <li><a class="link" href={pageHref(base, locale, "rss.xml")}>{pageHref(base, locale, "rss.xml")}</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="disclaimer" class="flex flex-col gap-3">
+      <h2 id="disclaimer" class="text-h2">{t(locale, "about.disclaimer")}</h2>
+      <p class="text-text-muted">{t(locale, "about.disclaimer.body")}</p>
+    </section>
+  </div>
+</BaseLayout>

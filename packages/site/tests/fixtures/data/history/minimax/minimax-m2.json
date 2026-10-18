@@ -1,0 +1,14 @@
+{
+  "modelSlug": "minimax/minimax-m2",
+  "series": {
+    "official:minimax/minimax-m2": [
+      {
+        "input": 2.1,
+        "output": 8.4,
+        "cacheRead": 0.21,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

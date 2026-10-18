@@ -1,0 +1,46 @@
+{
+  "modelSlug": "deepseek/deepseek-chat",
+  "series": {
+    "openrouter:deepseek/deepseek-chat": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-01"
+      },
+      {
+        "input": 0.27,
+        "output": 1.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-13"
+      }
+    ],
+    "official:deepseek/deepseek-chat": [
+      {
+        "input": 2,
+        "output": 16,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-01"
+      },
+      {
+        "input": 2,
+        "output": 8,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-12"
+      }
+    ],
+    "siliconflow:deepseek/deepseek-chat": [
+      {
+        "input": 2,
+        "output": 8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-01"
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { PriceTable } from "../components/PriceTable";
+import TodayChanges from "../components/TodayChanges.astro";
+import { formatRelative, t } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { getSiteModel } from "../lib/site-data";
+import { toTableRow } from "../lib/site-model";
+import { fxNote, platformOptions, vendorOptions } from "../lib/views";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const model = getSiteModel();
+const rows = model.offerings.map((o) => toTableRow(model, o, locale));
+const vendors = vendorOptions(model, locale);
+---
+
+<BaseLayout locale={locale} path="">
+  <div class="flex flex-col gap-10">
+    <header class="flex flex-col gap-2">
+      <h1 class="text-display tracking-tight">{t(locale, "home.title")}</h1>
+      {
+        model.hasData && (
+          <p class="text-text-muted tabular">
+            {t(locale, "home.lead", { count: rows.length, vendors: vendors.length })} ·{" "}
+            <time datetime={model.generatedAt}>{t(locale, "footer.updated", { time: formatRelative(model.generatedAt, model.generatedAt, locale) })}</time>
+          </p>
+        )
+      }
+    </header>
+    {
+      model.hasData ? (
+        <>
+          <TodayChanges locale={locale} />
+          <section aria-labelledby="price-board" class="flex flex-col gap-3">
+            <h2 id="price-board" class="sr-only">
+              {t(locale, "table.caption")}
+            </h2>
+            <PriceTable
+              client:load
+              rows={rows}
+              locale={locale}
+              base={base}
+              nowIso={model.generatedAt}
+              fxNote={fxNote(model, locale)}
+              vendors={vendors}
+              platforms={platformOptions(model, locale)}
+            />
+          </section>
+        </>
+      ) : (
+        <section class="rounded-lg border border-dashed border-border px-6 py-16 text-center" data-testid="empty-state">
+          <h2 class="text-h2">{t(locale, "home.empty.title")}</h2>
+          <p class="mx-auto mt-2 max-w-md text-text-muted">{t(locale, "home.empty.body")}</p>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>

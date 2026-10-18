@@ -1,0 +1,17 @@
+---
+import type { GetStaticPaths } from "astro";
+import ModelView from "../../../views/ModelView.astro";
+import { getSiteModel } from "../../../lib/site-data";
+import type { ModelInfo } from "../../../lib/site-model";
+
+export const getStaticPaths = (() =>
+  getSiteModel().models.map((info) => ({ params: { vendor: info.vendor, model: info.model }, props: { info } }))) satisfies GetStaticPaths;
+
+interface Props {
+  info: ModelInfo;
+}
+
+const { info } = Astro.props;
+---
+
+<ModelView locale="zh" info={info} />

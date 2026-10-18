@@ -1,0 +1,100 @@
+---
+/** 同一模型在各平台的价格对比表（STYLE §7.1） */
+import { DualPrice } from "./DualPrice";
+import { StatusBadge } from "./ChangeBadge";
+import type { PublicOffering } from "../lib/derive";
+import { formatDateTime, formatRelative, t } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { formatTokens } from "../lib/shared-client";
+import { getSiteModel } from "../lib/site-data";
+import { platformName } from "../lib/site-model";
+import { fxNote } from "../lib/views";
+
+interface Props {
+  locale: Locale;
+  offerings: readonly PublicOffering[];
+}
+
+const { locale, offerings } = Astro.props;
+const model = getSiteModel();
+const note = fxNote(model, locale);
+const priceCols = ["input", "output", "cacheRead", "cacheWrite"] as const;
+const labels = {
+  input: "table.column.input",
+  output: "table.column.output",
+  cacheRead: "table.column.cacheRead",
+  cacheWrite: "change.field.cacheWrite",
+} as const;
+---
+
+<div class="overflow-x-auto rounded-lg border border-border">
+  <table class="w-full border-collapse text-table" data-testid="offering-compare">
+    <caption class="sr-only">{t(locale, "model.offerings")}</caption>
+    <thead class="bg-surface text-small text-text-muted">
+      <tr>
+        <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "table.column.platform")}</th>
+        {
+          priceCols.map((c) => (
+            <th scope="col" class="px-3 py-2 text-right font-semibold whitespace-nowrap">
+              {t(locale, labels[c])}
+              <span class="ml-1 font-normal text-text-faint">
+                <span class="cur-USD">$/1M</span>
+                <span class="cur-CNY">¥/1M</span>
+              </span>
+            </th>
+          ))
+        }
+        <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "table.column.context")}</th>
+        <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "table.column.updated")}</th>
+        <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "model.source")}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        offerings.map((o) => (
+          <tr class="h-11 border-t border-border align-middle">
+            <th scope="row" class="px-3 py-2 text-left font-medium whitespace-nowrap">
+              <span class="inline-flex items-center gap-2">
+                {platformName(model, o.platform, locale)}
+                {o.status !== "active" && <StatusBadge kind={o.status === "removed" ? "removed" : "missing"} locale={locale} />}
+              </span>
+            </th>
+            {priceCols.map((c) => (
+              <td class="px-3 text-right whitespace-nowrap tabular">
+                <DualPrice currency={o.currency} usd={o.converted.usd[c]} cny={o.converted.cny[c]} locale={locale} fxNote={note} />
+              </td>
+            ))}
+            <td class="px-3 text-right tabular">{formatTokens(o.contextWindow)}</td>
+            <td class="px-3 text-right text-small whitespace-nowrap text-text-muted tabular">
+              {o.stale && (
+                <span class="mr-1 text-warn" title={t(locale, "table.stale", { date: formatDateTime(o.fetchedAt, locale) })}>
+                  ⚠
+                </span>
+              )}
+              <time datetime={o.fetchedAt}>{formatRelative(o.fetchedAt, model.generatedAt, locale)}</time>
+            </td>
+            <td class="px-3 text-small whitespace-nowrap">
+              <a class="link" href={o.sourceUrl} rel="noopener noreferrer nofollow" target="_blank">
+                {t(locale, "model.sourceLink")}
+              </a>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+{
+  offerings.some((o) => o.notes) && (
+    <dl class="mt-3 flex flex-col gap-1 text-small text-text-muted">
+      {offerings
+        .filter((o) => o.notes)
+        .map((o) => (
+          <div class="flex gap-2">
+            <dt class="shrink-0 font-medium">{platformName(model, o.platform, locale)}</dt>
+            <dd>{o.notes}</dd>
+          </div>
+        ))}
+    </dl>
+  )
+}

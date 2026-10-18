@@ -7,6 +7,7 @@ import {
   formatTokens,
   makeOfferingId,
   normalizeId,
+  normalizeModelId,
   OfferingSchema,
   parseOfferingId,
   pctChange,
@@ -67,10 +68,25 @@ describe("slug", () => {
     expect(normalizeId("--a//b--")).toBe("a-b");
   });
 
+  it("模型 ID 统一版本号写法", () => {
+    expect(normalizeModelId("claude-sonnet-4-5")).toBe("claude-sonnet-4.5");
+    expect(normalizeModelId("claude-sonnet-4.5")).toBe("claude-sonnet-4.5");
+    expect(normalizeModelId("claude-3-5-sonnet")).toBe("claude-3.5-sonnet");
+    expect(normalizeModelId("claude-haiku-4-5-20251001")).toBe("claude-haiku-4.5-20251001");
+    expect(normalizeModelId("llama-3-1-8b")).toBe("llama-3.1-8b");
+    expect(normalizeModelId("gpt-4o-2024-08-06")).toBe("gpt-4o-2024-08-06");
+    expect(normalizeModelId("qwen-2-72b")).toBe("qwen-2-72b");
+    expect(normalizeModelId("GLM-4-6")).toBe("glm-4.6");
+  });
+
   it("生成并解析 Offering ID", () => {
     const id = makeOfferingId("official", "deepseek", "deepseek-chat");
     expect(id).toBe("official:deepseek/deepseek-chat");
-    expect(parseOfferingId(id)).toEqual({ platform: "official", vendor: "deepseek", model: "deepseek-chat" });
+    expect(parseOfferingId(id)).toEqual({
+      platform: "official",
+      vendor: "deepseek",
+      model: "deepseek-chat",
+    });
     expect(parseOfferingId("bad")).toBeNull();
   });
 });

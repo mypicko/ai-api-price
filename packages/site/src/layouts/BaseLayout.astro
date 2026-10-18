@@ -1,0 +1,73 @@
+---
+/**
+ * 全站布局：<html lang>、hreflang、RSS、主题内联脚本（STYLE §4.5）、头部、页脚。
+ * CSP（安全项 S12）由 astro.config.ts 的 security.csp 自动生成 <meta http-equiv>。
+ */
+import "../styles/global.css";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { t } from "../lib/i18n";
+import { DEFAULT_CURRENCY, HTML_LANG, type Locale } from "../lib/locale";
+import { THEME_SCRIPT } from "../lib/theme-script";
+import { absoluteUrl, pageHref } from "../lib/url";
+
+interface Props {
+  locale: Locale;
+  /** 与语言无关的页面路径，例如 "calculator/"；首页为 "" */
+  path: string;
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { locale, path, title, description, noindex = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const site = (Astro.site ?? new URL("http://localhost:4321")).origin;
+const other: Locale = locale === "zh" ? "en" : "zh";
+const siteName = t(locale, "site.name");
+const fullTitle = title ? `${title} · ${siteName}` : `${siteName} · ${t(locale, "site.tagline")}`;
+const desc = description ?? t(locale, "site.description");
+const href = (l: Locale): string => absoluteUrl(site, pageHref(base, l, path));
+---
+
+<!doctype html>
+<html
+  lang={HTML_LANG[locale]}
+  data-locale={locale}
+  data-alt-href={pageHref(base, other, path)}
+  data-currency={DEFAULT_CURRENCY[locale]}
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline set:html={THEME_SCRIPT} />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0d10" media="(prefers-color-scheme: dark)" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={href(locale)} />
+    <link rel="alternate" hreflang="zh-CN" href={href("zh")} />
+    <link rel="alternate" hreflang="en" href={href("en")} />
+    <link rel="alternate" hreflang="x-default" href={href("zh")} />
+    <link rel="alternate" type="application/rss+xml" title={t(locale, "rss.title")} href={pageHref(base, locale, "rss.xml")} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={href(locale)} />
+  </head>
+  <body class="flex min-h-dvh flex-col bg-bg text-text">
+    <a
+      href="#main"
+      class="sr-only z-50 rounded-md bg-accent px-3 py-2 text-white focus:not-sr-only focus:fixed focus:top-2 focus:left-2"
+      >{t(locale, "nav.skip")}</a
+    >
+    <SiteHeader locale={locale} path={path} />
+    <main id="main" class="page flex-1 py-6 sm:py-10">
+      <slot />
+    </main>
+    <SiteFooter locale={locale} />
+  </body>
+</html>

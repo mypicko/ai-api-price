@@ -1,0 +1,21 @@
+{
+  "modelSlug": "tencent/hunyuan-turbos",
+  "series": {
+    "official:tencent/hunyuan-turbos": [
+      {
+        "input": 0.6,
+        "output": 1.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-09-01"
+      },
+      {
+        "input": 0.8,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

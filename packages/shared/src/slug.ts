@@ -16,6 +16,16 @@ export function normalizeId(name: string): string {
     .replace(/^[-.]+|[-.]+$/g, "");
 }
 
+/**
+ * 模型 ID 规范化：在 normalizeId 基础上把版本号统一成点号。
+ * "claude-sonnet-4-5" 和 "claude-sonnet-4.5" → "claude-sonnet-4.5"；
+ * "claude-3-5-sonnet" → "claude-3.5-sonnet"。
+ * 只合并两侧都是单个数字的段，避免误伤日期（2024-08-06）和参数量（qwen-2-72b）。
+ */
+export function normalizeModelId(name: string): string {
+  return normalizeId(name).replace(/(^|-)(\d)-(\d)(?=-|$)/g, "$1$2.$3");
+}
+
 export function makeModelSlug(vendor: string, model: string): string {
   return `${vendor}/${model}`;
 }

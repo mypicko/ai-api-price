@@ -1,0 +1,12 @@
+---
+/** 黄色提示条：「⚠ 此数据 X 天前更新」（STYLE §7.1） */
+interface Props {
+  message: string;
+}
+const { message } = Astro.props;
+---
+
+<p role="status" class="flex items-start gap-2 rounded-md border border-warn/30 bg-warn-bg px-4 py-3 text-small text-warn">
+  <span aria-hidden="true">⚠</span>
+  <span>{message}</span>
+</p>

@@ -1,0 +1,20 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site-preview",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "@aipb/site",
+        "exec",
+        "astro",
+        "preview",
+        "--ignore-lock",
+        "--port",
+        "4321"
+      ],
+      "port": 4321
+    }
+  ]
+}

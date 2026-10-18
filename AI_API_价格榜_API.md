@@ -1,10 +1,10 @@
 # AI API 价格榜 · 数据接口文档（API）
 
-| 项 | 内容 |
-|---|---|
-| 文档版本 | v1.0（规划版） |
-| 接口版本 | `v1` |
-| 创建日期 | 2026-10-18 |
+| 项       | 内容                                         |
+| -------- | -------------------------------------------- |
+| 文档版本 | v1.0（规划版）                               |
+| 接口版本 | `v1`                                         |
+| 创建日期 | 2026-10-18                                   |
 | 配套文档 | `DEV_DOCUMENT.md` · `AI_API_价格榜_STYLE.md` |
 
 本项目是纯静态网站，没有后端服务器。下面说的"接口"有两种：
@@ -15,6 +15,7 @@
 ---
 
 ## 目录
+
 1. [通用约定](#1-通用约定)
 2. [公开数据接口](#2-公开数据接口)
    - 2.1 `GET /api/v1/latest.json` 全部当前报价
@@ -38,18 +39,20 @@
 ## 1. 通用约定
 
 ### 1.1 基础地址
+
 ```
 https://<SITE_URL><BASE_PATH>api/v1/
 例：https://alice.github.io/ai-api-price/api/v1/latest.json
 ```
 
 ### 1.2 统一响应格式
+
 所有 JSON 接口都使用同一个外层结构：
 
 ```json
 {
   "success": true,
-  "data": { },
+  "data": {},
   "error": null,
   "meta": {
     "schemaVersion": "1.0.0",
@@ -60,35 +63,37 @@ https://<SITE_URL><BASE_PATH>api/v1/
 }
 ```
 
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `success` | boolean | 静态文件始终是 `true`；文件不存在时由 Pages 直接返回 HTTP 404 |
-| `data` | object / array | 实际数据 |
-| `error` | null | 预留字段，与项目统一的响应格式保持一致 |
-| `meta.schemaVersion` | semver | 字段结构版本。加字段 → minor +1；删除或改名字段 → major +1，同时启用新的 `/api/v2/` |
-| `meta.generatedAt` | ISO 8601 UTC | 文件生成时间 |
-| `meta.dataDate` | `YYYY-MM-DD` | 数据对应的日期（北京时间） |
-| `meta.count` | int | 列表类接口的条目数 |
+| 字段                 | 类型           | 说明                                                                                |
+| -------------------- | -------------- | ----------------------------------------------------------------------------------- |
+| `success`            | boolean        | 静态文件始终是 `true`；文件不存在时由 Pages 直接返回 HTTP 404                       |
+| `data`               | object / array | 实际数据                                                                            |
+| `error`              | null           | 预留字段，与项目统一的响应格式保持一致                                              |
+| `meta.schemaVersion` | semver         | 字段结构版本。加字段 → minor +1；删除或改名字段 → major +1，同时启用新的 `/api/v2/` |
+| `meta.generatedAt`   | ISO 8601 UTC   | 文件生成时间                                                                        |
+| `meta.dataDate`      | `YYYY-MM-DD`   | 数据对应的日期（北京时间）                                                          |
+| `meta.count`         | int            | 列表类接口的条目数                                                                  |
 
 ### 1.3 字段约定
-| 约定 | 说明 |
-|---|---|
-| 价格单位 | **每百万 token（per 1M tokens）** |
-| 价格 `null` | 未知或该厂商不提供（例如没有缓存价） |
-| 价格 `0` | 免费 |
-| 原币种 | `currency` 字段（`USD` / `CNY`）；变动检测按原币种比较 |
-| 换算价格 | `converted.usd` / `converted.cny`，使用 `meta.fxRate` 换算，仅供参考 |
-| 时间 | ISO 8601 UTC |
-| ID | `vendor`、`model`、`platform` 均为小写，由 `[a-z0-9.-]` 组成 |
+
+| 约定        | 说明                                                                 |
+| ----------- | -------------------------------------------------------------------- |
+| 价格单位    | **每百万 token（per 1M tokens）**                                    |
+| 价格 `null` | 未知或该厂商不提供（例如没有缓存价）                                 |
+| 价格 `0`    | 免费                                                                 |
+| 原币种      | `currency` 字段（`USD` / `CNY`）；变动检测按原币种比较               |
+| 换算价格    | `converted.usd` / `converted.cny`，使用 `meta.fxRate` 换算，仅供参考 |
+| 时间        | ISO 8601 UTC                                                         |
+| ID          | `vendor`、`model`、`platform` 均为小写，由 `[a-z0-9.-]` 组成         |
 
 ### 1.4 HTTP 行为
-| 项 | 说明 |
-|---|---|
-| 方法 | 只支持 `GET` / `HEAD` |
-| 跨域 | GitHub Pages 默认返回 `Access-Control-Allow-Origin: *`，浏览器端可以直接 fetch |
-| 缓存 | Pages 默认 `Cache-Control: max-age=600`；数据每天更新一次 |
-| 频率限制 | 没有限制，但请缓存结果，每天读取一次就够了 |
-| 压缩 | 支持 gzip |
+
+| 项       | 说明                                                                           |
+| -------- | ------------------------------------------------------------------------------ |
+| 方法     | 只支持 `GET` / `HEAD`                                                          |
+| 跨域     | GitHub Pages 默认返回 `Access-Control-Allow-Origin: *`，浏览器端可以直接 fetch |
+| 缓存     | Pages 默认 `Cache-Control: max-age=600`；数据每天更新一次                      |
+| 频率限制 | 没有限制，但请缓存结果，每天读取一次就够了                                     |
+| 压缩     | 支持 gzip                                                                      |
 
 ---
 
@@ -99,11 +104,13 @@ https://<SITE_URL><BASE_PATH>api/v1/
 返回所有**当前在售**的报价（`status = active | missing`），不包含已下架的。
 
 **请求示例**
+
 ```bash
 curl -s https://alice.github.io/ai-api-price/api/v1/latest.json | jq '.data.offerings | length'
 ```
 
 **响应示例**
+
 ```json
 {
   "success": true,
@@ -127,7 +134,7 @@ curl -s https://alice.github.io/ai-api-price/api/v1/latest.json | jq '.data.offe
           "usd": { "input": 0.2817, "output": 1.1268, "cacheRead": 0.0704, "cacheWrite": null },
           "cny": { "input": 2.0, "output": 8.0, "cacheRead": 0.5, "cacheWrite": null }
         },
-        "blended": { "usd": 0.4930, "cny": 3.5 },
+        "blended": { "usd": 0.493, "cny": 3.5 },
         "contextWindow": 128000,
         "maxOutput": 8192,
         "isFree": false,
@@ -151,45 +158,46 @@ curl -s https://alice.github.io/ai-api-price/api/v1/latest.json | jq '.data.offe
   }
 }
 ```
+
 > 示例里的数字只是为了说明格式，不代表真实价格。
 
 **Offering 字段说明**
 
-| 字段 | 类型 | 可空 | 说明 |
-|---|---|---|---|
-| `id` | string | ❌ | `platform:vendor/model`，全局唯一 |
-| `vendor` | string | ❌ | 模型研发厂商 ID，见 `providers.json` |
-| `model` | string | ❌ | 规范化后的模型 ID |
-| `modelSlug` | string | ❌ | `vendor/model`，对应详情接口路径 |
-| `displayName` | string | ❌ | 展示名称 |
-| `platform` | string | ❌ | 售卖平台：`official`（厂商直供）/ `openrouter` / `siliconflow` |
-| `source` | string | ❌ | 数据由哪个抓取器提供 |
-| `currency` | `"USD"` \| `"CNY"` | ❌ | 原币种 |
-| `input` | number | ✅ | 输入价，每百万 token |
-| `output` | number | ✅ | 输出价 |
-| `cacheRead` | number | ✅ | 缓存命中（读取）价 |
-| `cacheWrite` | number | ✅ | 缓存写入价 |
-| `tiers` | Tier[] | ✅ | 阶梯价，见下表；有阶梯价时顶层价格 = 第一档 |
-| `converted` | object | ❌ | 按当日汇率换算的 USD/CNY 价格 |
-| `blended` | object | ✅ | 混合价 `(3×input + output)/4`，用于默认排序；input 或 output 缺失时为 `null` |
-| `contextWindow` | int | ✅ | 上下文长度（token） |
-| `maxOutput` | int | ✅ | 最大输出（token） |
-| `isFree` | boolean | ❌ | 输入、输出价都是 0 |
-| `stale` | boolean | ❌ | `true` = 本次抓取失败，显示的是上次成功的数据 |
-| `status` | `"active"` \| `"missing"` | ❌ | `missing` = 最近 1~2 天没抓到，但还没判定下架 |
-| `change7d` | object | ✅ | 与 7 天前相比的相对变化（`-0.5` = 降价 50%），没有变化的字段为 `0` |
-| `sourceUrl` | string | ❌ | 证据链接（https，白名单域名） |
-| `notes` | string | ✅ | 备注，≤ 200 字符，纯文本 |
-| `fetchedAt` | datetime | ❌ | 最近一次成功抓取的时间 |
-| `publishedAt` | datetime | ❌ | 发布到网站的时间 |
+| 字段            | 类型                      | 可空 | 说明                                                                         |
+| --------------- | ------------------------- | ---- | ---------------------------------------------------------------------------- |
+| `id`            | string                    | ❌   | `platform:vendor/model`，全局唯一                                            |
+| `vendor`        | string                    | ❌   | 模型研发厂商 ID，见 `providers.json`                                         |
+| `model`         | string                    | ❌   | 规范化后的模型 ID                                                            |
+| `modelSlug`     | string                    | ❌   | `vendor/model`，对应详情接口路径                                             |
+| `displayName`   | string                    | ❌   | 展示名称                                                                     |
+| `platform`      | string                    | ❌   | 售卖平台：`official`（厂商直供）/ `openrouter` / `siliconflow`               |
+| `source`        | string                    | ❌   | 数据由哪个抓取器提供                                                         |
+| `currency`      | `"USD"` \| `"CNY"`        | ❌   | 原币种                                                                       |
+| `input`         | number                    | ✅   | 输入价，每百万 token                                                         |
+| `output`        | number                    | ✅   | 输出价                                                                       |
+| `cacheRead`     | number                    | ✅   | 缓存命中（读取）价                                                           |
+| `cacheWrite`    | number                    | ✅   | 缓存写入价                                                                   |
+| `tiers`         | Tier[]                    | ✅   | 阶梯价，见下表；有阶梯价时顶层价格 = 第一档                                  |
+| `converted`     | object                    | ❌   | 按当日汇率换算的 USD/CNY 价格                                                |
+| `blended`       | object                    | ✅   | 混合价 `(3×input + output)/4`，用于默认排序；input 或 output 缺失时为 `null` |
+| `contextWindow` | int                       | ✅   | 上下文长度（token）                                                          |
+| `maxOutput`     | int                       | ✅   | 最大输出（token）                                                            |
+| `isFree`        | boolean                   | ❌   | 输入、输出价都是 0                                                           |
+| `stale`         | boolean                   | ❌   | `true` = 本次抓取失败，显示的是上次成功的数据                                |
+| `status`        | `"active"` \| `"missing"` | ❌   | `missing` = 最近 1~2 天没抓到，但还没判定下架                                |
+| `change7d`      | object                    | ✅   | 与 7 天前相比的相对变化（`-0.5` = 降价 50%），没有变化的字段为 `0`           |
+| `sourceUrl`     | string                    | ❌   | 证据链接（https，白名单域名）                                                |
+| `notes`         | string                    | ✅   | 备注，≤ 200 字符，纯文本                                                     |
+| `fetchedAt`     | datetime                  | ❌   | 最近一次成功抓取的时间                                                       |
+| `publishedAt`   | datetime                  | ❌   | 发布到网站的时间                                                             |
 
 **Tier 字段**
 
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `minInputTokens` | int | 本档起点（含），单次请求的输入 token 数 |
-| `maxInputTokens` | int \| null | 本档终点（不含），`null` = 无上限 |
-| `input` / `output` / `cacheRead` / `cacheWrite` | number \| null | 本档价格 |
+| 字段                                            | 类型           | 说明                                    |
+| ----------------------------------------------- | -------------- | --------------------------------------- |
+| `minInputTokens`                                | int            | 本档起点（含），单次请求的输入 token 数 |
+| `maxInputTokens`                                | int \| null    | 本档终点（不含），`null` = 无上限       |
+| `input` / `output` / `cacheRead` / `cacheWrite` | number \| null | 本档价格                                |
 
 ```json
 "tiers": [
@@ -227,19 +235,34 @@ curl -s https://alice.github.io/ai-api-price/api/v1/latest.json | jq '.data.offe
       }
     ],
     "platforms": [
-      { "id": "official",    "nameZh": "官方",     "nameEn": "Official",    "website": null },
-      { "id": "openrouter",  "nameZh": "OpenRouter", "nameEn": "OpenRouter", "website": "https://openrouter.ai" },
-      { "id": "siliconflow", "nameZh": "硅基流动", "nameEn": "SiliconFlow", "website": "https://siliconflow.cn" }
+      { "id": "official", "nameZh": "官方", "nameEn": "Official", "website": null },
+      {
+        "id": "openrouter",
+        "nameZh": "OpenRouter",
+        "nameEn": "OpenRouter",
+        "website": "https://openrouter.ai"
+      },
+      {
+        "id": "siliconflow",
+        "nameZh": "硅基流动",
+        "nameEn": "SiliconFlow",
+        "website": "https://siliconflow.cn"
+      }
     ]
   },
   "error": null,
-  "meta": { "schemaVersion": "1.0.0", "generatedAt": "2026-10-19T00:04:12Z", "dataDate": "2026-10-19", "count": 18 }
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-10-19T00:04:12Z",
+    "dataDate": "2026-10-19",
+    "count": 18
+  }
 }
 ```
 
-| 字段 | 说明 |
-|---|---|
-| `region` | `intl` 国际 / `cn` 国内 |
+| 字段         | 说明                                         |
+| ------------ | -------------------------------------------- |
+| `region`     | `intl` 国际 / `cn` 国内                      |
 | `modelCount` | 当前在售的模型数（去重后，不按平台重复计数） |
 
 ---
@@ -247,17 +270,20 @@ curl -s https://alice.github.io/ai-api-price/api/v1/latest.json | jq '.data.offe
 ### 2.3 `GET /api/v1/models/{vendor}/{model}.json` — 单个模型详情与历史
 
 **路径参数**
-| 参数 | 示例 | 说明 |
-|---|---|---|
-| `vendor` | `anthropic` | 厂商 ID |
-| `model` | `claude-sonnet-4-5` | 模型 ID |
+
+| 参数     | 示例                | 说明    |
+| -------- | ------------------- | ------- |
+| `vendor` | `anthropic`         | 厂商 ID |
+| `model`  | `claude-sonnet-4-5` | 模型 ID |
 
 **请求示例**
+
 ```bash
 curl -s https://alice.github.io/ai-api-price/api/v1/models/deepseek/deepseek-chat.json
 ```
 
 **响应示例**
+
 ```json
 {
   "success": true,
@@ -273,13 +299,39 @@ curl -s https://alice.github.io/ai-api-price/api/v1/models/deepseek/deepseek-cha
       "status": "active"
     },
     "offerings": [
-      { "id": "official:deepseek/deepseek-chat",   "platform": "official",   "currency": "CNY", "input": 2.0,  "output": 8.0,  "...": "同 latest.json 的 Offering" },
-      { "id": "openrouter:deepseek/deepseek-chat", "platform": "openrouter", "currency": "USD", "input": 0.30, "output": 1.20, "...": "..." }
+      {
+        "id": "official:deepseek/deepseek-chat",
+        "platform": "official",
+        "currency": "CNY",
+        "input": 2.0,
+        "output": 8.0,
+        "...": "同 latest.json 的 Offering"
+      },
+      {
+        "id": "openrouter:deepseek/deepseek-chat",
+        "platform": "openrouter",
+        "currency": "USD",
+        "input": 0.3,
+        "output": 1.2,
+        "...": "..."
+      }
     ],
     "history": {
       "official:deepseek/deepseek-chat": [
-        { "effectiveDate": "2026-10-19", "input": 2.0, "output": 16.0, "cacheRead": 0.5, "cacheWrite": null },
-        { "effectiveDate": "2026-11-02", "input": 2.0, "output": 8.0,  "cacheRead": 0.5, "cacheWrite": null }
+        {
+          "effectiveDate": "2026-10-19",
+          "input": 2.0,
+          "output": 16.0,
+          "cacheRead": 0.5,
+          "cacheWrite": null
+        },
+        {
+          "effectiveDate": "2026-11-02",
+          "input": 2.0,
+          "output": 8.0,
+          "cacheRead": 0.5,
+          "cacheWrite": null
+        }
       ]
     },
     "changes": [
@@ -295,18 +347,24 @@ curl -s https://alice.github.io/ai-api-price/api/v1/models/deepseek/deepseek-cha
     ]
   },
   "error": null,
-  "meta": { "schemaVersion": "1.0.0", "generatedAt": "2026-11-02T00:04:12Z", "dataDate": "2026-11-02" }
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-02T00:04:12Z",
+    "dataDate": "2026-11-02"
+  }
 }
 ```
 
 **history 说明**
+
 - 按 Offering 分组，是**变更点序列**：只有价格变化的那天才有一个点，相邻两点之间价格不变
 - 画走势图时用"阶梯线"（step line）：每个点的值一直延续到下一个点
 - 已下架的模型（`status = removed`）也会保留这个文件，历史不会删除
 
 **错误**
-| 情况 | 结果 |
-|---|---|
+
+| 情况       | 结果                                             |
+| ---------- | ------------------------------------------------ |
 | 模型不存在 | HTTP 404（Pages 返回网站的 404 页面，不是 JSON） |
 
 ---
@@ -349,30 +407,36 @@ curl -s https://alice.github.io/ai-api-price/api/v1/models/deepseek/deepseek-cha
     ]
   },
   "error": null,
-  "meta": { "schemaVersion": "1.0.0", "generatedAt": "2026-11-02T00:04:12Z", "dataDate": "2026-11-02", "count": 2 }
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-02T00:04:12Z",
+    "dataDate": "2026-11-02",
+    "count": 2
+  }
 }
 ```
 
 **事件类型 `type`**
 
-| 值 | 含义 | `fields` 内容 |
-|---|---|---|
-| `price_down` | 降价（任一价格字段下降，且没有字段上涨） | 变化的字段 |
-| `price_up` | 涨价（任一价格字段上涨） | 变化的字段 |
-| `new_model` | 新上线 | 空数组 |
-| `removed` | 下架（连续 3 天没抓到） | 空数组 |
-| `restored` | 下架后重新出现 | 空数组 |
-| `context_change` | 上下文长度变化 | `[{field:"contextWindow", old, new, pct}]` |
+| 值               | 含义                                     | `fields` 内容                              |
+| ---------------- | ---------------------------------------- | ------------------------------------------ |
+| `price_down`     | 降价（任一价格字段下降，且没有字段上涨） | 变化的字段                                 |
+| `price_up`       | 涨价（任一价格字段上涨）                 | 变化的字段                                 |
+| `new_model`      | 新上线                                   | 空数组                                     |
+| `removed`        | 下架（连续 3 天没抓到）                  | 空数组                                     |
+| `restored`       | 下架后重新出现                           | 空数组                                     |
+| `context_change` | 上下文长度变化                           | `[{field:"contextWindow", old, new, pct}]` |
 
 > 同一个事件里有的字段涨、有的字段降时，归为 `price_up`（对用户来说涨价更需要注意），`fields` 列出全部变化。
 
 **fields 元素**
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `field` | `input` \| `output` \| `cacheRead` \| `cacheWrite` \| `contextWindow` | 变化的字段 |
-| `old` | number \| null | 旧值（原币种） |
-| `new` | number \| null | 新值 |
-| `pct` | number \| null | 相对变化，`(new-old)/old`；旧值为 0 或 null 时为 `null` |
+
+| 字段    | 类型                                                                  | 说明                                                    |
+| ------- | --------------------------------------------------------------------- | ------------------------------------------------------- |
+| `field` | `input` \| `output` \| `cacheRead` \| `cacheWrite` \| `contextWindow` | 变化的字段                                              |
+| `old`   | number \| null                                                        | 旧值（原币种）                                          |
+| `new`   | number \| null                                                        | 新值                                                    |
+| `pct`   | number \| null                                                        | 相对变化，`(new-old)/old`；旧值为 0 或 null 时为 `null` |
 
 ---
 
@@ -385,8 +449,14 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
 ```
 
 另提供索引文件 `GET /api/v1/changes/index.json`：
+
 ```json
-{ "success": true, "data": { "months": ["2026-10", "2026-11"] }, "error": null, "meta": { "...": "..." } }
+{
+  "success": true,
+  "data": { "months": ["2026-10", "2026-11"] },
+  "error": null,
+  "meta": { "...": "..." }
+}
 ```
 
 ---
@@ -400,19 +470,25 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
     "latest": { "date": "2026-10-18", "usdCny": 7.1, "provider": "frankfurter" },
     "history": [
       { "date": "2026-10-17", "usdCny": 7.11, "provider": "frankfurter" },
-      { "date": "2026-10-18", "usdCny": 7.10, "provider": "frankfurter" }
+      { "date": "2026-10-18", "usdCny": 7.1, "provider": "frankfurter" }
     ]
   },
   "error": null,
-  "meta": { "schemaVersion": "1.0.0", "generatedAt": "2026-10-19T00:04:12Z", "dataDate": "2026-10-19", "count": 90 }
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-10-19T00:04:12Z",
+    "dataDate": "2026-10-19",
+    "count": 90
+  }
 }
 ```
-| `provider` 取值 | 含义 |
-|---|---|
-| `frankfurter` | 主源成功 |
-| `er-api` | 主源失败，用了备源 |
-| `previous` | 两个源都失败，沿用上次汇率 |
-| `fallback` | 连续 7 天失败，使用 `FX_FALLBACK_RATE` |
+
+| `provider` 取值 | 含义                                   |
+| --------------- | -------------------------------------- |
+| `frankfurter`   | 主源成功                               |
+| `er-api`        | 主源失败，用了备源                     |
+| `previous`      | 两个源都失败，沿用上次汇率             |
+| `fallback`      | 连续 7 天失败，使用 `FX_FALLBACK_RATE` |
 
 ---
 
@@ -439,6 +515,7 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
         "offeringCount": 4,
         "durationMs": 1830,
         "errorCode": null,
+        "errorMessage": null,
         "lastSuccessAt": "2026-10-19T00:01:33Z",
         "consecutiveFailures": 0
       },
@@ -449,6 +526,7 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
         "offeringCount": 0,
         "durationMs": 60000,
         "errorCode": "E1002",
+        "errorMessage": "请求超时（60000ms）",
         "lastSuccessAt": "2026-10-18T00:02:05Z",
         "consecutiveFailures": 1
       }
@@ -456,35 +534,44 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
     "quarantine": [
       {
         "offeringId": "official:alibaba/qwen-max",
-        "field": "input",
-        "published": 20.0,
-        "candidate": 8.0,
-        "pct": -0.6,
+        "fields": [{ "field": "input", "old": 20.0, "new": 8.0, "pct": -0.6 }],
+        "candidate": { "input": 8.0, "output": 60.0, "cacheRead": null, "cacheWrite": null },
         "firstSeenAt": "2026-10-19T00:02:00Z",
-        "confirmations": 1,
-        "requiredConfirmations": 2
+        "lastSeenAt": "2026-10-19T00:02:00Z",
+        "confirmations": 1
       }
     ],
     "warnings": [
-      { "code": "W3007", "offeringId": "official:mistral/mistral-large", "message": "官方价与 OpenRouter 价差 34%" }
+      {
+        "code": "W3007",
+        "sourceId": null,
+        "offeringId": "official:mistral/mistral-large",
+        "message": "官方价与 OpenRouter 价差 34%"
+      }
     ]
   },
   "error": null,
-  "meta": { "schemaVersion": "1.0.0", "generatedAt": "2026-10-19T00:04:12Z", "dataDate": "2026-10-19" }
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-10-19T00:04:12Z",
+    "dataDate": "2026-10-19"
+  }
 }
 ```
 
-| `sources[].status` | 含义 |
-|---|---|
-| `ok` | 成功 |
-| `failed` | 抓取或解析失败，沿用旧数据 |
-| `rejected` | 抓到了，但触发 V5（模型数骤降），整个源被拒绝 |
+| `sources[].status` | 含义                                          |
+| ------------------ | --------------------------------------------- |
+| `ok`               | 成功                                          |
+| `failed`           | 抓取或解析失败，沿用旧数据                    |
+| `rejected`         | 抓到了，但触发 V5（模型数骤降），整个源被拒绝 |
 
-| `run.result` | 含义 |
-|---|---|
-| `success` | 全部源成功 |
-| `partial` | 部分源失败 |
-| `failed` | 全部失败（这种情况下不会发布，所以线上一般看不到这个值） |
+`quarantine[]`：`confirmations` 达到 2 时自动放行（DEV §5.2）；`fields` 是候选值与当前已发布值的差异。
+
+| `run.result` | 含义                                                     |
+| ------------ | -------------------------------------------------------- |
+| `success`    | 全部源成功                                               |
+| `partial`    | 部分源失败                                               |
+| `failed`     | 全部失败（这种情况下不会发布，所以线上一般看不到这个值） |
 
 ---
 
@@ -516,13 +603,14 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
 ```
 
 标题模板：
-| type | 中文 | 英文 |
-|---|---|---|
-| `price_down` | `🔻 {name}（{platform}）{字段}价 {old} → {new}（{pct}）` | `🔻 {name} ({platform}) {field} {old} → {new} ({pct})` |
-| `price_up` | `🔺 ...` | `🔺 ...` |
-| `new_model` | `🆕 新模型：{name}（{platform}）输入 {input} / 输出 {output}` | `🆕 New: {name} ...` |
-| `removed` | `⛔ 已下架：{name}（{platform}）` | `⛔ Removed: ...` |
-| `restored` | `♻️ 重新上架：{name}（{platform}）` | `♻️ Restored: ...` |
+
+| type         | 中文                                                          | 英文                                                   |
+| ------------ | ------------------------------------------------------------- | ------------------------------------------------------ |
+| `price_down` | `🔻 {name}（{platform}）{字段}价 {old} → {new}（{pct}）`      | `🔻 {name} ({platform}) {field} {old} → {new} ({pct})` |
+| `price_up`   | `🔺 ...`                                                      | `🔺 ...`                                               |
+| `new_model`  | `🆕 新模型：{name}（{platform}）输入 {input} / 输出 {output}` | `🆕 New: {name} ...`                                   |
+| `removed`    | `⛔ 已下架：{name}（{platform}）`                             | `⛔ Removed: ...`                                      |
+| `restored`   | `♻️ 重新上架：{name}（{platform}）`                           | `♻️ Restored: ...`                                     |
 
 ---
 
@@ -540,6 +628,7 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
 6. 运行 `pnpm pipeline run --only <id> --dry-run`，用真实请求验证
 
 最小示例：
+
 ```ts
 import type { Source } from "./types";
 import { PipelineError } from "../core/errors";
@@ -568,12 +657,13 @@ export const exampleSource: Source = {
 ```
 
 **抓取器约束**
-| 约束 | 说明 |
-|---|---|
-| 只返回原始数据 | 不在抓取器里做单位换算、汇率换算、slug 规范化，这些统一交给 normalize |
-| 失败要抛错 | 抛 `PipelineError(code, message)`，不要返回空数组冒充成功（空数组会触发 V5） |
-| 不写文件 | 抓取器没有副作用 |
-| 只通过 `ctx.http` / `ctx.browser` 访问网络 | 这样限速、重试、UA 和超时才能统一生效 |
+
+| 约束                                       | 说明                                                                         |
+| ------------------------------------------ | ---------------------------------------------------------------------------- |
+| 只返回原始数据                             | 不在抓取器里做单位换算、汇率换算、slug 规范化，这些统一交给 normalize        |
+| 失败要抛错                                 | 抛 `PipelineError(code, message)`，不要返回空数组冒充成功（空数组会触发 V5） |
+| 不写文件                                   | 抓取器没有副作用                                                             |
+| 只通过 `ctx.http` / `ctx.browser` 访问网络 | 这样限速、重试、UA 和超时才能统一生效                                        |
 
 ### 3.2 Notifier 推送契约
 
@@ -588,17 +678,18 @@ export interface Notifier {
 }
 
 export interface DailyReport {
-  date: string;                       // YYYY-MM-DD（北京时间）
-  run: RunSummary;                    // 同 status.json 的 run
+  date: string; // YYYY-MM-DD（北京时间）
+  run: RunSummary; // 同 status.json 的 run
   sources: SourceResult[];
-  changes: ChangeEvent[];             // 本次新增的变动
-  quarantined: QuarantineEntry[];     // 本次新进入隔离区的条目
+  changes: ChangeEvent[]; // 本次新增的变动
+  quarantined: QuarantineEntry[]; // 本次新进入隔离区的条目
   errors: { code: string; sourceId?: string; message: string }[];
   siteUrl: string;
 }
 ```
 
 飞书 Webhook 请求格式（开启签名校验时）：
+
 ```http
 POST {FEISHU_WEBHOOK_URL}
 Content-Type: application/json
@@ -610,33 +701,35 @@ Content-Type: application/json
   "card": { "...": "卡片内容，见 DEV_DOCUMENT §3.9 模板" }
 }
 ```
+
 飞书返回 `{"code":0}` 表示成功，其他 code 视为失败（`E5001`）。
 
 ### 3.3 命令行（CLI）
 
 所有命令都在仓库根目录执行。
 
-| 命令 | 说明 |
-|---|---|
-| `pnpm pipeline run` | 完整运行一次管线（抓取 → 校验 → 写 data/ → 推送） |
-| `pnpm pipeline run --dry-run` | 真实抓取，只打印结果，不写文件、不推送 |
-| `pnpm pipeline run --only deepseek,zhipu` | 只运行指定的源（其他源沿用旧数据） |
-| `pnpm pipeline run --no-notify` | 运行，但不推送 |
-| `pnpm pipeline snapshot <sourceId>` | 抓取页面原文，保存到 `tests/fixtures/<sourceId>/<日期>.*` |
-| `pnpm pipeline notify:test` | 给所有已配置的渠道发一条测试消息 |
-| `pnpm pipeline validate` | 用 schema 校验 `data/` 下的全部文件 |
-| `pnpm pipeline quarantine:list` | 列出隔离区条目 |
-| `pnpm --filter site dev` | 本地启动网站，默认 http://localhost:4321 |
-| `pnpm --filter site build` | 构建静态网站到 `packages/site/dist/` |
-| `pnpm test` | 运行全部单元/集成测试 |
-| `pnpm test:e2e` | 运行 E2E 测试 |
-| `pnpm lint` / `pnpm typecheck` | 代码检查 / 类型检查 |
+| 命令                                      | 说明                                                      |
+| ----------------------------------------- | --------------------------------------------------------- |
+| `pnpm pipeline run`                       | 完整运行一次管线（抓取 → 校验 → 写 data/ → 推送）         |
+| `pnpm pipeline run --dry-run`             | 真实抓取，只打印结果，不写文件、不推送                    |
+| `pnpm pipeline run --only deepseek,zhipu` | 只运行指定的源（其他源沿用旧数据）                        |
+| `pnpm pipeline run --no-notify`           | 运行，但不推送                                            |
+| `pnpm pipeline snapshot <sourceId>`       | 抓取页面原文，保存到 `tests/fixtures/<sourceId>/<日期>.*` |
+| `pnpm pipeline notify:test`               | 给所有已配置的渠道发一条测试消息                          |
+| `pnpm pipeline validate`                  | 用 schema 校验 `data/` 下的全部文件                       |
+| `pnpm pipeline quarantine:list`           | 列出隔离区条目                                            |
+| `pnpm --filter site dev`                  | 本地启动网站，默认 http://localhost:4321                  |
+| `pnpm --filter site build`                | 构建静态网站到 `packages/site/dist/`                      |
+| `pnpm test`                               | 运行全部单元/集成测试                                     |
+| `pnpm test:e2e`                           | 运行 E2E 测试                                             |
+| `pnpm lint` / `pnpm typecheck`            | 代码检查 / 类型检查                                       |
 
 退出码见 `DEV_DOCUMENT.md §9.1`。
 
 ### 3.4 配置文件格式
 
 **`config/providers.yaml`**
+
 ```yaml
 vendors:
   - id: deepseek
@@ -645,7 +738,7 @@ vendors:
     region: cn
     website: https://www.deepseek.com
     logo: /logos/deepseek.svg
-    matchers: ["deepseek", "深度求索"]          # vendorHint 匹配（不区分大小写）
+    matchers: ["deepseek", "深度求索"] # vendorHint 匹配（不区分大小写）
     allowedSourceDomains: ["api-docs.deepseek.com"]
 platforms:
   - id: openrouter
@@ -656,6 +749,7 @@ platforms:
 ```
 
 **`config/manual/<source>.yaml`**（手动兜底价格）
+
 ```yaml
 source: manual-volcengine
 platform: official
@@ -663,7 +757,7 @@ vendor: bytedance
 currency: CNY
 unit: per_1m
 sourceUrl: https://www.volcengine.com/docs/...
-verifiedAt: 2026-10-18        # 人工核对日期；超过 14 天未更新会在 status.json 中给出警告
+verifiedAt: 2026-10-18 # 人工核对日期；超过 14 天未更新会在 status.json 中给出警告
 models:
   - model: doubao-pro-32k
     input: 0.8
@@ -678,26 +772,27 @@ models:
 ## 4. 错误码
 
 公开接口本身不会返回错误码：文件要么存在，要么返回 404。错误码出现在以下位置：
+
 - `status.json` 的 `sources[].errorCode` 和 `warnings[].code`
 - 管线日志、GitHub Actions job summary
 - 推送消息
 
 完整对照表与处理建议见 **`DEV_DOCUMENT.md §9`**。常见几个：
 
-| 码 | 一句话解释 |
-|---|---|
-| `E1001` | 请求官网失败 |
-| `E1002` | 请求超时 |
-| `E1003` | 疑似被反爬拦截 |
-| `E2001` | 页面改版，找不到价格表 |
+| 码      | 一句话解释                 |
+| ------- | -------------------------- |
+| `E1001` | 请求官网失败               |
+| `E1002` | 请求超时                   |
+| `E1003` | 疑似被反爬拦截             |
+| `E2001` | 页面改版，找不到价格表     |
 | `W3003` | 价格突变，已暂扣，等待确认 |
-| `E3004` | 模型数骤降，整个源被拒绝 |
-| `E5001` | 推送失败 |
+| `E3004` | 模型数骤降，整个源被拒绝   |
+| `E5001` | 推送失败                   |
 
 ---
 
 ## 5. 变更记录
 
-| 版本 | 日期 | 变更 |
-|---|---|---|
+| 版本  | 日期       | 变更     |
+| ----- | ---------- | -------- |
 | 1.0.0 | 2026-10-18 | 初版规划 |

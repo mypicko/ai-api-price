@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "offeringId": "official:alibaba/qwen-plus",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.8,
+          "new": 0.08,
+          "pct": -0.9
+        }
+      ],
+      "candidate": {
+        "input": 0.08,
+        "output": 2,
+        "cacheRead": 0.16,
+        "cacheWrite": null
+      },
+      "firstSeenAt": "2026-10-18T00:02:00Z",
+      "lastSeenAt": "2026-10-18T00:02:00Z",
+      "confirmations": 1
+    }
+  ]
+}

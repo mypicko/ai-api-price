@@ -16,7 +16,11 @@ export interface HttpRequestOptions {
 export interface HttpClient {
   getText(url: string, options?: HttpRequestOptions): Promise<string>;
   getJson<T = unknown>(url: string, options?: HttpRequestOptions): Promise<T>;
-  post(url: string, body: unknown, options?: HttpRequestOptions): Promise<{ status: number; text: string }>;
+  post(
+    url: string,
+    body: unknown,
+    options?: HttpRequestOptions,
+  ): Promise<{ status: number; text: string }>;
 }
 
 export interface HttpClientOptions {
@@ -40,7 +44,8 @@ const CHALLENGE_MARKERS = [
   "滑动验证",
 ];
 
-const defaultSleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+const defaultSleep = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 
 /** 挑战页通常很短；大页面里偶然出现 "captcha" 字样不算 */
 export function looksLikeChallenge(body: string): boolean {
@@ -121,14 +126,23 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
       });
     } catch (error) {
       if (error instanceof PipelineError) throw error;
-      if (error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError")) {
-        throw new PipelineError("E1002", `请求超时（${timeoutMs}ms）：${url}`, { cause: error, retryable: true });
+      if (
+        error instanceof Error &&
+        (error.name === "TimeoutError" || error.name === "AbortError")
+      ) {
+        throw new PipelineError("E1002", `请求超时（${timeoutMs}ms）：${url}`, {
+          cause: error,
+          retryable: true,
+        });
       }
       throw new PipelineError("E1001", `网络错误：${url}`, { cause: error, retryable: true });
     }
 
     const text = await response.text();
-    if ([401, 403, 429].includes(response.status) || (response.status >= 200 && response.status < 300 && looksLikeChallenge(text))) {
+    if (
+      [401, 403, 429].includes(response.status) ||
+      (response.status >= 200 && response.status < 300 && looksLikeChallenge(text))
+    ) {
       throw new PipelineError("E1003", `疑似被拦截（HTTP ${response.status}）：${url}`);
     }
     if (method === "GET" && (response.status < 200 || response.status >= 300)) {

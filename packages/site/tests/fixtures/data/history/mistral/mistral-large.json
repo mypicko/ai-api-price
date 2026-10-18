@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-large",
+  "series": {
+    "official:mistral/mistral-large": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-06-01"
+      }
+    ]
+  }
+}

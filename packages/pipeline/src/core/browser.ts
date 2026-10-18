@@ -2,6 +2,7 @@
  * Playwright 封装：懒加载单个 Chromium 实例，所有 browser 类源共用。
  * 只暴露 render()：打开页面 → 等待选择器 → 返回渲染后的 HTML。
  */
+import type { Browser } from "playwright";
 import { PipelineError } from "./errors";
 
 export interface RenderOptions {
@@ -22,9 +23,9 @@ export interface BrowserClientOptions {
 }
 
 export function createBrowserClient(options: BrowserClientOptions): BrowserClient {
-  let browserPromise: Promise<import("playwright").Browser> | null = null;
+  let browserPromise: Promise<Browser> | null = null;
 
-  async function getBrowser(): Promise<import("playwright").Browser> {
+  async function getBrowser(): Promise<Browser> {
     if (!browserPromise) {
       browserPromise = import("playwright")
         .then(({ chromium }) => chromium.launch({ headless: true }))
@@ -57,7 +58,9 @@ export function createBrowserClient(options: BrowserClientOptions): BrowserClien
       } catch (error) {
         if (error instanceof PipelineError) throw error;
         const isTimeout = error instanceof Error && error.name === "TimeoutError";
-        throw new PipelineError(isTimeout ? "E1002" : "E2001", `页面渲染失败：${url}`, { cause: error });
+        throw new PipelineError(isTimeout ? "E1002" : "E2001", `页面渲染失败：${url}`, {
+          cause: error,
+        });
       } finally {
         await context.close();
       }

@@ -1,0 +1,460 @@
+{
+  "latest": {
+    "date": "2026-10-17",
+    "usdCny": 7.1254,
+    "provider": "frankfurter"
+  },
+  "lastSuccessAt": "2026-10-18T00:00:45Z",
+  "history": [
+    {
+      "date": "2026-07-20",
+      "usdCny": 7.18,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-21",
+      "usdCny": 7.181,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-22",
+      "usdCny": 7.1819,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-23",
+      "usdCny": 7.1827,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-24",
+      "usdCny": 7.1834,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-25",
+      "usdCny": 7.1839,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-26",
+      "usdCny": 7.1842,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-27",
+      "usdCny": 7.1843,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-28",
+      "usdCny": 7.1841,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-29",
+      "usdCny": 7.1837,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-30",
+      "usdCny": 7.183,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-07-31",
+      "usdCny": 7.182,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-01",
+      "usdCny": 7.1807,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-02",
+      "usdCny": 7.1792,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-03",
+      "usdCny": 7.1774,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-04",
+      "usdCny": 7.1755,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-05",
+      "usdCny": 7.1734,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-06",
+      "usdCny": 7.1711,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-07",
+      "usdCny": 7.1688,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-08",
+      "usdCny": 7.1664,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-09",
+      "usdCny": 7.1641,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-10",
+      "usdCny": 7.1618,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-11",
+      "usdCny": 7.1596,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-12",
+      "usdCny": 7.1575,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-13",
+      "usdCny": 7.1556,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-14",
+      "usdCny": 7.154,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-15",
+      "usdCny": 7.1525,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-16",
+      "usdCny": 7.1513,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-17",
+      "usdCny": 7.1504,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-18",
+      "usdCny": 7.1498,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-19",
+      "usdCny": 7.1494,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-20",
+      "usdCny": 7.1493,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-21",
+      "usdCny": 7.1495,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-22",
+      "usdCny": 7.1498,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-23",
+      "usdCny": 7.1504,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-24",
+      "usdCny": 7.1512,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-25",
+      "usdCny": 7.152,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-26",
+      "usdCny": 7.1529,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-27",
+      "usdCny": 7.1539,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-28",
+      "usdCny": 7.1549,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-29",
+      "usdCny": 7.1557,
+      "provider": "er-api"
+    },
+    {
+      "date": "2026-08-30",
+      "usdCny": 7.1565,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-08-31",
+      "usdCny": 7.1572,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-01",
+      "usdCny": 7.1576,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-02",
+      "usdCny": 7.1579,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-03",
+      "usdCny": 7.1579,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-04",
+      "usdCny": 7.1576,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-05",
+      "usdCny": 7.1571,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-06",
+      "usdCny": 7.1563,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-07",
+      "usdCny": 7.1552,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-08",
+      "usdCny": 7.1539,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-09",
+      "usdCny": 7.1523,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-10",
+      "usdCny": 7.1505,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-11",
+      "usdCny": 7.1485,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-12",
+      "usdCny": 7.1463,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-13",
+      "usdCny": 7.1441,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-14",
+      "usdCny": 7.1417,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-15",
+      "usdCny": 7.1393,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-16",
+      "usdCny": 7.137,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-17",
+      "usdCny": 7.1347,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-18",
+      "usdCny": 7.1326,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-19",
+      "usdCny": 7.1305,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-20",
+      "usdCny": 7.1287,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-21",
+      "usdCny": 7.1271,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-22",
+      "usdCny": 7.1257,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-23",
+      "usdCny": 7.1246,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-24",
+      "usdCny": 7.1238,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-25",
+      "usdCny": 7.1232,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-26",
+      "usdCny": 7.123,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-27",
+      "usdCny": 7.1229,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-28",
+      "usdCny": 7.1232,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-29",
+      "usdCny": 7.1236,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-09-30",
+      "usdCny": 7.1242,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-01",
+      "usdCny": 7.125,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-02",
+      "usdCny": 7.1259,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-03",
+      "usdCny": 7.1268,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-04",
+      "usdCny": 7.1278,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-05",
+      "usdCny": 7.1287,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-06",
+      "usdCny": 7.1296,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-07",
+      "usdCny": 7.1303,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-08",
+      "usdCny": 7.1309,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-09",
+      "usdCny": 7.1313,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-10",
+      "usdCny": 7.1315,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-11",
+      "usdCny": 7.1314,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-12",
+      "usdCny": 7.1311,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-13",
+      "usdCny": 7.1305,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-14",
+      "usdCny": 7.1296,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-15",
+      "usdCny": 7.1284,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-16",
+      "usdCny": 7.127,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-10-17",
+      "usdCny": 7.1254,
+      "provider": "frankfurter"
+    }
+  ]
+}

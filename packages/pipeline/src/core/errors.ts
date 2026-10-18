@@ -11,10 +11,12 @@ export const ERROR_CODES = {
   E2002: "汇率长期获取失败，使用兜底汇率",
   W2001: "当日汇率获取失败，沿用上次汇率",
   W2003: "单位或币种无法识别，已跳过",
+  W2004: "手动兜底价格超过 14 天未核对",
   E3001: "数据结构不符合 schema",
   E3002: "价格超出合理范围",
   W3003: "价格突变，已进入隔离区",
   E3004: "模型数骤降，整个源被拒绝",
+  E3005: "证据链接域名不在白名单内",
   W3007: "官方价与 OpenRouter 价差过大",
   E4001: "写入数据失败",
   E4002: "网站构建失败",
@@ -36,7 +38,10 @@ export class PipelineError extends Error {
   readonly retryable: boolean;
 
   constructor(code: ErrorCode, message: string, options: PipelineErrorOptions = {}) {
-    super(`[${code}] ${message}`, options.cause === undefined ? undefined : { cause: options.cause });
+    super(
+      `[${code}] ${message}`,
+      options.cause === undefined ? undefined : { cause: options.cause },
+    );
     this.name = "PipelineError";
     this.code = code;
     this.sourceId = options.sourceId;

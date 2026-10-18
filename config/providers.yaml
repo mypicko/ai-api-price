@@ -2,25 +2,223 @@
 # matchers：抓取器给出的 vendorHint 与这里匹配（不区分大小写）
 # allowedSourceDomains：sourceUrl 域名白名单（安全检查 S8），允许子域名
 vendors:
-  - { id: openai, nameZh: OpenAI, nameEn: OpenAI, region: intl, website: "https://openai.com", pricingUrl: "https://openai.com/api/pricing/", logo: null, matchers: [openai], allowedSourceDomains: [openai.com] }
-  - { id: anthropic, nameZh: Anthropic, nameEn: Anthropic, region: intl, website: "https://www.anthropic.com", pricingUrl: "https://www.anthropic.com/pricing", logo: null, matchers: [anthropic], allowedSourceDomains: [anthropic.com, claude.com] }
-  - { id: google, nameZh: Google Gemini, nameEn: Google Gemini, region: intl, website: "https://ai.google.dev", pricingUrl: "https://ai.google.dev/gemini-api/docs/pricing", logo: null, matchers: [google, gemini], allowedSourceDomains: [ai.google.dev, cloud.google.com] }
-  - { id: x-ai, nameZh: xAI, nameEn: xAI, region: intl, website: "https://x.ai", pricingUrl: "https://docs.x.ai/docs/models", logo: null, matchers: [x-ai, xai], allowedSourceDomains: [x.ai] }
-  - { id: mistral, nameZh: Mistral, nameEn: Mistral, region: intl, website: "https://mistral.ai", pricingUrl: "https://mistral.ai/pricing", logo: null, matchers: [mistral, mistralai], allowedSourceDomains: [mistral.ai] }
-  - { id: cohere, nameZh: Cohere, nameEn: Cohere, region: intl, website: "https://cohere.com", pricingUrl: "https://cohere.com/pricing", logo: null, matchers: [cohere, cohere_chat], allowedSourceDomains: [cohere.com] }
-  - { id: meta, nameZh: Meta Llama, nameEn: Meta Llama, region: intl, website: "https://www.llama.com", pricingUrl: null, logo: null, matchers: [meta, meta-llama], allowedSourceDomains: [llama.com] }
-  - { id: amazon, nameZh: Amazon Nova, nameEn: Amazon Nova, region: intl, website: "https://aws.amazon.com/nova/", pricingUrl: null, logo: null, matchers: [amazon], allowedSourceDomains: [aws.amazon.com] }
-  - { id: microsoft, nameZh: Microsoft, nameEn: Microsoft, region: intl, website: "https://azure.microsoft.com", pricingUrl: null, logo: null, matchers: [microsoft], allowedSourceDomains: [microsoft.com] }
-  - { id: nvidia, nameZh: NVIDIA, nameEn: NVIDIA, region: intl, website: "https://build.nvidia.com", pricingUrl: null, logo: null, matchers: [nvidia], allowedSourceDomains: [nvidia.com] }
-  - { id: deepseek, nameZh: DeepSeek, nameEn: DeepSeek, region: cn, website: "https://www.deepseek.com", pricingUrl: "https://api-docs.deepseek.com/zh-cn/quick_start/pricing", logo: null, matchers: [deepseek, deepseek-ai, 深度求索], allowedSourceDomains: [deepseek.com] }
-  - { id: alibaba, nameZh: 阿里通义, nameEn: Alibaba Qwen, region: cn, website: "https://bailian.console.aliyun.com", pricingUrl: "https://help.aliyun.com/zh/model-studio/models", logo: null, matchers: [alibaba, qwen, dashscope, 阿里云, 通义, 阿里巴巴], allowedSourceDomains: [aliyun.com, alibabacloud.com] }
-  - { id: zhipu, nameZh: 智谱 GLM, nameEn: Zhipu GLM, region: cn, website: "https://open.bigmodel.cn", pricingUrl: "https://open.bigmodel.cn/pricing", logo: null, matchers: [zhipu, zhipuai, z-ai, zai, thudm, 智谱], allowedSourceDomains: [bigmodel.cn, z.ai] }
-  - { id: moonshot, nameZh: 月之暗面 Kimi, nameEn: Moonshot Kimi, region: cn, website: "https://platform.moonshot.cn", pricingUrl: "https://platform.moonshot.cn/docs/pricing/chat", logo: null, matchers: [moonshot, moonshotai, kimi, 月之暗面], allowedSourceDomains: [moonshot.cn, moonshot.ai, kimi.com] }
-  - { id: bytedance, nameZh: 字节豆包, nameEn: ByteDance Doubao, region: cn, website: "https://www.volcengine.com/product/ark", pricingUrl: null, logo: null, matchers: [bytedance, bytedance-seed, doubao, volcengine, 字节, 豆包, 火山引擎], allowedSourceDomains: [volcengine.com] }
-  - { id: baidu, nameZh: 百度文心, nameEn: Baidu ERNIE, region: cn, website: "https://cloud.baidu.com/product/wenxinworkshop", pricingUrl: null, logo: null, matchers: [baidu, ernie, 百度, 文心], allowedSourceDomains: [baidu.com] }
-  - { id: minimax, nameZh: MiniMax, nameEn: MiniMax, region: cn, website: "https://www.minimaxi.com", pricingUrl: null, logo: null, matchers: [minimax], allowedSourceDomains: [minimaxi.com, minimax.io] }
-  - { id: tencent, nameZh: 腾讯混元, nameEn: Tencent Hunyuan, region: cn, website: "https://cloud.tencent.com/product/hunyuan", pricingUrl: null, logo: null, matchers: [tencent, hunyuan, 腾讯], allowedSourceDomains: [tencent.com] }
+  - {
+      id: openai,
+      nameZh: OpenAI,
+      nameEn: OpenAI,
+      region: intl,
+      website: "https://openai.com",
+      pricingUrl: "https://openai.com/api/pricing/",
+      logo: null,
+      matchers: [openai],
+      allowedSourceDomains: [openai.com],
+    }
+  - {
+      id: anthropic,
+      nameZh: Anthropic,
+      nameEn: Anthropic,
+      region: intl,
+      website: "https://www.anthropic.com",
+      pricingUrl: "https://www.anthropic.com/pricing",
+      logo: null,
+      matchers: [anthropic],
+      allowedSourceDomains: [anthropic.com, claude.com],
+    }
+  - {
+      id: google,
+      nameZh: Google Gemini,
+      nameEn: Google Gemini,
+      region: intl,
+      website: "https://ai.google.dev",
+      pricingUrl: "https://ai.google.dev/gemini-api/docs/pricing",
+      logo: null,
+      matchers: [google, gemini],
+      allowedSourceDomains: [ai.google.dev, cloud.google.com],
+    }
+  - {
+      id: x-ai,
+      nameZh: xAI,
+      nameEn: xAI,
+      region: intl,
+      website: "https://x.ai",
+      pricingUrl: "https://docs.x.ai/docs/models",
+      logo: null,
+      matchers: [x-ai, xai],
+      allowedSourceDomains: [x.ai],
+    }
+  - {
+      id: mistral,
+      nameZh: Mistral,
+      nameEn: Mistral,
+      region: intl,
+      website: "https://mistral.ai",
+      pricingUrl: "https://mistral.ai/pricing",
+      logo: null,
+      matchers: [mistral, mistralai],
+      allowedSourceDomains: [mistral.ai],
+    }
+  - {
+      id: cohere,
+      nameZh: Cohere,
+      nameEn: Cohere,
+      region: intl,
+      website: "https://cohere.com",
+      pricingUrl: "https://cohere.com/pricing",
+      logo: null,
+      matchers: [cohere, cohere_chat],
+      allowedSourceDomains: [cohere.com],
+    }
+  - {
+      id: meta,
+      nameZh: Meta Llama,
+      nameEn: Meta Llama,
+      region: intl,
+      website: "https://www.llama.com",
+      pricingUrl: null,
+      logo: null,
+      matchers: [meta, meta-llama],
+      allowedSourceDomains: [llama.com],
+    }
+  - {
+      id: amazon,
+      nameZh: Amazon Nova,
+      nameEn: Amazon Nova,
+      region: intl,
+      website: "https://aws.amazon.com/nova/",
+      pricingUrl: null,
+      logo: null,
+      matchers: [amazon],
+      allowedSourceDomains: [aws.amazon.com],
+    }
+  - {
+      id: microsoft,
+      nameZh: Microsoft,
+      nameEn: Microsoft,
+      region: intl,
+      website: "https://azure.microsoft.com",
+      pricingUrl: null,
+      logo: null,
+      matchers: [microsoft],
+      allowedSourceDomains: [microsoft.com],
+    }
+  - {
+      id: nvidia,
+      nameZh: NVIDIA,
+      nameEn: NVIDIA,
+      region: intl,
+      website: "https://build.nvidia.com",
+      pricingUrl: null,
+      logo: null,
+      matchers: [nvidia],
+      allowedSourceDomains: [nvidia.com],
+    }
+  - {
+      id: deepseek,
+      nameZh: DeepSeek,
+      nameEn: DeepSeek,
+      region: cn,
+      website: "https://www.deepseek.com",
+      pricingUrl: "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+      logo: null,
+      matchers: [deepseek, deepseek-ai, 深度求索],
+      allowedSourceDomains: [deepseek.com],
+    }
+  - {
+      id: alibaba,
+      nameZh: 阿里通义,
+      nameEn: Alibaba Qwen,
+      region: cn,
+      website: "https://bailian.console.aliyun.com",
+      pricingUrl: "https://help.aliyun.com/zh/model-studio/models",
+      logo: null,
+      matchers: [alibaba, qwen, dashscope, 阿里云, 通义, 阿里巴巴],
+      allowedSourceDomains: [aliyun.com, alibabacloud.com],
+    }
+  - {
+      id: zhipu,
+      nameZh: 智谱 GLM,
+      nameEn: Zhipu GLM,
+      region: cn,
+      website: "https://open.bigmodel.cn",
+      pricingUrl: "https://open.bigmodel.cn/pricing",
+      logo: null,
+      matchers: [zhipu, zhipuai, z-ai, zai, zai-org, thudm, 智谱],
+      allowedSourceDomains: [bigmodel.cn, z.ai],
+    }
+  - {
+      id: moonshot,
+      nameZh: 月之暗面 Kimi,
+      nameEn: Moonshot Kimi,
+      region: cn,
+      website: "https://platform.moonshot.cn",
+      pricingUrl: "https://platform.moonshot.cn/docs/pricing/chat",
+      logo: null,
+      matchers: [moonshot, moonshotai, kimi, 月之暗面],
+      allowedSourceDomains: [moonshot.cn, moonshot.ai, kimi.com, kimi.ai],
+    }
+  - {
+      id: bytedance,
+      nameZh: 字节豆包,
+      nameEn: ByteDance Doubao,
+      region: cn,
+      website: "https://www.volcengine.com/product/ark",
+      pricingUrl: null,
+      logo: null,
+      matchers: [bytedance, bytedance-seed, doubao, volcengine, 字节, 豆包, 火山引擎],
+      allowedSourceDomains: [volcengine.com],
+    }
+  - {
+      id: baidu,
+      nameZh: 百度文心,
+      nameEn: Baidu ERNIE,
+      region: cn,
+      website: "https://cloud.baidu.com/product/wenxinworkshop",
+      pricingUrl: null,
+      logo: null,
+      matchers: [baidu, ernie, 百度, 文心],
+      allowedSourceDomains: [baidu.com],
+    }
+  - {
+      id: minimax,
+      nameZh: MiniMax,
+      nameEn: MiniMax,
+      region: cn,
+      website: "https://www.minimaxi.com",
+      pricingUrl: null,
+      logo: null,
+      matchers: [minimax, minimaxai],
+      allowedSourceDomains: [minimaxi.com, minimax.io],
+    }
+  - {
+      id: tencent,
+      nameZh: 腾讯混元,
+      nameEn: Tencent Hunyuan,
+      region: cn,
+      website: "https://cloud.tencent.com/product/hunyuan",
+      pricingUrl: null,
+      logo: null,
+      matchers: [tencent, hunyuan, 腾讯],
+      allowedSourceDomains: [tencent.com],
+    }
 platforms:
-  - { id: official, nameZh: 官方, nameEn: Official, website: null, allowedSourceDomains: [githubusercontent.com] }
-  - { id: openrouter, nameZh: OpenRouter, nameEn: OpenRouter, website: "https://openrouter.ai", allowedSourceDomains: [openrouter.ai] }
-  - { id: siliconflow, nameZh: 硅基流动, nameEn: SiliconFlow, website: "https://siliconflow.cn", allowedSourceDomains: [siliconflow.cn, siliconflow.com] }
+  - {
+      id: official,
+      nameZh: 官方,
+      nameEn: Official,
+      website: null,
+      allowedSourceDomains: [githubusercontent.com],
+    }
+  - {
+      id: openrouter,
+      nameZh: OpenRouter,
+      nameEn: OpenRouter,
+      website: "https://openrouter.ai",
+      allowedSourceDomains: [openrouter.ai],
+    }
+  - {
+      id: siliconflow,
+      nameZh: 硅基流动,
+      nameEn: SiliconFlow,
+      website: "https://siliconflow.cn",
+      allowedSourceDomains: [siliconflow.cn, siliconflow.com],
+    }

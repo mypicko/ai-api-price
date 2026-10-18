@@ -1,10 +1,10 @@
 # AI API 价格榜 · 开发文档（DEV_DOCUMENT）
 
-| 项 | 内容 |
-|---|---|
-| 文档版本 | v1.0（规划版） |
-| 创建日期 | 2026-10-18 |
-| 状态 | 规划已确认，待开发 |
+| 项       | 内容                                                                 |
+| -------- | -------------------------------------------------------------------- |
+| 文档版本 | v1.0（规划版）                                                       |
+| 创建日期 | 2026-10-18                                                           |
+| 状态     | 规划已确认，待开发                                                   |
 | 配套文档 | `AI_API_价格榜_API.md`（数据接口）· `AI_API_价格榜_STYLE.md`（规范） |
 
 > 目标读者：任何接手本项目的开发者。读完本文档，应能不问任何问题直接继续开发。
@@ -34,37 +34,42 @@
 ## 1. 项目概述
 
 ### 1.1 一句话定位
+
 每天自动抓取全球主流 AI 模型 API 的最新价格，发布成一个免费托管、中英双语的比价网站。网站提供对比表、价格历史、成本计算器和变动提醒。
 
 ### 1.2 目标
-| # | 目标 | 衡量标准 |
-|---|---|---|
-| G1 | 数据每日自动更新 | 每天北京时间 08:00 前后完成，无需人工 |
-| G2 | 覆盖面广 | 第一版 ≥ 15 个厂商/平台，≥ 300 个模型报价 |
-| G3 | 数据可信 | 疑似抓错的数据不上线；每条报价标注来源和抓取时间 |
-| G4 | 零运维成本 | 不需要服务器，GitHub 免费额度内运行 |
-| G5 | 好用 | 首屏 < 1.5s，手机和电脑都能用，中英文切换，美元/人民币切换 |
+
+| #   | 目标             | 衡量标准                                                   |
+| --- | ---------------- | ---------------------------------------------------------- |
+| G1  | 数据每日自动更新 | 每天北京时间 08:00 前后完成，无需人工                      |
+| G2  | 覆盖面广         | 第一版 ≥ 15 个厂商/平台，≥ 300 个模型报价                  |
+| G3  | 数据可信         | 疑似抓错的数据不上线；每条报价标注来源和抓取时间           |
+| G4  | 零运维成本       | 不需要服务器，GitHub 免费额度内运行                        |
+| G5  | 好用             | 首屏 < 1.5s，手机和电脑都能用，中英文切换，美元/人民币切换 |
 
 ### 1.3 非目标（第一版不做）
+
 - 用户注册登录、评论、收藏（纯静态站，没有后端）
 - 模型能力评测/跑分（只做价格，最多附上下文长度等基础参数）
 - 图片/语音/视频模型的复杂计费（第一版只做**文本 LLM 的 token 计费**；Embedding 作为 P2）
 - 实时价格（每天更新一次）
 
 ### 1.4 用户画像
-| 用户 | 场景 | 最关心 |
-|---|---|---|
-| 开发者 | 选模型、估算成本 | 输入/输出/缓存价、上下文长度、计算器 |
-| 产品/老板 | 对比国内外成本 | 人民币换算、最便宜排序 |
-| 站长本人 | 维护数据 | 抓取失败告警、变动推送 |
+
+| 用户      | 场景             | 最关心                               |
+| --------- | ---------------- | ------------------------------------ |
+| 开发者    | 选模型、估算成本 | 输入/输出/缓存价、上下文长度、计算器 |
+| 产品/老板 | 对比国内外成本   | 人民币换算、最便宜排序               |
+| 站长本人  | 维护数据         | 抓取失败告警、变动推送               |
 
 ### 1.5 数据覆盖（第一版）
-| 类别 | 厂商/平台 | 数据来源方式 |
-|---|---|---|
-| 国际主流 | OpenAI、Anthropic、Google Gemini、xAI、Mistral、Cohere、DeepSeek（国际站） | LiteLLM 开源价格库（主）+ OpenRouter（交叉核对） |
-| 国内大厂 | DeepSeek、阿里通义（百炼）、智谱 GLM、月之暗面 Kimi、字节豆包（火山方舟）、百度文心（千帆） | 官网定价页抓取 |
-| 聚合平台 | OpenRouter、硅基流动 SiliconFlow | OpenRouter 官方接口；硅基流动抓定价页 |
-| 汇率 | USD ↔ CNY | Frankfurter（主）/ open.er-api.com（备） |
+
+| 类别     | 厂商/平台                                                                                   | 数据来源方式                                     |
+| -------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| 国际主流 | OpenAI、Anthropic、Google Gemini、xAI、Mistral、Cohere、DeepSeek（国际站）                  | LiteLLM 开源价格库（主）+ OpenRouter（交叉核对） |
+| 国内大厂 | DeepSeek、阿里通义（百炼）、智谱 GLM、月之暗面 Kimi、字节豆包（火山方舟）、百度文心（千帆） | 官网定价页抓取                                   |
+| 聚合平台 | OpenRouter、硅基流动 SiliconFlow                                                            | OpenRouter 官方接口；硅基流动抓定价页            |
+| 汇率     | USD ↔ CNY                                                                                   | Frankfurter（主）/ open.er-api.com（备）         |
 
 ---
 
@@ -105,31 +110,31 @@
 
 ### 2.2 关键设计决策
 
-| 决策 | 选择 | 理由 |
-|---|---|---|
-| 存储 | Git 仓库内 JSON 文件，不用数据库 | 零成本；Git 历史天然可追溯；静态站直接读 |
-| 历史存储方式 | **变更点序列**（价格变了才追加一个点），不存每日全量快照 | 全量快照约 300KB/天、100MB+/年，会把仓库撑大；变更点序列一年也只有几百 KB |
-| 网站形态 | 纯静态（SSG） | GitHub Pages 只能托管静态文件；速度快、SEO 好 |
-| 抓取与构建同一个 workflow | 是 | `GITHUB_TOKEN` 推送的提交**不会触发**其他 workflow，所以分开写的话部署不会自动执行 |
-| 语言 | 全栈 TypeScript | 抓取、校验 schema、前端共用一份类型定义 |
-| 包管理 | pnpm workspace（3 个包） | `shared` 存类型/schema，`pipeline` 和 `site` 共同依赖它 |
+| 决策                      | 选择                                                     | 理由                                                                               |
+| ------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| 存储                      | Git 仓库内 JSON 文件，不用数据库                         | 零成本；Git 历史天然可追溯；静态站直接读                                           |
+| 历史存储方式              | **变更点序列**（价格变了才追加一个点），不存每日全量快照 | 全量快照约 300KB/天、100MB+/年，会把仓库撑大；变更点序列一年也只有几百 KB          |
+| 网站形态                  | 纯静态（SSG）                                            | GitHub Pages 只能托管静态文件；速度快、SEO 好                                      |
+| 抓取与构建同一个 workflow | 是                                                       | `GITHUB_TOKEN` 推送的提交**不会触发**其他 workflow，所以分开写的话部署不会自动执行 |
+| 语言                      | 全栈 TypeScript                                          | 抓取、校验 schema、前端共用一份类型定义                                            |
+| 包管理                    | pnpm workspace（3 个包）                                 | `shared` 存类型/schema，`pipeline` 和 `site` 共同依赖它                            |
 
 ### 2.3 技术栈
 
-| 层 | 技术 | 版本策略 |
-|---|---|---|
-| 运行时 | Node.js 24 LTS（本地 ≥ 24 即可） | `.nvmrc` = 24，`engines.node >= 24` |
-| 包管理 | pnpm 9 | `packageManager` 字段锁定版本 |
-| 语言 | TypeScript 5（strict） | — |
-| HTTP | 原生 `fetch` + 自研重试封装 | 无额外依赖 |
-| HTML 解析 | cheerio | 用于服务端渲染的静态页面 |
-| 浏览器渲染 | Playwright（仅 Chromium） | 仅用于 JS 渲染的定价页 |
-| 校验 | Zod | schema 放在 `shared` 包 |
-| 网站框架 | Astro 7 + React 19（只用于交互组件） | — |
-| 样式 | Tailwind CSS 4 | 设计令牌见 STYLE §4 |
-| 图表 | uPlot | 体积约 45KB，适合时间序列 |
-| 测试 | Vitest（单元/集成）+ Playwright Test（E2E） | 覆盖率 ≥ 80% |
-| 代码检查 | ESLint + Prettier + `tsc --noEmit` | CI 必过 |
+| 层         | 技术                                        | 版本策略                            |
+| ---------- | ------------------------------------------- | ----------------------------------- |
+| 运行时     | Node.js 24 LTS（本地 ≥ 24 即可）            | `.nvmrc` = 24，`engines.node >= 24` |
+| 包管理     | pnpm 9                                      | `packageManager` 字段锁定版本       |
+| 语言       | TypeScript 5（strict）                      | —                                   |
+| HTTP       | 原生 `fetch` + 自研重试封装                 | 无额外依赖                          |
+| HTML 解析  | cheerio                                     | 用于服务端渲染的静态页面            |
+| 浏览器渲染 | Playwright（仅 Chromium）                   | 仅用于 JS 渲染的定价页              |
+| 校验       | Zod                                         | schema 放在 `shared` 包             |
+| 网站框架   | Astro 7 + React 19（只用于交互组件）        | —                                   |
+| 样式       | Tailwind CSS 4                              | 设计令牌见 STYLE §4                 |
+| 图表       | uPlot                                       | 体积约 45KB，适合时间序列           |
+| 测试       | Vitest（单元/集成）+ Playwright Test（E2E） | 覆盖率 ≥ 80%                        |
+| 代码检查   | ESLint + Prettier + `tsc --noEmit`          | CI 必过                             |
 
 ### 2.4 目录结构
 
@@ -241,26 +246,26 @@ export interface Source {
 }
 
 export interface SourceContext {
-  http: HttpClient;          // 带重试和限速
+  http: HttpClient; // 带重试和限速
   browser: () => Promise<BrowserPage>; // 懒加载 Playwright
   logger: Logger;
   now: Date;
 }
 
 export interface RawOffering {
-  vendorHint: string;        // 原始厂商名，如 "Anthropic"、"阿里云"
-  modelName: string;         // 原始模型名，如 "claude-sonnet-4-5"、"qwen-plus"
+  vendorHint: string; // 原始厂商名，如 "Anthropic"、"阿里云"
+  modelName: string; // 原始模型名，如 "claude-sonnet-4-5"、"qwen-plus"
   currency: "USD" | "CNY";
   unit: "per_token" | "per_1k" | "per_1m"; // 原始计价单位
   input: number | null;
   output: number | null;
   cacheRead?: number | null;
   cacheWrite?: number | null;
-  tiers?: RawTier[];         // 阶梯价（按上下文长度）
+  tiers?: RawTier[]; // 阶梯价（按上下文长度）
   contextWindow?: number | null;
   maxOutput?: number | null;
-  sourceUrl: string;         // 证据链接
-  notes?: string;            // 例如 "限时 5 折"、"夜间优惠"
+  sourceUrl: string; // 证据链接
+  notes?: string; // 例如 "限时 5 折"、"夜间优惠"
 }
 ```
 
@@ -270,28 +275,30 @@ export interface RawOffering {
 
 > ⚠️ 国内厂商的定价页 URL 和页面结构经常变。下表 URL 是规划阶段的入口，**以节点 3 实测为准**，实测后回填本表并附上快照日期。
 
-| Source ID | 平台 | 方式 | 入口 | 币种 | 原始单位 | 风险 |
-|---|---|---|---|---|---|---|
-| `litellm` | 各国际厂商官方 | api | `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json` | USD | per_token | 低；社区维护，更新可能滞后 1~3 天 |
-| `openrouter` | OpenRouter | api | `https://openrouter.ai/api/v1/models`（公开，无需 Key） | USD | per_token（字符串） | 低 |
-| `deepseek` | DeepSeek 官方 | html | `https://api-docs.deepseek.com/zh-cn/quick_start/pricing` | CNY（中文页） | per_1m | 中；有缓存命中/未命中、错峰时段 |
-| `aliyun` | 阿里云百炼 | html/browser | 百炼模型列表与计费文档页 | CNY | per_1k 或 per_1m | 高；阶梯价多，页面 JS 渲染 |
-| `zhipu` | 智谱开放平台 | browser | `https://open.bigmodel.cn/pricing` | CNY | per_1m | 中；SPA 页面 |
-| `moonshot` | 月之暗面 Kimi | html | Kimi 开放平台定价文档 | CNY | per_1m | 中 |
-| `volcengine` | 火山方舟（豆包） | browser | 火山方舟模型计费文档 | CNY | per_1m | 高；分段计价多 |
-| `qianfan` | 百度千帆（文心） | browser | 千帆 ModelBuilder 计费文档 | CNY | per_1k 或 per_1m | 高 |
-| `siliconflow` | 硅基流动 | browser | `https://siliconflow.cn/pricing` | CNY | per_1m | 中 |
-| `manual` | 任意 | manual | `config/manual/*.yaml` | 任意 | 任意 | 无；需人工维护 |
+| Source ID     | 平台             | 方式         | 入口                                                                                          | 币种          | 原始单位            | 风险                              |
+| ------------- | ---------------- | ------------ | --------------------------------------------------------------------------------------------- | ------------- | ------------------- | --------------------------------- |
+| `litellm`     | 各国际厂商官方   | api          | `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json` | USD           | per_token           | 低；社区维护，更新可能滞后 1~3 天 |
+| `openrouter`  | OpenRouter       | api          | `https://openrouter.ai/api/v1/models`（公开，无需 Key）                                       | USD           | per_token（字符串） | 低                                |
+| `deepseek`    | DeepSeek 官方    | html         | `https://api-docs.deepseek.com/zh-cn/quick_start/pricing`                                     | CNY（中文页） | per_1m              | 中；有缓存命中/未命中、错峰时段   |
+| `aliyun`      | 阿里云百炼       | html/browser | 百炼模型列表与计费文档页                                                                      | CNY           | per_1k 或 per_1m    | 高；阶梯价多，页面 JS 渲染        |
+| `zhipu`       | 智谱开放平台     | browser      | `https://open.bigmodel.cn/pricing`                                                            | CNY           | per_1m              | 中；SPA 页面                      |
+| `moonshot`    | 月之暗面 Kimi    | html         | Kimi 开放平台定价文档                                                                         | CNY           | per_1m              | 中                                |
+| `volcengine`  | 火山方舟（豆包） | browser      | 火山方舟模型计费文档                                                                          | CNY           | per_1m              | 高；分段计价多                    |
+| `qianfan`     | 百度千帆（文心） | browser      | 千帆 ModelBuilder 计费文档                                                                    | CNY           | per_1k 或 per_1m    | 高                                |
+| `siliconflow` | 硅基流动         | browser      | `https://siliconflow.cn/pricing`                                                              | CNY           | per_1m              | 中                                |
+| `manual`      | 任意             | manual       | `config/manual/*.yaml`                                                                        | 任意          | 任意                | 无；需人工维护                    |
 
 **来源优先级**（同一个"厂商官方直供"报价被多个源提供时）：
 
 ```
 厂商官网抓取 > LiteLLM > manual
 ```
+
 - 国际厂商第一版只用 LiteLLM 提供"官方价"。OpenRouter 作为**独立平台报价**展示，同时用于交叉核对（§3.5 规则 V7）。
 - 国内厂商的"官方价"用官网抓取；LiteLLM 里同名条目只做交叉核对。
 
 **礼貌抓取约定**：
+
 - User-Agent：`AIPriceBoardBot/1.0 (+<SITE_URL>/about)`
 - 同一域名请求间隔 ≥ 1 秒，并发 = 1
 - 每天只跑一次；遵守 robots.txt
@@ -299,18 +306,19 @@ export interface RawOffering {
 
 ### 3.3 Normalize（归一化）
 
-| 步骤 | 规则 |
-|---|---|
-| 单位 | 全部换算成**每百万 token（per 1M）**。`per_token × 1_000_000`，`per_1k × 1_000`。用 `decimal` 精度处理后保留 6 位有效数字，避免浮点误差 |
-| 币种 | 保存**原币种价格**（`input`/`output` 等字段 + `currency`）；`converted.usd` / `converted.cny` 在网站构建时按当日汇率计算（见 API 文档 §2.1），汇率记录在 `meta.fxRate` |
-| 厂商 ID | `vendorHint` 经 `config/providers.yaml` 的 `matchers` 映射成规范 vendor ID（`openai`、`anthropic`、`alibaba` ...） |
-| 模型 ID | 小写、空格→`-`、去掉日期后缀以外的多余符号；再查 `config/aliases.yaml` 合并别名。规范 slug = `<vendor>/<model>`，例如 `alibaba/qwen-plus` |
-| Offering ID | `<platform>:<vendor>/<model>`，例如 `official:deepseek/deepseek-chat`、`openrouter:anthropic/claude-sonnet-4-5` |
-| 免费模型 | `input = 0 && output = 0` 时标记 `isFree = true`（OpenRouter 的 `:free` 变体单独成 Offering） |
-| 阶梯价 | `tiers[]` 按 `minInputTokens` 升序；列表页展示第一档，详情页展示全部 |
-| 缺失值 | 拿不到的字段用 `null`，**不能填 0**（0 代表免费） |
+| 步骤        | 规则                                                                                                                                                                   |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 单位        | 全部换算成**每百万 token（per 1M）**。`per_token × 1_000_000`，`per_1k × 1_000`。用 `decimal` 精度处理后保留 6 位有效数字，避免浮点误差                                |
+| 币种        | 保存**原币种价格**（`input`/`output` 等字段 + `currency`）；`converted.usd` / `converted.cny` 在网站构建时按当日汇率计算（见 API 文档 §2.1），汇率记录在 `meta.fxRate` |
+| 厂商 ID     | `vendorHint` 经 `config/providers.yaml` 的 `matchers` 映射成规范 vendor ID（`openai`、`anthropic`、`alibaba` ...）                                                     |
+| 模型 ID     | 小写、空格→`-`、去掉日期后缀以外的多余符号；再查 `config/aliases.yaml` 合并别名。规范 slug = `<vendor>/<model>`，例如 `alibaba/qwen-plus`                              |
+| Offering ID | `<platform>:<vendor>/<model>`，例如 `official:deepseek/deepseek-chat`、`openrouter:anthropic/claude-sonnet-4-5`                                                        |
+| 免费模型    | `input = 0 && output = 0` 时标记 `isFree = true`（OpenRouter 的 `:free` 变体单独成 Offering）                                                                          |
+| 阶梯价      | `tiers[]` 按 `minInputTokens` 升序；列表页展示第一档，详情页展示全部                                                                                                   |
+| 缺失值      | 拿不到的字段用 `null`，**不能填 0**（0 代表免费）                                                                                                                      |
 
 `aliases.yaml` 示例：
+
 ```yaml
 # 规范 slug: [别名列表]
 deepseek/deepseek-chat: [deepseek-v3, deepseek/deepseek-chat-v3]
@@ -329,22 +337,23 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 
 每条 Offering 依次经过以下规则：
 
-| 规则 | 条件 | 处理 |
-|---|---|---|
-| V1 结构 | 不符合 Zod schema | 丢弃该条，记 `E3001` |
-| V2 取值范围 | 价格 < 0，或 > 1000 USD/1M | 丢弃该条，记 `E3002` |
-| V3 单日突变 | 与上次已发布值相比变动 > `ANOMALY_THRESHOLD`（默认 80%），涨跌都算 | 进入**隔离区**，网站继续显示旧值，推送告警 `W3003` |
-| V4 隔离自动放行 | 隔离中的新值**连续 2 次运行**都抓到同一个值 | 视为真实调价，放行发布，并在变动日志中标记"已确认" |
-| V5 模型数骤降 | 某个源本次的模型数 < 上次的 50% | **整个源**视为失败，沿用旧数据，告警 `E3004` |
-| V6 下架防抖 | 某个模型本次没抓到 | 连续 3 天都没有才判定下架；期间沿用旧值 |
-| V7 交叉核对 | 同一模型的官方价与 OpenRouter 价相差 > 30% | 不拦截，在 `status.json` 记录 `W3007`，方便人工抽查 |
-| V8 人工覆盖 | `config/overrides.yaml` 中有对应条目 | 按配置执行：`approve`（强制放行）/ `block`（屏蔽）/ `pin`（钉住某个价格） |
+| 规则            | 条件                                                               | 处理                                                                      |
+| --------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| V1 结构         | 不符合 Zod schema                                                  | 丢弃该条，记 `E3001`                                                      |
+| V2 取值范围     | 价格 < 0，或 > 1000 USD/1M                                         | 丢弃该条，记 `E3002`                                                      |
+| V3 单日突变     | 与上次已发布值相比变动 > `ANOMALY_THRESHOLD`（默认 80%），涨跌都算 | 进入**隔离区**，网站继续显示旧值，推送告警 `W3003`                        |
+| V4 隔离自动放行 | 隔离中的新值**连续 2 次运行**都抓到同一个值                        | 视为真实调价，放行发布，并在变动日志中标记"已确认"                        |
+| V5 模型数骤降   | 某个源本次的模型数 < 上次的 50%                                    | **整个源**视为失败，沿用旧数据，告警 `E3004`                              |
+| V6 下架防抖     | 某个模型本次没抓到                                                 | 连续 3 天都没有才判定下架；期间沿用旧值                                   |
+| V7 交叉核对     | 同一模型的官方价与 OpenRouter 价相差 > 30%                         | 不拦截，在 `status.json` 记录 `W3007`，方便人工抽查                       |
+| V8 人工覆盖     | `config/overrides.yaml` 中有对应条目                               | 按配置执行：`approve`（强制放行）/ `block`（屏蔽）/ `pin`（钉住某个价格） |
 
 `overrides.yaml` 示例：
+
 ```yaml
 - offering: "official:alibaba/qwen-max"
-  action: approve          # approve | block | pin
-  until: 2026-11-01        # 过期后自动失效，避免永久生效
+  action: approve # approve | block | pin
+  until: 2026-11-01 # 过期后自动失效，避免永久生效
   reason: "官方 10/18 公告降价 60%，已人工确认"
 ```
 
@@ -361,14 +370,14 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 
 拿**校验后的新数据**和**上次已发布的 `latest.json`** 按 Offering ID 对比，生成 `ChangeEvent`：
 
-| 事件类型 | 触发条件 |
-|---|---|
-| `price_down` | 任一价格字段（input/output/cacheRead/cacheWrite）下降 |
-| `price_up` | 任一价格字段上涨 |
-| `new_model` | 新出现的 Offering |
-| `removed` | 满足 V6 下架条件 |
-| `restored` | 已下架的模型重新出现 |
-| `context_change` | 上下文长度变化（不推送，只记录） |
+| 事件类型         | 触发条件                                              |
+| ---------------- | ----------------------------------------------------- |
+| `price_down`     | 任一价格字段（input/output/cacheRead/cacheWrite）下降 |
+| `price_up`       | 任一价格字段上涨                                      |
+| `new_model`      | 新出现的 Offering                                     |
+| `removed`        | 满足 V6 下架条件                                      |
+| `restored`       | 已下架的模型重新出现                                  |
+| `context_change` | 上下文长度变化（不推送，只记录）                      |
 
 - 一个 Offering 同时有多个字段变化时，合并成一个事件，`fields[]` 列出全部字段
 - 浮点比较容差：相对差值 < 0.01% 视为没变
@@ -377,6 +386,7 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 ### 3.8 Persist（落盘）
 
 写入顺序（保证中途崩溃不会留下半截数据）：
+
 1. 全部写入临时目录 `data/.tmp/`
 2. 用 schema 校验一遍临时文件
 3. 原子替换（`rename`）到 `data/`
@@ -384,20 +394,22 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 
 ### 3.9 Notify（通知）
 
-| 渠道 | 开关 | 内容 |
-|---|---|---|
-| 飞书群机器人（默认） | `FEISHU_WEBHOOK_URL` 存在即启用 | 卡片消息 |
-| Telegram | `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` | Markdown 文本 |
-| 邮件 | `SMTP_HOST` 等存在即启用 | HTML 邮件 |
+| 渠道                 | 开关                                      | 内容          |
+| -------------------- | ----------------------------------------- | ------------- |
+| 飞书群机器人（默认） | `FEISHU_WEBHOOK_URL` 存在即启用           | 卡片消息      |
+| Telegram             | `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` | Markdown 文本 |
+| 邮件                 | `SMTP_HOST` 等存在即启用                  | HTML 邮件     |
 
 **推送时机**：
-| 级别 | 条件 | 是否推送 |
-|---|---|---|
-| 变动摘要 | 有 price_down / price_up / new_model / removed | 推送（每天最多 1 条汇总） |
-| 告警 | 任何 E 级错误、隔离区新增条目 | 推送 |
-| 无事发生 | 全部成功且无变动 | 不推送（`NOTIFY_ON_SUCCESS=true` 时发"一切正常"） |
+
+| 级别     | 条件                                           | 是否推送                                          |
+| -------- | ---------------------------------------------- | ------------------------------------------------- |
+| 变动摘要 | 有 price_down / price_up / new_model / removed | 推送（每天最多 1 条汇总）                         |
+| 告警     | 任何 E 级错误、隔离区新增条目                  | 推送                                              |
+| 无事发生 | 全部成功且无变动                               | 不推送（`NOTIFY_ON_SUCCESS=true` 时发"一切正常"） |
 
 消息模板（飞书卡片的文字部分）：
+
 ```
 📊 AI API 价格日报 · 2026-10-19
 ✅ 成功 10/11 个源  ⚠️ 失败：volcengine（E1002 超时）
@@ -412,15 +424,15 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 
 ### 3.10 网站页面
 
-| 路由（中文 / 英文） | 内容 | 交互组件 |
-|---|---|---|
-| `/` · `/en/` | 价格总榜；顶部"今日变动"卡片（最近 24h 事件，最多 6 条） | `PriceTable`（排序、筛选、搜索、币种切换） |
-| `/models/<vendor>/<model>` | 模型详情：各平台报价对比、阶梯价、价格走势图、变动记录 | `PriceChart`、`OfferingCompare` |
-| `/calculator` | 成本计算器 | `Calculator` |
-| `/changes` | 变动日志（按日期分组，可按类型/厂商筛选） | `ChangeFilter` |
-| `/about` | 数据来源说明、更新时间、免责声明、各源健康状态 | — |
-| `/rss.xml` · `/en/rss.xml` | 变动 RSS（最近 100 条事件） | — |
-| `/api/v1/*.json` | 开放数据接口（见 API 文档） | — |
+| 路由（中文 / 英文）        | 内容                                                     | 交互组件                                   |
+| -------------------------- | -------------------------------------------------------- | ------------------------------------------ |
+| `/` · `/en/`               | 价格总榜；顶部"今日变动"卡片（最近 24h 事件，最多 6 条） | `PriceTable`（排序、筛选、搜索、币种切换） |
+| `/models/<vendor>/<model>` | 模型详情：各平台报价对比、阶梯价、价格走势图、变动记录   | `PriceChart`、`OfferingCompare`            |
+| `/calculator`              | 成本计算器                                               | `Calculator`                               |
+| `/changes`                 | 变动日志（按日期分组，可按类型/厂商筛选）                | `ChangeFilter`                             |
+| `/about`                   | 数据来源说明、更新时间、免责声明、各源健康状态           | —                                          |
+| `/rss.xml` · `/en/rss.xml` | 变动 RSS（最近 100 条事件）                              | —                                          |
+| `/api/v1/*.json`           | 开放数据接口（见 API 文档）                              | —                                          |
 
 **价格总榜列**：厂商 · 模型 · 平台 · 输入价 · 输出价 · 缓存读价 · 上下文 · 7 日变化 · 更新时间
 **筛选项**：厂商（多选）、地区（国际/国内）、平台（官方/OpenRouter/硅基流动）、仅免费、上下文 ≥ N
@@ -430,15 +442,17 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 ### 3.11 成本计算器
 
 输入：
-| 参数 | 默认值 | 说明 |
-|---|---|---|
-| 每次请求输入 token | 2,000 | 也可以切换成"每月总量"模式 |
-| 每次请求输出 token | 500 | |
-| 每天请求次数 | 1,000 | |
-| 缓存命中率 | 0% | 0~100%，只有支持缓存的模型才会生效 |
-| 每月天数 | 30 | |
+
+| 参数               | 默认值 | 说明                               |
+| ------------------ | ------ | ---------------------------------- |
+| 每次请求输入 token | 2,000  | 也可以切换成"每月总量"模式         |
+| 每次请求输出 token | 500    |                                    |
+| 每天请求次数       | 1,000  |                                    |
+| 缓存命中率         | 0%     | 0~100%，只有支持缓存的模型才会生效 |
+| 每月天数           | 30     |                                    |
 
 公式（单位：原币种 → 再换算成所选币种）：
+
 ```
 月输入量 M_in  = 输入 token × 次数/天 × 天数
 月输出量 M_out = 输出 token × 次数/天 × 天数
@@ -448,6 +462,7 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
          + M_c × (cacheRead ?? input)
          + M_out × output ) / 1,000,000
 ```
+
 - 有阶梯价时，按"每次请求输入 token"落在哪一档来选价格
 - 结果按月成本升序列出前 20 个模型，可勾选只看某些厂商
 - 计算全部在浏览器本地完成
@@ -566,17 +581,18 @@ erDiagram
 
 ### 4.1 文件 ↔ 实体映射
 
-| 文件 | 内容 | 大小预估 | 索引/查找方式 |
-|---|---|---|---|
-| `config/providers.yaml` | VENDOR + PLATFORM | < 10KB | 按 id |
-| `data/latest.json` | 全部当前 OFFERING（含 MODEL 字段冗余） | ~300KB（gzip 后 ~40KB） | 数组 + 构建时生成 `Map<id>` |
-| `data/history/<vendor>/<model>.json` | 该模型所有 Offering 的 PRICE_POINT 序列 | 每个 < 5KB | 文件路径即索引 |
-| `data/changes/<YYYY-MM>.json` | 当月 CHANGE_EVENT | 每月 < 100KB | 按月分片 |
-| `data/quarantine.json` | 隔离中的候选值 + 首次出现时间 | < 10KB | 按 offeringId |
-| `data/fx.json` | 最近 90 天 FX_RATE | < 10KB | 按日期 |
-| `data/status.json` | 最近一次 RUN + SOURCE_RESULT + 各 SOURCE 健康度 | < 20KB | — |
+| 文件                                 | 内容                                            | 大小预估                | 索引/查找方式               |
+| ------------------------------------ | ----------------------------------------------- | ----------------------- | --------------------------- |
+| `config/providers.yaml`              | VENDOR + PLATFORM                               | < 10KB                  | 按 id                       |
+| `data/latest.json`                   | 全部当前 OFFERING（含 MODEL 字段冗余）          | ~300KB（gzip 后 ~40KB） | 数组 + 构建时生成 `Map<id>` |
+| `data/history/<vendor>/<model>.json` | 该模型所有 Offering 的 PRICE_POINT 序列         | 每个 < 5KB              | 文件路径即索引              |
+| `data/changes/<YYYY-MM>.json`        | 当月 CHANGE_EVENT                               | 每月 < 100KB            | 按月分片                    |
+| `data/quarantine.json`               | 隔离中的候选值 + 首次出现时间                   | < 10KB                  | 按 offeringId               |
+| `data/fx.json`                       | 最近 90 天 FX_RATE                              | < 10KB                  | 按日期                      |
+| `data/status.json`                   | 最近一次 RUN + SOURCE_RESULT + 各 SOURCE 健康度 | < 20KB                  | —                           |
 
 ### 4.2 约束
+
 - `OFFERING.id` 全局唯一；`MODEL.slug` 全局唯一
 - 价格字段：`null` 表示未知，`0` 表示免费，不允许负数
 - `PRICE_POINT` 中同一 `offeringId` 的 `effectiveDate` 严格递增，相邻两点价格不同
@@ -720,29 +736,29 @@ sequenceDiagram
 
 本地开发写在 `.env`（已加入 `.gitignore`，参考 `.env.example`）；线上写在 GitHub 仓库 **Settings → Secrets and variables → Actions**。
 
-| 变量 | 必填 | 类型 | 放在 | 默认值 | 示例 | 用途 |
-|---|---|---|---|---|---|---|
-| `SITE_URL` | ✅ | URL | Variables | — | `https://alice.github.io` | 网站根地址，用于 RSS、sitemap、通知中的链接 |
-| `BASE_PATH` | ✅ | 路径 | Variables | `/` | `/ai-api-price/` | 部署在 `xxx.github.io/<仓库名>/` 时必须设置成仓库名 |
-| `NOTIFY_CHANNELS` | ❌ | 逗号列表 | Variables | 自动（有配置的都启用） | `feishu,telegram` | 指定启用哪些推送渠道 |
-| `FEISHU_WEBHOOK_URL` | ❌ | URL | **Secrets** | — | `https://open.feishu.cn/open-apis/bot/v2/hook/xxxx` | 飞书群机器人 Webhook |
-| `FEISHU_WEBHOOK_SECRET` | ❌ | 字符串 | **Secrets** | — | `aBcD...` | 飞书"签名校验"密钥（建议开启） |
-| `TELEGRAM_BOT_TOKEN` | ❌ | 字符串 | **Secrets** | — | `123456:ABC-DEF...` | Telegram Bot Token |
-| `TELEGRAM_CHAT_ID` | ❌ | 字符串 | **Secrets** | — | `987654321` | 接收消息的 chat id |
-| `SMTP_HOST` | ❌ | 主机名 | Secrets | — | `smtp.qq.com` | 邮件服务器 |
-| `SMTP_PORT` | ❌ | 数字 | Secrets | `465` | `465` | — |
-| `SMTP_USER` | ❌ | 字符串 | Secrets | — | `bot@example.com` | — |
-| `SMTP_PASS` | ❌ | 字符串 | **Secrets** | — | （授权码） | 邮箱授权码，不是登录密码 |
-| `NOTIFY_EMAIL_TO` | ❌ | 邮箱 | Secrets | — | `me@example.com` | 收件人 |
-| `NOTIFY_ON_SUCCESS` | ❌ | bool | Variables | `false` | `true` | 没有变动也推送"一切正常" |
-| `ANOMALY_THRESHOLD` | ❌ | 0~1 | Variables | `0.8` | `0.8` | V3 突变阈值 |
-| `STALE_ALERT_DAYS` | ❌ | 整数 | Variables | `3` | `3` | 连续失败几天后高优先级告警 |
-| `STALE_WARN_DAYS` | ❌ | 整数 | Variables | `7` | `7` | 连续失败几天后网站显示过期提示 |
-| `FX_FALLBACK_RATE` | ❌ | 数字 | Variables | `7.1` | `7.1` | 汇率接口长期失败时的兜底汇率 |
-| `SOURCES_ENABLED` | ❌ | 逗号列表 | Variables | 全部 | `litellm,openrouter,deepseek` | 只运行部分源（调试用） |
-| `DRY_RUN` | ❌ | bool | 本地 | `false` | `true` | 只抓取和打印，不写 data/、不推送 |
-| `LOG_LEVEL` | ❌ | 枚举 | 本地/Variables | `info` | `debug` | `debug/info/warn/error` |
-| `TZ` | ❌ | 时区 | workflow env | `Asia/Shanghai` | — | 日志和"今天"按北京时间算 |
+| 变量                    | 必填 | 类型     | 放在           | 默认值                 | 示例                                                | 用途                                                |
+| ----------------------- | ---- | -------- | -------------- | ---------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `SITE_URL`              | ✅   | URL      | Variables      | —                      | `https://alice.github.io`                           | 网站根地址，用于 RSS、sitemap、通知中的链接         |
+| `BASE_PATH`             | ✅   | 路径     | Variables      | `/`                    | `/ai-api-price/`                                    | 部署在 `xxx.github.io/<仓库名>/` 时必须设置成仓库名 |
+| `NOTIFY_CHANNELS`       | ❌   | 逗号列表 | Variables      | 自动（有配置的都启用） | `feishu,telegram`                                   | 指定启用哪些推送渠道                                |
+| `FEISHU_WEBHOOK_URL`    | ❌   | URL      | **Secrets**    | —                      | `https://open.feishu.cn/open-apis/bot/v2/hook/xxxx` | 飞书群机器人 Webhook                                |
+| `FEISHU_WEBHOOK_SECRET` | ❌   | 字符串   | **Secrets**    | —                      | `aBcD...`                                           | 飞书"签名校验"密钥（建议开启）                      |
+| `TELEGRAM_BOT_TOKEN`    | ❌   | 字符串   | **Secrets**    | —                      | `123456:ABC-DEF...`                                 | Telegram Bot Token                                  |
+| `TELEGRAM_CHAT_ID`      | ❌   | 字符串   | **Secrets**    | —                      | `987654321`                                         | 接收消息的 chat id                                  |
+| `SMTP_HOST`             | ❌   | 主机名   | Secrets        | —                      | `smtp.qq.com`                                       | 邮件服务器                                          |
+| `SMTP_PORT`             | ❌   | 数字     | Secrets        | `465`                  | `465`                                               | —                                                   |
+| `SMTP_USER`             | ❌   | 字符串   | Secrets        | —                      | `bot@example.com`                                   | —                                                   |
+| `SMTP_PASS`             | ❌   | 字符串   | **Secrets**    | —                      | （授权码）                                          | 邮箱授权码，不是登录密码                            |
+| `NOTIFY_EMAIL_TO`       | ❌   | 邮箱     | Secrets        | —                      | `me@example.com`                                    | 收件人                                              |
+| `NOTIFY_ON_SUCCESS`     | ❌   | bool     | Variables      | `false`                | `true`                                              | 没有变动也推送"一切正常"                            |
+| `ANOMALY_THRESHOLD`     | ❌   | 0~1      | Variables      | `0.8`                  | `0.8`                                               | V3 突变阈值                                         |
+| `STALE_ALERT_DAYS`      | ❌   | 整数     | Variables      | `3`                    | `3`                                                 | 连续失败几天后高优先级告警                          |
+| `STALE_WARN_DAYS`       | ❌   | 整数     | Variables      | `7`                    | `7`                                                 | 连续失败几天后网站显示过期提示                      |
+| `FX_FALLBACK_RATE`      | ❌   | 数字     | Variables      | `7.1`                  | `7.1`                                               | 汇率接口长期失败时的兜底汇率                        |
+| `SOURCES_ENABLED`       | ❌   | 逗号列表 | Variables      | 全部                   | `litellm,openrouter,deepseek`                       | 只运行部分源（调试用）                              |
+| `DRY_RUN`               | ❌   | bool     | 本地           | `false`                | `true`                                              | 只抓取和打印，不写 data/、不推送                    |
+| `LOG_LEVEL`             | ❌   | 枚举     | 本地/Variables | `info`                 | `debug`                                             | `debug/info/warn/error`                             |
+| `TZ`                    | ❌   | 时区     | workflow env   | `Asia/Shanghai`        | —                                                   | 日志和"今天"按北京时间算                            |
 
 启动时由 `packages/pipeline/src/config.ts` 用 Zod 校验：格式不对直接退出（`E0001`）；某个推送渠道配置不完整（例如只填了 Telegram Token 没填 Chat ID）给出 `W0002` 并禁用该渠道。
 
@@ -751,6 +767,7 @@ sequenceDiagram
 ## 8. 第三方服务配置指南
 
 ### 8.1 GitHub 仓库与 Pages
+
 1. 新建公开仓库（Pages 免费版要求公开，或者使用 Pro 账号）
 2. **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**
 3. **Settings → Actions → General → Workflow permissions** 选择 **Read and write permissions**（workflow 需要提交 data/）
@@ -761,9 +778,10 @@ sequenceDiagram
 > 以后要绑定自己的域名：Pages 设置里填 Custom domain，DNS 加 CNAME 指向 `<用户名>.github.io`，然后把 `SITE_URL` 改成新域名、`BASE_PATH` 改成 `/`。
 
 ### 8.2 workflow 关键配置（节选）
+
 ```yaml
 on:
-  schedule: [{ cron: "0 0 * * *" }]   # UTC 00:00 = 北京 08:00；GitHub 可能延迟 5~30 分钟
+  schedule: [{ cron: "0 0 * * *" }] # UTC 00:00 = 北京 08:00；GitHub 可能延迟 5~30 分钟
   workflow_dispatch: {}
 permissions:
   contents: write
@@ -771,25 +789,30 @@ permissions:
   id-token: write
 concurrency: { group: daily, cancel-in-progress: false }
 ```
+
 - 第三方 action 全部**固定到 commit SHA**
 - 缓存 `~/.cache/ms-playwright` 和 pnpm store
 - 整个 job 设置 `timeout-minutes: 20`
 
 ### 8.3 飞书群机器人（默认推送渠道）
+
 1. 飞书群 → 设置 → 群机器人 → 添加机器人 → **自定义机器人**
 2. 复制 Webhook 地址 → 填入 `FEISHU_WEBHOOK_URL`
 3. 安全设置勾选**签名校验** → 复制密钥 → 填入 `FEISHU_WEBHOOK_SECRET`
 4. 本地测试：`pnpm pipeline notify:test`
 
 ### 8.4 Telegram（可选）
+
 1. 和 @BotFather 对话 → `/newbot` → 得到 Token
 2. 给你的 bot 发一条消息，然后访问 `https://api.telegram.org/bot<TOKEN>/getUpdates`，找到 `chat.id`
 3. 填入 `TELEGRAM_BOT_TOKEN`、`TELEGRAM_CHAT_ID`
 
 ### 8.5 邮件（可选）
+
 以 QQ 邮箱为例：设置 → 账户 → 开启 SMTP 服务 → 生成**授权码**，填入 `SMTP_PASS`。
 
 ### 8.6 外部数据源
+
 LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 ---
@@ -798,53 +821,56 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 格式：`E` = 错误，`W` = 警告；第一位数字表示所属阶段。
 
-| 码 | 阶段 | 含义 | 自动处理 | 人工处理建议 |
-|---|---|---|---|---|
-| `E0001` | 启动 | 环境变量格式错误 | 退出，workflow 失败 | 对照 §7 修正 |
-| `W0002` | 启动 | 推送渠道配置不完整 | 禁用该渠道 | 补全配置 |
-| `E1001` | 抓取 | HTTP 非 2xx | 重试 3 次（指数退避 1s/3s/9s），仍失败则该源 failed | 浏览器打开 URL 看看是否改版或被墙 |
-| `E1002` | 抓取 | 超时 | 同上 | 适当调大该源的 `timeoutMs` |
-| `E1003` | 抓取 | 疑似被反爬拦截（403/验证码/挑战页） | 该源 failed，**不重试** | 降低频率；改为 `manual` 兜底 |
-| `E1004` | 抓取 | Playwright 启动失败 | 所有 browser 类源 failed | 检查 Playwright 缓存/版本 |
-| `E1005` | 抓取 | 某源连续失败 ≥ `STALE_ALERT_DAYS` 天 | 高优先级告警 | **必须处理**：修复抓取器或改用 manual |
-| `E2001` | 解析 | 找不到价格表/选择器失效 | 该源 failed | 更新选择器，更新 fixture，补测试 |
-| `E2002` | 汇率 | 连续 7 天汇率获取失败 | 使用 `FX_FALLBACK_RATE` | 检查汇率接口 |
-| `W2001` | 汇率 | 当日汇率失败，使用上次汇率 | 自动 | 无需处理 |
-| `W2003` | 解析 | 单位/币种无法识别，跳过该条 | 跳过 | 补充解析规则 |
-| `E3001` | 校验 | 结构不符合 schema | 丢弃该条 | 检查解析逻辑 |
-| `E3002` | 校验 | 价格超出合理范围 | 丢弃该条 | 检查单位换算 |
-| `W3003` | 校验 | 单日突变，进入隔离区 | 隔离，2 次确认后放行 | 去官网核实；确认是真的可以 `approve` 提前放行 |
-| `E3004` | 校验 | 模型数骤降 > 50% | 整个源沿用旧数据 | 大概率页面改版，修复抓取器 |
-| `W3007` | 校验 | 官方价与 OpenRouter 价差 > 30% | 记录 | 抽查 |
-| `E4001` | 落盘 | 写入/原子替换失败 | 退出，workflow 失败，旧数据不受影响 | 查看日志 |
-| `E4002` | 构建 | Astro 构建失败 | 不部署，线上保持昨天的版本 | 本地 `pnpm build` 复现 |
-| `E5001` | 通知 | 推送失败 | 记录，不影响其他步骤 | 检查 Webhook/Token |
+| 码      | 阶段 | 含义                                            | 自动处理                                            | 人工处理建议                                              |
+| ------- | ---- | ----------------------------------------------- | --------------------------------------------------- | --------------------------------------------------------- |
+| `E0001` | 启动 | 环境变量格式错误                                | 退出，workflow 失败                                 | 对照 §7 修正                                              |
+| `W0002` | 启动 | 推送渠道配置不完整                              | 禁用该渠道                                          | 补全配置                                                  |
+| `E1001` | 抓取 | HTTP 非 2xx                                     | 重试 3 次（指数退避 1s/3s/9s），仍失败则该源 failed | 浏览器打开 URL 看看是否改版或被墙                         |
+| `E1002` | 抓取 | 超时                                            | 同上                                                | 适当调大该源的 `timeoutMs`                                |
+| `E1003` | 抓取 | 疑似被反爬拦截（403/验证码/挑战页）             | 该源 failed，**不重试**                             | 降低频率；改为 `manual` 兜底                              |
+| `E1004` | 抓取 | Playwright 启动失败                             | 所有 browser 类源 failed                            | 检查 Playwright 缓存/版本                                 |
+| `E1005` | 抓取 | 某源连续失败 ≥ `STALE_ALERT_DAYS` 天            | 高优先级告警                                        | **必须处理**：修复抓取器或改用 manual                     |
+| `E2001` | 解析 | 找不到价格表/选择器失效                         | 该源 failed                                         | 更新选择器，更新 fixture，补测试                          |
+| `E2002` | 汇率 | 连续 7 天汇率获取失败                           | 使用 `FX_FALLBACK_RATE`                             | 检查汇率接口                                              |
+| `W2001` | 汇率 | 当日汇率失败，使用上次汇率                      | 自动                                                | 无需处理                                                  |
+| `W2003` | 解析 | 单位/币种无法识别，跳过该条                     | 跳过                                                | 补充解析规则                                              |
+| `W2004` | 手动 | `config/manual/*.yaml` 的 verifiedAt 超过 14 天 | 继续使用                                            | 去官网核对后更新 verifiedAt                               |
+| `E3001` | 校验 | 结构不符合 schema                               | 丢弃该条                                            | 检查解析逻辑                                              |
+| `E3002` | 校验 | 价格超出合理范围                                | 丢弃该条                                            | 检查单位换算                                              |
+| `W3003` | 校验 | 单日突变，进入隔离区                            | 隔离，2 次确认后放行                                | 去官网核实；确认是真的可以 `approve` 提前放行             |
+| `E3004` | 校验 | 模型数骤降 > 50%                                | 整个源沿用旧数据                                    | 大概率页面改版，修复抓取器                                |
+| `E3005` | 校验 | sourceUrl 域名不在白名单（S8）                  | 丢弃该条                                            | 确认域名可信后加入 providers.yaml 的 allowedSourceDomains |
+| `W3007` | 校验 | 官方价与 OpenRouter 价差 > 30%                  | 记录                                                | 抽查                                                      |
+| `E4001` | 落盘 | 写入/原子替换失败                               | 退出，workflow 失败，旧数据不受影响                 | 查看日志                                                  |
+| `E4002` | 构建 | Astro 构建失败                                  | 不部署，线上保持昨天的版本                          | 本地 `pnpm build` 复现                                    |
+| `E5001` | 通知 | 推送失败                                        | 记录，不影响其他步骤                                | 检查 Webhook/Token                                        |
 
 ### 9.1 退出码约定
-| 情况 | 退出码 | workflow 状态 |
-|---|---|---|
-| 全部成功 | 0 | ✅ |
-| 部分源失败（≥ 1 个源成功） | 0 | ✅（job summary 标黄，已推送告警） |
-| 全部源失败 | 1 | ❌（不提交，不部署） |
-| `E0001` / `E4001` | 1 | ❌ |
+
+| 情况                       | 退出码 | workflow 状态                      |
+| -------------------------- | ------ | ---------------------------------- |
+| 全部成功                   | 0      | ✅                                 |
+| 部分源失败（≥ 1 个源成功） | 0      | ✅（job summary 标黄，已推送告警） |
+| 全部源失败                 | 1      | ❌（不提交，不部署）               |
+| `E0001` / `E4001`          | 1      | ❌                                 |
 
 ---
 
 ## 10. 性能预期与基准
 
-| 指标 | 目标 | 测量方式 |
-|---|---|---|
-| 管线总耗时 | < 5 分钟（P95） | `status.json` 中的 `durationMs` |
-| 单个 API 源 | < 10 秒 | 同上 |
-| 单个 browser 源 | < 60 秒 | 同上 |
-| 网站构建 | < 90 秒 | Actions 日志 |
-| 整个 workflow | < 10 分钟 | Actions 日志 |
-| 每月 Actions 用量 | < 400 分钟 | 公开仓库不计费；私有仓库免费额度 2000 分钟/月 |
-| 首页 HTML | < 150KB（gzip） | Lighthouse |
-| 首页 JS | < 100KB（gzip） | 构建产物分析 |
-| LCP | < 1.5s（4G 网络） | Lighthouse ≥ 90 分 |
-| 表格交互 | 500 行排序/筛选 < 50ms | 浏览器 Performance 面板 |
-| 仓库体积增长 | < 5MB/年 | `du -sh data/` |
+| 指标              | 目标                   | 测量方式                                      |
+| ----------------- | ---------------------- | --------------------------------------------- |
+| 管线总耗时        | < 5 分钟（P95）        | `status.json` 中的 `durationMs`               |
+| 单个 API 源       | < 10 秒                | 同上                                          |
+| 单个 browser 源   | < 60 秒                | 同上                                          |
+| 网站构建          | < 90 秒                | Actions 日志                                  |
+| 整个 workflow     | < 10 分钟              | Actions 日志                                  |
+| 每月 Actions 用量 | < 400 分钟             | 公开仓库不计费；私有仓库免费额度 2000 分钟/月 |
+| 首页 HTML         | < 150KB（gzip）        | Lighthouse                                    |
+| 首页 JS           | < 100KB（gzip）        | 构建产物分析                                  |
+| LCP               | < 1.5s（4G 网络）      | Lighthouse ≥ 90 分                            |
+| 表格交互          | 500 行排序/筛选 < 50ms | 浏览器 Performance 面板                       |
+| 仓库体积增长      | < 5MB/年               | `du -sh data/`                                |
 
 > 国内访问 GitHub Pages 可能较慢甚至不稳定。如果后续发现国内访客体验差，P2 可以同时部署到 Cloudflare Pages（同一个构建产物，再加一个 deploy 步骤）。
 
@@ -852,34 +878,34 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 ## 11. 安全检查清单
 
-| # | 检查项 | 做法 |
-|---|---|---|
-| S1 | 仓库里没有任何密钥 | Webhook/Token 只存在 Secrets；`.env` 在 `.gitignore`；CI 加 secret 扫描（gitleaks） |
-| S2 | Secrets 不出现在日志 | 通知模块打印 URL 时脱敏；禁止 `console.log(process.env)` |
-| S3 | workflow 最小权限 | 只申请 `contents/pages/id-token` 三项 |
-| S4 | 供应链 | 第三方 action 固定 SHA；`pnpm install --frozen-lockfile`；Dependabot 每周更新 |
-| S5 | 抓取内容不可信 | 抓来的文本只作为**纯文本**渲染（Astro 默认转义），禁止 `set:html` / `dangerouslySetInnerHTML` |
-| S6 | 抓取内容长度限制 | `notes` ≤ 200 字符，模型名 ≤ 100 字符，超出截断 |
-| S7 | RSS/XML 注入 | 使用 XML 转义库生成，不手动拼接字符串 |
-| S8 | URL 白名单 | `sourceUrl` 只允许 `https:` 开头且域名在 `providers.yaml` 白名单内 |
-| S9 | 不跟随跳转到陌生域名 | HTTP 客户端只跟随同域名跳转 |
-| S10 | 合规抓取 | 遵守 robots.txt；每天 1 次；带可识别的 UA；只抓公开页面 |
-| S11 | 前端无敏感数据 | 静态站没有用户数据；`localStorage` 只存偏好设置 |
-| S12 | 内容安全策略 | 通过 `<meta http-equiv="Content-Security-Policy">` 限制脚本来源为 self |
-| S13 | 免责声明 | 每页页脚注明"价格仅供参考，以各厂商官网为准" |
+| #   | 检查项               | 做法                                                                                          |
+| --- | -------------------- | --------------------------------------------------------------------------------------------- |
+| S1  | 仓库里没有任何密钥   | Webhook/Token 只存在 Secrets；`.env` 在 `.gitignore`；CI 加 secret 扫描（gitleaks）           |
+| S2  | Secrets 不出现在日志 | 通知模块打印 URL 时脱敏；禁止 `console.log(process.env)`                                      |
+| S3  | workflow 最小权限    | 只申请 `contents/pages/id-token` 三项                                                         |
+| S4  | 供应链               | 第三方 action 固定 SHA；`pnpm install --frozen-lockfile`；Dependabot 每周更新                 |
+| S5  | 抓取内容不可信       | 抓来的文本只作为**纯文本**渲染（Astro 默认转义），禁止 `set:html` / `dangerouslySetInnerHTML` |
+| S6  | 抓取内容长度限制     | `notes` ≤ 200 字符，模型名 ≤ 100 字符，超出截断                                               |
+| S7  | RSS/XML 注入         | 使用 XML 转义库生成，不手动拼接字符串                                                         |
+| S8  | URL 白名单           | `sourceUrl` 只允许 `https:` 开头且域名在 `providers.yaml` 白名单内                            |
+| S9  | 不跟随跳转到陌生域名 | HTTP 客户端只跟随同域名跳转                                                                   |
+| S10 | 合规抓取             | 遵守 robots.txt；每天 1 次；带可识别的 UA；只抓公开页面                                       |
+| S11 | 前端无敏感数据       | 静态站没有用户数据；`localStorage` 只存偏好设置                                               |
+| S12 | 内容安全策略         | 通过 `<meta http-equiv="Content-Security-Policy">` 限制脚本来源为 self                        |
+| S13 | 免责声明             | 每页页脚注明"价格仅供参考，以各厂商官网为准"                                                  |
 
 ---
 
 ## 12. 测试策略
 
-| 层 | 工具 | 覆盖内容 | 要求 |
-|---|---|---|---|
-| 单元 | Vitest | 单位换算、slug 规范化、别名合并、diff 算法、校验规则 V1~V8、隔离区状态机、计算器公式、价格格式化 | 覆盖率 ≥ 90% |
-| 抓取器 | Vitest + fixture | 每个 Source 用 `tests/fixtures/<source>/<日期>.html|json` 离线解析，断言模型数和抽样价格 | 每个源 ≥ 3 个断言 |
-| 集成 | Vitest | 用 fixture 跑完整管线（fetch 用 mock）→ 检查 data/ 输出和 ChangeEvent | 覆盖主流程 + 源失败 + 突变 + 下架 |
-| 冒烟（线上） | `pnpm pipeline run --dry-run` | 真实请求所有源，只打印结果 | 每周一 CI 跑一次（`smoke.yml`），失败时发告警 |
-| E2E | Playwright Test | 首页加载、排序、筛选、币种切换、语言切换、计算器、详情页图表、暗色模式、移动端布局 | 关键流程全部覆盖 |
-| 构建产物 | 脚本 | 所有 `/api/v1/*.json` 都能通过 schema 校验；RSS 是合法 XML；没有死链 | CI 必过 |
+| 层           | 工具                          | 覆盖内容                                                                                         | 要求                                          |
+| ------------ | ----------------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| 单元         | Vitest                        | 单位换算、slug 规范化、别名合并、diff 算法、校验规则 V1~V8、隔离区状态机、计算器公式、价格格式化 | 覆盖率 ≥ 90%                                  |
+| 抓取器       | Vitest + fixture              | 每个 Source 用 `tests/fixtures/<source>/<日期>.html                                              | json` 离线解析，断言模型数和抽样价格          | 每个源 ≥ 3 个断言 |
+| 集成         | Vitest                        | 用 fixture 跑完整管线（fetch 用 mock）→ 检查 data/ 输出和 ChangeEvent                            | 覆盖主流程 + 源失败 + 突变 + 下架             |
+| 冒烟（线上） | `pnpm pipeline run --dry-run` | 真实请求所有源，只打印结果                                                                       | 每周一 CI 跑一次（`smoke.yml`），失败时发告警 |
+| E2E          | Playwright Test               | 首页加载、排序、筛选、币种切换、语言切换、计算器、详情页图表、暗色模式、移动端布局               | 关键流程全部覆盖                              |
+| 构建产物     | 脚本                          | 所有 `/api/v1/*.json` 都能通过 schema 校验；RSS 是合法 XML；没有死链                             | CI 必过                                       |
 
 **Fixture 更新流程**：抓取器修复后，执行 `pnpm pipeline snapshot <source>` 保存新快照 → 更新断言 → 提交。旧快照保留，用来防止回归。
 
@@ -887,18 +913,19 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 ## 13. 开发节点记录
 
-| 节点 | 名称 | 负责 | 依赖 | 状态 |
-|---|---|---|---|---|
-| 1 | 项目脚手架 + shared schema + 配置文件 | 主控 | — | ⏳ 待开始 |
-| 2 | 聚合源：litellm / openrouter / fx | 后端 Agent A | 1 | ⏳ |
-| 3 | 国内官网抓取器 ×7（含硅基流动）+ fixture 测试 | 后端 Agent B | 1 | ⏳ |
-| 4 | 网站框架：布局、主题、i18n、设计令牌 | 前端 Agent | 1 | ⏳ |
-| 5 | 管线步骤：normalize / validate / diff / persist / notify | 后端 Agent A | 2 | ⏳ |
-| 6 | 页面：价格总榜、详情页、计算器、变动日志、RSS、JSON 接口 | 前端 Agent | 4、5 | ⏳ |
-| 7 | GitHub Actions：daily / ci / smoke + Pages 部署 | 主控 | 5、6 | ⏳ |
-| 8 | 联调测试 + 文档同步 + 部署教程 + 使用手册 | 测试 Agent + 文档 Agent | 7 | ⏳ |
+| 节点 | 名称                                                     | 负责                    | 依赖 | 状态      |
+| ---- | -------------------------------------------------------- | ----------------------- | ---- | --------- |
+| 1    | 项目脚手架 + shared schema + 配置文件                    | 主控                    | —    | ⏳ 待开始 |
+| 2    | 聚合源：litellm / openrouter / fx                        | 后端 Agent A            | 1    | ⏳        |
+| 3    | 国内官网抓取器 ×7（含硅基流动）+ fixture 测试            | 后端 Agent B            | 1    | ⏳        |
+| 4    | 网站框架：布局、主题、i18n、设计令牌                     | 前端 Agent              | 1    | ⏳        |
+| 5    | 管线步骤：normalize / validate / diff / persist / notify | 后端 Agent A            | 2    | ⏳        |
+| 6    | 页面：价格总榜、详情页、计算器、变动日志、RSS、JSON 接口 | 前端 Agent              | 4、5 | ⏳        |
+| 7    | GitHub Actions：daily / ci / smoke + Pages 部署          | 主控                    | 5、6 | ⏳        |
+| 8    | 联调测试 + 文档同步 + 部署教程 + 使用手册                | 测试 Agent + 文档 Agent | 7    | ⏳        |
 
 并行关系：
+
 ```
 节点1 ──┬── 节点2 ── 节点5 ──┐
         ├── 节点3 ───────────┤（3 完成后接入 5 的注册表）
@@ -913,22 +940,22 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 ## 14. 问题汇总
 
-| # | 发现于 | 问题 | 解决方案 | 状态 |
-|---|---|---|---|---|
-| — | — | （暂无） | — | — |
+| #   | 发现于 | 问题     | 解决方案 | 状态 |
+| --- | ------ | -------- | -------- | ---- |
+| —   | —      | （暂无） | —        | —    |
 
 ---
 
 ## 15. 风险与应对
 
-| 风险 | 概率 | 影响 | 应对 |
-|---|---|---|---|
-| 国内官网改版导致抓取失败 | 高 | 中 | 抓取器隔离 + 沿用旧数据 + V5 骤降检测 + 告警 + manual 兜底 |
-| 官网有反爬（验证码/WAF） | 中 | 中 | 不对抗；改为 manual 配置，人工每周核对 |
-| GitHub Actions 境外 IP 无法访问某些国内页面 | 中 | 中 | 节点 3 实测；不行就改为 manual 兜底，或在 P2 增加"本地/国内机器运行 + 推送数据"的模式 |
-| LiteLLM 价格更新滞后 | 中 | 低 | 页面显示数据来源；P2 增加国际厂商官网交叉核对 |
-| 阶梯价/错峰价/限时折扣难以表达 | 高 | 低 | `tiers` + `notes` 字段；列表页展示标准价，详情页展示全部 |
-| GitHub cron 延迟或跳过 | 低 | 低 | 页面显示"最后更新时间"；可以手动触发 |
-| 仓库 60 天无活动导致定时任务被自动停用 | 低 | 高 | 每天的数据提交就是活动；另外 smoke.yml 失败时会告警 |
-| 国内访问 GitHub Pages 慢 | 中 | 中 | P2 同时部署 Cloudflare Pages |
-| 模型同名不同物（版本、日期后缀） | 中 | 中 | `aliases.yaml` 人工维护；新模型在变动日志中标记，方便人工检查 |
+| 风险                                        | 概率 | 影响 | 应对                                                                                  |
+| ------------------------------------------- | ---- | ---- | ------------------------------------------------------------------------------------- |
+| 国内官网改版导致抓取失败                    | 高   | 中   | 抓取器隔离 + 沿用旧数据 + V5 骤降检测 + 告警 + manual 兜底                            |
+| 官网有反爬（验证码/WAF）                    | 中   | 中   | 不对抗；改为 manual 配置，人工每周核对                                                |
+| GitHub Actions 境外 IP 无法访问某些国内页面 | 中   | 中   | 节点 3 实测；不行就改为 manual 兜底，或在 P2 增加"本地/国内机器运行 + 推送数据"的模式 |
+| LiteLLM 价格更新滞后                        | 中   | 低   | 页面显示数据来源；P2 增加国际厂商官网交叉核对                                         |
+| 阶梯价/错峰价/限时折扣难以表达              | 高   | 低   | `tiers` + `notes` 字段；列表页展示标准价，详情页展示全部                              |
+| GitHub cron 延迟或跳过                      | 低   | 低   | 页面显示"最后更新时间"；可以手动触发                                                  |
+| 仓库 60 天无活动导致定时任务被自动停用      | 低   | 高   | 每天的数据提交就是活动；另外 smoke.yml 失败时会告警                                   |
+| 国内访问 GitHub Pages 慢                    | 中   | 中   | P2 同时部署 Cloudflare Pages                                                          |
+| 模型同名不同物（版本、日期后缀）            | 中   | 中   | `aliases.yaml` 人工维护；新模型在变动日志中标记，方便人工检查                         |

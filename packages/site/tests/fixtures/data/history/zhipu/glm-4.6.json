@@ -1,0 +1,23 @@
+{
+  "modelSlug": "zhipu/glm-4.6",
+  "series": {
+    "official:zhipu/glm-4.6": [
+      {
+        "input": 2,
+        "output": 8,
+        "cacheRead": 0.4,
+        "cacheWrite": null,
+        "effectiveDate": "2026-09-30"
+      }
+    ],
+    "siliconflow:zhipu/glm-4.6": [
+      {
+        "input": 3.5,
+        "output": 14,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

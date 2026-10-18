@@ -1,0 +1,28 @@
+# 每周一：真实请求所有数据源，只打印不写入（DEV_DOCUMENT §12 冒烟测试）
+# 失败时 GitHub 会给仓库所有者发邮件；daily 的飞书告警覆盖每日情况。
+name: smoke
+
+on:
+  schedule:
+    - cron: "0 2 * * 1" # 每周一 北京时间 10:00
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TZ: Asia/Shanghai
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @aipb/pipeline exec playwright install --with-deps chromium
+      - run: pnpm pipeline run --dry-run

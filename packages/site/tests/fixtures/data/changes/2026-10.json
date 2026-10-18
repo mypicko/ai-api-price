@@ -1,0 +1,247 @@
+{
+  "month": "2026-10",
+  "events": [
+    {
+      "id": "2026-10-10-openrouter:moonshot/kimi-k2-1",
+      "type": "removed",
+      "offeringId": "openrouter:moonshot/kimi-k2",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2",
+      "displayName": "Kimi K2",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-10T00:02:10Z"
+    },
+    {
+      "id": "2026-10-12-official:deepseek/deepseek-chat-1",
+      "type": "price_down",
+      "offeringId": "official:deepseek/deepseek-chat",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-chat",
+      "displayName": "DeepSeek-V3",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [
+        {
+          "field": "output",
+          "old": 16,
+          "new": 8,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-12T00:02:10Z"
+    },
+    {
+      "id": "2026-10-13-openrouter:deepseek/deepseek-chat-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-chat",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-chat",
+      "displayName": "DeepSeek-V3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.3,
+          "new": 0.27,
+          "pct": -0.1
+        },
+        {
+          "field": "output",
+          "old": 1.2,
+          "new": 1.1,
+          "pct": -0.08333
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-13T00:02:10Z"
+    },
+    {
+      "id": "2026-10-15-official:cohere/command-r-plus-1",
+      "type": "removed",
+      "offeringId": "official:cohere/command-r-plus",
+      "vendor": "cohere",
+      "modelSlug": "cohere/command-r-plus",
+      "displayName": "Command R+",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-15T00:02:10Z"
+    },
+    {
+      "id": "2026-10-15-official:moonshot/kimi-k2-1",
+      "type": "context_change",
+      "offeringId": "official:moonshot/kimi-k2",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2",
+      "displayName": "Kimi K2",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 131072,
+          "new": 262144,
+          "pct": 1
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-15T00:02:10Z"
+    },
+    {
+      "id": "2026-10-17-official:alibaba/qwen3-max-1",
+      "type": "price_down",
+      "offeringId": "official:alibaba/qwen3-max",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-max",
+      "displayName": "Qwen3 Max",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [
+        {
+          "field": "input",
+          "old": 10,
+          "new": 6,
+          "pct": -0.4
+        },
+        {
+          "field": "output",
+          "old": 40,
+          "new": 24,
+          "pct": -0.4
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-17T00:02:10Z"
+    },
+    {
+      "id": "2026-10-18-openrouter:meta/llama-3.3-70b-instruct-1",
+      "type": "new_model",
+      "offeringId": "openrouter:meta/llama-3.3-70b-instruct",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-3.3-70b-instruct",
+      "displayName": "Llama 3.3 70B <Instruct> & \"Free\"",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T00:02:10Z"
+    },
+    {
+      "id": "2026-10-18-official:deepseek/deepseek-reasoner-1",
+      "type": "price_down",
+      "offeringId": "official:deepseek/deepseek-reasoner",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-reasoner",
+      "displayName": "DeepSeek-R1",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [
+        {
+          "field": "cacheRead",
+          "old": 2,
+          "new": 1,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T00:02:10Z"
+    },
+    {
+      "id": "2026-10-18-official:alibaba/qwen-turbo-1",
+      "type": "price_down",
+      "offeringId": "official:alibaba/qwen-turbo",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen-turbo",
+      "displayName": "Qwen Turbo",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.5,
+          "new": 0.3,
+          "pct": -0.4
+        },
+        {
+          "field": "output",
+          "old": 1,
+          "new": 0.6,
+          "pct": -0.4
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T00:02:10Z"
+    },
+    {
+      "id": "2026-10-18-official:minimax/minimax-m2-1",
+      "type": "new_model",
+      "offeringId": "official:minimax/minimax-m2",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2",
+      "displayName": "MiniMax-M2",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T00:02:10Z"
+    },
+    {
+      "id": "2026-10-18-official:tencent/hunyuan-turbos-1",
+      "type": "price_up",
+      "offeringId": "official:tencent/hunyuan-turbos",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hunyuan-turbos",
+      "displayName": "Hunyuan TurboS",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.6,
+          "new": 0.8,
+          "pct": 0.3333
+        },
+        {
+          "field": "output",
+          "old": 1.6,
+          "new": 2,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T00:02:10Z"
+    },
+    {
+      "id": "2026-10-18-siliconflow:zhipu/glm-4.6-1",
+      "type": "new_model",
+      "offeringId": "siliconflow:zhipu/glm-4.6",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.6",
+      "displayName": "GLM-4.6",
+      "platform": "siliconflow",
+      "currency": "CNY",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T00:02:10Z"
+    },
+    {
+      "id": "2026-10-18-openrouter:moonshot/kimi-k2-1",
+      "type": "restored",
+      "offeringId": "openrouter:moonshot/kimi-k2",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2",
+      "displayName": "Kimi K2",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-18T00:02:11Z"
+    }
+  ]
+}

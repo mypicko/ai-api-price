@@ -1,0 +1,189 @@
+import { expect, test, type Page } from "@playwright/test";
+
+function collectErrors(page: Page): string[] {
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  page.on("console", (m) => {
+    if (m.type() === "error") errors.push(m.text());
+  });
+  return errors;
+}
+
+const bodyRows = (page: Page) => page.getByTestId("price-table").locator("tbody tr");
+
+test.describe("首页", () => {
+  test("加载价格榜和今日变动，没有控制台错误（含 CSP）", async ({ page }) => {
+    const errors = collectErrors(page);
+    await page.goto("/");
+    await expect(page).toHaveTitle(/AI API 价格榜/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "zh-CN");
+    await expect(page.getByTestId("today-changes").locator("> ul > li")).toHaveCount(6);
+    await expect(bodyRows(page)).toHaveCount(34);
+    await expect(page.locator('link[hreflang="en"]')).toHaveAttribute("href", /\/en\/$/);
+    await expect(page.locator('meta[http-equiv="content-security-policy"]')).toHaveCount(1);
+    // 抓来的文本按纯文本渲染（S5）
+    await expect(page.getByText('Llama 3.3 70B <Instruct> & "Free"').first()).toBeVisible();
+    await page.waitForLoadState("networkidle");
+    expect(errors).toEqual([]);
+  });
+
+  test("默认按混合价升序，点击表头切换升序 → 降序 → 默认", async ({ page }) => {
+    await page.goto("/");
+    const header = page.locator("th", { has: page.getByRole("button", { name: /^输出/ }) });
+    await expect(header).toHaveAttribute("aria-sort", "none");
+    await expect(bodyRows(page).first()).toContainText("免费");
+    await header.getByRole("button").click();
+    await expect(header).toHaveAttribute("aria-sort", "ascending");
+    await header.getByRole("button").click();
+    await expect(header).toHaveAttribute("aria-sort", "descending");
+    await expect(bodyRows(page).first()).toContainText("Claude Opus 4.1");
+    await expect(page).toHaveURL(/sort=output&dir=desc/);
+    await header.getByRole("button").click();
+    await expect(header).toHaveAttribute("aria-sort", "none");
+    await expect(page).toHaveURL(/\/$/);
+  });
+
+  test("筛选：搜索、地区、仅免费、厂商，并同步到 URL", async ({ page }) => {
+    await page.goto("/");
+    await page.getByPlaceholder(/搜索模型/).fill("deepseek v3");
+    await expect(bodyRows(page)).toHaveCount(3);
+    await expect(page).toHaveURL(/q=deepseek\+v3/);
+    await page.getByPlaceholder(/搜索模型/).fill("");
+    await page.getByRole("button", { name: "国内" }).click();
+    await expect(page.getByTestId("result-count")).toHaveText("共 19 个报价");
+    await page.getByLabel("仅免费").check();
+    await expect(bodyRows(page)).toHaveCount(2);
+    await expect(page).toHaveURL(/region=cn.*free=1/);
+    await page.reload();
+    await expect(bodyRows(page)).toHaveCount(2);
+    await expect(page.getByLabel("仅免费")).toBeChecked();
+    await page.goto("/?vendor=openai");
+    await expect(bodyRows(page)).toHaveCount(4);
+    await page.getByTestId("vendor-filter").locator("summary").click();
+    await page.getByTestId("vendor-filter").getByLabel("Anthropic").check();
+    await expect(bodyRows(page)).toHaveCount(8);
+  });
+
+  test("币种切换：价格换算，选择保存在 localStorage", async ({ page }) => {
+    await page.goto("/?q=gpt-4o");
+    const cell = bodyRows(page).first().locator("td").nth(2);
+    await expect.poll(() => cell.innerText()).toBe("≈ ¥1.07");
+    await page.getByTestId("currency-toggle").getByRole("button", { name: /USD/ }).click();
+    await expect.poll(() => cell.innerText()).toBe("$0.150");
+    await expect(page.locator("html")).toHaveAttribute("data-currency", "USD");
+    await page.reload();
+    await expect(page.locator("html")).toHaveAttribute("data-currency", "USD");
+    await expect.poll(() => cell.innerText()).toBe("$0.150");
+  });
+
+  test("语言切换：跳转到英文页并保存偏好", async ({ page }) => {
+    await page.goto("/calculator/");
+    await page.getByTestId("lang-toggle").click();
+    await expect(page).toHaveURL(/\/en\/calculator\/$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Cost calculator");
+    expect(await page.evaluate(() => localStorage.getItem("aipb.lang"))).toBe("en");
+    // 英文页默认 USD
+    await page.goto("/en/?q=deepseek");
+    await expect(page.locator("html")).toHaveAttribute("data-currency", "USD");
+  });
+
+  test("暗色模式：切换后加 html.dark，刷新不闪白", async ({ page }) => {
+    await page.goto("/");
+    await page.getByTestId("theme-toggle").getByRole("button", { name: "深色" }).click();
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    expect(bg).toBe("rgb(11, 13, 16)");
+    await page.reload({ waitUntil: "commit" });
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    await page.getByTestId("theme-toggle").getByRole("button", { name: "浅色" }).click();
+    await expect(page.locator("html")).not.toHaveClass(/dark/);
+  });
+});
+
+test.describe("其他页面", () => {
+  test("计算器：修改用量后重新排名，支持 2k / 1m 写法", async ({ page }) => {
+    await page.goto("/calculator/");
+    const results = page.getByTestId("calc-results").locator("tbody tr");
+    await expect(results).toHaveCount(20);
+    await expect(page.getByTestId("calc-usage")).toContainText("6,000 万 tokens");
+    await page.getByLabel("每次请求输入 token").fill("1m");
+    await expect(page.getByTestId("calc-usage")).toContainText("300 亿 tokens");
+    await page.getByLabel("每次请求输入 token").fill("abc");
+    await expect(page.getByText("请输入有效的非负数字")).toBeVisible();
+    await page.getByLabel("每次请求输入 token").fill("2k");
+    await page.getByText("Anthropic", { exact: true }).click();
+    await expect(results).toHaveCount(4);
+    // Claude Sonnet 4.5：60M × $3 + 15M × $15 = $405
+    await page.getByTestId("currency-toggle").getByRole("button", { name: /USD/ }).click();
+    const cost = results.filter({ hasText: "Claude Sonnet 4.5" }).first().locator("td").last();
+    await expect.poll(() => cost.innerText()).toBe("$405");
+  });
+
+  test("详情页：报价对比、阶梯价、走势图渲染", async ({ page }) => {
+    const errors = collectErrors(page);
+    await page.goto("/models/deepseek/deepseek-chat/");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("DeepSeek-V3");
+    await expect(page.getByTestId("offering-compare").locator("tbody tr")).toHaveCount(3);
+    await page.getByTestId("price-chart").scrollIntoViewIfNeeded();
+    await expect(page.locator(".aipb-chart canvas")).toHaveCount(1);
+    await expect(page.locator(".aipb-chart .u-legend .u-series")).toHaveCount(7);
+    await page.getByRole("button", { name: "30 天" }).click();
+    await expect(page.locator(".aipb-chart canvas")).toHaveCount(1);
+    await page.goto("/models/alibaba/qwen3-max/");
+    await expect(page.getByTestId("tier-table")).toHaveCount(1);
+    await page.goto("/models/bytedance/doubao-seed-1.6/");
+    await expect(page.getByRole("status").first()).toContainText("8 天前更新");
+    await page.goto("/models/openai/gpt-5/");
+    await expect(page.getByTestId("chart-unchanged")).toBeVisible();
+    expect(errors).toEqual([]);
+  });
+
+  test("变动日志：按类型和厂商筛选", async ({ page }) => {
+    await page.goto("/changes/");
+    const items = page.getByTestId("change-log").locator("ol > li");
+    const total = await items.count();
+    expect(total).toBeGreaterThan(10);
+    await page.getByLabel("类型").selectOption("price_down");
+    await expect(items.first()).toContainText("降价");
+    expect(await items.count()).toBeLessThan(total);
+    await page.getByLabel("厂商").selectOption("deepseek");
+    await expect(items).toHaveCount(3);
+  });
+
+  test("关于页：显示失败的数据源、连续失败次数和隔离区", async ({ page }) => {
+    await page.goto("/about/");
+    const failed = page.getByTestId("source-health").locator('tr[data-status="failed"]');
+    await expect(failed).toContainText("volcengine");
+    await expect(failed).toContainText("8");
+    await expect(failed).toContainText("E1003");
+    await expect(page.getByTestId("quarantine")).toContainText("Qwen Plus");
+  });
+
+  test("404 页面", async ({ page }) => {
+    const res = await page.goto("/models/nope/nope/");
+    expect(res?.status()).toBe(404);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("页面不存在");
+  });
+});
+
+test.describe("手机 375px @mobile", () => {
+  test("表格第一列固定，其余列横向滚动；筛选收进抽屉 @mobile", async ({ page }) => {
+    await page.goto("/");
+    const scroll = page.getByTestId("table-scroll");
+    const overflow = await scroll.evaluate((el) => el.scrollWidth > el.clientWidth);
+    expect(overflow).toBe(true);
+    const firstCell = bodyRows(page).first().locator("th");
+    const before = await firstCell.boundingBox();
+    await scroll.evaluate((el) => el.scrollBy(200, 0));
+    const after = await firstCell.boundingBox();
+    expect(after?.x).toBe(before?.x);
+    await expect(page.getByLabel("仅免费")).toBeHidden();
+    await page.getByRole("button", { name: "筛选" }).click();
+    await expect(page.getByLabel("仅免费")).toBeVisible();
+    const pageOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    );
+    expect(pageOverflow).toBe(false);
+  });
+});

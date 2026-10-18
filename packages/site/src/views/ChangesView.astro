@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ChangeLog } from "../components/ChangeLog";
+import { RECENT_CHANGES_DAYS, changeMonths } from "../lib/api";
+import { t } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { getSiteModel } from "../lib/site-data";
+import { eventsWithinDays } from "../lib/site-model";
+import { joinBase } from "../lib/url";
+import { toEventView, vendorOptions } from "../lib/views";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const model = getSiteModel();
+const events = eventsWithinDays(model.events, model.generatedAt, RECENT_CHANGES_DAYS);
+const months = changeMonths(model).toReversed();
+---
+
+<BaseLayout locale={locale} path="changes/" title={t(locale, "changes.title")} description={t(locale, "changes.lead")}>
+  <div class="flex flex-col gap-8">
+    <header class="flex flex-col gap-2">
+      <h1 class="text-h1">{t(locale, "changes.title")}</h1>
+      <p class="max-w-2xl text-text-muted">{t(locale, "changes.lead")}</p>
+    </header>
+    <ChangeLog
+      client:idle
+      events={events.map((e) => toEventView(model, e, locale))}
+      vendors={vendorOptions(model, locale, [...new Set(events.map((e) => e.vendor))])}
+      locale={locale}
+      base={base}
+      nowIso={model.generatedAt}
+    />
+    {
+      months.length > 0 && (
+        <section aria-labelledby="archive" class="flex flex-col gap-2">
+          <h2 id="archive" class="text-h3">{t(locale, "changes.archive")}</h2>
+          <ul class="flex flex-wrap gap-2 text-small">
+            {months.map((m) => (
+              <li>
+                <a class="btn h-8 font-mono" href={joinBase(base, `api/v1/changes/${m}.json`)}>
+                  {m}.json
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>

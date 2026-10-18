@@ -1,0 +1,194 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { DualPrice } from "../components/DualPrice";
+import { EventItem } from "../components/EventItem";
+import OfferingCompare from "../components/OfferingCompare.astro";
+import { PriceChart } from "../components/PriceChart";
+import StaleNotice from "../components/StaleNotice.astro";
+import VendorLogo from "../components/VendorLogo.astro";
+import { StatusBadge } from "../components/ChangeBadge";
+import { earliestDate, isUnchanged } from "../lib/chart";
+import { formatDate, t } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { convertCurrency, formatPrice, formatTokens } from "../lib/shared-client";
+import { getSiteModel } from "../lib/site-data";
+import { platformName, staleDays, vendorName, type ModelInfo } from "../lib/site-model";
+import { joinBase, modelPath, pageHref } from "../lib/url";
+import { chartOfferings, fxNote, toEventView } from "../lib/views";
+
+interface Props {
+  locale: Locale;
+  info: ModelInfo;
+}
+
+const { locale, info } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const model = getSiteModel();
+const vendor = model.vendors.get(info.vendor);
+const vName = vendorName(model, info.vendor, locale);
+const chart = chartOfferings(model, info, locale);
+const unchanged = isUnchanged(chart);
+const firstDate = earliestDate(chart);
+const changes = model.events.filter((e) => e.modelSlug === info.slug);
+const staleOfferings = info.offerings.filter((o) => o.stale);
+const maxStale = Math.max(0, ...staleOfferings.map((o) => staleDays(o, model.generatedAt)));
+const missing = info.offerings.filter((o) => o.status === "missing");
+const tiered = info.offerings.filter((o) => (o.tiers?.length ?? 0) > 1);
+const note = fxNote(model, locale);
+const tierRange = (min: number, max: number | null): string =>
+  max === null ? `≥ ${formatTokens(min)}` : `${formatTokens(min)} – ${formatTokens(max)}`;
+const series = model.data.histories.get(info.slug)?.series ?? {};
+---
+
+<BaseLayout
+  locale={locale}
+  path={modelPath(info.slug)}
+  title={`${info.displayName} · ${vName}`}
+  description={`${info.displayName} API ${t(locale, "price.perMillion")}`}
+>
+  <article class="flex flex-col gap-10">
+    <header class="flex flex-col gap-3">
+      <a href={pageHref(base, locale)} class="link self-start text-small">← {t(locale, "model.backToList")}</a>
+      <div class="flex items-center gap-3">
+        <VendorLogo name={vName} logo={vendor?.logo ?? null} />
+        <span class="text-table text-text-muted">{vName}</span>
+      </div>
+      <h1 class="flex flex-wrap items-center gap-3 text-h1">
+        <span>{info.displayName}</span>
+        {info.status === "removed" && <StatusBadge kind="removed" locale={locale} />}
+      </h1>
+      <p class="flex flex-wrap gap-x-4 gap-y-1 text-small text-text-muted">
+        <code class="font-mono">{info.slug}</code>
+        {info.contextWindow !== null && <span>{t(locale, "model.context", { context: formatTokens(info.contextWindow) })}</span>}
+        {info.maxOutput !== null && <span>{t(locale, "model.maxOutput", { tokens: formatTokens(info.maxOutput) })}</span>}
+        <span>{t(locale, "model.firstSeen", { date: formatDate(info.firstSeenAt, locale) })}</span>
+        <a class="link" href={joinBase(base, `api/v1/models/${info.slug}.json`)}>{t(locale, "model.api")}</a>
+      </p>
+      {info.status === "removed" && <StaleNotice message={t(locale, "model.status.removed")} />}
+      {staleOfferings.length > 0 && <StaleNotice message={t(locale, "stale.notice", { days: maxStale })} />}
+      {
+        missing.map((o) => (
+          <StaleNotice
+            message={`${platformName(model, o.platform, locale)}：${t(locale, "model.status.missing", { days: model.data.latest?.offerings.find((r) => r.id === o.id)?.missingDays ?? 1 })}`}
+          />
+        ))
+      }
+    </header>
+
+    <section aria-labelledby="offerings" class="flex flex-col gap-3">
+      <h2 id="offerings" class="text-h2">{t(locale, "model.offerings")}</h2>
+      <OfferingCompare locale={locale} offerings={info.offerings} />
+    </section>
+
+    {
+      tiered.length > 0 && (
+        <section aria-labelledby="tiers" class="flex flex-col gap-3">
+          <h2 id="tiers" class="text-h2">{t(locale, "model.tiers")}</h2>
+          <div class="grid gap-4 lg:grid-cols-2">
+            {tiered.map((o) => (
+              <div class="overflow-x-auto rounded-lg border border-border">
+                <table class="w-full border-collapse text-table" data-testid="tier-table">
+                  <caption class="bg-surface px-3 py-2 text-left text-small font-semibold">
+                    {platformName(model, o.platform, locale)}
+                  </caption>
+                  <thead class="text-small text-text-muted">
+                    <tr>
+                      <th scope="col" class="px-3 py-2 text-left font-semibold">
+                        {t(locale, "model.tier.range", { range: "" }).trim()}
+                      </th>
+                      <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "table.column.input")}</th>
+                      <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "table.column.output")}</th>
+                      <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "table.column.cacheRead")}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(o.tiers ?? []).map((tier) => (
+                      <tr class="h-10 border-t border-border">
+                        <th scope="row" class="px-3 text-left font-normal tabular">{tierRange(tier.minInputTokens, tier.maxInputTokens)}</th>
+                        {(["input", "output", "cacheRead"] as const).map((f) => {
+                          const value = tier[f];
+                          const usd = convertCurrency(value, o.currency, "USD", model.usdCny);
+                          const cny = convertCurrency(value, o.currency, "CNY", model.usdCny);
+                          return (
+                            <td class="px-3 text-right tabular">
+                              <DualPrice currency={o.currency} usd={usd} cny={cny} locale={locale} fxNote={note} />
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section aria-labelledby="chart" class="flex flex-col gap-3">
+      <h2 id="chart" class="text-h2">{t(locale, "model.chart")}</h2>
+      {
+        chart.length === 0 ? (
+          <p class="text-text-muted">{t(locale, "chart.noHistory")}</p>
+        ) : unchanged ? (
+          <p class="rounded-lg border border-dashed border-border px-4 py-6 text-center text-text-muted" data-testid="chart-unchanged">
+            {t(locale, "chart.unchanged", { date: formatDate(firstDate ?? model.dataDate, locale) })}
+          </p>
+        ) : (
+          <div class="card p-4">
+            <PriceChart client:visible offerings={chart} locale={locale} usdCny={model.usdCny} endDate={model.dataDate} />
+          </div>
+        )
+      }
+      {
+        chart.length > 0 && (
+          <details class="text-small">
+            <summary class="link cursor-pointer select-none">{t(locale, "chart.table")}</summary>
+            <div class="mt-2 overflow-x-auto rounded-lg border border-border">
+              <table class="w-full border-collapse" data-testid="chart-data-table">
+                <thead class="bg-surface text-text-muted">
+                  <tr>
+                    <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "chart.table.series")}</th>
+                    <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "chart.table.date")}</th>
+                    <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "table.column.input")}</th>
+                    <th scope="col" class="px-3 py-2 text-right font-semibold">{t(locale, "table.column.output")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {info.offerings.flatMap((o) =>
+                    (series[o.id] ?? []).map((p) => (
+                      <tr class="border-t border-border">
+                        <th scope="row" class="px-3 py-1.5 text-left font-normal">{platformName(model, o.platform, locale)}</th>
+                        <td class="px-3 tabular">{formatDate(p.effectiveDate, locale)}</td>
+                        <td class="px-3 text-right tabular">{formatPrice(p.input, o.currency, { locale })}</td>
+                        <td class="px-3 text-right tabular">{formatPrice(p.output, o.currency, { locale })}</td>
+                      </tr>
+                    )),
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        )
+      }
+    </section>
+
+    <section aria-labelledby="model-changes" class="flex flex-col gap-3">
+      <h2 id="model-changes" class="text-h2">{t(locale, "model.changes")}</h2>
+      {
+        changes.length === 0 ? (
+          <p class="text-text-muted">{t(locale, "model.noChanges")}</p>
+        ) : (
+          <ol class="divide-y divide-border border-y border-border">
+            {changes.map((e) => (
+              <li>
+                <EventItem event={toEventView(model, e, locale)} locale={locale} base={base} nowIso={model.generatedAt} showDate />
+              </li>
+            ))}
+          </ol>
+        )
+      }
+    </section>
+  </article>
+</BaseLayout>

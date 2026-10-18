@@ -1,0 +1,157 @@
+{
+  "run": {
+    "id": "18594412345",
+    "startedAt": "2026-10-18T00:00:41Z",
+    "finishedAt": "2026-10-18T00:03:58Z",
+    "durationMs": 197000,
+    "result": "partial"
+  },
+  "sources": [
+    {
+      "id": "litellm",
+      "kind": "api",
+      "status": "ok",
+      "offeringCount": 13,
+      "durationMs": 2310,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T00:01:33Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "openrouter",
+      "kind": "api",
+      "status": "ok",
+      "offeringCount": 6,
+      "durationMs": 1840,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T00:01:33Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "deepseek",
+      "kind": "html",
+      "status": "ok",
+      "offeringCount": 2,
+      "durationMs": 1830,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T00:01:33Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "aliyun",
+      "kind": "browser",
+      "status": "ok",
+      "offeringCount": 3,
+      "durationMs": 21400,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T00:01:33Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "zhipu",
+      "kind": "html",
+      "status": "ok",
+      "offeringCount": 2,
+      "durationMs": 2210,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T00:01:33Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "moonshot",
+      "kind": "html",
+      "status": "ok",
+      "offeringCount": 1,
+      "durationMs": 1500,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T00:01:33Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "siliconflow",
+      "kind": "html",
+      "status": "ok",
+      "offeringCount": 3,
+      "durationMs": 3100,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T00:01:33Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "manual",
+      "kind": "manual",
+      "status": "ok",
+      "offeringCount": 2,
+      "durationMs": 12,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-18T00:01:33Z",
+      "consecutiveFailures": 0
+    },
+    {
+      "id": "volcengine",
+      "kind": "browser",
+      "status": "failed",
+      "offeringCount": 0,
+      "durationMs": 60000,
+      "errorCode": "E1003",
+      "errorMessage": "疑似被反爬拦截（HTTP 403）",
+      "lastSuccessAt": "2026-10-10T00:02:05Z",
+      "consecutiveFailures": 8
+    },
+    {
+      "id": "qianfan",
+      "kind": "html",
+      "status": "rejected",
+      "offeringCount": 1,
+      "durationMs": 2800,
+      "errorCode": "E3004",
+      "errorMessage": "模型数从 12 骤降到 1，整个源被拒绝",
+      "lastSuccessAt": "2026-10-17T00:01:50Z",
+      "consecutiveFailures": 1
+    }
+  ],
+  "quarantine": [
+    {
+      "offeringId": "official:alibaba/qwen-plus",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.8,
+          "new": 0.08,
+          "pct": -0.9
+        }
+      ],
+      "candidate": {
+        "input": 0.08,
+        "output": 2,
+        "cacheRead": 0.16,
+        "cacheWrite": null
+      },
+      "firstSeenAt": "2026-10-18T00:02:00Z",
+      "lastSeenAt": "2026-10-18T00:02:00Z",
+      "confirmations": 1
+    }
+  ],
+  "warnings": [
+    {
+      "code": "W3003",
+      "sourceId": "aliyun",
+      "offeringId": "official:alibaba/qwen-plus",
+      "message": "输入价下降 90%，已暂扣，等待确认"
+    },
+    {
+      "code": "W3007",
+      "sourceId": null,
+      "offeringId": "official:mistral/mistral-large",
+      "message": "官方价与 OpenRouter 价差 34%"
+    }
+  ]
+}

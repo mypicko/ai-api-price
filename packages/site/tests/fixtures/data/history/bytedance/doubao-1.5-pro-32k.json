@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/doubao-1.5-pro-32k",
+  "series": {
+    "official:bytedance/doubao-1.5-pro-32k": [
+      {
+        "input": 0.8,
+        "output": 2,
+        "cacheRead": 0.16,
+        "cacheWrite": null,
+        "effectiveDate": "2026-06-01"
+      }
+    ]
+  }
+}

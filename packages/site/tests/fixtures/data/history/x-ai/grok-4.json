@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-4",
+  "series": {
+    "official:x-ai/grok-4": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.75,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-10"
+      }
+    ]
+  }
+}

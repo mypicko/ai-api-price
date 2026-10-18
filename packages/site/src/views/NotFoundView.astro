@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { t } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { pageHref } from "../lib/url";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const other: Locale = locale === "zh" ? "en" : "zh";
+---
+
+<BaseLayout locale={locale} path="404.html" title={t(locale, "notFound.title")} noindex>
+  <section class="flex flex-col items-center gap-4 py-20 text-center">
+    <p class="font-mono text-display text-text-faint">404</p>
+    <h1 class="text-h1">{t(locale, "notFound.title")}</h1>
+    <p class="max-w-md text-text-muted">{t(locale, "notFound.body")}</p>
+    <p lang={other === "en" ? "en" : "zh-CN"} class="max-w-md text-small text-text-faint">{t(other, "notFound.body")}</p>
+    <a href={pageHref(base, locale)} class="btn btn-primary">{t(locale, "notFound.back")}</a>
+  </section>
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+import { formatDateTime, t } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { getSiteModel } from "../lib/site-data";
+import { joinBase, pageHref } from "../lib/url";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const model = getSiteModel();
+---
+
+<footer class="mt-12 border-t border-border bg-surface">
+  <div class="page flex flex-col gap-3 py-8 text-small text-text-muted sm:flex-row sm:items-start sm:justify-between">
+    <div class="flex flex-col gap-1">
+      <p class="font-medium text-text">{t(locale, "footer.disclaimer")}</p>
+      <p>
+        {
+          model.hasData ? (
+            <>
+              {t(locale, "footer.updated", { time: formatDateTime(model.generatedAt, locale) })} ·{" "}
+              {t(locale, "footer.timezone")}
+            </>
+          ) : (
+            t(locale, "footer.noData")
+          )
+        }
+      </p>
+    </div>
+    <ul class="flex flex-wrap gap-x-4 gap-y-1">
+      <li><a class="link" href={pageHref(base, locale, "rss.xml")}>{t(locale, "footer.rss")}</a></li>
+      <li><a class="link" href={joinBase(base, "api/v1/latest.json")}>{t(locale, "footer.api")}</a></li>
+      <li><a class="link" href={pageHref(base, locale, "about/")}>{t(locale, "nav.about")}</a></li>
+    </ul>
+  </div>
+</footer>

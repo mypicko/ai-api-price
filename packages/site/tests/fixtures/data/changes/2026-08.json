@@ -1,0 +1,102 @@
+{
+  "month": "2026-08",
+  "events": [
+    {
+      "id": "2026-08-01-official:bytedance/doubao-seed-1.6-1",
+      "type": "new_model",
+      "offeringId": "official:bytedance/doubao-seed-1.6",
+      "vendor": "bytedance",
+      "modelSlug": "bytedance/doubao-seed-1.6",
+      "displayName": "Doubao Seed 1.6",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-08-01T00:02:10Z"
+    },
+    {
+      "id": "2026-08-07-official:openai/gpt-5-1",
+      "type": "new_model",
+      "offeringId": "official:openai/gpt-5",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-5",
+      "displayName": "GPT-5",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-08-07T00:02:10Z"
+    },
+    {
+      "id": "2026-08-07-official:openai/gpt-5-mini-1",
+      "type": "new_model",
+      "offeringId": "official:openai/gpt-5-mini",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-5-mini",
+      "displayName": "GPT-5 mini",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-08-07T00:02:10Z"
+    },
+    {
+      "id": "2026-08-07-openrouter:openai/gpt-5-1",
+      "type": "new_model",
+      "offeringId": "openrouter:openai/gpt-5",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-5",
+      "displayName": "GPT-5",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-08-07T00:02:10Z"
+    },
+    {
+      "id": "2026-08-15-official:openai/gpt-4o-mini-1",
+      "type": "price_down",
+      "offeringId": "official:openai/gpt-4o-mini",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-4o-mini",
+      "displayName": "GPT-4o mini",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.3,
+          "new": 0.15,
+          "pct": -0.5
+        },
+        {
+          "field": "output",
+          "old": 1.2,
+          "new": 0.6,
+          "pct": -0.5
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.15,
+          "new": 0.075,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-08-15T00:02:10Z"
+    },
+    {
+      "id": "2026-08-20-official:anthropic/claude-haiku-4.5-1",
+      "type": "new_model",
+      "offeringId": "official:anthropic/claude-haiku-4.5",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-haiku-4.5",
+      "displayName": "Claude Haiku 4.5",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-08-20T00:02:10Z"
+    }
+  ]
+}
