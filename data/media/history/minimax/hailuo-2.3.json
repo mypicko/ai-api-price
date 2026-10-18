@@ -1,0 +1,14 @@
+{
+  "modelSlug": "minimax/hailuo-2.3",
+  "series": {
+    "openrouter:minimax/hailuo-2.3": [
+      {
+        "input": null,
+        "output": 0.0817,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

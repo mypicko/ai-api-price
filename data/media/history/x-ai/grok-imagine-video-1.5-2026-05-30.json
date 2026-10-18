@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-imagine-video-1.5-2026-05-30",
+  "series": {
+    "official:x-ai/grok-imagine-video-1.5-2026-05-30": [
+      {
+        "input": 0.01,
+        "output": 0.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

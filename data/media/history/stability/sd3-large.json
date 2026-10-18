@@ -1,0 +1,14 @@
+{
+  "modelSlug": "stability/sd3-large",
+  "series": {
+    "official:stability/sd3-large": [
+      {
+        "input": null,
+        "output": 0.065,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

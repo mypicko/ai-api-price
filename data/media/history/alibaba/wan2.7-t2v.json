@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/wan2.7-t2v",
+  "series": {
+    "official:alibaba/wan2.7-t2v": [
+      {
+        "input": null,
+        "output": 0.143353,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

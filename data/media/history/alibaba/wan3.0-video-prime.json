@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/wan3.0-video-prime",
+  "series": {
+    "official:alibaba/wan3.0-video-prime": [
+      {
+        "input": null,
+        "output": 0.254399,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

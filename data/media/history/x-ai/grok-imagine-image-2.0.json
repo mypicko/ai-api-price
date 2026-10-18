@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-imagine-image-2.0",
+  "series": {
+    "official:x-ai/grok-imagine-image-2.0": [
+      {
+        "input": null,
+        "output": 0.06,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

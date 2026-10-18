@@ -1,0 +1,23 @@
+{
+  "modelSlug": "x-ai/grok-imagine-video",
+  "series": {
+    "official:x-ai/grok-imagine-video": [
+      {
+        "input": 0.002,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:x-ai/grok-imagine-video": [
+      {
+        "input": 0.002,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

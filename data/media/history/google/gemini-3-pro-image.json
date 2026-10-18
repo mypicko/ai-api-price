@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-3-pro-image",
+  "series": {
+    "official:google/gemini-3-pro-image": [
+      {
+        "input": 0.0011,
+        "output": 0.134,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

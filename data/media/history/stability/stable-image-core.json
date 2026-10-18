@@ -1,0 +1,14 @@
+{
+  "modelSlug": "stability/stable-image-core",
+  "series": {
+    "official:stability/stable-image-core": [
+      {
+        "input": null,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

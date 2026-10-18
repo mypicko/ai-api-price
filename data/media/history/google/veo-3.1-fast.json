@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/veo-3.1-fast",
+  "series": {
+    "openrouter:google/veo-3.1-fast": [
+      {
+        "input": null,
+        "output": 0.08,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

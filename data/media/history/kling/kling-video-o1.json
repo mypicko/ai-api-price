@@ -1,0 +1,14 @@
+{
+  "modelSlug": "kling/kling-video-o1",
+  "series": {
+    "openrouter:kling/kling-video-o1": [
+      {
+        "input": null,
+        "output": 0.112,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

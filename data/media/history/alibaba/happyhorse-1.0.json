@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/happyhorse-1.0",
+  "series": {
+    "openrouter:alibaba/happyhorse-1.0": [
+      {
+        "input": null,
+        "output": 0.0988,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

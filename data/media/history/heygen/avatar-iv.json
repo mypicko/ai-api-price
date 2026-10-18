@@ -1,0 +1,14 @@
+{
+  "modelSlug": "heygen/avatar-iv",
+  "series": {
+    "openrouter:heygen/avatar-iv": [
+      {
+        "input": null,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

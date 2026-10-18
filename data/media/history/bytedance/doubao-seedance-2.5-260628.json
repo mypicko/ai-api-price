@@ -1,0 +1,23 @@
+{
+  "modelSlug": "bytedance/doubao-seedance-2.5-260628",
+  "series": {
+    "official:bytedance/doubao-seedance-2.5-260628": [
+      {
+        "input": null,
+        "output": 0.216,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ],
+    "openrouter:bytedance/doubao-seedance-2.5-260628": [
+      {
+        "input": null,
+        "output": 0.1028,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}

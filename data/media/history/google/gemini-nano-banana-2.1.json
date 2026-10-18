@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-nano-banana-2.1",
+  "series": {
+    "official:google/gemini-nano-banana-2.1": [
+      {
+        "input": null,
+        "output": 0.0336,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-18"
+      }
+    ]
+  }
+}
