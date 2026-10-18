@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "39131025841",
-    "startedAt": "2026-10-18T13:19:57Z",
-    "finishedAt": "2026-10-18T13:20:02Z",
-    "durationMs": 4556,
+    "id": "39131973309",
+    "startedAt": "2026-10-18T13:32:41Z",
+    "finishedAt": "2026-10-18T13:32:46Z",
+    "durationMs": 5151,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 1435,
+      "durationMs": 1549,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:19:57Z",
+      "lastSuccessAt": "2026-10-18T13:32:41Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 412,
+      "durationMs": 1379,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:19:57Z",
+      "lastSuccessAt": "2026-10-18T13:32:41Z",
       "consecutiveFailures": 0
     },
     {
@@ -34,10 +34,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 258,
-      "durationMs": 924,
+      "durationMs": 1466,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:19:57Z",
+      "lastSuccessAt": "2026-10-18T13:32:41Z",
       "consecutiveFailures": 0
     },
     {
@@ -45,10 +45,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 6,
+      "durationMs": 7,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:19:57Z",
+      "lastSuccessAt": "2026-10-18T13:32:41Z",
       "consecutiveFailures": 0
     },
     {
@@ -56,10 +56,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 4,
-      "durationMs": 845,
+      "durationMs": 1246,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:19:57Z",
+      "lastSuccessAt": "2026-10-18T13:32:41Z",
       "consecutiveFailures": 0
     },
     {
@@ -67,10 +67,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 360,
-      "durationMs": 947,
+      "durationMs": 1393,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:19:57Z",
+      "lastSuccessAt": "2026-10-18T13:32:41Z",
       "consecutiveFailures": 0
     },
     {
@@ -78,10 +78,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 53,
-      "durationMs": 830,
+      "durationMs": 1234,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:19:57Z",
+      "lastSuccessAt": "2026-10-18T13:32:41Z",
       "consecutiveFailures": 0
     },
     {
@@ -89,10 +89,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 4256,
+      "durationMs": 4826,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:19:57Z",
+      "lastSuccessAt": "2026-10-18T13:32:41Z",
       "consecutiveFailures": 0
     },
     {
@@ -100,10 +100,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 2339,
+      "durationMs": 1323,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:19:57Z",
+      "lastSuccessAt": "2026-10-18T13:32:41Z",
       "consecutiveFailures": 0
     }
   ],
@@ -114,8 +114,8 @@
         {
           "field": "input",
           "old": 0.1,
-          "new": 0.0049,
-          "pct": -0.951
+          "new": 0.0199,
+          "pct": -0.801
         },
         {
           "field": "output",
@@ -126,18 +126,18 @@
         {
           "field": "cacheRead",
           "old": 0.03,
-          "new": 0.0049,
-          "pct": -0.8367
+          "new": 0.0199,
+          "pct": -0.3367
         }
       ],
       "candidate": {
-        "input": 0.0049,
+        "input": 0.0199,
         "output": 0.45,
-        "cacheRead": 0.0049,
+        "cacheRead": 0.0199,
         "cacheWrite": null
       },
-      "firstSeenAt": "2026-10-18T13:19:57Z",
-      "lastSeenAt": "2026-10-18T13:19:57Z",
+      "firstSeenAt": "2026-10-18T13:32:41Z",
+      "lastSeenAt": "2026-10-18T13:32:41Z",
       "confirmations": 1
     }
   ],
@@ -158,7 +158,7 @@
       "code": "W3003",
       "sourceId": null,
       "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
-      "message": "价格突变，已进入隔离区：input 0.1 → 0.0049（-95%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0049（-84%）"
+      "message": "价格突变，已进入隔离区：input 0.1 → 0.0199（-80%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0199（-34%）"
     },
     {
       "code": "W3007",

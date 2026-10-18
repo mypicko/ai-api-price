@@ -6,8 +6,8 @@
         {
           "field": "input",
           "old": 0.1,
-          "new": 0.0049,
-          "pct": -0.951
+          "new": 0.0199,
+          "pct": -0.801
         },
         {
           "field": "output",
@@ -18,18 +18,18 @@
         {
           "field": "cacheRead",
           "old": 0.03,
-          "new": 0.0049,
-          "pct": -0.8367
+          "new": 0.0199,
+          "pct": -0.3367
         }
       ],
       "candidate": {
-        "input": 0.0049,
+        "input": 0.0199,
         "output": 0.45,
-        "cacheRead": 0.0049,
+        "cacheRead": 0.0199,
         "cacheWrite": null
       },
-      "firstSeenAt": "2026-10-18T13:19:57Z",
-      "lastSeenAt": "2026-10-18T13:19:57Z",
+      "firstSeenAt": "2026-10-18T13:32:41Z",
+      "lastSeenAt": "2026-10-18T13:32:41Z",
       "confirmations": 1
     }
   ]
