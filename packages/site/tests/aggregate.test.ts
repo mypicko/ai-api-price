@@ -68,6 +68,14 @@ describe("aggregate：按模型聚合", () => {
     ]);
   });
 
+  it("价格相同时官方平台作为代表", () => {
+    const tie = [
+      row("azure:x/m3", "x/m3", "azure", 1),
+      row("official:x/m3", "x/m3", "official", 1),
+    ];
+    expect(groupByModel(tie)[0]?.best.platform).toBe("official");
+  });
+
   it("排序：默认按代表报价的混合价；平台列按平台数", () => {
     const groups = groupByModel(sample);
     expect(sortGroups(groups, DEFAULT_SORT).map((g) => g.id)).toEqual(["x/m2", "x/m1"]);

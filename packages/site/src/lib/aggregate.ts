@@ -16,6 +16,16 @@ export interface ModelGroup {
   readonly platformCount: number;
 }
 
+/** 价格相同时官方平台排前面（代表行显示「官方」比随便一家转售商更直观） */
+const OFFICIAL_PLATFORMS: ReadonlySet<string> = new Set(["official", "official-cn"]);
+
+function officialFirstOnTies(sorted: readonly TableRow[]): readonly TableRow[] {
+  return sorted.toSorted((a, b) => {
+    if (a.blendedUsd !== b.blendedUsd || a.isFree !== b.isFree) return 0;
+    return Number(OFFICIAL_PLATFORMS.has(b.platform)) - Number(OFFICIAL_PLATFORMS.has(a.platform));
+  });
+}
+
 export function groupByModel(rows: readonly TableRow[]): readonly ModelGroup[] {
   const buckets = new Map<string, TableRow[]>();
   for (const row of rows) {
@@ -24,7 +34,7 @@ export function groupByModel(rows: readonly TableRow[]): readonly ModelGroup[] {
     else buckets.set(row.modelSlug, [row]);
   }
   return [...buckets.entries()].flatMap(([id, bucket]) => {
-    const offerings = sortRows(bucket, DEFAULT_SORT);
+    const offerings = officialFirstOnTies(sortRows(bucket, DEFAULT_SORT));
     const best = offerings[0];
     if (!best) return [];
     const platformCount = new Set(offerings.map((o) => o.platform)).size;
