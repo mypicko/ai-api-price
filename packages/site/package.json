@@ -12,7 +12,7 @@
   "dependencies": {
     "@aipb/shared": "workspace:*",
     "@astrojs/react": "^7.1.0",
-    "@nanostores/react": "^1.0.0",
+    "@nanostores/react": "^2.0.1",
     "@tailwindcss/vite": "^4.1.0",
     "astro": "^7.4.0",
     "nanostores": "^1.2.0",
