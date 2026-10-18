@@ -172,43 +172,6 @@
      "input": 0.287,
      "output": 0.431
     }
-   },
-   "qwen-no-cost": {
-    "id": "qwen-no-cost",
-    "name": "Qwen No Cost",
-    "modalities": {
-     "input": [
-      "text"
-     ],
-     "output": [
-      "text"
-     ]
-    },
-    "limit": {
-     "context": 32000,
-     "output": 4096
-    }
-   },
-   "qwen-old": {
-    "id": "qwen-old",
-    "name": "Qwen Old",
-    "status": "deprecated",
-    "modalities": {
-     "input": [
-      "text"
-     ],
-     "output": [
-      "text"
-     ]
-    },
-    "limit": {
-     "context": 32000,
-     "output": 4096
-    },
-    "cost": {
-     "input": 0.1,
-     "output": 0.2
-    }
    }
   }
  },
@@ -485,6 +448,43 @@
      "output": 1.2,
      "cache_read": 0.06,
      "cache_write": 0.375
+    }
+   },
+   "minimax-no-cost": {
+    "id": "minimax-no-cost",
+    "name": "minimax-no-cost",
+    "modalities": {
+     "input": [
+      "text"
+     ],
+     "output": [
+      "text"
+     ]
+    },
+    "limit": {
+     "context": 32000,
+     "output": 4096
+    }
+   },
+   "minimax-old": {
+    "id": "minimax-old",
+    "name": "minimax-old",
+    "status": "deprecated",
+    "modalities": {
+     "input": [
+      "text"
+     ],
+     "output": [
+      "text"
+     ]
+    },
+    "limit": {
+     "context": 32000,
+     "output": 4096
+    },
+    "cost": {
+     "input": 0.1,
+     "output": 0.2
     }
    }
   }

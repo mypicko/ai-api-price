@@ -20,17 +20,16 @@ describe("source/modelsdev 解析", () => {
   it("official-cn：只收国内站厂商的文本模型，跳过缺价格、已弃用和语音模型", async () => {
     const offerings = parseModelsDev(await loadFixture(), "official-cn", allKnown);
     const names = offerings.map((o) => `${o.vendorHint}/${o.modelName}`);
-    expect(names).toContain("alibaba/qwen-flash");
     expect(names).toContain("moonshot/kimi-k3");
     expect(names).toContain("minimax/MiniMax-M3");
     expect(names).toContain("stepfun/step-3.5-flash");
-    expect(names).not.toContain("alibaba/qwen-no-cost");
-    expect(names).not.toContain("alibaba/qwen-old");
+    expect(names).not.toContain("minimax/minimax-no-cost");
+    expect(names).not.toContain("minimax/minimax-old");
     expect(names.some((n) => n.startsWith("stepfun/step-tts") || n.includes("asr"))).toBe(false);
-    // 国际站（alibaba）和其他厂商（openai）不在这个平台里
-    expect(offerings.filter((o) => o.vendorHint === "alibaba")).toHaveLength(4);
+    // alibaba-cn 与 aliyun 抓取器（北京地域价）重复，不收；国际站和其他厂商也不在这个平台里
+    expect(names.some((n) => n.startsWith("alibaba/"))).toBe(false);
     expect(names.some((n) => n.startsWith("openai/"))).toBe(false);
-    expect(offerings).toHaveLength(4 + 4 + 2 + 1);
+    expect(offerings).toHaveLength(4 + 2 + 1);
     for (const o of offerings) expect(RawOfferingSchema.safeParse(o).success).toBe(true);
   });
 
@@ -54,8 +53,12 @@ describe("source/modelsdev 解析", () => {
 
   it("按上下文分档的价格转成 tiers", async () => {
     const offerings = parseModelsDev(await loadFixture(), "official-cn", allKnown);
-    const qwen = offerings.find((o) => o.modelName === "qwen3.5-flash");
-    expect(qwen?.tiers).toEqual([
+    // 分档输入顺序打乱，验证会按 size 排序
+    const tiers = toTiers({ input: 0.029, output: 0.287 }, [
+      { input: 0.172, output: 1.72, tier: { type: "context", size: 256000 } },
+      { input: 0.115, output: 1.147, tier: { type: "context", size: 128000 } },
+    ]);
+    expect(tiers).toEqual([
       {
         minInputTokens: 0,
         maxInputTokens: 128000,
@@ -87,7 +90,7 @@ describe("source/modelsdev 解析", () => {
       input: 0.6,
       cacheRead: 0.12,
     });
-    expect(offerings.find((o) => o.modelName === "qwen-flash")?.tiers).toBeUndefined();
+    expect(offerings.find((o) => o.modelName === "MiniMax-M2.7")?.tiers).toBeUndefined();
   });
 
   it("toTiers 忽略非 context 类型的分档", () => {
@@ -129,7 +132,7 @@ describe("source/modelsdev 抓取", () => {
     const cn = await modelsdevCnSource.fetch({ ...ctx, http });
     const sf = await modelsdevSiliconflowCnSource.fetch({ ...ctx, http });
     expect(http.requests.filter((r) => r.url === MODELSDEV_URL)).toHaveLength(1);
-    expect(cn.length).toBe(11);
+    expect(cn.length).toBe(7);
     expect(sf.map((o) => o.vendorHint)).not.toContain("unknownorg");
     expect(sf.length).toBe(6);
     expect(modelsdevCnSource.platform).toBe("official-cn");

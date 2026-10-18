@@ -6,6 +6,7 @@
  * - cost.tiers[].tier = { type: "context", size }：上下文超过 size 后使用该档价格
  * - 只收文本输入、文本输出且有价格的模型；跳过 status = deprecated
  * - 两个源（official-cn、siliconflow-cn）共用同一次下载
+ * - 不收 alibaba-cn：aliyun 抓取器读的已经是「华北2（北京）」地域价，两者重复
  * 最后核对：2026-10-18
  */
 import type { RawOffering, RawTier } from "@aipb/shared";
@@ -26,7 +27,6 @@ export type ModelsDevPlatform = "official-cn" | "siliconflow-cn";
 const PROVIDER_MAP: Readonly<
   Record<string, { readonly platform: ModelsDevPlatform; readonly vendorHint: string | null }>
 > = {
-  "alibaba-cn": { platform: "official-cn", vendorHint: "alibaba" },
   "moonshotai-cn": { platform: "official-cn", vendorHint: "moonshot" },
   "minimax-cn": { platform: "official-cn", vendorHint: "minimax" },
   stepfun: { platform: "official-cn", vendorHint: "stepfun" },

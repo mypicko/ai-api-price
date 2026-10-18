@@ -181,6 +181,8 @@ const MODEL_FAMILY_OWNERS: readonly (readonly [prefix: string, vendor: string])[
   ["qwq", "alibaba"],
   ["llama", "meta"],
   ["kimi", "moonshot"],
+  ["moonshot", "moonshot"],
+  ["minimax", "minimax"],
   ["deepseek", "deepseek"],
 ];
 
