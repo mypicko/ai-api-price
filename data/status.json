@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "39133629635",
-    "startedAt": "2026-10-18T13:55:23Z",
-    "finishedAt": "2026-10-18T13:55:28Z",
-    "durationMs": 5255,
+    "id": "39134674619",
+    "startedAt": "2026-10-18T14:09:25Z",
+    "finishedAt": "2026-10-18T14:09:30Z",
+    "durationMs": 5310,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 1327,
+      "durationMs": 2030,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 436,
+      "durationMs": 273,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
@@ -34,10 +34,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 258,
-      "durationMs": 613,
+      "durationMs": 1064,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
@@ -45,21 +45,21 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 10,
+      "durationMs": 9,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
       "id": "modelsdev-cn",
       "kind": "api",
       "status": "ok",
-      "offeringCount": 84,
-      "durationMs": 1052,
+      "offeringCount": 17,
+      "durationMs": 1449,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
@@ -67,10 +67,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 1056,
+      "durationMs": 1450,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
@@ -78,10 +78,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 4,
-      "durationMs": 636,
+      "durationMs": 951,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
@@ -89,10 +89,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 363,
-      "durationMs": 661,
+      "durationMs": 1091,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
@@ -100,10 +100,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 54,
-      "durationMs": 965,
+      "durationMs": 1380,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
@@ -111,10 +111,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 4946,
+      "durationMs": 4962,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     },
     {
@@ -122,10 +122,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 1183,
+      "durationMs": 932,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-18T13:55:23Z",
+      "lastSuccessAt": "2026-10-18T14:09:25Z",
       "consecutiveFailures": 0
     }
   ],
@@ -136,8 +136,8 @@
         {
           "field": "input",
           "old": 0.1,
-          "new": 0.0151,
-          "pct": -0.849
+          "new": 0.0114,
+          "pct": -0.886
         },
         {
           "field": "output",
@@ -148,18 +148,18 @@
         {
           "field": "cacheRead",
           "old": 0.03,
-          "new": 0.0151,
-          "pct": -0.4967
+          "new": 0.0114,
+          "pct": -0.62
         }
       ],
       "candidate": {
-        "input": 0.0151,
+        "input": 0.0114,
         "output": 0.45,
-        "cacheRead": 0.0151,
+        "cacheRead": 0.0114,
         "cacheWrite": null
       },
-      "firstSeenAt": "2026-10-18T13:55:23Z",
-      "lastSeenAt": "2026-10-18T13:55:23Z",
+      "firstSeenAt": "2026-10-18T14:09:25Z",
+      "lastSeenAt": "2026-10-18T14:09:25Z",
       "confirmations": 1
     }
   ],
@@ -172,12 +172,6 @@
     },
     {
       "code": "W2003",
-      "sourceId": "modelsdev-cn",
-      "offeringId": null,
-      "message": "厂商无法识别，已跳过：alibaba 转售的 deepseek-r1, alibaba 转售的 deepseek-r1-0528, alibaba 转售的 deepseek-r1-distill-llama-70b, alibaba 转售的 deepseek-r1-distill-llama-8b, alibaba 转售的 deepseek-r1-distill-qwen-1-5b, alibaba 转售的 deepseek-r1-distill-qwen-14b, alibaba 转售的 deepseek-r1-distill-qwen-32b, alibaba 转售的 deepseek-r1-distill-qwen-7b, alibaba 转售的 deepseek-v3, alibaba 转售的 deepseek-v3-1, alibaba 转售的 deepseek-v3-2-exp, alibaba 转售的 deepseek-v4-flash, alibaba 转售的 deepseek-v4-pro, alibaba 转售的 deepseek-v4.1-flash, alibaba 转售的 glm-5, alibaba 转售的 glm-5.1, alibaba 转售的 glm-5.2, alibaba 转售的 glm-5.3, alibaba 转售的 kimi-k2-thinking, alibaba 转售的 kimi-k2.5, alibaba 转售的 kimi-k2.6, alibaba 转售的 kimi-k3, alibaba 转售的 kimi-kimi-k2.5"
-    },
-    {
-      "code": "W2003",
       "sourceId": "siliconflow",
       "offeringId": null,
       "message": "厂商无法识别，已跳过：inclusionai, meituan-longcat"
@@ -186,7 +180,7 @@
       "code": "W3003",
       "sourceId": null,
       "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
-      "message": "价格突变，已进入隔离区：input 0.1 → 0.0151（-85%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0151（-50%）"
+      "message": "价格突变，已进入隔离区：input 0.1 → 0.0114（-89%），output 0.3 → 0.45（50%），cacheRead 0.03 → 0.0114（-62%）"
     },
     {
       "code": "W3007",
