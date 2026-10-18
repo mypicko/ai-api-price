@@ -1,7 +1,7 @@
 /**
  * 展示格式化（STYLE §10）。site 和推送消息共用。
  */
-import type { Currency } from "./schema";
+import type { Currency, MediaUnit } from "./schema";
 
 export type Locale = "zh" | "en";
 
@@ -35,6 +35,27 @@ export function formatPrice(
   if (value === null) return "—";
   if (value === 0) return locale === "zh" ? "免费" : "Free";
   return `${approx ? "≈ " : ""}${currencySymbol(currency)}${formatPriceNumber(value)}`;
+}
+
+const MEDIA_UNIT_SUFFIX: Readonly<Record<Locale, Readonly<Record<MediaUnit, string>>>> = {
+  zh: { per_second: "/秒", per_image: "/张" },
+  en: { per_second: "/s", per_image: "/image" },
+};
+
+/** per_second → "/秒"（中文）或 "/s"（英文） */
+export function mediaUnitSuffix(unit: MediaUnit, locale: Locale = "zh"): string {
+  return MEDIA_UNIT_SUFFIX[locale][unit];
+}
+
+/** 视频/图像价格：$0.0800/秒；null → "—"，0 → 免费（不加单位） */
+export function formatMediaPrice(
+  value: number | null,
+  currency: Currency,
+  unit: MediaUnit,
+  options: FormatPriceOptions = {},
+): string {
+  const text = formatPrice(value, currency, options);
+  return value === null || value === 0 ? text : `${text}${mediaUnitSuffix(unit, options.locale)}`;
 }
 
 /** -0.5 → "-50%"，0.2 → "+20%"，0.004 → "+0.4%" */

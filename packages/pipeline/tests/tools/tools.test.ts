@@ -149,11 +149,18 @@ describe("validate / quarantine:list", () => {
     await expect(validateDataDir(path.join(dir, "missing"))).resolves.toEqual([]);
     expect(schemaFor("changes/2026-10.json")).not.toBeNull();
     expect(schemaFor("history/../x.json")).toBeNull();
+    expect(schemaFor("media/latest.json")).not.toBeNull();
+    expect(schemaFor("media/quarantine.json")).not.toBeNull();
+    expect(schemaFor("media/history/minimax/minimax-h3.json")).not.toBeNull();
+    expect(schemaFor("media/changes/2026-10.json")).not.toBeNull();
+    expect(schemaFor("media/status.json")).toBeNull();
   });
 
   it("列出隔离区条目", async () => {
     await expect(loadQuarantine(dir)).resolves.toEqual([]);
     expect(formatQuarantine([])).toBe("隔离区为空\n");
+    expect(formatQuarantine([], "视频/图像隔离区")).toBe("视频/图像隔离区为空\n");
+    await expect(loadQuarantine(dir, "media")).resolves.toEqual([]);
     const entry = {
       offeringId: "official:alibaba/qwen-max",
       fields: [{ field: "input" as const, old: 20, new: 8, pct: -0.6 }],

@@ -8,6 +8,7 @@
  */
 import {
   convertCurrency,
+  MAX_MEDIA_PRICE_USD,
   MAX_PRICE_USD_PER_1M,
   PRICE_FIELDS,
   RawOfferingSchema,
@@ -15,21 +16,26 @@ import {
   type RawOffering,
   type Warning,
 } from "@aipb/shared";
-import type { Candidate } from "./types";
+import type { z } from "zod";
+import type { Candidate, MediaCandidate } from "./types";
 import { makeWarning } from "./types";
 
 export const MODEL_COUNT_DROP_RATIO = 0.5;
 /** 不适用 V5 的源 */
 export const V5_EXEMPT_SOURCES: ReadonlySet<string> = new Set(["manual"]);
 
-export interface StructureResult {
-  readonly valid: readonly RawOffering[];
+export interface StructureResult<T = RawOffering> {
+  readonly valid: readonly T[];
   readonly warnings: readonly Warning[];
 }
 
-/** V1：逐条校验抓取器输出 */
-export function checkStructure(raws: readonly unknown[], sourceId: string): StructureResult {
-  const results = raws.map((raw) => ({ raw, parsed: RawOfferingSchema.safeParse(raw) }));
+/** V1：逐条校验抓取器输出；视频/图像报价传 RawMediaOfferingSchema */
+export function checkStructure<T = RawOffering>(
+  raws: readonly unknown[],
+  sourceId: string,
+  schema: z.ZodType<T> = RawOfferingSchema as unknown as z.ZodType<T>,
+): StructureResult<T> {
+  const results = raws.map((raw) => ({ raw, parsed: schema.safeParse(raw) }));
   const valid = results.flatMap((r) => (r.parsed.success ? [r.parsed.data] : []));
   const warnings = results.flatMap((r) => {
     if (r.parsed.success) return [];
@@ -43,29 +49,50 @@ export function checkStructure(raws: readonly unknown[], sourceId: string): Stru
   return { valid, warnings };
 }
 
-function candidatePrices(candidate: Candidate): readonly (number | null)[] {
-  const top = PRICE_FIELDS.map((f) => candidate[f]);
-  const tiers = (candidate.tiers ?? []).flatMap((t) => PRICE_FIELDS.map((f) => t[f]));
-  return [...top, ...tiers];
+/** V2 上限：文本按 USD/1M tokens，视频/图像按 USD/秒 或 USD/张 */
+export interface PriceLimit {
+  readonly maxUsd: number;
+  readonly unitLabel: string;
 }
 
-export function exceedsRange(candidate: Candidate, usdCny: number): boolean {
+export const TEXT_PRICE_LIMIT: PriceLimit = { maxUsd: MAX_PRICE_USD_PER_1M, unitLabel: "USD/1M" };
+export const MEDIA_PRICE_LIMIT: PriceLimit = {
+  maxUsd: MAX_MEDIA_PRICE_USD,
+  unitLabel: "USD/秒或张",
+};
+
+function candidatePrices(candidate: Candidate | MediaCandidate): readonly (number | null)[] {
+  const top = PRICE_FIELDS.map((f) => candidate[f]);
+  const tiers = (candidate.tiers ?? []).flatMap((t) => PRICE_FIELDS.map((f) => t[f]));
+  const media = "mediaTiers" in candidate ? (candidate.mediaTiers ?? []).map((t) => t.output) : [];
+  return [...top, ...tiers, ...media];
+}
+
+export function exceedsRange(
+  candidate: Candidate | MediaCandidate,
+  usdCny: number,
+  limit: PriceLimit = TEXT_PRICE_LIMIT,
+): boolean {
   return candidatePrices(candidate).some((price) => {
     if (price === null) return false;
     const usd = convertCurrency(price, candidate.currency, "USD", usdCny) ?? 0;
-    return price < 0 || usd > MAX_PRICE_USD_PER_1M;
+    return price < 0 || usd > limit.maxUsd;
   });
 }
 
-export interface RangeResult {
-  readonly valid: readonly Candidate[];
+export interface RangeResult<T extends Candidate = Candidate> {
+  readonly valid: readonly T[];
   readonly invalidIds: readonly string[];
   readonly warnings: readonly Warning[];
 }
 
 /** V2：汇率只用于判断上限，存储的仍是原币种价格 */
-export function checkPriceRange(candidates: readonly Candidate[], usdCny: number): RangeResult {
-  const invalid = candidates.filter((c) => exceedsRange(c, usdCny));
+export function checkPriceRange<T extends Candidate>(
+  candidates: readonly T[],
+  usdCny: number,
+  limit: PriceLimit = TEXT_PRICE_LIMIT,
+): RangeResult<T> {
+  const invalid = candidates.filter((c) => exceedsRange(c, usdCny, limit));
   const invalidIds = new Set(invalid.map((c) => c.id));
   return {
     valid: candidates.filter((c) => !invalidIds.has(c.id)),
@@ -73,11 +100,8 @@ export function checkPriceRange(candidates: readonly Candidate[], usdCny: number
     warnings: invalid.map((c) =>
       makeWarning(
         "E3002",
-        `价格超出合理范围（> ${MAX_PRICE_USD_PER_1M} USD/1M）：${c.displayName}`,
-        {
-          sourceId: c.source,
-          offeringId: c.id,
-        },
+        `价格超出合理范围（> ${limit.maxUsd} ${limit.unitLabel}）：${c.displayName}`,
+        { sourceId: c.source, offeringId: c.id },
       ),
     ),
   };
@@ -88,10 +112,12 @@ export function checkModelCountDrop(
   sourceId: string,
   currentCount: number,
   previousCount: number,
+  label = "模型数骤降",
+  scope = "整个源",
 ): Warning | null {
   if (V5_EXEMPT_SOURCES.has(sourceId) || previousCount === 0) return null;
   if (currentCount >= previousCount * MODEL_COUNT_DROP_RATIO) return null;
-  return makeWarning("E3004", `模型数骤降：${previousCount} → ${currentCount}，整个源沿用旧数据`, {
+  return makeWarning("E3004", `${label}：${previousCount} → ${currentCount}，${scope}沿用旧数据`, {
     sourceId,
   });
 }
