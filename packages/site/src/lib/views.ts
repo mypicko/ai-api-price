@@ -1,10 +1,11 @@
 /**
  * 页面传给交互组件的 props（必须可序列化，STYLE §7.2）。构建时运行。
  */
-import type { ChangeEvent } from "@aipb/shared";
+import type { ChangeEvent, ChangeField, MediaUnit } from "@aipb/shared";
 import type { CalcOffering } from "./calculator";
 import type { ChartOffering } from "./chart";
 import { t } from "./i18n";
+import { formatMediaPrice, formatPct } from "./shared-client";
 import type { Locale } from "./locale";
 import { platformName, vendorName, type ModelInfo, type SiteModel } from "./site-model";
 
@@ -109,4 +110,53 @@ export function chartOfferings(
       currency: o.currency,
       points: series[o.id] ?? [],
     }));
+}
+
+export interface MediaEventView {
+  readonly id: string;
+  readonly type: ChangeEvent["type"];
+  readonly displayName: string;
+  readonly vendorName: string;
+  readonly detectedAt: string;
+  readonly confirmedFromQuarantine: boolean;
+  /** 已格式化：「生成价 $0.100/秒 → $0.0800/秒（-20%）」 */
+  readonly fields: readonly string[];
+}
+
+function mediaField(
+  field: ChangeField,
+  unit: MediaUnit,
+  event: ChangeEvent,
+  locale: Locale,
+): string {
+  // 输入参考图总是按张计价
+  const fieldUnit: MediaUnit = field.field === "input" ? "per_image" : unit;
+  const fmt = (v: number | null): string =>
+    formatMediaPrice(v, event.currency, fieldUnit, { locale });
+  const label = t(locale, field.field === "input" ? "media.field.input" : "media.field.output");
+  return `${label} ${fmt(field.old)} → ${fmt(field.new)}（${formatPct(field.pct)}）`;
+}
+
+/** 视频/图像变动（不含 context_change），最多 limit 条 */
+export function mediaEventViews(
+  model: SiteModel,
+  events: readonly ChangeEvent[],
+  locale: Locale,
+  limit = 30,
+): readonly MediaEventView[] {
+  return events
+    .filter((e) => e.type !== "context_change")
+    .slice(0, limit)
+    .map((e) => {
+      const unit = model.media.units.get(e.offeringId) ?? "per_second";
+      return {
+        id: e.id,
+        type: e.type,
+        displayName: e.displayName,
+        vendorName: vendorName(model, e.vendor, locale),
+        detectedAt: e.detectedAt,
+        confirmedFromQuarantine: e.confirmedFromQuarantine,
+        fields: e.fields.map((f) => mediaField(f, unit, e, locale)),
+      };
+    });
 }

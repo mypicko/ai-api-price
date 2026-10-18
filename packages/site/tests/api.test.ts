@@ -1,3 +1,4 @@
+import { SCHEMA_VERSION } from "@aipb/shared";
 import { describe, expect, it } from "vitest";
 import {
   changesIndexPayload,
@@ -6,6 +7,8 @@ import {
   fxPayload,
   jsonResponse,
   latestPayload,
+  mediaChangesPayload,
+  mediaPayload,
   modelPayload,
   providersPayload,
   statusPayload,
@@ -23,7 +26,7 @@ describe("api", () => {
     expect(body.error).toBeNull();
     expect(body.meta.count).toBe(body.data.offerings.length);
     expect(body.meta.fxRate?.provider).toBe("frankfurter");
-    expect(body.meta.schemaVersion).toBe("1.0.0");
+    expect(body.meta.schemaVersion).toBe(SCHEMA_VERSION);
     expect(body.data.offerings.some((o) => o.status === "removed")).toBe(false);
     expect(validateEnvelope("latest", JSON.parse(JSON.stringify(body)))).toEqual([]);
   });
@@ -33,9 +36,12 @@ describe("api", () => {
     const deepseek = body.data.vendors.find((v) => v.id === "deepseek");
     expect(deepseek?.modelCount).toBe(2);
     expect(body.data.vendors.find((v) => v.id === "cohere")?.modelCount).toBe(0);
+    expect(body.data.vendors.find((v) => v.id === "minimax")?.mediaModelCount).toBe(2);
+    expect(body.data.vendors.find((v) => v.id === "openai")?.mediaModelCount).toBe(1); // sora-2 已下架
     expect(Object.keys(deepseek ?? {}).toSorted()).toEqual([
       "id",
       "logo",
+      "mediaModelCount",
       "modelCount",
       "nameEn",
       "nameZh",
@@ -141,5 +147,42 @@ describe("api-validate", () => {
     expect(
       validateEnvelope("status", wrap({ run: {}, sources: [], quarantine: [], warnings: [] })),
     ).toHaveLength(1);
+  });
+
+  it("media.json：视频/图像报价，过滤 removed，带换算价和档位", () => {
+    const body = mediaPayload(model);
+    expect(body.meta.count).toBe(body.data.offerings.length);
+    expect(body.meta.fxRate?.usdCny).toBe(model.usdCny);
+    const ids = body.data.offerings.map((o) => o.id);
+    expect(ids).toContain("official:minimax/minimax-h3");
+    expect(ids).not.toContain("official:openai/sora-2");
+    const h3 = body.data.offerings.find((o) => o.id === "official:minimax/minimax-h3");
+    expect(h3).toMatchObject({ kind: "video", unit: "per_second", output: 0.08, input: 0.04 });
+    expect(h3?.converted.usd.tiers).toEqual(h3?.tiers);
+    expect(h3?.converted.cny.output).toBeCloseTo(0.08 * model.usdCny, 5);
+    expect(validateEnvelope("media", JSON.parse(JSON.stringify(body)))).toEqual([]);
+  });
+
+  it("media/changes.json：最近 90 天视频/图像变动，与文本变动分开", () => {
+    const body = mediaChangesPayload(model);
+    expect(body.data.events.length).toBeGreaterThan(0);
+    expect(body.data.events.every((e) => !model.offeringsById.has(e.offeringId))).toBe(true);
+    expect(changesPayload(model).data.events.some((e) => e.offeringId.includes("minimax-h3"))).toBe(
+      false,
+    );
+    expect(validateEnvelope("mediaChanges", body)).toEqual([]);
+  });
+
+  it("media 校验：发现 removed 和多余字段", () => {
+    const body = JSON.parse(JSON.stringify(mediaPayload(model))) as {
+      data: { offerings: Record<string, unknown>[] };
+    };
+    const first = body.data.offerings[0] ?? {};
+    body.data.offerings[0] = { ...first, status: "removed", extra: 1 };
+    const errors = validateEnvelope("media", body);
+    expect(errors.some((e) => e.includes("removed"))).toBe(true);
+    expect(errors.length).toBeGreaterThan(1);
+    body.data.offerings[0] = { ...first, converted: null };
+    expect(validateEnvelope("media", body).some((e) => e.includes("converted"))).toBe(true);
   });
 });

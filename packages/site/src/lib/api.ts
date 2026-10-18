@@ -9,6 +9,7 @@ import {
   type StatusFile,
 } from "@aipb/shared";
 import type { PublicOffering } from "./derive";
+import type { PublicMediaOffering } from "./media";
 import { eventsWithinDays, sortEvents, type ModelInfo, type SiteModel } from "./site-model";
 
 export interface ApiMeta {
@@ -65,6 +66,29 @@ export function latestPayload(
   );
 }
 
+/** 2.9 视频/图像生成报价（不含 removed）；价格按 unit 计价，与 latest.json 的每百万 token 不同 */
+export function mediaPayload(
+  model: SiteModel,
+): ApiEnvelope<{ offerings: readonly PublicMediaOffering[] }> {
+  const fx = model.data.fx.latest;
+  const offerings = model.media.offerings;
+  return envelope(
+    { offerings },
+    baseMeta(model, {
+      count: offerings.length,
+      fxRate: { usdCny: fx.usdCny, date: fx.date, provider: fx.provider },
+    }),
+  );
+}
+
+/** 2.10 视频/图像最近 90 天变动 */
+export function mediaChangesPayload(
+  model: SiteModel,
+): ApiEnvelope<{ events: readonly ChangeEvent[] }> {
+  const events = eventsWithinDays(model.media.events, model.generatedAt, RECENT_CHANGES_DAYS);
+  return envelope({ events }, baseMeta(model, { count: events.length }));
+}
+
 export interface PublicVendor {
   readonly id: string;
   readonly nameZh: string;
@@ -73,6 +97,8 @@ export interface PublicVendor {
   readonly website: string;
   readonly logo: string | null;
   readonly modelCount: number;
+  /** 当前在售的视频/图像模型数（1.1.0 新增） */
+  readonly mediaModelCount: number;
 }
 
 export interface PublicPlatform {
@@ -90,6 +116,9 @@ export function providersPayload(
     new Set(model.offerings.map((o) => `${o.vendor}\u0000${o.modelSlug}`)),
     (key) => key.slice(0, key.indexOf("\u0000")),
   );
+  const mediaCounts = Map.groupBy(new Set(model.media.offerings.map((o) => o.modelSlug)), (slug) =>
+    slug.slice(0, slug.indexOf("/")),
+  );
   const vendors = model.data.providers.vendors.map((v) => ({
     id: v.id,
     nameZh: v.nameZh,
@@ -98,6 +127,7 @@ export function providersPayload(
     website: v.website,
     logo: v.logo,
     modelCount: counts.get(v.id)?.length ?? 0,
+    mediaModelCount: mediaCounts.get(v.id)?.length ?? 0,
   }));
   const platforms = model.data.providers.platforms.map((p) => ({
     id: p.id,

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/sora-2",
+  "series": {
+    "official:openai/sora-2": [
+      {
+        "input": null,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-01"
+      }
+    ]
+  }
+}

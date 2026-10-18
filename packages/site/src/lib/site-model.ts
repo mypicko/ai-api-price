@@ -4,6 +4,7 @@
 import type {
   ChangeEvent,
   HistoryFile,
+  MediaUnit,
   Offering,
   OfferingStatus,
   PlatformConfig,
@@ -13,6 +14,12 @@ import type {
 import { primaryChange, toPublicOffering, type PublicOffering } from "./derive";
 import { daysBetween, shanghaiDate } from "./i18n";
 import type { SiteData } from "./load-data";
+import {
+  toMediaRow,
+  toPublicMediaOffering,
+  type MediaRow,
+  type PublicMediaOffering,
+} from "./media";
 import type { Locale } from "./locale";
 import type { TableRow } from "./table";
 
@@ -48,6 +55,19 @@ export interface SiteModel {
   readonly models: readonly ModelInfo[];
   /** 全部事件，detectedAt 倒序 */
   readonly events: readonly ChangeEvent[];
+  readonly media: MediaModel;
+}
+
+/** 视频/图像报价（data/media/） */
+export interface MediaModel {
+  readonly hasData: boolean;
+  readonly generatedAt: string | null;
+  /** 公开（不含 removed） */
+  readonly offerings: readonly PublicMediaOffering[];
+  /** 全部事件，detectedAt 倒序 */
+  readonly events: readonly ChangeEvent[];
+  /** offeringId → 计价单位（含已下架，变动记录用） */
+  readonly units: ReadonlyMap<string, MediaUnit>;
 }
 
 const STATUS_RANK: Readonly<Record<OfferingStatus, number>> = { active: 0, missing: 1, removed: 2 };
@@ -111,6 +131,21 @@ export function buildModels(
     .toSorted((a, b) => a.slug.localeCompare(b.slug));
 }
 
+function buildMediaModel(data: SiteData, usdCny: number, dataDate: string): MediaModel {
+  const { latest, histories, changeMonths } = data.media;
+  const ctx = { usdCny, dataDate: latest?.dataDate ?? dataDate, histories };
+  const offerings = (latest?.offerings ?? [])
+    .filter((o) => o.status !== "removed")
+    .map((o) => toPublicMediaOffering(o, ctx));
+  return {
+    hasData: offerings.length > 0,
+    generatedAt: latest?.generatedAt ?? null,
+    offerings,
+    events: sortEvents(changeMonths.flatMap((m) => m.events)),
+    units: new Map((latest?.offerings ?? []).map((o) => [o.id, o.unit] as const)),
+  };
+}
+
 export function buildSiteModel(data: SiteData, now: string = new Date().toISOString()): SiteModel {
   const latest = data.latest;
   const generatedAt = latest?.generatedAt ?? now;
@@ -134,6 +169,7 @@ export function buildSiteModel(data: SiteData, now: string = new Date().toISOStr
     platforms: new Map(data.providers.platforms.map((p) => [p.id, p])),
     models: buildModels(raw, byId),
     events: sortEvents(data.changeMonths.flatMap((m) => m.events)),
+    media: buildMediaModel(data, usdCny, dataDate),
   };
 }
 
@@ -233,4 +269,15 @@ export function toTableRow(model: SiteModel, offering: PublicOffering, locale: L
     fetchedAt: offering.fetchedAt,
     hasTiers: (offering.tiers?.length ?? 0) > 1,
   };
+}
+
+export function toMediaTableRow(
+  model: SiteModel,
+  offering: PublicMediaOffering,
+  locale: Locale,
+): MediaRow {
+  return toMediaRow(offering, {
+    vendorName: vendorName(model, offering.vendor, locale),
+    platformName: platformName(model, offering.platform, locale),
+  });
 }

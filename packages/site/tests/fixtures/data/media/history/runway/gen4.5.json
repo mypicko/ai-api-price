@@ -1,0 +1,14 @@
+{
+  "modelSlug": "runway/gen4.5",
+  "series": {
+    "official:runway/gen4.5": [
+      {
+        "input": null,
+        "output": 0.12,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-07-01"
+      }
+    ]
+  }
+}
