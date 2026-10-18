@@ -3,4 +3,7 @@
 #   action: approve        # approve 强制放行 | block 屏蔽 | pin 钉住价格（需填 price）
 #   until: 2026-11-01      # 过期自动失效
 #   reason: "官方公告降价，已人工确认"
-[]
+- offering: "openrouter:deepseek/deepseek-v4-flash-0731"
+  action: approve
+  until: 2026-10-26
+  reason: "2026-10-19 核对 OpenRouter 接口：模型价改为 Relace 服务商报价（输入 0.0065 / 输出 0.45 / 缓存 0.0065 USD 每百万 tokens），与抓取值一致"
