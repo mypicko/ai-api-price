@@ -12,6 +12,7 @@ import {
   PAGE_SIZE,
   ariaSort,
   filterRows,
+  modelOptions,
   nextSort,
   parseTableState,
   serializeTableState,
@@ -234,6 +235,10 @@ export function PriceTable(props: PriceTableProps) {
   const [filters, sort, setFilters, setSort] = useTableState();
   const [visible, setVisible] = useState(PAGE_SIZE);
   const sorted = useMemo(() => sortRows(filterRows(rows, filters), sort), [rows, filters, sort]);
+  const models = useMemo(
+    () => modelOptions(rows, filters.vendors, locale),
+    [rows, filters.vendors, locale],
+  );
   const shown = sorted.slice(0, visible);
   const onFilters = (next: TableFilters): void => {
     setFilters(next);
@@ -249,6 +254,7 @@ export function PriceTable(props: PriceTableProps) {
         locale={locale}
         filters={filters}
         vendors={props.vendors}
+        models={models}
         platforms={props.platforms}
         onChange={onFilters}
       />

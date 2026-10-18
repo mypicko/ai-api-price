@@ -1,8 +1,8 @@
 /**
- * 价格总榜的筛选栏（STYLE §7.1）：搜索 + 厂商多选 + 地区 + 平台 + 仅免费 + 上下文。
+ * 价格总榜的筛选栏（STYLE §7.1）：搜索 + 厂商多选 + 模型多选 + 地区 + 平台 + 仅免费 + 上下文。
  * 手机端收进「筛选」抽屉（STYLE §11.1）。
  */
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState, type RefObject } from "react";
 import type { Locale } from "../lib/locale";
 import { createT } from "../lib/i18n";
 import { formatTokens } from "../lib/shared-client";
@@ -10,6 +10,8 @@ import type { Option } from "../lib/views";
 import {
   CONTEXT_OPTIONS,
   isDefaultFilters,
+  pruneModels,
+  type ModelOption,
   type RegionFilter,
   type TableFilters,
 } from "../lib/table";
@@ -20,50 +22,122 @@ export interface FilterBarProps {
   readonly locale: Locale;
   readonly filters: TableFilters;
   readonly vendors: readonly Option[];
+  readonly models: readonly ModelOption[];
   readonly platforms: readonly Option[];
   readonly onChange: (next: TableFilters) => void;
 }
 
 const REGIONS: readonly RegionFilter[] = ["all", "intl", "cn"];
 
-function VendorPicker({ locale, filters, vendors, onChange }: Omit<FilterBarProps, "platforms">) {
-  const t = createT(locale);
-  const selected = filters.vendors;
-  const toggle = (id: string): void => {
-    const next = selected.includes(id) ? selected.filter((v) => v !== id) : [...selected, id];
-    onChange({ ...filters, vendors: next });
+/** 下拉列表一次最多渲染的条目数，避免几百个模型时卡顿；更多的用搜索定位 */
+const MAX_VISIBLE_OPTIONS = 200;
+
+interface PickerOption {
+  readonly id: string;
+  readonly name: string;
+  readonly hint?: string;
+}
+
+interface MultiPickerProps {
+  readonly label: string;
+  readonly allLabel: string;
+  readonly selectedLabel: (count: number) => string;
+  readonly options: readonly PickerOption[];
+  readonly selected: readonly string[];
+  readonly onChange: (next: readonly string[]) => void;
+  readonly testId: string;
+  /** 有值时在列表顶部显示搜索框 */
+  readonly search?: {
+    readonly placeholder: string;
+    readonly empty: string;
+    readonly clear: string;
   };
-  const summary =
-    selected.length === 0
-      ? t("filter.vendorAll")
-      : t("filter.vendorSelected", { count: selected.length });
+}
+
+/** 点击下拉框外部时关闭 <details> */
+function useCloseOnOutsideClick(ref: RefObject<HTMLDetailsElement | null>): void {
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent): void => {
+      const el = ref.current;
+      if (el?.open && event.target instanceof Node && !el.contains(event.target)) {
+        el.removeAttribute("open");
+      }
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [ref]);
+}
+
+function MultiPicker(props: MultiPickerProps) {
+  const { label, options, selected, onChange, search } = props;
+  const ref = useRef<HTMLDetailsElement>(null);
+  const [query, setQuery] = useState("");
+  useCloseOnOutsideClick(ref);
+  const toggle = (id: string): void => {
+    onChange(selected.includes(id) ? selected.filter((v) => v !== id) : [...selected, id]);
+  };
+  const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const matched = options.filter((o) => {
+    const haystack = `${o.name} ${o.id} ${o.hint ?? ""}`.toLowerCase();
+    return terms.every((term) => haystack.includes(term));
+  });
+  // 已选项始终排在最前，方便取消
+  const ordered = [
+    ...matched.filter((o) => selected.includes(o.id)),
+    ...matched.filter((o) => !selected.includes(o.id)),
+  ].slice(0, MAX_VISIBLE_OPTIONS);
+  const summary = selected.length === 0 ? props.allLabel : props.selectedLabel(selected.length);
   return (
-    <details className="group relative" data-testid="vendor-filter">
+    <details ref={ref} className="group relative" data-testid={props.testId}>
       <summary className="input-base flex cursor-pointer list-none items-center gap-2 select-none [&::-webkit-details-marker]:hidden">
-        <span className="text-text-muted">{t("filter.vendor")}</span>
+        <span className="text-text-muted">{label}</span>
         <span className="font-medium">{summary}</span>
         <span aria-hidden="true" className="text-text-faint group-open:rotate-180">
           ▾
         </span>
       </summary>
-      <fieldset className="card absolute z-30 mt-1 grid max-h-80 w-64 grid-cols-1 gap-0.5 overflow-auto p-2">
-        <legend className="sr-only">{t("filter.vendor")}</legend>
-        {vendors.map((v) => (
-          <label
-            key={v.id}
-            className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-table hover:bg-surface-hover"
-          >
+      <div className="card absolute z-50 mt-1 flex w-72 flex-col shadow-lg">
+        {search && (
+          <div className="flex gap-2 border-b border-border p-2">
             <input
-              type="checkbox"
-              className="size-4 accent-accent"
-              checked={selected.includes(v.id)}
-              onChange={() => toggle(v.id)}
-              value={v.id}
+              type="search"
+              className="input-base min-w-0 flex-1"
+              placeholder={search.placeholder}
+              aria-label={search.placeholder}
+              value={query}
+              maxLength={100}
+              onChange={(e) => setQuery(e.target.value)}
             />
-            {v.name}
-          </label>
-        ))}
-      </fieldset>
+            {selected.length > 0 && (
+              <button type="button" className="btn" onClick={() => onChange([])}>
+                {search.clear}
+              </button>
+            )}
+          </div>
+        )}
+        <fieldset className="grid max-h-80 grid-cols-1 gap-0.5 overflow-auto p-2">
+          <legend className="sr-only">{label}</legend>
+          {ordered.length === 0 && search && (
+            <p className="px-2 py-1.5 text-small text-text-muted">{search.empty}</p>
+          )}
+          {ordered.map((o) => (
+            <label
+              key={o.id}
+              className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-table hover:bg-surface-hover"
+            >
+              <input
+                type="checkbox"
+                className="size-4 shrink-0 accent-accent"
+                checked={selected.includes(o.id)}
+                onChange={() => toggle(o.id)}
+                value={o.id}
+              />
+              <span className="min-w-0 flex-1 truncate">{o.name}</span>
+              {o.hint && <span className="shrink-0 text-small text-text-faint">{o.hint}</span>}
+            </label>
+          ))}
+        </fieldset>
+      </div>
     </details>
   );
 }
@@ -77,7 +151,8 @@ export function FilterBar(props: FilterBarProps) {
   const contextId = useId();
   const active = !isDefaultFilters(filters);
   return (
-    <div className="flex flex-col gap-3">
+    // relative z-40：让下拉列表盖在表格的 sticky 表头（z-20/z-30）之上
+    <div className="relative z-40 flex flex-col gap-3">
       <div className="flex gap-2">
         <label htmlFor={searchId} className="sr-only">
           {t("filter.search")}
@@ -106,7 +181,31 @@ export function FilterBar(props: FilterBarProps) {
         id={`${searchId}-panel`}
         className={`${open ? "flex" : "hidden"} flex-col gap-3 sm:flex sm:flex-row sm:flex-wrap sm:items-center`}
       >
-        <VendorPicker {...props} />
+        <MultiPicker
+          testId="vendor-filter"
+          label={t("filter.vendor")}
+          allLabel={t("filter.vendorAll")}
+          selectedLabel={(count) => t("filter.vendorSelected", { count })}
+          options={props.vendors}
+          selected={filters.vendors}
+          onChange={(vendors) =>
+            onChange({ ...filters, vendors, models: pruneModels(filters.models, vendors) })
+          }
+        />
+        <MultiPicker
+          testId="model-filter"
+          label={t("filter.model")}
+          allLabel={t("filter.modelAll")}
+          selectedLabel={(count) => t("filter.vendorSelected", { count })}
+          options={props.models}
+          selected={filters.models}
+          onChange={(models) => onChange({ ...filters, models })}
+          search={{
+            placeholder: t("filter.modelSearch"),
+            empty: t("filter.modelEmpty"),
+            clear: t("filter.clear"),
+          }}
+        />
         <div role="group" aria-label={t("filter.region")} className="segmented">
           {REGIONS.map((r) => (
             <button

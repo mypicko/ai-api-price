@@ -60,6 +60,8 @@ export type RegionFilter = "all" | Region;
 export interface TableFilters {
   readonly q: string;
   readonly vendors: readonly string[];
+  /** 选中的 modelSlug（vendor/model） */
+  readonly models: readonly string[];
   readonly region: RegionFilter;
   readonly platform: string;
   readonly freeOnly: boolean;
@@ -69,6 +71,7 @@ export interface TableFilters {
 export const DEFAULT_FILTERS: TableFilters = {
   q: "",
   vendors: [],
+  models: [],
   region: "all",
   platform: "all",
   freeOnly: false,
@@ -80,6 +83,42 @@ export const CONTEXT_OPTIONS = [32_000, 128_000, 200_000, 1_000_000] as const;
 export const PAGE_SIZE = 100;
 
 const ID_PATTERN = /^[a-z0-9][a-z0-9.-]*$/;
+const SLUG_PATTERN = /^[a-z0-9][a-z0-9.-]*\/[a-z0-9][a-z0-9.-]*$/;
+
+export interface ModelOption {
+  /** modelSlug */
+  readonly id: string;
+  readonly name: string;
+  /** 厂商名，用于分组显示和排序 */
+  readonly hint: string;
+}
+
+/** 模型下拉选项：按 modelSlug 去重；选了厂商时只列这些厂商的模型 */
+export function modelOptions(
+  rows: readonly TableRow[],
+  vendors: readonly string[],
+  locale: "zh" | "en",
+): readonly ModelOption[] {
+  const bySlug = new Map<string, ModelOption>();
+  for (const row of rows) {
+    if (vendors.length > 0 && !vendors.includes(row.vendor)) continue;
+    const existing = bySlug.get(row.modelSlug);
+    // 同一模型优先用官方平台的名称
+    if (!existing || row.platform === "official") {
+      bySlug.set(row.modelSlug, { id: row.modelSlug, name: row.displayName, hint: row.vendorName });
+    }
+  }
+  const collator = new Intl.Collator(locale === "zh" ? "zh" : "en");
+  return [...bySlug.values()].toSorted(
+    (a, b) => collator.compare(a.hint, b.hint) || collator.compare(a.name, b.name),
+  );
+}
+
+/** 厂商筛选变化后，去掉不属于这些厂商的已选模型 */
+export function pruneModels(models: readonly string[], vendors: readonly string[]): string[] {
+  if (vendors.length === 0) return [...models];
+  return models.filter((slug) => vendors.includes(slug.split("/")[0] ?? ""));
+}
 
 function sortValue(row: TableRow, key: SortKey): number | string | null {
   switch (key) {
@@ -145,6 +184,7 @@ export function filterRows(rows: readonly TableRow[], filters: TableFilters): re
     (row) =>
       matchesQuery(row, filters.q) &&
       (filters.vendors.length === 0 || filters.vendors.includes(row.vendor)) &&
+      (filters.models.length === 0 || filters.models.includes(row.modelSlug)) &&
       (filters.region === "all" || row.region === filters.region) &&
       (filters.platform === "all" || row.platform === filters.platform) &&
       (!filters.freeOnly || row.isFree) &&
@@ -156,6 +196,7 @@ export function isDefaultFilters(filters: TableFilters): boolean {
   return (
     filters.q === "" &&
     filters.vendors.length === 0 &&
+    filters.models.length === 0 &&
     filters.region === "all" &&
     filters.platform === "all" &&
     !filters.freeOnly &&
@@ -181,6 +222,10 @@ export function parseTableState(search: string): TableState {
     .split(",")
     .map((v) => v.trim())
     .filter((v) => ID_PATTERN.test(v));
+  const models = (params.get("model") ?? "")
+    .split(",")
+    .map((v) => v.trim())
+    .filter((v) => SLUG_PATTERN.test(v));
   const region = params.get("region");
   const platform = params.get("platform") ?? "all";
   const ctx = Number(params.get("ctx"));
@@ -190,6 +235,7 @@ export function parseTableState(search: string): TableState {
     filters: {
       q: (params.get("q") ?? "").slice(0, MAX_QUERY_LENGTH),
       vendors: [...new Set(vendors)],
+      models: [...new Set(models)],
       region: region === "intl" || region === "cn" ? region : "all",
       platform: ID_PATTERN.test(platform) ? platform : "all",
       freeOnly: params.get("free") === "1",
@@ -205,6 +251,7 @@ export function serializeTableState(state: TableState): string {
   const entries: [string, string][] = [
     ["q", filters.q.trim()],
     ["vendor", filters.vendors.join(",")],
+    ["model", filters.models.join(",")],
     ["region", filters.region === "all" ? "" : filters.region],
     ["platform", filters.platform === "all" ? "" : filters.platform],
     ["free", filters.freeOnly ? "1" : ""],

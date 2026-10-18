@@ -65,6 +65,36 @@ test.describe("首页", () => {
     await expect(bodyRows(page)).toHaveCount(8);
   });
 
+  test("模型筛选：下拉框盖在表头之上，跟随厂商联动并同步到 URL", async ({ page }) => {
+    await page.goto("/");
+    const picker = page.getByTestId("model-filter");
+    await picker.locator("summary").click();
+    // 下拉列表中心点上方的元素必须属于下拉框，而不是被表格的 sticky 表头盖住
+    const list = picker.locator("fieldset");
+    const box = await list.boundingBox();
+    expect(box).not.toBeNull();
+    const onTop = await page.evaluate(
+      ([x, y]) =>
+        document.elementFromPoint(x ?? 0, y ?? 0)?.closest("[data-testid=model-filter]") !== null,
+      [(box?.x ?? 0) + 40, (box?.y ?? 0) + 20],
+    );
+    expect(onTop).toBe(true);
+    await picker.getByPlaceholder("输入名称过滤").fill("deepseek");
+    await picker.getByLabel(/DeepSeek-V3/).check();
+    await expect(page).toHaveURL(/model=deepseek%2Fdeepseek-chat/);
+    const count = await bodyRows(page).count();
+    expect(count).toBeGreaterThan(0);
+    for (const row of await bodyRows(page).all()) await expect(row).toContainText("DeepSeek-V3");
+    // 点击外部关闭下拉框
+    await page.locator("h1").click();
+    await expect(picker).not.toHaveAttribute("open", "");
+    // 换成别的厂商时，已选的 DeepSeek 模型被自动清掉
+    await page.getByTestId("vendor-filter").locator("summary").click();
+    await page.getByTestId("vendor-filter").getByLabel("OpenAI").check();
+    await expect(page).not.toHaveURL(/model=/);
+    await expect(page).toHaveURL(/vendor=openai/);
+  });
+
   test("币种切换：价格换算，选择保存在 localStorage", async ({ page }) => {
     await page.goto("/?q=gpt-4o");
     const cell = bodyRows(page).first().locator("td").nth(2);

@@ -6,6 +6,8 @@ import {
   ariaSort,
   filterRows,
   isDefaultFilters,
+  modelOptions,
+  pruneModels,
   nextSort,
   parseTableState,
   pricesFor,
@@ -115,6 +117,7 @@ describe("table URL 参数", () => {
       filters: {
         q: "qwen",
         vendors: ["alibaba", "zhipu"],
+        models: ["alibaba/qwen-plus", "zhipu/glm-4.6"],
         region: "cn" as const,
         platform: "official",
         freeOnly: true,
@@ -124,7 +127,7 @@ describe("table URL 参数", () => {
     };
     const query = serializeTableState(state);
     expect(query).toBe(
-      "q=qwen&vendor=alibaba%2Czhipu&region=cn&platform=official&free=1&ctx=128000&sort=input&dir=desc",
+      "q=qwen&vendor=alibaba%2Czhipu&model=alibaba%2Fqwen-plus%2Czhipu%2Fglm-4.6&region=cn&platform=official&free=1&ctx=128000&sort=input&dir=desc",
     );
     expect(parseTableState(`?${query}`)).toEqual(state);
   });
@@ -136,14 +139,44 @@ describe("table URL 参数", () => {
 
   it("忽略非法参数", () => {
     const state = parseTableState(
-      "?vendor=OpenAI,<x>,deepseek,deepseek&region=eu&platform=../x&ctx=-1&sort=hack&free=yes",
+      "?vendor=OpenAI,<x>,deepseek,deepseek&model=a/b,../x,nope,a/b&region=eu&platform=../x&ctx=-1&sort=hack&free=yes",
     );
     expect(state.filters.vendors).toEqual(["deepseek"]);
+    expect(state.filters.models).toEqual(["a/b"]);
     expect(state.filters.region).toBe("all");
     expect(state.filters.platform).toBe("all");
     expect(state.filters.minContext).toBeNull();
     expect(state.filters.freeOnly).toBe(false);
     expect(state.sort).toEqual(DEFAULT_SORT);
     expect(parseTableState(`?q=${"a".repeat(300)}`).filters.q).toHaveLength(100);
+  });
+});
+
+describe("模型筛选", () => {
+  const someSlug = rows[0]?.modelSlug ?? "";
+
+  it("只保留选中模型的全部平台报价", () => {
+    const result = filterRows(rows, { ...DEFAULT_FILTERS, models: [someSlug] });
+    expect(result.length).toBeGreaterThan(0);
+    expect(result.every((r) => r.modelSlug === someSlug)).toBe(true);
+    expect(result).toHaveLength(rows.filter((r) => r.modelSlug === someSlug).length);
+    expect(isDefaultFilters({ ...DEFAULT_FILTERS, models: [someSlug] })).toBe(false);
+  });
+
+  it("模型选项去重，按厂商和名称排序，并跟随已选厂商", () => {
+    const all = modelOptions(rows, [], "zh");
+    const slugs = all.map((o) => o.id);
+    expect(new Set(slugs).size).toBe(slugs.length);
+    expect(slugs.toSorted()).toEqual([...new Set(rows.map((r) => r.modelSlug))].toSorted());
+    const keys = all.map((o) => `${o.hint}\u0000${o.name}`);
+    expect(keys).toEqual(keys.toSorted((a, b) => a.localeCompare(b, "zh")));
+    const onlyOpenai = modelOptions(rows, ["openai"], "zh");
+    expect(onlyOpenai.length).toBeGreaterThan(0);
+    expect(onlyOpenai.every((o) => o.id.startsWith("openai/"))).toBe(true);
+  });
+
+  it("切换厂商时去掉不属于这些厂商的已选模型", () => {
+    expect(pruneModels(["openai/gpt-4o", "zhipu/glm-4.6"], ["openai"])).toEqual(["openai/gpt-4o"]);
+    expect(pruneModels(["openai/gpt-4o"], [])).toEqual(["openai/gpt-4o"]);
   });
 });
