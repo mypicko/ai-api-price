@@ -26,6 +26,8 @@ import { modelPath, pageHref } from "../lib/url";
 import { PctBadge, StatusBadge } from "./ChangeBadge";
 import { DualPrice, DualUnit } from "./DualPrice";
 import { FilterBar, type Option } from "./FilterBar";
+import { MediaMatches } from "./MediaMatches";
+import type { MediaSearchItem } from "../lib/media";
 
 export interface PriceTableProps {
   readonly rows: readonly TableRow[];
@@ -35,6 +37,8 @@ export interface PriceTableProps {
   readonly fxNote: string;
   readonly vendors: readonly Option[];
   readonly platforms: readonly Option[];
+  /** 视频/图像报价：搜索命中时在价格榜上方列出（统一搜索入口） */
+  readonly media?: readonly MediaSearchItem[];
 }
 
 interface Column {
@@ -258,6 +262,15 @@ export function PriceTable(props: PriceTableProps) {
         platforms={props.platforms}
         onChange={onFilters}
       />
+      {props.media && (
+        <MediaMatches
+          items={props.media}
+          query={filters.q}
+          locale={locale}
+          base={props.base}
+          fxNote={props.fxNote}
+        />
+      )}
       <p className="text-small text-text-muted" aria-live="polite" data-testid="result-count">
         {t("table.resultCount", { count: sorted.length })}
       </p>

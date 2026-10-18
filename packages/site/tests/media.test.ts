@@ -9,8 +9,12 @@ import {
   filterMediaRows,
   mediaAriaSort,
   nextMediaSort,
+  mediaSearchHref,
   parseMediaKind,
+  parseMediaQuery,
+  searchMedia,
   sortMediaRows,
+  toMediaSearchItem,
   type MediaRow,
 } from "../src/lib/media";
 import { buildSiteModel, toMediaTableRow } from "../src/lib/site-model";
@@ -130,5 +134,53 @@ describe("site/media 表格", () => {
     expect(parseMediaKind("?kind=image")).toBe("image");
     expect(parseMediaKind("?kind=audio")).toBe("video");
     expect(parseMediaKind("")).toBe("video");
+  });
+
+  it("关键字按空格拆词，每个词都要命中（「MiniMax H3」能搜到）", () => {
+    const hits = filterMediaRows(rows, { kind: "video", query: "MiniMax  H3" }).map((r) => r.model);
+    expect(hits).toEqual(["minimax-h3", "minimax-h3-max"]);
+    expect(filterMediaRows(rows, { kind: "video", query: "minimax sora" })).toHaveLength(0);
+  });
+
+  it("?q= 参数：截断到 100 个字符", () => {
+    expect(parseMediaQuery("?q=minimax%20h3&kind=image")).toBe("minimax h3");
+    expect(parseMediaQuery("")).toBe("");
+    expect(parseMediaQuery(`?q=${"a".repeat(150)}`)).toHaveLength(100);
+  });
+});
+
+describe("site/media 统一搜索（首页）", () => {
+  const items = rows.map(toMediaSearchItem);
+
+  it("空关键字不返回结果；视频排在图像前面，同类按价格升序", () => {
+    expect(searchMedia(items, "  ")).toEqual([]);
+    const hits = searchMedia(items, "minimax");
+    expect(hits.map((h) => h.model)).toEqual(["minimax-h3", "minimax-h3-max"]);
+    const all = searchMedia(items, "o");
+    const kinds = all.map((h) => h.kind);
+    expect(kinds).toEqual(kinds.toSorted((a, b) => (a === b ? 0 : a === "video" ? -1 : 1)));
+  });
+
+  it("搜索条目只带首页需要的字段", () => {
+    const h3 = items.find((i) => i.id === "official:minimax/minimax-h3");
+    expect(h3).toEqual({
+      id: "official:minimax/minimax-h3",
+      kind: "video",
+      unit: "per_second",
+      displayName: "MiniMax-H3",
+      model: "minimax-h3",
+      vendorName: "MiniMax",
+      platformName: "官方",
+      currency: "USD",
+      usd: 0.08,
+      cny: h3?.cny,
+    });
+  });
+
+  it("跳转链接带上关键字和类型", () => {
+    expect(mediaSearchHref("/ai-api-price/", "zh", "minimax h3", "video")).toBe(
+      "/ai-api-price/media/?q=minimax+h3",
+    );
+    expect(mediaSearchHref("/", "en", "flux", "image")).toBe("/en/media/?kind=image&q=flux");
   });
 });

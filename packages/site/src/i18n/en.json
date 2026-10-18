@@ -51,7 +51,7 @@
   "table.tiered": "Tiered pricing, first tier shown",
   "table.sortBy": "Sort by {column}",
   "filter.search": "Search models",
-  "filter.searchPlaceholder": "Search model name, e.g. gpt, qwen",
+  "filter.searchPlaceholder": "Search models, e.g. gpt, qwen, veo",
   "filter.vendor": "Vendor",
   "filter.vendorAll": "All vendors",
   "filter.vendorSelected": "{count} selected",
@@ -244,8 +244,11 @@
   "media.noData.body": "It will appear here after the next pipeline run.",
   "media.changes": "Recent changes",
   "media.changes.empty": "No video or image price changes in the last 90 days.",
-  "media.note": "Prices come from vendor-direct entries in the open LiteLLM price list and only cover models billed per second or per image; image models billed purely per token are not listed.",
+  "media.note": "Prices come from vendor-direct entries in the open LiteLLM price list and from OpenRouter's video API, and only cover models billed per second or per image. Video models billed per token (such as Seedance) are converted to per-second prices assuming 16:9 and 24 fps; image models billed purely per token are not listed.",
   "media.api": "JSON data",
   "media.field.input": "Input image",
-  "media.field.output": "Output"
+  "media.field.output": "Output",
+  "home.mediaMatches": "Video/image models: {count} quotes match “{query}”",
+  "home.mediaMatches.viewAll": "View all on the video/image page →",
+  "home.mediaMatches.more": "{count} more"
 }

@@ -121,6 +121,7 @@ test.describe("首页", () => {
 
   test("暗色模式：切换后加 html.dark，刷新不闪白", async ({ page }) => {
     await page.goto("/");
+    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
     await page.getByTestId("theme-toggle").getByRole("button", { name: "深色" }).click();
     await expect(page.locator("html")).toHaveClass(/dark/);
     const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
@@ -232,6 +233,36 @@ test.describe("其他页面", () => {
     await expect(page.getByTestId("price-table")).not.toContainText("MiniMax-H3");
     await page.goto("/en/media/");
     await expect(page.getByTestId("media-table").locator("thead")).toContainText("Per second");
+  });
+
+  test("统一搜索：首页搜索命中视频/图像模型时给出入口，跳转后带上关键字", async ({ page }) => {
+    const errors = collectErrors(page);
+    await page.goto("/");
+    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
+    await expect(page.getByTestId("media-matches")).toHaveCount(0);
+    await page.getByPlaceholder(/搜索模型/).fill("MiniMax H3");
+    const matches = page.getByTestId("media-matches");
+    await expect(matches).toContainText("2 个报价匹配「MiniMax H3」");
+    await expect(matches).toContainText("MiniMax-H3");
+    await expect(matches).toContainText("/秒");
+    await expect(page.getByTestId("price-table")).not.toContainText("MiniMax-H3");
+    await matches.getByRole("link", { name: /查看全部/ }).click();
+    await expect(page).toHaveURL(/\/media\/\?q=MiniMax\+H3$/);
+    await expect(page.getByPlaceholder("搜索模型或厂商")).toHaveValue("MiniMax H3");
+    const table = page.getByTestId("media-table");
+    await expect(table.locator("tbody tr")).toHaveCount(2);
+    await page.getByPlaceholder("搜索模型或厂商").fill("");
+    await expect(page).toHaveURL(/\/media\/$/);
+    await page.goto("/en/");
+    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
+    await page.getByPlaceholder(/Search models/).fill("flux");
+    await page
+      .getByTestId("media-matches")
+      .getByRole("link", { name: /View all/ })
+      .click();
+    await expect(page).toHaveURL(/\/en\/media\/\?kind=image&q=flux$/);
+    await expect(page.getByTestId("media-table")).toHaveAttribute("data-kind", "image");
+    expect(errors).toEqual([]);
   });
 
   test("404 页面", async ({ page }) => {

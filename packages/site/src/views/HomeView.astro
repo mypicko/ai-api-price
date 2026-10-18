@@ -5,7 +5,8 @@ import TodayChanges from "../components/TodayChanges.astro";
 import { formatRelative, t } from "../lib/i18n";
 import type { Locale } from "../lib/locale";
 import { getSiteModel } from "../lib/site-data";
-import { toTableRow } from "../lib/site-model";
+import { toMediaSearchItem } from "../lib/media";
+import { toMediaTableRow, toTableRow } from "../lib/site-model";
 import { fxNote, platformOptions, vendorOptions } from "../lib/views";
 
 interface Props {
@@ -17,6 +18,7 @@ const base = import.meta.env.BASE_URL;
 const model = getSiteModel();
 const rows = model.offerings.map((o) => toTableRow(model, o, locale));
 const vendors = vendorOptions(model, locale);
+const media = model.media.offerings.map((o) => toMediaSearchItem(toMediaTableRow(model, o, locale)));
 ---
 
 <BaseLayout locale={locale} path="">
@@ -49,6 +51,7 @@ const vendors = vendorOptions(model, locale);
               fxNote={fxNote(model, locale)}
               vendors={vendors}
               platforms={platformOptions(model, locale)}
+              media={media}
             />
           </section>
         </>
