@@ -273,20 +273,20 @@ export interface RawOffering {
 
 ### 3.2 数据源明细
 
-> ⚠️ 国内厂商的定价页 URL 和页面结构经常变。下表 URL 是规划阶段的入口，**以节点 3 实测为准**，实测后回填本表并附上快照日期。
+> 节点 3 于 2026-10-18 实测。**重要**：开发机和 GitHub Actions 都在海外，阿里、Kimi、硅基流动、百度的国内站在海外无法连接（TCP 超时），所以这几家改抓**国际站**，价格为美元。如果需要人民币国内价，见 §15 和 §14 #1。
 
-| Source ID     | 平台             | 方式         | 入口                                                                                          | 币种          | 原始单位            | 风险                              |
-| ------------- | ---------------- | ------------ | --------------------------------------------------------------------------------------------- | ------------- | ------------------- | --------------------------------- |
-| `litellm`     | 各国际厂商官方   | api          | `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json` | USD           | per_token           | 低；社区维护，更新可能滞后 1~3 天 |
-| `openrouter`  | OpenRouter       | api          | `https://openrouter.ai/api/v1/models`（公开，无需 Key）                                       | USD           | per_token（字符串） | 低                                |
-| `deepseek`    | DeepSeek 官方    | html         | `https://api-docs.deepseek.com/zh-cn/quick_start/pricing`                                     | CNY（中文页） | per_1m              | 中；有缓存命中/未命中、错峰时段   |
-| `aliyun`      | 阿里云百炼       | html/browser | 百炼模型列表与计费文档页                                                                      | CNY           | per_1k 或 per_1m    | 高；阶梯价多，页面 JS 渲染        |
-| `zhipu`       | 智谱开放平台     | browser      | `https://open.bigmodel.cn/pricing`                                                            | CNY           | per_1m              | 中；SPA 页面                      |
-| `moonshot`    | 月之暗面 Kimi    | html         | Kimi 开放平台定价文档                                                                         | CNY           | per_1m              | 中                                |
-| `volcengine`  | 火山方舟（豆包） | browser      | 火山方舟模型计费文档                                                                          | CNY           | per_1m              | 高；分段计价多                    |
-| `qianfan`     | 百度千帆（文心） | browser      | 千帆 ModelBuilder 计费文档                                                                    | CNY           | per_1k 或 per_1m    | 高                                |
-| `siliconflow` | 硅基流动         | browser      | `https://siliconflow.cn/pricing`                                                              | CNY           | per_1m              | 中                                |
-| `manual`      | 任意             | manual       | `config/manual/*.yaml`                                                                        | 任意          | 任意                | 无；需人工维护                    |
+| Source ID     | 平台             | 方式   | 实际入口                                                                                                                         | 币种              | 原始单位            | 模型数 | 风险                                                                              |
+| ------------- | ---------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------------- | ------ | --------------------------------------------------------------------------------- |
+| `litellm`     | 各国际厂商官方   | api    | `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json`                                    | USD               | per_token           | 258    | 低；社区维护，可能滞后 1~3 天                                                     |
+| `openrouter`  | OpenRouter       | api    | `https://openrouter.ai/api/v1/models`（公开，无需 Key）                                                                          | USD               | per_token（字符串） | 360    | 低；分时段价格只记在 notes                                                        |
+| `deepseek`    | DeepSeek 官方    | html   | `https://api-docs.deepseek.com/zh-cn/quick_start/pricing/`                                                                       | CNY               | per_1m              | 2      | 中；表格行列转置，标准价 = 高峰价，错峰价写入 notes                               |
+| `zhipu`       | 智谱开放平台     | html   | `https://docs.bigmodel.cn/cn/guide/start/pricing`（Mintlify 静态页）                                                             | CNY               | per_1m              | 32     | 中；按输出长度分档的只取第一档，其余写入 notes                                    |
+| `moonshot`    | 月之暗面 Kimi    | html   | 抓取 `https://platform.kimi.ai/docs/pricing/chat.md`，证据链接 `https://platform.moonshot.ai/docs/pricing/chat`                  | **USD（国际站）** | per_1m              | 4      | 中；国内站海外不可达                                                              |
+| `aliyun`      | 阿里云百炼       | html   | `https://www.alibabacloud.com/help/zh/model-studio/model-pricing`（国际站中文文档，只取「华北2（北京）」文本生成）               | **USD（国际站）** | per_1m              | 64     | 中；限时折扣取基础价，写入 notes                                                  |
+| `volcengine`  | 火山方舟（豆包） | api    | 定价页 `https://www.volcengine.com/pricing?product=ark_bd&tab=1` 背后的公开匿名接口（GetNavigationV2 → ListTemplate → GetTable） | CNY               | per_1k              | 8      | 中；只收主力文本模型，32k/128k/256k 分档                                          |
+| `siliconflow` | 硅基流动         | html   | `https://www.siliconflow.com/models`（国际站）                                                                                   | **USD（国际站）** | per_1m              | 53     | 中；页面只列出约 79 个模型，不是完整目录                                          |
+| `qianfan`     | 百度千帆（文心） | —      | **已从注册表移除**                                                                                                               | —                 | —                   | 0      | 海外无法访问任何百度定价页；需要国内网络人工核对后写 `config/manual/qianfan.yaml` |
+| `manual`      | 官方             | manual | `config/manual/*.yaml`                                                                                                           | 任意              | 任意                | 0      | 无；需人工维护                                                                    |
 
 **来源优先级**（同一个"厂商官方直供"报价被多个源提供时）：
 
@@ -936,13 +936,42 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 <!-- 节点记录从这里开始追加 -->
 
+### 节点记录（2026-10-18）
+
+| 节点           | 负责   | 状态                     | 交付                                                                                                              | 测试                                            |
+| -------------- | ------ | ------------------------ | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| 1 脚手架与契约 | 主控   | ✅                       | pnpm workspace；`shared`（schema、单位、slug、格式化）；pipeline core（错误码、日志、HTTP、Playwright）；厂商配置 | shared 单元测试                                 |
+| 2 聚合源       | 后端 A | ✅                       | litellm、openrouter、fx（frankfurter → er-api → 上次 → 兜底）、manual                                             | fixture 离线测试                                |
+| 3 国内抓取器   | 后端 B | ✅（千帆除外）           | 6 个源 + `parse-price.ts`（价格文本解析、带 rowspan/colspan 的表格读取）                                          | 74 个 fixture 测试                              |
+| 4 网站框架     | 前端 C | ✅                       | Astro 7、Tailwind 4 令牌、亮/暗主题、中英双语、偏好 store                                                         | —                                               |
+| 5 管线步骤     | 后端 A | ✅                       | normalize、V1–V8、隔离区状态机、reconcile、diff、history、persist、飞书/Telegram/邮件、CLI                        | 集成测试覆盖源失败、突变、下架、--only、dry-run |
+| 6 页面         | 前端 C | ✅                       | 总榜、详情、计算器、变动日志、关于、8 类 JSON 接口、RSS、sitemap、404、CSP                                        | 96 个单元测试 + 25 个 E2E                       |
+| 7 CI/CD        | 主控   | ✅（未在 GitHub 上实跑） | daily / ci / smoke workflow，action 固定 SHA，手动输入防注入                                                      | —                                               |
+| 8 联调         | 主控   | ✅                       | 全量真实运行 9 个源全部成功，779 条报价，3.7s；构建 1,197 页约 1s                                                 | 全仓 368 个测试，覆盖率行 98.9% / 分支 90.5%    |
+
+主控在集成阶段的修正：
+
+- 模型 ID 统一版本号写法：新增 `normalizeModelId`，`4-5` 和 `4.5` 合并成 `4.5`
+- 过滤厂商平台转售的别家模型，例如 Mistral 上的 GLM（`isForeignModel`）
+- 统一展示名（`steps/display-names.ts`）：原始 ID 借用官方或 OpenRouter 的友好名称
+- 数据源首次成功运行时只建立基线，不生成 `new_model` 事件，避免第一次跑就刷屏
+- 网站默认排序中，免费模型排在付费模型之后
+- 新增错误码 `W2004`、`E3005`；shared 新增 `./format`、`./units` 子路径导出（前端不再打包 zod）
+
+实测指标：首页 HTML gzip 50KB，首页 JS gzip 84.5KB，管线 3.7s，构建 1.07s。
+
 ---
 
 ## 14. 问题汇总
 
-| #   | 发现于 | 问题     | 解决方案 | 状态 |
-| --- | ------ | -------- | -------- | ---- |
-| —   | —      | （暂无） | —        | —    |
+| #   | 发现于 | 问题                                                                                      | 解决方案                                                                                   | 状态     |
+| --- | ------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | -------- |
+| 1   | 节点 3 | 阿里、Kimi、硅基流动的国内站在海外不可达，改抓国际站（USD），和国内人民币价格不同         | 第一版接受；需要国内价时，在国内机器上运行管线（见 §15），或在 `config/manual/` 中人工维护 | 待定     |
+| 2   | 节点 3 | 百度千帆没有任何海外可访问的定价页                                                        | 已移出注册表；需要国内网络人工核对后写 `config/manual/qianfan.yaml`                        | 待处理   |
+| 3   | 节点 5 | 官方价和 OpenRouter 价普遍差 30% 以上（W3007 共 27 条），抽查确认是真实差价，不是换算错误 | W3007 只做提示，不拦截                                                                     | 已确认   |
+| 4   | 节点 6 | 第一次运行把全部模型标成 new_model，刷屏                                                  | 首次成功运行的源只建立基线                                                                 | 已解决   |
+| 5   | 节点 6 | `astro preview` 检测到 AI Agent 时会转入后台运行                                          | Playwright 配置和 `.claude/launch.json` 都加了 `--ignore-lock`                             | 已解决   |
+| 6   | 节点 3 | 智谱 GLM-4.7 等按输出长度分档的价格，tiers 无法表达                                       | 写入 notes                                                                                 | 已知限制 |
 
 ---
 
