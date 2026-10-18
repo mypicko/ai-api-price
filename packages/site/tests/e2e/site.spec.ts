@@ -207,8 +207,10 @@ test.describe("其他页面", () => {
     await expect(h3).toContainText("768p");
     await expect(h3).toContainText("2k");
     await page.getByRole("button", { name: "$ USD" }).click();
-    await expect(h3.locator("td").nth(1).locator(".cur-USD")).toHaveText("$0.0800");
-    await expect(h3.locator("td").nth(1).locator(".cur-CNY")).toBeHidden();
+    // 列：厂商 · 平台 · 每秒 …
+    await expect(h3.locator("td").nth(1)).toHaveText("官方");
+    await expect(h3.locator("td").nth(2).locator(".cur-USD")).toHaveText("$0.0800");
+    await expect(h3.locator("td").nth(2).locator(".cur-CNY")).toBeHidden();
     // 默认按每秒价格升序
     await expect(table.locator("tbody tr").first()).toContainText("MiniMax-H3");
     await page.getByRole("tab", { name: /图像/ }).click();

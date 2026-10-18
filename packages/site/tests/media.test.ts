@@ -81,7 +81,7 @@ describe("site/media 数据", () => {
 });
 
 describe("site/media 表格", () => {
-  it("按类型和关键字筛选（匹配名称、模型 ID、厂商名）", () => {
+  it("按类型和关键字筛选（匹配名称、模型 ID、厂商名、平台名）", () => {
     expect(filterMediaRows(rows, { kind: "video", query: "" })).toHaveLength(5);
     expect(filterMediaRows(rows, { kind: "image", query: "" })).toHaveLength(5);
     expect(filterMediaRows(rows, { kind: "video", query: "minimax" }).map((r) => r.model)).toEqual([
@@ -105,6 +105,16 @@ describe("site/media 表格", () => {
     expect(names).toEqual(names.toSorted());
     expect(sortMediaRows(video, { key: "vendor", dir: "desc" })[0]?.vendorName).toBeDefined();
     expect(sortMediaRows(video, { key: "updated", dir: "asc" })[0]?.stale).toBe(true);
+  });
+
+  it("平台列：可以按平台名搜索和排序", () => {
+    expect(row("minimax/minimax-h3")?.platformName).toBe("官方");
+    const video = filterMediaRows(rows, { kind: "video", query: "" });
+    const viaOpenRouter = video.map((r, i) => (i === 0 ? { ...r, platformName: "OpenRouter" } : r));
+    expect(filterMediaRows(viaOpenRouter, { kind: "video", query: "openrouter" })).toHaveLength(1);
+    const sorted = sortMediaRows(viaOpenRouter, { key: "platform", dir: "asc" });
+    expect(sorted[0]?.platformName).toBe("OpenRouter");
+    expect(nextMediaSort(DEFAULT_MEDIA_SORT, "platform")).toEqual({ key: "platform", dir: "asc" });
   });
 
   it("排序切换与 aria-sort", () => {

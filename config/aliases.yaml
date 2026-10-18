@@ -2,4 +2,8 @@
 # 别名可以是原始模型名或规范化后的 ID，匹配时不区分大小写
 # 示例：
 # deepseek/deepseek-chat: [deepseek-v3, deepseek-chat-v3]
-{}
+# 视频模型：OpenRouter 的命名 → LiteLLM（厂商直连）的命名
+minimax/minimax-h3-max: [hailuo-3-max]
+minimax/minimax-h3: [hailuo-3]
+runway/gen4.5: [gen-4.5]
+google/veo-3.1-generate-001: [veo-3.1]

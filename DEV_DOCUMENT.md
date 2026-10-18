@@ -285,7 +285,7 @@ export interface RawOffering {
 | Source ID                  | 平台                               | 方式   | 实际入口                                                                                                                                                                            | 币种                        | 原始单位            | 模型数                     | 风险                                                                              |
 | -------------------------- | ---------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ------------------- | -------------------------- | --------------------------------------------------------------------------------- |
 | `litellm`                  | 各国际厂商官方                     | api    | `https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json`                                                                                       | USD                         | per_token           | 258（+ 视频 30 / 图像 36） | 低；社区维护，可能滞后 1~3 天                                                     |
-| `openrouter`               | OpenRouter                         | api    | `https://openrouter.ai/api/v1/models`（公开，无需 Key）                                                                                                                             | USD                         | per_token（字符串） | 360                        | 低；分时段价格只记在 notes                                                        |
+| `openrouter`               | OpenRouter                         | api    | `https://openrouter.ai/api/v1/models`（公开，无需 Key）                                                                                                                             | USD                         | per_token（字符串） | 360（+ 视频 24）           | 低；分时段价格只记在 notes                                                        |
 | `deepseek`                 | DeepSeek 官方                      | html   | `https://api-docs.deepseek.com/zh-cn/quick_start/pricing/`                                                                                                                          | CNY                         | per_1m              | 2                          | 中；表格行列转置，标准价 = 高峰价，错峰价写入 notes                               |
 | `zhipu`                    | 智谱开放平台                       | html   | `https://docs.bigmodel.cn/cn/guide/start/pricing`（Mintlify 静态页）                                                                                                                | CNY                         | per_1m              | 32                         | 中；按输出长度分档的只取第一档，其余写入 notes                                    |
 | `moonshot`                 | 月之暗面 Kimi                      | html   | 抓取 `https://platform.kimi.ai/docs/pricing/chat.md`，证据链接 `https://platform.moonshot.ai/docs/pricing/chat`                                                                     | **USD（国际站）**           | per_1m              | 4                          | 中；国内站海外不可达                                                              |
@@ -513,11 +513,29 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 - 证据链接：条目自带的 `source`（官方定价页）在厂商白名单内时优先使用，否则用 providers.yaml 的 `pricingUrl`，再否则用 LiteLLM 的 raw URL
 - 默认价 `output`：来源的默认档；只有质量/尺寸变体（没有默认档）时取最低档
 
+**数据来源（OpenRouter，`/api/v1/videos/models`，公开无需 Key，2026-10-18 实测 30 个视频模型）**：由 `openrouter` 源一并抓取（`sources/openrouter-videos.ts`），平台为 `openrouter`，与文本报价一起返回，所以 `--only openrouter` 同时覆盖两者。`pricing_skus` 各家字段不统一，统一换算成**美元/秒**：
+
+| SKU 模式                                                                                                | 单位    | 去向                                                                         |
+| ------------------------------------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------- |
+| `cents_per_video_output_second[_<分辨率>]`、`cents_per_second_output[_<分辨率>]`                        | 美分/秒 | 生成价；带分辨率的进 `tiers`（`720p`）                                       |
+| `[text_to_video_\|image_to_video_\|reference_]duration_seconds[_with_audio\|_without_audio][_<分辨率>]` | 美元/秒 | 同上；前缀写进档位名：`文生`、`图生`、`参考`、`有声`、`无声`（如 `有声 4k`） |
+| `cents_per_second_video_continuation_<分辨率>`                                                          | 美分/秒 | 档位 `续写 <分辨率>`                                                         |
+| `cents_per_image_input`（美分）、`reference_input_images` / `reference_images`（美元）                  | 每张    | `input`（输入参考图价）                                                      |
+| `minimum_cents_per_generation`                                                                          | 美分/次 | `notes`：「每次生成最低 X USD」                                              |
+| `video_tokens*`（按 token）、`cents_per_megapixel_second_*`（按百万像素·秒）及其他未知字段              | —       | 无法换算成每秒，**跳过并记 W2003**（日志带模型 ID 和 SKU 列表）              |
+
+- 默认价 `output`：不带前缀和分辨率的 SKU（`duration_seconds`、`cents_per_second_output`）；没有时取最便宜的一档。只有一档且等于默认价时不输出 `tiers`
+- 全部 SKU 都无法识别的模型整条跳过（2026-10-18：Seedance 全系按 token 计价、FLUX Video Upscale 按百万像素·秒，共 6 个）
+- 只收能匹配 providers.yaml 的厂商；为此新增了「可灵（快手）」（`kwaivgi`）和 HeyGen
+- 证据链接为 `https://openrouter.ai/<vendor>/<model>`；`supported_frame_images` 非空时 modalities 为 `["text", "image"]`
+- 视频接口抓取失败时只记 warn、返回文本报价；视频/图像线随后由 V5 骤降检测拒绝本次 OpenRouter 媒体数据，沿用旧值
+- 与厂商直连同名不同写法的模型用 `config/aliases.yaml` 对齐（`hailuo-3-max` → `minimax-h3-max`、`veo-3.1` → `veo-3.1-generate-001` 等），这样 `/media/` 上同一 `modelSlug` 的官方价和 OpenRouter 价并列
+
 **管线**：`media-normalize.ts` 借用文本的 `normalizeOne`（厂商匹配、别名、S8 白名单），价格不做单位换算；V2 上限 `MAX_MEDIA_PRICE_USD = 50`；V5 单独计数，骤降时只拒绝该源的视频/图像，文本照常更新。`media-lane.ts` 把视频/图像报价转成内部的 Offering 形状（cache\*、tiers、contextWindow 恒为 null，媒体字段放在 `kind` / `unit` / `mediaTiers`），直接复用 `reconcile`（V3/V4/V6/V8）、`diffOfferings`、`planHistoryUpdates` 和原子写入。某个源**第一次**产出视频/图像时只建立基线，不生成 `new_model`。人工覆盖（overrides.yaml）按 Offering ID 同样作用于视频/图像。
 
 **推送**：日报多一节「🎬 视频/图像变动」，价格带单位（`$0.0800/秒`、`$0.0400/张`）。
 
-**网站**：`/media/`（英文 `/en/media/`），视频 / 图像两个标签页，列：模型 · 厂商 · 每秒（或每张）· 分辨率（或质量/尺寸）分档 · 输入参考图 · 7 日变化 · 更新；默认按价格升序；币种切换与文本页共用；页面下方列出最近 90 天的视频/图像变动。接口：`/api/v1/media.json`、`/api/v1/media/changes.json`（API 文档 §2.9、§2.10）。
+**网站**：`/media/`（英文 `/en/media/`），视频 / 图像两个标签页，列：模型 · 厂商 · 平台 · 每秒（或每张）· 分辨率（或质量/尺寸）分档 · 输入参考图 · 7 日变化 · 更新；默认按价格升序；搜索匹配名称、模型 ID、厂商和平台；币种切换与文本页共用；页面下方列出最近 90 天的视频/图像变动。接口：`/api/v1/media.json`、`/api/v1/media/changes.json`（API 文档 §2.9、§2.10）。
 
 ---
 
@@ -1046,7 +1064,7 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 | 5   | 节点 6 | `astro preview` 检测到 AI Agent 时会转入后台运行                                                                                                           | Playwright 配置和 `.claude/launch.json` 都加了 `--ignore-lock`                                                                                                                                                                                | 已解决   |
 | 6   | 节点 3 | 智谱 GLM-4.7 等按输出长度分档的价格，tiers 无法表达                                                                                                        | 写入 notes                                                                                                                                                                                                                                    | 已知限制 |
 | 7   | 1.1    | MiniMax H3 等视频/图像模型缺失（第一版只收 token 计价）                                                                                                    | 新增视频/图像线（§3.13），数据写在 `data/media/`                                                                                                                                                                                              | 已解决   |
-| 8   | 1.1    | OpenRouter 的视频报价在单独的 `/api/v1/videos/models` 接口，`pricing_skus` 各家字段不统一（`cents_per_video_output_second_720p`、`duration_seconds_2k` …） | 暂不接入；需要逐个 SKU 写解析规则                                                                                                                                                                                                             | 待处理   |
+| 8   | 1.1    | OpenRouter 的视频报价在单独的 `/api/v1/videos/models` 接口，`pricing_skus` 各家字段不统一（`cents_per_video_output_second_720p`、`duration_seconds_2k` …） | 已接入（§3.13）：按 SKU 模式换算成美元/秒，分辨率和前缀写进档位；按 token / 百万像素·秒计价的跳过并记 W2003                                                                                                                                   | 已解决   |
 | 9   | 1.1    | `/changes/` 的 E2E 在并行运行时偶发失败：`ChangeLog` 是 `client:idle`，水合前的 `selectOption` 不生效                                                      | 测试先等待所有 `astro-island[ssr]` 水合完成                                                                                                                                                                                                   | 已解决   |
 
 ---

@@ -41,6 +41,7 @@ interface Column {
 const COLUMNS: readonly Column[] = [
   { key: "model", label: () => "media.column.model", numeric: false },
   { key: "vendor", label: () => "media.column.vendor", numeric: false, hideSm: true },
+  { key: "platform", label: () => "table.column.platform", numeric: false, hideSm: true },
   { key: "price", label: (k) => `media.column.price.${k}`, numeric: true, unit: "price" },
   { key: null, label: (k) => `media.column.tiers.${k}`, numeric: false, hideSm: true },
   { key: "input", label: () => "media.column.input", numeric: true, unit: "image", hideSm: true },
@@ -189,6 +190,7 @@ function Row({ row, props }: { row: MediaRow; props: MediaTableProps }) {
         <div className="truncate text-micro text-text-muted sm:hidden">{row.vendorName}</div>
       </th>
       <td className="px-3 whitespace-nowrap max-sm:hidden">{row.vendorName}</td>
+      <td className="px-3 whitespace-nowrap text-text-muted max-sm:hidden">{row.platformName}</td>
       <td
         className="px-3 text-right font-medium whitespace-nowrap tabular"
         title={t("media.defaultTier")}

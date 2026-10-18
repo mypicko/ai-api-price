@@ -256,6 +256,28 @@ vendors:
       matchers: [runway, runwayml],
       allowedSourceDomains: [runwayml.com],
     }
+  - {
+      id: kling,
+      nameZh: 可灵（快手）,
+      nameEn: Kling,
+      region: cn,
+      website: "https://klingai.com",
+      pricingUrl: null,
+      logo: null,
+      matchers: [kling, kwaivgi, kuaishou, 快手, 可灵],
+      allowedSourceDomains: [klingai.com],
+    }
+  - {
+      id: heygen,
+      nameZh: HeyGen,
+      nameEn: HeyGen,
+      region: intl,
+      website: "https://www.heygen.com",
+      pricingUrl: null,
+      logo: null,
+      matchers: [heygen],
+      allowedSourceDomains: [heygen.com],
+    }
 platforms:
   - {
       id: official,

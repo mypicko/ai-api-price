@@ -165,7 +165,7 @@ export function toMediaRow(o: PublicMediaOffering, names: RowNames): MediaRow {
   };
 }
 
-export type MediaSortKey = "model" | "vendor" | "price" | "input" | "updated";
+export type MediaSortKey = "model" | "vendor" | "platform" | "price" | "input" | "updated";
 export interface MediaSort {
   readonly key: MediaSortKey;
   readonly dir: "asc" | "desc";
@@ -178,7 +178,7 @@ export interface MediaFilters {
   readonly query: string;
 }
 
-/** 搜索匹配展示名、模型 ID 和厂商名（不区分大小写） */
+/** 搜索匹配展示名、模型 ID、厂商名和平台名（不区分大小写） */
 export function filterMediaRows(
   rows: readonly MediaRow[],
   filters: MediaFilters,
@@ -187,7 +187,10 @@ export function filterMediaRows(
   return rows.filter(
     (r) =>
       r.kind === filters.kind &&
-      (q === "" || [r.displayName, r.model, r.vendorName].some((s) => s.toLowerCase().includes(q))),
+      (q === "" ||
+        [r.displayName, r.model, r.vendorName, r.platformName].some((s) =>
+          s.toLowerCase().includes(q),
+        )),
   );
 }
 
@@ -197,6 +200,8 @@ function sortValue(row: MediaRow, key: MediaSortKey): string | number | null {
       return row.displayName.toLowerCase();
     case "vendor":
       return row.vendorName.toLowerCase();
+    case "platform":
+      return row.platformName.toLowerCase();
     case "price":
       return row.usd[0];
     case "input":

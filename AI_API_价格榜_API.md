@@ -623,6 +623,8 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
 
 视频按**每秒生成时长**、图像按**每张**计价，与 `latest.json`（每百万 tokens）完全分开，不含 `removed`。数据来自 `data/media/latest.json`（DEV §3.13）。
 
+报价来自两个平台：`official`（LiteLLM 收录的厂商直连价，视频和图像）和 `openrouter`（OpenRouter 的视频接口，只有视频）。同一模型在两个平台都有报价时 `modelSlug` 相同、`id` 不同（如 `official:minimax/minimax-h3-max` 和 `openrouter:minimax/minimax-h3-max`）。OpenRouter 的价格已从美分换算成美元/秒。
+
 ```json
 {
   "success": true,
@@ -685,16 +687,17 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
 }
 ```
 
-| 字段        | 类型                          | 说明                                                                                                                                    |
-| ----------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `kind`      | `"video" \| "image"`          | 视频生成 / 图像生成                                                                                                                     |
-| `unit`      | `"per_second" \| "per_image"` | `output` 和 `tiers[].output` 的计价单位                                                                                                 |
-| `output`    | number \| null                | 每秒（或每张）生成价，原币种。来源有默认档时为默认档，否则为最低档                                                                      |
-| `input`     | number \| null                | 每张输入参考图的价格（图生视频、图像编辑），**总是按张**                                                                                |
-| `tiers`     | array \| null                 | 分档价，按 `output` 升序。视频的 `label` 是分辨率（`480p`、`720p`、`1080p`、`2k`、`4k`），图像是尺寸或「质量 尺寸」（`high 1024x1536`） |
-| `converted` | object                        | 换算后的 `input` / `output` / `tiers`，规则同 §2.1                                                                                      |
-| `change7d`  | number \| null                | 生成价与 7 天前相比的相对变化；7 天前没有记录时为 null                                                                                  |
-| `isFree`    | boolean                       | `output = 0`                                                                                                                            |
+| 字段        | 类型                          | 说明                                                                                                                                                                                                                                                             |
+| ----------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `kind`      | `"video" \| "image"`          | 视频生成 / 图像生成                                                                                                                                                                                                                                              |
+| `unit`      | `"per_second" \| "per_image"` | `output` 和 `tiers[].output` 的计价单位                                                                                                                                                                                                                          |
+| `output`    | number \| null                | 每秒（或每张）生成价，原币种。来源有默认档时为默认档，否则为最低档                                                                                                                                                                                               |
+| `input`     | number \| null                | 每张输入参考图的价格（图生视频、图像编辑），**总是按张**                                                                                                                                                                                                         |
+| `tiers`     | array \| null                 | 分档价，按 `output` 升序。视频的 `label` 是分辨率（`480p`、`720p`、`1080p`、`2k`、`4k`），OpenRouter 报价可能带前缀：`有声` / `无声`、`文生` / `图生`、`参考`（参考视频模式）、`续写`，如 `有声 4k`、`图生 1080p`；图像是尺寸或「质量 尺寸」（`high 1024x1536`） |
+| `notes`     | string \| null                | 补充说明；OpenRouter 有每次最低收费时为「每次生成最低 X USD」                                                                                                                                                                                                    |
+| `converted` | object                        | 换算后的 `input` / `output` / `tiers`，规则同 §2.1                                                                                                                                                                                                               |
+| `change7d`  | number \| null                | 生成价与 7 天前相比的相对变化；7 天前没有记录时为 null                                                                                                                                                                                                           |
+| `isFree`    | boolean                       | `output = 0`                                                                                                                                                                                                                                                     |
 
 其余字段含义同 §2.1。ID 与 `latest.json` 是两个独立的命名空间，同一个 ID 不会同时表示文本和视频/图像报价。
 

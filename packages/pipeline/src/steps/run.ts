@@ -158,7 +158,19 @@ async function gather(opts: RunOptions): Promise<Gathered> {
     nowIso,
     today,
   });
-  return { startedAt, nowIso, today, files, prev, fx, outcomes, rec, metadata, prevMedia, mediaRec };
+  return {
+    startedAt,
+    nowIso,
+    today,
+    files,
+    prev,
+    fx,
+    outcomes,
+    rec,
+    metadata,
+    prevMedia,
+    mediaRec,
+  };
 }
 
 function collectWarnings(
