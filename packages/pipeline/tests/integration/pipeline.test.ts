@@ -6,6 +6,7 @@ import { copyFile, mkdir, mkdtemp, readFile, rm, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import type {
+  SourceKind,
   ChangesMonthFile,
   HistoryFile,
   LatestFile,
@@ -51,15 +52,28 @@ function raw(
 const orRaw = (model: string, input: number, output: number): RawOffering =>
   raw(model, input, output, { sourceUrl: `https://openrouter.ai/openai/${model}` });
 
-function mockSource(id: string, platform: string, behaviour: Behaviour): Source {
+/** 每个源本次运行被请求的次数（用于验证接口复核只对接口类源发起） */
+const fetchCalls = new Map<string, number>();
+
+/** refetch：第二次请求（接口复核）的返回；不传则与第一次相同 */
+function mockSource(
+  id: string,
+  platform: string,
+  behaviour: Behaviour,
+  kind: SourceKind = "api",
+  refetch?: Behaviour,
+): Source {
   return {
     id,
     platform,
-    kind: "api",
+    kind,
     timeoutMs: 1000,
     async fetch() {
-      if (behaviour instanceof PipelineError) throw behaviour;
-      return behaviour;
+      const call = (fetchCalls.get(id) ?? 0) + 1;
+      fetchCalls.set(id, call);
+      const result = call > 1 && refetch !== undefined ? refetch : behaviour;
+      if (result instanceof PipelineError) throw result;
+      return result;
     },
   };
 }
@@ -69,6 +83,9 @@ const BASE_OPENROUTER = [orRaw("gpt-4o", 2.5, 10)];
 
 interface DayOptions {
   readonly official?: Behaviour;
+  /** litellm 模拟源的类型；html 用来验证网页抓取源仍走原隔离规则 */
+  readonly officialKind?: SourceKind;
+  readonly officialRefetch?: Behaviour;
   readonly openrouter?: Behaviour;
   readonly selected?: ReadonlySet<string> | null;
   readonly dryRun?: boolean;
@@ -84,11 +101,18 @@ const notifier: Notifier = {
 
 async function runDay(day: number, options: DayOptions = {}): Promise<RunResult> {
   const now = new Date(Date.UTC(2026, 9, 17 + day, 1, 0, 0));
+  fetchCalls.clear();
   return runPipeline({
     rootDir: root,
     dataDir,
     sources: [
-      mockSource("litellm", "official", options.official ?? BASE_OFFICIAL),
+      mockSource(
+        "litellm",
+        "official",
+        options.official ?? BASE_OFFICIAL,
+        options.officialKind,
+        options.officialRefetch,
+      ),
       mockSource("openrouter", "openrouter", options.openrouter ?? BASE_OPENROUTER),
     ],
     selected: options.selected ?? null,
@@ -237,10 +261,12 @@ describe("集成：完整管线", () => {
     );
   });
 
-  it("突变：进入隔离区并保留旧值；第二次抓到同一值后放行（已确认）", async () => {
-    await runDay(1);
+  it("网页源突变：进入隔离区并保留旧值；第二天抓到同一值后放行（已确认）", async () => {
+    await runDay(1, { officialKind: "html" });
     const crashed = [raw("gpt-4o", 0.25, 10), ...BASE_OFFICIAL.slice(1)];
-    const day2 = await runDay(2, { official: crashed });
+    const day2 = await runDay(2, { official: crashed, officialKind: "html" });
+    // 网页源不做同次复核
+    expect(fetchCalls.get("litellm")).toBe(1);
     expect(day2.events).toEqual([]);
     expect(offering(await readData<LatestFile>("latest.json"), GPT)?.input).toBe(2.5);
     const quarantine = await readData<QuarantineFile>("quarantine.json");
@@ -254,12 +280,58 @@ describe("集成：完整管线", () => {
     expect(day2.status.warnings.some((w) => w.code === "W3003")).toBe(true);
     expect(sent.at(-1)?.quarantined).toHaveLength(1);
 
-    const day3 = await runDay(3, { official: crashed });
+    const day3 = await runDay(3, { official: crashed, officialKind: "html" });
     expect(day3.events).toEqual([
       expect.objectContaining({ type: "price_down", confirmedFromQuarantine: true }),
     ]);
     expect(offering(await readData<LatestFile>("latest.json"), GPT)?.input).toBe(0.25);
     expect((await readData<QuarantineFile>("quarantine.json")).entries).toEqual([]);
+  });
+
+  it("接口源突变：同次运行重新请求核对一致，当天直接发布（已确认）", async () => {
+    await runDay(1);
+    const crashed = [raw("gpt-4o", 0.25, 10), ...BASE_OFFICIAL.slice(1)];
+    const day2 = await runDay(2, { official: crashed });
+    expect(fetchCalls.get("litellm")).toBe(2);
+    expect(fetchCalls.get("openrouter")).toBe(1);
+    expect(day2.events).toEqual([
+      expect.objectContaining({
+        type: "price_down",
+        offeringId: GPT,
+        confirmedFromQuarantine: true,
+      }),
+    ]);
+    expect(offering(await readData<LatestFile>("latest.json"), GPT)?.input).toBe(0.25);
+    expect((await readData<QuarantineFile>("quarantine.json")).entries).toEqual([]);
+    const codes = day2.status.warnings.map((w) => w.code);
+    expect(codes).toContain("W3008");
+    expect(codes).not.toContain("W3003");
+    expect(sent.at(-1)?.quarantined).toHaveLength(0);
+  });
+
+  it("接口源突变：复核时数值不同，照常进入隔离区", async () => {
+    await runDay(1);
+    const crashed = [raw("gpt-4o", 0.25, 10), ...BASE_OFFICIAL.slice(1)];
+    const flapped = [raw("gpt-4o", 0.3, 10), ...BASE_OFFICIAL.slice(1)];
+    const day2 = await runDay(2, { official: crashed, officialRefetch: flapped });
+    expect(fetchCalls.get("litellm")).toBe(2);
+    expect(day2.events).toEqual([]);
+    expect(offering(await readData<LatestFile>("latest.json"), GPT)?.input).toBe(2.5);
+    const entries = (await readData<QuarantineFile>("quarantine.json")).entries;
+    expect(entries.map((e) => e.offeringId)).toEqual([GPT]);
+    expect(day2.status.warnings.map((w) => w.code)).toContain("W3003");
+  });
+
+  it("接口源突变：复核请求失败，照常进入隔离区，源本身仍算成功", async () => {
+    await runDay(1);
+    const crashed = [raw("gpt-4o", 0.25, 10), ...BASE_OFFICIAL.slice(1)];
+    const day2 = await runDay(2, {
+      official: crashed,
+      officialRefetch: new PipelineError("E1001", "HTTP 503"),
+    });
+    expect(day2.status.sources.find((s) => s.id === "litellm")?.status).toBe("ok");
+    expect(offering(await readData<LatestFile>("latest.json"), GPT)?.input).toBe(2.5);
+    expect((await readData<QuarantineFile>("quarantine.json")).entries).toHaveLength(1);
   });
 
   it("下架：连续 3 天没抓到才判定 removed，再次出现时 restored", async () => {
@@ -433,21 +505,33 @@ describe("集成：视频/图像", () => {
     expect(result.written).toContain("media/quarantine.json");
   });
 
-  it("突变：进入 media 隔离区并保留旧值；第二次同一值后放行", async () => {
-    await runDay(1, { official: withMedia(BASE_MEDIA) });
+  it("网页源突变：进入 media 隔离区并保留旧值；第二天同一值后放行", async () => {
+    await runDay(1, { official: withMedia(BASE_MEDIA), officialKind: "html" });
     const crashed = withMedia([video("sora-3", 0.01), ...BASE_MEDIA.slice(1)]);
-    const day2 = await runDay(2, { official: crashed });
+    const day2 = await runDay(2, { official: crashed, officialKind: "html" });
     expect(day2.mediaEvents).toEqual([]);
     expect(mediaOf(await readData<MediaLatestFile>("media/latest.json"), SORA)?.output).toBe(0.1);
     const quarantine = await readData<QuarantineFile>("media/quarantine.json");
     expect(quarantine.entries.map((e) => e.offeringId)).toEqual([SORA]);
     expect((await readData<QuarantineFile>("quarantine.json")).entries).toEqual([]);
     expect(sent.at(-1)?.quarantined.map((e) => e.offeringId)).toEqual([SORA]);
-    const day3 = await runDay(3, { official: crashed });
+    const day3 = await runDay(3, { official: crashed, officialKind: "html" });
     expect(day3.mediaEvents).toEqual([
       expect.objectContaining({ type: "price_down", confirmedFromQuarantine: true }),
     ]);
     expect(mediaOf(await readData<MediaLatestFile>("media/latest.json"), SORA)?.output).toBe(0.01);
+  });
+
+  it("接口源突变：视频/图像同样在同次运行复核一致后直接发布", async () => {
+    await runDay(1, { official: withMedia(BASE_MEDIA) });
+    const crashed = withMedia([video("sora-3", 0.01), ...BASE_MEDIA.slice(1)]);
+    const day2 = await runDay(2, { official: crashed });
+    expect(fetchCalls.get("litellm")).toBe(2);
+    expect(day2.mediaEvents).toEqual([
+      expect.objectContaining({ type: "price_down", confirmedFromQuarantine: true }),
+    ]);
+    expect(mediaOf(await readData<MediaLatestFile>("media/latest.json"), SORA)?.output).toBe(0.01);
+    expect((await readData<QuarantineFile>("media/quarantine.json")).entries).toEqual([]);
   });
 
   it("源失败：视频/图像同样沿用旧值并标记 stale", async () => {

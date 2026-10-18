@@ -119,6 +119,7 @@ export interface MediaReconcileInput {
   readonly threshold: number;
   readonly nowIso: string;
   readonly today: string;
+  readonly verified?: ReadonlySet<string>;
 }
 
 export function reconcileMedia(input: MediaReconcileInput): ReconcileResult {
@@ -131,6 +132,7 @@ export function reconcileMedia(input: MediaReconcileInput): ReconcileResult {
     threshold: input.threshold,
     nowIso: input.nowIso,
     today: input.today,
+    ...(input.verified ? { verified: input.verified } : {}),
   });
 }
 

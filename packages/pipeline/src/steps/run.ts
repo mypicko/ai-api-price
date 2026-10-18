@@ -25,6 +25,7 @@ import {
 import { crossCheck } from "./cross-check";
 import { monthOf, shanghaiDate, toIsoSeconds } from "./dates";
 import { diffOfferings } from "./diff";
+import { verifyApiAnomalies, type VerifyResult } from "./verify";
 import { harmonizeDisplayNames, unifyDisplayNames } from "./display-names";
 import { enrichMetadata, resolveMetadata, type ModelMetadata } from "./metadata";
 import { createAliasResolver, createVendorMatcher } from "./normalize";
@@ -102,6 +103,7 @@ interface Gathered {
   readonly metadata: readonly ModelMetadata[];
   readonly prevMedia: PreviousMediaState;
   readonly mediaRec: ReconcileResult;
+  readonly verification: VerifyResult;
 }
 
 async function gather(opts: RunOptions): Promise<Gathered> {
@@ -123,18 +125,27 @@ async function gather(opts: RunOptions): Promise<Gathered> {
     logger,
   });
   logger.info("汇率", { usdCny: fx.rate.usdCny, provider: fx.rate.provider });
-  const outcomes = await runSources({
+  const previousMedia = (prevMedia.latest?.offerings ?? []).map(toLaneOffering);
+  const sourceRun = {
     sources: opts.sources,
-    selected: opts.selected,
     ctx: { http: opts.http, browser: opts.browser, logger, now: startedAt, rootDir: opts.rootDir },
     providers: files.providers,
     aliases: files.aliases,
     usdCny: fx.rate.usdCny,
     previous,
-    previousMedia: (prevMedia.latest?.offerings ?? []).map(toLaneOffering),
+    previousMedia,
     clock: () => opts.clock().getTime(),
-  });
+  };
+  const outcomes = await runSources({ ...sourceRun, selected: opts.selected });
   const overrides = activeOverrides(files.overrides, today);
+  const verification = await verifyApiAnomalies({
+    outcomes,
+    previous: [...previous, ...previousMedia],
+    overrides,
+    threshold: config.anomalyThreshold,
+    rerun: (ids) => runSources({ ...sourceRun, selected: ids }),
+    logger,
+  });
   const rec = reconcile({
     previous,
     previousDataDate: prev.latest?.dataDate ?? null,
@@ -144,6 +155,7 @@ async function gather(opts: RunOptions): Promise<Gathered> {
     threshold: config.anomalyThreshold,
     nowIso,
     today,
+    verified: verification.verified,
   });
   const metadata = resolveMetadata(
     await fetchModelsDevMetadata(opts.http, logger),
@@ -157,6 +169,7 @@ async function gather(opts: RunOptions): Promise<Gathered> {
     threshold: config.anomalyThreshold,
     nowIso,
     today,
+    verified: verification.verified,
   });
   return {
     startedAt,
@@ -170,6 +183,7 @@ async function gather(opts: RunOptions): Promise<Gathered> {
     metadata,
     prevMedia,
     mediaRec,
+    verification,
   };
 }
 
@@ -187,6 +201,7 @@ function collectWarnings(
     ...g.outcomes.flatMap((o) => o.warnings),
     ...g.rec.warnings,
     ...g.mediaRec.warnings,
+    ...g.verification.warnings,
     ...crossCheck(g.rec.offerings, g.fx.rate.usdCny),
     ...healthWarnings,
     ...(ranManual ? checkManualFreshness(g.files.manual, g.startedAt) : []),

@@ -25,6 +25,8 @@ export interface ReconcileInput {
   readonly threshold: number;
   readonly nowIso: string;
   readonly today: string;
+  /** 接口源复核一致的报价 ID：突变也直接发布（steps/verify.ts） */
+  readonly verified?: ReadonlySet<string>;
 }
 
 export interface ReconcileResult {
@@ -145,6 +147,7 @@ function resolveFresh(c: Candidate, prev: Offering | undefined, ctx: Context): R
     override: ctx.input.overrides.get(c.id) ?? null,
     threshold: ctx.input.threshold,
     nowIso: ctx.input.nowIso,
+    verified: ctx.input.verified?.has(c.id) ?? false,
   });
   return resolveDecision(decision, c, ctx, prev);
 }

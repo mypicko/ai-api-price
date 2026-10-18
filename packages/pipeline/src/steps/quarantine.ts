@@ -4,6 +4,7 @@
  *   正常 ──单日变动 > 阈值──▶ 隔离中
  *   隔离中 ──抓回旧值 / 小幅变动──▶ 正常（丢弃候选）
  *   隔离中 ──连续 2 次同一新值──▶ 放行（confirmedFromQuarantine = true）
+ *   接口源同次复核一致（verified）──▶ 直接放行，不进隔离区（见 steps/verify.ts）
  *   隔离中 ──抓到另一个新值──▶ 隔离中（重新计数）
  *   approve ▶ 放行；block ▶ 保留旧值；pin ▶ 钉住价格
  *
@@ -69,6 +70,8 @@ export interface PriceDecisionInput {
   readonly override: Override | null;
   readonly threshold: number;
   readonly nowIso: string;
+  /** 接口源在同一次运行里重新请求、数值一致 */
+  readonly verified?: boolean;
 }
 
 /** pin：只替换配置里写了的字段 */
@@ -124,5 +127,6 @@ export function decidePrice(input: PriceDecisionInput): PriceDecision {
   // 抓回旧值或正常幅度的变动：直接放行，丢弃候选
   if (!isAnomalous(fields, input.threshold))
     return { kind: "accept", confirmedFromQuarantine: false };
+  if (input.verified) return { kind: "accept", confirmedFromQuarantine: true };
   return holdOrRelease(input, fields);
 }
