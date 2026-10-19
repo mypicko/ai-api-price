@@ -114,6 +114,32 @@
       "detectedAt": "2026-10-18T13:55:23Z"
     },
     {
+      "id": "2026-10-19-openrouter:alibaba/qwen3.5-27b-1",
+      "type": "price_down",
+      "offeringId": "openrouter:alibaba/qwen3.5-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-27b",
+      "displayName": "Qwen3.5-27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.26,
+          "new": 0.195,
+          "pct": -0.25
+        },
+        {
+          "field": "output",
+          "old": 2.6,
+          "new": 1.56,
+          "pct": -0.4
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-19T02:58:10Z"
+    },
+    {
       "id": "2026-10-19-openrouter:deepseek/deepseek-v4-flash-0731-1",
       "type": "price_up",
       "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
@@ -172,6 +198,70 @@
       "detectedAt": "2026-10-18T23:51:49Z"
     },
     {
+      "id": "2026-10-19-openrouter:deepseek/deepseek-v4-flash-0731-3",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash-0731",
+      "displayName": "DeepSeek V4 Flash 0731",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0199,
+          "new": 0.15,
+          "pct": 6.538
+        },
+        {
+          "field": "output",
+          "old": 0.45,
+          "new": 0.15,
+          "pct": -0.6667
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0199,
+          "new": 0.042,
+          "pct": 1.111
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-19T02:58:10Z"
+    },
+    {
+      "id": "2026-10-19-openrouter:deepseek/deepseek-v4-pro-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro",
+      "displayName": "DeepSeek V4 Pro 0423",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.2088,
+          "new": 0.95526,
+          "pct": 3.575
+        },
+        {
+          "field": "output",
+          "old": 0.4176,
+          "new": 1.91052,
+          "pct": 3.575
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0174,
+          "new": 0.079605,
+          "pct": 3.575
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-19T02:58:10Z"
+    },
+    {
       "id": "2026-10-19-openrouter:deepseek/deepseek-v4.1-flash-1",
       "type": "price_up",
       "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
@@ -198,6 +288,38 @@
       "detectedAt": "2026-10-18T22:37:28Z"
     },
     {
+      "id": "2026-10-19-openrouter:deepseek/deepseek-v4.1-flash-1017-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.3,
+          "pct": 1
+        },
+        {
+          "field": "output",
+          "old": 0.6,
+          "new": 1.2,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.003,
+          "new": 0.006,
+          "pct": 1
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-19T02:58:10Z"
+    },
+    {
       "id": "2026-10-19-openrouter:deepseek/deepseek-v4.1-flash-2",
       "type": "price_up",
       "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
@@ -216,6 +338,26 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-18T23:07:30Z"
+    },
+    {
+      "id": "2026-10-19-openrouter:deepseek/deepseek-v4.1-flash-3",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0632,
+          "new": 0.0472,
+          "pct": -0.2532
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-19T02:58:10Z"
     },
     {
       "id": "2026-10-19-openrouter:meta/llama-3.2-3b-instruct-1",
@@ -316,6 +458,38 @@
       "detectedAt": "2026-10-18T19:08:24Z"
     },
     {
+      "id": "2026-10-19-openrouter:tencent/hy3-2",
+      "type": "price_up",
+      "offeringId": "openrouter:tencent/hy3",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy3",
+      "displayName": "Hy3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0825,
+          "new": 0.132,
+          "pct": 0.6
+        },
+        {
+          "field": "output",
+          "old": 0.33,
+          "new": 0.528,
+          "pct": 0.6
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.020625,
+          "new": 0.033,
+          "pct": 0.6
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-19T02:58:10Z"
+    },
+    {
       "id": "2026-10-19-openrouter:tencent/hy4-preview-1",
       "type": "price_down",
       "offeringId": "openrouter:tencent/hy4-preview",
@@ -346,6 +520,38 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-18T19:08:24Z"
+    },
+    {
+      "id": "2026-10-19-openrouter:tencent/hy4-preview-2",
+      "type": "price_up",
+      "offeringId": "openrouter:tencent/hy4-preview",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy4-preview",
+      "displayName": "Hy4 preview",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.7506,
+          "new": 0.834,
+          "pct": 0.1111
+        },
+        {
+          "field": "output",
+          "old": 2.2509,
+          "new": 2.501,
+          "pct": 0.1111
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0378,
+          "new": 0.042,
+          "pct": 0.1111
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-19T02:58:10Z"
     },
     {
       "id": "2026-10-19-openrouter:zhipu/glm-5.3-1",
