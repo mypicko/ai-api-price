@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "39349084830",
-    "startedAt": "2026-10-20T00:41:31Z",
-    "finishedAt": "2026-10-20T00:42:42Z",
-    "durationMs": 70885,
+    "id": "39350067434",
+    "startedAt": "2026-10-20T00:51:54Z",
+    "finishedAt": "2026-10-20T00:53:13Z",
+    "durationMs": 78381,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 1761,
+      "durationMs": 2413,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 339,
+      "durationMs": 287,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -35,10 +35,10 @@
       "status": "ok",
       "offeringCount": 258,
       "mediaOfferingCount": 66,
-      "durationMs": 892,
+      "durationMs": 1407,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -46,10 +46,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 1164,
-      "durationMs": 1929,
+      "durationMs": 2483,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -57,10 +57,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 120,
+      "durationMs": 82,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -68,10 +68,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 25,
-      "durationMs": 127,
+      "durationMs": 75,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -79,10 +79,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 18,
-      "durationMs": 1396,
+      "durationMs": 1824,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -90,10 +90,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 1397,
+      "durationMs": 1824,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -101,10 +101,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 4,
-      "durationMs": 1212,
+      "durationMs": 995,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -113,10 +113,10 @@
       "status": "ok",
       "offeringCount": 362,
       "mediaOfferingCount": 29,
-      "durationMs": 1278,
+      "durationMs": 1773,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -124,10 +124,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 376,
-      "durationMs": 70251,
+      "durationMs": 77523,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -135,10 +135,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 54,
-      "durationMs": 1176,
+      "durationMs": 1224,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -146,10 +146,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 4582,
+      "durationMs": 5366,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     },
     {
@@ -157,10 +157,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 1255,
+      "durationMs": 846,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:41:31Z",
+      "lastSuccessAt": "2026-10-20T00:51:54Z",
       "consecutiveFailures": 0
     }
   ],
