@@ -3,9 +3,9 @@
   "series": {
     "official-cn:minimax/minimax-m3.1-flash": [
       {
-        "input": 0.15,
-        "output": 0.6,
-        "cacheRead": 0.015,
+        "input": 0.1494,
+        "output": 0.5976,
+        "cacheRead": 0.0149,
         "cacheWrite": null,
         "effectiveDate": "2026-10-20"
       }

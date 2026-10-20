@@ -62,6 +62,13 @@
         "cacheRead": 0.06,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.3137,
+        "output": 1.2549,
+        "cacheRead": 0.0627,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "official:minimax/minimax-m3": [

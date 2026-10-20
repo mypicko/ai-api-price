@@ -44,6 +44,13 @@
         "cacheRead": 0.05,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.1,
+        "output": 0.95,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "parasail:alibaba/qwen3.6-35b-a3b": [
@@ -53,6 +60,13 @@
         "cacheRead": 0.05,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.1,
+        "output": 0.95,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "siliconflow-cn:alibaba/qwen3.6-35b-a3b": [

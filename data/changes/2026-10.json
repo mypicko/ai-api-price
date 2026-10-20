@@ -626,6 +626,32 @@
       "detectedAt": "2026-10-20T00:12:08Z"
     },
     {
+      "id": "2026-10-20-digitalocean:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_up",
+      "offeringId": "digitalocean:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "digitalocean",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.195,
+          "new": 0.225,
+          "pct": 0.1538
+        },
+        {
+          "field": "output",
+          "old": 0.78,
+          "new": 0.9,
+          "pct": 0.1538
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-20T03:08:01Z"
+    },
+    {
       "id": "2026-10-20-fireworks:minimax/minimax-m3p1-flash-1",
       "type": "new_model",
       "offeringId": "fireworks:minimax/minimax-m3p1-flash",
@@ -742,6 +768,38 @@
       "detectedAt": "2026-10-20T00:12:08Z"
     },
     {
+      "id": "2026-10-20-official-cn:minimax/minimax-m3-1",
+      "type": "price_up",
+      "offeringId": "official-cn:minimax/minimax-m3",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m3",
+      "displayName": "MiniMax-M3",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.3,
+          "new": 0.3137,
+          "pct": 0.04567
+        },
+        {
+          "field": "output",
+          "old": 1.2,
+          "new": 1.2549,
+          "pct": 0.04575
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.06,
+          "new": 0.0627,
+          "pct": 0.045
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-20T03:08:01Z"
+    },
+    {
       "id": "2026-10-20-official-cn:minimax/minimax-m3.1-flash-1",
       "type": "new_model",
       "offeringId": "official-cn:minimax/minimax-m3.1-flash",
@@ -753,6 +811,38 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-20T00:12:08Z"
+    },
+    {
+      "id": "2026-10-20-official-cn:minimax/minimax-m3.1-flash-2",
+      "type": "price_down",
+      "offeringId": "official-cn:minimax/minimax-m3.1-flash",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m3.1-flash",
+      "displayName": "MiniMax-M3.1-Flash",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.1494,
+          "pct": -0.004
+        },
+        {
+          "field": "output",
+          "old": 0.6,
+          "new": 0.5976,
+          "pct": -0.004
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.015,
+          "new": 0.0149,
+          "pct": -0.006667
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-20T03:08:01Z"
     },
     {
       "id": "2026-10-20-openrouter:alibaba/qwen3.5-27b-1",
@@ -817,6 +907,32 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-20T00:12:08Z"
+    },
+    {
+      "id": "2026-10-20-openrouter:alibaba/qwen3.6-35b-a3b-1",
+      "type": "price_down",
+      "offeringId": "openrouter:alibaba/qwen3.6-35b-a3b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.6-35b-a3b",
+      "displayName": "Qwen3.6 35B A3B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.1,
+          "pct": -0.3333
+        },
+        {
+          "field": "output",
+          "old": 1,
+          "new": 0.95,
+          "pct": -0.05
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-20T03:08:01Z"
     },
     {
       "id": "2026-10-20-openrouter:deepseek/deepseek-chat-1",
@@ -933,6 +1049,38 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-20T00:12:08Z"
+    },
+    {
+      "id": "2026-10-20-openrouter:deepseek/deepseek-v4.1-flash-1017-2",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.3,
+          "pct": 1
+        },
+        {
+          "field": "output",
+          "old": 0.6,
+          "new": 1.2,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.003,
+          "new": 0.006,
+          "pct": 1
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-20T03:08:01Z"
     },
     {
       "id": "2026-10-20-openrouter:google/gemma-3-4b-it-1",
@@ -1166,6 +1314,64 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-20T00:12:08Z"
+    },
+    {
+      "id": "2026-10-20-openrouter:zhipu/glm-5.3-flash-2",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.048,
+          "new": 0.15,
+          "pct": 2.125
+        },
+        {
+          "field": "output",
+          "old": 0.16,
+          "new": 0.5,
+          "pct": 2.125
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.006,
+          "new": 0.03,
+          "pct": 4
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-20T03:08:01Z"
+    },
+    {
+      "id": "2026-10-20-parasail:alibaba/qwen3.6-35b-a3b-1",
+      "type": "price_down",
+      "offeringId": "parasail:alibaba/qwen3.6-35b-a3b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.6-35b-a3b",
+      "displayName": "Qwen3.6 35B A3B",
+      "platform": "parasail",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.1,
+          "pct": -0.3333
+        },
+        {
+          "field": "output",
+          "old": 1,
+          "new": 0.95,
+          "pct": -0.05
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-20T03:08:01Z"
     },
     {
       "id": "2026-10-20-together:deepseek/deepseek-v4.1-flash-1017-1",

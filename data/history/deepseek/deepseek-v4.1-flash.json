@@ -53,6 +53,13 @@
         "cacheRead": 0.006,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.225,
+        "output": 0.9,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "fireworks:deepseek/deepseek-v4.1-flash": [
