@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "39346170259",
-    "startedAt": "2026-10-20T00:12:08Z",
-    "finishedAt": "2026-10-20T00:14:38Z",
-    "durationMs": 150003,
+    "id": "39349084830",
+    "startedAt": "2026-10-20T00:41:31Z",
+    "finishedAt": "2026-10-20T00:42:42Z",
+    "durationMs": 70885,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 1633,
+      "durationMs": 1761,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 478,
+      "durationMs": 339,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -35,10 +35,10 @@
       "status": "ok",
       "offeringCount": 258,
       "mediaOfferingCount": 66,
-      "durationMs": 1928,
+      "durationMs": 892,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -46,10 +46,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 1164,
-      "durationMs": 2934,
+      "durationMs": 1929,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -57,10 +57,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 72,
+      "durationMs": 120,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -68,10 +68,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 25,
-      "durationMs": 76,
+      "durationMs": 127,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -79,10 +79,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 18,
-      "durationMs": 2192,
+      "durationMs": 1396,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -90,10 +90,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 2193,
+      "durationMs": 1397,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -101,10 +101,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 4,
-      "durationMs": 4927,
+      "durationMs": 1212,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -113,10 +113,10 @@
       "status": "ok",
       "offeringCount": 362,
       "mediaOfferingCount": 29,
-      "durationMs": 2877,
+      "durationMs": 1278,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -124,10 +124,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 376,
-      "durationMs": 77831,
+      "durationMs": 70251,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -135,10 +135,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 54,
-      "durationMs": 1126,
+      "durationMs": 1176,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -146,10 +146,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 5007,
+      "durationMs": 4582,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     },
     {
@@ -157,10 +157,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 947,
+      "durationMs": 1255,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-20T00:12:08Z",
+      "lastSuccessAt": "2026-10-20T00:41:31Z",
       "consecutiveFailures": 0
     }
   ],
@@ -373,12 +373,6 @@
     {
       "code": "W3008",
       "sourceId": "litellm-resellers",
-      "offeringId": "novita:deepseek/deepseek-r1",
-      "message": "接口复核一致，突变价格已直接发布：deepseek-r1"
-    },
-    {
-      "code": "W3008",
-      "sourceId": "litellm-resellers",
       "offeringId": "novita:deepseek/deepseek-v4-pro-0813",
       "message": "接口复核一致，突变价格已直接发布：deepseek-v4-pro-0813"
     },
@@ -393,18 +387,6 @@
       "sourceId": "litellm-resellers",
       "offeringId": "novita:zhipu/glm-5.3",
       "message": "接口复核一致，突变价格已直接发布：glm-5.3"
-    },
-    {
-      "code": "W3008",
-      "sourceId": "openrouter",
-      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
-      "message": "接口复核一致，突变价格已直接发布：DeepSeek V4.1 Flash"
-    },
-    {
-      "code": "W3008",
-      "sourceId": "openrouter-endpoints",
-      "offeringId": "crusoe:zhipu/glm-5.3",
-      "message": "接口复核一致，突变价格已直接发布：GLM 5.3"
     }
   ]
 }
