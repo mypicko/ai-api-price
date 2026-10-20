@@ -1,7 +1,7 @@
 /**
  * 编程套餐（Coding Plan，DEV §3.15）：月费 + 额度说明 + 「回本次数」。
  * 套餐额度口径五花八门（5 小时积分、相对倍数、美元额度、未公开），没法统一换算成每百万 tokens 单价，
- * 所以用不依赖额度的指标比较：按用户给定的单次请求用量，算出计价模型按量付费一次多少钱，
+ * 所以用不依赖额度的指标比较：按固定的单次请求用量（DEFAULT_ASSUMPTIONS），算出计价模型按量付费一次多少钱，
  * 月费 ÷ 单次费用 = 每月用到多少次开始比按量付费划算（前提是额度够用）。
  */
 import type { Currency, PlanFile, PlanQuotaKind, Region } from "@aipb/shared";
@@ -149,38 +149,6 @@ export function breakEven(row: PlanRow, a: UsageAssumptions): BreakEven | null {
 export function creditsMultiple(row: PlanRow): number | null {
   if (row.creditsUsd === null) return null;
   return Math.round((row.creditsUsd / row.monthly.usd) * 100) / 100;
-}
-
-const MAX_TOKENS = 10_000_000;
-
-function readInt(params: URLSearchParams, key: string, fallback: number): number {
-  const value = Number(params.get(key));
-  return Number.isInteger(value) && value > 0 && value <= MAX_TOKENS ? value : fallback;
-}
-
-/** ?in=&out=&cache=（缓存命中率用 0~100 的整数）；非法值回到默认 */
-export function parseAssumptions(search: string): UsageAssumptions {
-  const params = new URLSearchParams(search);
-  const cache = Number(params.get("cache"));
-  return {
-    inputTokens: readInt(params, "in", DEFAULT_ASSUMPTIONS.inputTokens),
-    outputTokens: readInt(params, "out", DEFAULT_ASSUMPTIONS.outputTokens),
-    cacheHitRate:
-      params.has("cache") && Number.isInteger(cache) && cache >= 0 && cache <= 100
-        ? cache / 100
-        : DEFAULT_ASSUMPTIONS.cacheHitRate,
-  };
-}
-
-/** 默认值不写；返回值不含 ? */
-export function serializeAssumptions(a: UsageAssumptions): string {
-  const d = DEFAULT_ASSUMPTIONS;
-  const entries: [string, string][] = [
-    ["in", a.inputTokens === d.inputTokens ? "" : String(a.inputTokens)],
-    ["out", a.outputTokens === d.outputTokens ? "" : String(a.outputTokens)],
-    ["cache", a.cacheHitRate === d.cacheHitRate ? "" : String(Math.round(a.cacheHitRate * 100))],
-  ];
-  return new URLSearchParams(entries.filter(([, v]) => v !== "")).toString();
 }
 
 // ───────────────────────── 筛选与排序 ─────────────────────────

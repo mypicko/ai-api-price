@@ -9,9 +9,7 @@ import {
   serializePlanFilters,
   sortPlans,
   creditsMultiple,
-  parseAssumptions,
   perRequestUsd,
-  serializeAssumptions,
   toPlanRows,
 } from "../src/lib/plans";
 import { fixtureModel } from "./helpers";
@@ -104,17 +102,6 @@ describe("plans：回本计算", () => {
     expect(creditsMultiple(find("copilot-pro"))).toBe(1.5);
     expect(creditsMultiple(find("copilot-max"))).toBe(2);
     expect(creditsMultiple(find("glm-lite"))).toBeNull();
-  });
-});
-
-describe("plans：用量假设与 URL 同步", () => {
-  it("默认值不写进 URL；非法值回到默认", () => {
-    expect(serializeAssumptions(DEFAULT_ASSUMPTIONS)).toBe("");
-    const custom = { inputTokens: 8000, outputTokens: 500, cacheHitRate: 0.5 };
-    const query = serializeAssumptions(custom);
-    expect(query).toBe("in=8000&out=500&cache=50");
-    expect(parseAssumptions(`?${query}`)).toEqual(custom);
-    expect(parseAssumptions("?in=-1&out=abc&cache=150")).toEqual(DEFAULT_ASSUMPTIONS);
   });
 });
 

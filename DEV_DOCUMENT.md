@@ -1108,9 +1108,9 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 - **数据**：`config/plans/<provider>.yaml`，结构见 `PlanFileSchema`（月费、按年付月均价、额度类型与说明、含美元额度、计价模型、来源、核对日期）。人工核对，不经过管线；网站构建时读取（`PLANS_DIR` 可覆盖目录），并输出 `/api/v1/plans.json`。
 - **额度类型**：`credits`（含美元额度，如 GitHub Copilot、Claude Max 的 API 额度）/ `points`（有公开数字的积分或次数，如智谱 5 小时 / 每周积分）/ `relative`（「Pro 的 N 倍」）/ `unpublished`（官方未公开，如实标注，不估算）。
-- **可比方式：回本次数**。各家额度口径无法统一换算成每百万 tokens 单价，所以按用户给定的单次请求用量（输入 / 输出 tokens、缓存命中率，默认 30,000 / 1,500 / 80%，同步到 URL 的 `in` / `out` / `cache`），用计价模型的官方价算出按量付费一次的费用；月费 ÷ 单次费用 = 每月用到多少次套餐开始划算（前提是额度够用）。含美元额度的另显示「额度价值」= 额度 ÷ 月费。
+- **可比方式：回本次数**。各家额度口径无法统一换算成每百万 tokens 单价，所以按固定的编程 Agent 典型单次请求用量（输入 30,000 / 输出 1,500 tokens、缓存命中 80%，`DEFAULT_ASSUMPTIONS`；页面上不提供调整，旧链接里的 `in` / `out` / `cache` 参数会被清掉），用计价模型的官方价算出按量付费一次的费用；月费 ÷ 单次费用 = 每月用到多少次套餐开始划算（前提是额度够用）。含美元额度的另显示「额度价值」= 额度 ÷ 月费。
 - **页面**：价格榜第 4 个标签「编程套餐」（`?kind=plans`），`PlansTable` + `lib/plans.ts`。
-- **筛选与排序**：关键字（提供方 / 套餐 / 工具 / 计价模型）、地区（国际 / 国内）、只看公开额度（credits / points）；按月费、回本次数（随单次用量变化）、额度价值排序。URL 参数 `q` / `region` / `quota=published` / `psort`，与用量参数 `in` / `out` / `cache` 一起同步。
+- **筛选与排序**：关键字（提供方 / 套餐 / 工具 / 计价模型）、地区（国际 / 国内）、只看公开额度（credits / points）；按月费、回本次数（随单次用量变化）、额度价值排序。URL 参数 `q` / `region` / `quota=published` / `psort`。
 - **覆盖**（2026-10-20 核对，9 家 27 档）：国际 Claude、ChatGPT / Codex、GitHub Copilot、Cursor、Kimi Code（国际站）；国内智谱 GLM Coding Plan、火山方舟 Coding Plan、MiniMax M Plan、阿里云百炼 Coding Plan（Lite 已停售，只收 Pro）。国内套餐的价格页需国内网络核对。
 - **计价平台**：国内套餐（provider.region = cn）的计价模型优先取「官方（国内站）」人民币价，国际套餐优先取「官方」价。
 - **价格口径**：记录刊例价 / 原价；首月特惠、限时折扣、季付折扣写进 notes。

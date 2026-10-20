@@ -1,7 +1,7 @@
 /**
  * 编程套餐表（DEV §3.15）：月费、额度说明、回本次数、额度价值。
- * 回本次数 = 月费 ÷ 计价模型按量付费一次的费用；单次用量（输入 / 输出 / 缓存命中率）可调。
- * 可按关键字、地区、是否公开额度筛选，按月费 / 回本次数 / 额度价值排序；用量与筛选都同步到 URL。
+ * 回本次数 = 月费 ÷ 计价模型按量付费一次的费用，单次用量固定为 DEFAULT_ASSUMPTIONS（编程 Agent 的典型用量）。
+ * 可按关键字、地区、是否公开额度筛选，按月费 / 回本次数 / 额度价值排序；筛选同步到 URL。
  */
 import { useEffect, useId, useMemo, useState } from "react";
 import { createT } from "../lib/i18n";
@@ -12,16 +12,13 @@ import {
   breakEven,
   creditsMultiple,
   filterPlans,
-  parseAssumptions,
   parsePlanFilters,
-  serializeAssumptions,
   serializePlanFilters,
   sortPlans,
   type PlanFilters,
   type PlanRegion,
   type PlanRow,
   type PlanSort,
-  type UsageAssumptions,
 } from "../lib/plans";
 import { formatPrice } from "../lib/shared-client";
 import { DualPrice } from "./DualPrice";
@@ -32,34 +29,29 @@ export interface PlansTableProps {
   readonly fxNote: string;
 }
 
-/** 本表在 URL 里用到的参数；同步时只改这些，保留其他参数（kind 等） */
-const OWN_PARAMS = ["in", "out", "cache", "q", "region", "quota", "psort"] as const;
+/**
+ * 本表在 URL 里用到的参数；同步时只改这些，保留其他参数（kind 等）。
+ * in / out / cache 是早期版本的单次用量参数，已移除，这里顺手清掉旧链接里的残留。
+ */
+const OWN_PARAMS = ["q", "region", "quota", "psort", "in", "out", "cache"] as const;
 
-interface PlansState {
-  readonly assumptions: UsageAssumptions;
-  readonly filters: PlanFilters;
-}
-
-function usePlansState(): [PlansState, (next: PlansState) => void] {
-  const [state, setState] = useState<PlansState>({
-    assumptions: DEFAULT_ASSUMPTIONS,
-    filters: DEFAULT_PLAN_FILTERS,
-  });
+function usePlanFilters(): [PlanFilters, (next: PlanFilters) => void] {
+  const [filters, setFilters] = useState<PlanFilters>(DEFAULT_PLAN_FILTERS);
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    const search = window.location.search;
-    setState({ assumptions: parseAssumptions(search), filters: parsePlanFilters(search) });
+    setFilters(parsePlanFilters(window.location.search));
     setReady(true);
   }, []);
   useEffect(() => {
     if (!ready) return;
     const url = new URL(window.location.href);
     OWN_PARAMS.forEach((key) => url.searchParams.delete(key));
-    const own = `${serializeAssumptions(state.assumptions)}&${serializePlanFilters(state.filters)}`;
-    new URLSearchParams(own).forEach((v, k) => url.searchParams.set(k, v));
+    new URLSearchParams(serializePlanFilters(filters)).forEach((v, k) =>
+      url.searchParams.set(k, v),
+    );
     window.history.replaceState(window.history.state, "", url);
-  }, [state, ready]);
-  return [state, setState];
+  }, [filters, ready]);
+  return [filters, setFilters];
 }
 
 const REGIONS: readonly PlanRegion[] = ["all", "intl", "cn"];
@@ -136,83 +128,15 @@ function PlanFilterBar(props: {
   );
 }
 
-function NumberField(props: {
-  label: string;
-  value: number;
-  suffix?: string;
-  min: number;
-  max: number;
-  onChange: (value: number) => void;
-}) {
-  const id = useId();
-  return (
-    <label htmlFor={id} className="flex flex-col gap-1 text-small text-text-muted">
-      {props.label}
-      <span className="relative">
-        <input
-          id={id}
-          type="number"
-          inputMode="numeric"
-          className={`input-base w-36 text-right tabular ${props.suffix ? "pr-7" : ""}`}
-          value={props.value}
-          min={props.min}
-          max={props.max}
-          onChange={(e) => {
-            const value = Number(e.target.value);
-            if (Number.isFinite(value) && value >= props.min && value <= props.max)
-              props.onChange(value);
-          }}
-        />
-        {props.suffix && (
-          <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-text-faint">
-            {props.suffix}
-          </span>
-        )}
-      </span>
-    </label>
-  );
-}
-
-function Assumptions(props: {
-  value: UsageAssumptions;
+function BreakEvenCell({
+  row,
+  a,
+  locale,
+}: {
+  row: PlanRow;
+  a: typeof DEFAULT_ASSUMPTIONS;
   locale: Locale;
-  onChange: (next: UsageAssumptions) => void;
 }) {
-  const t = createT(props.locale);
-  const { value, onChange } = props;
-  return (
-    <fieldset className="flex flex-wrap items-end gap-3" data-testid="plan-assumptions">
-      <legend className="mb-2 text-small font-semibold">{t("plans.assumptions")}</legend>
-      <NumberField
-        label={t("plans.inputTokens")}
-        value={value.inputTokens}
-        min={1}
-        max={10_000_000}
-        onChange={(inputTokens) => onChange({ ...value, inputTokens })}
-      />
-      <NumberField
-        label={t("plans.outputTokens")}
-        value={value.outputTokens}
-        min={1}
-        max={10_000_000}
-        onChange={(outputTokens) => onChange({ ...value, outputTokens })}
-      />
-      <NumberField
-        label={t("plans.cacheHitRate")}
-        value={Math.round(value.cacheHitRate * 100)}
-        suffix="%"
-        min={0}
-        max={100}
-        onChange={(pct) => onChange({ ...value, cacheHitRate: pct / 100 })}
-      />
-      <button type="button" className="btn" onClick={() => onChange(DEFAULT_ASSUMPTIONS)}>
-        {t("plans.reset")}
-      </button>
-    </fieldset>
-  );
-}
-
-function BreakEvenCell({ row, a, locale }: { row: PlanRow; a: UsageAssumptions; locale: Locale }) {
   const t = createT(locale);
   const result = breakEven(row, a);
   if (!result || !row.model) {
@@ -239,7 +163,15 @@ function BreakEvenCell({ row, a, locale }: { row: PlanRow; a: UsageAssumptions; 
   );
 }
 
-function Row({ row, a, props }: { row: PlanRow; a: UsageAssumptions; props: PlansTableProps }) {
+function Row({
+  row,
+  a,
+  props,
+}: {
+  row: PlanRow;
+  a: typeof DEFAULT_ASSUMPTIONS;
+  props: PlansTableProps;
+}) {
   const t = createT(props.locale);
   const multiple = creditsMultiple(row);
   return (
@@ -303,17 +235,14 @@ function Row({ row, a, props }: { row: PlanRow; a: UsageAssumptions; props: Plan
 
 export function PlansTable(props: PlansTableProps) {
   const t = createT(props.locale);
-  const [{ assumptions, filters }, setState] = usePlansState();
-  const setAssumptions = (next: UsageAssumptions): void => setState({ assumptions: next, filters });
-  const setFilters = (next: PlanFilters): void => setState({ assumptions, filters: next });
+  const [filters, setFilters] = usePlanFilters();
   const rows = useMemo(
-    () => sortPlans(filterPlans(props.rows, filters), filters.sort, assumptions),
-    [props.rows, filters, assumptions],
+    () => sortPlans(filterPlans(props.rows, filters), filters.sort, DEFAULT_ASSUMPTIONS),
+    [props.rows, filters],
   );
   return (
     <div className="flex flex-col gap-4">
       <p className="max-w-3xl text-small text-text-muted">{t("plans.lead")}</p>
-      <Assumptions value={assumptions} locale={props.locale} onChange={setAssumptions} />
       <PlanFilterBar
         value={filters}
         count={rows.length}
@@ -351,7 +280,7 @@ export function PlansTable(props: PlansTableProps) {
           </thead>
           <tbody>
             {rows.map((row) => (
-              <Row key={row.id} row={row} a={assumptions} props={props} />
+              <Row key={row.id} row={row} a={DEFAULT_ASSUMPTIONS} props={props} />
             ))}
           </tbody>
         </table>

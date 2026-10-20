@@ -281,9 +281,10 @@ test.describe("其他页面", () => {
     expect(errors).toEqual([]);
   });
 
-  test("编程套餐：月费、额度价值、回本次数随单次用量变化并同步到 URL", async ({ page }) => {
+  test("编程套餐：月费、额度价值、回本次数（固定按典型用量计算）", async ({ page }) => {
     const errors = collectErrors(page);
-    await gotoHydrated(page, "/?kind=plans");
+    // 旧链接里的单次用量参数会被忽略并清掉
+    await gotoHydrated(page, "/?kind=plans&in=5000&cache=10");
     const tabs = page.getByTestId("board-tabs");
     await expect(tabs.getByRole("tab", { name: /^编程套餐/ })).toHaveAttribute(
       "aria-selected",
@@ -295,18 +296,14 @@ test.describe("其他页面", () => {
     await expect(pro).toContainText("×1.50");
     const cell = pro.getByTestId("break-even");
     await expect(cell).toContainText(/每月 [\d,]+ 次/);
-    const before = await cell.innerText();
     // 没有公开额度的套餐如实标注
     await expect(table.locator('tr[data-id="glm-unknown"]')).toContainText("官方未公开具体额度");
-    await page.getByLabel("输入 tokens").fill("5000");
-    await expect(page).toHaveURL(/in=5000/);
-    await expect(cell).not.toHaveText(before);
+    // 单次用量输入区已移除，说明文字写明了假设
+    await expect(page.getByTestId("plan-assumptions")).toHaveCount(0);
+    await expect(page.getByText(/输入 3 万 tokens、输出 1,500 tokens、缓存命中 80%/)).toBeVisible();
+    await expect(page).not.toHaveURL(/in=|cache=/);
     await page.reload();
-    await expect(page.getByLabel("输入 tokens")).toHaveValue("5000");
-    await expect(tabs.getByRole("tab", { name: /^编程套餐/ })).toHaveAttribute(
-      "aria-selected",
-      "true",
-    );
+    await expect(cell).toContainText(/每月 [\d,]+ 次/);
     await page.waitForLoadState("networkidle");
     expect(errors).toEqual([]);
   });
