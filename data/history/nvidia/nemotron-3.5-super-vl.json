@@ -26,6 +26,13 @@
         "cacheRead": 0.08,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.15,
+        "output": 0.5,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "openrouter:nvidia/nemotron-3.5-super-vl": [
@@ -35,6 +42,13 @@
         "cacheRead": 0.08,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.15,
+        "output": 0.5,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "together:nvidia/nemotron-3.5-super-vl": [

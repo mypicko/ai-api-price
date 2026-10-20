@@ -71,6 +71,13 @@
         "cacheRead": 0.018,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.075,
+        "output": 0.25,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "nebius:zhipu/glm-5.3-flash": [
@@ -107,6 +114,13 @@
         "cacheRead": 0.006,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.048,
+        "output": 0.16,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "parasail:zhipu/glm-5.3-flash": [

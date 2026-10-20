@@ -1,0 +1,14 @@
+{
+  "modelSlug": "minimax/minimax-m3.1-flash-free",
+  "series": {
+    "openrouter:minimax/minimax-m3.1-flash-free": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
+      }
+    ]
+  }
+}

@@ -35,6 +35,13 @@
         "cacheRead": 0.13,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "databricks:zhipu/glm-5.3": [
@@ -80,6 +87,13 @@
         "cacheRead": 0.182,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.7,
+        "output": 2.2,
+        "cacheRead": 0.13,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-20"
       }
     ],
     "nebius:zhipu/glm-5.3": [
