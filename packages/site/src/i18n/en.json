@@ -291,5 +291,14 @@
   "plans.creditsTitle": "Includes {credits} in credits",
   "plans.source": "Official page",
   "plans.verifiedAt": "Checked {date}",
-  "plans.footnote": "Plan prices and limits are checked by hand; promotions and regional prices follow the official pages. Break-even compares price only, not whether limits suffice or service quality."
+  "plans.footnote": "Plan prices and limits are checked by hand; promotions and regional prices follow the official pages. Break-even compares price only, not whether limits suffice or service quality.",
+  "plans.filter.search": "Search plans",
+  "plans.filter.searchPlaceholder": "Search plans or providers, e.g. Claude, Zhipu, Pro",
+  "plans.filter.publishedOnly": "Published limits only",
+  "plans.filter.sort": "Sort",
+  "plans.sort.price": "Price, low to high",
+  "plans.sort.breakEven": "Break-even, fewest first",
+  "plans.sort.credits": "Credit value, high to low",
+  "plans.resultCount": "{count} plans",
+  "plans.empty": "No plans match these filters."
 }

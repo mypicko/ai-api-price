@@ -1,17 +1,26 @@
 /**
  * 编程套餐表（DEV §3.15）：月费、额度说明、回本次数、额度价值。
- * 回本次数 = 月费 ÷ 计价模型按量付费一次的费用；单次用量（输入 / 输出 / 缓存命中率）可调，并同步到 URL。
+ * 回本次数 = 月费 ÷ 计价模型按量付费一次的费用；单次用量（输入 / 输出 / 缓存命中率）可调。
+ * 可按关键字、地区、是否公开额度筛选，按月费 / 回本次数 / 额度价值排序；用量与筛选都同步到 URL。
  */
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { createT } from "../lib/i18n";
 import type { Locale } from "../lib/locale";
 import {
   DEFAULT_ASSUMPTIONS,
+  DEFAULT_PLAN_FILTERS,
   breakEven,
   creditsMultiple,
+  filterPlans,
   parseAssumptions,
+  parsePlanFilters,
   serializeAssumptions,
+  serializePlanFilters,
+  sortPlans,
+  type PlanFilters,
+  type PlanRegion,
   type PlanRow,
+  type PlanSort,
   type UsageAssumptions,
 } from "../lib/plans";
 import { formatPrice } from "../lib/shared-client";
@@ -23,22 +32,108 @@ export interface PlansTableProps {
   readonly fxNote: string;
 }
 
-/** 用量假设与 URL 同步：只改 in / out / cache，保留其他参数（kind 等） */
-function useAssumptions(): [UsageAssumptions, (next: UsageAssumptions) => void] {
-  const [state, setState] = useState<UsageAssumptions>(DEFAULT_ASSUMPTIONS);
+/** 本表在 URL 里用到的参数；同步时只改这些，保留其他参数（kind 等） */
+const OWN_PARAMS = ["in", "out", "cache", "q", "region", "quota", "psort"] as const;
+
+interface PlansState {
+  readonly assumptions: UsageAssumptions;
+  readonly filters: PlanFilters;
+}
+
+function usePlansState(): [PlansState, (next: PlansState) => void] {
+  const [state, setState] = useState<PlansState>({
+    assumptions: DEFAULT_ASSUMPTIONS,
+    filters: DEFAULT_PLAN_FILTERS,
+  });
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    setState(parseAssumptions(window.location.search));
+    const search = window.location.search;
+    setState({ assumptions: parseAssumptions(search), filters: parsePlanFilters(search) });
     setReady(true);
   }, []);
   useEffect(() => {
     if (!ready) return;
     const url = new URL(window.location.href);
-    ["in", "out", "cache"].forEach((key) => url.searchParams.delete(key));
-    new URLSearchParams(serializeAssumptions(state)).forEach((v, k) => url.searchParams.set(k, v));
+    OWN_PARAMS.forEach((key) => url.searchParams.delete(key));
+    const own = `${serializeAssumptions(state.assumptions)}&${serializePlanFilters(state.filters)}`;
+    new URLSearchParams(own).forEach((v, k) => url.searchParams.set(k, v));
     window.history.replaceState(window.history.state, "", url);
   }, [state, ready]);
   return [state, setState];
+}
+
+const REGIONS: readonly PlanRegion[] = ["all", "intl", "cn"];
+const SORTS: readonly PlanSort[] = ["price", "breakEven", "credits"];
+
+function PlanFilterBar(props: {
+  value: PlanFilters;
+  count: number;
+  locale: Locale;
+  onChange: (next: PlanFilters) => void;
+}) {
+  const t = createT(props.locale);
+  const { value, onChange } = props;
+  const searchId = useId();
+  const sortId = useId();
+  return (
+    <div className="flex flex-col gap-3" data-testid="plan-filters">
+      <div className="flex flex-wrap items-center gap-3">
+        <label htmlFor={searchId} className="sr-only">
+          {t("plans.filter.search")}
+        </label>
+        <input
+          id={searchId}
+          type="search"
+          className="input-base min-w-0 flex-1 sm:max-w-sm"
+          placeholder={t("plans.filter.searchPlaceholder")}
+          value={value.q}
+          maxLength={100}
+          onChange={(e) => onChange({ ...value, q: e.target.value })}
+        />
+        <div role="group" aria-label={t("filter.region")} className="segmented">
+          {REGIONS.map((r) => (
+            <button
+              key={r}
+              type="button"
+              aria-pressed={value.region === r}
+              onClick={() => onChange({ ...value, region: r })}
+            >
+              {t(`filter.region.${r}`)}
+            </button>
+          ))}
+        </div>
+        <label className="flex cursor-pointer items-center gap-2 text-table">
+          <input
+            type="checkbox"
+            className="size-4 accent-accent"
+            checked={value.publishedOnly}
+            onChange={(e) => onChange({ ...value, publishedOnly: e.target.checked })}
+          />
+          {t("plans.filter.publishedOnly")}
+        </label>
+        <div className="flex items-center gap-2">
+          <label htmlFor={sortId} className="text-small text-text-muted">
+            {t("plans.filter.sort")}
+          </label>
+          <select
+            id={sortId}
+            className="input-base"
+            value={value.sort}
+            onChange={(e) => onChange({ ...value, sort: e.target.value as PlanSort })}
+          >
+            {SORTS.map((s) => (
+              <option key={s} value={s}>
+                {t(`plans.sort.${s}`)}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <p className="text-small text-text-muted" aria-live="polite" data-testid="plan-count">
+        {t("plans.resultCount", { count: props.count })}
+      </p>
+    </div>
+  );
 }
 
 function NumberField(props: {
@@ -208,12 +303,23 @@ function Row({ row, a, props }: { row: PlanRow; a: UsageAssumptions; props: Plan
 
 export function PlansTable(props: PlansTableProps) {
   const t = createT(props.locale);
-  const [assumptions, setAssumptions] = useAssumptions();
-  const { rows } = props;
+  const [{ assumptions, filters }, setState] = usePlansState();
+  const setAssumptions = (next: UsageAssumptions): void => setState({ assumptions: next, filters });
+  const setFilters = (next: PlanFilters): void => setState({ assumptions, filters: next });
+  const rows = useMemo(
+    () => sortPlans(filterPlans(props.rows, filters), filters.sort, assumptions),
+    [props.rows, filters, assumptions],
+  );
   return (
     <div className="flex flex-col gap-4">
       <p className="max-w-3xl text-small text-text-muted">{t("plans.lead")}</p>
       <Assumptions value={assumptions} locale={props.locale} onChange={setAssumptions} />
+      <PlanFilterBar
+        value={filters}
+        count={rows.length}
+        locale={props.locale}
+        onChange={setFilters}
+      />
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full border-collapse" data-testid="plans-table">
           <caption className="sr-only">{t("plans.caption")}</caption>
@@ -249,6 +355,14 @@ export function PlansTable(props: PlansTableProps) {
             ))}
           </tbody>
         </table>
+        {rows.length === 0 && (
+          <div className="flex flex-col items-center gap-3 px-4 py-12 text-text-muted">
+            <p>{t("plans.empty")}</p>
+            <button type="button" className="btn" onClick={() => setFilters(DEFAULT_PLAN_FILTERS)}>
+              {t("table.resetFilters")}
+            </button>
+          </div>
+        )}
       </div>
       <p className="text-micro text-text-faint">{t("plans.footnote")}</p>
     </div>

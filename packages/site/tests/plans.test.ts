@@ -2,7 +2,12 @@ import { describe, expect, it } from "vitest";
 import { loadPlans } from "../src/lib/load-data";
 import {
   DEFAULT_ASSUMPTIONS,
+  DEFAULT_PLAN_FILTERS,
   breakEven,
+  filterPlans,
+  parsePlanFilters,
+  serializePlanFilters,
+  sortPlans,
   creditsMultiple,
   parseAssumptions,
   perRequestUsd,
@@ -120,5 +125,48 @@ describe("plans.json 接口", () => {
     expect(body.success).toBe(true);
     expect(body.data.providers.map((p) => p.provider.id)).toEqual(["github-copilot", "zhipu"]);
     expect(body.meta.count).toBe(4);
+  });
+});
+
+describe("plans：筛选与排序", () => {
+  it("关键字匹配提供方、套餐名和工具；地区；只看公开额度", () => {
+    expect(filterPlans(rows, { ...DEFAULT_PLAN_FILTERS, q: "copilot" }).map((r) => r.id)).toEqual([
+      "copilot-pro",
+      "copilot-max",
+    ]);
+    expect(filterPlans(rows, { ...DEFAULT_PLAN_FILTERS, q: "智谱 lite" }).map((r) => r.id)).toEqual(
+      ["glm-lite"],
+    );
+    expect(
+      filterPlans(rows, { ...DEFAULT_PLAN_FILTERS, region: "cn" }).every((r) => r.region === "cn"),
+    ).toBe(true);
+    expect(
+      filterPlans(rows, { ...DEFAULT_PLAN_FILTERS, region: "intl" }).map((r) => r.providerId),
+    ).toEqual(["github-copilot", "github-copilot"]);
+    expect(
+      filterPlans(rows, { ...DEFAULT_PLAN_FILTERS, publishedOnly: true }).map((r) => r.id),
+    ).toEqual(["glm-lite", "copilot-pro", "copilot-max"]);
+  });
+
+  it("排序：月费、回本次数（算不出的排最后）、额度价值（没有的排最后）", () => {
+    const byPrice = sortPlans(rows, "price", DEFAULT_ASSUMPTIONS).map((r) => r.id);
+    expect(byPrice).toEqual(["glm-lite", "copilot-pro", "glm-unknown", "copilot-max"]);
+    const byBreakEven = sortPlans(rows, "breakEven", DEFAULT_ASSUMPTIONS);
+    const counts = byBreakEven.map((r) => breakEven(r, DEFAULT_ASSUMPTIONS)?.perMonth ?? Infinity);
+    expect(counts).toEqual(counts.toSorted((a, b) => a - b));
+    expect(
+      sortPlans(rows, "credits", DEFAULT_ASSUMPTIONS)
+        .map((r) => r.id)
+        .slice(0, 2),
+    ).toEqual(["copilot-max", "copilot-pro"]);
+  });
+
+  it("筛选条件与 URL 互相转换，默认值不写", () => {
+    expect(serializePlanFilters(DEFAULT_PLAN_FILTERS)).toBe("");
+    const f = { q: "glm", region: "cn" as const, publishedOnly: true, sort: "breakEven" as const };
+    const query = serializePlanFilters(f);
+    expect(query).toBe("q=glm&region=cn&quota=published&psort=breakEven");
+    expect(parsePlanFilters(`?${query}`)).toEqual(f);
+    expect(parsePlanFilters("?region=eu&psort=hack&quota=x")).toEqual(DEFAULT_PLAN_FILTERS);
   });
 });

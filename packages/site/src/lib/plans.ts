@@ -182,3 +182,82 @@ export function serializeAssumptions(a: UsageAssumptions): string {
   ];
   return new URLSearchParams(entries.filter(([, v]) => v !== "")).toString();
 }
+
+// ───────────────────────── 筛选与排序 ─────────────────────────
+
+export type PlanSort = "price" | "breakEven" | "credits";
+export type PlanRegion = "all" | Region;
+
+export interface PlanFilters {
+  readonly q: string;
+  readonly region: PlanRegion;
+  /** 只看有公开数字额度的套餐（credits / points） */
+  readonly publishedOnly: boolean;
+  readonly sort: PlanSort;
+}
+
+export const DEFAULT_PLAN_FILTERS: PlanFilters = {
+  q: "",
+  region: "all",
+  publishedOnly: false,
+  sort: "price",
+};
+
+const PUBLISHED_KINDS: ReadonlySet<PlanQuotaKind> = new Set(["credits", "points"]);
+const PLAN_SORTS: readonly PlanSort[] = ["price", "breakEven", "credits"];
+const MAX_QUERY = 100;
+
+function matchesQuery(row: PlanRow, q: string): boolean {
+  const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+  const haystack =
+    `${row.providerName} ${row.name} ${row.tools} ${row.model?.displayName ?? ""}`.toLowerCase();
+  return terms.every((term) => haystack.includes(term));
+}
+
+export function filterPlans(rows: readonly PlanRow[], f: PlanFilters): readonly PlanRow[] {
+  return rows.filter(
+    (row) =>
+      matchesQuery(row, f.q) &&
+      (f.region === "all" || row.region === f.region) &&
+      (!f.publishedOnly || PUBLISHED_KINDS.has(row.quotaKind)),
+  );
+}
+
+/** 升序；回本次数越少越划算，额度价值越高越划算（降序）；算不出的排最后 */
+export function sortPlans(
+  rows: readonly PlanRow[],
+  sort: PlanSort,
+  a: UsageAssumptions,
+): readonly PlanRow[] {
+  const key = (row: PlanRow): number => {
+    if (sort === "breakEven") return breakEven(row, a)?.perMonth ?? Infinity;
+    if (sort === "credits") return -(creditsMultiple(row) ?? -Infinity);
+    return row.monthly.usd;
+  };
+  return rows.toSorted(
+    (x, y) => key(x) - key(y) || x.monthly.usd - y.monthly.usd || x.id.localeCompare(y.id),
+  );
+}
+
+export function parsePlanFilters(search: string): PlanFilters {
+  const params = new URLSearchParams(search);
+  const region = params.get("region");
+  const sort = params.get("psort") ?? "";
+  return {
+    q: (params.get("q") ?? "").slice(0, MAX_QUERY),
+    region: region === "intl" || region === "cn" ? region : "all",
+    publishedOnly: params.get("quota") === "published",
+    sort: (PLAN_SORTS as readonly string[]).includes(sort) ? (sort as PlanSort) : "price",
+  };
+}
+
+/** 默认值不写；返回值不含 ? */
+export function serializePlanFilters(f: PlanFilters): string {
+  const entries: [string, string][] = [
+    ["q", f.q.trim()],
+    ["region", f.region === "all" ? "" : f.region],
+    ["quota", f.publishedOnly ? "published" : ""],
+    ["psort", f.sort === "price" ? "" : f.sort],
+  ];
+  return new URLSearchParams(entries.filter(([, v]) => v !== "")).toString();
+}

@@ -311,6 +311,37 @@ test.describe("其他页面", () => {
     expect(errors).toEqual([]);
   });
 
+  test("编程套餐筛选：关键字、地区、只看公开额度、排序，并同步到 URL", async ({ page }) => {
+    await gotoHydrated(page, "/?kind=plans");
+    const table = page.getByTestId("plans-table");
+    const filters = page.getByTestId("plan-filters");
+    const ids = () =>
+      table.locator("tbody tr").evaluateAll((rows) => rows.map((r) => r.getAttribute("data-id")));
+    await expect(page.getByTestId("plan-count")).toHaveText("共 4 个套餐");
+    await filters.getByPlaceholder(/搜索套餐/).fill("copilot");
+    await expect(table.locator("tbody tr")).toHaveCount(2);
+    await expect(page).toHaveURL(/q=copilot/);
+    await filters.getByPlaceholder(/搜索套餐/).fill("");
+    await filters.getByRole("button", { name: "国内" }).click();
+    await expect(page).toHaveURL(/region=cn/);
+    expect(await ids()).toEqual(["glm-lite", "glm-unknown"]);
+    await filters.getByLabel("只看公开额度").check();
+    expect(await ids()).toEqual(["glm-lite"]);
+    await expect(page).toHaveURL(/quota=published/);
+    await filters.getByRole("button", { name: "全部" }).click();
+    await filters.getByLabel("排序").selectOption({ label: "额度价值从高到低" });
+    await expect(page).toHaveURL(/psort=credits/);
+    expect((await ids()).slice(0, 2)).toEqual(["copilot-max", "copilot-pro"]);
+    await page.reload();
+    await expect(filters.getByLabel("只看公开额度")).toBeChecked();
+    await expect(filters.getByLabel("排序")).toHaveValue("credits");
+    expect((await ids()).slice(0, 2)).toEqual(["copilot-max", "copilot-pro"]);
+    // 没有结果时可以一键重置
+    await filters.getByPlaceholder(/搜索套餐/).fill("不存在的套餐");
+    await page.getByRole("button", { name: "清除筛选" }).click();
+    await expect(page.getByTestId("plan-count")).toHaveText("共 4 个套餐");
+  });
+
   test("视频/图像变动并入变动页；旧的 /media/ 链接跳转到价格榜视频标签", async ({ page }) => {
     await page.goto("/changes/");
     await expect(page.getByTestId("media-changes")).toContainText("MiniMax-H3");
