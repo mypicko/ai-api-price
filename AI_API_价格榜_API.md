@@ -715,6 +715,12 @@ curl -s https://alice.github.io/ai-api-price/api/v1/changes/2026-11.json
 
 ---
 
+### 2.9 `GET /api/v1/plans.json` — 编程套餐
+
+返回 `config/plans/*.yaml` 的内容（价格为原币种，人工核对）：`data.providers[]` 每项包含 `provider`、`currency`、`sourceUrl`、`verifiedAt`、`toolsZh/En`、`breakEvenModel` 和 `plans[]`（`id`、`name`、`monthly`、`annualMonthly`、`quotaKind`、`quotaZh/En`、`creditsUsd`、`notesZh/En`）。`meta.count` 为套餐总数。`quotaKind`：`credits` / `points` / `relative` / `unpublished`。
+
+---
+
 ## 3. 内部接口
 
 ### 3.1 Source 抓取器契约

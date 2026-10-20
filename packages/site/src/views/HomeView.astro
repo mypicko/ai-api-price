@@ -8,6 +8,7 @@ import { getSiteModel } from "../lib/site-data";
 import { toMediaSearchItem } from "../lib/media";
 import { toMediaTableRow, toTableRow } from "../lib/site-model";
 import { packRows } from "../lib/pack";
+import { toPlanRows } from "../lib/plans";
 import { fxNote, platformOptions, vendorOptions } from "../lib/views";
 
 interface Props {
@@ -23,6 +24,7 @@ const platforms = platformOptions(model, locale);
 const modelCount = new Set(rows.map((r) => r.modelSlug)).size;
 const mediaRows = model.media.offerings.map((o) => toMediaTableRow(model, o, locale));
 const media = mediaRows.map(toMediaSearchItem);
+const planRows = toPlanRows(model, model.data.plans, locale);
 ---
 
 <BaseLayout locale={locale} path="">
@@ -49,6 +51,7 @@ const media = mediaRows.map(toMediaSearchItem);
             <PriceBoard
               client:load
               mediaRows={mediaRows}
+              planRows={planRows}
               packedRows={packRows(rows)}
               locale={locale}
               base={base}

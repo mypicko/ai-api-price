@@ -1,0 +1,26 @@
+provider: { id: github-copilot, nameZh: GitHub Copilot, nameEn: GitHub Copilot, region: intl }
+currency: USD
+sourceUrl: https://github.com/features/copilot/plans
+verifiedAt: 2026-10-18
+toolsZh: VS Code 等 IDE
+toolsEn: VS Code and other IDEs
+breakEvenModel: anthropic/claude-sonnet-4.5
+plans:
+  - {
+      id: copilot-pro,
+      name: Pro,
+      monthly: 10,
+      quotaKind: credits,
+      creditsUsd: 15,
+      quotaZh: 每月 $15 额度,
+      quotaEn: $15/month credits,
+    }
+  - {
+      id: copilot-max,
+      name: Max,
+      monthly: 100,
+      quotaKind: credits,
+      creditsUsd: 200,
+      quotaZh: 每月 $200 额度,
+      quotaEn: $200/month credits,
+    }

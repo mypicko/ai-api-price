@@ -36,6 +36,7 @@ export default defineConfig({
     timeout: 180_000,
     env: {
       DATA_DIR: "tests/fixtures/data",
+      PLANS_DIR: "tests/fixtures/plans",
       SITE_URL: `http://localhost:${PORT}`,
       BASE_PATH: "/",
       ASTRO_TELEMETRY_DISABLED: "1",

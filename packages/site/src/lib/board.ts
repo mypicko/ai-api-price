@@ -5,13 +5,13 @@
  */
 import type { MediaKind } from "@aipb/shared";
 
-export type BoardTab = "text" | MediaKind;
+export type BoardTab = "text" | MediaKind | "plans";
 
-export const BOARD_TABS: readonly BoardTab[] = ["text", "video", "image"];
+export const BOARD_TABS: readonly BoardTab[] = ["text", "video", "image", "plans"];
 
 export function parseBoardTab(search: string): BoardTab {
   const kind = new URLSearchParams(search).get("kind");
-  return kind === "video" || kind === "image" ? kind : "text";
+  return kind === "video" || kind === "image" || kind === "plans" ? kind : "text";
 }
 
 /** 切换到 tab 后的查询串（含 ?，为空时返回 ""）：只保留关键字，清掉另一张表的筛选和排序参数 */

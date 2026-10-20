@@ -1,0 +1,32 @@
+provider: { id: cursor, nameZh: Cursor, nameEn: Cursor, region: intl }
+currency: USD
+sourceUrl: https://cursor.com/pricing
+verifiedAt: 2026-10-20
+toolsZh: Cursor 编辑器与云端智能体（套餐内只含 Grok 模型，第三方模型按 API 标价另计）
+toolsEn: Cursor editor and cloud agents (plans include Grok models only; third-party models billed at API rates)
+breakEvenModel: x-ai/grok-4.7
+plans:
+  - id: cursor-plus
+    name: Plus
+    monthly: 8
+    quotaKind: relative
+    quotaZh: 基础用量（官方未公开具体额度）
+    quotaEn: Base usage (exact limits not published)
+  - id: cursor-premium
+    name: 高级版 / Premium
+    monthly: 30
+    quotaKind: relative
+    quotaZh: Plus 的 4 倍用量
+    quotaEn: 4x Plus usage
+  - id: cursor-super
+    name: Super
+    monthly: 100
+    quotaKind: relative
+    quotaZh: Plus 的 15 倍用量，高峰时段优先
+    quotaEn: 15x Plus usage, priority access at peak times
+  - id: cursor-ultra
+    name: Ultra
+    monthly: 200
+    quotaKind: relative
+    quotaZh: Plus 的 50 倍用量
+    quotaEn: 50x Plus usage

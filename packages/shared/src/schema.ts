@@ -417,3 +417,57 @@ export const ManualSourceConfigSchema = z.object({
   ),
 });
 export type ManualSourceConfig = z.infer<typeof ManualSourceConfigSchema>;
+
+// ───────────────────────── 编程套餐（Coding Plan，1.3） ─────────────────────────
+
+/**
+ * 额度类型：
+ * - credits：含固定美元额度（GitHub Copilot、Claude Max 的 API 额度），可直接算「额度价值」
+ * - points：积分 / 请求次数等有公开数字的限额（智谱 GLM 的 5 小时 / 每周积分）
+ * - relative：只写了「Pro 的 N 倍」这类相对说法
+ * - unpublished：官方未公开具体额度
+ */
+export const PlanQuotaKindSchema = z.enum(["credits", "points", "relative", "unpublished"]);
+export type PlanQuotaKind = z.infer<typeof PlanQuotaKindSchema>;
+
+export const PlanSchema = z.object({
+  id: IdSchema,
+  name: z.string().min(1).max(60),
+  /** 按月付的月费（文件的 currency） */
+  monthly: z.number().positive(),
+  /** 按年付折算的月均价；没有年付时省略 */
+  annualMonthly: z.number().positive().optional(),
+  quotaKind: PlanQuotaKindSchema,
+  quotaZh: z.string().min(1).max(200),
+  quotaEn: z.string().min(1).max(200),
+  /** 每月包含的美元额度（credits 类型必填） */
+  creditsUsd: z.number().positive().optional(),
+  notesZh: z.string().max(200).optional(),
+  notesEn: z.string().max(200).optional(),
+});
+export type Plan = z.infer<typeof PlanSchema>;
+
+/** config/plans/<provider>.yaml：一个提供方的全部套餐 */
+export const PlanFileSchema = z
+  .object({
+    provider: z.object({
+      id: IdSchema,
+      nameZh: z.string(),
+      nameEn: z.string(),
+      region: RegionSchema,
+    }),
+    currency: CurrencySchema,
+    sourceUrl: z.url({ protocol: /^https$/ }),
+    verifiedAt: IsoDateSchema,
+    /** 适用的工具 / 使用范围 */
+    toolsZh: z.string().max(200),
+    toolsEn: z.string().max(200),
+    /** 用来折算「按量付费一次要多少钱」的模型（vendor/model，取其官方价） */
+    breakEvenModel: z.string().regex(/^[a-z0-9.-]+\/[a-z0-9.-]+$/),
+    plans: z.array(PlanSchema).min(1),
+  })
+  .refine(
+    (file) => file.plans.every((p) => p.quotaKind !== "credits" || p.creditsUsd !== undefined),
+    { message: "quotaKind = credits 的套餐必须填写 creditsUsd" },
+  );
+export type PlanFile = z.infer<typeof PlanFileSchema>;

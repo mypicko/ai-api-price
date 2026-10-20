@@ -10,13 +10,17 @@ import { createT } from "../lib/i18n";
 import { countByKind, type MediaRow } from "../lib/media";
 import { unpackRows, type PackedRows } from "../lib/pack";
 import type { TableRow } from "../lib/table";
+import type { PlanRow } from "../lib/plans";
 import { MediaTable } from "./MediaTable";
+import { PlansTable } from "./PlansTable";
 import { PriceTable, type PriceTableProps } from "./PriceTable";
 
 export interface PriceBoardProps extends Omit<PriceTableProps, "rows"> {
   /** 文本报价，按列打包以减小首页 HTML（见 lib/pack.ts） */
   readonly packedRows: PackedRows;
   readonly mediaRows: readonly MediaRow[];
+  /** 编程套餐（Coding Plan） */
+  readonly planRows: readonly PlanRow[];
 }
 
 function replaceSearch(search: string): void {
@@ -71,14 +75,14 @@ function TabList(props: {
 }
 
 export function PriceBoard(props: PriceBoardProps) {
-  const { mediaRows, packedRows, ...rest } = props;
+  const { mediaRows, packedRows, planRows, ...rest } = props;
   const rows = useMemo(() => unpackRows<TableRow>(packedRows), [packedRows]);
   const tableProps: PriceTableProps = { ...rest, rows };
   const [tab, setTab] = useState<BoardTab>("text");
   useEffect(() => setTab(parseBoardTab(window.location.search)), []);
   const counts = useMemo(
-    () => ({ text: rows.length, ...countByKind(mediaRows) }),
-    [rows, mediaRows],
+    () => ({ text: rows.length, ...countByKind(mediaRows), plans: planRows.length }),
+    [rows, mediaRows, planRows],
   );
   const select = (next: BoardTab, query?: string): void => {
     const search = query === undefined ? window.location.search : `?q=${encodeURIComponent(query)}`;
@@ -86,14 +90,16 @@ export function PriceBoard(props: PriceBoardProps) {
     setTab(next);
   };
   const onSelectMedia = (kind: MediaKind, query: string): void => select(kind, query);
-  // 没有视频/图像数据时不显示标签，保持原来的单表样式
-  if (mediaRows.length === 0) return <PriceTable {...tableProps} />;
+  // 没有视频/图像和套餐数据时不显示标签，保持原来的单表样式
+  if (mediaRows.length === 0 && planRows.length === 0) return <PriceTable {...tableProps} />;
   return (
     <div className="flex flex-col gap-4">
       <TabList tab={tab} counts={counts} locale={props.locale} onChange={(next) => select(next)} />
       <div id="board-panel" role="tabpanel" aria-labelledby={`board-tab-${tab}`}>
         {tab === "text" ? (
           <PriceTable {...tableProps} onSelectMedia={onSelectMedia} />
+        ) : tab === "plans" ? (
+          <PlansTable rows={planRows} locale={props.locale} fxNote={props.fxNote} />
         ) : (
           <MediaTable
             rows={mediaRows}

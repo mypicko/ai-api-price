@@ -1,0 +1,29 @@
+provider: { id: anthropic, nameZh: Claude（Anthropic）, nameEn: Claude (Anthropic), region: intl }
+currency: USD
+sourceUrl: https://claude.com/pricing
+verifiedAt: 2026-10-20
+toolsZh: Claude Code、Claude 网页 / 桌面 / 移动端
+toolsEn: Claude Code, Claude web / desktop / mobile apps
+breakEvenModel: anthropic/claude-sonnet-5.5
+plans:
+  - id: claude-pro
+    name: Pro
+    monthly: 20
+    annualMonthly: 17
+    quotaKind: relative
+    quotaZh: 比免费版更多的用量（官方未公开具体额度）
+    quotaEn: More usage than Free (exact limits not published)
+  - id: claude-max-5x
+    name: Max 5x
+    monthly: 100
+    quotaKind: credits
+    creditsUsd: 100
+    quotaZh: Pro 的 5 倍用量，另含每月 $100 Claude Platform API 额度
+    quotaEn: 5x Pro usage, plus $100/month in Claude Platform API credits
+  - id: claude-max-20x
+    name: Max 20x
+    monthly: 200
+    quotaKind: credits
+    creditsUsd: 200
+    quotaZh: Pro 的 20 倍用量，另含每月 $200 Claude Platform API 额度
+    quotaEn: 20x Pro usage, plus $200/month in Claude Platform API credits

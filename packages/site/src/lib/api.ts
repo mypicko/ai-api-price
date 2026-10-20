@@ -4,6 +4,7 @@
 import {
   SCHEMA_VERSION,
   type ChangeEvent,
+  type PlanFile,
   type FxRate,
   type HistoryFile,
   type StatusFile,
@@ -210,6 +211,13 @@ export function fxPayload(
 ): ApiEnvelope<{ latest: FxRate; history: readonly FxRate[] }> {
   const { latest, history } = model.data.fx;
   return envelope({ latest, history }, baseMeta(model, { count: history.length }));
+}
+
+/** 编程套餐：配置原样输出（价格为原币种），按文件名排序 */
+export function plansPayload(model: SiteModel): ApiEnvelope<{ providers: readonly PlanFile[] }> {
+  const providers = model.data.plans;
+  const count = providers.reduce((n, f) => n + f.plans.length, 0);
+  return envelope({ providers }, baseMeta(model, { count }));
 }
 
 export type StatusPayload = StatusFile | { run: null; sources: []; quarantine: []; warnings: [] };

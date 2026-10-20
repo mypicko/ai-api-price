@@ -1,0 +1,33 @@
+provider:
+  { id: openai, nameZh: ChatGPT / Codex（OpenAI）, nameEn: ChatGPT / Codex (OpenAI), region: intl }
+currency: USD
+sourceUrl: https://openai.com/chatgpt/pricing/
+verifiedAt: 2026-10-20
+toolsZh: Codex（CLI / IDE / 云端）与 ChatGPT
+toolsEn: Codex (CLI / IDE / cloud) and ChatGPT
+breakEvenModel: openai/gpt-5.6
+plans:
+  - id: chatgpt-plus
+    name: Plus
+    monthly: 20
+    quotaKind: unpublished
+    quotaZh: 含 Codex，官方未公开具体额度
+    quotaEn: Includes Codex; exact limits not published
+  - id: chatgpt-pro-100
+    name: Pro（$100 档）
+    monthly: 100
+    quotaKind: relative
+    quotaZh: Pro 三档用量中的标准档，官方未公开具体额度
+    quotaEn: Standard tier of three Pro usage tiers; exact limits not published
+  - id: chatgpt-pro-200
+    name: Pro（$200 档）
+    monthly: 200
+    quotaKind: relative
+    quotaZh: Pro 三档用量中的中档，官方未公开具体额度
+    quotaEn: Middle tier of three Pro usage tiers; exact limits not published
+  - id: chatgpt-pro-500
+    name: Pro（$500 档）
+    monthly: 500
+    quotaKind: relative
+    quotaZh: Pro 三档用量中的最高档，官方未公开具体额度
+    quotaEn: Highest of three Pro usage tiers; exact limits not published

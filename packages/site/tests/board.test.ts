@@ -7,7 +7,8 @@ describe("价格榜标签（文本 / 视频 / 图像）", () => {
     expect(parseBoardTab("?kind=video")).toBe("video");
     expect(parseBoardTab("?q=flux&kind=image")).toBe("image");
     expect(parseBoardTab("?kind=hack")).toBe("text");
-    expect(BOARD_TABS).toEqual(["text", "video", "image"]);
+    expect(parseBoardTab("?kind=plans")).toBe("plans");
+    expect(BOARD_TABS).toEqual(["text", "video", "image", "plans"]);
   });
 
   it("切换标签时只保留搜索关键字，其他表格的筛选参数清掉", () => {

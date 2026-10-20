@@ -1103,3 +1103,12 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 - **优先级**：同一平台同一模型，`openrouter-endpoints`（实时）> `litellm-resellers`（社区价格表）。
 - **模型合并**：转售平台的模型名先由 `reseller-model.ts` 清洗（Bedrock 的区域前缀和 `-v1:0`、Vertex 的 `@日期` 和 `-maas`、Llama 写法统一），再走 `normalizeModelId`，这样同一个模型在各平台能聚合到一行。日期快照（如 `-20250929`）和量化标记（如 `-fp8`）保留，不与基础版本合并。
 - **网站**：价格榜默认按模型聚合；平台筛选下拉框按平台类型分组；详情页的平台对比按价格升序，走势图最多 6 条线（官方优先，其余取最便宜的）。
+
+### 3.15 编程套餐（Coding Plan，1.3）
+
+- **数据**：`config/plans/<provider>.yaml`，结构见 `PlanFileSchema`（月费、按年付月均价、额度类型与说明、含美元额度、计价模型、来源、核对日期）。人工核对，不经过管线；网站构建时读取（`PLANS_DIR` 可覆盖目录），并输出 `/api/v1/plans.json`。
+- **额度类型**：`credits`（含美元额度，如 GitHub Copilot、Claude Max 的 API 额度）/ `points`（有公开数字的积分或次数，如智谱 5 小时 / 每周积分）/ `relative`（「Pro 的 N 倍」）/ `unpublished`（官方未公开，如实标注，不估算）。
+- **可比方式：回本次数**。各家额度口径无法统一换算成每百万 tokens 单价，所以按用户给定的单次请求用量（输入 / 输出 tokens、缓存命中率，默认 30,000 / 1,500 / 80%，同步到 URL 的 `in` / `out` / `cache`），用计价模型的官方价算出按量付费一次的费用；月费 ÷ 单次费用 = 每月用到多少次套餐开始划算（前提是额度够用）。含美元额度的另显示「额度价值」= 额度 ÷ 月费。
+- **页面**：价格榜第 4 个标签「编程套餐」（`?kind=plans`），`PlansTable` + `lib/plans.ts`。
+- **覆盖**（2026-10-20 核对）：Claude、ChatGPT / Codex、GitHub Copilot、Cursor、Kimi Code（国际站）。智谱 GLM、火山方舟、MiniMax、阿里百炼的价格页需国内网络，待补。
+- **待办**：套餐 `verifiedAt` 的过期提醒尚未接入管线（manual 价格有 W2004，套餐暂无）。

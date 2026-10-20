@@ -1,0 +1,29 @@
+provider: { id: github-copilot, nameZh: GitHub Copilot, nameEn: GitHub Copilot, region: intl }
+currency: USD
+sourceUrl: https://github.com/features/copilot/plans
+verifiedAt: 2026-10-20
+toolsZh: VS Code、JetBrains 等 IDE，Copilot CLI，GitHub 网页
+toolsEn: VS Code, JetBrains and other IDEs, Copilot CLI, GitHub web
+breakEvenModel: anthropic/claude-sonnet-5.5
+plans:
+  - id: copilot-pro
+    name: Pro
+    monthly: 10
+    quotaKind: credits
+    creditsUsd: 15
+    quotaZh: 不限量代码补全，另含每月 $15 GitHub AI 额度
+    quotaEn: Unlimited code completions, plus $15/month in GitHub AI credits
+  - id: copilot-pro-plus
+    name: Pro+
+    monthly: 39
+    quotaKind: credits
+    creditsUsd: 70
+    quotaZh: 含 Opus 等高级模型，每月 $70 GitHub AI 额度
+    quotaEn: Premium models including Opus, $70/month in GitHub AI credits
+  - id: copilot-max
+    name: Max
+    monthly: 100
+    quotaKind: credits
+    creditsUsd: 200
+    quotaZh: 每月 $200 GitHub AI 额度（Pro+ 的 2.9 倍以上）
+    quotaEn: $200/month in GitHub AI credits (2.9x+ Pro+)

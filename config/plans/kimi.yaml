@@ -1,0 +1,36 @@
+provider: { id: kimi, nameZh: Kimi Code（月之暗面）, nameEn: Kimi Code (Moonshot AI), region: cn }
+currency: USD
+sourceUrl: https://www.kimi.com/code
+verifiedAt: 2026-10-20
+toolsZh: Kimi Code 桌面端、CLI 与 IDE 插件（国际站美元价）
+toolsEn: Kimi Code desktop, CLI and IDE plugins (international site, USD)
+breakEvenModel: moonshot/kimi-k3
+plans:
+  - id: kimi-plus
+    name: Plus
+    monthly: 19
+    annualMonthly: 15
+    quotaKind: unpublished
+    quotaZh: 按时刷新的使用额度，可用 K3（官方未公开具体额度）
+    quotaEn: Periodically refreshed usage, includes K3 (exact limits not published)
+  - id: kimi-pro
+    name: Pro
+    monthly: 39
+    annualMonthly: 31
+    quotaKind: unpublished
+    quotaZh: 更充足的额度和更高并发（官方未公开具体额度）
+    quotaEn: More usage and higher concurrency (exact limits not published)
+  - id: kimi-max
+    name: Max
+    monthly: 99
+    annualMonthly: 79
+    quotaKind: unpublished
+    quotaZh: 适配高强度开发的额度（官方未公开具体额度）
+    quotaEn: Usage for heavy development (exact limits not published)
+  - id: kimi-ultra
+    name: Ultra
+    monthly: 199
+    annualMonthly: 159
+    quotaKind: unpublished
+    quotaZh: 最高档额度（官方未公开具体额度）
+    quotaEn: Highest usage tier (exact limits not published)

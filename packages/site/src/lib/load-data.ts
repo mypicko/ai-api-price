@@ -11,6 +11,7 @@ import {
   HistoryFileSchema,
   LatestFileSchema,
   MediaLatestFileSchema,
+  PlanFileSchema,
   ProvidersConfigSchema,
   QuarantineFileSchema,
   StatusFileSchema,
@@ -19,6 +20,7 @@ import {
   type HistoryFile,
   type LatestFile,
   type MediaLatestFile,
+  type PlanFile,
   type ProvidersConfig,
   type QuarantineFile,
   type StatusFile,
@@ -46,11 +48,15 @@ export interface SiteData {
   readonly quarantine: QuarantineFile;
   readonly providers: ProvidersConfig;
   readonly media: MediaData;
+  /** config/plans/*.yaml：编程套餐，按文件名排序 */
+  readonly plans: readonly PlanFile[];
 }
 
 export interface LoadOptions {
   readonly dataDir: string;
   readonly providersFile: string;
+  /** 编程套餐配置目录；不存在时视为没有套餐 */
+  readonly plansDir?: string;
   /** 没有 fx.json 时使用的汇率（与 pipeline 的 FX_FALLBACK_RATE 一致） */
   readonly fallbackRate?: number;
   /** 没有 fx.json 时 fallback 汇率的日期 */
@@ -87,6 +93,7 @@ export function resolveLoadOptions(
     providersFile: env["PROVIDERS_FILE"]
       ? resolve(cwd, env["PROVIDERS_FILE"])
       : join(root, "config", "providers.yaml"),
+    plansDir: env["PLANS_DIR"] ? resolve(cwd, env["PLANS_DIR"]) : join(root, "config", "plans"),
     fallbackRate: Number.isFinite(rate) && rate > 0 ? rate : DEFAULT_FALLBACK_RATE,
   };
 }
@@ -165,6 +172,14 @@ export function loadMediaData(dataDir: string): MediaData {
   };
 }
 
+/** 读取 config/plans/*.yaml；目录不存在返回空数组，格式错误直接报错 */
+export function loadPlans(dir: string | undefined): readonly PlanFile[] {
+  if (!dir || !existsSync(dir)) return [];
+  return listFiles(dir, /\.ya?ml$/)
+    .toSorted()
+    .map((file) => parseWith(PlanFileSchema, parseYaml(readFileSync(file, "utf8")), file));
+}
+
 export function loadSiteData(options: LoadOptions): SiteData {
   const { dataDir } = options;
   const latest = readOptional(LatestFileSchema, join(dataDir, "latest.json"));
@@ -185,5 +200,6 @@ export function loadSiteData(options: LoadOptions): SiteData {
     quarantine,
     providers: loadProviders(options.providersFile),
     media: loadMediaData(dataDir),
+    plans: loadPlans(options.plansDir),
   };
 }

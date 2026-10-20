@@ -281,6 +281,36 @@ test.describe("其他页面", () => {
     expect(errors).toEqual([]);
   });
 
+  test("编程套餐：月费、额度价值、回本次数随单次用量变化并同步到 URL", async ({ page }) => {
+    const errors = collectErrors(page);
+    await gotoHydrated(page, "/?kind=plans");
+    const tabs = page.getByTestId("board-tabs");
+    await expect(tabs.getByRole("tab", { name: /^编程套餐/ })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+    const table = page.getByTestId("plans-table");
+    await expect(table.locator("tbody tr")).toHaveCount(4);
+    const pro = table.locator('tr[data-id="copilot-pro"]');
+    await expect(pro).toContainText("×1.50");
+    const cell = pro.getByTestId("break-even");
+    await expect(cell).toContainText(/每月 [\d,]+ 次/);
+    const before = await cell.innerText();
+    // 没有公开额度的套餐如实标注
+    await expect(table.locator('tr[data-id="glm-unknown"]')).toContainText("官方未公开具体额度");
+    await page.getByLabel("输入 tokens").fill("5000");
+    await expect(page).toHaveURL(/in=5000/);
+    await expect(cell).not.toHaveText(before);
+    await page.reload();
+    await expect(page.getByLabel("输入 tokens")).toHaveValue("5000");
+    await expect(tabs.getByRole("tab", { name: /^编程套餐/ })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+    await page.waitForLoadState("networkidle");
+    expect(errors).toEqual([]);
+  });
+
   test("视频/图像变动并入变动页；旧的 /media/ 链接跳转到价格榜视频标签", async ({ page }) => {
     await page.goto("/changes/");
     await expect(page.getByTestId("media-changes")).toContainText("MiniMax-H3");
