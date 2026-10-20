@@ -1,0 +1,22 @@
+provider:
+  {
+    id: bailian,
+    nameZh: 阿里云百炼 Coding Plan,
+    nameEn: Alibaba Cloud Model Studio Coding Plan,
+    region: cn,
+  }
+currency: CNY
+sourceUrl: https://help.aliyun.com/zh/model-studio/coding-plan
+verifiedAt: 2026-10-20
+toolsZh: 主流 AI 编程工具；可用千问、GLM、Kimi、MiniMax 等模型（Lite 套餐已停售）
+toolsEn: Mainstream AI coding tools; Qwen, GLM, Kimi, MiniMax and more (Lite plan discontinued)
+breakEvenModel: alibaba/qwen3.7-plus
+plans:
+  - id: bailian-pro
+    name: Pro
+    monthly: 200
+    quotaKind: points
+    quotaZh: "每 5 小时 6,000 次、每周 45,000 次、每月 90,000 次模型调用（一次提问通常消耗 5~30 次）"
+    quotaEn: "6,000 model calls per 5h, 45,000 per week, 90,000 per month (one prompt usually uses 5-30 calls)"
+    notesZh: 新客首月 ¥39.9，之后 ¥200/月
+    notesEn: First month ¥39.9 for new customers, then ¥200/mo

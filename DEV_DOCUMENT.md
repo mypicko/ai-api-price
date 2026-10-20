@@ -1110,5 +1110,7 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 - **额度类型**：`credits`（含美元额度，如 GitHub Copilot、Claude Max 的 API 额度）/ `points`（有公开数字的积分或次数，如智谱 5 小时 / 每周积分）/ `relative`（「Pro 的 N 倍」）/ `unpublished`（官方未公开，如实标注，不估算）。
 - **可比方式：回本次数**。各家额度口径无法统一换算成每百万 tokens 单价，所以按用户给定的单次请求用量（输入 / 输出 tokens、缓存命中率，默认 30,000 / 1,500 / 80%，同步到 URL 的 `in` / `out` / `cache`），用计价模型的官方价算出按量付费一次的费用；月费 ÷ 单次费用 = 每月用到多少次套餐开始划算（前提是额度够用）。含美元额度的另显示「额度价值」= 额度 ÷ 月费。
 - **页面**：价格榜第 4 个标签「编程套餐」（`?kind=plans`），`PlansTable` + `lib/plans.ts`。
-- **覆盖**（2026-10-20 核对）：Claude、ChatGPT / Codex、GitHub Copilot、Cursor、Kimi Code（国际站）。智谱 GLM、火山方舟、MiniMax、阿里百炼的价格页需国内网络，待补。
+- **覆盖**（2026-10-20 核对，9 家 27 档）：国际 Claude、ChatGPT / Codex、GitHub Copilot、Cursor、Kimi Code（国际站）；国内智谱 GLM Coding Plan、火山方舟 Coding Plan、MiniMax M Plan、阿里云百炼 Coding Plan（Lite 已停售，只收 Pro）。国内套餐的价格页需国内网络核对。
+- **计价平台**：国内套餐（provider.region = cn）的计价模型优先取「官方（国内站）」人民币价，国际套餐优先取「官方」价。
+- **价格口径**：记录刊例价 / 原价；首月特惠、限时折扣、季付折扣写进 notes。
 - **待办**：套餐 `verifiedAt` 的过期提醒尚未接入管线（manual 价格有 W2004，套餐暂无）。

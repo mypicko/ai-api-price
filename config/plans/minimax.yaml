@@ -1,0 +1,35 @@
+provider: { id: minimax, nameZh: MiniMax M Plan, nameEn: MiniMax M Plan, region: cn }
+currency: CNY
+sourceUrl: https://www.minimax.cn/m-plan
+verifiedAt: 2026-10-20
+toolsZh: MiniMax Code（网页、桌面、TUI、移动端），或用 API Key 接入 Claude Code、Codex、Cursor 等
+toolsEn: MiniMax Code (web, desktop, TUI, mobile), or API key for Claude Code, Codex, Cursor and more
+breakEvenModel: minimax/minimax-m3.1-flash
+plans:
+  - id: minimax-go
+    name: Go
+    monthly: 49
+    annualMonthly: 40.83
+    quotaKind: relative
+    quotaZh: 基础用量，文本模型 M3.1 Flash（官方未公开具体额度）
+    quotaEn: Base usage, text model M3.1 Flash (exact limits not published)
+    notesZh: 按年付 ¥490/年；10 月 31 日前首月 5 折
+    notesEn: Annual ¥490/yr; first month 50% off until Oct 31
+  - id: minimax-explore
+    name: Explore
+    monthly: 119
+    annualMonthly: 99.17
+    quotaKind: relative
+    quotaZh: Go 的 3 倍用量，另含视频模型 H3
+    quotaEn: 3x Go usage, plus video model H3
+    notesZh: 按年付 ¥1,190/年
+    notesEn: Annual ¥1,190/yr
+  - id: minimax-build
+    name: Build
+    monthly: 469
+    annualMonthly: 390.83
+    quotaKind: relative
+    quotaZh: Go 的 12 倍用量，高峰时段优先
+    quotaEn: 12x Go usage, priority at peak times
+    notesZh: 按年付 ¥4,690/年
+    notesEn: Annual ¥4,690/yr

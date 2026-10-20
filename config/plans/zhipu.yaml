@@ -1,0 +1,35 @@
+provider: { id: zhipu, nameZh: 智谱 GLM Coding Plan, nameEn: Zhipu GLM Coding Plan, region: cn }
+currency: CNY
+sourceUrl: https://bigmodel.cn/glm-coding
+verifiedAt: 2026-10-20
+toolsZh: ZCode、Claude Code、Cursor 等 20+ 指定编程工具（在指定工具外调用不能使用套餐额度）
+toolsEn: ZCode, Claude Code, Cursor and 20+ supported coding tools (plan quota only applies inside supported tools)
+breakEvenModel: zhipu/glm-5.3
+plans:
+  - id: glm-lite
+    name: Lite
+    monthly: 118
+    annualMonthly: 82.6
+    quotaKind: points
+    quotaZh: "每 5 小时 2,000 积分、每周 10,000 积分（GLM-5.3 每万 token：输入 6.9、缓存 1.7、输出 24 积分）"
+    quotaEn: "2,000 points per 5h, 10,000 per week (GLM-5.3 per 10K tokens: 6.9 input, 1.7 cached, 24 output points)"
+    notesZh: 连续包季 8 折（¥94.4/月）；非高峰时段积分按 5 折抵扣
+    notesEn: Quarterly billing 20% off (¥94.4/mo); off-peak usage costs 50% of points
+  - id: glm-pro
+    name: Pro
+    monthly: 538
+    annualMonthly: 376.6
+    quotaKind: points
+    quotaZh: "每 5 小时 12,000 积分、每周 60,000 积分（Lite 的 6 倍）"
+    quotaEn: "12,000 points per 5h, 60,000 per week (6x Lite)"
+    notesZh: 连续包季 8 折（¥430.4/月）
+    notesEn: Quarterly billing 20% off (¥430.4/mo)
+  - id: glm-max
+    name: Max
+    monthly: 1078
+    annualMonthly: 754.6
+    quotaKind: points
+    quotaZh: "每 5 小时 28,000 积分、每周 140,000 积分（Lite 的 14 倍）"
+    quotaEn: "28,000 points per 5h, 140,000 per week (14x Lite)"
+    notesZh: 连续包季 8 折（¥862.4/月）；高峰期资源优先
+    notesEn: Quarterly billing 20% off (¥862.4/mo); priority at peak times

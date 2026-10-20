@@ -52,6 +52,26 @@ describe("plans：配置与表格行", () => {
   });
 });
 
+describe("plans：计价模型的平台", () => {
+  it("国内套餐优先用国内站价格，国际套餐优先用官方（国际）价格", () => {
+    const official = model.offeringsById.get("official:zhipu/glm-4.6");
+    if (!official) throw new Error("fixture");
+    const cn = {
+      ...official,
+      id: "official-cn:zhipu/glm-4.6",
+      platform: "official-cn",
+      displayName: "GLM-4.6 国内站",
+    };
+    const offeringsById = new Map(model.offeringsById);
+    offeringsById.set(cn.id, cn);
+    const patched = { ...model, offeringsById };
+    const glm = files.filter((f) => f.provider.id === "zhipu");
+    expect(toPlanRows(patched, glm, "zh")[0]?.model?.displayName).toBe("GLM-4.6 国内站");
+    const intl = glm.map((f) => ({ ...f, provider: { ...f.provider, region: "intl" as const } }));
+    expect(toPlanRows(patched, intl, "zh")[0]?.model?.displayName).toBe(official.displayName);
+  });
+});
+
 describe("plans：回本计算", () => {
   const priced = { slug: "x/y", displayName: "Y", input: 3, output: 15, cacheRead: 0.3 };
 

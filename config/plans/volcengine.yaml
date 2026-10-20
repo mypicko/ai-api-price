@@ -1,0 +1,25 @@
+provider:
+  { id: volcengine, nameZh: 火山方舟 Coding Plan, nameEn: Volcano Ark Coding Plan, region: cn }
+currency: CNY
+sourceUrl: https://www.volcengine.com/activity/codingplan
+verifiedAt: 2026-10-20
+toolsZh: Claude Code、Cursor 等主流编程工具；可在豆包、GLM、DeepSeek、Kimi、MiniMax 等模型间切换或用 Auto
+toolsEn: Claude Code, Cursor and other coding tools; switch between Doubao, GLM, DeepSeek, Kimi, MiniMax or use Auto
+breakEvenModel: bytedance/doubao-seed-evolving
+plans:
+  - id: volc-lite
+    name: Lite
+    monthly: 40
+    quotaKind: relative
+    quotaZh: 每 5 小时、每周、每月三层限额（官方未公开具体额度）
+    quotaEn: 5-hour, weekly and monthly limits (exact limits not published)
+    notesZh: 限时特惠 ¥9.9/月、¥59.8/季、¥419.8/年（此处为刊例价）
+    notesEn: Promo ¥9.9/mo, ¥59.8/quarter, ¥419.8/yr (list price shown)
+  - id: volc-pro
+    name: Pro
+    monthly: 200
+    quotaKind: relative
+    quotaZh: Lite 的 5 倍用量（官方未公开具体额度）
+    quotaEn: 5x Lite usage (exact limits not published)
+    notesZh: 限时特惠 ¥49.9/月、¥299.8/季、¥2,099.8/年（此处为刊例价）
+    notesEn: Promo ¥49.9/mo, ¥299.8/quarter, ¥2,099.8/yr (list price shown)

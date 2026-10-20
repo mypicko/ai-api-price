@@ -57,7 +57,10 @@ export const DEFAULT_ASSUMPTIONS: UsageAssumptions = {
   cacheHitRate: 0.8,
 };
 
-const OFFICIAL_PLATFORMS = ["official", "official-cn"] as const;
+/** 国内套餐和国内站人民币官方价比，国际套餐和官方（国际）价比 */
+function officialPlatforms(region: Region): readonly string[] {
+  return region === "cn" ? ["official-cn", "official"] : ["official", "official-cn"];
+}
 
 function toDual(amount: number, currency: Currency, usdCny: number): DualAmount {
   return currency === "USD"
@@ -65,10 +68,10 @@ function toDual(amount: number, currency: Currency, usdCny: number): DualAmount 
     : { usd: amount / usdCny, cny: amount };
 }
 
-function pricedModel(model: SiteModel, slug: string): PricedModel | null {
-  const offering = OFFICIAL_PLATFORMS.map((p) => model.offeringsById.get(`${p}:${slug}`)).find(
-    (o) => o !== undefined,
-  );
+function pricedModel(model: SiteModel, slug: string, region: Region): PricedModel | null {
+  const offering = officialPlatforms(region)
+    .map((p) => model.offeringsById.get(`${p}:${slug}`))
+    .find((o) => o !== undefined);
   if (!offering) return null;
   const usd = offering.converted.usd;
   return {
@@ -88,7 +91,7 @@ export function toPlanRows(
   const zh = locale === "zh";
   return files
     .flatMap((file) => {
-      const priced = pricedModel(model, file.breakEvenModel);
+      const priced = pricedModel(model, file.breakEvenModel, file.provider.region);
       return file.plans.map((plan) => ({
         id: plan.id,
         providerId: file.provider.id,
