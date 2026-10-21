@@ -35,6 +35,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.104613,
+        "output": 0.418453,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "siliconflow:alibaba/qwen3-30b-a3b-instruct-2507": [

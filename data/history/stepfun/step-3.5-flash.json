@@ -8,6 +8,13 @@
         "cacheRead": 0.02,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.10461,
+        "output": 0.31384,
+        "cacheRead": 0.02092,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "openrouter:stepfun/step-3.5-flash": [
@@ -26,6 +33,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.104613,
+        "output": 0.31384,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "siliconflow:stepfun/step-3.5-flash": [

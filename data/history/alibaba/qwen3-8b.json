@@ -17,6 +17,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "siliconflow:alibaba/qwen3-8b": [

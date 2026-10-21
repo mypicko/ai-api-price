@@ -96,6 +96,13 @@
         "cacheRead": 0.079605,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.388716,
+        "output": 0.777432,
+        "cacheRead": 0.032393,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "parasail:deepseek/deepseek-v4-pro": [
@@ -114,6 +121,13 @@
         "cacheRead": 0.145,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 1.79337,
+        "output": 3.58674,
+        "cacheRead": 0.149447,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "siliconflow:deepseek/deepseek-v4-pro": [

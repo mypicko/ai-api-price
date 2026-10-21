@@ -1829,6 +1829,1517 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-21T03:02:22Z"
+    },
+    {
+      "id": "2026-10-22-baseten:deepseek/deepseek-v3-0324-1",
+      "type": "removed",
+      "offeringId": "baseten:deepseek/deepseek-v3-0324",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v3-0324",
+      "displayName": "DeepSeek-V3-0324",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:deepseek/deepseek-v3.1-1",
+      "type": "removed",
+      "offeringId": "baseten:deepseek/deepseek-v3.1",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v3.1",
+      "displayName": "DeepSeek-V3.1",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:deepseek/deepseek-v4-pro-1",
+      "type": "removed",
+      "offeringId": "baseten:deepseek/deepseek-v4-pro",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro",
+      "displayName": "DeepSeek-V4-Pro",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:minimax/minimax-m2.5-1",
+      "type": "removed",
+      "offeringId": "baseten:minimax/minimax-m2.5",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2.5",
+      "displayName": "MiniMax-M2.5",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:moonshot/kimi-k2-instruct-0905-1",
+      "type": "removed",
+      "offeringId": "baseten:moonshot/kimi-k2-instruct-0905",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2-instruct-0905",
+      "displayName": "Kimi-K2-Instruct-0905",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:moonshot/kimi-k2-thinking-1",
+      "type": "removed",
+      "offeringId": "baseten:moonshot/kimi-k2-thinking",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2-thinking",
+      "displayName": "Kimi-K2-Thinking",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:moonshot/kimi-k2.5-1",
+      "type": "removed",
+      "offeringId": "baseten:moonshot/kimi-k2.5",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2.5",
+      "displayName": "Kimi-K2.5",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:moonshot/kimi-k2.6-1",
+      "type": "removed",
+      "offeringId": "baseten:moonshot/kimi-k2.6",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2.6",
+      "displayName": "Kimi-K2.6",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:moonshot/kimi-k2.7-code-1",
+      "type": "removed",
+      "offeringId": "baseten:moonshot/kimi-k2.7-code",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2.7-code",
+      "displayName": "Kimi-K2.7-Code",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:nvidia/nemotron-120b-a12b-1",
+      "type": "removed",
+      "offeringId": "baseten:nvidia/nemotron-120b-a12b",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nemotron-120b-a12b",
+      "displayName": "Nemotron-120B-A12B",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:zhipu/glm-4.6-1",
+      "type": "removed",
+      "offeringId": "baseten:zhipu/glm-4.6",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.6",
+      "displayName": "GLM-4.6",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:zhipu/glm-4.7-1",
+      "type": "removed",
+      "offeringId": "baseten:zhipu/glm-4.7",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.7",
+      "displayName": "GLM-4.7",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-baseten:zhipu/glm-5-1",
+      "type": "removed",
+      "offeringId": "baseten:zhipu/glm-5",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5",
+      "displayName": "GLM-5",
+      "platform": "baseten",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-bedrock:zhipu/glm-5.3-1",
+      "type": "new_model",
+      "offeringId": "bedrock:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "bedrock",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-fireworks:moonshot/kimi-k3-1",
+      "type": "price_down",
+      "offeringId": "fireworks:moonshot/kimi-k3",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3",
+      "displayName": "Kimi K3",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 3,
+          "new": 2.1,
+          "pct": -0.3
+        },
+        {
+          "field": "output",
+          "old": 15,
+          "new": 10.5,
+          "pct": -0.3
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.3,
+          "new": 0.21,
+          "pct": -0.3
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-fireworks:zhipu/glm-5.3-1",
+      "type": "price_down",
+      "offeringId": "fireworks:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.4,
+          "new": 0.98,
+          "pct": -0.3
+        },
+        {
+          "field": "output",
+          "old": 4.4,
+          "new": 3.08,
+          "pct": -0.3
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.26,
+          "new": 0.182,
+          "pct": -0.3
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-novita:meta/llama-4-maverick-1",
+      "type": "removed",
+      "offeringId": "novita:meta/llama-4-maverick",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-4-maverick",
+      "displayName": "Llama 4 Maverick",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-novita:meta/llama-4-scout-1",
+      "type": "removed",
+      "offeringId": "novita:meta/llama-4-scout",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-4-scout",
+      "displayName": "Llama 4 Scout",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:minimax/minimax-m2-1",
+      "type": "removed",
+      "offeringId": "official-cn:minimax/minimax-m2",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2",
+      "displayName": "MiniMax-M2",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:minimax/minimax-m2.1-1",
+      "type": "removed",
+      "offeringId": "official-cn:minimax/minimax-m2.1",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2.1",
+      "displayName": "MiniMax-M2.1",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:minimax/minimax-m2.5-1",
+      "type": "removed",
+      "offeringId": "official-cn:minimax/minimax-m2.5",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2.5",
+      "displayName": "MiniMax-M2.5",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:minimax/minimax-m2.5-highspeed-1",
+      "type": "removed",
+      "offeringId": "official-cn:minimax/minimax-m2.5-highspeed",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2.5-highspeed",
+      "displayName": "MiniMax-M2.5-highspeed",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:minimax/minimax-m2.7-1",
+      "type": "removed",
+      "offeringId": "official-cn:minimax/minimax-m2.7",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2.7",
+      "displayName": "MiniMax-M2.7",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:minimax/minimax-m2.7-highspeed-1",
+      "type": "removed",
+      "offeringId": "official-cn:minimax/minimax-m2.7-highspeed",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2.7-highspeed",
+      "displayName": "MiniMax-M2.7-highspeed",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:stepfun/step-3.5-flash-1",
+      "type": "price_up",
+      "offeringId": "official-cn:stepfun/step-3.5-flash",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-3.5-flash",
+      "displayName": "Step 3.5 Flash",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.1,
+          "new": 0.10461,
+          "pct": 0.0461
+        },
+        {
+          "field": "output",
+          "old": 0.3,
+          "new": 0.31384,
+          "pct": 0.04613
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.02,
+          "new": 0.02092,
+          "pct": 0.046
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:stepfun/step-3.5-flash-2603-1",
+      "type": "price_up",
+      "offeringId": "official-cn:stepfun/step-3.5-flash-2603",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-3.5-flash-2603",
+      "displayName": "Step 3.5 Flash 2603",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.1,
+          "new": 0.10461,
+          "pct": 0.0461
+        },
+        {
+          "field": "output",
+          "old": 0.3,
+          "new": 0.31384,
+          "pct": 0.04613
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.02,
+          "new": 0.02092,
+          "pct": 0.046
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:stepfun/step-3.7-flash-1",
+      "type": "price_up",
+      "offeringId": "official-cn:stepfun/step-3.7-flash",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-3.7-flash",
+      "displayName": "Step 3.7 Flash",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.185,
+          "new": 0.20175,
+          "pct": 0.09054
+        },
+        {
+          "field": "output",
+          "old": 1.11,
+          "new": 1.21052,
+          "pct": 0.09056
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.037,
+          "new": 0.04035,
+          "pct": 0.09054
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official-cn:stepfun/step-5-preview-1",
+      "type": "price_up",
+      "offeringId": "official-cn:stepfun/step-5-preview",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-5-preview",
+      "displayName": "Step 5 Preview",
+      "platform": "official-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.959,
+          "new": 1.04613,
+          "pct": 0.09086
+        },
+        {
+          "field": "output",
+          "old": 2.741,
+          "new": 2.98895,
+          "pct": 0.09046
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.048,
+          "new": 0.10461,
+          "pct": 1.179
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-official:zhipu/glm-5.3-flashx-legal-1",
+      "type": "new_model",
+      "offeringId": "official:zhipu/glm-5.3-flashx-legal",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flashx-legal",
+      "displayName": "GLM-5.3-FlashX-Legal",
+      "platform": "official",
+      "currency": "CNY",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-r1-1",
+      "type": "removed",
+      "offeringId": "openrouter:deepseek/deepseek-r1",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-r1",
+      "displayName": "R1",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4-flash-0731-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash-0731",
+      "displayName": "DeepSeek V4 Flash 0731",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.44,
+          "new": 0.04444,
+          "pct": -0.899
+        },
+        {
+          "field": "output",
+          "old": 1.32,
+          "new": 0.13332,
+          "pct": -0.899
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.014,
+          "new": 0.001414,
+          "pct": -0.899
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4-pro-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro",
+      "displayName": "DeepSeek V4 Pro 0423",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.95526,
+          "new": 0.388716,
+          "pct": -0.5931
+        },
+        {
+          "field": "output",
+          "old": 1.91052,
+          "new": 0.777432,
+          "pct": -0.5931
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.079605,
+          "new": 0.032393,
+          "pct": -0.5931
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.049,
+          "new": 0.0342,
+          "pct": -0.302
+        },
+        {
+          "field": "output",
+          "old": 0.525,
+          "new": 0.1368,
+          "pct": -0.7394
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0014,
+          "new": 0.000684,
+          "pct": -0.5114
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4.1-flash-1017-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.3,
+          "new": 0.15,
+          "pct": -0.5
+        },
+        {
+          "field": "output",
+          "old": 1.2,
+          "new": 0.6,
+          "pct": -0.5
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.006,
+          "new": 0.003,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:microsoft/wizardlm-2-8x22b-1",
+      "type": "removed",
+      "offeringId": "openrouter:microsoft/wizardlm-2-8x22b",
+      "vendor": "microsoft",
+      "modelSlug": "microsoft/wizardlm-2-8x22b",
+      "displayName": "WizardLM-2 8x22B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:tencent/hy3-1",
+      "type": "price_down",
+      "offeringId": "openrouter:tencent/hy3",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy3",
+      "displayName": "Hy3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.132,
+          "new": 0.0825,
+          "pct": -0.375
+        },
+        {
+          "field": "output",
+          "old": 0.528,
+          "new": 0.33,
+          "pct": -0.375
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.033,
+          "new": 0.020625,
+          "pct": -0.375
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:tencent/hy4-preview-1",
+      "type": "price_down",
+      "offeringId": "openrouter:tencent/hy4-preview",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy4-preview",
+      "displayName": "Hy4 preview",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.834,
+          "new": 0.7506,
+          "pct": -0.1
+        },
+        {
+          "field": "output",
+          "old": 2.501,
+          "new": 2.2509,
+          "pct": -0.1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.042,
+          "new": 0.0378,
+          "pct": -0.1
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:zhipu/glm-5.3-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.079,
+          "new": 0.7,
+          "pct": 7.861
+        },
+        {
+          "field": "output",
+          "old": 1.4,
+          "new": 2.2,
+          "pct": 0.5714
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.078,
+          "new": 0.13,
+          "pct": 0.6667
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen2.5-72b-instruct-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:alibaba/qwen2.5-72b-instruct",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen2.5-72b-instruct",
+      "displayName": "Qwen/Qwen2.5-72B-Instruct",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.59,
+          "new": 0.617218,
+          "pct": 0.04613
+        },
+        {
+          "field": "output",
+          "old": 0.59,
+          "new": 0.617218,
+          "pct": 0.04613
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen2.5-7b-instruct-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen2.5-7b-instruct",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen2.5-7b-instruct",
+      "displayName": "Qwen/Qwen2.5-7B-Instruct",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.05,
+          "new": 0,
+          "pct": -1
+        },
+        {
+          "field": "output",
+          "old": 0.05,
+          "new": 0,
+          "pct": -1
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-14b-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-14b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-14b",
+      "displayName": "Qwen/Qwen3-14B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.07,
+          "new": 0.0747237,
+          "pct": 0.06748
+        },
+        {
+          "field": "output",
+          "old": 0.28,
+          "new": 0.298895,
+          "pct": 0.06748
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-30b-a3b-instruct-2507-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-30b-a3b-instruct-2507",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-30b-a3b-instruct-2507",
+      "displayName": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.09,
+          "new": 0.104613,
+          "pct": 0.1624
+        },
+        {
+          "field": "output",
+          "old": 0.3,
+          "new": 0.418453,
+          "pct": 0.3948
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-32b-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-32b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-32b",
+      "displayName": "Qwen/Qwen3-32B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.14,
+          "new": 0.149447,
+          "pct": 0.06748
+        },
+        {
+          "field": "output",
+          "old": 0.57,
+          "new": 0.59779,
+          "pct": 0.04875
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-8b-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-8b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-8b",
+      "displayName": "Qwen/Qwen3-8B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.06,
+          "new": 0,
+          "pct": -1
+        },
+        {
+          "field": "output",
+          "old": 0.06,
+          "new": 0,
+          "pct": -1
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-coder-30b-a3b-instruct-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-coder-30b-a3b-instruct",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-coder-30b-a3b-instruct",
+      "displayName": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.07,
+          "new": 0.104613,
+          "pct": 0.4945
+        },
+        {
+          "field": "output",
+          "old": 0.28,
+          "new": 0.418453,
+          "pct": 0.4945
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-vl-30b-a3b-instruct-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-vl-30b-a3b-instruct",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-vl-30b-a3b-instruct",
+      "displayName": "Qwen/Qwen3-VL-30B-A3B-Instruct",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.29,
+          "new": 0.104613,
+          "pct": -0.6393
+        },
+        {
+          "field": "output",
+          "old": 1,
+          "new": 0.418453,
+          "pct": -0.5815
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-vl-30b-a3b-thinking-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-vl-30b-a3b-thinking",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-vl-30b-a3b-thinking",
+      "displayName": "Qwen/Qwen3-VL-30B-A3B-Thinking",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.29,
+          "new": 0.104613,
+          "pct": -0.6393
+        },
+        {
+          "field": "output",
+          "old": 1,
+          "new": 0.418453,
+          "pct": -0.5815
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-vl-32b-instruct-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-vl-32b-instruct",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-vl-32b-instruct",
+      "displayName": "Qwen/Qwen3-VL-32B-Instruct",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.2,
+          "new": 0.149447,
+          "pct": -0.2528
+        },
+        {
+          "field": "output",
+          "old": 0.6,
+          "new": 0.59779,
+          "pct": -0.003683
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-vl-32b-thinking-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-vl-32b-thinking",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-vl-32b-thinking",
+      "displayName": "Qwen/Qwen3-VL-32B-Thinking",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.2,
+          "new": 0.149447,
+          "pct": -0.2528
+        },
+        {
+          "field": "output",
+          "old": 1.5,
+          "new": 1.49447,
+          "pct": -0.003687
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3-vl-8b-instruct-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3-vl-8b-instruct",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-vl-8b-instruct",
+      "displayName": "Qwen/Qwen3-VL-8B-Instruct",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.18,
+          "new": 0.0747237,
+          "pct": -0.5849
+        },
+        {
+          "field": "output",
+          "old": 0.68,
+          "new": 0.298895,
+          "pct": -0.5604
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3.5-122b-a10b-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3.5-122b-a10b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-122b-a10b",
+      "displayName": "Qwen/Qwen3.5-122B-A10B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.29,
+          "new": 0.119558,
+          "pct": -0.5877
+        },
+        {
+          "field": "output",
+          "old": 2.32,
+          "new": 0.956464,
+          "pct": -0.5877
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3.5-27b-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3.5-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-27b",
+      "displayName": "Qwen/Qwen3.5-27B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.26,
+          "new": 0.0896685,
+          "pct": -0.6551
+        },
+        {
+          "field": "output",
+          "old": 2.09,
+          "new": 0.717348,
+          "pct": -0.6568
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3.5-35b-a3b-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3.5-35b-a3b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-35b-a3b",
+      "displayName": "Qwen/Qwen3.5-35B-A3B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.23,
+          "new": 0.059779,
+          "pct": -0.7401
+        },
+        {
+          "field": "output",
+          "old": 1.86,
+          "new": 0.478232,
+          "pct": -0.7429
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3.5-9b-1",
+      "type": "price_down",
+      "offeringId": "siliconflow-cn:alibaba/qwen3.5-9b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-9b",
+      "displayName": "Qwen/Qwen3.5-9B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.22,
+          "new": 0.0747237,
+          "pct": -0.6603
+        },
+        {
+          "field": "output",
+          "old": 1.74,
+          "new": 0.59779,
+          "pct": -0.6564
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:alibaba/qwen3.6-35b-a3b-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:alibaba/qwen3.6-35b-a3b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.6-35b-a3b",
+      "displayName": "Qwen/Qwen3.6-35B-A3B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.23,
+          "new": 0.269005,
+          "pct": 0.1696
+        },
+        {
+          "field": "output",
+          "old": 1.86,
+          "new": 1.61403,
+          "pct": -0.1322
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:bytedance/seed-oss-36b-instruct-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:bytedance/seed-oss-36b-instruct",
+      "vendor": "bytedance",
+      "modelSlug": "bytedance/seed-oss-36b-instruct",
+      "displayName": "ByteDance-Seed/Seed-OSS-36B-Instruct",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.21,
+          "new": 0.224171,
+          "pct": 0.06748
+        },
+        {
+          "field": "output",
+          "old": 0.57,
+          "new": 0.59779,
+          "pct": 0.04875
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:deepseek/deepseek-r1-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:deepseek/deepseek-r1",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-r1",
+      "displayName": "deepseek-ai/DeepSeek-R1",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.5,
+          "new": 0.59779,
+          "pct": 0.1956
+        },
+        {
+          "field": "output",
+          "old": 2.18,
+          "new": 2.39116,
+          "pct": 0.09686
+        },
+        {
+          "field": "cacheRead",
+          "old": null,
+          "new": 0.059779,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:deepseek/deepseek-v3-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:deepseek/deepseek-v3",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v3",
+      "displayName": "deepseek-ai/DeepSeek-V3",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.25,
+          "new": 0.298895,
+          "pct": 0.1956
+        },
+        {
+          "field": "output",
+          "old": 1,
+          "new": 1.19558,
+          "pct": 0.1956
+        },
+        {
+          "field": "cacheRead",
+          "old": null,
+          "new": 0.0298895,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:deepseek/deepseek-v3.1-terminus-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:deepseek/deepseek-v3.1-terminus",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v3.1-terminus",
+      "displayName": "deepseek-ai/DeepSeek-V3.1-Terminus",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.27,
+          "new": 0.59779,
+          "pct": 1.214
+        },
+        {
+          "field": "output",
+          "old": 1,
+          "new": 1.79337,
+          "pct": 0.7934
+        },
+        {
+          "field": "cacheRead",
+          "old": null,
+          "new": 0.059779,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:deepseek/deepseek-v3.2-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:deepseek/deepseek-v3.2",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v3.2",
+      "displayName": "deepseek-ai/DeepSeek-V3.2",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.27,
+          "new": 0.59779,
+          "pct": 1.214
+        },
+        {
+          "field": "output",
+          "old": 0.42,
+          "new": 0.896685,
+          "pct": 1.135
+        },
+        {
+          "field": "cacheRead",
+          "old": null,
+          "new": 0.059779,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:deepseek/deepseek-v4-flash-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:deepseek/deepseek-v4-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash",
+      "displayName": "DeepSeek V4 Flash",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.14,
+          "new": 0.448342,
+          "pct": 2.202
+        },
+        {
+          "field": "output",
+          "old": 0.28,
+          "new": 1.34503,
+          "pct": 3.804
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.003,
+          "new": 0.0448342,
+          "pct": 13.94
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:deepseek/deepseek-v4-pro-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:deepseek/deepseek-v4-pro",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro",
+      "displayName": "deepseek-ai/DeepSeek-V4-Pro",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.74,
+          "new": 1.79337,
+          "pct": 0.03067
+        },
+        {
+          "field": "output",
+          "old": 3.48,
+          "new": 3.58674,
+          "pct": 0.03067
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.145,
+          "new": 0.149447,
+          "pct": 0.03067
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:stepfun/step-3.5-flash-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:stepfun/step-3.5-flash",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-3.5-flash",
+      "displayName": "stepfun-ai/Step-3.5-Flash",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.1,
+          "new": 0.104613,
+          "pct": 0.04613
+        },
+        {
+          "field": "output",
+          "old": 0.3,
+          "new": 0.31384,
+          "pct": 0.04613
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:tencent/hunyuan-a13b-instruct-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:tencent/hunyuan-a13b-instruct",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hunyuan-a13b-instruct",
+      "displayName": "tencent/Hunyuan-A13B-Instruct",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.14,
+          "new": 0.149447,
+          "pct": 0.06748
+        },
+        {
+          "field": "output",
+          "old": 0.57,
+          "new": 0.59779,
+          "pct": 0.04875
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:zhipu/glm-4.5-air-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:zhipu/glm-4.5-air",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.5-air",
+      "displayName": "zai-org/GLM-4.5-Air",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.14,
+          "new": 0.149447,
+          "pct": 0.06748
+        },
+        {
+          "field": "output",
+          "old": 0.86,
+          "new": 0.896685,
+          "pct": 0.04266
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-siliconflow-cn:zhipu/glm-5.2-1",
+      "type": "price_up",
+      "offeringId": "siliconflow-cn:zhipu/glm-5.2",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.2",
+      "displayName": "GLM-5.2",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.4,
+          "new": 1.19558,
+          "pct": -0.146
+        },
+        {
+          "field": "output",
+          "old": 4.4,
+          "new": 4.18453,
+          "pct": -0.04897
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.26,
+          "new": 0.298895,
+          "pct": 0.1496
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:44:49Z"
     }
   ]
 }

@@ -71,6 +71,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "novita:zhipu/glm-5.2": [
@@ -123,6 +130,13 @@
         "cacheRead": 0.26,
         "cacheWrite": 0,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 1.19558,
+        "output": 4.18453,
+        "cacheRead": 0.298895,
+        "cacheWrite": 0,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "siliconflow:zhipu/glm-5.2": [

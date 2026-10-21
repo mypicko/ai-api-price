@@ -35,6 +35,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.59779,
+        "output": 1.79337,
+        "cacheRead": 0.059779,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "siliconflow:deepseek/deepseek-v3.1-terminus": [

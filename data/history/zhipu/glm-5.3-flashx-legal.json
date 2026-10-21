@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-5.3-flashx-legal",
+  "series": {
+    "official:zhipu/glm-5.3-flashx-legal": [
+      {
+        "input": 2,
+        "output": 7,
+        "cacheRead": 0.57,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
+      }
+    ]
+  }
+}

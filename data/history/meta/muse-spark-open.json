@@ -26,6 +26,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 1.25,
+        "output": 4.25,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "openrouter:meta/muse-spark-open": [

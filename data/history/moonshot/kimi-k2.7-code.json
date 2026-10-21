@@ -62,6 +62,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.95,
+        "output": 4,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "novita:moonshot/kimi-k2.7-code": [

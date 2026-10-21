@@ -10,6 +10,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "bedrock:zhipu/glm-5.3": [
+      {
+        "input": 1.68,
+        "output": 5.28,
+        "cacheRead": 0.312,
+        "cacheWrite": 2.1,
+        "effectiveDate": "2026-10-22"
+      }
+    ],
     "cloudflare:zhipu/glm-5.3": [
       {
         "input": 1.4,
@@ -78,6 +87,13 @@
         "cacheRead": 0.26,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.98,
+        "output": 3.08,
+        "cacheRead": 0.182,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "gmi:zhipu/glm-5.3": [
@@ -103,6 +119,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "novita:zhipu/glm-5.3": [
@@ -144,6 +167,13 @@
         "cacheRead": 0.078,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.7,
+        "output": 2.2,
+        "cacheRead": 0.13,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "parasail:zhipu/glm-5.3": [

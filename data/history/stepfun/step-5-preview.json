@@ -17,6 +17,13 @@
         "cacheRead": 0.048,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 1.04613,
+        "output": 2.98895,
+        "cacheRead": 0.10461,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-22"
       }
     ],
     "openrouter:stepfun/step-5-preview": [
