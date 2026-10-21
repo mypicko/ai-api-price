@@ -33,7 +33,6 @@ const months = changeMonths(model).toReversed();
       vendors={vendorOptions(model, locale, [...new Set(events.map((e) => e.vendor))])}
       locale={locale}
       base={base}
-      nowIso={model.generatedAt}
     />
     {model.media.hasData && <MediaChangeList locale={locale} />}
     {

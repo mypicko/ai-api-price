@@ -33,7 +33,7 @@ const { items, total } = recentEvents(model.events, model.generatedAt);
       <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((event) => (
           <li>
-            <EventItem event={toEventView(model, event, locale)} locale={locale} base={base} nowIso={model.generatedAt} variant="card" />
+            <EventItem event={toEventView(model, event, locale)} locale={locale} base={base} variant="card" />
           </li>
         ))}
       </ul>

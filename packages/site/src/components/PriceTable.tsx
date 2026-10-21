@@ -13,7 +13,13 @@ import {
 } from "react";
 import { groupByModel, sortGroups, type ModelGroup } from "../lib/aggregate";
 import type { Locale } from "../lib/locale";
-import { createT, formatDateTime, formatRelative, type MessageKey } from "../lib/i18n";
+import {
+  createT,
+  formatDateTime,
+  formatDateTimeWithZone,
+  formatShortDateTime,
+  type MessageKey,
+} from "../lib/i18n";
 import { formatTokens } from "../lib/shared-client";
 import {
   DEFAULT_FILTERS,
@@ -257,8 +263,8 @@ function Row({ row, props, nested = false, platformExtra }: RowProps) {
             ⚠
           </span>
         )}
-        <time dateTime={row.fetchedAt}>
-          {formatRelative(row.fetchedAt, props.nowIso, props.locale)}
+        <time dateTime={row.fetchedAt} title={formatDateTimeWithZone(row.fetchedAt, props.locale)}>
+          {formatShortDateTime(row.fetchedAt, props.locale)}
         </time>
       </td>
     </tr>

@@ -148,7 +148,8 @@ test.describe("首页", () => {
   });
 
   test("语言切换：跳转到英文页并保存偏好", async ({ page }) => {
-    await page.goto("/calculator/");
+    // 等交互组件水合后再点：水合前点击只是普通链接跳转，不会保存偏好（偶发失败的原因）
+    await gotoHydrated(page, "/calculator/");
     await page.getByTestId("lang-toggle").click();
     await expect(page).toHaveURL(/\/en\/calculator\/$/);
     await expect(page.locator("html")).toHaveAttribute("lang", "en");

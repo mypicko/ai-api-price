@@ -5,7 +5,14 @@
 import type { ChangeField } from "@aipb/shared";
 import type { EventView } from "../lib/views";
 import type { Locale } from "../lib/locale";
-import { formatDateTime, formatRelative, formatTime, t, type MessageKey } from "../lib/i18n";
+import {
+  formatDateTime,
+  formatDateTimeWithZone,
+  formatShortDateTime,
+  formatTime,
+  t,
+  type MessageKey,
+} from "../lib/i18n";
 import { formatPct, formatPrice, formatTokens } from "../lib/shared-client";
 import { modelPath, pageHref } from "../lib/url";
 import { PctBadge, TypeBadge } from "./ChangeBadge";
@@ -72,7 +79,6 @@ export interface EventItemProps {
   readonly event: EventView;
   readonly locale: Locale;
   readonly base: string;
-  readonly nowIso: string;
   /** 卡片样式（首页今日变动） */
   readonly variant?: "card" | "row";
   /** 行样式下同时显示日期（模型详情页） */
@@ -83,14 +89,13 @@ export function EventItem({
   event,
   locale,
   base,
-  nowIso,
   variant = "row",
   showDate = false,
 }: EventItemProps) {
   const href = pageHref(base, locale, modelPath(event.modelSlug));
   const time =
     variant === "card"
-      ? formatRelative(event.detectedAt, nowIso, locale)
+      ? formatShortDateTime(event.detectedAt, locale)
       : showDate
         ? formatDateTime(event.detectedAt, locale)
         : formatTime(event.detectedAt);
@@ -110,7 +115,11 @@ export function EventItem({
         }
       >
         <TypeBadge type={event.type} locale={locale} />
-        <time dateTime={event.detectedAt} className="text-small tabular text-text-muted">
+        <time
+          dateTime={event.detectedAt}
+          title={formatDateTimeWithZone(event.detectedAt, locale)}
+          className="text-small tabular text-text-muted"
+        >
           {time}
         </time>
       </div>

@@ -14,7 +14,6 @@ export interface ChangeLogProps {
   readonly vendors: readonly Option[];
   readonly locale: Locale;
   readonly base: string;
-  readonly nowIso: string;
 }
 
 /** 首次运行时可能有几百条「新模型」事件，先显示 100 条 */
@@ -116,7 +115,7 @@ export function ChangeLog(props: ChangeLogProps) {
           <ol className="divide-y divide-border border-t border-border md:border-t-0">
             {items.map((e) => (
               <li key={e.id}>
-                <EventItem event={e} locale={locale} base={props.base} nowIso={props.nowIso} />
+                <EventItem event={e} locale={locale} base={props.base} />
               </li>
             ))}
           </ol>

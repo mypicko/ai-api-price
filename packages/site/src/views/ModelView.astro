@@ -183,7 +183,7 @@ const series = model.data.histories.get(info.slug)?.series ?? {};
           <ol class="divide-y divide-border border-y border-border">
             {changes.map((e) => (
               <li>
-                <EventItem event={toEventView(model, e, locale)} locale={locale} base={base} nowIso={model.generatedAt} showDate />
+                <EventItem event={toEventView(model, e, locale)} locale={locale} base={base} showDate />
               </li>
             ))}
           </ol>

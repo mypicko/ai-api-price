@@ -3,7 +3,7 @@
 import { DualPrice } from "./DualPrice";
 import { StatusBadge } from "./ChangeBadge";
 import type { PublicOffering } from "../lib/derive";
-import { formatDateTime, formatRelative, t } from "../lib/i18n";
+import { formatDateTime, formatDateTimeWithZone, formatShortDateTime, t } from "../lib/i18n";
 import type { Locale } from "../lib/locale";
 import { formatTokens } from "../lib/shared-client";
 import { getSiteModel } from "../lib/site-data";
@@ -73,7 +73,7 @@ const labels = {
                   ⚠
                 </span>
               )}
-              <time datetime={o.fetchedAt}>{formatRelative(o.fetchedAt, model.generatedAt, locale)}</time>
+              <time datetime={o.fetchedAt} title={formatDateTimeWithZone(o.fetchedAt, locale)}>{formatShortDateTime(o.fetchedAt, locale)}</time>
             </td>
             <td class="px-3 text-small whitespace-nowrap">
               <a class="link" href={o.sourceUrl} rel="noopener noreferrer nofollow" target="_blank">

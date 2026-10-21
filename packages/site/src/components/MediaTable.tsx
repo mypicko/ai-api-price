@@ -5,7 +5,13 @@
 import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import type { MediaKind } from "@aipb/shared";
 import type { Locale } from "../lib/locale";
-import { createT, formatDateTime, formatRelative, type MessageKey } from "../lib/i18n";
+import {
+  createT,
+  formatDateTime,
+  formatDateTimeWithZone,
+  formatShortDateTime,
+  type MessageKey,
+} from "../lib/i18n";
 import {
   DEFAULT_MEDIA_SORT,
   MAX_MEDIA_QUERY_LENGTH,
@@ -216,8 +222,8 @@ function Row({ row, props }: { row: MediaRow; props: MediaTableProps }) {
             ⚠
           </span>
         )}
-        <time dateTime={row.fetchedAt}>
-          {formatRelative(row.fetchedAt, props.nowIso, props.locale)}
+        <time dateTime={row.fetchedAt} title={formatDateTimeWithZone(row.fetchedAt, props.locale)}>
+          {formatShortDateTime(row.fetchedAt, props.locale)}
         </time>
       </td>
     </tr>

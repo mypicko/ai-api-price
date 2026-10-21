@@ -7,7 +7,7 @@ import {
   formatDate,
   formatDateTime,
   formatDateTimeWithZone,
-  formatRelative,
+  formatShortDateTime,
   formatShortDate,
   formatTime,
   formatTokenVolume,
@@ -54,12 +54,15 @@ describe("i18n", () => {
     );
   });
 
-  it("相对时间：今天 / 昨天 / N 天前", () => {
-    const now = "2026-10-19T02:00:00Z";
-    expect(formatRelative("2026-10-19T00:04:00Z", now, "zh")).toBe("今天 08:04");
-    expect(formatRelative("2026-10-18T00:04:00Z", now, "en")).toBe("Yesterday 08:04");
-    expect(formatRelative("2026-10-16T00:04:00Z", now, "zh")).toBe("3 天前");
-    expect(daysBetween("2026-10-10", "2026-10-18")).toBe(8);
+  it("北京时间日期之间相差的天数", () => {
+    expect(daysBetween("2026-10-16T00:04:00Z", "2026-10-19T00:04:12Z")).toBe(3);
+    // UTC 前一天 20:00 已是北京时间当天 04:00
+    expect(daysBetween("2026-10-18T20:00:00Z", "2026-10-19T03:00:00Z")).toBe(0);
+  });
+
+  it("表格短时间：月-日 时:分（北京时间），不用会过时的「今天」", () => {
+    expect(formatShortDateTime("2026-10-21T22:44:00Z", "zh")).toBe("10-22 06:44");
+    expect(formatShortDateTime("2026-10-21T22:44:00Z", "en")).toBe("Oct 22 06:44");
   });
 
   it("用量格式：中文万/亿，英文 K/M/B", () => {

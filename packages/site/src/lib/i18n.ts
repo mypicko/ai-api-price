@@ -121,17 +121,14 @@ export function daysBetween(a: string, b: string): number {
   return Math.round((toUtc(b) - toUtc(a)) / DAY_MS);
 }
 
-/** 更新时间：今天 08:04 / 昨天 08:04 / 3 天前 */
-export function formatRelative(iso: string, nowIso: string, locale: Locale): string {
-  const days = daysBetween(iso, nowIso);
-  if (days <= 0) return t(locale, "time.today", { time: formatTime(iso) });
-  if (days === 1) return t(locale, "time.yesterday", { time: formatTime(iso) });
-  return t(locale, "time.daysAgo", { days });
-}
-
 /** 完整时间：2026年10月19日 08:04 / Oct 19, 2026 08:04 */
 export function formatDateTime(iso: string, locale: Locale): string {
   return `${formatDate(iso, locale)} ${formatTime(iso)}`;
+}
+
+/** 表格里的短时间：10-22 06:44 / Oct 22 06:44（北京时间） */
+export function formatShortDateTime(iso: string, locale: Locale): string {
+  return `${formatShortDate(iso, locale)} ${formatTime(iso)}`;
 }
 
 /** 带时区的完整时间：2026年10月19日 08:04（北京时间 UTC+8）/ Oct 19, 2026 08:04 (Beijing Time, UTC+8) */
