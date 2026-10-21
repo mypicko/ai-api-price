@@ -295,5 +295,6 @@
   "plans.sort.breakEven": "Break-even, fewest first",
   "plans.sort.credits": "Credit value, high to low",
   "plans.resultCount": "{count} plans",
-  "plans.empty": "No plans match these filters."
+  "plans.empty": "No plans match these filters.",
+  "time.withZone": "{datetime} (Beijing Time, UTC+8)"
 }

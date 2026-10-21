@@ -6,6 +6,7 @@ import {
   daysBetween,
   formatDate,
   formatDateTime,
+  formatDateTimeWithZone,
   formatRelative,
   formatShortDate,
   formatTime,
@@ -44,6 +45,13 @@ describe("i18n", () => {
     expect(formatShortDate("2026-10-19", "en")).toBe("Oct 19");
     expect(formatTime("2026-10-19T00:04:12Z")).toBe("08:04");
     expect(formatDateTime("2026-10-19T00:04:12Z", "en")).toBe("Oct 19, 2026 08:04");
+    // 静态页面构建后会被隔天打开，「今天」会过时，所以更新时间用带时区的完整时间
+    expect(formatDateTimeWithZone("2026-10-22T03:02:00Z", "zh")).toBe(
+      "2026年10月22日 11:02（北京时间 UTC+8）",
+    );
+    expect(formatDateTimeWithZone("2026-10-22T03:02:00Z", "en")).toBe(
+      "Oct 22, 2026 11:02 (Beijing Time, UTC+8)",
+    );
   });
 
   it("相对时间：今天 / 昨天 / N 天前", () => {

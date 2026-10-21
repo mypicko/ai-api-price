@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { PriceBoard } from "../components/PriceBoard";
 import TodayChanges from "../components/TodayChanges.astro";
-import { formatRelative, t } from "../lib/i18n";
+import { formatDateTimeWithZone, t } from "../lib/i18n";
 import type { Locale } from "../lib/locale";
 import { getSiteModel } from "../lib/site-data";
 import { toMediaSearchItem } from "../lib/media";
@@ -35,7 +35,7 @@ const planRows = toPlanRows(model, model.data.plans, locale);
         model.hasData && (
           <p class="text-text-muted tabular">
             {t(locale, "home.lead", { models: modelCount, count: rows.length, platforms: platforms.length })} ·{" "}
-            <time datetime={model.generatedAt}>{t(locale, "footer.updated", { time: formatRelative(model.generatedAt, model.generatedAt, locale) })}</time>
+            <time datetime={model.generatedAt}>{t(locale, "footer.updated", { time: formatDateTimeWithZone(model.generatedAt, locale) })}</time>
           </p>
         )
       }

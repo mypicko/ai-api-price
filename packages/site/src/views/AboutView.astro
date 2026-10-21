@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { PctBadge } from "../components/ChangeBadge";
-import { formatDateTime, t, type MessageKey } from "../lib/i18n";
+import { formatDateTime, formatDateTimeWithZone, t, type MessageKey } from "../lib/i18n";
 import type { Locale } from "../lib/locale";
 import { formatPrice } from "../lib/shared-client";
 import { getSiteModel } from "../lib/site-data";
@@ -38,7 +38,7 @@ const fieldLabel = (f: string): string => t(locale, `change.field.${f}` as Messa
       <h1 class="text-h1">{t(locale, "about.title")}</h1>
       <p class="text-text-muted">{t(locale, "about.lead")}</p>
       <p class="text-small text-text-muted">
-        {t(locale, "about.updated")}：{model.hasData ? formatDateTime(model.generatedAt, locale) : t(locale, "footer.noData")}
+        {t(locale, "about.updated")}：{model.hasData ? formatDateTimeWithZone(model.generatedAt, locale) : t(locale, "footer.noData")}
         · {t(locale, "footer.timezone")}
       </p>
     </header>

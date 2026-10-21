@@ -134,6 +134,11 @@ export function formatDateTime(iso: string, locale: Locale): string {
   return `${formatDate(iso, locale)} ${formatTime(iso)}`;
 }
 
+/** 带时区的完整时间：2026年10月19日 08:04（北京时间 UTC+8）/ Oct 19, 2026 08:04 (Beijing Time, UTC+8) */
+export function formatDateTimeWithZone(iso: string, locale: Locale): string {
+  return t(locale, "time.withZone", { datetime: formatDateTime(iso, locale) });
+}
+
 function trimNumber(value: number, digits: number): string {
   return Number(value.toFixed(digits)).toLocaleString("en-US", { maximumFractionDigits: digits });
 }

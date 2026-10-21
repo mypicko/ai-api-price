@@ -295,5 +295,6 @@
   "plans.sort.breakEven": "回本次数从少到多",
   "plans.sort.credits": "额度价值从高到低",
   "plans.resultCount": "共 {count} 个套餐",
-  "plans.empty": "没有符合条件的套餐。"
+  "plans.empty": "没有符合条件的套餐。",
+  "time.withZone": "{datetime}（北京时间 UTC+8）"
 }
