@@ -2399,6 +2399,38 @@
       "detectedAt": "2026-10-21T22:44:49Z"
     },
     {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4-pro-2",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro",
+      "displayName": "DeepSeek V4 Pro 0423",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.388716,
+          "new": 0.386976,
+          "pct": -0.004476
+        },
+        {
+          "field": "output",
+          "old": 0.777432,
+          "new": 0.773952,
+          "pct": -0.004476
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.032393,
+          "new": 0.032248,
+          "pct": -0.004476
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-21T22:51:38Z"
+    },
+    {
       "id": "2026-10-22-openrouter:deepseek/deepseek-v4.1-flash-1",
       "type": "price_down",
       "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
