@@ -69,6 +69,13 @@
         "cacheRead": 0.006,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.21,
+        "output": 0.84,
+        "cacheRead": 0.0042,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-21"
       }
     ],
     "gmi:deepseek/deepseek-v4.1-flash": [
@@ -119,6 +126,13 @@
         "cacheRead": 0.0016,
         "cacheWrite": null,
         "effectiveDate": "2026-10-20"
+      },
+      {
+        "input": 0.049,
+        "output": 0.525,
+        "cacheRead": 0.0014,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-21"
       }
     ],
     "parasail:deepseek/deepseek-v4.1-flash": [

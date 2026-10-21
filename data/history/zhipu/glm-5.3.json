@@ -112,6 +112,13 @@
         "cacheRead": 0.13,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.63,
+        "output": 1.98,
+        "cacheRead": 0.117,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-21"
       }
     ],
     "official:zhipu/glm-5.3": [
@@ -164,6 +171,15 @@
         "cacheRead": 0.26,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      }
+    ],
+    "wandb:zhipu/glm-5.3": [
+      {
+        "input": 1.2,
+        "output": 4,
+        "cacheRead": 0.19,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-21"
       }
     ]
   }
