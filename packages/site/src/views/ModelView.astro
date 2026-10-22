@@ -5,6 +5,7 @@ import { EventItem } from "../components/EventItem";
 import OfferingCompare from "../components/OfferingCompare.astro";
 import GapNote from "../components/GapNote.astro";
 import { gapFor } from "../lib/gap";
+import { modelRssPath } from "../lib/endpoints";
 import { PriceChart } from "../components/PriceChart";
 import StaleNotice from "../components/StaleNotice.astro";
 import VendorLogo from "../components/VendorLogo.astro";
@@ -41,11 +42,13 @@ const tierRange = (min: number, max: number | null): string =>
   max === null ? `≥ ${formatTokens(min)}` : `${formatTokens(min)} – ${formatTokens(max)}`;
 const series = model.data.histories.get(info.slug)?.series ?? {};
 const gap = gapFor(model, info.slug);
+const rssHref = pageHref(base, locale, modelRssPath(info.slug));
 ---
 
 <BaseLayout
   locale={locale}
   path={modelPath(info.slug)}
+  feed={{ title: t(locale, "rss.modelTitle", { name: info.displayName }), href: rssHref }}
   title={`${info.displayName} · ${vName}`}
   description={`${info.displayName} API ${t(locale, "price.perMillion")}`}
 >
@@ -66,6 +69,9 @@ const gap = gapFor(model, info.slug);
         {info.maxOutput !== null && <span>{t(locale, "model.maxOutput", { tokens: formatTokens(info.maxOutput) })}</span>}
         <span>{t(locale, "model.firstSeen", { date: formatDate(info.firstSeenAt, locale) })}</span>
         <a class="link" href={joinBase(base, `api/v1/models/${info.slug}.json`)}>{t(locale, "model.api")}</a>
+        <a class="link" href={rssHref} data-testid="model-rss" title={t(locale, "rss.subscribeModel")}>
+          <span aria-hidden="true">📡 </span>{t(locale, "rss.subscribeModel")}
+        </a>
       </p>
       {info.status === "removed" && <StaleNotice message={t(locale, "model.status.removed")} />}
       {staleOfferings.length > 0 && <StaleNotice message={t(locale, "stale.notice", { days: maxStale })} />}

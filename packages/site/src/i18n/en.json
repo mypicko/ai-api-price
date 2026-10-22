@@ -307,5 +307,7 @@
   "gap.basis": "Compared by blended price (3:1); the OpenRouter price is its current top provider's rate",
   "gap.boardTitle": "China vs. OpenRouter price gaps",
   "gap.boardLead": "Models whose official China price differs most from OpenRouter (blended price, per 1M tokens).",
-  "gap.domestic": "China official"
+  "gap.domestic": "China official",
+  "rss.modelTitle": "{name} price changes · AI API Price Board",
+  "rss.subscribeModel": "Subscribe to this model's price changes (RSS)"
 }

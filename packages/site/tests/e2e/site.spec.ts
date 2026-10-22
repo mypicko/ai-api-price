@@ -380,6 +380,23 @@ test.describe("其他页面", () => {
     await expect(page.getByTestId("gap-note")).toHaveCount(0);
   });
 
+  test("单个模型的 RSS：详情页有订阅入口，订阅源只含该模型的变动", async ({ page, request }) => {
+    await page.goto("/models/alibaba/qwen3-max/");
+    const link = page.getByTestId("model-rss");
+    await expect(link).toHaveAttribute("href", /\/models\/alibaba\/qwen3-max\/rss\.xml$/);
+    await expect(
+      page.locator('head link[rel="alternate"][type="application/rss+xml"]'),
+    ).toHaveCount(2);
+    const res = await request.get((await link.getAttribute("href")) ?? "");
+    expect(res.ok()).toBe(true);
+    expect(res.headers()["content-type"]).toContain("xml");
+    const xml = await res.text();
+    expect(xml).toContain("价格变动 · AI API 价格榜</title>");
+    expect((xml.match(/<item>/g) ?? []).length).toBe(3);
+    const en = await request.get("/en/models/alibaba/qwen3-max/rss.xml");
+    expect(await en.text()).toContain("price changes · AI API Price Board");
+  });
+
   test("视频/图像变动并入变动页；旧的 /media/ 链接跳转到价格榜视频标签", async ({ page }) => {
     await page.goto("/changes/");
     await expect(page.getByTestId("media-changes")).toContainText("MiniMax-H3");

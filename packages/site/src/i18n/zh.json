@@ -307,5 +307,7 @@
   "gap.basis": "按混合价（3:1）比较；OpenRouter 价为其当前首选服务商的报价",
   "gap.boardTitle": "国内外价差",
   "gap.boardLead": "同一模型的国内官方价与 OpenRouter 价相差最多的几个（按混合价比较，单位每百万 tokens）。",
-  "gap.domestic": "国内官方"
+  "gap.domestic": "国内官方",
+  "rss.modelTitle": "{name} 价格变动 · AI API 价格榜",
+  "rss.subscribeModel": "订阅这个模型的价格变动（RSS）"
 }

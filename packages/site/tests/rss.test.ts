@@ -168,3 +168,24 @@ describe("sitemap", () => {
     expect(xml).toContain("<lastmod>2026-10-18</lastmod>");
   });
 });
+
+describe("单个模型的 RSS", () => {
+  it("只包含该模型的变动，频道标题和链接指向模型页", async () => {
+    const { modelRssXml, modelRssPath } = await import("../src/lib/endpoints");
+    const { fixtureModel } = await import("./helpers");
+    const model = fixtureModel();
+    const info = model.models.find((m) => m.slug === "alibaba/qwen3-max");
+    if (!info) throw new Error("fixture");
+    const xml = modelRssXml(model, info, "zh", "https://a.io", "/x/");
+    expect(xml).toContain(`<title>${info.displayName} 价格变动 · AI API 价格榜</title>`);
+    expect(xml).toContain("<link>https://a.io/x/models/alibaba/qwen3-max/</link>");
+    const items = xml.match(/<item>/g) ?? [];
+    expect(items.length).toBe(3);
+    expect(xml).not.toContain("kimi-k2");
+    expect(modelRssPath("alibaba/qwen3-max")).toBe("models/alibaba/qwen3-max/rss.xml");
+    // 没有变动的模型也是合法的空订阅源
+    const quiet = model.models.find((m) => m.slug === "amazon/nova-micro");
+    if (!quiet) throw new Error("fixture");
+    expect(modelRssXml(model, quiet, "en", "https://a.io", "/").match(/<item>/g)).toBeNull();
+  });
+});

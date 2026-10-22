@@ -30,6 +30,9 @@ export interface RssContext {
   readonly currentPrices: (
     offeringId: string,
   ) => { input: number | null; output: number | null } | null;
+  /** 单个模型的订阅源：覆盖频道标题和链接 */
+  readonly channelTitle?: string;
+  readonly channelLink?: string;
 }
 
 /** ¥16.00 → ¥16，$0.150 → $0.15（标题用紧凑写法，描述用完整写法） */
@@ -116,8 +119,8 @@ export function buildRss(events: readonly ChangeEvent[], ctx: RssContext): strin
   const t = createT(ctx.locale);
   const home = absoluteUrl(ctx.site, joinBase(ctx.base, localePath(ctx.locale)));
   const channel = el("channel", {}, [
-    textEl("title", t("rss.title")),
-    textEl("link", home),
+    textEl("title", ctx.channelTitle ?? t("rss.title")),
+    textEl("link", ctx.channelLink ?? home),
     textEl("description", t("rss.description")),
     textEl("language", ctx.locale === "zh" ? "zh-cn" : "en"),
     textEl("lastBuildDate", new Date(ctx.generatedAt).toUTCString()),

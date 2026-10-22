@@ -2,9 +2,10 @@
 import type { Locale } from "./locale";
 import { buildRss } from "./rss";
 import { getSiteModel } from "./site-data";
-import { platformName, type SiteModel } from "./site-model";
+import { t } from "./i18n";
+import { platformName, type ModelInfo, type SiteModel } from "./site-model";
 import { buildSitemap } from "./sitemap";
-import { absoluteUrl, joinBase, modelPath, normalizeBase } from "./url";
+import { absoluteUrl, joinBase, modelPath, normalizeBase, pageHref } from "./url";
 
 const DEFAULT_SITE = "http://localhost:4321";
 
@@ -25,6 +26,39 @@ export function rssXml(model: SiteModel, locale: Locale, site: string, base: str
     platformName: (id) => platformName(model, id, locale),
     currentPrices: (id) => model.offeringsById.get(id) ?? null,
   });
+}
+
+/** 模型订阅源相对路径（不含 base、不含语言前缀）：models/vendor/model/rss.xml */
+export function modelRssPath(slug: string): string {
+  return `${modelPath(slug)}rss.xml`;
+}
+
+/** 单个模型的价格变动订阅源 */
+export function modelRssXml(
+  model: SiteModel,
+  info: ModelInfo,
+  locale: Locale,
+  site: string,
+  base: string,
+): string {
+  return buildRss(
+    model.events.filter((e) => e.modelSlug === info.slug),
+    {
+      locale,
+      site,
+      base,
+      generatedAt: model.generatedAt,
+      platformName: (id) => platformName(model, id, locale),
+      currentPrices: (id) => model.offeringsById.get(id) ?? null,
+      channelTitle: t(locale, "rss.modelTitle", { name: info.displayName }),
+      channelLink: absoluteUrl(site, pageHref(base, locale, modelPath(info.slug))),
+    },
+  );
+}
+
+export function modelRssResponse(info: ModelInfo, locale: Locale, site: URL | undefined): Response {
+  const xml = modelRssXml(getSiteModel(), info, locale, siteOrigin(site), currentBase());
+  return new Response(xml, { headers: { "Content-Type": "application/rss+xml; charset=utf-8" } });
 }
 
 export function rssResponse(locale: Locale, site: URL | undefined): Response {

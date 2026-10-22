@@ -19,9 +19,11 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  /** 页面专属的订阅源（例如单个模型的价格变动），与全站订阅源一起声明 */
+  feed?: { title: string; href: string };
 }
 
-const { locale, path, title, description, noindex = false } = Astro.props;
+const { locale, path, title, description, noindex = false, feed } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const site = (Astro.site ?? new URL("http://localhost:4321")).origin;
 const other: Locale = locale === "zh" ? "en" : "zh";
@@ -55,6 +57,7 @@ const analytics = analyticsScript(parseAnalyticsConfig(process.env));
     <link rel="alternate" hreflang="en" href={href("en")} />
     <link rel="alternate" hreflang="x-default" href={href("zh")} />
     <link rel="alternate" type="application/rss+xml" title={t(locale, "rss.title")} href={pageHref(base, locale, "rss.xml")} />
+    {feed && <link rel="alternate" type="application/rss+xml" title={feed.title} href={feed.href} />}
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={desc} />
