@@ -4,7 +4,9 @@ name: daily
 
 on:
   schedule:
-    - cron: "0 0 * * *" # UTC 00:00 = 北京时间 08:00（GitHub 可能延迟 5~30 分钟）
+    # UTC 23:17 = 北京时间 07:17。避开整点：UTC 00:00 是全球定时任务高峰，
+    # 实测排队延迟约 3 小时（2026-10-19~22 实际都在北京 11:00 左右才运行）
+    - cron: "17 23 * * *"
   workflow_dispatch:
     inputs:
       only:

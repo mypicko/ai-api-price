@@ -6,7 +6,7 @@ A daily-updated price board for mainstream AI model APIs. Prices are scraped aut
 
 - **Coverage**: official prices from 19 vendors (OpenAI, Anthropic, Google, xAI, Mistral, DeepSeek, Alibaba Qwen, Zhipu GLM, Moonshot Kimi, ByteDance Doubao…), plus aggregators (OpenRouter, SiliconFlow), cloud platforms (Azure, Bedrock, Vertex…) and inference providers (Together, Fireworks, DeepInfra, Groq…): 30 platforms and over 2,000 offers
 - **Features**: price comparison table (sort, filter, search), model detail pages with price history, cost calculator, video/image generation prices (per second / per image), change log, RSS feed, open JSON API, USD/CNY toggle, dark mode
-- **Runs on**: GitHub Actions updates the data every day at 08:00 Beijing time (00:00 UTC); GitHub Pages hosts the site for free, so no server is needed
+- **Runs on**: GitHub Actions updates the data every day at around 07:17 Beijing time (23:17 UTC); GitHub Pages hosts the site for free, so no server is needed
 - **Alerts**: price changes and scraping failures are pushed to a Feishu (Lark) group
 
 | Document                                         | Contents                                                                   |
@@ -120,7 +120,7 @@ gh run watch
 2. `https://<your-username>.github.io/ai-api-price/` shows the price board, along with when the data was last updated
 3. The Feishu group receives the "AI API 价格日报" (daily price report). This only happens when prices changed, or if you set `NOTIFY_ON_SUCCESS` in Step 6
 
-From then on the site updates itself every day at around 08:00 Beijing time with no action needed. GitHub's scheduled runs can be delayed by 5–30 minutes.
+From then on the site updates itself every day at around 07:17 Beijing time with no action needed. GitHub queues scheduled runs, so the time deliberately avoids the top of the hour (runs scheduled at 00:00 UTC were delayed by about 3 hours).
 
 ### Using your own domain later
 

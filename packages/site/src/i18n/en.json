@@ -159,7 +159,7 @@
   "calc.formula": "Monthly cost = (uncached input × input price + cached input × cached input price + output × output price) ÷ 1,000,000. For tiered pricing, the tier is chosen by input tokens per request.",
   "calc.reset": "Reset",
   "about.title": "About",
-  "about.lead": "AI API Price Board fetches public pricing pages and open price databases every day at about 08:00 Beijing Time, validates them and publishes the results.",
+  "about.lead": "AI API Price Board fetches public pricing pages and open price databases every day shortly after 07:00 Beijing Time, validates them and publishes the results.",
   "about.sources": "Source health",
   "about.source.id": "Source",
   "about.source.kind": "Kind",

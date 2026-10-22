@@ -159,7 +159,7 @@
   "calc.formula": "月成本 = (未命中输入 × 输入价 + 命中输入 × 缓存命中价 + 输出 × 输出价) ÷ 1,000,000；有阶梯价时按每次请求的输入 token 选档。",
   "calc.reset": "恢复默认",
   "about.title": "关于",
-  "about.lead": "AI API 价格榜每天北京时间 08:00 左右自动抓取各厂商的公开定价页和开放价格库，经过校验后发布。",
+  "about.lead": "AI API 价格榜每天北京时间 7 点多自动抓取各厂商的公开定价页和开放价格库，经过校验后发布。",
   "about.sources": "数据源健康状态",
   "about.source.id": "数据源",
   "about.source.kind": "类型",

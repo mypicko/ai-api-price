@@ -6,7 +6,7 @@
 
 - **覆盖**：OpenAI、Anthropic、Google、xAI、Mistral、DeepSeek、阿里通义、智谱、Kimi、豆包等 19 家厂商的官方价，加上 OpenRouter、硅基流动等聚合平台，以及 Azure、Bedrock、Vertex 等云平台和 Together、Fireworks、DeepInfra、Groq 等推理服务商的转售价（共 30 个平台、2,000 多条报价）
 - **功能**：价格对比表（排序、筛选、搜索）、模型详情和价格走势、成本计算器、视频/图像生成模型价格（按秒 / 按张）、变动日志、RSS 订阅、开放 JSON 接口、美元/人民币切换、暗色模式
-- **运行**：GitHub Actions 每天北京时间 08:00 自动更新，GitHub Pages 免费托管，不需要服务器
+- **运行**：GitHub Actions 每天北京时间 07:17 左右自动更新，GitHub Pages 免费托管，不需要服务器
 - **提醒**：价格有变动或抓取失败时，推送到飞书群
 
 | 文档                                             | 内容                                           |
@@ -116,7 +116,7 @@ gh run watch
 2. 打开 `https://<你的用户名>.github.io/ai-api-price/`，能看到价格榜，页面顶部显示「数据更新于 今天 xx:xx」
 3. 飞书群收到「AI API 价格日报」（需要有变动，或者第六步设置了 `NOTIFY_ON_SUCCESS`）
 
-之后每天北京时间 08:00 左右会自动更新，不需要任何操作。GitHub 的定时任务可能延迟 5~30 分钟。
+之后每天北京时间 07:17 左右会自动更新，不需要任何操作。GitHub 的定时任务会有排队延迟，所以特意错开了整点高峰（UTC 00:00 整点实测要排队约 3 小时）。
 
 ### 以后想绑定自己的域名
 
