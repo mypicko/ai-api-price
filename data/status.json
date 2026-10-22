@@ -1,10 +1,10 @@
 {
   "run": {
-    "id": "39850774844",
-    "startedAt": "2026-10-22T20:40:48Z",
-    "finishedAt": "2026-10-22T20:42:09Z",
-    "durationMs": 80449,
-    "result": "partial"
+    "id": "39854264622",
+    "startedAt": "2026-10-22T21:15:13Z",
+    "finishedAt": "2026-10-22T21:16:23Z",
+    "durationMs": 70157,
+    "result": "success"
   },
   "sources": [
     {
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 63,
-      "durationMs": 1656,
+      "durationMs": 1938,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 82,
-      "durationMs": 1185,
+      "durationMs": 423,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -34,10 +34,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 361,
+      "durationMs": 325,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -46,10 +46,10 @@
       "status": "ok",
       "offeringCount": 257,
       "mediaOfferingCount": 63,
-      "durationMs": 751,
+      "durationMs": 817,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -57,10 +57,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 1148,
-      "durationMs": 1772,
+      "durationMs": 1808,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -68,10 +68,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 78,
+      "durationMs": 98,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -79,10 +79,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 25,
-      "durationMs": 82,
+      "durationMs": 102,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -90,10 +90,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 10,
-      "durationMs": 1274,
+      "durationMs": 1269,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -101,32 +101,32 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 30,
-      "durationMs": 1275,
+      "durationMs": 1270,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
       "id": "moonshot",
       "kind": "html",
-      "status": "failed",
-      "offeringCount": 0,
-      "durationMs": 809,
-      "errorCode": "E2001",
-      "errorMessage": "[E2001] moonshot：找不到含 Model / Input / Output 列的价格表",
-      "lastSuccessAt": "2026-10-20T03:08:01Z",
-      "consecutiveFailures": 7
+      "status": "ok",
+      "offeringCount": 4,
+      "durationMs": 686,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
+      "consecutiveFailures": 0
     },
     {
       "id": "novita",
       "kind": "api",
       "status": "ok",
       "offeringCount": 71,
-      "durationMs": 516,
+      "durationMs": 367,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -135,10 +135,10 @@
       "status": "ok",
       "offeringCount": 359,
       "mediaOfferingCount": 29,
-      "durationMs": 2383,
+      "durationMs": 1369,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -146,10 +146,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 378,
-      "durationMs": 79456,
+      "durationMs": 69552,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -157,10 +157,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 54,
-      "durationMs": 987,
+      "durationMs": 1012,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -168,10 +168,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 5077,
+      "durationMs": 4726,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     },
     {
@@ -179,27 +179,15 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 1035,
+      "durationMs": 569,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T20:40:48Z",
+      "lastSuccessAt": "2026-10-22T21:15:13Z",
       "consecutiveFailures": 0
     }
   ],
   "quarantine": [],
   "warnings": [
-    {
-      "code": "E1005",
-      "sourceId": "moonshot",
-      "offeringId": null,
-      "message": "数据源连续失败 7 次（上次成功：2026-10-20T03:08:01Z）"
-    },
-    {
-      "code": "E2001",
-      "sourceId": "moonshot",
-      "offeringId": null,
-      "message": "[E2001] moonshot：找不到含 Model / Input / Output 列的价格表"
-    },
     {
       "code": "W2003",
       "sourceId": "litellm",
@@ -427,30 +415,6 @@
       "sourceId": "litellm-resellers",
       "offeringId": "novita:deepseek/deepseek-v4-pro-0813",
       "message": "接口复核一致，突变价格已直接发布：deepseek-v4-pro-0813"
-    },
-    {
-      "code": "W3008",
-      "sourceId": "litellm-resellers",
-      "offeringId": "novita:zhipu/glm-5.2",
-      "message": "接口复核一致，突变价格已直接发布：glm-5.2"
-    },
-    {
-      "code": "W3008",
-      "sourceId": "litellm-resellers",
-      "offeringId": "novita:zhipu/glm-5.3",
-      "message": "接口复核一致，突变价格已直接发布：glm-5.3"
-    },
-    {
-      "code": "W3008",
-      "sourceId": "novita",
-      "offeringId": "novita:zhipu/glm-5.2",
-      "message": "接口复核一致，突变价格已直接发布：GLM 5.2"
-    },
-    {
-      "code": "W3008",
-      "sourceId": "novita",
-      "offeringId": "novita:zhipu/glm-5.3",
-      "message": "接口复核一致，突变价格已直接发布：GLM 5.3"
     }
   ]
 }
