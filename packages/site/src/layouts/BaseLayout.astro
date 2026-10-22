@@ -10,7 +10,9 @@ import SiteHeader from "../components/SiteHeader.astro";
 import { t } from "../lib/i18n";
 import { DEFAULT_CURRENCY, HTML_LANG, type Locale } from "../lib/locale";
 import { THEME_SCRIPT } from "../lib/theme-script";
-import { absoluteUrl, pageHref } from "../lib/url";
+import { SITE_OG_PATH, absoluteUrl, pageHref } from "../lib/url";
+import { OG_HEIGHT, OG_WIDTH } from "../lib/og";
+import { siteVerificationMeta } from "../lib/seo";
 
 interface Props {
   locale: Locale;
@@ -21,9 +23,11 @@ interface Props {
   noindex?: boolean;
   /** 页面专属的订阅源（例如单个模型的价格变动），与全站订阅源一起声明 */
   feed?: { title: string; href: string };
+  /** 分享图路径（含 base），默认是全站分享图 */
+  image?: string;
 }
 
-const { locale, path, title, description, noindex = false, feed } = Astro.props;
+const { locale, path, title, description, noindex = false, feed, image } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const site = (Astro.site ?? new URL("http://localhost:4321")).origin;
 const other: Locale = locale === "zh" ? "en" : "zh";
@@ -31,6 +35,8 @@ const siteName = t(locale, "site.name");
 const fullTitle = title ? `${title} · ${siteName}` : `${siteName} · ${t(locale, "site.tagline")}`;
 const desc = description ?? t(locale, "site.description");
 const href = (l: Locale): string => absoluteUrl(site, pageHref(base, l, path));
+const imageUrl = absoluteUrl(site, image ?? pageHref(base, locale, SITE_OG_PATH));
+const verification = siteVerificationMeta(process.env);
 // 可选访问统计（不使用 Cookie），由 ANALYTICS_* 环境变量开启，见 lib/analytics.ts
 const analytics = analyticsScript(parseAnalyticsConfig(process.env));
 ---
@@ -63,6 +69,17 @@ const analytics = analyticsScript(parseAnalyticsConfig(process.env));
     <meta property="og:description" content={desc} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={href(locale)} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={locale === "zh" ? "zh_CN" : "en_US"} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content={String(OG_WIDTH)} />
+    <meta property="og:image:height" content={String(OG_HEIGHT)} />
+    <meta property="og:image:alt" content={fullTitle} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={imageUrl} />
+    {verification.map((v) => <meta name={v.name} content={v.content} />)}
     {analytics && <script is:inline defer src={analytics.src} {...analytics.attrs} />}
   </head>
   <body class="flex min-h-dvh flex-col bg-bg text-text">

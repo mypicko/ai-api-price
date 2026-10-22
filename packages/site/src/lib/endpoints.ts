@@ -1,10 +1,12 @@
 /** RSS / sitemap / robots 的静态端点实现（页面文件只负责转发） */
 import type { Locale } from "./locale";
-import { boardData } from "./board-data";
+import { boardData, boardTableRows } from "./board-data";
+import { modelCardNode, ogModelCard, pngResponse, renderPng, siteCardNode } from "./og";
+import type { TableRow } from "./table";
 import { buildRss } from "./rss";
 import { getSiteModel } from "./site-data";
 import { t } from "./i18n";
-import { platformName, type ModelInfo, type SiteModel } from "./site-model";
+import { platformName, vendorName, type ModelInfo, type SiteModel } from "./site-model";
 import { buildSitemap } from "./sitemap";
 import { absoluteUrl, joinBase, modelPath, normalizeBase, pageHref } from "./url";
 
@@ -92,4 +94,44 @@ export function boardDataResponse(locale: Locale): Response {
   return new Response(JSON.stringify(boardData(getSiteModel(), locale)), {
     headers: { "Content-Type": "application/json; charset=utf-8" },
   });
+}
+
+/** 卡片页脚显示的站点地址：去掉协议和末尾斜杠 */
+function displayHost(site: URL | undefined): string {
+  return absoluteUrl(siteOrigin(site), joinBase(currentBase(), ""))
+    .replace(/^https?:\/\//, "")
+    .replace(/\/$/, "");
+}
+
+const tableRowsCache = new Map<Locale, readonly TableRow[]>();
+function tableRows(locale: Locale): readonly TableRow[] {
+  const cached = tableRowsCache.get(locale);
+  if (cached) return cached;
+  const rows = boardTableRows(getSiteModel(), locale);
+  tableRowsCache.set(locale, rows);
+  return rows;
+}
+
+export async function modelOgResponse(
+  info: ModelInfo,
+  locale: Locale,
+  site: URL | undefined,
+): Promise<Response> {
+  const card = ogModelCard(tableRows(locale), info.slug, locale) ?? {
+    displayName: info.displayName,
+    vendorName: vendorName(getSiteModel(), info.vendor, locale),
+    price: "—",
+    detail: "",
+  };
+  return pngResponse(await renderPng(modelCardNode(card, locale, displayHost(site))));
+}
+
+export async function siteOgResponse(locale: Locale, site: URL | undefined): Promise<Response> {
+  const rows = tableRows(locale);
+  const stats = t(locale, "og.siteStats", {
+    models: new Set(rows.map((r) => r.modelSlug)).size,
+    count: rows.length,
+    platforms: new Set(rows.map((r) => r.platform)).size,
+  });
+  return pngResponse(await renderPng(siteCardNode(locale, displayHost(site), stats)));
 }

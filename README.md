@@ -151,6 +151,7 @@ gh variable set BASE_PATH --body /
 | 编程套餐       | 价格榜顶部「编程套餐」标签：Claude、ChatGPT/Codex、GitHub Copilot、Cursor、Kimi、智谱、火山方舟、MiniMax、阿里百炼等的月费、额度说明，以及「每月用多少次开始比按量付费划算」                                |
 | 变动日志       | 按日期列出所有涨价、降价、上新、下架记录                                                                                                                                                                    |
 | 收藏与对比     | 点模型名前的 ☆ 收藏（只存在你的浏览器里），勾选 2～4 个模型点「开始对比」并排比较最低价、官方价、上下文；对比链接可以直接发给别人                                                                           |
+| 分享卡片       | 把模型页链接发到飞书、Telegram、X 等，会显示带模型名和最低价的卡片图                                                                                                                                        |
 | RSS 订阅       | 页脚的 RSS 订阅全站价格变动；每个模型详情页也有「订阅这个模型的价格变动」，只关注某个模型时用它                                                                                                             |
 | 关于           | 数据来源、每个数据源的健康状态、待确认的异常价格                                                                                                                                                            |
 
@@ -231,14 +232,15 @@ pnpm dev
 
 完整说明见 [DEV_DOCUMENT.md §7](DEV_DOCUMENT.md#7-环境变量)，模板见 `.env.example`。常用的几个：
 
-| 变量                                           | 必填         | 说明                             |
-| ---------------------------------------------- | ------------ | -------------------------------- |
-| `FEISHU_WEBHOOK_URL` / `FEISHU_WEBHOOK_SECRET` | 推荐         | 飞书群机器人                     |
-| `SITE_URL` / `BASE_PATH`                       | 线上自动推断 | 绑定自定义域名时再设置           |
-| `NOTIFY_ON_SUCCESS`                            | 否           | 没有变动也推送                   |
-| `ANOMALY_THRESHOLD`                            | 否           | 突变拦截阈值，默认 0.8           |
-| `SOURCES_ENABLED`                              | 否           | 只运行部分源                     |
-| `ANALYTICS_PROVIDER` / `ANALYTICS_TOKEN`       | 否           | 访问统计，见下方「开启访问统计」 |
+| 变量                                                   | 必填         | 说明                                             |
+| ------------------------------------------------------ | ------------ | ------------------------------------------------ |
+| `FEISHU_WEBHOOK_URL` / `FEISHU_WEBHOOK_SECRET`         | 推荐         | 飞书群机器人                                     |
+| `SITE_URL` / `BASE_PATH`                               | 线上自动推断 | 绑定自定义域名时再设置                           |
+| `NOTIFY_ON_SUCCESS`                                    | 否           | 没有变动也推送                                   |
+| `ANOMALY_THRESHOLD`                                    | 否           | 突变拦截阈值，默认 0.8                           |
+| `SOURCES_ENABLED`                                      | 否           | 只运行部分源                                     |
+| `ANALYTICS_PROVIDER` / `ANALYTICS_TOKEN`               | 否           | 访问统计，见下方「开启访问统计」                 |
+| `GOOGLE_SITE_VERIFICATION` / `BAIDU_SITE_VERIFICATION` | 否           | 搜索引擎站点验证，见下方「提交到 Google 和百度」 |
 
 ### 开启访问统计（可选）
 
@@ -259,6 +261,37 @@ gh variable set ANALYTICS_TOKEN --body 你复制的token
 4. 下次 daily 运行后生效；也可以执行 `gh workflow run daily` 立即生效
 
 使用 Umami 时，把 `ANALYTICS_PROVIDER` 设为 `umami`，`ANALYTICS_TOKEN` 设为网站 ID；自建 Umami 再设置 `ANALYTICS_SCRIPT_URL`。
+
+### 提交到 Google 和百度（可选）
+
+网站已经有站点地图（`sitemap.xml`），每个模型页也有分享卡片图。提交到搜索引擎能让别人更快搜到。两家都要先证明网站是你的，选「HTML 标签」验证方式最简单：
+
+**Google**
+
+1. 打开 [Google Search Console](https://search.google.com/search-console)，选「网址前缀」，填 `https://mypicko.github.io/ai-api-price/`
+2. 验证方式选「HTML 标记」，复制 `content="…"` 引号里的那串字符
+3. 设置变量（这串字符会出现在公开网页里，不是密钥）：
+
+```bash
+gh variable set GOOGLE_SITE_VERIFICATION --body 你复制的字符
+```
+
+4. 执行 `gh workflow run daily`，等网站更新后（约 5 分钟）回到 Search Console 点「验证」
+5. 验证通过后，在左侧「站点地图」里提交 `sitemap.xml`
+
+**百度**
+
+1. 打开 [百度搜索资源平台](https://ziyuan.baidu.com/site/index)，添加网站 `https://mypicko.github.io/ai-api-price/`
+2. 验证方式选「HTML 标签验证」，复制 `content="…"` 里的字符（形如 `codeva-xxxx`）
+3. 设置变量，再执行 `gh workflow run daily`，网站更新后回到百度点「完成验证」：
+
+```bash
+gh variable set BAIDU_SITE_VERIFICATION --body 你复制的字符
+```
+
+4. 验证通过后，在「普通收录 → sitemap」里提交 `https://mypicko.github.io/ai-api-price/sitemap.xml`
+
+> 百度对 github.io 子路径的网站收录较慢，迁到国内服务器并绑定自己的域名后效果会更好。
 
 ### 常见报错
 

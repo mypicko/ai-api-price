@@ -17,7 +17,7 @@ import type { Locale } from "../lib/locale";
 import { convertCurrency, formatPrice, formatTokens } from "../lib/shared-client";
 import { getSiteModel } from "../lib/site-data";
 import { platformName, staleDays, vendorName, type ModelInfo } from "../lib/site-model";
-import { joinBase, modelPath, pageHref } from "../lib/url";
+import { joinBase, modelOgPath, modelPath, pageHref } from "../lib/url";
 import { chartOfferings, fxNote, toEventView } from "../lib/views";
 
 interface Props {
@@ -50,6 +50,7 @@ const rssHref = pageHref(base, locale, modelRssPath(info.slug));
   locale={locale}
   path={modelPath(info.slug)}
   feed={{ title: t(locale, "rss.modelTitle", { name: info.displayName }), href: rssHref }}
+  image={pageHref(base, locale, modelOgPath(info.slug))}
   title={`${info.displayName} · ${vName}`}
   description={`${info.displayName} API ${t(locale, "price.perMillion")}`}
 >

@@ -350,5 +350,11 @@
   "model.compare": "+ Compare",
   "model.compared": "✓ In compare",
   "model.goCompare": "Compare ({count})",
-  "nav.compare": "Compare"
+  "nav.compare": "Compare",
+  "og.cheapestFrom": "Cheapest on {platform}",
+  "og.platforms": "{count} platforms",
+  "og.context": "{context} context",
+  "og.unit": "input / output · per 1M tokens",
+  "og.footer": "{host} · updated daily",
+  "og.siteStats": "{models} models · {count} offers · {platforms} platforms"
 }

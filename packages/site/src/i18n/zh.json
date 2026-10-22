@@ -350,5 +350,11 @@
   "model.compare": "＋ 加入对比",
   "model.compared": "✓ 已加入对比",
   "model.goCompare": "去对比（{count}）",
-  "nav.compare": "对比"
+  "nav.compare": "对比",
+  "og.cheapestFrom": "最低价来自 {platform}",
+  "og.platforms": "共 {count} 个平台",
+  "og.context": "上下文 {context}",
+  "og.unit": "输入 / 输出 · 每百万 tokens",
+  "og.footer": "{host} · 每天自动更新",
+  "og.siteStats": "{models} 个模型 · {count} 个报价 · {platforms} 个平台"
 }

@@ -13,11 +13,13 @@
     "@aipb/shared": "workspace:*",
     "@astrojs/react": "^7.1.0",
     "@nanostores/react": "^2.0.1",
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.1.0",
     "astro": "^7.4.0",
     "nanostores": "^1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "satori": "^0.63.2",
     "tailwindcss": "^4.1.0",
     "uplot": "^1.6.32",
     "yaml": "^2.8.0"

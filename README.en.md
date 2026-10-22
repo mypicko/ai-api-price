@@ -155,6 +155,7 @@ gh variable set BASE_PATH --body /
 | Coding plans         | The "Coding plans" tab: monthly price and limits of Claude, ChatGPT/Codex, GitHub Copilot, Cursor, Kimi, Zhipu, Volcano Ark, MiniMax, Alibaba Bailian and more, plus how many requests a month it takes for a plan to beat pay-as-you-go                                                          |
 | Change log           | Every price increase, price drop, new model and removal, grouped by date                                                                                                                                                                                                                          |
 | Favorites & compare  | Star a model with ☆ (stored in your browser only); tick 2–4 models and click "Compare" to see lowest price, official price and context side by side; the compare link can be shared                                                                                                               |
+| Share cards          | Links to model pages shared on Feishu, Telegram, X and similar apps show a card with the model name and lowest price                                                                                                                                                                              |
 | RSS feed             | The footer RSS link follows all price changes; each model page also has its own feed for that model only                                                                                                                                                                                          |
 | About                | Data sources, the health of each source, and suspicious prices awaiting confirmation                                                                                                                                                                                                              |
 
@@ -236,14 +237,15 @@ pnpm dev
 
 See [DEV_DOCUMENT.md §7](DEV_DOCUMENT.md#7-环境变量) for the full list and `.env.example` for a template. The most common ones:
 
-| Variable                                       | Required                      | Purpose                                                 |
-| ---------------------------------------------- | ----------------------------- | ------------------------------------------------------- |
-| `FEISHU_WEBHOOK_URL` / `FEISHU_WEBHOOK_SECRET` | Recommended                   | Feishu group bot                                        |
-| `SITE_URL` / `BASE_PATH`                       | Inferred automatically online | Only set these for a custom domain                      |
-| `NOTIFY_ON_SUCCESS`                            | No                            | Notify even when nothing changed                        |
-| `ANOMALY_THRESHOLD`                            | No                            | Threshold for holding back sudden changes, default 0.8  |
-| `SOURCES_ENABLED`                              | No                            | Run only some sources                                   |
-| `ANALYTICS_PROVIDER` / `ANALYTICS_TOKEN`       | No                            | Visitor analytics, see "Enable visitor analytics" below |
+| Variable                                               | Required                      | Purpose                                                                 |
+| ------------------------------------------------------ | ----------------------------- | ----------------------------------------------------------------------- |
+| `FEISHU_WEBHOOK_URL` / `FEISHU_WEBHOOK_SECRET`         | Recommended                   | Feishu group bot                                                        |
+| `SITE_URL` / `BASE_PATH`                               | Inferred automatically online | Only set these for a custom domain                                      |
+| `NOTIFY_ON_SUCCESS`                                    | No                            | Notify even when nothing changed                                        |
+| `ANOMALY_THRESHOLD`                                    | No                            | Threshold for holding back sudden changes, default 0.8                  |
+| `SOURCES_ENABLED`                                      | No                            | Run only some sources                                                   |
+| `ANALYTICS_PROVIDER` / `ANALYTICS_TOKEN`               | No                            | Visitor analytics, see "Enable visitor analytics" below                 |
+| `GOOGLE_SITE_VERIFICATION` / `BAIDU_SITE_VERIFICATION` | No                            | Search engine site verification, see "Submit to Google and Baidu" below |
 
 ### Enable visitor analytics (optional)
 
@@ -264,6 +266,24 @@ gh variable set ANALYTICS_TOKEN --body your-token
 4. It takes effect after the next daily run, or right away with `gh workflow run daily`
 
 For Umami, set `ANALYTICS_PROVIDER` to `umami` and `ANALYTICS_TOKEN` to the website ID; for a self-hosted Umami, also set `ANALYTICS_SCRIPT_URL`.
+
+### Submit to Google and Baidu (optional)
+
+The site already has a sitemap (`sitemap.xml`) and a share image for every model page. Both search engines first ask you to prove you own the site; the "HTML tag" method is the simplest:
+
+1. In [Google Search Console](https://search.google.com/search-console) choose "URL prefix" and enter your site URL; in [Baidu Search Resource Platform](https://ziyuan.baidu.com/site/index) add the same URL
+2. Choose the HTML tag method and copy the value inside `content="…"`
+3. Set it as a variable (it appears in public pages, so it is not a secret), then run `gh workflow run daily`:
+
+```bash
+gh variable set GOOGLE_SITE_VERIFICATION --body your-value
+```
+
+```bash
+gh variable set BAIDU_SITE_VERIFICATION --body your-value
+```
+
+4. After the site updates (about 5 minutes), click "Verify", then submit `sitemap.xml`
 
 ### Common errors
 

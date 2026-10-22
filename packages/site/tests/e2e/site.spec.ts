@@ -451,7 +451,7 @@ test.describe("其他页面", () => {
     await expect(table).toContainText("平台数");
     // 分享出去的链接在没有本机记录的浏览器里也能打开
     const shared = page.url();
-    const fresh = await browser.newContext({ baseURL: test.info().project.use.baseURL });
+    const fresh = await browser.newContext({ baseURL: test.info().project.use.baseURL ?? "" });
     const other = await fresh.newPage();
     await other.goto(shared);
     await expect(other.getByTestId("compare-table").locator("thead th")).toHaveCount(3);
@@ -484,6 +484,30 @@ test.describe("其他页面", () => {
     await expect(page.getByTestId("compare-tray").locator("li")).toHaveCount(2);
     await gotoHydrated(page, "/models/alibaba/qwen3-max/");
     await expect(page.getByTestId("model-go-compare")).toHaveText("去对比（2）");
+  });
+
+  test("分享卡片：模型页有专属分享图，其他页面用全站分享图，图片是 1200×630 PNG", async ({
+    page,
+    request,
+  }) => {
+    await page.goto("/models/alibaba/qwen3-max/");
+    const image = page.locator('meta[property="og:image"]');
+    await expect(image).toHaveAttribute("content", /\/og\/models\/alibaba\/qwen3-max\.png$/);
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+      "content",
+      "summary_large_image",
+    );
+    const res = await request.get(new URL((await image.getAttribute("content")) ?? "").pathname);
+    expect(res.headers()["content-type"]).toContain("image/png");
+    const png = await res.body();
+    expect(png.readUInt32BE(16)).toBe(1200);
+    expect(png.readUInt32BE(20)).toBe(630);
+    await page.goto("/en/changes/");
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      "content",
+      /\/en\/og\/site\.png$/,
+    );
+    expect((await request.get("/en/og/site.png")).ok()).toBe(true);
   });
 
   test("视频/图像变动并入变动页；旧的 /media/ 链接跳转到价格榜视频标签", async ({ page }) => {

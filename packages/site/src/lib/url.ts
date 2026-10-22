@@ -47,3 +47,9 @@ export function stripLocale(pathname: string, base: string): string {
 export function absoluteUrl(site: string, path: string): string {
   return `${site.replace(/\/+$/, "")}/${path.replace(/^\/+/, "")}`;
 }
+
+/** 分享图相对路径（不含 base、不含语言前缀） */
+export const SITE_OG_PATH = "og/site.png";
+export function modelOgPath(slug: string): string {
+  return `og/models/${slug}.png`;
+}

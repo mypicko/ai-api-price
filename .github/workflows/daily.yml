@@ -120,6 +120,8 @@ jobs:
           ANALYTICS_PROVIDER: ${{ vars.ANALYTICS_PROVIDER }}
           ANALYTICS_TOKEN: ${{ vars.ANALYTICS_TOKEN }}
           ANALYTICS_SCRIPT_URL: ${{ vars.ANALYTICS_SCRIPT_URL }}
+          GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+          BAIDU_SITE_VERIFICATION: ${{ vars.BAIDU_SITE_VERIFICATION }}
         run: pnpm build
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
