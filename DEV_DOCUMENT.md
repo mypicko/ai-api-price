@@ -1122,3 +1122,9 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 - **入口**：模型详情页平台对比表每行「纠错」、编程套餐表每行「纠错」、页脚「提交报价」「反馈问题」。纠错链接用 URL 参数预填表单字段（`item` / `platform` / `current` / `evidence` / `page`，与表单字段 id 一致），见 `lib/feedback.ts`。
 - **仓库地址**：构建时取 `GITHUB_REPOSITORY`（GitHub Actions 自带），取不到用默认 `mypicko/ai-api-price`；fork 后链接自动指向自己的仓库。
 - **处理流程**：维护者打开官方页面核对 → 改对应的 `config/manual/*.yaml`、`config/plans/*.yaml` 或抓取器 → 提交后由下一次 daily 发布 → 在 Issue 里回复并关闭。只收有公开官方定价页的价格，不收国内中转站。
+
+### 3.17 国内外价差（1.4）
+
+- **口径**：同一模型的国内官方价（优先「官方（国内站）」，否则国内厂商的人民币官方价）vs OpenRouter 价，按混合价（3:1，换算成美元）比较；价差 = (国内 − OpenRouter) / OpenRouter。`lib/gap.ts`。
+- **展示**：首页「今日变动」下方的「国内外价差」榜单（价差绝对值最大的 6 个）；模型详情页平台对比表上方的一句话说明。方向如实标出（国内便宜 ▼ 绿 / 国内贵 ▲ 红），构建时渲染，不增加前端 JS。
+- **注意**：OpenRouter 的模型价是它当前首选服务商的报价，不一定是最低价，页面上已注明。

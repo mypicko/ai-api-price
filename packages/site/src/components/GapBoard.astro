@@ -1,0 +1,53 @@
+---
+/** 首页：国内外价差最大的模型（DEV §3.17） */
+import GapBadge from "./GapBadge.astro";
+import { allGaps, type PriceGap } from "../lib/gap";
+import { t } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { formatPrice } from "../lib/shared-client";
+import { getSiteModel } from "../lib/site-data";
+import { vendorName } from "../lib/site-model";
+import { modelPath, pageHref } from "../lib/url";
+
+interface Props {
+  locale: Locale;
+}
+
+const MAX_SHOWN = 6;
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const model = getSiteModel();
+const gaps = allGaps(model).slice(0, MAX_SHOWN);
+const pair = (o: PriceGap["domestic"]): string =>
+  `${formatPrice(o.input, o.currency, { locale })} / ${formatPrice(o.output, o.currency, { locale })}`;
+---
+
+{
+  gaps.length > 0 && (
+    <section aria-labelledby="price-gaps" class="flex flex-col gap-3" data-testid="gap-board">
+      <div class="flex flex-col gap-1">
+        <h2 id="price-gaps" class="text-h2">{t(locale, "gap.boardTitle")}</h2>
+        <p class="text-small text-text-muted">{t(locale, "gap.boardLead")}</p>
+      </div>
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {gaps.map((g) => (
+          <li class="flex flex-col gap-1.5 rounded-lg border border-border px-4 py-3">
+            <div class="flex items-center justify-between gap-2">
+              <a class="truncate font-medium hover:text-accent hover:underline" href={pageHref(base, locale, modelPath(g.modelSlug))}>
+                {g.displayName}
+              </a>
+              <GapBadge locale={locale} pct={g.pct} />
+            </div>
+            <div class="text-micro text-text-muted">{vendorName(model, g.vendor, locale)}</div>
+            <dl class="grid grid-cols-[auto_1fr] gap-x-3 text-small tabular">
+              <dt class="text-text-muted">{t(locale, "gap.domestic")}</dt>
+              <dd>{pair(g.domestic)}</dd>
+              <dt class="text-text-muted">OpenRouter</dt>
+              <dd>{pair(g.openrouter)}</dd>
+            </dl>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

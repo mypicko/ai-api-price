@@ -1,0 +1,19 @@
+---
+/** 国内外价差徽章：国内便宜（绿 ▼）/ 国内贵（红 ▲），颜色之外同时用箭头和文字表达（STYLE §4.3） */
+import { t } from "../lib/i18n";
+import { formatPct } from "../lib/shared-client";
+import type { Locale } from "../lib/locale";
+
+interface Props {
+  locale: Locale;
+  pct: number;
+}
+
+const { locale, pct } = Astro.props;
+const cheaper = pct < 0;
+const text = t(locale, cheaper ? "gap.cheaper" : "gap.pricier", { pct: formatPct(Math.abs(pct)).replace("+", "") });
+---
+
+<span class={`inline-flex items-center gap-1 rounded-sm px-1.5 py-0.5 text-micro font-medium whitespace-nowrap ${cheaper ? "bg-down-bg text-down" : "bg-up-bg text-up"}`} data-testid="gap-badge">
+  <span aria-hidden="true">{cheaper ? "▼" : "▲"}</span>{text}
+</span>

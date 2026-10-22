@@ -300,5 +300,12 @@
   "feedback.submit": "提交报价",
   "feedback.submitTitle": "服务商或用户登记尚未收录的价格（GitHub）",
   "feedback.issues": "反馈问题",
-  "plans.perMonthUnit": "/月"
+  "plans.perMonthUnit": "/月",
+  "gap.title": "国内外价差",
+  "gap.cheaper": "国内便宜 {pct}",
+  "gap.pricier": "国内贵 {pct}",
+  "gap.basis": "按混合价（3:1）比较；OpenRouter 价为其当前首选服务商的报价",
+  "gap.boardTitle": "国内外价差",
+  "gap.boardLead": "同一模型的国内官方价与 OpenRouter 价相差最多的几个（按混合价比较，单位每百万 tokens）。",
+  "gap.domestic": "国内官方"
 }

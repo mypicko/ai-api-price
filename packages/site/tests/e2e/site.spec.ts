@@ -364,6 +364,22 @@ test.describe("其他页面", () => {
     expect(planUrl.searchParams.get("page")).toContain("kind=plans");
   });
 
+  test("国内外价差：首页榜单和模型详情页说明，方向用文字和箭头标出", async ({ page }) => {
+    await page.goto("/");
+    const board = page.getByTestId("gap-board");
+    await expect(board.locator("li")).toHaveCount(3);
+    await expect(board.getByTestId("gap-badge").first()).toHaveText(
+      /^[▼▲]国内(便宜|贵) \d+(\.\d)?%$/,
+    );
+    await page.goto("/models/deepseek/deepseek-chat/");
+    const note = page.getByTestId("gap-note");
+    await expect(note).toContainText("OpenRouter");
+    await expect(note.getByTestId("gap-badge")).toHaveText(/国内(便宜|贵)/);
+    // 没有国内价的国际模型不显示
+    await page.goto("/models/openai/gpt-5/");
+    await expect(page.getByTestId("gap-note")).toHaveCount(0);
+  });
+
   test("视频/图像变动并入变动页；旧的 /media/ 链接跳转到价格榜视频标签", async ({ page }) => {
     await page.goto("/changes/");
     await expect(page.getByTestId("media-changes")).toContainText("MiniMax-H3");

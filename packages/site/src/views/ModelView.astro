@@ -3,6 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { DualPrice } from "../components/DualPrice";
 import { EventItem } from "../components/EventItem";
 import OfferingCompare from "../components/OfferingCompare.astro";
+import GapNote from "../components/GapNote.astro";
+import { gapFor } from "../lib/gap";
 import { PriceChart } from "../components/PriceChart";
 import StaleNotice from "../components/StaleNotice.astro";
 import VendorLogo from "../components/VendorLogo.astro";
@@ -38,6 +40,7 @@ const note = fxNote(model, locale);
 const tierRange = (min: number, max: number | null): string =>
   max === null ? `≥ ${formatTokens(min)}` : `${formatTokens(min)} – ${formatTokens(max)}`;
 const series = model.data.histories.get(info.slug)?.series ?? {};
+const gap = gapFor(model, info.slug);
 ---
 
 <BaseLayout
@@ -77,6 +80,7 @@ const series = model.data.histories.get(info.slug)?.series ?? {};
 
     <section aria-labelledby="offerings" class="flex flex-col gap-3">
       <h2 id="offerings" class="text-h2">{t(locale, "model.offerings")}</h2>
+      {gap && <GapNote locale={locale} gap={gap} />}
       <OfferingCompare locale={locale} offerings={info.offerings} />
     </section>
 
