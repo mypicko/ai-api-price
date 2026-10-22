@@ -143,5 +143,7 @@ export async function renderPng(node: Node): Promise<Uint8Array> {
 }
 
 export function pngResponse(png: Uint8Array): Response {
-  return new Response(new Blob([new Uint8Array(png)]), { headers: { "Content-Type": "image/png" } });
+  return new Response(new Blob([new Uint8Array(png)]), {
+    headers: { "Content-Type": "image/png" },
+  });
 }
