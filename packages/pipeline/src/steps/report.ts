@@ -15,6 +15,9 @@ import type { DailyReport } from "../notify/types";
 
 export const MAX_SUMMARY_WARNINGS = 50;
 
+/** 推送到飞书「待复核」的提醒码：W 级别本来不推送，这两类需要人去核对官网 */
+const REMINDER_CODES: ReadonlySet<string> = new Set(["W2004", "W2005"]);
+
 export interface ReportInput {
   readonly today: string;
   readonly status: StatusFile;
@@ -50,6 +53,9 @@ export function buildDailyReport(input: ReportInput): DailyReport {
         message: w.message,
         ...(w.sourceId === null ? {} : { sourceId: w.sourceId }),
       })),
+    reminders: input.status.warnings
+      .filter((w) => REMINDER_CODES.has(w.code))
+      .map((w) => ({ code: w.code, message: w.message })),
     siteUrl: input.siteUrl,
     names,
   };

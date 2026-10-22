@@ -6,7 +6,9 @@ import { daysBetween, monthOf, shanghaiDate, toIsoSeconds } from "../../src/step
 import {
   buildSourceResults,
   checkManualFreshness,
+  checkPlanFreshness,
   MANUAL_STALE_CODE,
+  PLAN_STALE_CODE,
 } from "../../src/steps/source-health";
 import type { SourceOutcome } from "../../src/steps/types";
 import { makeOffering, NOW, NOW_ISO } from "../helpers";
@@ -168,6 +170,32 @@ describe("源健康度", () => {
     expect(checkManualFreshness([file("2026-09-01")], NOW)).toEqual([
       expect.objectContaining({ code: MANUAL_STALE_CODE, sourceId: "manual" }),
     ]);
+  });
+
+  it("编程套餐：verifiedAt 超过 14 天给出 W2005，消息里带上提供方名称", () => {
+    const plan = (verifiedAt: string) => ({
+      file: "zhipu.yaml",
+      config: {
+        provider: {
+          id: "zhipu",
+          nameZh: "智谱 GLM Coding Plan",
+          nameEn: "Zhipu",
+          region: "cn" as const,
+        },
+        currency: "CNY" as const,
+        sourceUrl: "https://bigmodel.cn/glm-coding",
+        verifiedAt,
+        toolsZh: "x",
+        toolsEn: "x",
+        breakEvenModel: "zhipu/glm-5.3",
+        plans: [],
+      },
+    });
+    expect(checkPlanFreshness([plan("2026-10-10")], NOW)).toEqual([]);
+    const [warning] = checkPlanFreshness([plan("2026-09-20")], NOW);
+    expect(PLAN_STALE_CODE).toBe("W2005");
+    expect(warning).toMatchObject({ code: "W2005", sourceId: "plans" });
+    expect(warning?.message).toContain("智谱 GLM Coding Plan");
   });
 });
 

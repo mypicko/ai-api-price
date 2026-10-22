@@ -43,7 +43,7 @@ import { persistFiles, type PlannedFile } from "./persist";
 import { reconcile, type ReconcileResult } from "./reconcile";
 import { buildDailyReport, buildSummaryMarkdown } from "./report";
 import { runSources } from "./fetch-sources";
-import { buildSourceResults, checkManualFreshness } from "./source-health";
+import { buildSourceResults, checkManualFreshness, checkPlanFreshness } from "./source-health";
 import { loadChangesMonth, loadHistoryFiles, loadPreviousState, type PreviousState } from "./state";
 import type { SourceOutcome } from "./types";
 import { activeOverrides } from "./validate";
@@ -205,6 +205,7 @@ function collectWarnings(
     ...crossCheck(g.rec.offerings, g.fx.rate.usdCny),
     ...healthWarnings,
     ...(ranManual ? checkManualFreshness(g.files.manual, g.startedAt) : []),
+    ...checkPlanFreshness(g.files.plans, g.startedAt),
   ]);
 }
 

@@ -30,6 +30,8 @@ export interface DailyReport {
   /** 本次新进入隔离区的条目 */
   readonly quarantined: readonly QuarantineEntry[];
   readonly errors: readonly ReportError[];
+  /** 需要人工复核的提醒：手动价格（W2004）、编程套餐（W2005）超过 14 天未核对 */
+  readonly reminders?: readonly ReportError[];
   readonly siteUrl: string;
   /** offeringId → 展示名（隔离区条目只有 ID） */
   readonly names?: Readonly<Record<string, string>>;

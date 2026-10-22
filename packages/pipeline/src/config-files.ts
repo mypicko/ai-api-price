@@ -8,10 +8,12 @@ import {
   AliasesConfigSchema,
   ManualSourceConfigSchema,
   OverridesConfigSchema,
+  PlanFileSchema,
   ProvidersConfigSchema,
   type AliasesConfig,
   type ManualSourceConfig,
   type Override,
+  type PlanFile,
   type ProvidersConfig,
 } from "@aipb/shared";
 import { parse } from "yaml";
@@ -23,11 +25,18 @@ export interface ManualConfigFile {
   readonly config: ManualSourceConfig;
 }
 
+/** config/plans/*.yaml：编程套餐（网站构建时读取；管线只用来检查核对日期） */
+export interface PlanConfigFile {
+  readonly file: string;
+  readonly config: PlanFile;
+}
+
 export interface ConfigFiles {
   readonly providers: ProvidersConfig;
   readonly aliases: AliasesConfig;
   readonly overrides: readonly Override[];
   readonly manual: readonly ManualConfigFile[];
+  readonly plans: readonly PlanConfigFile[];
 }
 
 export function configDir(rootDir: string): string {
@@ -138,12 +147,33 @@ export async function loadManualConfigs(rootDir: string): Promise<readonly Manua
   );
 }
 
+async function listYaml(dir: string): Promise<readonly string[]> {
+  try {
+    return (await readdir(dir)).filter((n) => /\.ya?ml$/i.test(n)).toSorted();
+  } catch (error) {
+    if (isNotFound(error)) return [];
+    throw new PipelineError("E3001", `读取目录失败：${dir}`, { cause: error });
+  }
+}
+
+export async function loadPlanConfigs(rootDir: string): Promise<readonly PlanConfigFile[]> {
+  const dir = path.join(configDir(rootDir), "plans");
+  const names = await listYaml(dir);
+  return Promise.all(
+    names.map(async (name) => ({
+      file: name,
+      config: await loadYaml(path.join(dir, name), PlanFileSchema, null),
+    })),
+  );
+}
+
 export async function loadConfigFiles(rootDir: string): Promise<ConfigFiles> {
-  const [providers, aliases, overrides, manual] = await Promise.all([
+  const [providers, aliases, overrides, manual, plans] = await Promise.all([
     loadProviders(rootDir),
     loadAliases(rootDir),
     loadOverrides(rootDir),
     loadManualConfigs(rootDir),
+    loadPlanConfigs(rootDir),
   ]);
-  return { providers, aliases, overrides, manual };
+  return { providers, aliases, overrides, manual, plans };
 }

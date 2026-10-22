@@ -6,7 +6,7 @@
  * 另含 manual 配置 verifiedAt 的新鲜度检查。
  */
 import type { SourceResult, Warning } from "@aipb/shared";
-import type { ManualConfigFile } from "../config-files";
+import type { ManualConfigFile, PlanConfigFile } from "../config-files";
 import { daysBetween } from "./dates";
 import type { SourceOutcome } from "./types";
 import { makeWarning } from "./types";
@@ -14,6 +14,8 @@ import { makeWarning } from "./types";
 export const MANUAL_MAX_AGE_DAYS = 14;
 /** 暂未列入 errors.ts 的警告码：手动价格超过 14 天未核对 */
 export const MANUAL_STALE_CODE = "W2004";
+/** 编程套餐超过 MANUAL_MAX_AGE_DAYS 天未核对 */
+export const PLAN_STALE_CODE = "W2005";
 
 export interface SourceHealthInput {
   readonly outcomes: readonly SourceOutcome[];
@@ -81,5 +83,18 @@ export function checkManualFreshness(
     if (age <= MANUAL_MAX_AGE_DAYS) return [];
     const message = `手动价格 ${f.file} 已 ${age} 天未核对（verifiedAt = ${f.config.verifiedAt}）`;
     return [makeWarning(MANUAL_STALE_CODE, message, { sourceId: "manual" })];
+  });
+}
+
+/** 编程套餐（config/plans）的核对日期检查，与是否运行了哪些源无关，每次都检查 */
+export function checkPlanFreshness(
+  files: readonly PlanConfigFile[],
+  now: Date,
+): readonly Warning[] {
+  return files.flatMap((f) => {
+    const age = daysBetween(`${f.config.verifiedAt}T00:00:00+08:00`, now);
+    if (age <= MANUAL_MAX_AGE_DAYS) return [];
+    const message = `编程套餐 ${f.config.provider.nameZh}（${f.file}）已 ${age} 天未核对（verifiedAt = ${f.config.verifiedAt}）`;
+    return [makeWarning(PLAN_STALE_CODE, message, { sourceId: "plans" })];
   });
 }

@@ -133,6 +133,11 @@ export function buildReportText(report: DailyReport): ReportText {
       report.quarantined.map((q) => describeQuarantine(q, names)),
     ),
     section("❗", "告警", errors),
+    section(
+      "📝",
+      "待复核",
+      (report.reminders ?? []).map((r) => r.message),
+    ),
   ].filter((line): line is string => line !== null);
   const hasNews = lines.length > 1;
   return {
@@ -142,7 +147,7 @@ export function buildReportText(report: DailyReport): ReportText {
   };
 }
 
-/** 是否值得推送：有变动、有告警、隔离区新增，或 NOTIFY_ON_SUCCESS */
+/** 是否值得推送：有变动、有告警、隔离区新增、有待复核提醒，或 NOTIFY_ON_SUCCESS */
 export function shouldNotify(report: DailyReport, notifyOnSuccess: boolean): boolean {
   const notable = [...report.changes, ...(report.mediaChanges ?? [])].some((e) =>
     ["price_down", "price_up", "new_model", "removed"].includes(e.type),
@@ -150,7 +155,8 @@ export function shouldNotify(report: DailyReport, notifyOnSuccess: boolean): boo
   const hasErrors =
     report.errors.some((e) => e.code.startsWith("E")) ||
     report.sources.some((s) => s.status !== "ok");
-  return notifyOnSuccess || notable || hasErrors || report.quarantined.length > 0;
+  const hasReminders = (report.reminders?.length ?? 0) > 0;
+  return notifyOnSuccess || notable || hasErrors || hasReminders || report.quarantined.length > 0;
 }
 
 export function escapeHtml(text: string): string {

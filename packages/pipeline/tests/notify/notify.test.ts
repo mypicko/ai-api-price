@@ -151,6 +151,23 @@ describe("notify/format", () => {
       true,
     );
     expect(shouldNotify(quiet, false)).toBe(false);
+    // 只有待复核提醒时也推送
+    const reminder = { code: "W2005", message: "编程套餐 zhipu.yaml 已 20 天未核对" };
+    expect(shouldNotify({ ...quiet, reminders: [reminder] }, false)).toBe(true);
+  });
+
+  it("日报包含「待复核」一节（手动价格 W2004、编程套餐 W2005）", () => {
+    const text = buildReportText(
+      report({
+        reminders: [
+          { code: "W2004", message: "手动价格 kimi-cn.yaml 已 15 天未核对" },
+          { code: "W2005", message: "编程套餐 zhipu.yaml 已 20 天未核对" },
+        ],
+      }),
+    );
+    const line = text.lines.find((l) => l.includes("待复核"));
+    expect(line).toContain("kimi-cn.yaml");
+    expect(line).toContain("zhipu.yaml");
   });
 
   it("超过 5 条时折叠；无变动时说明", () => {
