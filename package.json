@@ -28,5 +28,10 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.0.0",
     "vitest": "^5.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "fflate@<0.7.5": "^0.7.5"
+    }
   }
 }

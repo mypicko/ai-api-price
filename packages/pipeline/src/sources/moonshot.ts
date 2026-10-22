@@ -1,6 +1,9 @@
 /**
- * 月之暗面 Kimi 官方价格（Mintlify 文档站的 Markdown 导出，纯文本，无需渲染）。
- * 入口（抓取）：https://platform.kimi.ai/docs/pricing/chat.md
+ * 月之暗面 Kimi 官方价格（Mintlify 文档站）。
+ * 入口（抓取）：https://platform.kimi.ai/docs/pricing/chat（HTML，无需渲染）
+ *   2026-10-20 起 .md 导出里的价格表变成空表（<tbody />），价格只在 HTML 内嵌的已编译 MDX 里：
+ *   DocTable,{columns:[{title:`Model`}…],rows:[[`kimi-k2.6`,`1M tokens`,_jsxs(_Fragment,{children:[`$`,`0.16`]})…]]}
+ *   所以先解析 HTML；HTML 里找不到时再试 .md（旧格式，兼容站点改回去的情况）
  * 证据链接（sourceUrl）：https://platform.moonshot.ai/docs/pricing/chat（官方域名，302 跳转到上面的页面）
  * 为什么不用 platform.moonshot.cn：2026-10-18 实测境外网络（含 GitHub Actions 所在网络）无法连接该主机；
  *   platform.moonshot.ai 会跨域跳转到 platform.kimi.ai，http 客户端不跟随跨域跳转，所以直接请求跳转目标。
@@ -8,7 +11,7 @@
  * - 价格表是 <DocTable columns={[{ title: "..." }]} rows={[[...], ...]} /> 组件，按 title 定位列
  * - 价格单元格形如 <>{"$"}3.00</>，单位列 "1M tokens"，上下文列 "1,048,576 tokens"
  * - K3 系列有缓存写入价（TTL 5min / 1h），cacheWrite 取默认的 5min，1h 写进 notes
- * 最后核对：2026-10-18
+ * 最后核对：2026-10-23
  */
 import type { RawOffering } from "@aipb/shared";
 import { PipelineError } from "../core/errors";
@@ -16,7 +19,8 @@ import type { Logger } from "../core/logger";
 import { detectUnit, findColumn, joinNotes, parseTokenCount, resolvePrice } from "./parse-price";
 import type { Source } from "./types";
 
-export const MOONSHOT_FETCH_URL = "https://platform.kimi.ai/docs/pricing/chat.md";
+export const MOONSHOT_FETCH_URL = "https://platform.kimi.ai/docs/pricing/chat";
+export const MOONSHOT_MARKDOWN_URL = "https://platform.kimi.ai/docs/pricing/chat.md";
 export const MOONSHOT_URL = "https://platform.moonshot.ai/docs/pricing/chat";
 const SOURCE_ID = "moonshot";
 
@@ -52,6 +56,87 @@ export function parseDocTables(markdown: string): readonly DocTable[] {
       headers: [...columnsPart.matchAll(TITLE)].map((m) => m[1] ?? ""),
       rows: [...rowsPart.matchAll(ROW_LINE)].map((m) => parseRow(m[1] ?? "")),
     };
+  });
+}
+
+/** 已编译 MDX 里的 DocTable：DocTable,{columns:[…],rows:[…]} */
+const COMPILED_TABLE = /DocTable,\{columns:\[/g;
+const COMPILED_TITLE = /title:`((?:[^`\\]|\\.)*)`/g;
+const BACKTICK = /`((?:[^`\\]|\\.)*)`/g;
+
+/** 从 start（指向 "["）开始找到配对的 "]"，跳过反引号字符串；返回 "]" 的下标，找不到返回 -1 */
+function matchBracket(text: string, start: number): number {
+  let depth = 0;
+  let inString = false;
+  for (let i = start; i < text.length; i += 1) {
+    const ch = text[i];
+    if (inString) {
+      if (ch === "\\") i += 1;
+      else if (ch === "`") inString = false;
+      continue;
+    }
+    if (ch === "`") inString = true;
+    else if (ch === "[" || ch === "{" || ch === "(") depth += 1;
+    else if (ch === "]" || ch === "}" || ch === ")") {
+      depth -= 1;
+      if (depth === 0) return i;
+    }
+  }
+  return -1;
+}
+
+/** 数组字面量 "[a,b,[c]]" 的顶层元素（按顶层逗号切开） */
+function topLevelItems(arrayText: string): readonly string[] {
+  const inner = arrayText.slice(1, -1);
+  const items: string[] = [];
+  let depth = 0;
+  let inString = false;
+  let from = 0;
+  for (let i = 0; i < inner.length; i += 1) {
+    const ch = inner[i];
+    if (inString) {
+      if (ch === "\\") i += 1;
+      else if (ch === "`") inString = false;
+      continue;
+    }
+    if (ch === "`") inString = true;
+    else if (ch === "[" || ch === "{" || ch === "(") depth += 1;
+    else if (ch === "]" || ch === "}" || ch === ")") depth -= 1;
+    else if (ch === "," && depth === 0) {
+      items.push(inner.slice(from, i));
+      from = i + 1;
+    }
+  }
+  if (inner.slice(from).trim() !== "") items.push(inner.slice(from));
+  return items;
+}
+
+/** 单元格：字符串直接取；_jsxs(_Fragment,{children:[`$`,`0.16`]}) 取出所有字符串拼起来 */
+function compiledCell(item: string): string {
+  return [...item.matchAll(BACKTICK)]
+    .map((m) => m[1] ?? "")
+    .join("")
+    .trim();
+}
+
+/** 从 HTML 内嵌的已编译 MDX 里找出所有 DocTable */
+export function parseCompiledDocTables(html: string): readonly DocTable[] {
+  return [...html.matchAll(COMPILED_TABLE)].flatMap((match) => {
+    const columnsStart = (match.index ?? 0) + match[0].length - 1;
+    const columnsEnd = matchBracket(html, columnsStart);
+    if (columnsEnd < 0) return [];
+    const headers = [...html.slice(columnsStart, columnsEnd).matchAll(COMPILED_TITLE)].map(
+      (m) => m[1] ?? "",
+    );
+    const rowsKey = html.indexOf("rows:[", columnsEnd);
+    if (rowsKey < 0 || rowsKey - columnsEnd > 20) return [];
+    const rowsStart = rowsKey + "rows:".length;
+    const rowsEnd = matchBracket(html, rowsStart);
+    if (rowsEnd < 0) return [];
+    const rows = topLevelItems(html.slice(rowsStart, rowsEnd + 1)).map((row) =>
+      topLevelItems(row.trim()).map(compiledCell),
+    );
+    return [{ headers, rows }];
   });
 }
 
@@ -133,16 +218,32 @@ function safeOffering(
   }
 }
 
+function offeringsFrom(tables: readonly DocTable[], logger?: Logger): RawOffering[] {
+  return tables.flatMap((table) => {
+    const columns = locateColumns(table.headers);
+    return columns ? table.rows.flatMap((row) => safeOffering(row, columns, logger)) : [];
+  });
+}
+
+function noTable(): PipelineError {
+  return new PipelineError("E2001", "moonshot：找不到含 Model / Input / Output 列的价格表", {
+    sourceId: SOURCE_ID,
+  });
+}
+
+/** HTML 页面（已编译 MDX） */
+export function parseMoonshotHtml(html: string, logger?: Logger): RawOffering[] {
+  const offerings = offeringsFrom(parseCompiledDocTables(html), logger);
+  if (offerings.length === 0) throw noTable();
+  return offerings;
+}
+
 export function parseMoonshotMarkdown(markdown: string, logger?: Logger): RawOffering[] {
   const offerings = parseDocTables(markdown).flatMap((table) => {
     const columns = locateColumns(table.headers);
     return columns ? table.rows.flatMap((row) => safeOffering(row, columns, logger)) : [];
   });
-  if (offerings.length === 0) {
-    throw new PipelineError("E2001", "moonshot：找不到含 Model / Input / Output 列的价格表", {
-      sourceId: SOURCE_ID,
-    });
-  }
+  if (offerings.length === 0) throw noTable();
   return offerings;
 }
 
@@ -152,8 +253,13 @@ export const moonshotSource: Source = {
   kind: "html",
   timeoutMs: 30_000,
   async fetch(ctx) {
-    const markdown = await ctx.http.getText(MOONSHOT_FETCH_URL);
-    const offerings = parseMoonshotMarkdown(markdown, ctx.logger);
+    let offerings: RawOffering[];
+    try {
+      offerings = parseMoonshotHtml(await ctx.http.getText(MOONSHOT_FETCH_URL), ctx.logger);
+    } catch (error) {
+      ctx.logger.warn("moonshot：HTML 里没有价格表，改用 .md 导出", { sourceId: SOURCE_ID, error });
+      offerings = parseMoonshotMarkdown(await ctx.http.getText(MOONSHOT_MARKDOWN_URL), ctx.logger);
+    }
     ctx.logger.info("moonshot 解析完成", { sourceId: SOURCE_ID, count: offerings.length });
     return offerings;
   },

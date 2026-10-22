@@ -5,15 +5,21 @@ import { describe, expect, it, vi } from "vitest";
 import { createLogger, silentLogger } from "../../src/core/logger";
 import {
   MOONSHOT_FETCH_URL,
+  MOONSHOT_MARKDOWN_URL,
   MOONSHOT_URL,
   moonshotSource,
+  parseCompiledDocTables,
   parseDocTables,
+  parseMoonshotHtml,
   parseMoonshotMarkdown,
 } from "../../src/sources/moonshot";
 import { createFakeHttp, FIXTURES_DIR, noopBrowser, NOW, ROOT_DIR } from "../helpers";
 
 const loadFixture = (): Promise<string> =>
   readFile(path.join(FIXTURES_DIR, "moonshot/2026-10-18.md"), "utf8");
+/** 2026-10-20 起 .md 导出的价格表是空的，价格只在 HTML 内嵌的已编译 MDX 里 */
+const loadHtmlFixture = (): Promise<string> =>
+  readFile(path.join(FIXTURES_DIR, "moonshot/2026-10-23.html"), "utf8");
 
 describe("source/moonshot", () => {
   it("从 DocTable 组件解析出 4 个模型", async () => {
@@ -103,8 +109,38 @@ describe("source/moonshot", () => {
     expect(() => parseMoonshotMarkdown("# 维护中")).toThrow(/E2001/);
   });
 
-  it("fetch 请求 Markdown 导出地址", async () => {
-    const http = createFakeHttp({ [MOONSHOT_FETCH_URL]: await loadFixture() });
+  it("HTML（已编译 MDX）：解析出 4 个模型，结果与旧的 Markdown 格式一致", async () => {
+    const html = await loadHtmlFixture();
+    const tables = parseCompiledDocTables(html);
+    expect(tables.map((t) => t.headers[0])).toEqual(["Model", "Model"]);
+    const offerings = parseMoonshotHtml(html);
+    expect(offerings.map((o) => o.modelName)).toEqual([
+      "kimi-k3",
+      "kimi-k2.7-code",
+      "kimi-k2.7-code-highspeed",
+      "kimi-k2.6",
+    ]);
+    expect(offerings[0]).toMatchObject({ input: 3, output: 15, cacheRead: 0.3, cacheWrite: 3 });
+    expect(offerings[3]).toMatchObject({ input: 0.95, output: 4, cacheRead: 0.16 });
+    for (const offering of offerings)
+      expect(RawOfferingSchema.safeParse(offering).success).toBe(true);
+    expect(() => parseMoonshotHtml("<html>维护中</html>")).toThrow(/E2001/);
+  });
+
+  it("已编译 MDX：单元格里的逗号、括号和转义反引号不影响切分", () => {
+    const html =
+      "x DocTable,{columns:[{title:`Model`},{title:`Input Price`},{title:`Output Price`}]," +
+      "rows:[[`a, (b) \\` [c]`,_jsxs(_Fragment,{children:[`$`,`1.50`]}),`$2`]]} y";
+    expect(parseCompiledDocTables(html)).toEqual([
+      {
+        headers: ["Model", "Input Price", "Output Price"],
+        rows: [["a, (b) \\` [c]", "$1.50", "$2"]],
+      },
+    ]);
+  });
+
+  it("fetch 先请求 HTML 页面", async () => {
+    const http = createFakeHttp({ [MOONSHOT_FETCH_URL]: await loadHtmlFixture() });
     const offerings = await moonshotSource.fetch({
       http,
       browser: noopBrowser,
@@ -114,5 +150,21 @@ describe("source/moonshot", () => {
     });
     expect(offerings).toHaveLength(4);
     expect(http.requests.map((r) => r.url)).toEqual([MOONSHOT_FETCH_URL]);
+  });
+
+  it("HTML 里没有价格表时退回 .md 导出", async () => {
+    const http = createFakeHttp({
+      [MOONSHOT_FETCH_URL]: "<html>改版了</html>",
+      [MOONSHOT_MARKDOWN_URL]: await loadFixture(),
+    });
+    const offerings = await moonshotSource.fetch({
+      http,
+      browser: noopBrowser,
+      logger: silentLogger,
+      now: NOW,
+      rootDir: ROOT_DIR,
+    });
+    expect(offerings).toHaveLength(4);
+    expect(http.requests.map((r) => r.url)).toEqual([MOONSHOT_FETCH_URL, MOONSHOT_MARKDOWN_URL]);
   });
 });
