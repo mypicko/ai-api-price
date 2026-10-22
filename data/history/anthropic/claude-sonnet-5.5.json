@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "deepinfra:anthropic/claude-sonnet-5.5": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
+      }
+    ],
     "official:anthropic/claude-sonnet-5.5": [
       {
         "input": 2,

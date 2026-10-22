@@ -26,6 +26,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.05,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "novita:google/gemma-3-12b-it": [

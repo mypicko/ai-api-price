@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-v4-flash-0731-p",
+  "series": {
+    "novita:deepseek/deepseek-v4-flash-0731-p": [
+      {
+        "input": 0.44,
+        "output": 1.32,
+        "cacheRead": 0.0148,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
+      }
+    ]
+  }
+}

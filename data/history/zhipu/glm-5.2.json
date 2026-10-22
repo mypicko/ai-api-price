@@ -44,6 +44,13 @@
         "cacheRead": 0.084,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.5625,
+        "output": 1.8,
+        "cacheRead": 0.105,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "digitalocean:zhipu/glm-5.2": [
@@ -87,6 +94,13 @@
         "cacheRead": 0.12064,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "official:zhipu/glm-5.2": [

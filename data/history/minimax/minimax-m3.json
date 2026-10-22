@@ -17,6 +17,13 @@
         "cacheRead": 0.0448,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.28,
+        "output": 1.1,
+        "cacheRead": 0.056,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "fireworks:minimax/minimax-m3": [

@@ -44,6 +44,13 @@
         "cacheRead": 0.095,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.6,
+        "output": 3,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "openrouter:moonshot/kimi-k2.5": [

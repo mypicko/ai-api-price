@@ -80,6 +80,13 @@
         "cacheRead": 0.033,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 1.32,
+        "output": 3.96,
+        "cacheRead": 0.044,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "openrouter:deepseek/deepseek-v4-pro-0813": [

@@ -35,6 +35,13 @@
         "cacheRead": 0.075,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.2,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "novita:google/gemma-4-31b-it": [

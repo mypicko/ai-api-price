@@ -8,6 +8,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.029,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "fireworks:mistral/mistral-nemo-instruct-2407": [

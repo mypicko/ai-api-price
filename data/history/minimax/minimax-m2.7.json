@@ -35,6 +35,13 @@
         "cacheRead": 0.054,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "official-cn:minimax/minimax-m2.7": [

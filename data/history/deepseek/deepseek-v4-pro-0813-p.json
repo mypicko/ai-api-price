@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-v4-pro-0813-p",
+  "series": {
+    "novita:deepseek/deepseek-v4-pro-0813-p": [
+      {
+        "input": 1.32,
+        "output": 3.96,
+        "cacheRead": 0.044,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
+      }
+    ]
+  }
+}

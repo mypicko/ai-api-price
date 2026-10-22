@@ -3720,6 +3720,432 @@
       "detectedAt": "2026-10-21T22:44:49Z"
     },
     {
+      "id": "2026-10-23-deepinfra:alibaba/qwen3-next-80b-a3b-instruct-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:alibaba/qwen3-next-80b-a3b-instruct",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-next-80b-a3b-instruct",
+      "displayName": "Qwen3-Next-80B-A3B-Instruct",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.072,
+          "new": 0.09,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 0.88,
+          "new": 1.1,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:anthropic/claude-sonnet-5-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:anthropic/claude-sonnet-5",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-sonnet-5",
+      "displayName": "Claude Sonnet 5",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 2,
+          "new": 3,
+          "pct": 0.5
+        },
+        {
+          "field": "output",
+          "old": 10,
+          "new": 15,
+          "pct": 0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:deepseek/deepseek-v3.1-1",
+      "type": "price_down",
+      "offeringId": "deepinfra:deepseek/deepseek-v3.1",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v3.1",
+      "displayName": "DeepSeek-V3.1",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "cacheRead",
+          "old": 0.216,
+          "new": 0.13,
+          "pct": -0.3981
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek-V4.1-Flash",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.112,
+          "new": 0.14,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 0.336,
+          "new": 0.42,
+          "pct": 0.25
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.00336,
+          "new": 0.0042,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:deepseek/deepseek-v4.1-flash-1017-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek-V4.1-Flash-1017",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0784,
+          "new": 0.098,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 0.2352,
+          "new": 0.294,
+          "pct": 0.25
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.002352,
+          "new": 0.00294,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:google/gemma-3-12b-it-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:google/gemma-3-12b-it",
+      "vendor": "google",
+      "modelSlug": "google/gemma-3-12b-it",
+      "displayName": "Gemma 3 12B",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.04,
+          "new": 0.05,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 0.12,
+          "new": 0.15,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:google/gemma-4-31b-it-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:google/gemma-4-31b-it",
+      "vendor": "google",
+      "modelSlug": "google/gemma-4-31b-it",
+      "displayName": "gemma-4-31B-it",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.135,
+          "new": 0.2,
+          "pct": 0.4815
+        },
+        {
+          "field": "output",
+          "old": 0.51,
+          "new": 0.4,
+          "pct": -0.2157
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.075,
+          "new": null,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:meta/llama-guard-4-12b-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:meta/llama-guard-4-12b",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-guard-4-12b",
+      "displayName": "Llama-Guard-4-12B",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.144,
+          "new": 0.18,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 0.144,
+          "new": 0.18,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:microsoft/phi-4-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:microsoft/phi-4",
+      "vendor": "microsoft",
+      "modelSlug": "microsoft/phi-4",
+      "displayName": "Phi 4",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.056,
+          "new": 0.07,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 0.112,
+          "new": 0.14,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:minimax/minimax-m3-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:minimax/minimax-m3",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m3",
+      "displayName": "MiniMax-M3",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.224,
+          "new": 0.28,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 0.88,
+          "new": 1.1,
+          "pct": 0.25
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0448,
+          "new": 0.056,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:mistral/mistral-nemo-instruct-2407-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:mistral/mistral-nemo-instruct-2407",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-nemo-instruct-2407",
+      "displayName": "Mistral-Nemo-Instruct-2407",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.019,
+          "new": 0.029,
+          "pct": 0.5263
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:nvidia/nvidia-nemotron-3.5-lightning-1",
+      "type": "price_down",
+      "offeringId": "deepinfra:nvidia/nvidia-nemotron-3.5-lightning",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nvidia-nemotron-3.5-lightning",
+      "displayName": "NVIDIA-Nemotron-3.5-Lightning",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.08,
+          "new": 0.06,
+          "pct": -0.25
+        },
+        {
+          "field": "output",
+          "old": 0.2,
+          "new": 0.16,
+          "pct": -0.2
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.04,
+          "new": 0.03,
+          "pct": -0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:zhipu/glm-4.6-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:zhipu/glm-4.6",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.6",
+      "displayName": "GLM-4.6",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.4,
+          "new": 0.5,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 1.6,
+          "new": 2,
+          "pct": 0.25
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.08,
+          "new": 0.1,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:zhipu/glm-4.7-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:zhipu/glm-4.7",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.7",
+      "displayName": "GLM-4.7",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.32,
+          "new": 0.4,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 1.4,
+          "new": 1.75,
+          "pct": 0.25
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.064,
+          "new": 0.08,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-deepinfra:zhipu/glm-5.2-1",
+      "type": "price_up",
+      "offeringId": "deepinfra:zhipu/glm-5.2",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.2",
+      "displayName": "GLM-5.2",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.45,
+          "new": 0.5625,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 1.44,
+          "new": 1.8,
+          "pct": 0.25
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.084,
+          "new": 0.105,
+          "pct": 0.25
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
       "id": "2026-10-23-digitalocean:deepseek/deepseek-v4.1-flash-1017-1",
       "type": "new_model",
       "offeringId": "digitalocean:deepseek/deepseek-v4.1-flash-1017",
@@ -3763,6 +4189,326 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-22T19:49:38Z"
+    },
+    {
+      "id": "2026-10-23-novita:deepseek/deepseek-v4-flash-0731-1",
+      "type": "price_up",
+      "offeringId": "novita:deepseek/deepseek-v4-flash-0731",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash-0731",
+      "displayName": "DeepSeek V4 Flash 0731",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.4092,
+          "new": 0.44,
+          "pct": 0.07527
+        },
+        {
+          "field": "output",
+          "old": 1.2276,
+          "new": 1.32,
+          "pct": 0.07527
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.02604,
+          "new": 0.028,
+          "pct": 0.07527
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-novita:deepseek/deepseek-v4-pro-0813-1",
+      "type": "price_up",
+      "offeringId": "novita:deepseek/deepseek-v4-pro-0813",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro-0813",
+      "displayName": "DeepSeek V4 Pro 0813",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.99,
+          "new": 1.32,
+          "pct": 0.3333
+        },
+        {
+          "field": "output",
+          "old": 2.97,
+          "new": 3.96,
+          "pct": 0.3333
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.033,
+          "new": 0.044,
+          "pct": 0.3333
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-novita:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_up",
+      "offeringId": "novita:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.195,
+          "new": 0.3,
+          "pct": 0.5385
+        },
+        {
+          "field": "output",
+          "old": 0.78,
+          "new": 1.2,
+          "pct": 0.5385
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0039,
+          "new": 0.006,
+          "pct": 0.5385
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-novita:minimax/minimax-m2.7-1",
+      "type": "price_up",
+      "offeringId": "novita:minimax/minimax-m2.7",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2.7",
+      "displayName": "MiniMax M2.7",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.27,
+          "new": 0.3,
+          "pct": 0.1111
+        },
+        {
+          "field": "output",
+          "old": 1.08,
+          "new": 1.2,
+          "pct": 0.1111
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.054,
+          "new": 0.06,
+          "pct": 0.1111
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-novita:moonshot/kimi-k2.5-1",
+      "type": "price_up",
+      "offeringId": "novita:moonshot/kimi-k2.5",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2.5",
+      "displayName": "Kimi K2.5",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.57,
+          "new": 0.6,
+          "pct": 0.05263
+        },
+        {
+          "field": "output",
+          "old": 2.85,
+          "new": 3,
+          "pct": 0.05263
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.095,
+          "new": 0.1,
+          "pct": 0.05263
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-novita:moonshot/kimi-k2.7-code-1",
+      "type": "price_up",
+      "offeringId": "novita:moonshot/kimi-k2.7-code",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2.7-code",
+      "displayName": "Kimi K2.7 Code",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.912,
+          "new": 0.95,
+          "pct": 0.04167
+        },
+        {
+          "field": "output",
+          "old": 3.84,
+          "new": 4,
+          "pct": 0.04167
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.1824,
+          "new": 0.19,
+          "pct": 0.04167
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-novita:zhipu/glm-4.7-1",
+      "type": "price_up",
+      "offeringId": "novita:zhipu/glm-4.7",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.7",
+      "displayName": "GLM 4.7",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.54,
+          "new": 0.6,
+          "pct": 0.1111
+        },
+        {
+          "field": "output",
+          "old": 1.98,
+          "new": 2.2,
+          "pct": 0.1111
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.099,
+          "new": 0.11,
+          "pct": 0.1111
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-novita:zhipu/glm-5.2-1",
+      "type": "price_up",
+      "offeringId": "novita:zhipu/glm-5.2",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.2",
+      "displayName": "GLM 5.2",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.6496,
+          "new": 1.4,
+          "pct": 1.155
+        },
+        {
+          "field": "output",
+          "old": 2.0416,
+          "new": 4.4,
+          "pct": 1.155
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.12064,
+          "new": 0.26,
+          "pct": 1.155
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-novita:zhipu/glm-5.3-1",
+      "type": "price_up",
+      "offeringId": "novita:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.63,
+          "new": 1.4,
+          "pct": 1.222
+        },
+        {
+          "field": "output",
+          "old": 1.98,
+          "new": 4.4,
+          "pct": 1.222
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.117,
+          "new": 0.26,
+          "pct": 1.222
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-22T20:40:48Z"
+    },
+    {
+      "id": "2026-10-23-novita:zhipu/glm-5.3-flash-1",
+      "type": "price_up",
+      "offeringId": "novita:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.084,
+          "new": 0.15,
+          "pct": 0.7857
+        },
+        {
+          "field": "output",
+          "old": 0.28,
+          "new": 0.5,
+          "pct": 0.7857
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0168,
+          "new": 0.03,
+          "pct": 0.7857
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T20:40:48Z"
     },
     {
       "id": "2026-10-23-openrouter:alibaba/qwen3.5-122b-a10b-1",

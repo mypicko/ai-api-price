@@ -17,6 +17,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.09,
+        "output": 1.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "fireworks:alibaba/qwen3-next-80b-a3b-instruct": [

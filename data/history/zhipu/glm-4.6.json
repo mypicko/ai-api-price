@@ -17,6 +17,13 @@
         "cacheRead": 0.08,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.5,
+        "output": 2,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-23"
       }
     ],
     "novita:zhipu/glm-4.6": [
