@@ -21,6 +21,9 @@ export interface PriceBoardProps extends Omit<PriceTableProps, "rows"> {
   readonly mediaRows: readonly MediaRow[];
   /** 编程套餐（Coding Plan） */
   readonly planRows: readonly PlanRow[];
+  /** GitHub 仓库与编程套餐页地址，用于纠错链接 */
+  readonly repo: string;
+  readonly plansPageUrl: string;
 }
 
 function replaceSearch(search: string): void {
@@ -75,7 +78,7 @@ function TabList(props: {
 }
 
 export function PriceBoard(props: PriceBoardProps) {
-  const { mediaRows, packedRows, planRows, ...rest } = props;
+  const { mediaRows, packedRows, planRows, repo, plansPageUrl, ...rest } = props;
   const rows = useMemo(() => unpackRows<TableRow>(packedRows), [packedRows]);
   const tableProps: PriceTableProps = { ...rest, rows };
   const [tab, setTab] = useState<BoardTab>("text");
@@ -99,7 +102,13 @@ export function PriceBoard(props: PriceBoardProps) {
         {tab === "text" ? (
           <PriceTable {...tableProps} onSelectMedia={onSelectMedia} />
         ) : tab === "plans" ? (
-          <PlansTable rows={planRows} locale={props.locale} fxNote={props.fxNote} />
+          <PlansTable
+            rows={planRows}
+            locale={props.locale}
+            fxNote={props.fxNote}
+            repo={repo}
+            pageUrl={plansPageUrl}
+          />
         ) : (
           <MediaTable
             rows={mediaRows}

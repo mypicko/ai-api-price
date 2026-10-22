@@ -1115,3 +1115,10 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 - **计价平台**：国内套餐（provider.region = cn）的计价模型优先取「官方（国内站）」人民币价，国际套餐优先取「官方」价。
 - **价格口径**：记录刊例价 / 原价；首月特惠、限时折扣、季付折扣写进 notes。
 - **待办**：套餐 `verifiedAt` 的过期提醒尚未接入管线（manual 价格有 W2004，套餐暂无）。
+
+### 3.16 纠错与提交报价（1.4）
+
+- **表单**：`.github/ISSUE_TEMPLATE/price-correction.yml`（价格纠错，标签 `price-correction`）、`submit-price.yml`（提交报价，标签 `price-submission`）。不需要后端，提交即 GitHub Issue。
+- **入口**：模型详情页平台对比表每行「纠错」、编程套餐表每行「纠错」、页脚「提交报价」「反馈问题」。纠错链接用 URL 参数预填表单字段（`item` / `platform` / `current` / `evidence` / `page`，与表单字段 id 一致），见 `lib/feedback.ts`。
+- **仓库地址**：构建时取 `GITHUB_REPOSITORY`（GitHub Actions 自带），取不到用默认 `mypicko/ai-api-price`；fork 后链接自动指向自己的仓库。
+- **处理流程**：维护者打开官方页面核对 → 改对应的 `config/manual/*.yaml`、`config/plans/*.yaml` 或抓取器 → 提交后由下一次 daily 发布 → 在 Issue 里回复并关闭。只收有公开官方定价页的价格，不收国内中转站。

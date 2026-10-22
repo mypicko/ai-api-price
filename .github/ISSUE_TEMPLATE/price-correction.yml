@@ -1,0 +1,49 @@
+name: 价格纠错 / Price correction
+description: 网站上的某个价格不对、已过期或链接失效 / A price on the site is wrong, outdated or the link is broken
+title: "[纠错] "
+labels: ["price-correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢帮忙纠错！从网站「纠错」按钮进来时，下面几项会自动填好，只需补充正确的价格和依据。
+        Thanks for the correction! Fields below are pre-filled when you come from the site's "Report" link.
+  - type: input
+    id: item
+    attributes:
+      label: 模型或套餐 / Model or plan
+      placeholder: deepseek/deepseek-chat 或 Claude Max 5x
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: 平台 / Platform
+      placeholder: 官方、OpenRouter、Azure…
+  - type: input
+    id: current
+    attributes:
+      label: 网站当前显示的价格 / Price shown on the site
+  - type: input
+    id: correct
+    attributes:
+      label: 正确的价格 / Correct price
+      description: 请写清单位和币种，例如「输入 ¥2 / 输出 ¥8 每百万 tokens」 / Include unit and currency
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: 官方页面链接 / Official source link
+      description: 必须是厂商或平台的官方页面 / Must be an official vendor or platform page
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: 网站页面 / Page on the site
+  - type: textarea
+    id: notes
+    attributes:
+      label: 补充说明 / Notes

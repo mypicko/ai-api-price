@@ -1,0 +1,53 @@
+name: 提交报价 / Submit pricing
+description: 登记一个尚未收录的模型、平台或编程套餐的价格 / List a model, platform or coding plan that is not on the site yet
+title: "[提交报价] "
+labels: ["price-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        欢迎服务商或用户提交报价。维护者核对官方页面后会收录进 `config/`，核对通过才会上线。
+        Vendors and users are welcome to submit pricing. A maintainer verifies it against the official page before it goes live.
+
+        **不收录**：无公开官方定价页的价格、国内 API 中转站。 / **Not accepted**: prices without a public official page, API relay resellers.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 类型 / Type
+      options:
+        - 按量计费的模型价格 / Pay-as-you-go model price
+        - 编程套餐（包月） / Coding plan (subscription)
+        - 视频或图像生成价格 / Video or image generation price
+    validations:
+      required: true
+  - type: input
+    id: provider
+    attributes:
+      label: 厂商或平台 / Vendor or platform
+      placeholder: 例如 Together AI、智谱、Groq
+    validations:
+      required: true
+  - type: textarea
+    id: prices
+    attributes:
+      label: 价格明细 / Prices
+      description: 每行一个模型或套餐，写清单位和币种 / One model or plan per line, with unit and currency
+      placeholder: |
+        deepseek-v4-flash：输入 $0.10 / 输出 $0.40 每百万 tokens，缓存命中 $0.02
+        Pro 套餐：¥200/月，每 5 小时 6,000 次请求
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: 官方定价页链接 / Official pricing page
+      placeholder: https://
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认 / Confirm
+      options:
+        - label: 以上价格与官方公开页面一致，可公开展示 / The prices match the public official page and may be published
+          required: true

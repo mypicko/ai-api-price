@@ -340,6 +340,30 @@ test.describe("其他页面", () => {
     await expect(page.getByTestId("plan-count")).toHaveText("共 4 个套餐");
   });
 
+  test("纠错与提交报价：链接到 GitHub Issue 表单并预填字段", async ({ page }) => {
+    await page.goto("/models/deepseek/deepseek-chat/");
+    const report = page.getByTestId("offering-compare").getByTestId("report-price").first();
+    const href = await report.getAttribute("href");
+    const url = new URL(href ?? "");
+    expect(url.pathname).toMatch(/\/issues\/new$/);
+    expect(url.searchParams.get("template")).toBe("price-correction.yml");
+    expect(url.searchParams.get("title")).toMatch(/^\[纠错\] /);
+    expect(url.searchParams.get("current")).toMatch(/每百万 tokens/);
+    expect(url.searchParams.get("evidence")).toMatch(/^https:\/\//);
+    expect(url.searchParams.get("page")).toContain("/models/deepseek/deepseek-chat/");
+    await expect(report).toHaveAttribute("target", "_blank");
+    // 页脚：提交报价
+    const submit = await page.getByTestId("submit-price").getAttribute("href");
+    expect(submit).toMatch(/issues\/new\?template=submit-price\.yml$/);
+    // 编程套餐表每行都有纠错
+    await gotoHydrated(page, "/?kind=plans");
+    const planReport = page.locator('tr[data-id="copilot-pro"]').getByTestId("report-plan");
+    const planUrl = new URL((await planReport.getAttribute("href")) ?? "");
+    expect(planUrl.searchParams.get("item")).toBe("GitHub Copilot · Pro");
+    expect(planUrl.searchParams.get("current")).toBe("$10.00/月");
+    expect(planUrl.searchParams.get("page")).toContain("kind=plans");
+  });
+
   test("视频/图像变动并入变动页；旧的 /media/ 链接跳转到价格榜视频标签", async ({ page }) => {
     await page.goto("/changes/");
     await expect(page.getByTestId("media-changes")).toContainText("MiniMax-H3");

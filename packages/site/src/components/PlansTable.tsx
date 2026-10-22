@@ -20,6 +20,7 @@ import {
   type PlanRow,
   type PlanSort,
 } from "../lib/plans";
+import { correctionUrl } from "../lib/feedback";
 import { formatPrice } from "../lib/shared-client";
 import { DualPrice } from "./DualPrice";
 
@@ -27,6 +28,10 @@ export interface PlansTableProps {
   readonly rows: readonly PlanRow[];
   readonly locale: Locale;
   readonly fxNote: string;
+  /** GitHub 仓库（owner/name），用于纠错链接 */
+  readonly repo: string;
+  /** 编程套餐标签页的绝对地址，写进纠错表单 */
+  readonly pageUrl: string;
 }
 
 /**
@@ -228,6 +233,21 @@ function Row({
         <div className="text-micro text-text-muted tabular">
           {t("plans.verifiedAt", { date: row.verifiedAt })}
         </div>
+        <a
+          href={correctionUrl(props.repo, {
+            item: `${row.providerName} · ${row.name}`,
+            current: `${formatPrice(row.currency === "USD" ? row.monthly.usd : row.monthly.cny, row.currency, { locale: props.locale })}${t("plans.perMonthUnit")}`,
+            evidence: row.sourceUrl,
+            page: props.pageUrl,
+          })}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link text-micro text-text-muted"
+          title={t("feedback.reportTitle")}
+          data-testid="report-plan"
+        >
+          {t("feedback.report")}
+        </a>
       </td>
     </tr>
   );

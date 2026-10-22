@@ -293,5 +293,12 @@
   "plans.sort.credits": "额度价值从高到低",
   "plans.resultCount": "共 {count} 个套餐",
   "plans.empty": "没有符合条件的套餐。",
-  "time.withZone": "{datetime}（北京时间 UTC+8）"
+  "time.withZone": "{datetime}（北京时间 UTC+8）",
+  "feedback.report": "纠错",
+  "feedback.reportTitle": "价格不对或已过期？提交纠错（GitHub）",
+  "feedback.currentPrice": "输入 {input} / 输出 {output}（每百万 tokens）",
+  "feedback.submit": "提交报价",
+  "feedback.submitTitle": "服务商或用户登记尚未收录的价格（GitHub）",
+  "feedback.issues": "反馈问题",
+  "plans.perMonthUnit": "/月"
 }

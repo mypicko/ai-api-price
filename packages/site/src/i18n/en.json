@@ -293,5 +293,12 @@
   "plans.sort.credits": "Credit value, high to low",
   "plans.resultCount": "{count} plans",
   "plans.empty": "No plans match these filters.",
-  "time.withZone": "{datetime} (Beijing Time, UTC+8)"
+  "time.withZone": "{datetime} (Beijing Time, UTC+8)",
+  "feedback.report": "Report",
+  "feedback.reportTitle": "Wrong or outdated price? Report it (GitHub)",
+  "feedback.currentPrice": "Input {input} / Output {output} (per 1M tokens)",
+  "feedback.submit": "Submit pricing",
+  "feedback.submitTitle": "Vendors and users can list prices not on the site yet (GitHub)",
+  "feedback.issues": "Feedback",
+  "plans.perMonthUnit": "/mo"
 }

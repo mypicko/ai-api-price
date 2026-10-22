@@ -7,7 +7,9 @@ import type { Locale } from "../lib/locale";
 import { getSiteModel } from "../lib/site-data";
 import { toMediaSearchItem } from "../lib/media";
 import { toMediaTableRow, toTableRow } from "../lib/site-model";
+import { repoFromEnv } from "../lib/feedback";
 import { packRows } from "../lib/pack";
+import { absoluteUrl, pageHref } from "../lib/url";
 import { toPlanRows } from "../lib/plans";
 import { fxNote, platformOptions, vendorOptions } from "../lib/views";
 
@@ -25,6 +27,9 @@ const modelCount = new Set(rows.map((r) => r.modelSlug)).size;
 const mediaRows = model.media.offerings.map((o) => toMediaTableRow(model, o, locale));
 const media = mediaRows.map(toMediaSearchItem);
 const planRows = toPlanRows(model, model.data.plans, locale);
+const repo = repoFromEnv(process.env);
+const site = (Astro.site ?? new URL("http://localhost:4321")).origin;
+const plansPageUrl = `${absoluteUrl(site, pageHref(base, locale, ""))}?kind=plans`;
 ---
 
 <BaseLayout locale={locale} path="">
@@ -52,6 +57,8 @@ const planRows = toPlanRows(model, model.data.plans, locale);
               client:load
               mediaRows={mediaRows}
               planRows={planRows}
+              repo={repo}
+              plansPageUrl={plansPageUrl}
               packedRows={packRows(rows)}
               locale={locale}
               base={base}

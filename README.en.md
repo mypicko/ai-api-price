@@ -174,7 +174,7 @@ gh variable set BASE_PATH --body /
 
 ### Reporting problems
 
-Open an issue in the GitHub repository. Please include the model name and a link to the official price you saw.
+Click "Report" next to a price or plan to open a GitHub form pre-filled with the model, platform and current price; just add the correct price and the official link. To list a model, platform or coding plan that is not on the site yet, use "Submit pricing" in the footer. A maintainer checks the official page before anything goes live.
 
 ---
 

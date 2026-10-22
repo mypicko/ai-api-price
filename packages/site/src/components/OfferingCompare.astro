@@ -9,6 +9,9 @@ import { formatTokens } from "../lib/shared-client";
 import { getSiteModel } from "../lib/site-data";
 import { platformName } from "../lib/site-model";
 import { byBlendedUsd, fxNote } from "../lib/views";
+import { correctionUrl, repoFromEnv } from "../lib/feedback";
+import { formatPrice } from "../lib/shared-client";
+import { absoluteUrl, modelPath, pageHref } from "../lib/url";
 
 interface Props {
   locale: Locale;
@@ -18,6 +21,23 @@ interface Props {
 const { locale } = Astro.props;
 // 平台多时最便宜的排前面，方便比价
 const offerings = Astro.props.offerings.toSorted(byBlendedUsd);
+const repo = repoFromEnv(process.env);
+const base = import.meta.env.BASE_URL;
+const site = (Astro.site ?? new URL("http://localhost:4321")).origin;
+/** 纠错表单里的「当前价格」：原币种，与官网对照最方便 */
+const currentText = (o: PublicOffering): string =>
+  t(locale, "feedback.currentPrice", {
+    input: formatPrice(o.input, o.currency, { locale }),
+    output: formatPrice(o.output, o.currency, { locale }),
+  });
+const reportHref = (o: PublicOffering): string =>
+  correctionUrl(repo, {
+    item: o.displayName,
+    platform: platformName(model, o.platform, locale),
+    current: currentText(o),
+    evidence: o.sourceUrl,
+    page: absoluteUrl(site, pageHref(base, locale, modelPath(o.modelSlug))),
+  });
 const model = getSiteModel();
 const note = fxNote(model, locale);
 const priceCols = ["input", "output", "cacheRead", "cacheWrite"] as const;
@@ -78,6 +98,17 @@ const labels = {
             <td class="px-3 text-small whitespace-nowrap">
               <a class="link" href={o.sourceUrl} rel="noopener noreferrer nofollow" target="_blank">
                 {t(locale, "model.sourceLink")}
+              </a>
+              <span class="mx-1 text-text-faint" aria-hidden="true">·</span>
+              <a
+                class="link text-text-muted"
+                href={reportHref(o)}
+                rel="noopener noreferrer"
+                target="_blank"
+                title={t(locale, "feedback.reportTitle")}
+                data-testid="report-price"
+              >
+                {t(locale, "feedback.report")}
               </a>
             </td>
           </tr>
