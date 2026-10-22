@@ -1,10 +1,12 @@
 import { aliyunSource } from "./aliyun";
+import { deepinfraSource } from "./deepinfra";
 import { deepseekSource } from "./deepseek";
 import { litellmSource } from "./litellm";
 import { litellmResellersSource } from "./litellm-resellers";
 import { manualCnSource, manualSource } from "./manual";
 import { modelsdevCnSource, modelsdevSiliconflowCnSource } from "./modelsdev";
 import { moonshotSource } from "./moonshot";
+import { novitaSource } from "./novita";
 import { openrouterSource } from "./openrouter";
 import { openrouterEndpointsSource } from "./openrouter-endpoints";
 import { siliconflowSource } from "./siliconflow";
@@ -20,6 +22,8 @@ export const ALL_SOURCES: readonly Source[] = [
   litellmResellersSource,
   openrouterSource,
   openrouterEndpointsSource,
+  deepinfraSource,
+  novitaSource,
   deepseekSource,
   aliyunSource,
   zhipuSource,

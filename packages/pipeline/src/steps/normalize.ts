@@ -37,6 +37,9 @@ export const SOURCE_PRIORITY: Readonly<Record<string, number>> = {
   "litellm-resellers": 2,
   manual: 1,
   "manual-cn": 4,
+  // 平台官方接口（第一手价格）优先于 OpenRouter 服务商列表和 LiteLLM
+  deepinfra: 4,
+  novita: 4,
 };
 const DEFAULT_SOURCE_PRIORITY = 3;
 
