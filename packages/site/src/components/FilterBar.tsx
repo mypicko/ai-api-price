@@ -84,6 +84,8 @@ function MultiPicker(props: MultiPickerProps) {
   const { label, options, selected, onChange, search } = props;
   const ref = useRef<HTMLDetailsElement>(null);
   const [query, setQuery] = useState("");
+  // 选项只在展开时渲染：上百个复选框会让首页 HTML 多出几十 KB
+  const [open, setOpen] = useState(false);
   useCloseOnOutsideClick(ref);
   const toggle = (id: string): void => {
     onChange(selected.includes(id) ? selected.filter((v) => v !== id) : [...selected, id]);
@@ -100,7 +102,12 @@ function MultiPicker(props: MultiPickerProps) {
   ].slice(0, MAX_VISIBLE_OPTIONS);
   const summary = selected.length === 0 ? props.allLabel : props.selectedLabel(selected.length);
   return (
-    <details ref={ref} className="group relative" data-testid={props.testId}>
+    <details
+      ref={ref}
+      className="group relative"
+      data-testid={props.testId}
+      onToggle={(e) => setOpen(e.currentTarget.open)}
+    >
       <summary className="input-base flex cursor-pointer list-none items-center gap-2 select-none [&::-webkit-details-marker]:hidden">
         <span className="text-text-muted">{label}</span>
         <span className="font-medium">{summary}</span>
@@ -108,48 +115,50 @@ function MultiPicker(props: MultiPickerProps) {
           ▾
         </span>
       </summary>
-      <div className="card absolute z-50 mt-1 flex w-72 flex-col shadow-lg">
-        {search && (
-          <div className="flex gap-2 border-b border-border p-2">
-            <input
-              type="search"
-              className="input-base min-w-0 flex-1"
-              placeholder={search.placeholder}
-              aria-label={search.placeholder}
-              value={query}
-              maxLength={100}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            {selected.length > 0 && (
-              <button type="button" className="btn" onClick={() => onChange([])}>
-                {search.clear}
-              </button>
-            )}
-          </div>
-        )}
-        <fieldset className="grid max-h-80 grid-cols-1 gap-0.5 overflow-auto p-2">
-          <legend className="sr-only">{label}</legend>
-          {ordered.length === 0 && search && (
-            <p className="px-2 py-1.5 text-small text-text-muted">{search.empty}</p>
-          )}
-          {ordered.map((o) => (
-            <label
-              key={o.id}
-              className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-table hover:bg-surface-hover"
-            >
+      {open && (
+        <div className="card absolute z-50 mt-1 flex w-72 flex-col shadow-lg">
+          {search && (
+            <div className="flex gap-2 border-b border-border p-2">
               <input
-                type="checkbox"
-                className="size-4 shrink-0 accent-accent"
-                checked={selected.includes(o.id)}
-                onChange={() => toggle(o.id)}
-                value={o.id}
+                type="search"
+                className="input-base min-w-0 flex-1"
+                placeholder={search.placeholder}
+                aria-label={search.placeholder}
+                value={query}
+                maxLength={100}
+                onChange={(e) => setQuery(e.target.value)}
               />
-              <span className="min-w-0 flex-1 truncate">{o.name}</span>
-              {o.hint && <span className="shrink-0 text-small text-text-faint">{o.hint}</span>}
-            </label>
-          ))}
-        </fieldset>
-      </div>
+              {selected.length > 0 && (
+                <button type="button" className="btn" onClick={() => onChange([])}>
+                  {search.clear}
+                </button>
+              )}
+            </div>
+          )}
+          <fieldset className="grid max-h-80 grid-cols-1 gap-0.5 overflow-auto p-2">
+            <legend className="sr-only">{label}</legend>
+            {ordered.length === 0 && search && (
+              <p className="px-2 py-1.5 text-small text-text-muted">{search.empty}</p>
+            )}
+            {ordered.map((o) => (
+              <label
+                key={o.id}
+                className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-table hover:bg-surface-hover"
+              >
+                <input
+                  type="checkbox"
+                  className="size-4 shrink-0 accent-accent"
+                  checked={selected.includes(o.id)}
+                  onChange={() => toggle(o.id)}
+                  value={o.id}
+                />
+                <span className="min-w-0 flex-1 truncate">{o.name}</span>
+                {o.hint && <span className="shrink-0 text-small text-text-faint">{o.hint}</span>}
+              </label>
+            ))}
+          </fieldset>
+        </div>
+      )}
     </details>
   );
 }

@@ -6,12 +6,10 @@ import GapBoard from "../components/GapBoard.astro";
 import { formatDateTimeWithZone, t } from "../lib/i18n";
 import type { Locale } from "../lib/locale";
 import { getSiteModel } from "../lib/site-data";
-import { toMediaSearchItem } from "../lib/media";
-import { toMediaTableRow, toTableRow } from "../lib/site-model";
+import { BOARD_DATA_PATH, boardCounts, boardData, boardTableRows, initialRows } from "../lib/board-data";
 import { repoFromEnv } from "../lib/feedback";
 import { packRows } from "../lib/pack";
 import { absoluteUrl, pageHref } from "../lib/url";
-import { toPlanRows } from "../lib/plans";
 import { fxNote, platformOptions, vendorOptions } from "../lib/views";
 
 interface Props {
@@ -21,13 +19,11 @@ interface Props {
 const { locale } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const model = getSiteModel();
-const rows = model.offerings.map((o) => toTableRow(model, o, locale));
+const rows = boardTableRows(model, locale);
 const vendors = vendorOptions(model, locale);
 const platforms = platformOptions(model, locale);
 const modelCount = new Set(rows.map((r) => r.modelSlug)).size;
-const mediaRows = model.media.offerings.map((o) => toMediaTableRow(model, o, locale));
-const media = mediaRows.map(toMediaSearchItem);
-const planRows = toPlanRows(model, model.data.plans, locale);
+const counts = boardCounts(boardData(model, locale));
 const repo = repoFromEnv(process.env);
 const site = (Astro.site ?? new URL("http://localhost:4321")).origin;
 const plansPageUrl = `${absoluteUrl(site, pageHref(base, locale, ""))}?kind=plans`;
@@ -57,18 +53,17 @@ const plansPageUrl = `${absoluteUrl(site, pageHref(base, locale, ""))}?kind=plan
             </h2>
             <PriceBoard
               client:load
-              mediaRows={mediaRows}
-              planRows={planRows}
+              counts={counts}
+              dataUrl={pageHref(base, locale, BOARD_DATA_PATH)}
               repo={repo}
               plansPageUrl={plansPageUrl}
-              packedRows={packRows(rows)}
+              packedRows={JSON.stringify(packRows(initialRows(rows)))}
               locale={locale}
               base={base}
               nowIso={model.generatedAt}
               fxNote={fxNote(model, locale)}
               vendors={vendors}
               platforms={platforms}
-              media={media}
             />
           </section>
         </>

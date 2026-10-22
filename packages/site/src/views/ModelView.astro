@@ -7,6 +7,7 @@ import GapNote from "../components/GapNote.astro";
 import { gapFor } from "../lib/gap";
 import { modelRssPath } from "../lib/endpoints";
 import { PriceChart } from "../components/PriceChart";
+import { ModelActions } from "../components/ModelActions";
 import StaleNotice from "../components/StaleNotice.astro";
 import VendorLogo from "../components/VendorLogo.astro";
 import { StatusBadge } from "../components/ChangeBadge";
@@ -73,6 +74,7 @@ const rssHref = pageHref(base, locale, modelRssPath(info.slug));
           <span aria-hidden="true">📡 </span>{t(locale, "rss.subscribeModel")}
         </a>
       </p>
+      <ModelActions client:idle slug={info.slug} locale={locale} base={base} />
       {info.status === "removed" && <StaleNotice message={t(locale, "model.status.removed")} />}
       {staleOfferings.length > 0 && <StaleNotice message={t(locale, "stale.notice", { days: maxStale })} />}
       {

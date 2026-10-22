@@ -16,6 +16,7 @@ const nav: readonly { path: string; label: MessageKey }[] = [
   { path: "", label: "nav.home" },
   { path: "calculator/", label: "nav.calculator" },
   { path: "changes/", label: "nav.changes" },
+  { path: "compare/", label: "nav.compare" },
   { path: "about/", label: "nav.about" },
 ];
 const isCurrent = (p: string): boolean => (p === "" ? path === "" || path.startsWith("models/") : path.startsWith(p));

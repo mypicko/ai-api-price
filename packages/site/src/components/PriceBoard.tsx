@@ -2,25 +2,31 @@
  * 首页价格榜：文本模型 / 视频 / 图像三个标签在同一位置切换（DEV §3.10）。
  * 计价单位不同（每百万 tokens / 每秒 / 每张），所以各自一张表，不混排。
  * 标签记在 ?kind= 里，?q= 在标签之间共用；首屏在构建时渲染文本标签。
+ * 首页 HTML 只内嵌前 100 个模型的报价，全量数据（data/board.json）在浏览器空闲时加载（DEV §3.19）；
+ * 链接带筛选参数或切到其他标签时立即加载。
  */
 import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import type { MediaKind } from "@aipb/shared";
 import { BOARD_TABS, boardTabSearch, parseBoardTab, type BoardTab } from "../lib/board";
 import { createT } from "../lib/i18n";
-import { countByKind, type MediaRow } from "../lib/media";
+import type { BoardCounts, BoardData } from "../lib/board-data";
+import { fetchBoardData, whenIdle } from "../lib/board-client";
 import { unpackRows, type PackedRows } from "../lib/pack";
 import type { TableRow } from "../lib/table";
-import type { PlanRow } from "../lib/plans";
 import { MediaTable } from "./MediaTable";
 import { PlansTable } from "./PlansTable";
 import { PriceTable, type PriceTableProps } from "./PriceTable";
 
-export interface PriceBoardProps extends Omit<PriceTableProps, "rows"> {
-  /** 文本报价，按列打包以减小首页 HTML（见 lib/pack.ts） */
-  readonly packedRows: PackedRows;
-  readonly mediaRows: readonly MediaRow[];
-  /** 编程套餐（Coding Plan） */
-  readonly planRows: readonly PlanRow[];
+export interface PriceBoardProps extends Omit<PriceTableProps, "rows" | "media" | "loading"> {
+  /**
+   * 首屏文本报价：按列打包（见 lib/pack.ts）后的 JSON 字符串。
+   * 直接传对象时 Astro 会给每个值加类型标记，体积翻倍，所以传字符串。
+   */
+  readonly packedRows: string;
+  /** 全量数据地址（含 base 和语言前缀） */
+  readonly dataUrl: string;
+  /** 各标签的条数（全量数据到达前就要显示） */
+  readonly counts: BoardCounts;
   /** GitHub 仓库与编程套餐页地址，用于纠错链接 */
   readonly repo: string;
   readonly plansPageUrl: string;
@@ -29,6 +35,50 @@ export interface PriceBoardProps extends Omit<PriceTableProps, "rows"> {
 function replaceSearch(search: string): void {
   const url = `${window.location.pathname}${search}${window.location.hash}`;
   window.history.replaceState(window.history.state, "", url);
+}
+
+type LoadState = "partial" | "loading" | "done" | "error";
+
+/** 全量数据：空闲时加载；eager 变为 true（有筛选参数、切了标签）时立即加载 */
+function useFullData(url: string, eager: boolean): [BoardData | null, LoadState] {
+  const [data, setData] = useState<BoardData | null>(null);
+  const [state, setState] = useState<LoadState>("partial");
+  const [start, setStart] = useState(false);
+  useEffect(() => {
+    if (eager || window.location.search !== "") {
+      setStart(true);
+      return;
+    }
+    return whenIdle(() => setStart(true));
+  }, [eager]);
+  useEffect(() => {
+    if (!start) return;
+    let cancelled = false;
+    setState("loading");
+    fetchBoardData(url)
+      .then((result) => {
+        if (cancelled) return;
+        setData(result);
+        setState("done");
+      })
+      .catch((error: unknown) => {
+        console.error("价格榜全量数据加载失败", error);
+        if (!cancelled) setState("error");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [start, url]);
+  return [data, state];
+}
+
+function LoadingPanel({ state, locale }: { state: LoadState; locale: PriceTableProps["locale"] }) {
+  const t = createT(locale);
+  return (
+    <p className="px-4 py-12 text-center text-text-muted" data-testid="board-loading">
+      {t(state === "error" ? "board.loadError" : "board.loading")}
+    </p>
+  );
 }
 
 function TabList(props: {
@@ -78,15 +128,21 @@ function TabList(props: {
 }
 
 export function PriceBoard(props: PriceBoardProps) {
-  const { mediaRows, packedRows, planRows, repo, plansPageUrl, ...rest } = props;
-  const rows = useMemo(() => unpackRows<TableRow>(packedRows), [packedRows]);
-  const tableProps: PriceTableProps = { ...rest, rows };
+  const { packedRows, dataUrl, counts, repo, plansPageUrl, ...rest } = props;
   const [tab, setTab] = useState<BoardTab>("text");
   useEffect(() => setTab(parseBoardTab(window.location.search)), []);
-  const counts = useMemo(
-    () => ({ text: rows.length, ...countByKind(mediaRows), plans: planRows.length }),
-    [rows, mediaRows, planRows],
+  const [full, state] = useFullData(dataUrl, tab !== "text");
+  const initial = useMemo(
+    () => unpackRows<TableRow>(JSON.parse(packedRows) as PackedRows),
+    [packedRows],
   );
+  const allRows = useMemo(() => (full ? unpackRows<TableRow>(full.packedRows) : null), [full]);
+  const tableProps: PriceTableProps = {
+    ...rest,
+    rows: allRows ?? initial,
+    loading: state === "error" ? "error" : allRows ? "done" : "partial",
+    ...(full ? { media: full.media } : {}),
+  };
   const select = (next: BoardTab, query?: string): void => {
     const search = query === undefined ? window.location.search : `?q=${encodeURIComponent(query)}`;
     replaceSearch(boardTabSearch(search, next));
@@ -94,16 +150,18 @@ export function PriceBoard(props: PriceBoardProps) {
   };
   const onSelectMedia = (kind: MediaKind, query: string): void => select(kind, query);
   // 没有视频/图像和套餐数据时不显示标签，保持原来的单表样式
-  if (mediaRows.length === 0 && planRows.length === 0) return <PriceTable {...tableProps} />;
+  if (counts.video + counts.image + counts.plans === 0) return <PriceTable {...tableProps} />;
   return (
     <div className="flex flex-col gap-4">
       <TabList tab={tab} counts={counts} locale={props.locale} onChange={(next) => select(next)} />
       <div id="board-panel" role="tabpanel" aria-labelledby={`board-tab-${tab}`}>
         {tab === "text" ? (
           <PriceTable {...tableProps} onSelectMedia={onSelectMedia} />
+        ) : !full ? (
+          <LoadingPanel state={state} locale={props.locale} />
         ) : tab === "plans" ? (
           <PlansTable
-            rows={planRows}
+            rows={full.planRows}
             locale={props.locale}
             fxNote={props.fxNote}
             repo={repo}
@@ -111,7 +169,7 @@ export function PriceBoard(props: PriceBoardProps) {
           />
         ) : (
           <MediaTable
-            rows={mediaRows}
+            rows={full.mediaRows}
             locale={props.locale}
             nowIso={props.nowIso}
             fxNote={props.fxNote}

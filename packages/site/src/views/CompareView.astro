@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ComparePage } from "../components/ComparePage";
+import { BOARD_DATA_PATH } from "../lib/board-data";
+import { t } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { getSiteModel } from "../lib/site-data";
+import { pageHref } from "../lib/url";
+import { fxNote } from "../lib/views";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const model = getSiteModel();
+---
+
+<BaseLayout locale={locale} path="compare/" title={t(locale, "compare.title")} description={t(locale, "compare.lead")}>
+  <div class="flex flex-col gap-6">
+    <header class="flex flex-col gap-2">
+      <h1 class="text-h1">{t(locale, "compare.title")}</h1>
+      <p class="max-w-2xl text-text-muted">{t(locale, "compare.lead")}</p>
+    </header>
+    <ComparePage
+      client:load
+      locale={locale}
+      base={base}
+      dataUrl={pageHref(base, locale, BOARD_DATA_PATH)}
+      fxNote={fxNote(model, locale)}
+    />
+  </div>
+</BaseLayout>

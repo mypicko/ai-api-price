@@ -17,7 +17,7 @@ export interface ModelGroup {
 }
 
 /** 价格相同时官方平台排前面（代表行显示「官方」比随便一家转售商更直观） */
-const OFFICIAL_PLATFORMS: ReadonlySet<string> = new Set(["official", "official-cn"]);
+export const OFFICIAL_PLATFORMS: ReadonlySet<string> = new Set(["official", "official-cn"]);
 
 function officialFirstOnTies(sorted: readonly TableRow[]): readonly TableRow[] {
   return sorted.toSorted((a, b) => {

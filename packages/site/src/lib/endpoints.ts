@@ -1,5 +1,6 @@
 /** RSS / sitemap / robots 的静态端点实现（页面文件只负责转发） */
 import type { Locale } from "./locale";
+import { boardData } from "./board-data";
 import { buildRss } from "./rss";
 import { getSiteModel } from "./site-data";
 import { t } from "./i18n";
@@ -83,5 +84,12 @@ export function robotsResponse(site: URL | undefined): Response {
   const sitemap = absoluteUrl(siteOrigin(site), joinBase(currentBase(), "sitemap.xml"));
   return new Response(`User-agent: *\nAllow: /\n\nSitemap: ${sitemap}\n`, {
     headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}
+
+/** 首页价格榜全量数据（不缩进，减小体积） */
+export function boardDataResponse(locale: Locale): Response {
+  return new Response(JSON.stringify(boardData(getSiteModel(), locale)), {
+    headers: { "Content-Type": "application/json; charset=utf-8" },
   });
 }

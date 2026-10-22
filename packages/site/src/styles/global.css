@@ -160,6 +160,30 @@ html[data-currency="CNY"] .cur-USD {
   font-variant-numeric: tabular-nums;
 }
 
+/* 价格榜行内反复出现的类名合成一个，减小首页 HTML（DEV §3.19） */
+@utility pt-row {
+  @apply cursor-pointer border-b border-border text-table hover:bg-surface-hover;
+}
+@utility pt-sticky {
+  @apply sticky left-0 z-10 max-w-[148px] bg-bg py-1.5 text-left font-normal group-hover:bg-surface-hover sm:max-w-none;
+}
+@utility pt-num {
+  @apply px-3 text-right whitespace-nowrap tabular-nums;
+}
+@utility pt-sub {
+  @apply truncate text-micro font-normal;
+}
+
+@utility cmp-check {
+  @apply size-4 shrink-0 cursor-pointer accent-accent disabled:cursor-not-allowed;
+}
+@utility pt-name {
+  @apply truncate font-medium hover:text-accent hover:underline;
+}
+@utility fav-star {
+  @apply inline-flex size-5 shrink-0 items-center justify-center rounded-sm text-h3 leading-none hover:text-warn;
+}
+
 @utility link {
   color: var(--color-accent);
   text-underline-offset: 3px;

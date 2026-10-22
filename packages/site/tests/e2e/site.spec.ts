@@ -397,6 +397,95 @@ test.describe("其他页面", () => {
     expect(await en.text()).toContain("price changes · AI API Price Board");
   });
 
+  test("首页全量数据单独加载：data/board.json 到达后去掉「正在加载」提示", async ({
+    page,
+    request,
+  }) => {
+    await gotoHydrated(page, "/");
+    await expect(page.getByTestId("board-partial")).toHaveCount(0);
+    const res = await request.get("/data/board.json");
+    expect(res.ok()).toBe(true);
+    const body = (await res.json()) as { packedRows: { count: number } };
+    expect(body.packedRows.count).toBe(34);
+    // 下拉框的选项只在展开时渲染
+    await expect(page.getByTestId("vendor-filter").locator("input[type=checkbox]")).toHaveCount(0);
+  });
+
+  test("收藏：星标保存在本机，「只看收藏」只显示收藏的模型", async ({ page }) => {
+    await gotoHydrated(page, "/");
+    await expect(page.getByTestId("fav-only")).not.toBeChecked();
+    const first = bodyRows(page).first();
+    const star = first.getByTestId("fav-toggle");
+    await star.click();
+    await expect(star).toHaveAttribute("aria-pressed", "true");
+    await page.getByTestId("fav-only").check();
+    await expect(bodyRows(page)).toHaveCount(1);
+    await page.reload();
+    await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
+    await expect(bodyRows(page).first().getByTestId("fav-toggle")).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await expect(page.getByText("只看收藏（1）")).toBeVisible();
+  });
+
+  test("对比：勾选 2 个模型后从对比栏进入对比页，链接可分享，最多 4 个", async ({
+    page,
+    browser,
+  }) => {
+    await gotoHydrated(page, "/");
+    const checks = bodyRows(page).getByTestId("compare-toggle");
+    await checks.nth(0).check();
+    await expect(page.getByTestId("compare-tray")).toContainText("至少选 2 个模型");
+    await checks.nth(1).check();
+    await checks.nth(2).check();
+    await checks.nth(3).check();
+    await expect(checks.nth(4)).toBeDisabled();
+    await checks.nth(3).uncheck();
+    await checks.nth(2).uncheck();
+    await page.getByTestId("compare-go").click();
+    await expect(page).toHaveURL(/\/compare\/\?m=/);
+    const table = page.getByTestId("compare-table");
+    await expect(table.locator("thead th")).toHaveCount(3);
+    await expect(table).toContainText("最低输入价");
+    await expect(table).toContainText("平台数");
+    // 分享出去的链接在没有本机记录的浏览器里也能打开
+    const shared = page.url();
+    const fresh = await browser.newContext({ baseURL: test.info().project.use.baseURL });
+    const other = await fresh.newPage();
+    await other.goto(shared);
+    await expect(other.getByTestId("compare-table").locator("thead th")).toHaveCount(3);
+    await fresh.close();
+    // 移出一个后地址栏同步
+    await table
+      .getByRole("button", { name: /移出对比/ })
+      .first()
+      .click();
+    await expect(table.locator("thead th")).toHaveCount(2);
+    await expect(page).toHaveURL(/\?m=[^,]+$/);
+  });
+
+  test("对比页：没有选择时给出引导；不存在的模型单独提示", async ({ page }) => {
+    await gotoHydrated(page, "/compare/");
+    await expect(page.getByTestId("compare-empty")).toBeVisible();
+    await gotoHydrated(page, "/compare/?m=alibaba/qwen3-max,nobody/none");
+    await expect(page.getByTestId("compare-missing")).toContainText("nobody/none");
+    await expect(page.getByTestId("compare-table").locator("thead th")).toHaveCount(2);
+  });
+
+  test("模型页：收藏、加入对比，够 2 个时出现「去对比」", async ({ page }) => {
+    await gotoHydrated(page, "/models/alibaba/qwen3-max/");
+    await page.getByTestId("model-fav").click();
+    await expect(page.getByTestId("model-fav")).toHaveText("★ 已收藏");
+    await page.getByTestId("model-compare").click();
+    await expect(page.getByTestId("model-go-compare")).toHaveCount(0);
+    await gotoHydrated(page, "/");
+    await bodyRows(page).locator("[data-testid=compare-toggle]:not(:checked)").first().check();
+    await expect(page.getByTestId("compare-tray").locator("li")).toHaveCount(2);
+    await gotoHydrated(page, "/models/alibaba/qwen3-max/");
+    await expect(page.getByTestId("model-go-compare")).toHaveText("去对比（2）");
+  });
+
   test("视频/图像变动并入变动页；旧的 /media/ 链接跳转到价格榜视频标签", async ({ page }) => {
     await page.goto("/changes/");
     await expect(page.getByTestId("media-changes")).toContainText("MiniMax-H3");

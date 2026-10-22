@@ -44,6 +44,10 @@ import { PctBadge, StatusBadge } from "./ChangeBadge";
 import { DualPrice, DualUnit } from "./DualPrice";
 import { FilterBar, type Option } from "./FilterBar";
 import { MediaMatches } from "./MediaMatches";
+import { CompareCheck, FavoriteStar, useCollections } from "./CollectionButtons";
+import { CompareTray } from "./CompareTray";
+import { useStore } from "@nanostores/react";
+import { $favorites } from "../stores/collections";
 import type { MediaKind } from "@aipb/shared";
 import type { MediaSearchItem } from "../lib/media";
 
@@ -57,6 +61,8 @@ export interface PriceTableProps {
   readonly platforms: readonly Option[];
   /** 视频/图像报价：搜索命中时在价格榜上方列出（统一搜索入口） */
   readonly media?: readonly MediaSearchItem[];
+  /** 首页先只有前 100 个模型（partial），全量数据到达后为 done；默认 done */
+  readonly loading?: "partial" | "done" | "error";
   /** 搜索命中视频/图像时，切换到价格榜对应标签 */
   readonly onSelectMedia?: (kind: MediaKind, query: string) => void;
 }
@@ -85,7 +91,7 @@ const COLUMNS: readonly Column[] = [
 ];
 
 const HIDE_MD = "md:max-lg:hidden";
-const STICKY = "sticky left-0 z-10 bg-bg group-hover:bg-surface-hover";
+const STICKY = "pt-sticky";
 
 function SortHeader({
   column: baseColumn,
@@ -151,7 +157,7 @@ function PriceTd({
   hideMd?: boolean;
 }) {
   return (
-    <td className={`px-3 text-right whitespace-nowrap tabular ${hideMd ? HIDE_MD : ""}`}>
+    <td className={`pt-num ${hideMd ? HIDE_MD : ""}`}>
       <DualPrice
         currency={row.currency}
         usd={row.usd[index]}
@@ -174,10 +180,7 @@ interface RowProps {
 
 function NestedModelCell({ row }: { row: TableRow }) {
   return (
-    <th
-      scope="row"
-      className={`${STICKY} max-w-[148px] py-1.5 pr-3 pl-7 text-left font-normal text-text-muted sm:max-w-none`}
-    >
+    <th scope="row" className={`${STICKY} pr-3 pl-7 text-text-muted`}>
       <span aria-hidden="true" className="mr-1 text-text-faint">
         └
       </span>
@@ -196,9 +199,7 @@ function Row({ row, props, nested = false, platformExtra }: RowProps) {
   };
   return (
     <tr
-      className={`group cursor-pointer border-b border-border text-table hover:bg-surface-hover ${
-        nested ? "h-10 bg-surface/40" : "h-13 sm:h-11"
-      }`}
+      className={`group pt-row ${nested ? "h-10 bg-surface/40" : "h-13 sm:h-11"}`}
       onClick={navigate}
       data-id={row.id}
       data-nested={nested ? "true" : undefined}
@@ -206,12 +207,11 @@ function Row({ row, props, nested = false, platformExtra }: RowProps) {
       {nested ? (
         <NestedModelCell row={row} />
       ) : (
-        <th
-          scope="row"
-          className={`${STICKY} max-w-[148px] px-3 py-1.5 text-left font-normal sm:max-w-none`}
-        >
+        <th scope="row" className={`${STICKY} px-3`}>
           <div className="flex items-center gap-1.5">
-            <a href={href} className="truncate font-medium hover:text-accent hover:underline">
+            <CompareCheck slug={row.modelSlug} name={row.displayName} locale={props.locale} />
+            <FavoriteStar slug={row.modelSlug} name={row.displayName} locale={props.locale} />
+            <a href={href} className="pt-name">
               {row.displayName}
             </a>
             {row.hasTiers && (
@@ -224,12 +224,8 @@ function Row({ row, props, nested = false, platformExtra }: RowProps) {
             )}
             {row.status === "missing" && <StatusBadge kind="missing" locale={props.locale} />}
           </div>
-          <div className="hidden truncate font-mono text-micro font-normal text-text-faint sm:block">
-            {row.model}
-          </div>
-          <div className="truncate text-micro font-normal text-text-muted sm:hidden">
-            {row.vendorName}
-          </div>
+          <div className="pt-sub hidden font-mono text-text-faint sm:block">{row.model}</div>
+          <div className="pt-sub text-text-muted sm:hidden">{row.vendorName}</div>
         </th>
       )}
       <td className="px-3 whitespace-nowrap max-sm:hidden">{nested ? "" : row.vendorName}</td>
@@ -242,17 +238,17 @@ function Row({ row, props, nested = false, platformExtra }: RowProps) {
       <PriceTd row={row} index={0} props={props} />
       <PriceTd row={row} index={1} props={props} />
       <PriceTd row={row} index={2} props={props} hideMd />
-      <td className="px-3 text-right whitespace-nowrap tabular">
+      <td className="pt-num">
         {row.contextWindow === null ? (
           <span className="text-text-faint">—</span>
         ) : (
           formatTokens(row.contextWindow)
         )}
       </td>
-      <td className={`px-3 text-right whitespace-nowrap ${HIDE_MD}`}>
+      <td className={`pt-num ${HIDE_MD}`}>
         <PctBadge pct={row.change7d} locale={props.locale} />
       </td>
-      <td className="px-3 text-right text-small whitespace-nowrap text-text-muted tabular">
+      <td className="pt-num text-small text-text-muted">
         {row.stale && (
           <span
             className="mr-1 text-warn"
@@ -359,7 +355,19 @@ export function PriceTable(props: PriceTableProps) {
   const { filters, sort, view, setFilters, setSort, setView } = useTableState();
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [expanded, setExpanded] = useState<ReadonlySet<string>>(new Set());
-  const filtered = useMemo(() => filterRows(rows, filters), [rows, filters]);
+  useCollections();
+  const favorites = useStore($favorites);
+  const [favOnly, setFavOnly] = useState(false);
+  const filtered = useMemo(() => {
+    const result = filterRows(rows, filters);
+    if (!favOnly) return result;
+    const keep = new Set(favorites);
+    return result.filter((r) => keep.has(r.modelSlug));
+  }, [rows, filters, favOnly, favorites]);
+  const names = useMemo(
+    () => new Map(rows.map((r) => [r.modelSlug, r.displayName] as const)),
+    [rows],
+  );
   const sorted = useMemo(() => sortRows(filtered, sort), [filtered, sort]);
   const groups = useMemo(() => sortGroups(groupByModel(filtered), sort), [filtered, sort]);
   const total = view === "models" ? groups.length : sorted.length;
@@ -421,15 +429,39 @@ export function PriceTable(props: PriceTableProps) {
           {view === "models"
             ? t("table.resultCount.models", { models: groups.length, count: sorted.length })
             : t("table.resultCount", { count: sorted.length })}
+          {props.loading === "partial" && (
+            <span data-testid="board-partial"> · {t("board.partial")}</span>
+          )}
+          {props.loading === "error" && (
+            <span className="text-warn" data-testid="board-error">
+              {" "}
+              · {t("board.loadError")}
+            </span>
+          )}
         </p>
-        <ViewToggle
-          view={view}
-          locale={locale}
-          onChange={(next) => {
-            setView(next);
-            setVisible(PAGE_SIZE);
-          }}
-        />
+        <div className="flex flex-wrap items-center gap-3">
+          <label className="flex cursor-pointer items-center gap-2 text-table">
+            <input
+              type="checkbox"
+              className="size-4 accent-accent"
+              checked={favOnly}
+              onChange={(e) => {
+                setFavOnly(e.target.checked);
+                setVisible(PAGE_SIZE);
+              }}
+              data-testid="fav-only"
+            />
+            {t("fav.only", { count: favorites.length })}
+          </label>
+          <ViewToggle
+            view={view}
+            locale={locale}
+            onChange={(next) => {
+              setView(next);
+              setVisible(PAGE_SIZE);
+            }}
+          />
+        </div>
       </div>
       <div
         className="overflow-x-auto rounded-lg border border-border sm:max-h-[78vh] sm:overflow-y-auto"
@@ -455,8 +487,15 @@ export function PriceTable(props: PriceTableProps) {
         </table>
         {sorted.length === 0 && (
           <div className="flex flex-col items-center gap-3 px-4 py-12 text-text-muted">
-            <p>{t("table.empty")}</p>
-            <button type="button" className="btn" onClick={() => onFilters(DEFAULT_FILTERS)}>
+            <p>{t(favOnly && favorites.length === 0 ? "fav.empty" : "table.empty")}</p>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => {
+                onFilters(DEFAULT_FILTERS);
+                setFavOnly(false);
+              }}
+            >
               {t("table.resetFilters")}
             </button>
           </div>
@@ -471,6 +510,7 @@ export function PriceTable(props: PriceTableProps) {
           {t("table.showMore", { count: total - visible })}
         </button>
       )}
+      <CompareTray locale={locale} base={props.base} names={names} />
     </div>
   );
 }
