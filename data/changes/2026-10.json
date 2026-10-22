@@ -2322,6 +2322,64 @@
       "detectedAt": "2026-10-21T22:44:49Z"
     },
     {
+      "id": "2026-10-22-openrouter:alibaba/qwen3.5-122b-a10b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.5-122b-a10b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-122b-a10b",
+      "displayName": "Qwen3.5-122B-A10B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.26,
+          "new": 0.4,
+          "pct": 0.5385
+        },
+        {
+          "field": "output",
+          "old": 2.08,
+          "new": 3.2,
+          "pct": 0.5385
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T03:01:02Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:alibaba/qwen3.5-397b-a17b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.5-397b-a17b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-397b-a17b",
+      "displayName": "Qwen3.5 397B A17B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.39,
+          "new": 0.5,
+          "pct": 0.2821
+        },
+        {
+          "field": "output",
+          "old": 2.34,
+          "new": 3.6,
+          "pct": 0.5385
+        },
+        {
+          "field": "cacheRead",
+          "old": null,
+          "new": 0.3,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T03:01:02Z"
+    },
+    {
       "id": "2026-10-22-openrouter:deepseek/deepseek-r1-1",
       "type": "removed",
       "offeringId": "openrouter:deepseek/deepseek-r1",
@@ -2365,6 +2423,70 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4-flash-0731-2",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash-0731",
+      "displayName": "DeepSeek V4 Flash 0731",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.04444,
+          "new": 0.44,
+          "pct": 8.901
+        },
+        {
+          "field": "output",
+          "old": 0.13332,
+          "new": 1.32,
+          "pct": 8.901
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.001414,
+          "new": 0.014,
+          "pct": 8.901
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T03:01:02Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4-pro-0813-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro-0813",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro-0813",
+      "displayName": "DeepSeek V4 Pro 0813",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.66,
+          "new": 1.32,
+          "pct": 1
+        },
+        {
+          "field": "output",
+          "old": 1.98,
+          "new": 3.96,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.022,
+          "new": 0.044,
+          "pct": 1
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-22T03:01:02Z"
     },
     {
       "id": "2026-10-22-openrouter:deepseek/deepseek-v4-pro-1",
@@ -2431,6 +2553,38 @@
       "detectedAt": "2026-10-21T22:51:38Z"
     },
     {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4-pro-3",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro",
+      "displayName": "DeepSeek V4 Pro 0423",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.386976,
+          "new": 0.95526,
+          "pct": 1.469
+        },
+        {
+          "field": "output",
+          "old": 0.773952,
+          "new": 1.91052,
+          "pct": 1.469
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.032248,
+          "new": 0.079605,
+          "pct": 1.469
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-22T03:01:02Z"
+    },
+    {
       "id": "2026-10-22-openrouter:deepseek/deepseek-v4.1-flash-1",
       "type": "price_down",
       "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
@@ -2495,6 +2649,70 @@
       "detectedAt": "2026-10-21T22:44:49Z"
     },
     {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4.1-flash-1017-2",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.3,
+          "pct": 1
+        },
+        {
+          "field": "output",
+          "old": 0.6,
+          "new": 1.2,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.003,
+          "new": 0.006,
+          "pct": 1
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-22T03:01:02Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:deepseek/deepseek-v4.1-flash-2",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0342,
+          "new": 0.3,
+          "pct": 7.772
+        },
+        {
+          "field": "output",
+          "old": 0.1368,
+          "new": 1.2,
+          "pct": 7.772
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.000684,
+          "new": 0.006,
+          "pct": 7.772
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-22T03:01:02Z"
+    },
+    {
       "id": "2026-10-22-openrouter:microsoft/wizardlm-2-8x22b-1",
       "type": "removed",
       "offeringId": "openrouter:microsoft/wizardlm-2-8x22b",
@@ -2540,6 +2758,38 @@
       "detectedAt": "2026-10-21T22:44:49Z"
     },
     {
+      "id": "2026-10-22-openrouter:tencent/hy3-2",
+      "type": "price_up",
+      "offeringId": "openrouter:tencent/hy3",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy3",
+      "displayName": "Hy3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0825,
+          "new": 0.132,
+          "pct": 0.6
+        },
+        {
+          "field": "output",
+          "old": 0.33,
+          "new": 0.528,
+          "pct": 0.6
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.020625,
+          "new": 0.033,
+          "pct": 0.6
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T03:01:02Z"
+    },
+    {
       "id": "2026-10-22-openrouter:tencent/hy4-preview-1",
       "type": "price_down",
       "offeringId": "openrouter:tencent/hy4-preview",
@@ -2572,6 +2822,38 @@
       "detectedAt": "2026-10-21T22:44:49Z"
     },
     {
+      "id": "2026-10-22-openrouter:tencent/hy4-preview-2",
+      "type": "price_up",
+      "offeringId": "openrouter:tencent/hy4-preview",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy4-preview",
+      "displayName": "Hy4 preview",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.7506,
+          "new": 0.834,
+          "pct": 0.1111
+        },
+        {
+          "field": "output",
+          "old": 2.2509,
+          "new": 2.501,
+          "pct": 0.1111
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0378,
+          "new": 0.042,
+          "pct": 0.1111
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-22T03:01:02Z"
+    },
+    {
       "id": "2026-10-22-openrouter:zhipu/glm-5.3-1",
       "type": "price_up",
       "offeringId": "openrouter:zhipu/glm-5.3",
@@ -2602,6 +2884,70 @@
       ],
       "confirmedFromQuarantine": true,
       "detectedAt": "2026-10-21T22:44:49Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:zhipu/glm-5.3-2",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.7,
+          "new": 0.079,
+          "pct": -0.8871
+        },
+        {
+          "field": "output",
+          "old": 2.2,
+          "new": 1.4,
+          "pct": -0.3636
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.13,
+          "new": 0.078,
+          "pct": -0.4
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-22T03:01:02Z"
+    },
+    {
+      "id": "2026-10-22-openrouter:zhipu/glm-5.3-flash-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.02,
+          "pct": -0.8667
+        },
+        {
+          "field": "output",
+          "old": 0.5,
+          "new": 0.121,
+          "pct": -0.758
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.03,
+          "new": 0.02,
+          "pct": -0.3333
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-22T03:01:02Z"
     },
     {
       "id": "2026-10-22-siliconflow-cn:alibaba/qwen2.5-72b-instruct-1",

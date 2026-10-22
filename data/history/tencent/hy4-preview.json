@@ -35,13 +35,6 @@
         "cacheRead": 0.042,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
-      },
-      {
-        "input": 0.7506,
-        "output": 2.2509,
-        "cacheRead": 0.0378,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-22"
       }
     ],
     "siliconflow:tencent/hy4-preview": [
