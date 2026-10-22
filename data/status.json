@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "39841635682",
-    "startedAt": "2026-10-22T19:49:38Z",
-    "finishedAt": "2026-10-22T19:50:52Z",
-    "durationMs": 73663,
+    "id": "39848365439",
+    "startedAt": "2026-10-22T20:24:00Z",
+    "finishedAt": "2026-10-22T20:25:24Z",
+    "durationMs": 84325,
     "result": "partial"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 63,
-      "durationMs": 1305,
+      "durationMs": 1924,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 523,
+      "durationMs": 1943,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -35,10 +35,10 @@
       "status": "ok",
       "offeringCount": 257,
       "mediaOfferingCount": 63,
-      "durationMs": 780,
+      "durationMs": 1760,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -46,10 +46,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 1148,
-      "durationMs": 1779,
+      "durationMs": 2776,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -57,10 +57,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 93,
+      "durationMs": 104,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -68,10 +68,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 25,
-      "durationMs": 98,
+      "durationMs": 112,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -79,10 +79,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 10,
-      "durationMs": 1471,
+      "durationMs": 2037,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -90,10 +90,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 30,
-      "durationMs": 1472,
+      "durationMs": 2037,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -101,11 +101,11 @@
       "kind": "html",
       "status": "failed",
       "offeringCount": 0,
-      "durationMs": 914,
+      "durationMs": 1198,
       "errorCode": "E2001",
       "errorMessage": "[E2001] moonshot：找不到含 Model / Input / Output 列的价格表",
       "lastSuccessAt": "2026-10-20T03:08:01Z",
-      "consecutiveFailures": 5
+      "consecutiveFailures": 6
     },
     {
       "id": "openrouter",
@@ -113,10 +113,10 @@
       "status": "ok",
       "offeringCount": 359,
       "mediaOfferingCount": 29,
-      "durationMs": 1614,
+      "durationMs": 2080,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -124,10 +124,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 378,
-      "durationMs": 72486,
+      "durationMs": 83621,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -135,10 +135,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 54,
-      "durationMs": 1139,
+      "durationMs": 1566,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -146,10 +146,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 4580,
+      "durationMs": 5057,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     },
     {
@@ -157,10 +157,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 1201,
+      "durationMs": 1170,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-10-22T19:49:38Z",
+      "lastSuccessAt": "2026-10-22T20:24:00Z",
       "consecutiveFailures": 0
     }
   ],
@@ -170,7 +170,7 @@
       "code": "E1005",
       "sourceId": "moonshot",
       "offeringId": null,
-      "message": "数据源连续失败 5 次（上次成功：2026-10-20T03:08:01Z）"
+      "message": "数据源连续失败 6 次（上次成功：2026-10-20T03:08:01Z）"
     },
     {
       "code": "E2001",
@@ -417,12 +417,6 @@
       "sourceId": "litellm-resellers",
       "offeringId": "novita:zhipu/glm-5.3",
       "message": "接口复核一致，突变价格已直接发布：glm-5.3"
-    },
-    {
-      "code": "W3008",
-      "sourceId": "openrouter",
-      "offeringId": "openrouter:zhipu/glm-5.3",
-      "message": "接口复核一致，突变价格已直接发布：GLM 5.3"
     }
   ]
 }
