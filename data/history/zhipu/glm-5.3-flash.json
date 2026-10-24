@@ -94,6 +94,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.15,
+        "output": 0.5,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-24"
       }
     ],
     "novita:zhipu/glm-5.3-flash": [
@@ -149,6 +156,13 @@
         "cacheRead": 0.0052,
         "cacheWrite": null,
         "effectiveDate": "2026-10-23"
+      },
+      {
+        "input": 0.15,
+        "output": 0.5,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-24"
       }
     ],
     "parasail:zhipu/glm-5.3-flash": [

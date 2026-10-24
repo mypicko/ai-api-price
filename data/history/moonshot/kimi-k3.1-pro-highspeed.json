@@ -1,0 +1,14 @@
+{
+  "modelSlug": "moonshot/kimi-k3.1-pro-highspeed",
+  "series": {
+    "official-cn:moonshot/kimi-k3.1-pro-highspeed": [
+      {
+        "input": 3.8874,
+        "output": 20.3342,
+        "cacheRead": 0.1944,
+        "cacheWrite": 3.8874,
+        "effectiveDate": "2026-10-24"
+      }
+    ]
+  }
+}
