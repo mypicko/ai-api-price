@@ -1,0 +1,44 @@
+{
+  "month": "2026-10",
+  "events": [
+    {
+      "id": "2026-10-25-official:google/veo-3.1-fast-generate-preview-1",
+      "type": "removed",
+      "offeringId": "official:google/veo-3.1-fast-generate-preview",
+      "vendor": "google",
+      "modelSlug": "google/veo-3.1-fast-generate-preview",
+      "displayName": "veo-3.1-fast-generate-preview",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-25T01:16:41Z"
+    },
+    {
+      "id": "2026-10-25-official:google/veo-3.1-generate-preview-1",
+      "type": "removed",
+      "offeringId": "official:google/veo-3.1-generate-preview",
+      "vendor": "google",
+      "modelSlug": "google/veo-3.1-generate-preview",
+      "displayName": "veo-3.1-generate-preview",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-25T01:16:41Z"
+    },
+    {
+      "id": "2026-10-25-official:google/veo-3.1-lite-generate-preview-1",
+      "type": "removed",
+      "offeringId": "official:google/veo-3.1-lite-generate-preview",
+      "vendor": "google",
+      "modelSlug": "google/veo-3.1-lite-generate-preview",
+      "displayName": "veo-3.1-lite-generate-preview",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-25T01:16:41Z"
+    }
+  ]
+}

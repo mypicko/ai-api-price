@@ -1,6 +1,15 @@
 {
   "modelSlug": "moonshot/kimi-k3.1-pro-highspeed",
   "series": {
+    "novita:moonshot/kimi-k3.1-pro-highspeed": [
+      {
+        "input": 4,
+        "output": 20,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-25"
+      }
+    ],
     "official-cn:moonshot/kimi-k3.1-pro-highspeed": [
       {
         "input": 3.8874,

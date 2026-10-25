@@ -1,6 +1,15 @@
 {
   "modelSlug": "moonshot/kimi-k3.1-pro",
   "series": {
+    "novita:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-25"
+      }
+    ],
     "official-cn:moonshot/kimi-k3.1-pro": [
       {
         "input": 1.9437,

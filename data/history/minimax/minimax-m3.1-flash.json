@@ -64,6 +64,15 @@
         "effectiveDate": "2026-10-24"
       }
     ],
+    "sambanova:minimax/minimax-m3.1-flash": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-25"
+      }
+    ],
     "together:minimax/minimax-m3.1-flash": [
       {
         "input": 0.15,
