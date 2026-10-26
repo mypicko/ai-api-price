@@ -44,6 +44,13 @@
         "cacheRead": 0.025,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.32,
+        "output": 3.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-26"
       }
     ],
     "siliconflow:alibaba/qwen3.6-27b": [

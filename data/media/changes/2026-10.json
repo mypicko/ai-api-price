@@ -39,6 +39,19 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-25T01:16:41Z"
+    },
+    {
+      "id": "2026-10-26-official:openai/gpt-image-1-1",
+      "type": "removed",
+      "offeringId": "official:openai/gpt-image-1",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-image-1",
+      "displayName": "gpt-image-1",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-26T01:17:42Z"
     }
   ]
 }

@@ -69,6 +69,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.1,
+        "output": 0.34,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-26"
       }
     ],
     "parasail:google/gemma-4-31b-it": [
