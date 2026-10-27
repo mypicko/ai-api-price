@@ -8,6 +8,13 @@
         "cacheRead": 0.098,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.9,
+        "output": 2.9,
+        "cacheRead": 0.09,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-27"
       }
     ],
     "deepinfra:zhipu/glm-5.1": [
@@ -69,6 +76,13 @@
         "cacheRead": 0.26,
         "cacheWrite": null,
         "effectiveDate": "2026-10-21"
+      },
+      {
+        "input": 0.966,
+        "output": 3.036,
+        "cacheRead": 0.1794,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-27"
       }
     ],
     "siliconflow:zhipu/glm-5.1": [

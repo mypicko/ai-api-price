@@ -26,6 +26,13 @@
         "cacheRead": 0.045,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.39,
+        "output": 1.8,
+        "cacheRead": 0.039,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-27"
       }
     ],
     "cloudflare:moonshot/kimi-k2.6": [

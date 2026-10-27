@@ -44,6 +44,15 @@
         "effectiveDate": "2026-10-20"
       }
     ],
+    "nebius:nvidia/nemotron-3.5-super-vl": [
+      {
+        "input": 0.3,
+        "output": 0.9,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-27"
+      }
+    ],
     "openrouter:nvidia/nemotron-3.5-super-vl": [
       {
         "input": 0.1,
