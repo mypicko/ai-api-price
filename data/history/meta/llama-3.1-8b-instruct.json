@@ -107,6 +107,13 @@
         "cacheRead": 0.025,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.02,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-28"
       }
     ],
     "vertex:meta/llama-3.1-8b-instruct": [

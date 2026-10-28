@@ -116,6 +116,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-28"
       }
     ],
     "novita:openai/gpt-oss-120b": [

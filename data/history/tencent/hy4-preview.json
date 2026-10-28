@@ -24,6 +24,15 @@
         "effectiveDate": "2026-10-24"
       }
     ],
+    "gmi:tencent/hy4-preview": [
+      {
+        "input": 0.834,
+        "output": 2.501,
+        "cacheRead": 0.042,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-28"
+      }
+    ],
     "novita:tencent/hy4-preview": [
       {
         "input": 0.834,

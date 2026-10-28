@@ -17,6 +17,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-28"
       }
     ],
     "openrouter:alibaba/qwen3-30b-a3b-instruct-2507": [
@@ -33,6 +40,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-27"
+      },
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-28"
       }
     ],
     "siliconflow-cn:alibaba/qwen3-30b-a3b-instruct-2507": [

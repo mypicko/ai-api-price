@@ -1,6 +1,15 @@
 {
   "modelSlug": "openai/gpt-6.1-terra-pro",
   "series": {
+    "azure:openai/gpt-6.1-terra-pro": [
+      {
+        "input": 1.2,
+        "output": 6,
+        "cacheRead": 0.06,
+        "cacheWrite": 1.5,
+        "effectiveDate": "2026-10-28"
+      }
+    ],
     "openrouter:openai/gpt-6.1-terra-pro": [
       {
         "input": 1,

@@ -10,6 +10,15 @@
         "effectiveDate": "2026-10-24"
       }
     ],
+    "fireworks:minimax/minimax-m3.1-flash": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-28"
+      }
+    ],
     "gmi:minimax/minimax-m3.1-flash": [
       {
         "input": 0.1425,
