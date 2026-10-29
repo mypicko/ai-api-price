@@ -1,6 +1,15 @@
 {
   "modelSlug": "google/gemini-2.5-flash-lite",
   "series": {
+    "databricks:google/gemini-2.5-flash-lite": [
+      {
+        "input": 0.12502,
+        "output": 0.50001,
+        "cacheRead": 0.01253,
+        "cacheWrite": 0.12502,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "oci:google/gemini-2.5-flash-lite": [
       {
         "input": 0.075,

@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "databricks:x-ai/grok-4.7": [
+      {
+        "input": 2.49998,
+        "output": 7.50001,
+        "cacheRead": 0.62503,
+        "cacheWrite": 2.49998,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "official:x-ai/grok-4.7": [
       {
         "input": 2,

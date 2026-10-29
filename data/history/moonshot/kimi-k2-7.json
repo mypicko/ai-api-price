@@ -1,0 +1,14 @@
+{
+  "modelSlug": "moonshot/kimi-k2-7",
+  "series": {
+    "databricks:moonshot/kimi-k2-7": [
+      {
+        "input": 0.94997,
+        "output": 4.00001,
+        "cacheRead": 0.18998,
+        "cacheWrite": 0.94997,
+        "effectiveDate": "2026-10-29"
+      }
+    ]
+  }
+}

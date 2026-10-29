@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "databricks:openai/gpt-6-luna": [
+      {
+        "input": 0.10003,
+        "output": 0.50001,
+        "cacheRead": 0.01001,
+        "cacheWrite": 0.12502,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "official:openai/gpt-6-luna": [
       {
         "input": 0.1,

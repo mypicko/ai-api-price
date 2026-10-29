@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "databricks:openai/gpt-6-astra": [
+      {
+        "input": 9.99999,
+        "output": 50,
+        "cacheRead": 1.00002,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "official:openai/gpt-6-astra": [
       {
         "input": 10,

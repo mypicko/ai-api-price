@@ -26,6 +26,13 @@
         "cacheRead": 0.30002,
         "cacheWrite": 3.74997,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 1.99997,
+        "output": 9.99999,
+        "cacheRead": 0.19999,
+        "cacheWrite": 2.49998,
+        "effectiveDate": "2026-10-29"
       }
     ],
     "deepinfra:anthropic/claude-sonnet-5": [

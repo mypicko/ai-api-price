@@ -10,6 +10,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "databricks:openai/gpt-5.4-pro": [
+      {
+        "input": 30,
+        "output": 180,
+        "cacheRead": 30,
+        "cacheWrite": 30,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "official:openai/gpt-5.4-pro": [
       {
         "input": 30,

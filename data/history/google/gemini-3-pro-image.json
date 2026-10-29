@@ -1,6 +1,15 @@
 {
   "modelSlug": "google/gemini-3-pro-image",
   "series": {
+    "databricks:google/gemini-3-pro-image": [
+      {
+        "input": 2.49998,
+        "output": 15,
+        "cacheRead": 2.49998,
+        "cacheWrite": 2.49998,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "openrouter:google/gemini-3-pro-image": [
       {
         "input": 2,

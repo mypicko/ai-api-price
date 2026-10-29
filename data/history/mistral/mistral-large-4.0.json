@@ -8,6 +8,13 @@
         "cacheRead": 0.068,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 1.36,
+        "output": 4.18,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-29"
       }
     ],
     "openrouter:mistral/mistral-large-4.0": [

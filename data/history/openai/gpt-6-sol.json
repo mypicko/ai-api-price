@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "databricks:openai/gpt-6-sol": [
+      {
+        "input": 1.99997,
+        "output": 9.99999,
+        "cacheRead": 0.19999,
+        "cacheWrite": 2.49998,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "official:openai/gpt-6-sol": [
       {
         "input": 2,

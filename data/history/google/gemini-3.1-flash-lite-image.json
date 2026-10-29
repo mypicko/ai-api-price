@@ -1,6 +1,15 @@
 {
   "modelSlug": "google/gemini-3.1-flash-lite-image",
   "series": {
+    "databricks:google/gemini-3.1-flash-lite-image": [
+      {
+        "input": 0.31248,
+        "output": 1.87502,
+        "cacheRead": 0.31248,
+        "cacheWrite": 0.31248,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "openrouter:google/gemini-3.1-flash-lite-image": [
       {
         "input": 0.25,

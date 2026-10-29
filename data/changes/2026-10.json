@@ -8105,6 +8105,1058 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-28T02:23:18Z"
+    },
+    {
+      "id": "2026-10-29-bedrock:mistral/mistral.voxtral-mini-3b-2507-1",
+      "type": "new_model",
+      "offeringId": "bedrock:mistral/mistral.voxtral-mini-3b-2507",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral.voxtral-mini-3b-2507",
+      "displayName": "mistral.voxtral-mini-3b-2507",
+      "platform": "bedrock",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-bedrock:mistral/mistral.voxtral-small-24b-2507-1",
+      "type": "new_model",
+      "offeringId": "bedrock:mistral/mistral.voxtral-small-24b-2507",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral.voxtral-small-24b-2507",
+      "displayName": "mistral.voxtral-small-24b-2507",
+      "platform": "bedrock",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-crusoe:nvidia/nemotron-3-super-120b-a12b-1",
+      "type": "context_change",
+      "offeringId": "crusoe:nvidia/nemotron-3-super-120b-a12b",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nemotron-3-super-120b-a12b",
+      "displayName": "Nemotron 3 Super",
+      "platform": "crusoe",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 262144,
+          "new": 1048576,
+          "pct": 3
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-crusoe:nvidia/nemotron-3.5-super-vl-1",
+      "type": "context_change",
+      "offeringId": "crusoe:nvidia/nemotron-3.5-super-vl",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nemotron-3.5-super-vl",
+      "displayName": "Nemotron 3.5 Super VL",
+      "platform": "crusoe",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 262144,
+          "new": 1048576,
+          "pct": 3
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:anthropic/claude-fable-5.1-1",
+      "type": "price_down",
+      "offeringId": "databricks:anthropic/claude-fable-5.1",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-fable-5.1",
+      "displayName": "Claude Fable 5.1",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "cacheRead",
+          "old": 0.25004,
+          "new": 0.24997,
+          "pct": -0.00028
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:anthropic/claude-haiku-5.5-1",
+      "type": "new_model",
+      "offeringId": "databricks:anthropic/claude-haiku-5.5",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-haiku-5.5",
+      "displayName": "Claude Haiku 5.5",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:anthropic/claude-sonnet-5-1",
+      "type": "price_down",
+      "offeringId": "databricks:anthropic/claude-sonnet-5",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-sonnet-5",
+      "displayName": "Claude Sonnet 5",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 2.99999,
+          "new": 1.99997,
+          "pct": -0.3333
+        },
+        {
+          "field": "output",
+          "old": 15,
+          "new": 9.99999,
+          "pct": -0.3333
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.30002,
+          "new": 0.19999,
+          "pct": -0.3334
+        },
+        {
+          "field": "cacheWrite",
+          "old": 3.74997,
+          "new": 2.49998,
+          "pct": -0.3333
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:anthropic/claude-sonnet-5.5-1",
+      "type": "new_model",
+      "offeringId": "databricks:anthropic/claude-sonnet-5.5",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-sonnet-5.5",
+      "displayName": "Claude Sonnet 5.5",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:deepseek/deepseek-v4-1-flash-1",
+      "type": "new_model",
+      "offeringId": "databricks:deepseek/deepseek-v4-1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-1-flash",
+      "displayName": "deepseek-v4-1-flash",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:deepseek/deepseek-v4-1-flash-1017-1",
+      "type": "new_model",
+      "offeringId": "databricks:deepseek/deepseek-v4-1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-1-flash-1017",
+      "displayName": "deepseek-v4-1-flash-1017",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:google/gemini-2.5-flash-lite-1",
+      "type": "new_model",
+      "offeringId": "databricks:google/gemini-2.5-flash-lite",
+      "vendor": "google",
+      "modelSlug": "google/gemini-2.5-flash-lite",
+      "displayName": "Gemini 2.5 Flash Lite",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:google/gemini-3-pro-image-1",
+      "type": "new_model",
+      "offeringId": "databricks:google/gemini-3-pro-image",
+      "vendor": "google",
+      "modelSlug": "google/gemini-3-pro-image",
+      "displayName": "Nano Banana Pro (Gemini 3 Pro Image)",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:google/gemini-3.1-flash-image-1",
+      "type": "new_model",
+      "offeringId": "databricks:google/gemini-3.1-flash-image",
+      "vendor": "google",
+      "modelSlug": "google/gemini-3.1-flash-image",
+      "displayName": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:google/gemini-3.1-flash-lite-image-1",
+      "type": "new_model",
+      "offeringId": "databricks:google/gemini-3.1-flash-lite-image",
+      "vendor": "google",
+      "modelSlug": "google/gemini-3.1-flash-lite-image",
+      "displayName": "Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:google/gemini-3.6-flash-1",
+      "type": "price_down",
+      "offeringId": "databricks:google/gemini-3.6-flash",
+      "vendor": "google",
+      "modelSlug": "google/gemini-3.6-flash",
+      "displayName": "Gemini 3.6 Flash",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.87502,
+          "new": 0.74998,
+          "pct": -0.6
+        },
+        {
+          "field": "output",
+          "old": 9.37503,
+          "new": 3.74997,
+          "pct": -0.6
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.18753,
+          "new": 0.07497,
+          "pct": -0.6002
+        },
+        {
+          "field": "cacheWrite",
+          "old": 1.87502,
+          "new": 0.74998,
+          "pct": -0.6
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:google/gemini-3.7-flash-1",
+      "type": "new_model",
+      "offeringId": "databricks:google/gemini-3.7-flash",
+      "vendor": "google",
+      "modelSlug": "google/gemini-3.7-flash",
+      "displayName": "Gemini 3.7 Flash",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:google/gemini-3.8-flash-1",
+      "type": "new_model",
+      "offeringId": "databricks:google/gemini-3.8-flash",
+      "vendor": "google",
+      "modelSlug": "google/gemini-3.8-flash",
+      "displayName": "Gemini 3.8 Flash",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:google/gemini-4-argon-1",
+      "type": "new_model",
+      "offeringId": "databricks:google/gemini-4-argon",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-argon",
+      "displayName": "Gemini 4 Argon",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:moonshot/kimi-k2-7-1",
+      "type": "new_model",
+      "offeringId": "databricks:moonshot/kimi-k2-7",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2-7",
+      "displayName": "kimi-k2-7",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:openai/gpt-5.4-pro-1",
+      "type": "new_model",
+      "offeringId": "databricks:openai/gpt-5.4-pro",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-5.4-pro",
+      "displayName": "GPT-5.4 Pro",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:openai/gpt-5.6-luna-1",
+      "type": "price_down",
+      "offeringId": "databricks:openai/gpt-5.6-luna",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-5.6-luna",
+      "displayName": "GPT-5.6 Luna",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.00002,
+          "new": 0.19999,
+          "pct": -0.8
+        },
+        {
+          "field": "output",
+          "old": 5.99998,
+          "new": 1.20001,
+          "pct": -0.8
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.10003,
+          "new": 0.02002,
+          "pct": -0.7999
+        },
+        {
+          "field": "cacheWrite",
+          "old": 1.24999,
+          "new": 0.24997,
+          "pct": -0.8
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:openai/gpt-5.6-terra-1",
+      "type": "price_down",
+      "offeringId": "databricks:openai/gpt-5.6-terra",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-5.6-terra",
+      "displayName": "GPT-5.6 Terra",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 2.49998,
+          "new": 1.99997,
+          "pct": -0.2
+        },
+        {
+          "field": "output",
+          "old": 15,
+          "new": 12,
+          "pct": -0.2
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.24997,
+          "new": 0.19999,
+          "pct": -0.1999
+        },
+        {
+          "field": "cacheWrite",
+          "old": 3.12501,
+          "new": 2.49998,
+          "pct": -0.2
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:openai/gpt-6-astra-1",
+      "type": "new_model",
+      "offeringId": "databricks:openai/gpt-6-astra",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6-astra",
+      "displayName": "GPT-6 Astra",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:openai/gpt-6-luna-1",
+      "type": "new_model",
+      "offeringId": "databricks:openai/gpt-6-luna",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6-luna",
+      "displayName": "GPT-6 Luna",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:openai/gpt-6-sol-1",
+      "type": "new_model",
+      "offeringId": "databricks:openai/gpt-6-sol",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6-sol",
+      "displayName": "GPT-6 Sol",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:openai/gpt-6.1-sol-1",
+      "type": "new_model",
+      "offeringId": "databricks:openai/gpt-6.1-sol",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.1-sol",
+      "displayName": "GPT-6.1 Sol",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:openai/gpt-6.1-terra-1",
+      "type": "new_model",
+      "offeringId": "databricks:openai/gpt-6.1-terra",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.1-terra",
+      "displayName": "GPT-6.1 Terra",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-databricks:x-ai/grok-4.7-1",
+      "type": "new_model",
+      "offeringId": "databricks:x-ai/grok-4.7",
+      "vendor": "x-ai",
+      "modelSlug": "x-ai/grok-4.7",
+      "displayName": "Grok 4.7",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-digitalocean:zhipu/glm-5.3-flash-1",
+      "type": "price_down",
+      "offeringId": "digitalocean:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "digitalocean",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.13125,
+          "new": 0.1125,
+          "pct": -0.1429
+        },
+        {
+          "field": "output",
+          "old": 0.4375,
+          "new": 0.375,
+          "pct": -0.1429
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-fireworks:deepseek/deepseek-v4p1-flash-1017-spot-1",
+      "type": "new_model",
+      "offeringId": "fireworks:deepseek/deepseek-v4p1-flash-1017-spot",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4p1-flash-1017-spot",
+      "displayName": "deepseek-v4p1-flash-1017-spot",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-fireworks:deepseek/deepseek-v4p1-flash-spot-1",
+      "type": "new_model",
+      "offeringId": "fireworks:deepseek/deepseek-v4p1-flash-spot",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4p1-flash-spot",
+      "displayName": "deepseek-v4p1-flash-spot",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-fireworks:moonshot/kimi-k3-spot-1",
+      "type": "new_model",
+      "offeringId": "fireworks:moonshot/kimi-k3-spot",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3-spot",
+      "displayName": "kimi-k3-spot",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-fireworks:zhipu/glm-5p3-spot-1",
+      "type": "new_model",
+      "offeringId": "fireworks:zhipu/glm-5p3-spot",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5p3-spot",
+      "displayName": "glm-5p3-spot",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-official:mistral/mistral-large-4-1",
+      "type": "price_up",
+      "offeringId": "official:mistral/mistral-large-4",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-large-4",
+      "displayName": "mistral-large-4",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.68,
+          "new": 1.36,
+          "pct": 1
+        },
+        {
+          "field": "output",
+          "old": 2.09,
+          "new": 4.18,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.068,
+          "new": 0.14,
+          "pct": 1.059
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-official:mistral/mistral-large-4.0-1",
+      "type": "price_up",
+      "offeringId": "official:mistral/mistral-large-4.0",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-large-4.0",
+      "displayName": "Mistral Large 4",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.68,
+          "new": 1.36,
+          "pct": 1
+        },
+        {
+          "field": "output",
+          "old": 2.09,
+          "new": 4.18,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.068,
+          "new": 0.14,
+          "pct": 1.059
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:deepseek/deepseek-v4-flash-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash",
+      "displayName": "DeepSeek V4 Flash 0423",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.14,
+          "new": 0.091,
+          "pct": -0.35
+        },
+        {
+          "field": "output",
+          "old": 0.28,
+          "new": 0.182,
+          "pct": -0.35
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.028,
+          "new": 0.0182,
+          "pct": -0.35
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:deepseek/deepseek-v4-pro-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro",
+      "displayName": "DeepSeek V4 Pro 0423",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.875394,
+          "new": 0.95526,
+          "pct": 0.09123
+        },
+        {
+          "field": "output",
+          "old": 1.75079,
+          "new": 1.91052,
+          "pct": 0.09123
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0729495,
+          "new": 0.079605,
+          "pct": 0.09123
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.14,
+          "new": 0.045,
+          "pct": -0.6786
+        },
+        {
+          "field": "output",
+          "old": 0.42,
+          "new": 0.5,
+          "pct": 0.1905
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0042,
+          "new": 0.006,
+          "pct": 0.4286
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:meta/llama-3.1-8b-instruct-1",
+      "type": "price_up",
+      "offeringId": "openrouter:meta/llama-3.1-8b-instruct",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-3.1-8b-instruct",
+      "displayName": "Llama 3.1 8B Instruct",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.02,
+          "new": 0.05,
+          "pct": 1.5
+        },
+        {
+          "field": "output",
+          "old": 0.04,
+          "new": 0.08,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": null,
+          "new": 0.025,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:mistral/codestral-2508-batch-1",
+      "type": "removed",
+      "offeringId": "openrouter:mistral/codestral-2508-batch",
+      "vendor": "mistral",
+      "modelSlug": "mistral/codestral-2508-batch",
+      "displayName": "Codestral 2508 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:mistral/ministral-8b-2512-batch-1",
+      "type": "removed",
+      "offeringId": "openrouter:mistral/ministral-8b-2512-batch",
+      "vendor": "mistral",
+      "modelSlug": "mistral/ministral-8b-2512-batch",
+      "displayName": "Ministral 3 8B 2512 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:mistral/mistral-large-2512-batch-1",
+      "type": "removed",
+      "offeringId": "openrouter:mistral/mistral-large-2512-batch",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-large-2512-batch",
+      "displayName": "Mistral Large 3 2512 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:mistral/mistral-medium-3.1-batch-1",
+      "type": "removed",
+      "offeringId": "openrouter:mistral/mistral-medium-3.1-batch",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-medium-3.1-batch",
+      "displayName": "Mistral Medium 3.1 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:mistral/mistral-small-2603-batch-1",
+      "type": "removed",
+      "offeringId": "openrouter:mistral/mistral-small-2603-batch",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-small-2603-batch",
+      "displayName": "Mistral Small 4 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:moonshot/kimi-k3-1",
+      "type": "price_up",
+      "offeringId": "openrouter:moonshot/kimi-k3",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3",
+      "displayName": "Kimi K3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.159,
+          "new": 0.192,
+          "pct": 0.2075
+        },
+        {
+          "field": "output",
+          "old": 11.5,
+          "new": 20,
+          "pct": 0.7391
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.149,
+          "new": 0.182,
+          "pct": 0.2215
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:nvidia/nemotron-3-super-120b-a12b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:nvidia/nemotron-3-super-120b-a12b",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nemotron-3-super-120b-a12b",
+      "displayName": "Nemotron 3 Super",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.08,
+          "new": 0.3,
+          "pct": 2.75
+        },
+        {
+          "field": "output",
+          "old": 0.45,
+          "new": 2.4,
+          "pct": 4.333
+        },
+        {
+          "field": "cacheRead",
+          "old": null,
+          "new": 0.15,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:nvidia/nemotron-3-super-120b-a12b-2",
+      "type": "context_change",
+      "offeringId": "openrouter:nvidia/nemotron-3-super-120b-a12b",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nemotron-3-super-120b-a12b",
+      "displayName": "Nemotron 3 Super",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 262144,
+          "new": 1048576,
+          "pct": 3
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:zhipu/glm-4.6-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-4.6",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.6",
+      "displayName": "GLM 4.6",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.55,
+          "new": 0.5,
+          "pct": -0.09091
+        },
+        {
+          "field": "output",
+          "old": 2.2,
+          "new": 2,
+          "pct": -0.09091
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.11,
+          "new": 0.1,
+          "pct": -0.09091
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:zhipu/glm-5.2-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.2",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.2",
+      "displayName": "GLM 5.2",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0341,
+          "new": 0.006,
+          "pct": -0.824
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0331,
+          "new": 0.005,
+          "pct": -0.8489
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-openrouter:zhipu/glm-5.3-flash-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.0379,
+          "pct": -0.7473
+        },
+        {
+          "field": "output",
+          "old": 0.5,
+          "new": 0.0798,
+          "pct": -0.8404
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-together:alibaba/qwen3.7-max-1",
+      "type": "price_up",
+      "offeringId": "together:alibaba/qwen3.7-max",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.7-max",
+      "displayName": "Qwen3.7-Max",
+      "platform": "together",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.5,
+          "new": 2.5,
+          "pct": 0.6667
+        },
+        {
+          "field": "output",
+          "old": 4.5,
+          "new": 7.5,
+          "pct": 0.6667
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.3,
+          "new": 0.5,
+          "pct": 0.6667
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-29T02:30:06Z"
+    },
+    {
+      "id": "2026-10-29-wandb:nvidia/nvidia-nemotron-3.5-super-vl-120b-a12b-1",
+      "type": "price_up",
+      "offeringId": "wandb:nvidia/nvidia-nemotron-3.5-super-vl-120b-a12b",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nvidia-nemotron-3.5-super-vl-120b-a12b",
+      "displayName": "NVIDIA-Nemotron-3.5-Super-VL-120B-A12B",
+      "platform": "wandb",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.25,
+          "pct": 0.6667
+        },
+        {
+          "field": "output",
+          "old": 0.75,
+          "new": 1.5,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.02,
+          "new": 0.05,
+          "pct": 1.5
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-29T02:30:06Z"
     }
   ]
 }

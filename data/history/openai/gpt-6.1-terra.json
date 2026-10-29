@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-27"
       }
     ],
+    "databricks:openai/gpt-6.1-terra": [
+      {
+        "input": 1.00002,
+        "output": 5.00003,
+        "cacheRead": 0.04998,
+        "cacheWrite": 1.24999,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "official:openai/gpt-6.1-terra": [
       {
         "input": 1,

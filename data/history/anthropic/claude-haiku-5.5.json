@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "databricks:anthropic/claude-haiku-5.5": [
+      {
+        "input": 0.10003,
+        "output": 0.50001,
+        "cacheRead": 0.01001,
+        "cacheWrite": 0.12502,
+        "effectiveDate": "2026-10-29"
+      }
+    ],
     "official:anthropic/claude-haiku-5.5": [
       {
         "input": 0.1,

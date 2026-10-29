@@ -8,6 +8,13 @@
         "cacheRead": 0.18753,
         "cacheWrite": 1.87502,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.74998,
+        "output": 3.74997,
+        "cacheRead": 0.07497,
+        "cacheWrite": 0.74998,
+        "effectiveDate": "2026-10-29"
       }
     ],
     "official:google/gemini-3.6-flash": [
