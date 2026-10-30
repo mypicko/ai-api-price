@@ -52,6 +52,45 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-26T01:17:42Z"
+    },
+    {
+      "id": "2026-10-30-official:alibaba/qwen-image-2.0-1",
+      "type": "new_model",
+      "offeringId": "official:alibaba/qwen-image-2.0",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen-image-2.0",
+      "displayName": "qwen-image-2.0",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-30T02:40:30Z"
+    },
+    {
+      "id": "2026-10-30-official:alibaba/qwen-image-2.0-pro-1",
+      "type": "new_model",
+      "offeringId": "official:alibaba/qwen-image-2.0-pro",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen-image-2.0-pro",
+      "displayName": "qwen-image-2.0-pro",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-30T02:40:30Z"
+    },
+    {
+      "id": "2026-10-30-official:alibaba/qwen-image-3.0-1",
+      "type": "new_model",
+      "offeringId": "official:alibaba/qwen-image-3.0",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen-image-3.0",
+      "displayName": "qwen-image-3.0",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-30T02:40:30Z"
     }
   ]
 }

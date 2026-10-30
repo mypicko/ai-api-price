@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen-image-2.0-pro",
+  "series": {
+    "official:alibaba/qwen-image-2.0-pro": [
+      {
+        "input": null,
+        "output": 0.075,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-30"
+      }
+    ]
+  }
+}
