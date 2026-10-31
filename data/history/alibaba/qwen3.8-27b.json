@@ -112,9 +112,9 @@
         "effectiveDate": "2026-10-27"
       },
       {
-        "input": 0.15,
-        "output": 1.875,
-        "cacheRead": 0.0375,
+        "input": 0.04,
+        "output": 2.3,
+        "cacheRead": 0.02,
         "cacheWrite": null,
         "effectiveDate": "2026-10-31"
       }

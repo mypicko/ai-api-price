@@ -9838,6 +9838,32 @@
       "detectedAt": "2026-10-31T02:29:27Z"
     },
     {
+      "id": "2026-10-31-official:moonshot/kimi-k3.1-pro-1",
+      "type": "new_model",
+      "offeringId": "official:moonshot/kimi-k3.1-pro",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3.1-pro",
+      "displayName": "Kimi K3.1 Pro",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T12:01:59Z"
+    },
+    {
+      "id": "2026-10-31-official:moonshot/kimi-k3.1-pro-highspeed-1",
+      "type": "new_model",
+      "offeringId": "official:moonshot/kimi-k3.1-pro-highspeed",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3.1-pro-highspeed",
+      "displayName": "Kimi K3.1 Pro Highspeed",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T12:01:59Z"
+    },
+    {
       "id": "2026-10-31-official:openai/gpt-6-rosalind-1",
       "type": "new_model",
       "offeringId": "official:openai/gpt-6-rosalind",
@@ -9933,6 +9959,38 @@
       ],
       "confirmedFromQuarantine": true,
       "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:alibaba/qwen3.8-27b-2",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.8-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.8-27b",
+      "displayName": "Qwen3.8 27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.04,
+          "pct": -0.7333
+        },
+        {
+          "field": "output",
+          "old": 1.875,
+          "new": 2.3,
+          "pct": 0.2267
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0375,
+          "new": 0.02,
+          "pct": -0.4667
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T12:01:59Z"
     },
     {
       "id": "2026-10-31-openrouter:deepseek/deepseek-v3.2-1",
@@ -10238,6 +10296,26 @@
       "detectedAt": "2026-10-31T02:29:27Z"
     },
     {
+      "id": "2026-10-31-openrouter:zhipu/glm-5.2-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.2",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.2",
+      "displayName": "GLM 5.2",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "output",
+          "old": 7,
+          "new": 6.8,
+          "pct": -0.02857
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T12:01:59Z"
+    },
+    {
       "id": "2026-10-31-openrouter:zhipu/glm-5.3-1",
       "type": "price_down",
       "offeringId": "openrouter:zhipu/glm-5.3",
@@ -10300,6 +10378,38 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:zhipu/glm-5.3-flash-2",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0227,
+          "new": 0.0163,
+          "pct": -0.2819
+        },
+        {
+          "field": "output",
+          "old": 0.0625,
+          "new": 0.1479,
+          "pct": 1.366
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0207,
+          "new": 0.0163,
+          "pct": -0.2126
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-31T12:01:59Z"
     },
     {
       "id": "2026-10-31-sambanova:minimax/minimax-m3.1-flash-1",

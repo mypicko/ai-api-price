@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-24"
       }
     ],
+    "official:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": 2,
+        "effectiveDate": "2026-10-31"
+      }
+    ],
     "openrouter:moonshot/kimi-k3.1-pro": [
       {
         "input": 2,
