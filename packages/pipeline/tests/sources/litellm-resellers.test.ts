@@ -46,6 +46,20 @@ describe("litellm-resellers", () => {
     expect(match("aihubmix")).toBeNull();
   });
 
+  it("按 AWS 区域单列的 Bedrock 价格让位给标准价格，模型名去掉区域和厂商前缀", () => {
+    const data = {
+      "bedrock/ap-northeast-1/minimax.minimax-m2.1": entry("bedrock", 0.00000036),
+      "bedrock/eu-west-2/minimax.minimax-m2.1": entry("bedrock", 0.00000047),
+      "bedrock/us-east-1/minimax.minimax-m2.1": entry("bedrock", 0.0000003),
+      "minimax.minimax-m2.1": entry("bedrock_converse", 0.0000003),
+    };
+    const raws = parseLitellmResellers(data, {
+      matchPlatform: createPlatformMatcher(PLATFORMS),
+      today: "2026-10-23",
+    });
+    expect(raws.map((r) => [r.modelName, r.input])).toEqual([["minimax-m2.1", 0.0000003]]);
+  });
+
   it("只收已配置平台、能推断厂商的文本条目，并清洗模型名", () => {
     const data = {
       "us.anthropic.claude-3-5-sonnet-20240620-v1:0": entry("bedrock", 0.0000033),

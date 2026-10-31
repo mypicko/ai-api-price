@@ -60,8 +60,7 @@ export function parseDocTables(markdown: string): readonly DocTable[] {
 }
 
 /** 已编译 MDX 里的 DocTable：DocTable,{columns:[…],rows:[…]} */
-const COMPILED_TABLE = /DocTable,\{columns:\[/g;
-const COMPILED_TITLE = /title:`((?:[^`\\]|\\.)*)`/g;
+const COMPILED_TABLE = /DocTable,\{/g;
 const BACKTICK = /`((?:[^`\\]|\\.)*)`/g;
 
 /** 从 start（指向 "["）开始找到配对的 "]"，跳过反引号字符串；返回 "]" 的下标，找不到返回 -1 */
@@ -111,32 +110,55 @@ function topLevelItems(arrayText: string): readonly string[] {
   return items;
 }
 
-/** 单元格：字符串直接取；_jsxs(_Fragment,{children:[`$`,`0.16`]}) 取出所有字符串拼起来 */
-function compiledCell(item: string): string {
-  return [...item.matchAll(BACKTICK)]
+/**
+ * 文字内容：纯字符串直接取；JSX 只取 children 里的字符串
+ * （_jsxs(_Fragment,{children:[`$`,`0.16`]}) → "$0.16"，链接 / Tooltip 只取显示文字，不要 href / tip）
+ */
+function compiledText(item: string): string {
+  const children = item.lastIndexOf("children:");
+  const text = children >= 0 ? item.slice(children) : item;
+  return [...text.matchAll(BACKTICK)]
     .map((m) => m[1] ?? "")
     .join("")
     .trim();
 }
 
-/** 从 HTML 内嵌的已编译 MDX 里找出所有 DocTable */
+/** 列定义 {title:…,width:…} → 标题文字 */
+function columnTitle(item: string): string {
+  const from = item.indexOf("title:");
+  if (from < 0) return "";
+  const widthAt = item.lastIndexOf(",width:");
+  return compiledText(item.slice(from + "title:".length, widthAt > from ? widthAt : undefined));
+}
+
+/** props 对象里某个数组字段（columns / rows）的完整文本 "[…]" */
+function arrayProp(props: string, key: string): string | null {
+  const at = props.indexOf(`${key}:[`);
+  if (at < 0) return null;
+  const start = at + key.length + 1;
+  const end = matchBracket(props, start);
+  return end < 0 ? null : props.slice(start, end + 1);
+}
+
+/**
+ * 从 HTML 内嵌的已编译 MDX 里找出所有 DocTable。
+ * 只依赖 props 里的 columns / rows 两个字段，其他字段（className、groups…）和字段顺序都不影响
+ */
 export function parseCompiledDocTables(html: string): readonly DocTable[] {
   return [...html.matchAll(COMPILED_TABLE)].flatMap((match) => {
-    const columnsStart = (match.index ?? 0) + match[0].length - 1;
-    const columnsEnd = matchBracket(html, columnsStart);
-    if (columnsEnd < 0) return [];
-    const headers = [...html.slice(columnsStart, columnsEnd).matchAll(COMPILED_TITLE)].map(
-      (m) => m[1] ?? "",
-    );
-    const rowsKey = html.indexOf("rows:[", columnsEnd);
-    if (rowsKey < 0 || rowsKey - columnsEnd > 20) return [];
-    const rowsStart = rowsKey + "rows:".length;
-    const rowsEnd = matchBracket(html, rowsStart);
-    if (rowsEnd < 0) return [];
-    const rows = topLevelItems(html.slice(rowsStart, rowsEnd + 1)).map((row) =>
-      topLevelItems(row.trim()).map(compiledCell),
-    );
-    return [{ headers, rows }];
+    const propsStart = (match.index ?? 0) + match[0].length - 1;
+    const propsEnd = matchBracket(html, propsStart);
+    if (propsEnd < 0) return [];
+    const props = html.slice(propsStart, propsEnd + 1);
+    const columns = arrayProp(props, "columns");
+    const rows = arrayProp(props, "rows");
+    if (!columns || !rows) return [];
+    return [
+      {
+        headers: topLevelItems(columns).map(columnTitle),
+        rows: topLevelItems(rows).map((row) => topLevelItems(row.trim()).map(compiledText)),
+      },
+    ];
   });
 }
 
@@ -155,11 +177,15 @@ function locateColumns(headers: readonly string[]): Columns | null {
   const columns: Columns = {
     model: findColumn(headers, /^(Model|模型)/i),
     unit: findColumn(headers, /^(Unit|计费单位|单位)/i),
-    input: findColumn(headers, /^(Input Price(?!\s*\(Cache Hit\))|输入价格(?!.*缓存命中))/i),
-    output: findColumn(headers, /^(Output Price|输出价格)/i),
+    // 2026-10 下旬起表头改成 Input / Output / Cached Input / 5m writes / 1h writes
+    input: findColumn(
+      headers,
+      /^(Input( Price)?(?!.*Cache Hit)$|Input Price \(Cache Miss\)|输入价格(?!.*缓存命中))/i,
+    ),
+    output: findColumn(headers, /^(Output( Price)?|输出价格)/i),
     cacheRead: findColumn(headers, /Cache Hit|Cached Input|缓存命中/i),
-    cacheWrite: findColumn(headers, /(Cache Write|缓存写入)(?!.*1\s*h)/i),
-    cacheWrite1h: findColumn(headers, /(Cache Write|缓存写入).*1\s*h/i),
+    cacheWrite: findColumn(headers, /(Cache Write|缓存写入)(?!.*1\s*h)|^5\s*m(in)? writes?/i),
+    cacheWrite1h: findColumn(headers, /(Cache Write|缓存写入).*1\s*h|^1\s*h(our)? writes?/i),
     context: findColumn(headers, /Context|上下文/i),
   };
   return columns.model < 0 || columns.input < 0 || columns.output < 0 ? null : columns;

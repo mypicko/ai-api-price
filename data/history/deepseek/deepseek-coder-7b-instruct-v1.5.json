@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-coder-7b-instruct-v1.5",
+  "series": {
+    "fireworks:deepseek/deepseek-coder-7b-instruct-v1.5": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

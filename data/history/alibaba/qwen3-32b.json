@@ -1,6 +1,24 @@
 {
   "modelSlug": "alibaba/qwen3-32b",
   "series": {
+    "cerebras:alibaba/qwen3-32b": [
+      {
+        "input": 0.4,
+        "output": 0.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "vercel:alibaba/qwen3-32b": [
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "bedrock:alibaba/qwen3-32b": [
       {
         "input": 0.15,

@@ -1,0 +1,32 @@
+{
+  "modelSlug": "nvidia/nemotron-nano-9b-v2",
+  "series": {
+    "bedrock:nvidia/nemotron-nano-9b-v2": [
+      {
+        "input": 0.06,
+        "output": 0.23,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "deepinfra:nvidia/nemotron-nano-9b-v2": [
+      {
+        "input": 0.04,
+        "output": 0.16,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "fireworks:nvidia/nemotron-nano-9b-v2": [
+      {
+        "input": 0.2,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

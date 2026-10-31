@@ -12,11 +12,18 @@
     ],
     "deepinfra:nvidia/nemotron-3.5-lightning": [
       {
+        "input": 0.08,
+        "output": 0.2,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      },
+      {
         "input": 0.06,
         "output": 0.16,
         "cacheRead": 0.03,
         "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
+        "effectiveDate": "2026-10-23"
       }
     ],
     "fireworks:nvidia/nemotron-3.5-lightning": [

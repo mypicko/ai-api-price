@@ -9,6 +9,7 @@
 import {
   makeModelSlug,
   makeOfferingId,
+  canonicalModelId,
   normalizeModelId,
   toPerMillion,
   type AliasesConfig,
@@ -99,20 +100,23 @@ export function createAliasResolver(aliases: AliasesConfig): AliasResolver {
   const lookup = new Map<string, string>();
   for (const [slug, list] of Object.entries(aliases)) {
     const [vendorId, ...rest] = slug.split("/");
-    const canonical = normalizeModelId(rest.join("/"));
+    const canonical = canonicalModelId(normalizeModelId(rest.join("/")));
     if (!vendorId || !canonical) continue;
     for (const alias of list) {
       const bare = stripVendorPrefix(alias.trim(), vendorId);
       lookup.set(`${vendorId}|${bare.toLowerCase()}`, canonical);
       lookup.set(`${vendorId}|${normalizeModelId(bare)}`, canonical);
+      lookup.set(`${vendorId}|${canonicalModelId(normalizeModelId(bare))}`, canonical);
     }
   }
   return (vendorId, modelName) => {
     const normalized = normalizeModelId(modelName);
+    const canonical = canonicalModelId(normalized);
     return (
       lookup.get(`${vendorId}|${modelName.trim().toLowerCase()}`) ??
       lookup.get(`${vendorId}|${normalized}`) ??
-      normalized
+      lookup.get(`${vendorId}|${canonical}`) ??
+      canonical
     );
   };
 }

@@ -652,11 +652,11 @@
       "detectedAt": "2026-10-20T03:08:01Z"
     },
     {
-      "id": "2026-10-20-fireworks:minimax/minimax-m3p1-flash-1",
+      "id": "2026-10-20-fireworks:minimax/minimax-m3.1-flash-1",
       "type": "new_model",
-      "offeringId": "fireworks:minimax/minimax-m3p1-flash",
+      "offeringId": "fireworks:minimax/minimax-m3.1-flash",
       "vendor": "minimax",
-      "modelSlug": "minimax/minimax-m3p1-flash",
+      "modelSlug": "minimax/minimax-m3.1-flash",
       "displayName": "minimax-m3p1-flash",
       "platform": "fireworks",
       "currency": "USD",
@@ -1464,11 +1464,11 @@
       "detectedAt": "2026-10-21T03:02:22Z"
     },
     {
-      "id": "2026-10-21-fireworks:deepseek/deepseek-v4p1-flash-1017-us-1",
+      "id": "2026-10-21-fireworks:deepseek/deepseek-v4.1-flash-1017-us-1",
       "type": "new_model",
-      "offeringId": "fireworks:deepseek/deepseek-v4p1-flash-1017-us",
+      "offeringId": "fireworks:deepseek/deepseek-v4.1-flash-1017-us",
       "vendor": "deepseek",
-      "modelSlug": "deepseek/deepseek-v4p1-flash-1017-us",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017-us",
       "displayName": "deepseek-v4p1-flash-1017-us",
       "platform": "fireworks",
       "currency": "USD",
@@ -4018,11 +4018,11 @@
       "detectedAt": "2026-10-22T20:40:48Z"
     },
     {
-      "id": "2026-10-23-deepinfra:nvidia/nvidia-nemotron-3.5-lightning-1",
+      "id": "2026-10-23-deepinfra:nvidia/nemotron-3.5-lightning-1",
       "type": "price_down",
-      "offeringId": "deepinfra:nvidia/nvidia-nemotron-3.5-lightning",
+      "offeringId": "deepinfra:nvidia/nemotron-3.5-lightning",
       "vendor": "nvidia",
-      "modelSlug": "nvidia/nvidia-nemotron-3.5-lightning",
+      "modelSlug": "nvidia/nemotron-3.5-lightning",
       "displayName": "NVIDIA-Nemotron-3.5-Lightning",
       "platform": "deepinfra",
       "currency": "USD",
@@ -8107,11 +8107,11 @@
       "detectedAt": "2026-10-28T02:23:18Z"
     },
     {
-      "id": "2026-10-29-bedrock:mistral/mistral.voxtral-mini-3b-2507-1",
+      "id": "2026-10-29-bedrock:mistral/voxtral-mini-3b-2507-1",
       "type": "new_model",
-      "offeringId": "bedrock:mistral/mistral.voxtral-mini-3b-2507",
+      "offeringId": "bedrock:mistral/voxtral-mini-3b-2507",
       "vendor": "mistral",
-      "modelSlug": "mistral/mistral.voxtral-mini-3b-2507",
+      "modelSlug": "mistral/voxtral-mini-3b-2507",
       "displayName": "mistral.voxtral-mini-3b-2507",
       "platform": "bedrock",
       "currency": "USD",
@@ -8120,11 +8120,11 @@
       "detectedAt": "2026-10-29T02:30:06Z"
     },
     {
-      "id": "2026-10-29-bedrock:mistral/mistral.voxtral-small-24b-2507-1",
+      "id": "2026-10-29-bedrock:mistral/voxtral-small-24b-2507-1",
       "type": "new_model",
-      "offeringId": "bedrock:mistral/mistral.voxtral-small-24b-2507",
+      "offeringId": "bedrock:mistral/voxtral-small-24b-2507",
       "vendor": "mistral",
-      "modelSlug": "mistral/mistral.voxtral-small-24b-2507",
+      "modelSlug": "mistral/voxtral-small-24b-2507",
       "displayName": "mistral.voxtral-small-24b-2507",
       "platform": "bedrock",
       "currency": "USD",
@@ -8257,11 +8257,11 @@
       "detectedAt": "2026-10-29T02:30:06Z"
     },
     {
-      "id": "2026-10-29-databricks:deepseek/deepseek-v4-1-flash-1",
+      "id": "2026-10-29-databricks:deepseek/deepseek-v4.1-flash-1",
       "type": "new_model",
-      "offeringId": "databricks:deepseek/deepseek-v4-1-flash",
+      "offeringId": "databricks:deepseek/deepseek-v4.1-flash",
       "vendor": "deepseek",
-      "modelSlug": "deepseek/deepseek-v4-1-flash",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
       "displayName": "deepseek-v4-1-flash",
       "platform": "databricks",
       "currency": "USD",
@@ -8270,11 +8270,11 @@
       "detectedAt": "2026-10-29T02:30:06Z"
     },
     {
-      "id": "2026-10-29-databricks:deepseek/deepseek-v4-1-flash-1017-1",
+      "id": "2026-10-29-databricks:deepseek/deepseek-v4.1-flash-1017-1",
       "type": "new_model",
-      "offeringId": "databricks:deepseek/deepseek-v4-1-flash-1017",
+      "offeringId": "databricks:deepseek/deepseek-v4.1-flash-1017",
       "vendor": "deepseek",
-      "modelSlug": "deepseek/deepseek-v4-1-flash-1017",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
       "displayName": "deepseek-v4-1-flash-1017",
       "platform": "databricks",
       "currency": "USD",
@@ -8618,11 +8618,11 @@
       "detectedAt": "2026-10-29T02:30:06Z"
     },
     {
-      "id": "2026-10-29-fireworks:deepseek/deepseek-v4p1-flash-1017-spot-1",
+      "id": "2026-10-29-fireworks:deepseek/deepseek-v4.1-flash-1017-spot-1",
       "type": "new_model",
-      "offeringId": "fireworks:deepseek/deepseek-v4p1-flash-1017-spot",
+      "offeringId": "fireworks:deepseek/deepseek-v4.1-flash-1017-spot",
       "vendor": "deepseek",
-      "modelSlug": "deepseek/deepseek-v4p1-flash-1017-spot",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017-spot",
       "displayName": "deepseek-v4p1-flash-1017-spot",
       "platform": "fireworks",
       "currency": "USD",
@@ -8631,11 +8631,11 @@
       "detectedAt": "2026-10-29T02:30:06Z"
     },
     {
-      "id": "2026-10-29-fireworks:deepseek/deepseek-v4p1-flash-spot-1",
+      "id": "2026-10-29-fireworks:deepseek/deepseek-v4.1-flash-spot-1",
       "type": "new_model",
-      "offeringId": "fireworks:deepseek/deepseek-v4p1-flash-spot",
+      "offeringId": "fireworks:deepseek/deepseek-v4.1-flash-spot",
       "vendor": "deepseek",
-      "modelSlug": "deepseek/deepseek-v4p1-flash-spot",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-spot",
       "displayName": "deepseek-v4p1-flash-spot",
       "platform": "fireworks",
       "currency": "USD",
@@ -8657,11 +8657,11 @@
       "detectedAt": "2026-10-29T02:30:06Z"
     },
     {
-      "id": "2026-10-29-fireworks:zhipu/glm-5p3-spot-1",
+      "id": "2026-10-29-fireworks:zhipu/glm-5.3-spot-1",
       "type": "new_model",
-      "offeringId": "fireworks:zhipu/glm-5p3-spot",
+      "offeringId": "fireworks:zhipu/glm-5.3-spot",
       "vendor": "zhipu",
-      "modelSlug": "zhipu/glm-5p3-spot",
+      "modelSlug": "zhipu/glm-5.3-spot",
       "displayName": "glm-5p3-spot",
       "platform": "fireworks",
       "currency": "USD",
@@ -9127,11 +9127,11 @@
       "detectedAt": "2026-10-29T02:30:06Z"
     },
     {
-      "id": "2026-10-29-wandb:nvidia/nvidia-nemotron-3.5-super-vl-120b-a12b-1",
+      "id": "2026-10-29-wandb:nvidia/nemotron-3.5-super-vl-120b-a12b-1",
       "type": "price_up",
-      "offeringId": "wandb:nvidia/nvidia-nemotron-3.5-super-vl-120b-a12b",
+      "offeringId": "wandb:nvidia/nemotron-3.5-super-vl-120b-a12b",
       "vendor": "nvidia",
-      "modelSlug": "nvidia/nvidia-nemotron-3.5-super-vl-120b-a12b",
+      "modelSlug": "nvidia/nemotron-3.5-super-vl-120b-a12b",
       "displayName": "NVIDIA-Nemotron-3.5-Super-VL-120B-A12B",
       "platform": "wandb",
       "currency": "USD",
@@ -9647,11 +9647,11 @@
       "detectedAt": "2026-10-30T02:40:30Z"
     },
     {
-      "id": "2026-10-31-cerebras:alibaba/qwen-3-32b-1",
+      "id": "2026-10-31-cerebras:alibaba/qwen3-32b-1",
       "type": "removed",
-      "offeringId": "cerebras:alibaba/qwen-3-32b",
+      "offeringId": "cerebras:alibaba/qwen3-32b",
       "vendor": "alibaba",
-      "modelSlug": "alibaba/qwen-3-32b",
+      "modelSlug": "alibaba/qwen3-32b",
       "displayName": "qwen-3-32b",
       "platform": "cerebras",
       "currency": "USD",

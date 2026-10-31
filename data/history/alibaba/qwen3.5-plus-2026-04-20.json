@@ -9,6 +9,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
       }
+    ],
+    "openrouter:alibaba/qwen3.5-plus-2026-04-20": [
+      {
+        "input": 0.3,
+        "output": 1.8,
+        "cacheRead": null,
+        "cacheWrite": 0.375,
+        "effectiveDate": "2026-10-18"
+      }
     ]
   }
 }

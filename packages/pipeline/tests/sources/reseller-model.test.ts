@@ -37,4 +37,15 @@ describe("reseller-model：转售平台的模型路径 → 厂商 + 模型名", 
     expect(inferVendorHint("NousResearch/Hermes-3-Llama-3.1-70B")).toBeNull();
     expect(inferVendorHint("ai21.jamba-1-5-large-v1:0")).toBeNull();
   });
+
+  it("第三方微调（与原版同名）跳过；Bedrock「厂商.模型」只在模型名认得出时去掉厂商前缀", () => {
+    expect(inferVendorHint("arize-ai/qwen-2-1.5b-instruct")).toBeNull();
+    expect(inferVendorHint("Qwen/Qwen2-1.5B-Instruct")).toBe("alibaba");
+    expect(resellerModelName("deepseek.v3.2")).toBe("deepseek-v3.2");
+    expect(resellerModelName("us-east-1/deepseek.v3.2")).toBe("deepseek-v3.2");
+    expect(resellerModelName("qwen.qwen3-coder-next")).toBe("qwen3-coder-next");
+    expect(resellerModelName("amazon.titan-text-express-v1")).toBe("titan-text-express");
+    expect(resellerModelName("nvidia.nemotron-nano-12b-v2")).toBe("nemotron-nano-12b-v2");
+    expect(resellerModelName("cohere.command-text-v14")).toBe("command-text");
+  });
 });

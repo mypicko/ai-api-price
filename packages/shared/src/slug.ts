@@ -26,6 +26,47 @@ export function normalizeModelId(name: string): string {
   return normalizeId(name).replace(/(^|-)(\d)-(\d)(?=-|$)/g, "$1$2.$3");
 }
 
+/**
+ * 各平台写法差异的统一（DEV §3.23），在 normalizeModelId 之后执行，输入输出都是规范 ID，可重复执行（幂等）。
+ * 同一个模型在不同来源写法不同，会被拆成多行，所以统一成主流写法：
+ * - 「厂商.模型」前缀（Bedrock 风格）：模型名以厂商名开头时去掉前缀（qwen.qwen3-… → qwen3-…，
+ *   mistral.mixtral-… → mixtral-…，nvidia.nemotron-… → nemotron-…），否则点号改成横线（deepseek.v3.2 → deepseek-v3.2）
+ * - Fireworks 用 p 表示小数点：qwen2p5 → qwen2.5，glm-4p5v → glm-4.5v，v1p5 → v1.5
+ * - v4-1 → v4.1（deepseek-v4-1-flash → deepseek-v4.1-flash）
+ * - llama-v3 → llama-3；qwen-2.5 / qwen-v2.5 → qwen2.5；qwen25 → qwen2.5
+ * - Azure 的 gpt-35 → gpt-3.5；grok-4-20 → grok-4.20（两位小版本，normalizeModelId 不合并）
+ * - NVIDIA 模型去掉重复的 nvidia- 前缀：nvidia-nemotron-nano-9b-v2 → nemotron-nano-9b-v2
+ */
+/** 「厂商.模型」里模型名不以厂商名开头、但属于该厂商的系列 */
+const VENDOR_FAMILIES: Readonly<Record<string, RegExp>> = {
+  mistral: /^(mistral|mixtral|codestral|ministral|magistral|devstral|pixtral|voxtral)/,
+  amazon: /^(nova|titan)-/,
+  anthropic: /^claude/,
+  meta: /^llama/,
+  cohere: /^(command|embed-|rerank-)/,
+  nvidia: /^nemotron/,
+};
+
+function stripVendorDot(id: string): string {
+  const match = /^([a-z]+)\.(?=[a-z])(.*)$/.exec(id);
+  if (!match) return id;
+  const [, prefix = "", rest = ""] = match;
+  const sameFamily = rest.startsWith(prefix) || (VENDOR_FAMILIES[prefix]?.test(rest) ?? false);
+  return sameFamily ? rest : `${prefix}-${rest}`;
+}
+
+export function canonicalModelId(id: string): string {
+  return stripVendorDot(id)
+    .replace(/(\d)p(\d)/g, "$1.$2")
+    .replace(/(^|-)v(\d)-(\d)(?=-|$)/g, "$1v$2.$3")
+    .replace(/^llama-v(\d)/, "llama-$1")
+    .replace(/^qwen-v?(\d)/, "qwen$1")
+    .replace(/^qwen(\d)(\d)(?=-|$)/, "qwen$1.$2")
+    .replace(/^gpt-35(?=-|$)/, "gpt-3.5")
+    .replace(/^grok-(\d)-(\d{2})(?=-|$)/, "grok-$1.$2")
+    .replace(/^nvidia-(?=nemotron)/, "");
+}
+
 export function makeModelSlug(vendor: string, model: string): string {
   return `${vendor}/${model}`;
 }

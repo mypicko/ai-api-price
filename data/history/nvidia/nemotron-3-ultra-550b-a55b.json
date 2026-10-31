@@ -12,9 +12,9 @@
     ],
     "deepinfra:nvidia/nemotron-3-ultra-550b-a55b": [
       {
-        "input": 0.4,
-        "output": 1.76,
-        "cacheRead": 0.08,
+        "input": 0.5,
+        "output": 2.2,
+        "cacheRead": 0.1,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
@@ -35,6 +35,15 @@
         "cacheRead": 0.12,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "wandb:nvidia/nemotron-3-ultra-550b-a55b": [
+      {
+        "input": 0.5,
+        "output": 2.15,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

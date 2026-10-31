@@ -127,6 +127,31 @@ describe("source/moonshot", () => {
     expect(() => parseMoonshotHtml("<html>维护中</html>")).toThrow(/E2001/);
   });
 
+  it("2026-10-31 改版：表头 Input / Output / Cached Input / 5m writes，价格写成 $x / MTok，模型名是链接", async () => {
+    const html = await readFile(path.join(FIXTURES_DIR, "moonshot/2026-10-31.html"), "utf8");
+    const offerings = parseMoonshotHtml(html);
+    expect(offerings.map((o) => o.modelName)).toEqual([
+      "kimi-k3.1-pro",
+      "kimi-k3.1-pro-highspeed",
+      "kimi-k3",
+      "kimi-k2.7-code",
+      "kimi-k2.7-code-highspeed",
+      "kimi-k2.6",
+    ]);
+    expect(offerings[2]).toMatchObject({
+      unit: "per_1m",
+      currency: "USD",
+      input: 3,
+      output: 15,
+      cacheRead: 0.3,
+      cacheWrite: 3,
+    });
+    expect(offerings[2]?.notes).toContain("TTL 1h");
+    expect(offerings[5]).toMatchObject({ input: 0.95, output: 4, cacheRead: 0.16 });
+    for (const offering of offerings)
+      expect(RawOfferingSchema.safeParse(offering).success).toBe(true);
+  });
+
   it("已编译 MDX：单元格里的逗号、括号和转义反引号不影响切分", () => {
     const html =
       "x DocTable,{columns:[{title:`Model`},{title:`Input Price`},{title:`Output Price`}]," +

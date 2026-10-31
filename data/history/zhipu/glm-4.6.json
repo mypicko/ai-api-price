@@ -75,6 +75,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "fireworks:zhipu/glm-4.6": [
+      {
+        "input": 0.55,
+        "output": 2.19,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }

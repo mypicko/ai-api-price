@@ -61,6 +61,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "fireworks:zhipu/glm-4.5-air": [
+      {
+        "input": 0.22,
+        "output": 0.88,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }

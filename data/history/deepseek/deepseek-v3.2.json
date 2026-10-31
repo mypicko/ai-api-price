@@ -113,6 +113,24 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "fireworks:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.56,
+        "output": 1.68,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "bedrock:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.62,
+        "output": 1.85,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }

@@ -52,6 +52,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
       }
+    ],
+    "fireworks:deepseek/deepseek-v3.1-terminus": [
+      {
+        "input": 0.56,
+        "output": 1.68,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }

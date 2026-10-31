@@ -25,6 +25,9 @@ import { MEDIA_DIR } from "./steps/media-lane";
 import { formatQuarantine, loadQuarantine } from "./tools/quarantine-list";
 import { runSnapshot } from "./tools/snapshot";
 import { validateDataDir } from "./tools/validate-data";
+import { migrateDataDir } from "./tools/migrate-slugs";
+import { loadAliases } from "./config-files";
+import { createAliasResolver } from "./steps/normalize";
 
 const ROOT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const DATA_DIR = path.join(ROOT_DIR, "data");
@@ -36,6 +39,7 @@ const USAGE = `用法：pnpm pipeline <命令>
   notify:test                                  给所有已配置的渠道发测试消息
   validate                                     用 schema 校验 data/ 下的全部文件
   quarantine:list                              列出隔离区条目
+  migrate-slugs [--dry-run]                    模型 ID 规则改动后，把 data/ 的已有数据改名合并
 `;
 
 function out(text: string): void {
@@ -151,12 +155,24 @@ async function commandValidate(): Promise<number> {
   return failed === 0 ? 0 : 1;
 }
 
+async function commandMigrateSlugs(args: readonly string[]): Promise<number> {
+  const dryRun = args.includes("--dry-run");
+  const resolve = createAliasResolver(await loadAliases(ROOT_DIR));
+  const result = await migrateDataDir(DATA_DIR, resolve, { dryRun });
+  out(`改名报价 ${result.renamedOfferings} 条，合并掉重复 ${result.mergedOfferings} 条`);
+  out(`历史文件 ${result.historyFilesBefore} → ${result.historyFilesAfter}`);
+  result.removed.forEach((f) => out(`${dryRun ? "将删除" : "已删除"}：${f}`));
+  out(dryRun ? "DRY RUN：没有写入 data/" : `已写入 ${result.written.length} 个文件`);
+  return 0;
+}
+
 async function dispatch(command: string | undefined, args: readonly string[]): Promise<number> {
   if (command === undefined || command === "help" || command === "--help") {
     out(USAGE);
     return command === undefined ? 1 : 0;
   }
   if (command === "validate") return commandValidate();
+  if (command === "migrate-slugs") return commandMigrateSlugs(args);
   if (command === "quarantine:list") {
     out(formatQuarantine(await loadQuarantine(DATA_DIR)));
     out(formatQuarantine(await loadQuarantine(DATA_DIR, MEDIA_DIR), "视频/图像隔离区"));

@@ -11,3 +11,11 @@ bytedance/doubao-seedance-2-0-260128: [seedance-2.0]
 bytedance/doubao-seedance-2-0-fast-260128: [seedance-2.0-fast]
 bytedance/doubao-seedance-2-0-mini-260615: [seedance-2.0-mini]
 bytedance/doubao-seedance-2-5-260628: [seedance-2.5]
+# 日期写法不同（2026-04-20 / 20260420）
+alibaba/qwen3.5-plus-2026-04-20: [qwen3.5-plus-20260420]
+# Bedrock「厂商.模型」写法以前解析错的名字（模型名只剩版本号、丢了 -v2），迁移时并到正确的名字下
+deepseek/deepseek-v3: [v3]
+deepseek/deepseek-v3.2: [v3.2]
+deepseek/deepseek-r1: [r1]
+nvidia/nemotron-nano-12b-v2: [nemotron-nano-12b]
+nvidia/nemotron-nano-9b-v2: [nemotron-nano-9b]

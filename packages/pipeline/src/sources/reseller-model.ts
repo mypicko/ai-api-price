@@ -45,15 +45,15 @@ const FAMILY_VENDORS: readonly (readonly [RegExp, string])[] = [
   [/^(gpt|o[134](-|$)|chatgpt|codex)/, "openai"],
   [/^(gemini|gemma)/, "google"],
   [/^(llama|meta-llama)/, "meta"],
-  [/^(mistral|mixtral|codestral|ministral|magistral|devstral|pixtral)/, "mistral"],
+  [/^(mistral|mixtral|codestral|ministral|magistral|devstral|pixtral|voxtral)/, "mistral"],
   [/^deepseek/, "deepseek"],
   [/^(qwen|qwq)/, "alibaba"],
   [/^(glm|chatglm)/, "zhipu"],
   [/^kimi/, "moonshot"],
   [/^minimax/, "minimax"],
   [/^grok/, "x-ai"],
-  [/^(command|c4ai)/, "cohere"],
-  [/^nova-/, "amazon"],
+  [/^(command|c4ai|embed-|rerank-)/, "cohere"],
+  [/^(nova-|titan-)/, "amazon"],
   [/^phi-/, "microsoft"],
   [/^(ernie)/, "baidu"],
   [/^(doubao|seed-)/, "bytedance"],
@@ -62,11 +62,14 @@ const FAMILY_VENDORS: readonly (readonly [RegExp, string])[] = [
 
 /** Bedrock 的跨区域推理前缀 */
 const REGION_PREFIX = /^(us|eu|apac|global|us-gov|jp|au|ca|apne1|apse2)\./;
+/** LiteLLM 里按 AWS 区域单列的 Bedrock 价格：「ap-northeast-1/minimax.minimax-m2.1」 */
+export const AWS_REGION_PATH = /^[a-z]{2}(?:-[a-z]+)+-\d+\//;
 /** 平台自带的路径前缀，不含厂商信息 */
 const PLATFORM_PATH = /^(accounts\/[^/]+\/models\/|@cf\/|@hf\/|databricks-)/;
 
 function stripPlatformNoise(path: string): string {
   return path
+    .replace(AWS_REGION_PATH, "")
     .replace(REGION_PREFIX, "")
     .replace(/^(eu|us|global)\//, "")
     .replace(PLATFORM_PATH, "");
@@ -88,13 +91,24 @@ function splitOrg(path: string): SplitPath {
     return { org, rest: cleaned.slice(slash + 1), bedrockStyle: false };
   }
   const dot = /^([a-z0-9-]+)\.(.+)$/.exec(cleaned);
-  if (dot?.[1] && dot[2] && ORG_VENDORS[dot[1]] !== undefined)
-    return { org: dot[1], rest: dot[2], bedrockStyle: true };
+  const vendor = dot?.[1] === undefined ? undefined : ORG_VENDORS[dot[1]];
+  if (dot?.[1] && dot[2] && vendor !== undefined) {
+    // 只在模型名本身能认出是这家厂商时去掉前缀（anthropic.claude-…、qwen.qwen3-…）；
+    // 认不出的保留厂商名（deepseek.v3.2 → deepseek-v3.2，否则模型名只剩 v3.2）
+    const rest = dot[2];
+    const family = FAMILY_VENDORS.find(([pattern]) => pattern.test(rest.toLowerCase()))?.[1];
+    const keepsName = rest.toLowerCase().startsWith(dot[1]) || family === vendor;
+    return { org: dot[1], rest: keepsName ? rest : `${dot[1]}-${rest}`, bedrockStyle: true };
+  }
   return { org: null, rest: cleaned, bedrockStyle: false };
 }
 
+/** 第三方组织的微调版本，名字和原版撞车（arize-ai/qwen-2-1.5b-instruct ≠ Qwen2-1.5B-Instruct），跳过 */
+const FINE_TUNE_ORGS: ReadonlySet<string> = new Set(["arize-ai"]);
+
 export function inferVendorHint(path: string): string | null {
   const { org, rest } = splitOrg(path);
+  if (org !== null && FINE_TUNE_ORGS.has(org.toLowerCase())) return null;
   const name = rest.toLowerCase();
   const family = FAMILY_VENDORS.find(([pattern]) => pattern.test(name))?.[1];
   // 组织名明确时以组织为准（openai/gpt-oss、nvidia/Llama-…-Nemotron 除外由 family 覆盖）
@@ -110,7 +124,9 @@ export function inferVendorHint(path: string): string | null {
  */
 export function resellerModelName(path: string): string {
   const { rest, bedrockStyle } = splitOrg(path);
-  const version = bedrockStyle ? /-v\d+(:\d+)?$/ : /-v\d+:\d+$/;
+  // Bedrock 的接口版本：-v1、-v1:0、-v14（cohere.command-text-v14）；
+  // 参数量后面的 -v2 是模型版本（nemotron-nano-12b-v2），保留
+  const version = bedrockStyle ? /-v1(:\d+)?$|(?<!-\d+b)-v\d+(:\d+)?$|-v\d+:\d+$/ : /-v\d+:\d+$/;
   return rest
     .replace(version, "")
     .replace(/@/, "-")

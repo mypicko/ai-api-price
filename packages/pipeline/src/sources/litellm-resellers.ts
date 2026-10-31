@@ -14,7 +14,7 @@ import { PipelineError } from "../core/errors";
 import { shanghaiDate } from "../steps/dates";
 import { buildTiers } from "./litellm";
 import { LITELLM_URL, isDeprecated } from "./litellm-shared";
-import { inferVendorHint, resellerModelName } from "./reseller-model";
+import { AWS_REGION_PATH, inferVendorHint, resellerModelName } from "./reseller-model";
 import { MULTI_PLATFORM, type Source } from "./types";
 
 export type PlatformMatcher = (name: string) => PlatformConfig | null;
@@ -66,9 +66,12 @@ function modelPath(key: string, provider: string): string {
   return first === provider || first === base ? rest.join("/") : key;
 }
 
-/** Bedrock 的 us./eu. 跨区域版本、Azure 的 eu/ 数据区排在后面，去重时让位给标准版本 */
+/**
+ * Bedrock 的 us./eu. 跨区域版本、按 AWS 区域单列的价格（ap-northeast-1/…，部分区域贵 20%～30%）、
+ * Azure 的 eu/ 数据区排在后面，去重时让位给标准版本
+ */
 function isRegional(path: string): boolean {
-  return /^(us|eu|apac|global|us-gov|jp|au|ca)[./]/.test(path);
+  return /^(us|eu|apac|global|us-gov|jp|au|ca)[./]/.test(path) || AWS_REGION_PATH.test(path);
 }
 
 function toRaw(path: string, entry: Entry, platform: PlatformConfig): RawOffering | null {

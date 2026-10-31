@@ -11,3 +11,6 @@ packages/site/playwright-report/
 .DS_Store
 *.log
 .claude/worktrees/
+
+# 迁移验证时的本地备份
+.migrate-backup.*/

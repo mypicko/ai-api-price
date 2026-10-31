@@ -75,6 +75,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
       }
+    ],
+    "databricks:alibaba/qwen3.5-122b-a10b": [
+      {
+        "input": 0.22001,
+        "output": 2.20003,
+        "cacheRead": 0.22001,
+        "cacheWrite": 0.22001,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }

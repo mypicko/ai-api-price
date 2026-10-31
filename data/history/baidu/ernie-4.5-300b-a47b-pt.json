@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/ernie-4.5-300b-a47b-pt",
+  "series": {
+    "fireworks:baidu/ernie-4.5-300b-a47b-pt": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ]
+  }
+}

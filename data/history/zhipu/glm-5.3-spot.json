@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-5.3-spot",
+  "series": {
+    "fireworks:zhipu/glm-5.3-spot": [
+      {
+        "input": 0.98,
+        "output": 3.08,
+        "cacheRead": 0.182,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-29"
+      }
+    ]
+  }
+}

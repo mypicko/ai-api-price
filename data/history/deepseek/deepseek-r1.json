@@ -113,6 +113,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "bedrock:deepseek/deepseek-r1": [
+      {
+        "input": 1.35,
+        "output": 5.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
     ]
   }
 }
