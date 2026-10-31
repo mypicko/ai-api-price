@@ -1,8 +1,16 @@
 /**
  * V7 交叉核对（DEV_DOCUMENT §3.5）：同一模型的官方价与 OpenRouter 价相差 > 30% 时记录 W3007，不拦截。
  * 比较前把两边换算成 USD；模型 ID 中的 "." 和 "-" 视为等价（claude-sonnet-4.5 ≈ claude-sonnet-4-5）。
+ * V9 异常低价：OpenRouter 的模型价取的是最便宜那家服务商，输入/输出价比同模型其它平台的中位数
+ * 低 3 倍以上时记录 W3009，不拦截（网站价差榜会跳过这类价格）。
  */
-import { convertCurrency, type Offering, type Warning } from "@aipb/shared";
+import {
+  convertCurrency,
+  convertPriceSet,
+  lowOutlierFields,
+  type Offering,
+  type Warning,
+} from "@aipb/shared";
 import { makeWarning } from "./types";
 
 export const CROSS_CHECK_THRESHOLD = 0.3;
@@ -36,6 +44,27 @@ export function crossCheck(offerings: readonly Offering[], usdCny: number): read
       return [
         makeWarning("W3007", `官方价与 OpenRouter 价差过大：${gaps.join("，")}`, {
           offeringId: official.id,
+        }),
+      ];
+    });
+}
+
+export function outlierCheck(offerings: readonly Offering[], usdCny: number): readonly Warning[] {
+  const live = offerings.filter((o) => o.status !== "removed");
+  const bySlug = new Map<string, Offering[]>();
+  for (const o of live) bySlug.set(o.modelSlug, [...(bySlug.get(o.modelSlug) ?? []), o]);
+  const toUsd = (o: Offering) => convertPriceSet(o, o.currency, "USD", usdCny);
+  return live
+    .filter((o) => o.platform === "openrouter")
+    .flatMap((openrouter) => {
+      const peers = (bySlug.get(openrouter.modelSlug) ?? [])
+        .filter((o) => o.platform !== "openrouter")
+        .map(toUsd);
+      const fields = lowOutlierFields(toUsd(openrouter), peers);
+      if (fields.length === 0) return [];
+      return [
+        makeWarning("W3009", `OpenRouter 价比其它平台中位数低 3 倍以上：${fields.join("，")}`, {
+          offeringId: openrouter.id,
         }),
       ];
     });

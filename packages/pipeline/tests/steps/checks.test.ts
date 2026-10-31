@@ -1,7 +1,7 @@
 import type { SourceResult } from "@aipb/shared";
 import { describe, expect, it } from "vitest";
 import { PipelineError } from "../../src/core/errors";
-import { crossCheck } from "../../src/steps/cross-check";
+import { crossCheck, outlierCheck } from "../../src/steps/cross-check";
 import { daysBetween, monthOf, shanghaiDate, toIsoSeconds } from "../../src/steps/dates";
 import {
   buildSourceResults,
@@ -49,6 +49,53 @@ describe("V7 交叉核对", () => {
     const cny = { ...official, currency: "CNY" as const, input: 21, output: 105 };
     expect(crossCheck([cny, or(3, 15)], 7)).toEqual([]);
     expect(crossCheck([cny, or(3, 15)], 3.5)).toHaveLength(1);
+  });
+});
+
+describe("V9 OpenRouter 异常低价", () => {
+  const offer = (
+    platform: string,
+    input: number,
+    output: number,
+    currency: "USD" | "CNY" = "USD",
+  ) =>
+    makeOffering({
+      id: `${platform}:zhipu/glm-5.3`,
+      platform,
+      vendor: "zhipu",
+      model: "glm-5.3",
+      modelSlug: "zhipu/glm-5.3",
+      currency,
+      input,
+      output,
+    });
+  const peers = [
+    offer("baseten", 1.4, 4.4),
+    offer("bedrock", 1.68, 5.28),
+    offer("together", 1.4, 4.4),
+  ];
+
+  it("输入价或输出价比同模型其它平台中位数低 3 倍以上时记 W3009", () => {
+    const warnings = outlierCheck([...peers, offer("openrouter", 0.0699, 1.4)], 7);
+    expect(warnings).toEqual([
+      expect.objectContaining({ code: "W3009", offeringId: "openrouter:zhipu/glm-5.3" }),
+    ]);
+    expect(warnings[0]?.message).toContain("input");
+    expect(warnings[0]?.message).toContain("output");
+  });
+
+  it("价格正常、对照平台不足 2 个、已下架时不记录", () => {
+    expect(outlierCheck([...peers, offer("openrouter", 1.2, 4)], 7)).toEqual([]);
+    expect(outlierCheck([...peers.slice(0, 1), offer("openrouter", 0.01, 0.01)], 7)).toEqual([]);
+    expect(
+      outlierCheck([...peers, { ...offer("openrouter", 0.01, 0.01), status: "removed" }], 7),
+    ).toEqual([]);
+  });
+
+  it("对照平台的人民币价先换算成 USD", () => {
+    const cnyPeers = [offer("official", 8, 28, "CNY"), offer("siliconflow", 8, 28, "CNY")];
+    expect(outlierCheck([...cnyPeers, offer("openrouter", 1.2, 4)], 7)).toEqual([]);
+    expect(outlierCheck([...cnyPeers, offer("openrouter", 0.2, 4)], 7)).toHaveLength(1);
   });
 });
 

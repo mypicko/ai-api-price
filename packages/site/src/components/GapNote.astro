@@ -1,12 +1,13 @@
 ---
 /** 模型详情页：国内官方价 vs OpenRouter 价的一句话说明（DEV §3.17） */
 import GapBadge from "./GapBadge.astro";
+import GapPrices from "./GapPrices.astro";
 import type { PriceGap } from "../lib/gap";
 import { t } from "../lib/i18n";
 import type { Locale } from "../lib/locale";
-import { formatPrice } from "../lib/shared-client";
 import { getSiteModel } from "../lib/site-data";
 import { platformName } from "../lib/site-model";
+import { fxNote } from "../lib/views";
 
 interface Props {
   locale: Locale;
@@ -15,16 +16,17 @@ interface Props {
 
 const { locale, gap } = Astro.props;
 const model = getSiteModel();
-const pair = (o: PriceGap["domestic"]): string =>
-  `${formatPrice(o.input, o.currency, { locale })} / ${formatPrice(o.output, o.currency, { locale })}`;
+const note = fxNote(model, locale);
 ---
 
 <p class="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-border bg-surface px-4 py-3 text-table" data-testid="gap-note">
   <span class="font-medium">{t(locale, "gap.title")}</span>
-  <span>
-    {platformName(model, gap.domestic.platform, locale)} {pair(gap.domestic)}
+  <span class="inline-flex flex-wrap items-baseline gap-x-1.5">
+    <span>{platformName(model, gap.domestic.platform, locale)}</span>
+    <GapPrices locale={locale} offering={gap.domestic} fxNote={note} />
     <span class="text-text-muted">vs</span>
-    OpenRouter {pair(gap.openrouter)}
+    <span>OpenRouter</span>
+    <GapPrices locale={locale} offering={gap.openrouter} fxNote={note} />
   </span>
   <GapBadge locale={locale} pct={gap.pct} />
   <span class="text-small text-text-muted">{t(locale, "gap.basis")}</span>

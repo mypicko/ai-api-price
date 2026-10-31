@@ -1,0 +1,32 @@
+---
+/**
+ * 国内外价差里的「输入 / 输出」价格：两边都按当前选择的币种显示（STYLE §10.1）。
+ * USD / CNY 各渲染一份，由 <html data-currency> 决定显示哪份；换算价格加 ≈ 并悬停提示汇率。
+ */
+import type { Currency } from "@aipb/shared";
+import type { PublicOffering } from "../lib/derive";
+import type { Locale } from "../lib/locale";
+import { formatPrice } from "../lib/shared-client";
+
+interface Props {
+  locale: Locale;
+  offering: PublicOffering;
+  fxNote: string;
+}
+
+const CURRENCIES: readonly Currency[] = ["USD", "CNY"];
+const { locale, offering, fxNote } = Astro.props;
+const pair = (c: Currency): string => {
+  const prices = c === "USD" ? offering.converted.usd : offering.converted.cny;
+  const approx = c !== offering.currency;
+  return `${formatPrice(prices.input, c, { locale, approx })} / ${formatPrice(prices.output, c, { locale, approx })}`;
+};
+---
+
+{
+  CURRENCIES.map((c) => (
+    <span class={`cur-${c} tabular`} title={c === offering.currency ? undefined : fxNote}>
+      {pair(c)}
+    </span>
+  ))
+}

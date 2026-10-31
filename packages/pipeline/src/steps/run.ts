@@ -22,7 +22,7 @@ import {
   planOutputFiles,
   sortWarnings,
 } from "./build-output";
-import { crossCheck } from "./cross-check";
+import { crossCheck, outlierCheck } from "./cross-check";
 import { monthOf, shanghaiDate, toIsoSeconds } from "./dates";
 import { diffOfferings } from "./diff";
 import { verifyApiAnomalies, type VerifyResult } from "./verify";
@@ -203,6 +203,7 @@ function collectWarnings(
     ...g.mediaRec.warnings,
     ...g.verification.warnings,
     ...crossCheck(g.rec.offerings, g.fx.rate.usdCny),
+    ...outlierCheck(g.rec.offerings, g.fx.rate.usdCny),
     ...healthWarnings,
     ...(ranManual ? checkManualFreshness(g.files.manual, g.startedAt) : []),
     ...checkPlanFreshness(g.files.plans, g.startedAt),

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { allGaps, gapFor } from "../src/lib/gap";
-import { fixtureModel } from "./helpers";
+import { buildSiteModel } from "../src/lib/site-model";
+import { fixtureData, fixtureModel, NOW } from "./helpers";
 
 const model = fixtureModel();
 
@@ -33,6 +34,21 @@ describe("gap：国内外价差", () => {
     );
     expect(gapFor(model, "openai/gpt-5")).toBeNull();
     expect(gapFor(model, "nope/nope")).toBeNull();
+  });
+
+  it("OpenRouter 价比同模型其它平台中位数低 3 倍以上时视为异常，不算价差", () => {
+    const data = fixtureData();
+    const latest = data.latest;
+    if (!latest) throw new Error("fixture");
+    const or = latest.offerings.find((o) => o.id === "openrouter:deepseek/deepseek-chat");
+    if (!or) throw new Error("fixture");
+    // 对照报价：官方、硅基流动、再加一个平台
+    const peer = { ...or, id: "together:deepseek/deepseek-chat", platform: "together" };
+    const cheap = { ...or, input: 0.01 };
+    const offerings = latest.offerings.filter((o) => o.id !== or.id).concat([peer, cheap]);
+    const outlierModel = buildSiteModel({ ...data, latest: { ...latest, offerings } }, NOW);
+    expect(gapFor(outlierModel, "deepseek/deepseek-chat")).toBeNull();
+    expect(allGaps(outlierModel).map((g) => g.modelSlug)).not.toContain("deepseek/deepseek-chat");
   });
 
   it("按价差绝对值降序", () => {

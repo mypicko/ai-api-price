@@ -16,6 +16,7 @@ export {
   blendedPrice,
   convertCurrency,
   convertPriceSet,
+  lowOutlierFields,
   pctChange,
   roundSig,
 } from "@aipb/shared/units";

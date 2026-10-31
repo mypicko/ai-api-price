@@ -304,7 +304,7 @@
   "gap.title": "China vs. international",
   "gap.cheaper": "{pct} cheaper in China",
   "gap.pricier": "{pct} pricier in China",
-  "gap.basis": "Compared by blended price (3:1); the OpenRouter price is its current top provider's rate",
+  "gap.basis": "Compared by blended price (3:1); the OpenRouter price is its cheapest provider's rate and is skipped when it is over 3× below the median of other platforms",
   "gap.boardTitle": "China vs. OpenRouter price gaps",
   "gap.boardLead": "Models whose official China price differs most from OpenRouter (blended price, per 1M tokens).",
   "gap.domestic": "China official",
