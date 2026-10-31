@@ -91,6 +91,19 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-30T02:40:30Z"
+    },
+    {
+      "id": "2026-10-31-official:x-ai/grok-imagine-image-pro-1",
+      "type": "removed",
+      "offeringId": "official:x-ai/grok-imagine-image-pro",
+      "vendor": "x-ai",
+      "modelSlug": "x-ai/grok-imagine-image-pro",
+      "displayName": "grok-imagine-image-pro",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
     }
   ]
 }

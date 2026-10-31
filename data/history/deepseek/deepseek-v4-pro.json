@@ -154,6 +154,13 @@
         "cacheRead": 0.0680195,
         "cacheWrite": null,
         "effectiveDate": "2026-10-30"
+      },
+      {
+        "input": 1.6,
+        "output": 3.2,
+        "cacheRead": 0.135,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-31"
       }
     ],
     "parasail:deepseek/deepseek-v4-pro": [

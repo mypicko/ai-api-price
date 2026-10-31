@@ -62,6 +62,13 @@
         "cacheRead": 0.028,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.26,
+        "output": 0.38,
+        "cacheRead": 0.13,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-31"
       }
     ],
     "sambanova:deepseek/deepseek-v3.2": [

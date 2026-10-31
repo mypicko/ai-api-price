@@ -9645,6 +9645,693 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-10-30T02:40:30Z"
+    },
+    {
+      "id": "2026-10-31-cerebras:alibaba/qwen-3-32b-1",
+      "type": "removed",
+      "offeringId": "cerebras:alibaba/qwen-3-32b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen-3-32b",
+      "displayName": "qwen-3-32b",
+      "platform": "cerebras",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-cerebras:meta/llama-3.3-70b-1",
+      "type": "removed",
+      "offeringId": "cerebras:meta/llama-3.3-70b",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-3.3-70b",
+      "displayName": "llama-3.3-70b",
+      "platform": "cerebras",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-crusoe:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_down",
+      "offeringId": "crusoe:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "crusoe",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "cacheRead",
+          "old": 0.007,
+          "new": 0.0065,
+          "pct": -0.07143
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-crusoe:deepseek/deepseek-v4.1-flash-1017-1",
+      "type": "price_down",
+      "offeringId": "crusoe:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "platform": "crusoe",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "cacheRead",
+          "old": 0.007,
+          "new": 0.0065,
+          "pct": -0.07143
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-fireworks:nvidia/nemotron-3.5-lightning-1",
+      "type": "new_model",
+      "offeringId": "fireworks:nvidia/nemotron-3.5-lightning",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nemotron-3.5-lightning",
+      "displayName": "Nemotron 3.5 Lightning",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-gmi:minimax/minimax-m3.1-flash-1",
+      "type": "price_down",
+      "offeringId": "gmi:minimax/minimax-m3.1-flash",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m3.1-flash",
+      "displayName": "MiniMax M3.1 Flash",
+      "platform": "gmi",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.1425,
+          "new": 0.1125,
+          "pct": -0.2105
+        },
+        {
+          "field": "output",
+          "old": 0.57,
+          "new": 0.45,
+          "pct": -0.2105
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.01425,
+          "new": 0.01125,
+          "pct": -0.2105
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-nebius:deepseek/deepseek-v4-pro-0813-1",
+      "type": "context_change",
+      "offeringId": "nebius:deepseek/deepseek-v4-pro-0813",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro-0813",
+      "displayName": "DeepSeek V4 Pro 0813",
+      "platform": "nebius",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 979000,
+          "new": 1048576,
+          "pct": 0.07107
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-nebius:deepseek/deepseek-v4.1-flash-1",
+      "type": "context_change",
+      "offeringId": "nebius:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "nebius",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 1048000,
+          "new": 1048576,
+          "pct": 0.0005496
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-nebius:zhipu/glm-5.3-1",
+      "type": "context_change",
+      "offeringId": "nebius:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "nebius",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 1024000,
+          "new": 1048576,
+          "pct": 0.024
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-nebius:zhipu/glm-5.3-flash-1",
+      "type": "context_change",
+      "offeringId": "nebius:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "nebius",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 1024000,
+          "new": 1048576,
+          "pct": 0.024
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-official:openai/gpt-6-rosalind-1",
+      "type": "new_model",
+      "offeringId": "official:openai/gpt-6-rosalind",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6-rosalind",
+      "displayName": "gpt-6-rosalind",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-official:x-ai/grok-code-fast-1-1",
+      "type": "removed",
+      "offeringId": "official:x-ai/grok-code-fast-1",
+      "vendor": "x-ai",
+      "modelSlug": "x-ai/grok-code-fast-1",
+      "displayName": "grok-code-fast-1",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:alibaba/qwen3-next-80b-a3b-thinking-1",
+      "type": "removed",
+      "offeringId": "openrouter:alibaba/qwen3-next-80b-a3b-thinking",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-next-80b-a3b-thinking",
+      "displayName": "Qwen3 Next 80B A3B Thinking",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:alibaba/qwen3.6-27b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.6-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.6-27b",
+      "displayName": "Qwen3.6 27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.32,
+          "new": 0.45,
+          "pct": 0.4063
+        },
+        {
+          "field": "output",
+          "old": 3.2,
+          "new": 2.7,
+          "pct": -0.1563
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:alibaba/qwen3.8-27b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.8-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.8-27b",
+      "displayName": "Qwen3.8 27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.039,
+          "new": 0.15,
+          "pct": 2.846
+        },
+        {
+          "field": "output",
+          "old": 1.25,
+          "new": 1.875,
+          "pct": 0.5
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0039,
+          "new": 0.0375,
+          "pct": 8.615
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:deepseek/deepseek-v3.2-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v3.2",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v3.2",
+      "displayName": "DeepSeek V3.2",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.28,
+          "new": 0.26,
+          "pct": -0.07143
+        },
+        {
+          "field": "output",
+          "old": 0.42,
+          "new": 0.38,
+          "pct": -0.09524
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.028,
+          "new": 0.13,
+          "pct": 3.643
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:deepseek/deepseek-v4-pro-0813-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro-0813",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro-0813",
+      "displayName": "DeepSeek V4 Pro 0813",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.32,
+          "new": 0.66,
+          "pct": -0.5
+        },
+        {
+          "field": "output",
+          "old": 3.96,
+          "new": 1.98,
+          "pct": -0.5
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.044,
+          "new": 0.022,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:deepseek/deepseek-v4-pro-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro",
+      "displayName": "DeepSeek V4 Pro 0423",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.816234,
+          "new": 1.6,
+          "pct": 0.9602
+        },
+        {
+          "field": "output",
+          "old": 1.63247,
+          "new": 3.2,
+          "pct": 0.9602
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0680195,
+          "new": 0.135,
+          "pct": 0.9847
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:deepseek/deepseek-v4.1-flash-1017-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.3,
+          "new": 0.15,
+          "pct": -0.5
+        },
+        {
+          "field": "output",
+          "old": 1.2,
+          "new": 0.6,
+          "pct": -0.5
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.006,
+          "new": 0.003,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:google/gemma-4-26b-a4b-it-1",
+      "type": "price_down",
+      "offeringId": "openrouter:google/gemma-4-26b-a4b-it",
+      "vendor": "google",
+      "modelSlug": "google/gemma-4-26b-a4b-it",
+      "displayName": "Gemma 4 26B A4B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0765,
+          "new": 0.0675,
+          "pct": -0.1176
+        },
+        {
+          "field": "output",
+          "old": 0.255,
+          "new": 0.225,
+          "pct": -0.1176
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0425,
+          "new": 0.0375,
+          "pct": -0.1176
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:minimax/minimax-m2.5-1",
+      "type": "price_down",
+      "offeringId": "openrouter:minimax/minimax-m2.5",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m2.5",
+      "displayName": "MiniMax M2.5",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.3,
+          "new": 0.27,
+          "pct": -0.1
+        },
+        {
+          "field": "output",
+          "old": 1.2,
+          "new": 0.95,
+          "pct": -0.2083
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:moonshot/kimi-k2.7-code-1",
+      "type": "price_up",
+      "offeringId": "openrouter:moonshot/kimi-k2.7-code",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2.7-code",
+      "displayName": "Kimi K2.7 Code",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.56,
+          "new": 0.6,
+          "pct": 0.07143
+        },
+        {
+          "field": "output",
+          "old": 3.1,
+          "new": 3.5,
+          "pct": 0.129
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:openai/gpt-4-turbo-1",
+      "type": "removed",
+      "offeringId": "openrouter:openai/gpt-4-turbo",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-4-turbo",
+      "displayName": "GPT-4 Turbo",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:openai/o1-1",
+      "type": "removed",
+      "offeringId": "openrouter:openai/o1",
+      "vendor": "openai",
+      "modelSlug": "openai/o1",
+      "displayName": "o1",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:openai/o1-pro-1",
+      "type": "removed",
+      "offeringId": "openrouter:openai/o1-pro",
+      "vendor": "openai",
+      "modelSlug": "openai/o1-pro",
+      "displayName": "o1-pro",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:openai/o3-mini-1",
+      "type": "removed",
+      "offeringId": "openrouter:openai/o3-mini",
+      "vendor": "openai",
+      "modelSlug": "openai/o3-mini",
+      "displayName": "o3 Mini",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:openai/o3-mini-high-1",
+      "type": "removed",
+      "offeringId": "openrouter:openai/o3-mini-high",
+      "vendor": "openai",
+      "modelSlug": "openai/o3-mini-high",
+      "displayName": "o3 Mini High",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:openai/o4-mini-1",
+      "type": "removed",
+      "offeringId": "openrouter:openai/o4-mini",
+      "vendor": "openai",
+      "modelSlug": "openai/o4-mini",
+      "displayName": "o4 Mini",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:openai/o4-mini-high-1",
+      "type": "removed",
+      "offeringId": "openrouter:openai/o4-mini-high",
+      "vendor": "openai",
+      "modelSlug": "openai/o4-mini-high",
+      "displayName": "o4 Mini High",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:zhipu/glm-5.3-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.08,
+          "new": 0.0699,
+          "pct": -0.1262
+        },
+        {
+          "field": "output",
+          "old": 3.6,
+          "new": 1.4,
+          "pct": -0.6111
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.076,
+          "new": 0.0689,
+          "pct": -0.09342
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-openrouter:zhipu/glm-5.3-flash-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0477,
+          "new": 0.0227,
+          "pct": -0.5241
+        },
+        {
+          "field": "output",
+          "old": 0.0701,
+          "new": 0.0625,
+          "pct": -0.1084
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.03,
+          "new": 0.0207,
+          "pct": -0.31
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-10-31T02:29:27Z"
+    },
+    {
+      "id": "2026-10-31-sambanova:minimax/minimax-m3.1-flash-1",
+      "type": "price_up",
+      "offeringId": "sambanova:minimax/minimax-m3.1-flash",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m3.1-flash",
+      "displayName": "MiniMax M3.1 Flash",
+      "platform": "sambanova",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.06,
+          "new": 0.15,
+          "pct": 1.5
+        },
+        {
+          "field": "output",
+          "old": 0.24,
+          "new": 0.6,
+          "pct": 1.5
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.006,
+          "new": 0.015,
+          "pct": 1.5
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-10-31T02:29:27Z"
     }
   ]
 }

@@ -26,6 +26,13 @@
         "cacheRead": 0.01425,
         "cacheWrite": null,
         "effectiveDate": "2026-10-24"
+      },
+      {
+        "input": 0.1125,
+        "output": 0.45,
+        "cacheRead": 0.01125,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-31"
       }
     ],
     "nebius:minimax/minimax-m3.1-flash": [
@@ -94,6 +101,13 @@
         "cacheRead": 0.006,
         "cacheWrite": null,
         "effectiveDate": "2026-10-30"
+      },
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-31"
       }
     ],
     "together:minimax/minimax-m3.1-flash": [

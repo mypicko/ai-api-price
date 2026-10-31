@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-6-rosalind",
+  "series": {
+    "official:openai/gpt-6-rosalind": [
+      {
+        "input": 15,
+        "output": 75,
+        "cacheRead": 1.5,
+        "cacheWrite": 18.75,
+        "effectiveDate": "2026-10-31"
+      }
+    ]
+  }
+}
