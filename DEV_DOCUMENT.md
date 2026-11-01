@@ -414,11 +414,12 @@ alibaba/qwen-plus: [qwen-plus-latest, "通义千问-Plus"]
 
 ### 3.9 Notify（通知）
 
-| 渠道                 | 开关                                      | 内容          |
-| -------------------- | ----------------------------------------- | ------------- |
-| 飞书群机器人（默认） | `FEISHU_WEBHOOK_URL` 存在即启用           | 卡片消息      |
-| Telegram             | `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` | Markdown 文本 |
-| 邮件                 | `SMTP_HOST` 等存在即启用                  | HTML 邮件     |
+| 渠道                 | 开关                                      | 内容              |
+| -------------------- | ----------------------------------------- | ----------------- |
+| 飞书群机器人（默认） | `FEISHU_WEBHOOK_URL` 存在即启用           | 卡片消息          |
+| Telegram             | `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` | Markdown 文本     |
+| 邮件                 | `SMTP_HOST` 等存在即启用                  | HTML 邮件         |
+| 公众号（只存草稿）   | `WECHAT_APPID` + `WECHAT_APPSECRET`       | 图文草稿（§3.24） |
 
 **推送时机**：
 
@@ -838,6 +839,10 @@ sequenceDiagram
 | `SMTP_USER`                | ❌   | 字符串                 | Secrets        | —                      | `bot@example.com`                                   | —                                                                                                                         |
 | `SMTP_PASS`                | ❌   | 字符串                 | **Secrets**    | —                      | （授权码）                                          | 邮箱授权码，不是登录密码                                                                                                  |
 | `NOTIFY_EMAIL_TO`          | ❌   | 邮箱                   | Secrets        | —                      | `me@example.com`                                    | 收件人                                                                                                                    |
+| `WECHAT_APPID`             | ❌   | 字符串                 | Secrets        | —                      | `wx1234567890abcdef`                                | 公众号 AppID（设置与开发 → 基本配置）                                                                                     |
+| `WECHAT_APPSECRET`         | ❌   | 字符串                 | **Secrets**    | —                      | （开发者密码）                                      | 公众号 AppSecret，和 AppID 同时填写才启用                                                                                 |
+| `WECHAT_THUMB_MEDIA_ID`    | ❌   | 字符串                 | Variables      | —                      | `AbCdEf...`                                         | 封面永久素材 media_id；不填时每次上传网站分享图                                                                           |
+| `WECHAT_AUTHOR`            | ❌   | 字符串                 | Variables      | —                      | `AI序言`                                            | 草稿的作者署名                                                                                                            |
 | `NOTIFY_ON_SUCCESS`        | ❌   | bool                   | Variables      | `false`                | `true`                                              | 没有变动也推送"一切正常"                                                                                                  |
 | `ANOMALY_THRESHOLD`        | ❌   | 0~1                    | Variables      | `0.8`                  | `0.8`                                               | V3 突变阈值                                                                                                               |
 | `STALE_ALERT_DAYS`         | ❌   | 整数                   | Variables      | `3`                    | `3`                                                 | 连续失败几天后高优先级告警                                                                                                |
@@ -904,7 +909,15 @@ concurrency: { group: daily, cancel-in-progress: false }
 
 以 QQ 邮箱为例：设置 → 账户 → 开启 SMTP 服务 → 生成**授权码**，填入 `SMTP_PASS`。
 
-### 8.6 外部数据源
+### 8.6 公众号（可选，只存草稿）
+
+1. 公众号后台「设置与开发 → 接口权限」：确认「草稿箱」是「已获得」
+2. 「设置与开发 → 基本配置」：复制 AppID 填入 `WECHAT_APPID`；生成 AppSecret 填入 `WECHAT_APPSECRET`（只显示一次，不要发到聊天或提交进仓库）
+3. 同一页的 **IP 白名单**：填运行管线那台机器的公网 IP（本机可用 `curl -s ifconfig.me` 查看）。GitHub Actions 的 IP 不固定，正式每天运行要放在固定 IP 的服务器上
+4. 本地测试：`pnpm pipeline wechat:preview` 先看排版，再 `pnpm pipeline wechat:draft` 存一篇草稿；第一次会上传封面并在日志里打印 media_id，填入 `WECHAT_THUMB_MEDIA_ID`
+5. 在手机「公众号助手」里打开草稿，确认无误后群发（未认证订阅号每天可群发 1 次）
+
+### 8.7 外部数据源
 
 LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
@@ -1180,3 +1193,16 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 - **数据迁移**：`pnpm pipeline migrate-slugs [--dry-run]`（`tools/migrate-slugs.ts`）把 `latest.json`、`history/`、`changes/`、`quarantine.json`（含 media 目录）改名合并。同一平台撞名时保留：在售 > 待确认下架 > 已下架 → 数据源优先级高 → 原本就叫这个名字的 → 输入价低的；`firstSeenAt` 取较早的；改名后完全相同的变动事件去重。可重复执行。
 - **验证方法**：迁移后备份 data/，本地跑一次完整管线（`--no-notify`），对比前后：没有新出现 / 消失的报价 ID、没有新的待确认下架，新增事件只有当天真实的价格变动；然后恢复备份再提交。2026-10-31 实际迁移：改名 146 条、合并重复 31 条、历史文件 1169 → 1091。
 - **以后改规则**：改完 `canonicalModelId` / `reseller-model` / `aliases.yaml` 后先跑 `migrate-slugs --dry-run` 看影响，再按上面的方法验证。
+
+### 3.24 公众号日报（1.5）
+
+- **定位**：给公众号「AI序言」（个人主体、未认证订阅号）的读者看的每日价格变动文章；与飞书运维日报分开，不含告警、隔离区、数据源状态。
+- **发布方式**：未认证订阅号不能用群发接口，计划每天自动存进草稿箱，由人在「公众号助手」里看一眼后手动群发。调用公众号接口需要 IP 白名单，GitHub Actions 的 IP 不固定，正式运行要放到固定 IP 的服务器上。
+- **文章内容**（`notify/wechat-article.ts`）：新模型（从 `latest.json` 补价格）→ 降价 → 涨价 → 官方下架；官方排在第三方前面，同类按涨跌幅绝对值降序，每节最多 8 条，多出的写「另有 N 条」。不收录 OpenRouter 聚合价（取最便宜服务商、天天波动，见 V9）；上下文变化、重新上架、第三方下架不写；没有可写的变动时当天不生成。
+- **标题与摘要**：标题「AI 价格日报 M/D｜<主题>」，主题优先官方新模型 → 官方降价 → 涨价；超过 32 字时先去掉涨跌幅，再截断名字。摘要为变动统计，不超过 54 字。
+- **排版**：只用内联样式，不放脚本和链接（正文外链点不了），网站地址放「阅读原文」；手机上按「模型名一行、每个价格字段一行」上下排列。
+- **本地预览**：`pnpm pipeline wechat:preview [YYYY-MM-DD]`（`tools/wechat-preview.ts`）用 `data/` 里当天的变动生成 `.preview/wechat-<日期>.html`（已加入 .gitignore）。
+- **接口**（`notify/wechat-api.ts`）：`stable_token` 换 access_token（有效期内复用，提前 5 分钟刷新）→ 需要时 `material/add_material` 上传封面 → `draft/add` 新建草稿。errcode 非 0 抛 `E5001`，常见错误码带中文提示（40164 IP 不在白名单、40125 AppSecret 错误、48001 没有接口权限）；错误信息不带 AppSecret 和 access_token。
+- **推送渠道**（`notify/wechat.ts`）：配置了 `WECHAT_APPID` + `WECHAT_APPSECRET` 才启用，随每日管线推送；当天没有可写的变动时不建草稿。封面优先用 `WECHAT_THUMB_MEDIA_ID`，没填时下载网站 `og/site.png` 上传为永久素材，日志提示保存 media_id。
+- **手动存草稿**：`pnpm pipeline wechat:draft [YYYY-MM-DD]` 把某一天的日报存进草稿箱，用于本地真实测试。配置见 §8.6。
+- **待做**：部署到固定 IP 的服务器（GitHub Actions 的 IP 进不了白名单，那里不要配置 `WECHAT_*`）。

@@ -11,6 +11,9 @@ import { createEmailNotifier, type MailTransport } from "./email";
 import { createFeishuNotifier } from "./feishu";
 import { createTelegramNotifier } from "./telegram";
 import type { DailyReport, Notifier } from "./types";
+import { createWechatNotifier, fetchSiteCover } from "./wechat";
+import { createWechatApi } from "./wechat-api";
+import type { ArticleContext } from "./wechat-article";
 
 export { buildReportText, shouldNotify } from "./format";
 export type { DailyReport, Notifier } from "./types";
@@ -19,6 +22,29 @@ export interface NotifierDeps {
   readonly http: HttpClient;
   readonly now: () => Date;
   readonly mailTransport?: MailTransport;
+  /** 公众号文章需要的厂商名、平台名和当天价格；不提供时不启用公众号渠道 */
+  readonly wechatContext?: () => Promise<ArticleContext>;
+  readonly logger?: Logger;
+}
+
+function createWechat(config: AppConfig, deps: NotifierDeps): Notifier | null {
+  if (!config.wechat || !deps.wechatContext) return null;
+  const { appId, appSecret } = config.wechat;
+  return createWechatNotifier({
+    config: config.wechat,
+    api: createWechatApi({ appId, appSecret }),
+    loadContext: deps.wechatContext,
+    fetchCover: () => fetchSiteCover(config.siteUrl),
+    onCoverUploaded: (mediaId) =>
+      deps.logger?.warn(
+        "公众号：已上传封面，把下面的 media_id 填进 WECHAT_THUMB_MEDIA_ID，以后不再重复上传",
+        {
+          mediaId,
+        },
+      ),
+    onDraftCreated: (title, mediaId) =>
+      deps.logger?.info("公众号：草稿已保存，去「公众号助手」确认后群发", { title, mediaId }),
+  });
 }
 
 /** 飞书排第一：默认且主要的渠道 */
@@ -34,6 +60,7 @@ export function createNotifiers(config: AppConfig, deps: NotifierDeps): readonly
           ...(deps.mailTransport ? { transport: deps.mailTransport } : {}),
         })
       : null,
+    createWechat(config, deps),
   ].filter((n): n is Notifier => n !== null);
 }
 

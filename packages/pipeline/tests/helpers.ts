@@ -117,6 +117,7 @@ export function makeConfig(overrides: Partial<AppConfig> = {}): AppConfig {
     feishu: null,
     telegram: null,
     email: null,
+    wechat: null,
     runId: "123",
     stepSummaryPath: null,
     ...overrides,

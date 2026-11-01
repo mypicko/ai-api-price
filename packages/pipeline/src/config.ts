@@ -8,7 +8,7 @@ import { z } from "zod";
 import { PipelineError } from "./core/errors";
 import type { LogLevel } from "./core/logger";
 
-export const CHANNEL_IDS = ["feishu", "telegram", "email"] as const;
+export const CHANNEL_IDS = ["feishu", "telegram", "email", "wechat"] as const;
 export type ChannelId = (typeof CHANNEL_IDS)[number];
 
 export interface FeishuConfig {
@@ -29,6 +29,15 @@ export interface EmailConfig {
   readonly to: string;
 }
 
+/** 公众号（只存草稿，DEV_DOCUMENT §3.24） */
+export interface WechatConfig {
+  readonly appId: string;
+  readonly appSecret: string;
+  /** 封面图的永久素材 media_id；没填时每次上传网站分享图 */
+  readonly thumbMediaId: string | null;
+  readonly author: string | null;
+}
+
 export interface AppConfig {
   /** SITE_URL + BASE_PATH，不带末尾斜杠 */
   readonly siteUrl: string;
@@ -44,6 +53,7 @@ export interface AppConfig {
   readonly feishu: FeishuConfig | null;
   readonly telegram: TelegramConfig | null;
   readonly email: EmailConfig | null;
+  readonly wechat: WechatConfig | null;
   readonly runId: string | null;
   readonly stepSummaryPath: string | null;
 }
@@ -91,6 +101,10 @@ const EnvSchema = z.object({
   SMTP_USER: optionalString,
   SMTP_PASS: optionalString,
   NOTIFY_EMAIL_TO: z.preprocess(blankToUndefined, z.email().optional()),
+  WECHAT_APPID: optionalString,
+  WECHAT_APPSECRET: optionalString,
+  WECHAT_THUMB_MEDIA_ID: optionalString,
+  WECHAT_AUTHOR: optionalString,
   NOTIFY_ON_SUCCESS: optionalBool(false),
   ANOMALY_THRESHOLD: positiveNumber(0.8),
   STALE_ALERT_DAYS: positiveInt(3),
@@ -171,6 +185,26 @@ function resolveEmail(env: ParsedEnv): ChannelResult<EmailConfig> {
   };
 }
 
+function resolveWechat(env: ParsedEnv): ChannelResult<WechatConfig> {
+  const { WECHAT_APPID: appId, WECHAT_APPSECRET: appSecret } = env;
+  if (appId !== undefined && appSecret !== undefined) {
+    return {
+      value: {
+        appId,
+        appSecret,
+        thumbMediaId: env.WECHAT_THUMB_MEDIA_ID ?? null,
+        author: env.WECHAT_AUTHOR ?? null,
+      },
+      warning: null,
+    };
+  }
+  if (appId === undefined && appSecret === undefined) return { value: null, warning: null };
+  return {
+    value: null,
+    warning: channelWarning("wechat", "WECHAT_APPID 和 WECHAT_APPSECRET 需要同时填写"),
+  };
+}
+
 function applyChannelFilter<T>(
   channel: ChannelId,
   result: ChannelResult<T>,
@@ -197,6 +231,7 @@ export function loadConfig(env: EnvLike): ConfigResult {
   const feishu = applyChannelFilter("feishu", resolveFeishu(e), channels);
   const telegram = applyChannelFilter("telegram", resolveTelegram(e), channels);
   const email = applyChannelFilter("email", resolveEmail(e), channels);
+  const wechat = applyChannelFilter("wechat", resolveWechat(e), channels);
   const basePath = e.BASE_PATH ?? "/";
   const config: AppConfig = {
     siteUrl: joinSiteUrl(e.SITE_URL ?? DEFAULT_SITE_URL, basePath),
@@ -212,10 +247,11 @@ export function loadConfig(env: EnvLike): ConfigResult {
     feishu: feishu.value,
     telegram: telegram.value,
     email: email.value,
+    wechat: wechat.value,
     runId: e.GITHUB_RUN_ID ?? null,
     stepSummaryPath: e.GITHUB_STEP_SUMMARY ?? null,
   };
-  const warnings = [feishu.warning, telegram.warning, email.warning].filter(
+  const warnings = [feishu.warning, telegram.warning, email.warning, wechat.warning].filter(
     (w): w is Warning => w !== null,
   );
   return { config, warnings };

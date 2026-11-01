@@ -64,7 +64,7 @@ describe("config", () => {
   it("格式错误抛 E0001，且不在错误信息里带出取值", () => {
     expect(() => loadConfig({ ANOMALY_THRESHOLD: "abc" })).toThrow(/E0001/);
     expect(() => loadConfig({ LOG_LEVEL: "verbose" })).toThrow(/LOG_LEVEL/);
-    expect(() => loadConfig({ NOTIFY_CHANNELS: "feishu,wechat" })).toThrow(/E0001/);
+    expect(() => loadConfig({ NOTIFY_CHANNELS: "feishu,slack" })).toThrow(/E0001/);
     try {
       loadConfig({ FEISHU_WEBHOOK_URL: "http://open.feishu.cn/open-apis/bot/v2/hook/supersecret" });
       expect.unreachable();
@@ -133,6 +133,29 @@ describe("config", () => {
     expect(warnings).toEqual([
       expect.objectContaining({ code: "W0002", message: expect.stringContaining("telegram") }),
     ]);
+  });
+
+  it("公众号：AppID 和 AppSecret 都填才启用；封面 media_id 和作者可选", () => {
+    expect(loadConfig({}).config.wechat).toBeNull();
+    const partial = loadConfig({ WECHAT_APPID: "wx1" });
+    expect(partial.config.wechat).toBeNull();
+    expect(partial.warnings).toEqual([
+      expect.objectContaining({ code: "W0002", message: expect.stringContaining("wechat") }),
+    ]);
+    expect(loadConfig({ WECHAT_APPID: "wx1", WECHAT_APPSECRET: "s" }).config.wechat).toEqual({
+      appId: "wx1",
+      appSecret: "s",
+      thumbMediaId: null,
+      author: null,
+    });
+    expect(
+      loadConfig({
+        WECHAT_APPID: "wx1",
+        WECHAT_APPSECRET: "s",
+        WECHAT_THUMB_MEDIA_ID: "THUMB",
+        WECHAT_AUTHOR: "AI序言",
+      }).config.wechat,
+    ).toEqual({ appId: "wx1", appSecret: "s", thumbMediaId: "THUMB", author: "AI序言" });
   });
 
   it("joinSiteUrl 去掉多余斜杠", () => {

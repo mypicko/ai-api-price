@@ -16,7 +16,9 @@ import { createBrowserClient, type BrowserClient } from "./core/browser";
 import { isPipelineError } from "./core/errors";
 import { createHttpClient, type HttpClient } from "./core/http";
 import { createLogger, type Logger } from "./core/logger";
-import { createNotifiers } from "./notify";
+import { createNotifiers, type NotifierDeps } from "./notify";
+import { buildWechatArticle } from "./notify/wechat-article";
+import { loadArticleContext } from "./notify/wechat-context";
 import { ALL_SOURCES } from "./sources/registry";
 import { runPipeline } from "./steps/run";
 import { parseRunFlags } from "./tools/cli-args";
@@ -26,6 +28,7 @@ import { formatQuarantine, loadQuarantine } from "./tools/quarantine-list";
 import { runSnapshot } from "./tools/snapshot";
 import { validateDataDir } from "./tools/validate-data";
 import { migrateDataDir } from "./tools/migrate-slugs";
+import { reportForDate, runWechatPreview } from "./tools/wechat-preview";
 import { loadAliases } from "./config-files";
 import { createAliasResolver } from "./steps/normalize";
 
@@ -40,6 +43,8 @@ const USAGE = `用法：pnpm pipeline <命令>
   validate                                     用 schema 校验 data/ 下的全部文件
   quarantine:list                              列出隔离区条目
   migrate-slugs [--dry-run]                    模型 ID 规则改动后，把 data/ 的已有数据改名合并
+  wechat:preview [YYYY-MM-DD]                  生成公众号日报的本地预览（.preview/），不调接口
+  wechat:draft [YYYY-MM-DD]                    把某一天的日报存进公众号草稿箱（需要 WECHAT_* 配置和 IP 白名单）
 `;
 
 function out(text: string): void {
@@ -75,6 +80,15 @@ function createRuntime(): Runtime {
   };
 }
 
+function notifierDeps(rt: Runtime): NotifierDeps {
+  return {
+    http: rt.http,
+    now: () => new Date(),
+    wechatContext: () => loadArticleContext(ROOT_DIR, DATA_DIR),
+    logger: rt.logger,
+  };
+}
+
 function selectedSources(
   only: readonly string[] | null,
   config: AppConfig,
@@ -103,7 +117,7 @@ async function commandRun(args: readonly string[], rt: Runtime): Promise<number>
     clock: () => new Date(),
     dryRun: flags.dryRun || rt.config.dryRun,
     notify: flags.notify,
-    notifiers: createNotifiers(rt.config, { http: rt.http, now: () => new Date() }),
+    notifiers: createNotifiers(rt.config, notifierDeps(rt)),
   });
   out(result.summary);
   return result.exitCode;
@@ -136,7 +150,7 @@ async function commandSnapshot(args: readonly string[], rt: Runtime): Promise<nu
 }
 
 async function commandNotifyTest(rt: Runtime): Promise<number> {
-  const notifiers = createNotifiers(rt.config, { http: rt.http, now: () => new Date() });
+  const notifiers = createNotifiers(rt.config, notifierDeps(rt));
   if (notifiers.length === 0) {
     out("没有已配置的推送渠道（FEISHU_WEBHOOK_URL / TELEGRAM_* / SMTP_*）");
     return 1;
@@ -173,6 +187,7 @@ async function dispatch(command: string | undefined, args: readonly string[]): P
   }
   if (command === "validate") return commandValidate();
   if (command === "migrate-slugs") return commandMigrateSlugs(args);
+  if (command === "wechat:preview") return commandWechatPreview(args);
   if (command === "quarantine:list") {
     out(formatQuarantine(await loadQuarantine(DATA_DIR)));
     out(formatQuarantine(await loadQuarantine(DATA_DIR, MEDIA_DIR), "视频/图像隔离区"));
@@ -183,11 +198,52 @@ async function dispatch(command: string | undefined, args: readonly string[]): P
     if (command === "run") return await commandRun(args, rt);
     if (command === "snapshot") return await commandSnapshot(args, rt);
     if (command === "notify:test") return await commandNotifyTest(rt);
+    if (command === "wechat:draft") return await commandWechatDraft(args, rt);
     out(`未知命令：${command}\n${USAGE}`);
     return 1;
   } finally {
     await rt.browser.close();
   }
+}
+
+async function commandWechatPreview(args: readonly string[]): Promise<number> {
+  loadDotEnv();
+  const { config } = loadConfig(process.env);
+  const result = await runWechatPreview({
+    rootDir: ROOT_DIR,
+    dataDir: DATA_DIR,
+    outDir: path.join(ROOT_DIR, ".preview"),
+    siteUrl: config.siteUrl,
+    ...(args[0] === undefined ? {} : { date: args[0] }),
+  });
+  if (!result.file || !result.article) {
+    out(`${result.date} 没有值得发的变动，不生成文章`);
+    return 0;
+  }
+  out(
+    `标题：${result.article.title}\n摘要：${result.article.digest}\n预览：${path.relative(ROOT_DIR, result.file)}`,
+  );
+  return 0;
+}
+
+async function commandWechatDraft(args: readonly string[], rt: Runtime): Promise<number> {
+  const notifier = createNotifiers(rt.config, notifierDeps(rt)).find((n) => n.id === "wechat");
+  if (!notifier) {
+    out("没有配置公众号：在 .env 里填写 WECHAT_APPID 和 WECHAT_APPSECRET");
+    return 1;
+  }
+  const report = await reportForDate({
+    dataDir: DATA_DIR,
+    siteUrl: rt.config.siteUrl,
+    ...(args[0] === undefined ? {} : { date: args[0] }),
+  });
+  if (!buildWechatArticle(report, await loadArticleContext(ROOT_DIR, DATA_DIR))) {
+    out(`${report.date} 没有值得发的变动，不生成草稿`);
+    return 0;
+  }
+  await notifier.send(report);
+  out(`${report.date} 的日报已存进草稿箱，去「公众号助手」确认后群发`);
+  return 0;
 }
 
 async function main(): Promise<void> {

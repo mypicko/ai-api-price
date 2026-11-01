@@ -6,6 +6,7 @@ coverage/
 .env.*
 !.env.example
 data/.tmp/
+.preview/
 packages/site/test-results/
 packages/site/playwright-report/
 .DS_Store
