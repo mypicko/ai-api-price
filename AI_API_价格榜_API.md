@@ -848,6 +848,7 @@ Content-Type: application/json
 | `pnpm pipeline quarantine:list`           | 列出隔离区条目                                            |
 | `pnpm pipeline wechat:preview [日期]`     | 生成公众号日报本地预览到 `.preview/`，不调接口            |
 | `pnpm pipeline wechat:draft [日期]`       | 把某一天的日报存进公众号草稿箱（需 `WECHAT_*` 和白名单）  |
+| `pnpm admin`                              | 启动本地后台 http://localhost:4400（只读，只在本机）      |
 | `pnpm --filter site dev`                  | 本地启动网站，默认 http://localhost:4321                  |
 | `pnpm --filter site build`                | 构建静态网站到 `packages/site/dist/`                      |
 | `pnpm test`                               | 运行全部单元/集成测试                                     |

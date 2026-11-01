@@ -15,6 +15,12 @@
         "4321"
       ],
       "port": 4321
+    },
+    {
+      "name": "admin",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["admin"],
+      "port": 4400
     }
   ]
 }

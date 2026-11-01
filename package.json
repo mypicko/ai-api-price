@@ -8,6 +8,7 @@
   },
   "scripts": {
     "pipeline": "pnpm --filter @aipb/pipeline exec tsx src/index.ts",
+    "admin": "pnpm --filter @aipb/pipeline exec tsx src/index.ts admin",
     "dev": "pnpm --filter @aipb/site dev",
     "build": "pnpm --filter @aipb/site build",
     "test": "vitest run",

@@ -29,6 +29,7 @@ import { runSnapshot } from "./tools/snapshot";
 import { validateDataDir } from "./tools/validate-data";
 import { migrateDataDir } from "./tools/migrate-slugs";
 import { reportForDate, runWechatPreview } from "./tools/wechat-preview";
+import { DEFAULT_ADMIN_PORT, startAdminServer } from "./admin/server";
 import { loadAliases } from "./config-files";
 import { createAliasResolver } from "./steps/normalize";
 
@@ -44,6 +45,7 @@ const USAGE = `用法：pnpm pipeline <命令>
   quarantine:list                              列出隔离区条目
   migrate-slugs [--dry-run]                    模型 ID 规则改动后，把 data/ 的已有数据改名合并
   wechat:preview [YYYY-MM-DD]                  生成公众号日报的本地预览（.preview/），不调接口
+  admin [--port 4400]                          启动本地后台（只在本机，只读），浏览器打开 http://localhost:4400
   wechat:draft [YYYY-MM-DD]                    把某一天的日报存进公众号草稿箱（需要 WECHAT_* 配置和 IP 白名单）
 `;
 
@@ -188,6 +190,7 @@ async function dispatch(command: string | undefined, args: readonly string[]): P
   if (command === "validate") return commandValidate();
   if (command === "migrate-slugs") return commandMigrateSlugs(args);
   if (command === "wechat:preview") return commandWechatPreview(args);
+  if (command === "admin") return commandAdmin(args);
   if (command === "quarantine:list") {
     out(formatQuarantine(await loadQuarantine(DATA_DIR)));
     out(formatQuarantine(await loadQuarantine(DATA_DIR, MEDIA_DIR), "视频/图像隔离区"));
@@ -204,6 +207,28 @@ async function dispatch(command: string | undefined, args: readonly string[]): P
   } finally {
     await rt.browser.close();
   }
+}
+
+function parsePort(args: readonly string[]): number {
+  const index = args.indexOf("--port");
+  if (index === -1) return DEFAULT_ADMIN_PORT;
+  const port = Number(args[index + 1]);
+  if (!Number.isInteger(port) || port <= 0 || port > 65535)
+    throw new Error("--port 需要 1~65535 之间的端口号，例如 --port 4400");
+  return port;
+}
+
+/** 本地后台常驻运行，Ctrl+C 退出 */
+async function commandAdmin(args: readonly string[]): Promise<number> {
+  loadDotEnv();
+  const server = await startAdminServer(
+    { rootDir: ROOT_DIR, dataDir: DATA_DIR, env: process.env },
+    parsePort(args),
+  );
+  out(`本地后台已启动：${server.url}（只在本机可访问，按 Ctrl+C 退出）`);
+  await new Promise<void>((resolve) => process.once("SIGINT", () => resolve()));
+  await server.close();
+  return 0;
 }
 
 async function commandWechatPreview(args: readonly string[]): Promise<number> {

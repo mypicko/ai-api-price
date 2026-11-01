@@ -825,38 +825,41 @@ sequenceDiagram
 
 本地开发写在 `.env`（已加入 `.gitignore`，参考 `.env.example`）；线上写在 GitHub 仓库 **Settings → Secrets and variables → Actions**。
 
-| 变量                       | 必填 | 类型                   | 放在           | 默认值                 | 示例                                                | 用途                                                                                                                      |
-| -------------------------- | ---- | ---------------------- | -------------- | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `SITE_URL`                 | ✅   | URL                    | Variables      | —                      | `https://alice.github.io`                           | 网站根地址，用于 RSS、sitemap、通知中的链接                                                                               |
-| `BASE_PATH`                | ✅   | 路径                   | Variables      | `/`                    | `/ai-api-price/`                                    | 部署在 `xxx.github.io/<仓库名>/` 时必须设置成仓库名                                                                       |
-| `NOTIFY_CHANNELS`          | ❌   | 逗号列表               | Variables      | 自动（有配置的都启用） | `feishu,telegram`                                   | 指定启用哪些推送渠道                                                                                                      |
-| `FEISHU_WEBHOOK_URL`       | ❌   | URL                    | **Secrets**    | —                      | `https://open.feishu.cn/open-apis/bot/v2/hook/xxxx` | 飞书群机器人 Webhook                                                                                                      |
-| `FEISHU_WEBHOOK_SECRET`    | ❌   | 字符串                 | **Secrets**    | —                      | `aBcD...`                                           | 飞书"签名校验"密钥（建议开启）                                                                                            |
-| `TELEGRAM_BOT_TOKEN`       | ❌   | 字符串                 | **Secrets**    | —                      | `123456:ABC-DEF...`                                 | Telegram Bot Token                                                                                                        |
-| `TELEGRAM_CHAT_ID`         | ❌   | 字符串                 | **Secrets**    | —                      | `987654321`                                         | 接收消息的 chat id                                                                                                        |
-| `SMTP_HOST`                | ❌   | 主机名                 | Secrets        | —                      | `smtp.qq.com`                                       | 邮件服务器                                                                                                                |
-| `SMTP_PORT`                | ❌   | 数字                   | Secrets        | `465`                  | `465`                                               | —                                                                                                                         |
-| `SMTP_USER`                | ❌   | 字符串                 | Secrets        | —                      | `bot@example.com`                                   | —                                                                                                                         |
-| `SMTP_PASS`                | ❌   | 字符串                 | **Secrets**    | —                      | （授权码）                                          | 邮箱授权码，不是登录密码                                                                                                  |
-| `NOTIFY_EMAIL_TO`          | ❌   | 邮箱                   | Secrets        | —                      | `me@example.com`                                    | 收件人                                                                                                                    |
-| `WECHAT_APPID`             | ❌   | 字符串                 | Secrets        | —                      | `wx1234567890abcdef`                                | 公众号 AppID（设置与开发 → 基本配置）                                                                                     |
-| `WECHAT_APPSECRET`         | ❌   | 字符串                 | **Secrets**    | —                      | （开发者密码）                                      | 公众号 AppSecret，和 AppID 同时填写才启用                                                                                 |
-| `WECHAT_THUMB_MEDIA_ID`    | ❌   | 字符串                 | Variables      | —                      | `AbCdEf...`                                         | 封面永久素材 media_id；不填时每次上传网站分享图                                                                           |
-| `WECHAT_AUTHOR`            | ❌   | 字符串                 | Variables      | —                      | `AI序言`                                            | 草稿的作者署名                                                                                                            |
-| `NOTIFY_ON_SUCCESS`        | ❌   | bool                   | Variables      | `false`                | `true`                                              | 没有变动也推送"一切正常"                                                                                                  |
-| `ANOMALY_THRESHOLD`        | ❌   | 0~1                    | Variables      | `0.8`                  | `0.8`                                               | V3 突变阈值                                                                                                               |
-| `STALE_ALERT_DAYS`         | ❌   | 整数                   | Variables      | `3`                    | `3`                                                 | 连续失败几天后高优先级告警                                                                                                |
-| `STALE_WARN_DAYS`          | ❌   | 整数                   | Variables      | `7`                    | `7`                                                 | 连续失败几天后网站显示过期提示                                                                                            |
-| `FX_FALLBACK_RATE`         | ❌   | 数字                   | Variables      | `7.1`                  | `7.1`                                               | 汇率接口长期失败时的兜底汇率                                                                                              |
-| `SOURCES_ENABLED`          | ❌   | 逗号列表               | Variables      | 全部                   | `litellm,openrouter,deepseek`                       | 只运行部分源（调试用）                                                                                                    |
-| `DRY_RUN`                  | ❌   | bool                   | 本地           | `false`                | `true`                                              | 只抓取和打印，不写 data/、不推送                                                                                          |
-| `LOG_LEVEL`                | ❌   | 枚举                   | 本地/Variables | `info`                 | `debug`                                             | `debug/info/warn/error`                                                                                                   |
-| `ANALYTICS_PROVIDER`       | ❌   | `cloudflare` / `umami` | Variables      | 空（关闭）             | `cloudflare`                                        | 可选访问统计，不使用 Cookie；只在构建网站时读取                                                                           |
-| `ANALYTICS_TOKEN`          | ❌   | 字符串                 | Variables      | —                      | `0123…cdef`                                         | Cloudflare beacon token（32 位十六进制）或 Umami 网站 ID（UUID）。公开值，不是密钥                                        |
-| `GOOGLE_SITE_VERIFICATION` | ❌   | 字符串                 | Variables      | 空                     | `AbC-123_x`                                         | Google Search Console「HTML 标记」验证值，写进 `<meta name="google-site-verification">`。公开值，只接受字母数字、`_`、`-` |
-| `BAIDU_SITE_VERIFICATION`  | ❌   | 字符串                 | Variables      | 空                     | `codeva-AbC123`                                     | 百度搜索资源平台「HTML 标签」验证值，写进 `<meta name="baidu-site-verification">`                                         |
-| `ANALYTICS_SCRIPT_URL`     | ❌   | URL                    | Variables      | Umami 官方云           | `https://stats.example.com/script.js`               | 仅 Umami 自建实例需要，必须 https                                                                                         |
-| `TZ`                       | ❌   | 时区                   | workflow env   | `Asia/Shanghai`        | —                                                   | 日志和"今天"按北京时间算                                                                                                  |
+| 变量                       | 必填 | 类型                   | 放在              | 默认值                 | 示例                                                | 用途                                                                                                                      |
+| -------------------------- | ---- | ---------------------- | ----------------- | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `SITE_URL`                 | ✅   | URL                    | Variables         | —                      | `https://alice.github.io`                           | 网站根地址，用于 RSS、sitemap、通知中的链接                                                                               |
+| `BASE_PATH`                | ✅   | 路径                   | Variables         | `/`                    | `/ai-api-price/`                                    | 部署在 `xxx.github.io/<仓库名>/` 时必须设置成仓库名                                                                       |
+| `NOTIFY_CHANNELS`          | ❌   | 逗号列表               | Variables         | 自动（有配置的都启用） | `feishu,telegram`                                   | 指定启用哪些推送渠道                                                                                                      |
+| `FEISHU_WEBHOOK_URL`       | ❌   | URL                    | **Secrets**       | —                      | `https://open.feishu.cn/open-apis/bot/v2/hook/xxxx` | 飞书群机器人 Webhook                                                                                                      |
+| `FEISHU_WEBHOOK_SECRET`    | ❌   | 字符串                 | **Secrets**       | —                      | `aBcD...`                                           | 飞书"签名校验"密钥（建议开启）                                                                                            |
+| `TELEGRAM_BOT_TOKEN`       | ❌   | 字符串                 | **Secrets**       | —                      | `123456:ABC-DEF...`                                 | Telegram Bot Token                                                                                                        |
+| `TELEGRAM_CHAT_ID`         | ❌   | 字符串                 | **Secrets**       | —                      | `987654321`                                         | 接收消息的 chat id                                                                                                        |
+| `SMTP_HOST`                | ❌   | 主机名                 | Secrets           | —                      | `smtp.qq.com`                                       | 邮件服务器                                                                                                                |
+| `SMTP_PORT`                | ❌   | 数字                   | Secrets           | `465`                  | `465`                                               | —                                                                                                                         |
+| `SMTP_USER`                | ❌   | 字符串                 | Secrets           | —                      | `bot@example.com`                                   | —                                                                                                                         |
+| `SMTP_PASS`                | ❌   | 字符串                 | **Secrets**       | —                      | （授权码）                                          | 邮箱授权码，不是登录密码                                                                                                  |
+| `NOTIFY_EMAIL_TO`          | ❌   | 邮箱                   | Secrets           | —                      | `me@example.com`                                    | 收件人                                                                                                                    |
+| `WECHAT_APPID`             | ❌   | 字符串                 | Secrets           | —                      | `wx1234567890abcdef`                                | 公众号 AppID（设置与开发 → 基本配置）                                                                                     |
+| `WECHAT_APPSECRET`         | ❌   | 字符串                 | **Secrets**       | —                      | （开发者密码）                                      | 公众号 AppSecret，和 AppID 同时填写才启用                                                                                 |
+| `WECHAT_THUMB_MEDIA_ID`    | ❌   | 字符串                 | Variables         | —                      | `AbCdEf...`                                         | 封面永久素材 media_id；不填时每次上传网站分享图                                                                           |
+| `WECHAT_AUTHOR`            | ❌   | 字符串                 | Variables         | —                      | `AI序言`                                            | 草稿的作者署名                                                                                                            |
+| `CF_API_TOKEN`             | ❌   | 字符串                 | **只放本机 .env** | —                      | （API 令牌）                                        | 本地后台的访问数据；权限 Account Analytics 只读                                                                           |
+| `CF_ACCOUNT_ID`            | ❌   | 字符串                 | 只放本机 .env     | —                      | `0123abcd...`                                       | Cloudflare 账号 ID                                                                                                        |
+| `CF_SITE_TAG`              | ❌   | 字符串                 | 只放本机 .env     | —                      | `4567efgh...`                                       | Web Analytics 站点的 site tag                                                                                             |
+| `NOTIFY_ON_SUCCESS`        | ❌   | bool                   | Variables         | `false`                | `true`                                              | 没有变动也推送"一切正常"                                                                                                  |
+| `ANOMALY_THRESHOLD`        | ❌   | 0~1                    | Variables         | `0.8`                  | `0.8`                                               | V3 突变阈值                                                                                                               |
+| `STALE_ALERT_DAYS`         | ❌   | 整数                   | Variables         | `3`                    | `3`                                                 | 连续失败几天后高优先级告警                                                                                                |
+| `STALE_WARN_DAYS`          | ❌   | 整数                   | Variables         | `7`                    | `7`                                                 | 连续失败几天后网站显示过期提示                                                                                            |
+| `FX_FALLBACK_RATE`         | ❌   | 数字                   | Variables         | `7.1`                  | `7.1`                                               | 汇率接口长期失败时的兜底汇率                                                                                              |
+| `SOURCES_ENABLED`          | ❌   | 逗号列表               | Variables         | 全部                   | `litellm,openrouter,deepseek`                       | 只运行部分源（调试用）                                                                                                    |
+| `DRY_RUN`                  | ❌   | bool                   | 本地              | `false`                | `true`                                              | 只抓取和打印，不写 data/、不推送                                                                                          |
+| `LOG_LEVEL`                | ❌   | 枚举                   | 本地/Variables    | `info`                 | `debug`                                             | `debug/info/warn/error`                                                                                                   |
+| `ANALYTICS_PROVIDER`       | ❌   | `cloudflare` / `umami` | Variables         | 空（关闭）             | `cloudflare`                                        | 可选访问统计，不使用 Cookie；只在构建网站时读取                                                                           |
+| `ANALYTICS_TOKEN`          | ❌   | 字符串                 | Variables         | —                      | `0123…cdef`                                         | Cloudflare beacon token（32 位十六进制）或 Umami 网站 ID（UUID）。公开值，不是密钥                                        |
+| `GOOGLE_SITE_VERIFICATION` | ❌   | 字符串                 | Variables         | 空                     | `AbC-123_x`                                         | Google Search Console「HTML 标记」验证值，写进 `<meta name="google-site-verification">`。公开值，只接受字母数字、`_`、`-` |
+| `BAIDU_SITE_VERIFICATION`  | ❌   | 字符串                 | Variables         | 空                     | `codeva-AbC123`                                     | 百度搜索资源平台「HTML 标签」验证值，写进 `<meta name="baidu-site-verification">`                                         |
+| `ANALYTICS_SCRIPT_URL`     | ❌   | URL                    | Variables         | Umami 官方云           | `https://stats.example.com/script.js`               | 仅 Umami 自建实例需要，必须 https                                                                                         |
+| `TZ`                       | ❌   | 时区                   | workflow env      | `Asia/Shanghai`        | —                                                   | 日志和"今天"按北京时间算                                                                                                  |
 
 启动时由 `packages/pipeline/src/config.ts` 用 Zod 校验：格式不对直接退出（`E0001`）；某个推送渠道配置不完整（例如只填了 Telegram Token 没填 Chat ID）给出 `W0002` 并禁用该渠道。
 
@@ -917,7 +920,16 @@ concurrency: { group: daily, cancel-in-progress: false }
 4. 本地测试：`pnpm pipeline wechat:preview` 先看排版，再 `pnpm pipeline wechat:draft` 存一篇草稿；第一次会上传封面并在日志里打印 media_id，填入 `WECHAT_THUMB_MEDIA_ID`
 5. 在手机「公众号助手」里打开草稿，确认无误后群发（未认证订阅号每天可群发 1 次）
 
-### 8.7 外部数据源
+### 8.7 本地后台的访问数据（可选）
+
+`pnpm admin` 的「访问数据」板块读取 Cloudflare Web Analytics。三个值只放在本机的 `.env`，**不要**放进 GitHub Secrets：
+
+1. Cloudflare 后台 → 右上角头像 → My Profile → API Tokens → Create Token → Custom token；权限选 **Account → Account Analytics → Read**，Account Resources 选你的账号；生成后复制到 `CF_API_TOKEN`（只显示一次）
+2. 账号首页右侧栏（或浏览器地址栏 `dash.cloudflare.com/<这一段>/`）的 Account ID → `CF_ACCOUNT_ID`
+3. Web Analytics → 点进本站 → 浏览器地址栏里 `siteTag` 后面的那串字符 → `CF_SITE_TAG`
+4. 重新打开 `pnpm admin`。填错时页面会显示 Cloudflare 返回的错误信息（例如没有权限、账号不对）
+
+### 8.8 外部数据源
 
 LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
@@ -1206,3 +1218,15 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 - **推送渠道**（`notify/wechat.ts`）：配置了 `WECHAT_APPID` + `WECHAT_APPSECRET` 才启用，随每日管线推送；当天没有可写的变动时不建草稿。封面优先用 `WECHAT_THUMB_MEDIA_ID`，没填时下载网站 `og/site.png` 上传为永久素材，日志提示保存 media_id。
 - **手动存草稿**：`pnpm pipeline wechat:draft [YYYY-MM-DD]` 把某一天的日报存进草稿箱，用于本地真实测试。配置见 §8.6。
 - **待做**：部署到固定 IP 的服务器（GitHub Actions 的 IP 进不了白名单，那里不要配置 `WECHAT_*`）。
+
+### 3.25 本地后台（1.5）
+
+- **定位**：只在本机运行、只读的运维后台，`pnpm admin` 启动后打开 http://localhost:4400 （`--port` 可改端口）。服务只监听 127.0.0.1，每次刷新都重新读 `data/`，不改任何文件；网站是 GitHub Pages 静态站，没有服务器，所以后台不部署上线。看之前先 `git pull` 拿到线上最新数据。
+- **板块**（`packages/pipeline/src/admin/`）：
+  - 概览：模型数、在售报价、平台、厂商、已下架、数据源成功数、告警数、隔离区条数；最近一次运行的时间、结果、耗时和汇率
+  - 访问数据：近 30 天浏览量和访问次数、每日柱状图、热门页面、访问来源、国家/地区（Cloudflare GraphQL `rumPageloadEventsAdaptiveGroups`，缓存 10 分钟，`?refresh=1` 强制刷新）。没配置时提示要填哪些变量，接口出错时显示错误信息，其它板块照常。配置见 §8.7
+  - 抓取状态：每个数据源的状态、报价数、耗时、上次成功时间、错误；失败的排最前，连续失败 3 次以上标红
+  - 告警和隔离区：`status.json` 的告警按代码分组（附 §9 的中文含义），可展开明细（带模型名）；隔离区条目
+  - 变动趋势：近 30 天每天的降价、涨价、新模型、下架（堆叠柱状图，悬停看数字）
+  - 数据质量：OpenRouter 异常低价（V9）、过期报价（连续几天没抓到）、疑似重复的模型 ID（同厂商下 2p5/2.5、带不带 -instruct 等归一化后相同，需人工确认后加到 `aliases.yaml`）、展示名是原始 ID 的报价（按厂商汇总）
+- **实现**：`insights.ts` 纯计算，`analytics.ts` Cloudflare 接口，`dashboard.ts` 读数据并组装，`html.ts` / `render.ts` 服务端拼 HTML（内联 SVG 图表，无前端依赖，跟随系统深浅色），`server.ts` 用 `node:http`。所有文字转义；Cloudflare 令牌不会出现在页面和错误信息里。
