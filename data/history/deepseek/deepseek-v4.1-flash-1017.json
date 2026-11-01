@@ -1,15 +1,6 @@
 {
   "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
   "series": {
-    "databricks:deepseek/deepseek-v4.1-flash-1017": [
-      {
-        "input": 0.30002,
-        "output": 1.20001,
-        "cacheRead": 0.007,
-        "cacheWrite": 0.30002,
-        "effectiveDate": "2026-10-29"
-      }
-    ],
     "baseten:deepseek/deepseek-v4.1-flash-1017": [
       {
         "input": 0.3,
@@ -42,6 +33,22 @@
         "cacheRead": 0.0065,
         "cacheWrite": null,
         "effectiveDate": "2026-10-31"
+      },
+      {
+        "input": 0.29,
+        "output": 1.2,
+        "cacheRead": 0.007,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-01"
+      }
+    ],
+    "databricks:deepseek/deepseek-v4.1-flash-1017": [
+      {
+        "input": 0.30002,
+        "output": 1.20001,
+        "cacheRead": 0.007,
+        "cacheWrite": 0.30002,
+        "effectiveDate": "2026-10-29"
       }
     ],
     "deepinfra:deepseek/deepseek-v4.1-flash-1017": [

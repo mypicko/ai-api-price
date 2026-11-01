@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-6-astra-law",
+  "series": {
+    "official:openai/gpt-6-astra-law": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-01"
+      }
+    ]
+  }
+}

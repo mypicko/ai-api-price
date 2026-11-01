@@ -1,6 +1,15 @@
 {
   "modelSlug": "zhipu/glm-4.5v",
   "series": {
+    "fireworks:zhipu/glm-4.5v": [
+      {
+        "input": 1.2,
+        "output": 1.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "novita:zhipu/glm-4.5v": [
       {
         "input": 0.6,
@@ -28,13 +37,13 @@
         "effectiveDate": "2026-10-18"
       }
     ],
-    "fireworks:zhipu/glm-4.5v": [
+    "siliconflow-cn:zhipu/glm-4.5v": [
       {
-        "input": 1.2,
-        "output": 1.2,
+        "input": 0.149935,
+        "output": 0.899609,
         "cacheRead": null,
         "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
+        "effectiveDate": "2026-11-01"
       }
     ]
   }

@@ -198,6 +198,13 @@
         "cacheRead": 0.0163,
         "cacheWrite": null,
         "effectiveDate": "2026-10-31"
+      },
+      {
+        "input": 0.0113,
+        "output": 0.1707,
+        "cacheRead": 0.0113,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-01"
       }
     ],
     "parasail:zhipu/glm-5.3-flash": [
@@ -207,6 +214,15 @@
         "cacheRead": 0.03,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      }
+    ],
+    "siliconflow-cn:zhipu/glm-5.3-flash": [
+      {
+        "input": 0.119948,
+        "output": 0.419817,
+        "cacheRead": 0.034485,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-01"
       }
     ],
     "siliconflow:zhipu/glm-5.3-flash": [

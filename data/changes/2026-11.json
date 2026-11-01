@@ -1,0 +1,277 @@
+{
+  "month": "2026-11",
+  "events": [
+    {
+      "id": "2026-11-01-crusoe:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_up",
+      "offeringId": "crusoe:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "crusoe",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "cacheRead",
+          "old": 0.0065,
+          "new": 0.007,
+          "pct": 0.07692
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-crusoe:deepseek/deepseek-v4.1-flash-1017-1",
+      "type": "price_up",
+      "offeringId": "crusoe:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "platform": "crusoe",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "cacheRead",
+          "old": 0.0065,
+          "new": 0.007,
+          "pct": 0.07692
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-deepinfra:stepfun/step-5-preview-1",
+      "type": "removed",
+      "offeringId": "deepinfra:stepfun/step-5-preview",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-5-preview",
+      "displayName": "Step 5 Preview",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-official:openai/gpt-6-astra-law-1",
+      "type": "new_model",
+      "offeringId": "official:openai/gpt-6-astra-law",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6-astra-law",
+      "displayName": "gpt-6-astra-law",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-openrouter:alibaba/qwen3.8-27b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.8-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.8-27b",
+      "displayName": "Qwen3.8 27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.04,
+          "new": 0.15,
+          "pct": 2.75
+        },
+        {
+          "field": "output",
+          "old": 2.3,
+          "new": 1.875,
+          "pct": -0.1848
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.02,
+          "new": 0.0375,
+          "pct": 0.875
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-openrouter:deepseek/deepseek-v4-pro-0813-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro-0813",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro-0813",
+      "displayName": "DeepSeek V4 Pro 0813",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.66,
+          "new": 0.115,
+          "pct": -0.8258
+        },
+        {
+          "field": "output",
+          "old": 1.98,
+          "new": 4,
+          "pct": 1.02
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.022,
+          "new": 0.11,
+          "pct": 4
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-openrouter:zhipu/glm-4.7-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-4.7",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.7",
+      "displayName": "GLM 4.7",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.54,
+          "new": 0.6,
+          "pct": 0.1111
+        },
+        {
+          "field": "output",
+          "old": 1.98,
+          "new": 2.2,
+          "pct": 0.1111
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.099,
+          "new": 0.11,
+          "pct": 0.1111
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-openrouter:zhipu/glm-5.3-flash-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0163,
+          "new": 0.0113,
+          "pct": -0.3067
+        },
+        {
+          "field": "output",
+          "old": 0.1479,
+          "new": 0.1707,
+          "pct": 0.1542
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0163,
+          "new": 0.0113,
+          "pct": -0.3067
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-siliconflow-cn:alibaba/qwen3.6-27b-1",
+      "type": "new_model",
+      "offeringId": "siliconflow-cn:alibaba/qwen3.6-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.6-27b",
+      "displayName": "Qwen3.6 27B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-siliconflow-cn:alibaba/qwen3.8-27b-1",
+      "type": "new_model",
+      "offeringId": "siliconflow-cn:alibaba/qwen3.8-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.8-27b",
+      "displayName": "Qwen3.8 27B",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-siliconflow-cn:zhipu/glm-4.5v-1",
+      "type": "new_model",
+      "offeringId": "siliconflow-cn:zhipu/glm-4.5v",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.5v",
+      "displayName": "GLM-4.5V",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-siliconflow-cn:zhipu/glm-5.3-1",
+      "type": "new_model",
+      "offeringId": "siliconflow-cn:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM-5.3",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-siliconflow-cn:zhipu/glm-5.3-flash-1",
+      "type": "new_model",
+      "offeringId": "siliconflow-cn:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM-5.3-Flash",
+      "platform": "siliconflow-cn",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    },
+    {
+      "id": "2026-11-01-together:meta/muse-glimmer-30b-1",
+      "type": "removed",
+      "offeringId": "together:meta/muse-glimmer-30b",
+      "vendor": "meta",
+      "modelSlug": "meta/muse-glimmer-30b",
+      "displayName": "Muse Glimmer 30B",
+      "platform": "together",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-01T02:19:26Z"
+    }
+  ]
+}
