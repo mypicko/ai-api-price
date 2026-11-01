@@ -29,6 +29,7 @@ import { runSnapshot } from "./tools/snapshot";
 import { validateDataDir } from "./tools/validate-data";
 import { migrateDataDir } from "./tools/migrate-slugs";
 import { reportForDate, runWechatPreview } from "./tools/wechat-preview";
+import { shanghaiDate } from "./steps/dates";
 import { DEFAULT_ADMIN_PORT, startAdminServer } from "./admin/server";
 import { loadAliases } from "./config-files";
 import { createAliasResolver } from "./steps/normalize";
@@ -46,7 +47,7 @@ const USAGE = `用法：pnpm pipeline <命令>
   migrate-slugs [--dry-run]                    模型 ID 规则改动后，把 data/ 的已有数据改名合并
   wechat:preview [YYYY-MM-DD]                  生成公众号日报的本地预览（.preview/），不调接口
   admin [--port 4400]                          启动本地后台（只在本机，只读），浏览器打开 http://localhost:4400
-  wechat:draft [YYYY-MM-DD]                    把某一天的日报存进公众号草稿箱（需要 WECHAT_* 配置和 IP 白名单）
+  wechat:draft [YYYY-MM-DD]                    把某一天（默认北京时间今天）的日报存进公众号草稿箱（需要 WECHAT_* 配置和 IP 白名单）
 `;
 
 function out(text: string): void {
@@ -257,10 +258,11 @@ async function commandWechatDraft(args: readonly string[], rt: Runtime): Promise
     out("没有配置公众号：在 .env 里填写 WECHAT_APPID 和 WECHAT_APPSECRET");
     return 1;
   }
+  // 每日自动运行不带日期：取北京时间当天，当天没有变动就不建草稿（不能拿前几天的旧变动凑数）
   const report = await reportForDate({
     dataDir: DATA_DIR,
     siteUrl: rt.config.siteUrl,
-    ...(args[0] === undefined ? {} : { date: args[0] }),
+    date: args[0] ?? shanghaiDate(new Date()),
   });
   if (!buildWechatArticle(report, await loadArticleContext(ROOT_DIR, DATA_DIR))) {
     out(`${report.date} 没有值得发的变动，不生成草稿`);

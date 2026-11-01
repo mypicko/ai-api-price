@@ -916,7 +916,7 @@ concurrency: { group: daily, cancel-in-progress: false }
 
 1. 公众号后台「设置与开发 → 接口权限」：确认「草稿箱」是「已获得」
 2. 「设置与开发 → 基本配置」：复制 AppID 填入 `WECHAT_APPID`；生成 AppSecret 填入 `WECHAT_APPSECRET`（只显示一次，不要发到聊天或提交进仓库）
-3. 同一页的 **IP 白名单**：填运行管线那台机器的公网 IP（本机可用 `curl -s ifconfig.me` 查看）。GitHub Actions 的 IP 不固定，正式每天运行要放在固定 IP 的服务器上
+3. 同一页的 **IP 白名单**：填运行管线那台机器的公网 IP（本机可用 `curl -s ifconfig.me` 查看）。GitHub Actions 的 IP 不固定，正式每天运行放在腾讯云服务器上（§8.9）
 4. 本地测试：`pnpm pipeline wechat:preview` 先看排版，再 `pnpm pipeline wechat:draft` 存一篇草稿；第一次会上传封面并在日志里打印 media_id，填入 `WECHAT_THUMB_MEDIA_ID`
 5. 在手机「公众号助手」里打开草稿，确认无误后群发（未认证订阅号每天可群发 1 次）
 
@@ -932,6 +932,90 @@ concurrency: { group: daily, cancel-in-progress: false }
 ### 8.8 外部数据源
 
 LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
+
+### 8.9 腾讯云自托管运行器（公众号草稿）
+
+公众号接口要求调用方 IP 在白名单里，GitHub 托管机器的 IP 不固定，所以 `daily.yml` 的 `wechat` 任务跑在腾讯云服务器上（`runs-on: [self-hosted, tencent]`）。抓取、提交数据、部署网站仍在 GitHub 托管机器上，服务器出问题只影响当天的草稿。
+
+**仓库是公开的，三条防护措施：**
+
+| 措施                                  | 做法                                                                                                                                                                                                                                              | 状态                 |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| 1. 自托管运行器只跑定时 / 手动任务    | `wechat` 只在 `daily.yml` 里（只有 `schedule`、`workflow_dispatch` 触发），`if` 再判断一次事件类型；公众号密钥只传给这个任务。`tests/workflows.test.ts` 检查：用自托管运行器的工作流不能有其它触发方式、`secrets.WECHAT_*` 只能出现在自托管任务里 | 已完成               |
+| 2. 外部 PR 运行工作流前需要批准       | 仓库 Settings → Actions → General → Fork pull request workflows 选「Require approval for all external contributors」（API：`fork-pr-contributor-approval` = `all_external_contributors`）                                                         | 已于 2026-11-02 开启 |
+| 3. 运行器用没有 sudo 权限的普通用户跑 | 见下面第二步                                                                                                                                                                                                                                      | 装服务器时照做       |
+
+另外，仓库 Actions 的默认令牌权限已于 2026-11-02 改为**只读**（Settings → Actions → General → Workflow permissions）。每个工作流都在文件里单独声明需要的权限（daily 写 contents / pages，ci、smoke 只读），新增工作流时也要写 `permissions:`，否则只有读权限。
+
+**第一步：开服务器**
+
+腾讯云轻量应用服务器，最低配置即可（2 核 2G），系统选 Ubuntu 24.04，地域选离你近的国内地域。轻量服务器自带固定公网 IP。防火墙**不需要**开放任何入站端口（运行器主动连 GitHub）。
+
+**第二步：建运行器专用用户（措施 3）**
+
+用默认的 `ubuntu` 管理员账号登录，执行：
+
+```bash
+sudo adduser --disabled-password --gecos "" runner
+```
+
+不要把 `runner` 加进 `sudo`、`docker` 组。以后运行器上跑的代码只有这个用户的权限。
+
+**第三步：装 Node.js 24、pnpm、git（管理员执行）**
+
+```bash
+sudo apt-get update && sudo apt-get install -y git curl ca-certificates
+curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo corepack enable
+node -v
+```
+
+`node -v` 显示 v24 开头即可。pnpm 由 `pnpm/action-setup` 在任务里按 `package.json` 的 `packageManager` 准备，不用单独装。
+
+**第四步：装 GitHub 运行器（以 runner 用户执行）**
+
+1. 浏览器打开仓库 Settings → Actions → Runners → **New self-hosted runner**，系统选 Linux / x64，页面会给出下载和配置命令（含一次性令牌，几十分钟内有效）。
+2. 切到 runner 用户，按页面命令下载解压：
+
+```bash
+sudo -iu runner
+mkdir actions-runner && cd actions-runner
+# 粘贴页面上「Download」一节的 curl 和 tar 命令
+```
+
+3. 配置时加上 `tencent` 标签（`--token` 用页面上的值）：
+
+```bash
+./config.sh --url https://github.com/mypicko/ai-api-price --token <页面上的令牌> --labels tencent --name tencent-1 --unattended
+exit
+```
+
+4. 回到管理员账号，装成开机自启的服务，**指定以 runner 用户运行**：
+
+```bash
+cd /home/runner/actions-runner
+sudo ./svc.sh install runner
+sudo ./svc.sh start
+sudo ./svc.sh status
+```
+
+仓库 Runners 页面显示 `tencent-1` 为 Idle 即成功。国内下载 GitHub 文件可能较慢，失败时重试或在服务器上配代理。
+
+**第五步：公众号和 GitHub 配置**
+
+1. 查服务器公网 IP（轻量服务器控制台也能看到），填进公众号后台「设置与开发 → 基本配置 → IP 白名单」：
+
+```bash
+curl -s ifconfig.me
+```
+
+2. 仓库 Settings → Secrets and variables → Actions：
+   - Secrets：`WECHAT_APPID`、`WECHAT_APPSECRET`
+   - Variables：`WECHAT_AUTHOR`（如 `AI序言`）、`WECHAT_THUMB_MEDIA_ID`（第一次运行后从日志里复制）、`WECHAT_ENABLED` = `true`
+3. 手动触发一次 daily（可以取消勾选「是否推送飞书」），看 `wechat` 任务的日志：第一次会上传封面并打印 media_id，填进 `WECHAT_THUMB_MEDIA_ID`；当天没有变动时日志显示「没有值得发的变动，不生成草稿」，属于正常。
+
+**停用**：把 `WECHAT_ENABLED` 改成 `false`（或删掉），`wechat` 任务就会跳过；服务器关机前先停用，否则任务会一直排队。
 
 ---
 
@@ -1217,7 +1301,7 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 - **接口**（`notify/wechat-api.ts`）：`stable_token` 换 access_token（有效期内复用，提前 5 分钟刷新）→ 需要时 `material/add_material` 上传封面 → `draft/add` 新建草稿。errcode 非 0 抛 `E5001`，常见错误码带中文提示（40164 IP 不在白名单、40125 AppSecret 错误、48001 没有接口权限）；错误信息不带 AppSecret 和 access_token。
 - **推送渠道**（`notify/wechat.ts`）：配置了 `WECHAT_APPID` + `WECHAT_APPSECRET` 才启用，随每日管线推送；当天没有可写的变动时不建草稿。封面优先用 `WECHAT_THUMB_MEDIA_ID`，没填时下载网站 `og/site.png` 上传为永久素材，日志提示保存 media_id。
 - **手动存草稿**：`pnpm pipeline wechat:draft [YYYY-MM-DD]` 把某一天的日报存进草稿箱，用于本地真实测试。配置见 §8.6。
-- **待做**：部署到固定 IP 的服务器（GitHub Actions 的 IP 进不了白名单，那里不要配置 `WECHAT_*`）。
+- **每日运行**：`daily.yml` 的 `wechat` 任务在 `update` 之后、跑在腾讯云自托管运行器上，执行 `wechat:draft`（不带日期时取北京时间当天，当天没有可写的变动就不建草稿）；仓库变量 `WECHAT_ENABLED=true` 才运行。服务器部署和安全措施见 §8.9。`update` 任务不传 `WECHAT_*`（GitHub 托管机器的 IP 进不了白名单）。
 
 ### 3.25 本地后台（1.5）
 
