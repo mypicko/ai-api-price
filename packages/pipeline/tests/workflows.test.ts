@@ -65,4 +65,16 @@ describe("工作流安全守卫", () => {
     expect(job?.if).toContain("vars.WECHAT_ENABLED == 'true'");
     expect(job?.["permissions"]).toEqual({ contents: "read" });
   });
+
+  it("公众号任务不依赖 github.com（腾讯云服务器连不上）：不用 checkout / setup-node / pnpm 安装 action", () => {
+    const steps = (load("daily.yml").jobs["wechat"]?.["steps"] ?? []) as readonly {
+      readonly uses?: string;
+      readonly run?: string;
+    }[];
+    const uses = steps.flatMap((s) => (s.uses ? [s.uses.split("@")[0]] : []));
+    expect(uses).toEqual([]);
+    const script = steps.map((s) => s.run ?? "").join("\n");
+    expect(script).toContain("https://api.github.com/repos/");
+    expect(script).not.toMatch(/https:\/\/github\.com/);
+  });
 });

@@ -151,25 +151,41 @@ jobs:
     needs: update
     if: ${{ vars.WECHAT_ENABLED == 'true' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
     runs-on: [self-hosted, tencent]
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
       contents: read
+    env:
+      SRC: ${{ github.workspace }}/src
+      COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
     steps:
-      # 取 main 最新提交：update 刚把当天的 data/ 推上去
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          ref: main
+      # 腾讯云服务器连不上 github.com（git 拉代码会超时），不用 actions/checkout、setup-node：
+      # 从 api.github.com 下载 main 的代码压缩包（跳转到能连通的 codeload.github.com）；
+      # main 上已经有 update 刚推上去的当天 data/。
+      - name: 下载最新代码
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          rm -rf "$SRC" && mkdir -p "$SRC"
+          curl -fsSL --retry 3 --max-time 120 \
+            -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/tarball/main" | tar -xz --strip-components=1 -C "$SRC"
 
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+      # Node.js 24 预装在服务器上（DEV_DOCUMENT §8.9）；pnpm 由 corepack 按 package.json 的 packageManager 从 npm 下载。
+      # 根目录脚本内部还会调用 pnpm，所以把 corepack 的 pnpm 放进本任务的 PATH（不需要服务器 root 权限）
+      - name: 准备 pnpm
+        run: |
+          node -v
+          mkdir -p "$RUNNER_TEMP/bin"
+          corepack enable --install-directory "$RUNNER_TEMP/bin" pnpm
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
 
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with:
-          node-version-file: .nvmrc
-          cache: pnpm
-
-      - run: pnpm install --frozen-lockfile
+      - name: 安装依赖
+        working-directory: ${{ env.SRC }}
+        run: pnpm install --frozen-lockfile
 
       - name: 存公众号草稿
+        working-directory: ${{ env.SRC }}
         env:
           SITE_URL: ${{ needs.update.outputs.site_url }}
           BASE_PATH: ${{ needs.update.outputs.base_path }}

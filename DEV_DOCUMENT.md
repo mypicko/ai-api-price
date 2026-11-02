@@ -943,68 +943,82 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | 1. 自托管运行器只跑定时 / 手动任务    | `wechat` 只在 `daily.yml` 里（只有 `schedule`、`workflow_dispatch` 触发），`if` 再判断一次事件类型；公众号密钥只传给这个任务。`tests/workflows.test.ts` 检查：用自托管运行器的工作流不能有其它触发方式、`secrets.WECHAT_*` 只能出现在自托管任务里 | 已完成               |
 | 2. 外部 PR 运行工作流前需要批准       | 仓库 Settings → Actions → General → Fork pull request workflows 选「Require approval for all external contributors」（API：`fork-pr-contributor-approval` = `all_external_contributors`）                                                         | 已于 2026-11-02 开启 |
-| 3. 运行器用没有 sudo 权限的普通用户跑 | 见下面第二步                                                                                                                                                                                                                                      | 装服务器时照做       |
+| 3. 运行器用没有 sudo 权限的普通用户跑 | 见下面「当前部署」和重装步骤 1、6                                                                                                                                                                                                                 | 已于 2026-11-02 完成 |
 
 另外，仓库 Actions 的默认令牌权限已于 2026-11-02 改为**只读**（Settings → Actions → General → Workflow permissions）。每个工作流都在文件里单独声明需要的权限（daily 写 contents / pages，ci、smoke 只读），新增工作流时也要写 `permissions:`，否则只有读权限。
 
-**第一步：开服务器**
+**当前部署（2026-11-02 安装）**
 
-腾讯云轻量应用服务器，最低配置即可（2 核 2G），系统选 Ubuntu 24.04，地域选离你近的国内地域。轻量服务器自带固定公网 IP。防火墙**不需要**开放任何入站端口（运行器主动连 GitHub）。
+| 项目       | 值                                                                                                 |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| 服务器     | 腾讯云轻量应用服务器 `82.156.6.167`（与 imagegen 网站共用），Ubuntu 24.04，2 核 3.6G               |
+| 管理员登录 | `ssh root@82.156.6.167`（SSH 密钥）                                                                |
+| 运行器     | `tencent-1`，v2.338.2，标签 `self-hosted, Linux, X64, tencent`，目录 `/home/runner/actions-runner` |
+| 运行用户   | `runner`（uid 1004，只在 `runner`、`users` 组，没有 sudo）                                         |
+| 系统服务   | `actions.runner.mypicko-ai-api-price.tencent-1.service`，开机自启，`User=runner`                   |
+| Node.js    | v24（NodeSource apt 源），pnpm 由任务里的 corepack 准备                                            |
 
-**第二步：建运行器专用用户（措施 3）**
+**网络限制**：这台服务器连不上 `github.com`（网页和 git 拉代码都超时），但 `api.github.com`、`codeload.github.com`、`objects.githubusercontent.com`、`*.actions.githubusercontent.com`、npm、微信接口都通。所以：
 
-用默认的 `ubuntu` 管理员账号登录，执行：
+- `wechat` 任务不用 `actions/checkout`、`setup-node`、`pnpm/action-setup`：代码从 `api.github.com/repos/<仓库>/tarball/main` 下载；Node.js 预装在服务器上；`corepack enable --install-directory "$RUNNER_TEMP/bin" pnpm` 把 pnpm 放进任务的 PATH。`tests/workflows.test.ts` 会拦住在这个任务里用 action 或 `https://github.com`。
+- 运行器安装包在服务器上直接下载极慢（10 分钟约 1MB），改为在本机下载后 `scp` 上传。
+
+**重装步骤**（换服务器或重建时照做，以 root 登录）：
+
+1. 建运行器专用用户（措施 3）。不要把 `runner` 加进 `sudo`、`docker` 组：
 
 ```bash
-sudo adduser --disabled-password --gecos "" runner
+adduser --disabled-password --gecos "" runner
 ```
 
-不要把 `runner` 加进 `sudo`、`docker` 组。以后运行器上跑的代码只有这个用户的权限。
-
-**第三步：装 Node.js 24、pnpm、git（管理员执行）**
+2. 装 Node.js 24：
 
 ```bash
-sudo apt-get update && sudo apt-get install -y git curl ca-certificates
-curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo corepack enable
+curl -fsSL https://deb.nodesource.com/setup_24.x -o /tmp/nodesource_setup.sh && bash /tmp/nodesource_setup.sh
+apt-get install -y nodejs git
 node -v
 ```
 
-`node -v` 显示 v24 开头即可。pnpm 由 `pnpm/action-setup` 在任务里按 `package.json` 的 `packageManager` 准备，不用单独装。
-
-**第四步：装 GitHub 运行器（以 runner 用户执行）**
-
-1. 浏览器打开仓库 Settings → Actions → Runners → **New self-hosted runner**，系统选 Linux / x64，页面会给出下载和配置命令（含一次性令牌，几十分钟内有效）。
-2. 切到 runner 用户，按页面命令下载解压：
+3. 在**本机**下载运行器安装包并核对 sha256（版本号、asset id、sha256 用 `gh api repos/actions/runner/releases/latest` 查），再上传：
 
 ```bash
-sudo -iu runner
-mkdir actions-runner && cd actions-runner
-# 粘贴页面上「Download」一节的 curl 和 tar 命令
+curl -fsSL -H "Accept: application/octet-stream" -o runner.tar.gz https://api.github.com/repos/actions/runner/releases/assets/<asset id>
+shasum -a 256 runner.tar.gz
+ssh root@82.156.6.167 'mkdir -p /home/runner/actions-runner && chown runner:runner /home/runner/actions-runner'
+scp runner.tar.gz root@82.156.6.167:/home/runner/actions-runner/
 ```
 
-3. 配置时加上 `tencent` 标签（`--token` 用页面上的值）：
-
-```bash
-./config.sh --url https://github.com/mypicko/ai-api-price --token <页面上的令牌> --labels tencent --name tencent-1 --unattended
-exit
-```
-
-4. 回到管理员账号，装成开机自启的服务，**指定以 runner 用户运行**：
+4. 在服务器上解压、装依赖：
 
 ```bash
 cd /home/runner/actions-runner
-sudo ./svc.sh install runner
-sudo ./svc.sh start
-sudo ./svc.sh status
+sha256sum runner.tar.gz
+chown runner:runner runner.tar.gz && sudo -u runner tar -xzf runner.tar.gz && rm runner.tar.gz
+./bin/installdependencies.sh
 ```
 
-仓库 Runners 页面显示 `tencent-1` 为 Idle 即成功。国内下载 GitHub 文件可能较慢，失败时重试或在服务器上配代理。
+5. 注册。令牌在本机用 `gh` 获取，通过管道传过去，不落盘、不显示：
 
-**第五步：公众号和 GitHub 配置**
+```bash
+gh api -X POST repos/mypicko/ai-api-price/actions/runners/registration-token --jq .token | ssh root@82.156.6.167 'read -r TOKEN; cd /home/runner/actions-runner && sudo -u runner ./config.sh --url https://github.com/mypicko/ai-api-price --token "$TOKEN" --name tencent-1 --labels tencent --unattended --replace'
+```
 
-1. 查服务器公网 IP（轻量服务器控制台也能看到），填进公众号后台「设置与开发 → 基本配置 → IP 白名单」：
+6. 装成开机服务，**指定以 runner 用户运行**：
+
+```bash
+cd /home/runner/actions-runner
+./svc.sh install runner
+./svc.sh start
+./svc.sh status
+```
+
+仓库 Runners 页面（或 `gh api repos/mypicko/ai-api-price/actions/runners`）显示 `tencent-1` 为 online 即成功。
+
+**卸载**：`cd /home/runner/actions-runner && ./svc.sh stop && ./svc.sh uninstall`，再用 `gh api -X POST repos/mypicko/ai-api-price/actions/runners/remove-token` 拿令牌执行 `sudo -u runner ./config.sh remove --token <令牌>`。
+
+**公众号和 GitHub 配置**（启用公众号任务前完成）
+
+1. 服务器公网 IP `82.156.6.167` 填进公众号后台「设置与开发 → 基本配置 → IP 白名单」：
 
 ```bash
 curl -s ifconfig.me
