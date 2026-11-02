@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "chutes:deepseek/deepseek-v4-flash-0731": [
+      {
+        "input": 0.44,
+        "output": 1.32,
+        "cacheRead": 0.044,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-02"
+      }
+    ],
     "cloudflare:deepseek/deepseek-v4-flash-0731": [
       {
         "input": 0.44,

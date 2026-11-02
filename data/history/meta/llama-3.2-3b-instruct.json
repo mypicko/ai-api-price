@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "fireworks:meta/llama-3.2-3b-instruct": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "hyperbolic:meta/llama-3.2-3b-instruct": [
       {
         "input": 0.12,
@@ -67,6 +76,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-25"
+      },
+      {
+        "input": 0.0509,
+        "output": 0.335,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-02"
       }
     ],
     "parasail:meta/llama-3.2-3b-instruct": [
@@ -82,15 +98,6 @@
       {
         "input": 0.06,
         "output": 0.06,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "fireworks:meta/llama-3.2-3b-instruct": [
-      {
-        "input": 0.1,
-        "output": 0.1,
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
