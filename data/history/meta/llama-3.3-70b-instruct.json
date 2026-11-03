@@ -64,6 +64,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "fireworks:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.9,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "groq:meta/llama-3.3-70b-instruct": [
       {
         "input": 0.59,
@@ -116,6 +125,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.2,
+        "output": 0.52,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-03"
       }
     ],
     "parasail:meta/llama-3.3-70b-instruct": [
@@ -158,15 +174,6 @@
       {
         "input": 0.71,
         "output": 0.71,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "fireworks:meta/llama-3.3-70b-instruct": [
-      {
-        "input": 0.9,
-        "output": 0.9,
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"

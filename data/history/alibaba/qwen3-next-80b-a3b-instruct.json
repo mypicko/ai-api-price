@@ -51,6 +51,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.1,
+        "output": 1.1,
+        "cacheRead": 0.07,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-03"
       }
     ],
     "parasail:alibaba/qwen3-next-80b-a3b-instruct": [
