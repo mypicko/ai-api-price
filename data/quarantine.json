@@ -1,3 +1,36 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "offeringId": "openrouter:google/gemma-4-26b-a4b-it",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.038,
+          "new": 0.073,
+          "pct": 0.9211
+        },
+        {
+          "field": "output",
+          "old": 0.114,
+          "new": 0.22,
+          "pct": 0.9298
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.019,
+          "new": 0.037,
+          "pct": 0.9474
+        }
+      ],
+      "candidate": {
+        "input": 0.073,
+        "output": 0.22,
+        "cacheRead": 0.037,
+        "cacheWrite": null
+      },
+      "firstSeenAt": "2026-11-04T03:02:27Z",
+      "lastSeenAt": "2026-11-04T03:02:27Z",
+      "confirmations": 1
+    }
+  ]
 }

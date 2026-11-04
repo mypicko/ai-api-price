@@ -42,6 +42,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.06,
+        "output": 0.24,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "openrouter:nvidia/nemotron-3.5-lightning": [

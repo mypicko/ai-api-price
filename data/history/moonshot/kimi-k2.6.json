@@ -96,6 +96,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.95,
+        "output": 4,
+        "cacheRead": 0.16,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "novita:moonshot/kimi-k2.6": [

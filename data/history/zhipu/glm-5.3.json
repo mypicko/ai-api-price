@@ -26,6 +26,13 @@
         "cacheRead": 0.26,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.7,
+        "output": 2.2,
+        "cacheRead": 0.13,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "coreweave:zhipu/glm-5.3": [

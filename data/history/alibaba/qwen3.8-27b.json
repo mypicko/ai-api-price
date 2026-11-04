@@ -62,6 +62,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.45,
+        "output": 3,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "novita:alibaba/qwen3.8-27b": [

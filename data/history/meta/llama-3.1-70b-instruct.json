@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "fireworks:meta/llama-3.1-70b-instruct": [
+      {
+        "input": 0.9,
+        "output": 0.9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "hyperbolic:meta/llama-3.1-70b-instruct": [
       {
         "input": 0.12,
@@ -53,21 +62,19 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.72,
+        "output": 0.72,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "vertex:meta/llama-3.1-70b-instruct": [
       {
         "input": 0,
         "output": 0,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "fireworks:meta/llama-3.1-70b-instruct": [
-      {
-        "input": 0.9,
-        "output": 0.9,
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"

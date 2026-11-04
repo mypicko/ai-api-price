@@ -26,6 +26,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 1,
+        "output": 3,
+        "cacheRead": 0.12,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b": [

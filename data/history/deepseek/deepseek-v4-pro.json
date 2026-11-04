@@ -71,6 +71,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 1.75,
+        "output": 3.5,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "novita:deepseek/deepseek-v4-pro": [

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "x-ai/grok-4.6-batch",
+  "series": {
+    "openrouter:x-ai/grok-4.6-batch": [
+      {
+        "input": 1.6,
+        "output": 4.8,
+        "cacheRead": 0.4,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
+      }
+    ]
+  }
+}

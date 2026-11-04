@@ -964,6 +964,472 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-03T03:58:02Z"
+    },
+    {
+      "id": "2026-11-04-azure:anthropic/claude-mythos-5.1-1",
+      "type": "new_model",
+      "offeringId": "azure:anthropic/claude-mythos-5.1",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-mythos-5.1",
+      "displayName": "claude-mythos-5-1",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-azure:openai/gpt-6.1-terra-1",
+      "type": "price_down",
+      "offeringId": "azure:openai/gpt-6.1-terra",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.1-terra",
+      "displayName": "GPT-6.1 Terra",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.2,
+          "new": 1,
+          "pct": -0.1667
+        },
+        {
+          "field": "output",
+          "old": 6,
+          "new": 5,
+          "pct": -0.1667
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.06,
+          "new": 0.05,
+          "pct": -0.1667
+        },
+        {
+          "field": "cacheWrite",
+          "old": 1.5,
+          "new": 1.25,
+          "pct": -0.1667
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-azure:openai/gpt-6.1-terra-pro-1",
+      "type": "price_down",
+      "offeringId": "azure:openai/gpt-6.1-terra-pro",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.1-terra-pro",
+      "displayName": "GPT-6.1 Terra Pro",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.2,
+          "new": 1,
+          "pct": -0.1667
+        },
+        {
+          "field": "output",
+          "old": 6,
+          "new": 5,
+          "pct": -0.1667
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.06,
+          "new": 0.05,
+          "pct": -0.1667
+        },
+        {
+          "field": "cacheWrite",
+          "old": 1.5,
+          "new": 1.25,
+          "pct": -0.1667
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-cloudflare:zhipu/glm-5.3-1",
+      "type": "price_down",
+      "offeringId": "cloudflare:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "cloudflare",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.4,
+          "new": 0.7,
+          "pct": -0.5
+        },
+        {
+          "field": "output",
+          "old": 4.4,
+          "new": 2.2,
+          "pct": -0.5
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.26,
+          "new": 0.13,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-deepinfra:nvidia/nemotron-3-super-120b-a12b-1",
+      "type": "price_down",
+      "offeringId": "deepinfra:nvidia/nemotron-3-super-120b-a12b",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nemotron-3-super-120b-a12b",
+      "displayName": "NVIDIA-Nemotron-3-Super-120B-A12B",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.085,
+          "new": 0.075,
+          "pct": -0.1176
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-nebius:deepseek/deepseek-v4-flash-0731-1",
+      "type": "context_change",
+      "offeringId": "nebius:deepseek/deepseek-v4-flash-0731",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash-0731",
+      "displayName": "DeepSeek-V4-Flash-0731",
+      "platform": "nebius",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 1024000,
+          "new": 1048576,
+          "pct": 0.024
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-nebius:moonshot/kimi-k3-1",
+      "type": "context_change",
+      "offeringId": "nebius:moonshot/kimi-k3",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3",
+      "displayName": "Kimi-K3",
+      "platform": "nebius",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 1024000,
+          "new": 1048576,
+          "pct": 0.024
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-nebius:nvidia/nemotron-3.5-super-vl-1",
+      "type": "restored",
+      "offeringId": "nebius:nvidia/nemotron-3.5-super-vl",
+      "vendor": "nvidia",
+      "modelSlug": "nvidia/nemotron-3.5-super-vl",
+      "displayName": "Nemotron-3.5-Super-VL",
+      "platform": "nebius",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-official:mistral/mistral-large-4-1",
+      "type": "price_down",
+      "offeringId": "official:mistral/mistral-large-4",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-large-4",
+      "displayName": "mistral-large-4",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.36,
+          "new": 0.7,
+          "pct": -0.4853
+        },
+        {
+          "field": "output",
+          "old": 4.18,
+          "new": 2.1,
+          "pct": -0.4976
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.14,
+          "new": 0.07,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-official:mistral/mistral-large-4.0-1",
+      "type": "price_down",
+      "offeringId": "official:mistral/mistral-large-4.0",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-large-4.0",
+      "displayName": "Mistral Large 4",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.36,
+          "new": 0.7,
+          "pct": -0.4853
+        },
+        {
+          "field": "output",
+          "old": 4.18,
+          "new": 2.1,
+          "pct": -0.4976
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.14,
+          "new": 0.07,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-openrouter:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "cacheRead",
+          "old": 0.006,
+          "new": 0.018,
+          "pct": 2
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-openrouter:meta/llama-3.1-70b-instruct-1",
+      "type": "price_up",
+      "offeringId": "openrouter:meta/llama-3.1-70b-instruct",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-3.1-70b-instruct",
+      "displayName": "Llama 3.1 70B Instruct",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.4,
+          "new": 0.72,
+          "pct": 0.8
+        },
+        {
+          "field": "output",
+          "old": 0.4,
+          "new": 0.72,
+          "pct": 0.8
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-openrouter:meta/llama-3.3-70b-instruct-1",
+      "type": "price_down",
+      "offeringId": "openrouter:meta/llama-3.3-70b-instruct",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-3.3-70b-instruct",
+      "displayName": "Llama 3.3 70B Instruct",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.2,
+          "new": 0.1,
+          "pct": -0.5
+        },
+        {
+          "field": "output",
+          "old": 0.52,
+          "new": 0.32,
+          "pct": -0.3846
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.1,
+          "new": null,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-openrouter:moonshot/kimi-k3-1",
+      "type": "price_up",
+      "offeringId": "openrouter:moonshot/kimi-k3",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3",
+      "displayName": "Kimi K3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.192,
+          "new": 0.2,
+          "pct": 0.04167
+        },
+        {
+          "field": "output",
+          "old": 15,
+          "new": 16,
+          "pct": 0.06667
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.182,
+          "new": 0.19,
+          "pct": 0.04396
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-openrouter:x-ai/grok-4.6-batch-1",
+      "type": "new_model",
+      "offeringId": "openrouter:x-ai/grok-4.6-batch",
+      "vendor": "x-ai",
+      "modelSlug": "x-ai/grok-4.6-batch",
+      "displayName": "Grok 4.6 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-openrouter:x-ai/grok-4.7-batch-1",
+      "type": "new_model",
+      "offeringId": "openrouter:x-ai/grok-4.7-batch",
+      "vendor": "x-ai",
+      "modelSlug": "x-ai/grok-4.7-batch",
+      "displayName": "Grok 4.7 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-openrouter:zhipu/glm-5.3-flash-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0285,
+          "new": 0.0313,
+          "pct": 0.09825
+        },
+        {
+          "field": "output",
+          "old": 0.0923,
+          "new": 0.0846,
+          "pct": -0.08342
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0285,
+          "new": 0.03,
+          "pct": 0.05263
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-vertex:google/gemini-omni-1.1-flash-preview-1",
+      "type": "context_change",
+      "offeringId": "vertex:google/gemini-omni-1.1-flash-preview",
+      "vendor": "google",
+      "modelSlug": "google/gemini-omni-1.1-flash-preview",
+      "displayName": "gemini-omni-1.1-flash-preview",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 57920,
+          "new": 131072,
+          "pct": 1.263
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
+    },
+    {
+      "id": "2026-11-04-vertex:google/gemini-omni-flash-preview-1",
+      "type": "context_change",
+      "offeringId": "vertex:google/gemini-omni-flash-preview",
+      "vendor": "google",
+      "modelSlug": "google/gemini-omni-flash-preview",
+      "displayName": "gemini-omni-flash-preview",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 1048576,
+          "new": 131072,
+          "pct": -0.875
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-04T03:02:27Z"
     }
   ]
 }

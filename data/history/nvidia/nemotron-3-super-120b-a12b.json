@@ -17,6 +17,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.075,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "nebius:nvidia/nemotron-3-super-120b-a12b": [
@@ -26,6 +33,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.3,
+        "output": 0.9,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "openrouter:nvidia/nemotron-3-super-120b-a12b": [

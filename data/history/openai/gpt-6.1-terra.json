@@ -8,6 +8,13 @@
         "cacheRead": 0.06,
         "cacheWrite": 1.5,
         "effectiveDate": "2026-10-28"
+      },
+      {
+        "input": 1,
+        "output": 5,
+        "cacheRead": 0.05,
+        "cacheWrite": 1.25,
+        "effectiveDate": "2026-11-04"
       }
     ],
     "bedrock:openai/gpt-6.1-terra": [
