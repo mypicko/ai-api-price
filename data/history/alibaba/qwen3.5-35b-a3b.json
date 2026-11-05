@@ -10,6 +10,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:alibaba/qwen3.5-35b-a3b": [
+      {
+        "input": 0.25,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:alibaba/qwen3.5-35b-a3b": [
       {
         "input": 0.25,

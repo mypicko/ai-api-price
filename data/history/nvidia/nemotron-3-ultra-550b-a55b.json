@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:nvidia/nemotron-3-ultra-550b-a55b": [
+      {
+        "input": 0.8,
+        "output": 2.6,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "nebius:nvidia/nemotron-3-ultra-550b-a55b": [
       {
         "input": 1,

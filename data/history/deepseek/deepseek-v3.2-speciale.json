@@ -9,6 +9,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "gmi:deepseek/deepseek-v3.2-speciale": [
+      {
+        "input": 0.28,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
     ]
   }
 }

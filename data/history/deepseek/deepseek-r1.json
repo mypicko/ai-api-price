@@ -1,6 +1,15 @@
 {
   "modelSlug": "deepseek/deepseek-r1",
   "series": {
+    "bedrock:deepseek/deepseek-r1": [
+      {
+        "input": 1.35,
+        "output": 5.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "deepinfra:deepseek/deepseek-r1": [
       {
         "input": 0.7,
@@ -17,6 +26,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:deepseek/deepseek-r1": [
+      {
+        "input": 0.5,
+        "output": 2.18,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
       }
     ],
     "hyperbolic:deepseek/deepseek-r1": [
@@ -109,15 +127,6 @@
       {
         "input": 0.55,
         "output": 2.19,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "bedrock:deepseek/deepseek-r1": [
-      {
-        "input": 1.35,
-        "output": 5.4,
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"

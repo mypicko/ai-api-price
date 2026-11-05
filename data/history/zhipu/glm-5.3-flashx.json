@@ -1,6 +1,15 @@
 {
   "modelSlug": "zhipu/glm-5.3-flashx",
   "series": {
+    "novita:zhipu/glm-5.3-flashx": [
+      {
+        "input": 0.37,
+        "output": 1.25,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "official:zhipu/glm-5.3-flashx": [
       {
         "input": 2,

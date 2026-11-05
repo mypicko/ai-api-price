@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "coreweave:deepseek/deepseek-v4.1-flash-1017": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "crusoe:deepseek/deepseek-v4.1-flash-1017": [
       {
         "input": 0.29,

@@ -223,6 +223,13 @@
         "cacheRead": 0.076,
         "cacheWrite": null,
         "effectiveDate": "2026-11-02"
+      },
+      {
+        "input": 0.0699,
+        "output": 1.4,
+        "cacheRead": 0.0689,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
       }
     ],
     "parasail:zhipu/glm-5.3": [

@@ -10,6 +10,15 @@
         "effectiveDate": "2026-10-23"
       }
     ],
+    "gmi:alibaba/qwen3.8-flash": [
+      {
+        "input": 0.16,
+        "output": 0.47,
+        "cacheRead": 0.016,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:alibaba/qwen3.8-flash": [
       {
         "input": 0.15,

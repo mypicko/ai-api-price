@@ -27,6 +27,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "gmi:moonshot/kimi-k2-instruct-0905": [
+      {
+        "input": 0.57,
+        "output": 2.29,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
     ]
   }
 }

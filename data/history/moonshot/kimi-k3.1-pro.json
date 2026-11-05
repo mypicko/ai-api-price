@@ -1,6 +1,51 @@
 {
   "modelSlug": "moonshot/kimi-k3.1-pro",
   "series": {
+    "baseten:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
+    "deepinfra:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 1.9,
+        "output": 9.5,
+        "cacheRead": 0.19,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
+    "fireworks:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
+    "gmi:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
+    "nebius:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:moonshot/kimi-k3.1-pro": [
       {
         "input": 2,
@@ -35,6 +80,24 @@
         "cacheRead": 0.2,
         "cacheWrite": null,
         "effectiveDate": "2026-10-24"
+      }
+    ],
+    "parasail:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
+    "together:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
       }
     ]
   }

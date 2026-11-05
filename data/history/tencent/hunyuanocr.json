@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hunyuanocr",
+  "series": {
+    "gmi:tencent/hunyuanocr": [
+      {
+        "input": 0.5,
+        "output": 0.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ]
+  }
+}

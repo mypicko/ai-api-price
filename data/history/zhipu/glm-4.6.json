@@ -26,6 +26,24 @@
         "effectiveDate": "2026-10-23"
       }
     ],
+    "fireworks:zhipu/glm-4.6": [
+      {
+        "input": 0.55,
+        "output": 2.19,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:zhipu/glm-4.6": [
+      {
+        "input": 0.6,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:zhipu/glm-4.6": [
       {
         "input": 0.55,
@@ -72,15 +90,6 @@
         "input": 0.45,
         "output": 1.8,
         "cacheRead": 0.11,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "fireworks:zhipu/glm-4.6": [
-      {
-        "input": 0.55,
-        "output": 2.19,
-        "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }

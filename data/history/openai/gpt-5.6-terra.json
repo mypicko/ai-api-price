@@ -35,6 +35,15 @@
         "effectiveDate": "2026-10-29"
       }
     ],
+    "gmi:openai/gpt-5.6-terra": [
+      {
+        "input": 2.5,
+        "output": 15,
+        "cacheRead": 0.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "official:openai/gpt-5.6-terra": [
       {
         "input": 2,

@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen3-235b-a22b-fp8",
   "series": {
+    "gmi:alibaba/qwen3-235b-a22b-fp8": [
+      {
+        "input": 0.17,
+        "output": 1.09,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:alibaba/qwen3-235b-a22b-fp8": [
       {
         "input": 0.2,

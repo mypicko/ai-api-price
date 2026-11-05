@@ -10,6 +10,24 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "fireworks:deepseek/deepseek-v3.1-terminus": [
+      {
+        "input": 0.56,
+        "output": 1.68,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:deepseek/deepseek-v3.1-terminus": [
+      {
+        "input": 0.27,
+        "output": 1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:deepseek/deepseek-v3.1-terminus": [
       {
         "input": 0.27,
@@ -51,15 +69,6 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
-      }
-    ],
-    "fireworks:deepseek/deepseek-v3.1-terminus": [
-      {
-        "input": 0.56,
-        "output": 1.68,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
       }
     ]
   }

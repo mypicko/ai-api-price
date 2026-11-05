@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:meta/llama-4-maverick-17b-128e-instruct-fp8": [
+      {
+        "input": 0.25,
+        "output": 0.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "lambda:meta/llama-4-maverick-17b-128e-instruct-fp8": [
       {
         "input": 0.05,

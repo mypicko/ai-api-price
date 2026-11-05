@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-5.2-fp8",
+  "series": {
+    "gmi:zhipu/glm-5.2-fp8": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ]
+  }
+}

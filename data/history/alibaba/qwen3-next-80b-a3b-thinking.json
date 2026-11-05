@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:alibaba/qwen3-next-80b-a3b-thinking": [
+      {
+        "input": 0.15,
+        "output": 1.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "nebius:alibaba/qwen3-next-80b-a3b-thinking": [
       {
         "input": 0.15,

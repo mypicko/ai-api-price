@@ -37,6 +37,24 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "fireworks:moonshot/kimi-k2.5": [
+      {
+        "input": 0.6,
+        "output": 3,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
+    "gmi:moonshot/kimi-k2.5": [
+      {
+        "input": 0.6,
+        "output": 3,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:moonshot/kimi-k2.5": [
       {
         "input": 0.57,
@@ -72,15 +90,6 @@
       }
     ],
     "wandb:moonshot/kimi-k2.5": [
-      {
-        "input": 0.6,
-        "output": 3,
-        "cacheRead": 0.1,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "fireworks:moonshot/kimi-k2.5": [
       {
         "input": 0.6,
         "output": 3,

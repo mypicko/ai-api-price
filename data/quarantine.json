@@ -1,35 +1,35 @@
 {
   "entries": [
     {
-      "offeringId": "openrouter:google/gemma-4-26b-a4b-it",
+      "offeringId": "openrouter:openai/gpt-oss-120b",
       "fields": [
         {
           "field": "input",
-          "old": 0.038,
-          "new": 0.073,
-          "pct": 0.9211
+          "old": 0.15,
+          "new": 0.015,
+          "pct": -0.9
         },
         {
           "field": "output",
-          "old": 0.114,
-          "new": 0.22,
-          "pct": 0.9298
+          "old": 0.6,
+          "new": 0.057,
+          "pct": -0.905
         },
         {
           "field": "cacheRead",
-          "old": 0.019,
-          "new": 0.037,
-          "pct": 0.9474
+          "old": 0.075,
+          "new": 0.014,
+          "pct": -0.8133
         }
       ],
       "candidate": {
-        "input": 0.073,
-        "output": 0.22,
-        "cacheRead": 0.037,
+        "input": 0.015,
+        "output": 0.057,
+        "cacheRead": 0.014,
         "cacheWrite": null
       },
-      "firstSeenAt": "2026-11-04T03:02:27Z",
-      "lastSeenAt": "2026-11-04T03:02:27Z",
+      "firstSeenAt": "2026-11-05T03:32:57Z",
+      "lastSeenAt": "2026-11-05T03:32:57Z",
       "confirmations": 1
     }
   ]

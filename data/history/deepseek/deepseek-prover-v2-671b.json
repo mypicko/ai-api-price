@@ -1,6 +1,15 @@
 {
   "modelSlug": "deepseek/deepseek-prover-v2-671b",
   "series": {
+    "gmi:deepseek/deepseek-prover-v2-671b": [
+      {
+        "input": 0.5,
+        "output": 2.18,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:deepseek/deepseek-prover-v2-671b": [
       {
         "input": 0.7,

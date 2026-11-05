@@ -28,6 +28,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:google/gemma-4-26b-a4b-it": [
+      {
+        "input": 0.13,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:google/gemma-4-26b-a4b-it": [
       {
         "input": 0.13,
@@ -95,6 +104,13 @@
         "cacheRead": 0.019,
         "cacheWrite": null,
         "effectiveDate": "2026-11-03"
+      },
+      {
+        "input": 0.03,
+        "output": 0.089,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
       }
     ],
     "parasail:google/gemma-4-26b-a4b-it": [

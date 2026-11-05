@@ -46,6 +46,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:alibaba/qwen3.8-27b": [
+      {
+        "input": 0.45,
+        "output": 3.2,
+        "cacheRead": 0.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "groq:alibaba/qwen3.8-27b": [
       {
         "input": 0.8,

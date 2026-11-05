@@ -1,6 +1,15 @@
 {
   "modelSlug": "google/gemini-3.1-flash-lite-preview",
   "series": {
+    "gmi:google/gemini-3.1-flash-lite-preview": [
+      {
+        "input": 0.25,
+        "output": 1.5,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "openrouter:google/gemini-3.1-flash-lite-preview": [
       {
         "input": 0.25,

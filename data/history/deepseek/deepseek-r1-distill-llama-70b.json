@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:deepseek/deepseek-r1-distill-llama-70b": [
+      {
+        "input": 0.25,
+        "output": 0.75,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "nebius:deepseek/deepseek-r1-distill-llama-70b": [
       {
         "input": 0.25,

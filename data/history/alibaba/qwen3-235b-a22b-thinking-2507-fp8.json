@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3-235b-a22b-thinking-2507-fp8",
+  "series": {
+    "gmi:alibaba/qwen3-235b-a22b-thinking-2507-fp8": [
+      {
+        "input": 0.35,
+        "output": 4.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ]
+  }
+}

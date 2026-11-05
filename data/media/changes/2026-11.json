@@ -1,0 +1,44 @@
+{
+  "month": "2026-11",
+  "events": [
+    {
+      "id": "2026-11-05-official:x-ai/grok-imagine-image-quality-1",
+      "type": "removed",
+      "offeringId": "official:x-ai/grok-imagine-image-quality",
+      "vendor": "x-ai",
+      "modelSlug": "x-ai/grok-imagine-image-quality",
+      "displayName": "grok-imagine-image-quality",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-05T03:32:57Z"
+    },
+    {
+      "id": "2026-11-05-official:x-ai/grok-imagine-image-quality-20260403-1",
+      "type": "removed",
+      "offeringId": "official:x-ai/grok-imagine-image-quality-20260403",
+      "vendor": "x-ai",
+      "modelSlug": "x-ai/grok-imagine-image-quality-20260403",
+      "displayName": "grok-imagine-image-quality-20260403",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-05T03:32:57Z"
+    },
+    {
+      "id": "2026-11-05-official:x-ai/grok-imagine-image-quality-latest-1",
+      "type": "removed",
+      "offeringId": "official:x-ai/grok-imagine-image-quality-latest",
+      "vendor": "x-ai",
+      "modelSlug": "x-ai/grok-imagine-image-quality-latest",
+      "displayName": "grok-imagine-image-quality-latest",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-05T03:32:57Z"
+    }
+  ]
+}

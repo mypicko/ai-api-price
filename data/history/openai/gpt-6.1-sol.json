@@ -35,6 +35,15 @@
         "effectiveDate": "2026-10-29"
       }
     ],
+    "gmi:openai/gpt-6.1-sol": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "official:openai/gpt-6.1-sol": [
       {
         "input": 2,

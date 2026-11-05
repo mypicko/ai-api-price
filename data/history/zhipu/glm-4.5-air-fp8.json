@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-4.5-air-fp8",
+  "series": {
+    "gmi:zhipu/glm-4.5-air-fp8": [
+      {
+        "input": 0.2,
+        "output": 1.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ]
+  }
+}

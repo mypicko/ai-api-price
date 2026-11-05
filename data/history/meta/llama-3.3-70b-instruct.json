@@ -73,6 +73,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:meta/llama-3.3-70b-instruct": [
+      {
+        "input": 0.25,
+        "output": 0.75,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "groq:meta/llama-3.3-70b-instruct": [
       {
         "input": 0.59,
@@ -139,6 +148,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-11-04"
+      },
+      {
+        "input": 0.2,
+        "output": 0.52,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
       }
     ],
     "parasail:meta/llama-3.3-70b-instruct": [

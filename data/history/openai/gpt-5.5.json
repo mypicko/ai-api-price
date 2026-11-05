@@ -28,6 +28,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:openai/gpt-5.5": [
+      {
+        "input": 5,
+        "output": 30,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "official:openai/gpt-5.5": [
       {
         "input": 5,

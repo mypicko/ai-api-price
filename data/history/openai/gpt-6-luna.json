@@ -35,6 +35,15 @@
         "effectiveDate": "2026-10-29"
       }
     ],
+    "gmi:openai/gpt-6-luna": [
+      {
+        "input": 0.1,
+        "output": 0.5,
+        "cacheRead": 0.01,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "official:openai/gpt-6-luna": [
       {
         "input": 0.1,

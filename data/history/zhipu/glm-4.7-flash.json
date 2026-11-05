@@ -19,6 +19,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:zhipu/glm-4.7-flash": [
+      {
+        "input": 0.07,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "novita:zhipu/glm-4.7-flash": [
       {
         "input": 0.07,

@@ -9,6 +9,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "gmi:deepseek/deepseek-r1-distill-qwen-7b": [
+      {
+        "input": 0.1,
+        "output": 0.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
     ]
   }
 }

@@ -28,6 +28,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:deepseek/deepseek-r1-0528": [
+      {
+        "input": 0.57,
+        "output": 2.29,
+        "cacheRead": 0.23,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "hyperbolic:deepseek/deepseek-r1-0528": [
       {
         "input": 0.25,

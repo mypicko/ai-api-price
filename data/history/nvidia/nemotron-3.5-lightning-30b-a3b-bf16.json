@@ -1,0 +1,14 @@
+{
+  "modelSlug": "nvidia/nemotron-3.5-lightning-30b-a3b-bf16",
+  "series": {
+    "gmi:nvidia/nemotron-3.5-lightning-30b-a3b-bf16": [
+      {
+        "input": 0.15,
+        "output": 1,
+        "cacheRead": 0.05,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ]
+  }
+}

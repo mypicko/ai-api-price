@@ -35,6 +35,15 @@
         "effectiveDate": "2026-10-29"
       }
     ],
+    "gmi:openai/gpt-6-astra": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "official:openai/gpt-6-astra": [
       {
         "input": 10,

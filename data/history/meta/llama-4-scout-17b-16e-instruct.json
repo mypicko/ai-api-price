@@ -28,6 +28,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:meta/llama-4-scout-17b-16e-instruct": [
+      {
+        "input": 0.08,
+        "output": 0.5,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "lambda:meta/llama-4-scout-17b-16e-instruct": [
       {
         "input": 0.05,

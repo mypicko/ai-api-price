@@ -17,6 +17,15 @@
         "effectiveDate": "2026-10-29"
       }
     ],
+    "gmi:google/gemini-3.6-flash": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "official:google/gemini-3.6-flash": [
       {
         "input": 0.75,

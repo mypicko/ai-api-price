@@ -71,6 +71,15 @@
         "effectiveDate": "2026-10-22"
       }
     ],
+    "gmi:moonshot/kimi-k3": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
+      }
+    ],
     "nebius:moonshot/kimi-k3": [
       {
         "input": 3,
@@ -191,6 +200,13 @@
         "cacheRead": 0.19,
         "cacheWrite": null,
         "effectiveDate": "2026-11-04"
+      },
+      {
+        "input": 0.192,
+        "output": 16,
+        "cacheRead": 0.182,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-05"
       }
     ],
     "parasail:moonshot/kimi-k3": [
