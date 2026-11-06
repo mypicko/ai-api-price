@@ -44,6 +44,13 @@
         "cacheRead": 0.00686,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.44,
+        "output": 1.32,
+        "cacheRead": 0.014,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-06"
       }
     ],
     "siliconflow:deepseek/deepseek-v4-flash-vision-exp": [

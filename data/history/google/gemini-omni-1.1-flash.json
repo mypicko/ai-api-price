@@ -10,6 +10,15 @@
         "effectiveDate": "2026-10-18"
       }
     ],
+    "openrouter:google/gemini-omni-1.1-flash": [
+      {
+        "input": 1.5,
+        "output": 9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-06"
+      }
+    ],
     "vertex:google/gemini-omni-1.1-flash": [
       {
         "input": 1.5,

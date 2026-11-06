@@ -1,6 +1,15 @@
 {
   "modelSlug": "tencent/hy4",
   "series": {
+    "gmi:tencent/hy4": [
+      {
+        "input": 0.417,
+        "output": 1.2505,
+        "cacheRead": 0.021,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-06"
+      }
+    ],
     "novita:tencent/hy4": [
       {
         "input": 0.834,
@@ -8,6 +17,13 @@
         "cacheRead": 0.042,
         "cacheWrite": null,
         "effectiveDate": "2026-11-05"
+      },
+      {
+        "input": 0.417,
+        "output": 1.2505,
+        "cacheRead": 0.021,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-06"
       }
     ],
     "openrouter:tencent/hy4": [

@@ -55,6 +55,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "gmi:openai/gpt-oss-20b": [
+      {
+        "input": 0.04,
+        "output": 0.15,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-06"
+      }
+    ],
     "groq:openai/gpt-oss-20b": [
       {
         "input": 0.075,

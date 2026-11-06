@@ -155,6 +155,13 @@
         "cacheRead": 0.1,
         "cacheWrite": null,
         "effectiveDate": "2026-11-05"
+      },
+      {
+        "input": 0.59,
+        "output": 0.79,
+        "cacheRead": 0.295,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-06"
       }
     ],
     "parasail:meta/llama-3.3-70b-instruct": [

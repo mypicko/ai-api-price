@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-11-05T03:32:57Z",
-  "dataDate": "2026-11-05",
+  "generatedAt": "2026-11-06T03:28:31Z",
+  "dataDate": "2026-11-06",
   "offerings": [
     {
       "id": "official:alibaba/happyhorse-1.0-i2v",
@@ -37,7 +37,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-0-i2v",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -74,7 +74,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-0-r2v",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -110,7 +110,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-0-t2v",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -151,7 +151,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-1-i2v",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -192,7 +192,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-1-r2v",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -232,7 +232,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/happyhorse-1-1-t2v",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -259,7 +259,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
       "notes": null,
       "firstSeenAt": "2026-10-30",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-30T02:40:30Z"
     },
     {
@@ -286,7 +286,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
       "notes": null,
       "firstSeenAt": "2026-10-30",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-30T02:40:30Z"
     },
     {
@@ -313,7 +313,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
       "notes": null,
       "firstSeenAt": "2026-10-30",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-30T02:40:30Z"
     },
     {
@@ -352,7 +352,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan2-7-i2v",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -391,7 +391,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan2-7-r2v",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -428,7 +428,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan2-7-t2v",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -471,7 +471,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan3-0-video",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -514,7 +514,7 @@
       "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/wan3-0-video-prime",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -541,7 +541,7 @@
       "sourceUrl": "https://bfl.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -568,7 +568,7 @@
       "sourceUrl": "https://bfl.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -595,7 +595,7 @@
       "sourceUrl": "https://bfl.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -622,7 +622,7 @@
       "sourceUrl": "https://bfl.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -669,8 +669,8 @@
       "sourceUrl": "https://www.volcengine.com/docs/82379/1544106",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:bytedance/doubao-seedance-2.0-fast-260128",
@@ -708,8 +708,8 @@
       "sourceUrl": "https://www.volcengine.com/docs/82379/1544106",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:bytedance/doubao-seedance-2.0-mini-260615",
@@ -745,8 +745,8 @@
       "sourceUrl": "https://www.volcengine.com/docs/82379/1544106",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:bytedance/doubao-seedance-2.5-260628",
@@ -788,8 +788,8 @@
       "sourceUrl": "https://www.volcengine.com/docs/82379/1544106",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:google/gemini-2.5-flash-image",
@@ -818,7 +818,7 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -846,7 +846,7 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -874,7 +874,7 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -902,7 +902,7 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -931,7 +931,7 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -958,7 +958,7 @@
       "sourceUrl": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -985,7 +985,7 @@
       "sourceUrl": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1013,7 +1013,7 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1049,7 +1049,7 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1117,8 +1117,8 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:google/veo-3.1-generate-preview",
@@ -1219,8 +1219,8 @@
       "sourceUrl": "https://platform.minimax.io/docs/guides/pricing-paygo",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:minimax/minimax-h3-max",
@@ -1257,8 +1257,8 @@
       "sourceUrl": "https://platform.minimax.io/docs/guides/pricing-paygo",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:openai/gpt-image-1",
@@ -1373,7 +1373,7 @@
       "sourceUrl": "https://developers.openai.com/api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1461,7 +1461,7 @@
       "sourceUrl": "https://developers.openai.com/api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1549,7 +1549,7 @@
       "sourceUrl": "https://developers.openai.com/api/docs/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1576,7 +1576,7 @@
       "sourceUrl": "https://www.recraft.ai/docs#pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1603,7 +1603,7 @@
       "sourceUrl": "https://www.recraft.ai/docs#pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1631,7 +1631,7 @@
       "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1659,7 +1659,7 @@
       "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1687,7 +1687,7 @@
       "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1715,7 +1715,7 @@
       "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1743,8 +1743,8 @@
       "sourceUrl": "https://docs.dev.runwayml.com/guides/pricing/",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:stability/sd3",
@@ -1770,7 +1770,7 @@
       "sourceUrl": "https://platform.stability.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1797,7 +1797,7 @@
       "sourceUrl": "https://platform.stability.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1824,7 +1824,7 @@
       "sourceUrl": "https://platform.stability.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1851,7 +1851,7 @@
       "sourceUrl": "https://platform.stability.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1878,7 +1878,7 @@
       "sourceUrl": "https://platform.stability.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1905,7 +1905,7 @@
       "sourceUrl": "https://platform.stability.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1932,7 +1932,7 @@
       "sourceUrl": "https://platform.stability.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1959,7 +1959,7 @@
       "sourceUrl": "https://platform.stability.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -1986,7 +1986,7 @@
       "sourceUrl": "https://platform.stability.ai/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2014,7 +2014,7 @@
       "sourceUrl": "https://docs.x.ai/docs/models",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2047,7 +2047,7 @@
       "sourceUrl": "https://docs.x.ai/docs/models",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2075,7 +2075,7 @@
       "sourceUrl": "https://docs.x.ai/docs/models",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2225,8 +2225,8 @@
       "sourceUrl": "https://docs.x.ai/docs/models/grok-imagine-video",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:x-ai/grok-imagine-video-1.5",
@@ -2267,8 +2267,8 @@
       "sourceUrl": "https://docs.x.ai/docs/models/grok-imagine-video-1.5",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:x-ai/grok-imagine-video-1.5-2026-05-30",
@@ -2309,7 +2309,7 @@
       "sourceUrl": "https://docs.x.ai/docs/models/grok-imagine-video-1.5",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2350,8 +2350,8 @@
       "sourceUrl": "https://docs.x.ai/developers/pricing",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
-      "publishedAt": "2026-11-05T03:32:57Z"
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "official:x-ai/grok-imagine-video-1.5-preview",
@@ -2392,7 +2392,7 @@
       "sourceUrl": "https://docs.x.ai/docs/models/grok-imagine-video-1.5",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2429,7 +2429,7 @@
       "sourceUrl": "https://openrouter.ai/alibaba/happyhorse-1.0",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2466,7 +2466,7 @@
       "sourceUrl": "https://openrouter.ai/alibaba/happyhorse-1.1",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2515,7 +2515,7 @@
       "sourceUrl": "https://openrouter.ai/alibaba/wan-2.6",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2543,7 +2543,7 @@
       "sourceUrl": "https://openrouter.ai/alibaba/wan-2.7",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2584,7 +2584,7 @@
       "sourceUrl": "https://openrouter.ai/alibaba/wan-3.0",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2625,7 +2625,7 @@
       "sourceUrl": "https://openrouter.ai/alibaba/wan-3.0-prime",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2686,7 +2686,7 @@
       "sourceUrl": "https://openrouter.ai/black-forest-labs/flux-3-video",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2713,7 +2713,7 @@
       "sourceUrl": "https://openrouter.ai/black-forest-labs/flux-video-edit",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2758,7 +2758,7 @@
       "sourceUrl": "https://openrouter.ai/bytedance/seedance-2.0",
       "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2795,7 +2795,7 @@
       "sourceUrl": "https://openrouter.ai/bytedance/seedance-2.0-fast",
       "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2832,7 +2832,7 @@
       "sourceUrl": "https://openrouter.ai/bytedance/seedance-2.0-mini",
       "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2869,7 +2869,7 @@
       "sourceUrl": "https://openrouter.ai/bytedance/seedance-2.5",
       "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -2922,8 +2922,98 @@
       "sourceUrl": "https://openrouter.ai/bytedance/seedance-1-5-pro",
       "notes": "按 token 计价换算：16:9 标准尺寸、24fps；其他画幅按像素数增减，含视频输入另计",
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
+    },
+    {
+      "id": "openrouter:google/gemini-omni-1.1-flash",
+      "vendor": "google",
+      "model": "gemini-omni-1.1-flash",
+      "modelSlug": "google/gemini-omni-1.1-flash",
+      "displayName": "Gemini Omni 1.1 Flash",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.0337925,
+      "tiers": [
+        {
+          "label": "有声 360p",
+          "output": 0.0337925
+        },
+        {
+          "label": "有声 720p",
+          "output": 0.10136
+        },
+        {
+          "label": "有声",
+          "output": 0.15204
+        },
+        {
+          "label": "有声 4k",
+          "output": 0.30408
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/google/gemini-omni-1.1-flash",
+      "notes": null,
+      "firstSeenAt": "2026-11-06",
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
+    },
+    {
+      "id": "openrouter:google/gemini-omni-1.2-flash",
+      "vendor": "google",
+      "model": "gemini-omni-1.2-flash",
+      "modelSlug": "google/gemini-omni-1.2-flash",
+      "displayName": "Gemini Omni 1.2 Flash",
+      "platform": "openrouter",
+      "source": "openrouter",
+      "currency": "USD",
+      "kind": "video",
+      "unit": "per_second",
+      "input": null,
+      "output": 0.023172,
+      "tiers": [
+        {
+          "label": "有声 360p",
+          "output": 0.023172
+        },
+        {
+          "label": "有声 720p",
+          "output": 0.069504
+        },
+        {
+          "label": "有声",
+          "output": 0.104256
+        },
+        {
+          "label": "有声 4k",
+          "output": 0.208512
+        }
+      ],
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "isFree": false,
+      "stale": false,
+      "status": "active",
+      "missingDays": 0,
+      "sourceUrl": "https://openrouter.ai/google/gemini-omni-1.2-flash",
+      "notes": null,
+      "firstSeenAt": "2026-11-06",
+      "fetchedAt": "2026-11-06T03:28:31Z",
+      "publishedAt": "2026-11-06T03:28:31Z"
     },
     {
       "id": "openrouter:google/veo-3.1-fast",
@@ -2975,7 +3065,7 @@
       "sourceUrl": "https://openrouter.ai/google/veo-3.1-fast",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3020,7 +3110,7 @@
       "sourceUrl": "https://openrouter.ai/google/veo-3.1",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3065,7 +3155,7 @@
       "sourceUrl": "https://openrouter.ai/google/veo-3.1-lite",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3092,7 +3182,7 @@
       "sourceUrl": "https://openrouter.ai/heygen/avatar-iv",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3153,7 +3243,7 @@
       "sourceUrl": "https://openrouter.ai/heygen/heygen-video-1",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-11-03T03:58:02Z"
     },
     {
@@ -3206,7 +3296,7 @@
       "sourceUrl": "https://openrouter.ai/kwaivgi/kling-v3.0-pro",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3259,7 +3349,7 @@
       "sourceUrl": "https://openrouter.ai/kwaivgi/kling-v3.0-std",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3287,7 +3377,7 @@
       "sourceUrl": "https://openrouter.ai/kwaivgi/kling-video-o1",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3315,7 +3405,7 @@
       "sourceUrl": "https://openrouter.ai/minimax/hailuo-2.3",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3343,7 +3433,7 @@
       "sourceUrl": "https://openrouter.ai/minimax/hailuo-3",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3380,7 +3470,7 @@
       "sourceUrl": "https://openrouter.ai/minimax/hailuo-3-max",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3407,7 +3497,7 @@
       "sourceUrl": "https://openrouter.ai/runway/aleph-2",
       "notes": "每次生成最低 0.56 USD",
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3435,7 +3525,7 @@
       "sourceUrl": "https://openrouter.ai/runway/gen-4.5",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3472,7 +3562,7 @@
       "sourceUrl": "https://openrouter.ai/x-ai/grok-imagine-video",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3513,7 +3603,7 @@
       "sourceUrl": "https://openrouter.ai/x-ai/grok-imagine-video-1.5",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     },
     {
@@ -3554,7 +3644,7 @@
       "sourceUrl": "https://openrouter.ai/x-ai/grok-imagine-video-1.5-lite",
       "notes": null,
       "firstSeenAt": "2026-10-18",
-      "fetchedAt": "2026-11-05T03:32:57Z",
+      "fetchedAt": "2026-11-06T03:28:31Z",
       "publishedAt": "2026-10-18T15:04:20Z"
     }
   ]

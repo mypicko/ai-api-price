@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-6-cyber",
+  "series": {
+    "official:openai/gpt-6-cyber": [
+      {
+        "input": 20,
+        "output": 100,
+        "cacheRead": 2,
+        "cacheWrite": 25,
+        "effectiveDate": "2026-11-06"
+      }
+    ]
+  }
+}

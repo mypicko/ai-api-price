@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-omni-1.1-flash",
+  "series": {
+    "openrouter:google/gemini-omni-1.1-flash": [
+      {
+        "input": null,
+        "output": 0.0337925,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-06"
+      }
+    ]
+  }
+}

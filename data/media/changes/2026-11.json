@@ -39,6 +39,32 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-05T03:32:57Z"
+    },
+    {
+      "id": "2026-11-06-openrouter:google/gemini-omni-1.1-flash-1",
+      "type": "new_model",
+      "offeringId": "openrouter:google/gemini-omni-1.1-flash",
+      "vendor": "google",
+      "modelSlug": "google/gemini-omni-1.1-flash",
+      "displayName": "Gemini Omni 1.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-06T03:28:31Z"
+    },
+    {
+      "id": "2026-11-06-openrouter:google/gemini-omni-1.2-flash-1",
+      "type": "new_model",
+      "offeringId": "openrouter:google/gemini-omni-1.2-flash",
+      "vendor": "google",
+      "modelSlug": "google/gemini-omni-1.2-flash",
+      "displayName": "Gemini Omni 1.2 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-06T03:28:31Z"
     }
   ]
 }
