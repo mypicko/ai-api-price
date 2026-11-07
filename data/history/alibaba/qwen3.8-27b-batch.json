@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen3.8-27b-batch",
+  "series": {
+    "openrouter:alibaba/qwen3.8-27b-batch": [
+      {
+        "input": 0.16,
+        "output": 2,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-07"
+      }
+    ]
+  }
+}

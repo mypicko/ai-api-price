@@ -19,6 +19,15 @@
         "effectiveDate": "2026-11-05"
       }
     ],
+    "digitalocean:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-07"
+      }
+    ],
     "fireworks:moonshot/kimi-k3.1-pro": [
       {
         "input": 2,

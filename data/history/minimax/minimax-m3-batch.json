@@ -1,0 +1,14 @@
+{
+  "modelSlug": "minimax/minimax-m3-batch",
+  "series": {
+    "openrouter:minimax/minimax-m3-batch": [
+      {
+        "input": 0.224,
+        "output": 0.88,
+        "cacheRead": 0.0448,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-07"
+      }
+    ]
+  }
+}

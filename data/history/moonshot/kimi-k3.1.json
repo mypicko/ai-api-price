@@ -1,0 +1,14 @@
+{
+  "modelSlug": "moonshot/kimi-k3.1",
+  "series": {
+    "bedrock:moonshot/kimi-k3.1": [
+      {
+        "input": 4.4,
+        "output": 22,
+        "cacheRead": 0.22,
+        "cacheWrite": 5.5,
+        "effectiveDate": "2026-11-07"
+      }
+    ]
+  }
+}

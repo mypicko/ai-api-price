@@ -15,6 +15,13 @@
         "cacheRead": 0.05,
         "cacheWrite": null,
         "effectiveDate": "2026-10-27"
+      },
+      {
+        "input": 0.1,
+        "output": 0.89,
+        "cacheRead": 0.035,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-07"
       }
     ],
     "deepinfra:alibaba/qwen3.6-35b-a3b": [
@@ -131,6 +138,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.1,
+        "output": 0.89,
+        "cacheRead": 0.035,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-07"
       }
     ]
   }

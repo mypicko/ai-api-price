@@ -69,6 +69,13 @@
         "cacheRead": 0.21,
         "cacheWrite": null,
         "effectiveDate": "2026-10-22"
+      },
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-07"
       }
     ],
     "gmi:moonshot/kimi-k3": [

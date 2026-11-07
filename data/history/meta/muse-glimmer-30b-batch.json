@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/muse-glimmer-30b-batch",
+  "series": {
+    "openrouter:meta/muse-glimmer-30b-batch": [
+      {
+        "input": 0.24,
+        "output": 0.96,
+        "cacheRead": 0.032,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-07"
+      }
+    ]
+  }
+}
