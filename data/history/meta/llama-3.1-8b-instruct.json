@@ -46,6 +46,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "fireworks:meta/llama-3.1-8b-instruct": [
+      {
+        "input": 0.1,
+        "output": 0.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "groq:meta/llama-3.1-8b-instruct": [
       {
         "input": 0.05,
@@ -121,6 +130,13 @@
         "cacheRead": 0.025,
         "cacheWrite": null,
         "effectiveDate": "2026-10-29"
+      },
+      {
+        "input": 0.02,
+        "output": 0.04,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-09"
       }
     ],
     "vertex:meta/llama-3.1-8b-instruct": [
@@ -136,15 +152,6 @@
       {
         "input": 0.22,
         "output": 0.22,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "fireworks:meta/llama-3.1-8b-instruct": [
-      {
-        "input": 0.1,
-        "output": 0.1,
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"

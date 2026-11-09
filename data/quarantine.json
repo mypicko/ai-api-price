@@ -1,36 +1,3 @@
 {
-  "entries": [
-    {
-      "offeringId": "openrouter:openai/gpt-oss-120b",
-      "fields": [
-        {
-          "field": "input",
-          "old": 0.01,
-          "new": 0.026,
-          "pct": 1.6
-        },
-        {
-          "field": "output",
-          "old": 0.037,
-          "new": 0.095,
-          "pct": 1.568
-        },
-        {
-          "field": "cacheRead",
-          "old": 0.009,
-          "new": 0.023,
-          "pct": 1.556
-        }
-      ],
-      "candidate": {
-        "input": 0.026,
-        "output": 0.095,
-        "cacheRead": 0.023,
-        "cacheWrite": null
-      },
-      "firstSeenAt": "2026-11-08T02:33:32Z",
-      "lastSeenAt": "2026-11-08T02:33:32Z",
-      "confirmations": 1
-    }
-  ]
+  "entries": []
 }
