@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen3.5-27b",
   "series": {
+    "chutes:alibaba/qwen3.5-27b": [
+      {
+        "input": 0.2,
+        "output": 1.75,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-10"
+      }
+    ],
     "deepinfra:alibaba/qwen3.5-27b": [
       {
         "input": 0.26,

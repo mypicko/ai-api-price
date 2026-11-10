@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-fable-5.2-fast",
+  "series": {
+    "azure:anthropic/claude-fable-5.2-fast": [
+      {
+        "input": 16,
+        "output": 80,
+        "cacheRead": 0.4,
+        "cacheWrite": 20,
+        "effectiveDate": "2026-11-10"
+      }
+    ]
+  }
+}

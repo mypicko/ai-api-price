@@ -1,6 +1,15 @@
 {
   "modelSlug": "zhipu/glm-4.5-air",
   "series": {
+    "fireworks:zhipu/glm-4.5-air": [
+      {
+        "input": 0.22,
+        "output": 0.88,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "novita:zhipu/glm-4.5-air": [
       {
         "input": 0.13,
@@ -26,6 +35,13 @@
         "cacheRead": 0.025,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.2,
+        "output": 1.1,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-10"
       }
     ],
     "siliconflow-cn:zhipu/glm-4.5-air": [
@@ -57,15 +73,6 @@
       {
         "input": 0.2,
         "output": 1.1,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "fireworks:zhipu/glm-4.5-air": [
-      {
-        "input": 0.22,
-        "output": 0.88,
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"

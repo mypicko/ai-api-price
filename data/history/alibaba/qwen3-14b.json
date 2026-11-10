@@ -1,15 +1,6 @@
 {
   "modelSlug": "alibaba/qwen3-14b",
   "series": {
-    "vercel:alibaba/qwen3-14b": [
-      {
-        "input": 0.08,
-        "output": 0.24,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
     "deepinfra:alibaba/qwen3-14b": [
       {
         "input": 0.12,
@@ -44,6 +35,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.1,
+        "output": 0.22,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-10"
       }
     ],
     "siliconflow-cn:alibaba/qwen3-14b": [
@@ -69,6 +67,15 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      }
+    ],
+    "vercel:alibaba/qwen3-14b": [
+      {
+        "input": 0.08,
+        "output": 0.24,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
       }
     ]
   }

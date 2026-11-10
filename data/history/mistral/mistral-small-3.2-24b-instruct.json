@@ -24,6 +24,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-23"
+      },
+      {
+        "input": 0.1,
+        "output": 0.3,
+        "cacheRead": 0.01,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-10"
       }
     ],
     "parasail:mistral/mistral-small-3.2-24b-instruct": [
