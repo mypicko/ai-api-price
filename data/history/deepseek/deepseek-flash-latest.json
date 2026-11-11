@@ -1,0 +1,14 @@
+{
+  "modelSlug": "deepseek/deepseek-flash-latest",
+  "series": {
+    "fireworks:deepseek/deepseek-flash-latest": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "minimax/minimax-latest",
+  "series": {
+    "fireworks:minimax/minimax-latest": [
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/ernie-5.5-flash-preview",
+  "series": {
+    "openrouter:baidu/ernie-5.5-flash-preview": [
+      {
+        "input": 0.28,
+        "output": 1.13,
+        "cacheRead": 0.028,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
+      }
+    ]
+  }
+}

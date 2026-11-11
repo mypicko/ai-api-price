@@ -1,0 +1,14 @@
+{
+  "modelSlug": "anthropic/claude-mythos-5.2-default",
+  "series": {
+    "vertex:anthropic/claude-mythos-5.2-default": [
+      {
+        "input": 8,
+        "output": 40,
+        "cacheRead": 0.2,
+        "cacheWrite": 10,
+        "effectiveDate": "2026-11-11"
+      }
+    ]
+  }
+}

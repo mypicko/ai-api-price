@@ -19,6 +19,15 @@
         "effectiveDate": "2026-11-10"
       }
     ],
+    "databricks:anthropic/claude-fable-5.2": [
+      {
+        "input": 8,
+        "output": 40,
+        "cacheRead": 8,
+        "cacheWrite": 8,
+        "effectiveDate": "2026-11-11"
+      }
+    ],
     "official:anthropic/claude-fable-5.2": [
       {
         "input": 8,

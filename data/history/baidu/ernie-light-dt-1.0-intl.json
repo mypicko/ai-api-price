@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/ernie-light-dt-1.0-intl",
+  "series": {
+    "openrouter:baidu/ernie-light-dt-1.0-intl": [
+      {
+        "input": 1.13,
+        "output": 3.94,
+        "cacheRead": 0.113,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "modelSlug": "google/gemini-4-carbon",
+  "series": {
+    "official:google/gemini-4-carbon": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
+      }
+    ],
+    "openrouter:google/gemini-4-carbon": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": 0.1875,
+        "effectiveDate": "2026-11-11"
+      }
+    ],
+    "vertex:google/gemini-4-carbon": [
+      {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
+      }
+    ]
+  }
+}

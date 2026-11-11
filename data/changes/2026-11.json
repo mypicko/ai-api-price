@@ -5484,6 +5484,531 @@
       ],
       "confirmedFromQuarantine": true,
       "detectedAt": "2026-11-10T04:41:27Z"
+    },
+    {
+      "id": "2026-11-11-azure:anthropic/claude-mythos-5.2-1",
+      "type": "new_model",
+      "offeringId": "azure:anthropic/claude-mythos-5.2",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-mythos-5.2",
+      "displayName": "claude-mythos-5-2",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-azure:anthropic/claude-mythos-5.2-fast-1",
+      "type": "new_model",
+      "offeringId": "azure:anthropic/claude-mythos-5.2-fast",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-mythos-5.2-fast",
+      "displayName": "claude-mythos-5-2-fast",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-databricks:anthropic/claude-fable-5.2-1",
+      "type": "new_model",
+      "offeringId": "databricks:anthropic/claude-fable-5.2",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-fable-5.2",
+      "displayName": "Claude Fable 5.2",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-databricks:meta/llama-3.1-8b-instruct-1",
+      "type": "context_change",
+      "offeringId": "databricks:meta/llama-3.1-8b-instruct",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-3.1-8b-instruct",
+      "displayName": "Llama 3.1 8B Instruct",
+      "platform": "databricks",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 200000,
+          "new": 128000,
+          "pct": -0.36
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-fireworks:alibaba/qwen-max-latest-1",
+      "type": "new_model",
+      "offeringId": "fireworks:alibaba/qwen-max-latest",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen-max-latest",
+      "displayName": "qwen-max-latest",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-fireworks:deepseek/deepseek-flash-latest-1",
+      "type": "new_model",
+      "offeringId": "fireworks:deepseek/deepseek-flash-latest",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-flash-latest",
+      "displayName": "deepseek-flash-latest",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-fireworks:minimax/minimax-latest-1",
+      "type": "new_model",
+      "offeringId": "fireworks:minimax/minimax-latest",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-latest",
+      "displayName": "minimax-latest",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-fireworks:moonshot/kimi-fast-latest-1",
+      "type": "new_model",
+      "offeringId": "fireworks:moonshot/kimi-fast-latest",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-fast-latest",
+      "displayName": "kimi-fast-latest",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-fireworks:moonshot/kimi-latest-1",
+      "type": "new_model",
+      "offeringId": "fireworks:moonshot/kimi-latest",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-latest",
+      "displayName": "kimi-latest",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-fireworks:zhipu/glm-fast-latest-1",
+      "type": "new_model",
+      "offeringId": "fireworks:zhipu/glm-fast-latest",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-fast-latest",
+      "displayName": "glm-fast-latest",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-fireworks:zhipu/glm-flash-latest-1",
+      "type": "new_model",
+      "offeringId": "fireworks:zhipu/glm-flash-latest",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-flash-latest",
+      "displayName": "glm-flash-latest",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-fireworks:zhipu/glm-latest-1",
+      "type": "new_model",
+      "offeringId": "fireworks:zhipu/glm-latest",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-latest",
+      "displayName": "glm-latest",
+      "platform": "fireworks",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-nebius:alibaba/qwen3-235b-a22b-2507-1",
+      "type": "restored",
+      "offeringId": "nebius:alibaba/qwen3-235b-a22b-2507",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-235b-a22b-2507",
+      "displayName": "Qwen3 235B A22B Instruct 2507",
+      "platform": "nebius",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-official:anthropic/claude-mythos-5.2-1",
+      "type": "new_model",
+      "offeringId": "official:anthropic/claude-mythos-5.2",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-mythos-5.2",
+      "displayName": "claude-mythos-5-2",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-official:google/gemini-4-carbon-1",
+      "type": "new_model",
+      "offeringId": "official:google/gemini-4-carbon",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-carbon",
+      "displayName": "Gemini 4 Carbon",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:baidu/ernie-5.5-flash-preview-1",
+      "type": "new_model",
+      "offeringId": "openrouter:baidu/ernie-5.5-flash-preview",
+      "vendor": "baidu",
+      "modelSlug": "baidu/ernie-5.5-flash-preview",
+      "displayName": "ERNIE-5.5-Flash-Preview",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:baidu/ernie-light-dt-1.0-intl-1",
+      "type": "new_model",
+      "offeringId": "openrouter:baidu/ernie-light-dt-1.0-intl",
+      "vendor": "baidu",
+      "modelSlug": "baidu/ernie-light-dt-1.0-intl",
+      "displayName": "ERNIE-Light-DT-1.0",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:deepseek/deepseek-v4-flash-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash",
+      "displayName": "DeepSeek V4 Flash 0423",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.091,
+          "new": 0.09,
+          "pct": -0.01099
+        },
+        {
+          "field": "output",
+          "old": 0.182,
+          "new": 0.18,
+          "pct": -0.01099
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0182,
+          "new": 0.018,
+          "pct": -0.01099
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:google/gemini-4-carbon-1",
+      "type": "new_model",
+      "offeringId": "openrouter:google/gemini-4-carbon",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-carbon",
+      "displayName": "Gemini 4 Carbon",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:google/gemini-4-carbon-batch-1",
+      "type": "new_model",
+      "offeringId": "openrouter:google/gemini-4-carbon-batch",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-carbon-batch",
+      "displayName": "Gemini 4 Carbon (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:openai/gpt-oss-20b-1",
+      "type": "price_down",
+      "offeringId": "openrouter:openai/gpt-oss-20b",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-oss-20b",
+      "displayName": "gpt-oss-20b",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.03,
+          "new": 0.018,
+          "pct": -0.4
+        },
+        {
+          "field": "output",
+          "old": 0.13,
+          "new": 0.09,
+          "pct": -0.3077
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.03,
+          "new": 0.009,
+          "pct": -0.7
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:zhipu/glm-5.1-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.1",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.1",
+      "displayName": "GLM 5.1",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.4,
+          "new": 1.33,
+          "pct": -0.05
+        },
+        {
+          "field": "output",
+          "old": 4.4,
+          "new": 4.18,
+          "pct": -0.05
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.26,
+          "new": 0.247,
+          "pct": -0.05
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:zhipu/glm-5.2-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.2",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.2",
+      "displayName": "GLM 5.2",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.006,
+          "new": 0.007,
+          "pct": 0.1667
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.005,
+          "new": 0.006,
+          "pct": 0.2
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:zhipu/glm-5.2-batch-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.2-batch",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.2-batch",
+      "displayName": "GLM 5.2 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.573,
+          "new": 0.527,
+          "pct": -0.08028
+        },
+        {
+          "field": "output",
+          "old": 1.169,
+          "new": 1.075,
+          "pct": -0.08041
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.194,
+          "new": 0.178,
+          "pct": -0.08247
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:zhipu/glm-5.3-flash-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.0399,
+          "pct": -0.734
+        },
+        {
+          "field": "output",
+          "old": 0.5,
+          "new": 0.0784,
+          "pct": -0.8432
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-openrouter:zhipu/glm-5.3-flash-batch-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash-batch",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash-batch",
+      "displayName": "GLM 5.3 Flash (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.03,
+          "new": 0.042,
+          "pct": 0.4
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.013,
+          "new": 0.018,
+          "pct": 0.3846
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-sambanova:zhipu/glm-5.3-1",
+      "type": "new_model",
+      "offeringId": "sambanova:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "sambanova",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-vertex:anthropic/claude-mythos-5.2-1",
+      "type": "new_model",
+      "offeringId": "vertex:anthropic/claude-mythos-5.2",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-mythos-5.2",
+      "displayName": "claude-mythos-5-2",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-vertex:anthropic/claude-mythos-5.2-default-1",
+      "type": "new_model",
+      "offeringId": "vertex:anthropic/claude-mythos-5.2-default",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-mythos-5.2-default",
+      "displayName": "claude-mythos-5-2-default",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-vertex:google/gemini-4-carbon-1",
+      "type": "new_model",
+      "offeringId": "vertex:google/gemini-4-carbon",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-carbon",
+      "displayName": "Gemini 4 Carbon",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
+    },
+    {
+      "id": "2026-11-11-vertex:google/gemini-4-carbon-cyber-permissive-1",
+      "type": "new_model",
+      "offeringId": "vertex:google/gemini-4-carbon-cyber-permissive",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-carbon-cyber-permissive",
+      "displayName": "gemini-4-carbon-cyber-permissive",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-11T02:51:14Z"
     }
   ]
 }

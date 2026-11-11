@@ -26,6 +26,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "fireworks:zhipu/glm-5.1": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "gmi:zhipu/glm-5.1": [
       {
         "input": 1.4,
@@ -97,6 +106,13 @@
         "cacheRead": 0.26,
         "cacheWrite": null,
         "effectiveDate": "2026-10-28"
+      },
+      {
+        "input": 1.33,
+        "output": 4.18,
+        "cacheRead": 0.247,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
       }
     ],
     "siliconflow:zhipu/glm-5.1": [
@@ -106,15 +122,6 @@
         "cacheRead": 0.6,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
-      }
-    ],
-    "fireworks:zhipu/glm-5.1": [
-      {
-        "input": 1.4,
-        "output": 4.4,
-        "cacheRead": 0.26,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
       }
     ]
   }

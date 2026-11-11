@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/qwen-max-latest",
+  "series": {
+    "fireworks:alibaba/qwen-max-latest": [
+      {
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.25,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
+      }
+    ]
+  }
+}

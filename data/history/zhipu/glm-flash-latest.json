@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-flash-latest",
+  "series": {
+    "fireworks:zhipu/glm-flash-latest": [
+      {
+        "input": 0.15,
+        "output": 0.5,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
+      }
+    ]
+  }
+}

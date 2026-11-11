@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-latest",
+  "series": {
+    "fireworks:zhipu/glm-latest": [
+      {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-11"
+      }
+    ]
+  }
+}
