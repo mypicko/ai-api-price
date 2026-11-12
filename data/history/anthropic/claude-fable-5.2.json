@@ -26,6 +26,13 @@
         "cacheRead": 8,
         "cacheWrite": 8,
         "effectiveDate": "2026-11-11"
+      },
+      {
+        "input": 8.00002,
+        "output": 40,
+        "cacheRead": 0.19999,
+        "cacheWrite": 9.99999,
+        "effectiveDate": "2026-11-12"
       }
     ],
     "official:anthropic/claude-fable-5.2": [

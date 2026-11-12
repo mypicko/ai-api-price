@@ -1,0 +1,14 @@
+{
+  "modelSlug": "mistral/mistral-large-4-latest",
+  "series": {
+    "azure:mistral/mistral-large-4-latest": [
+      {
+        "input": 0.7,
+        "output": 2.1,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-12"
+      }
+    ]
+  }
+}
