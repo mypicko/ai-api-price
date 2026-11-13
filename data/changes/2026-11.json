@@ -6487,6 +6487,509 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-12T03:53:14Z"
+    },
+    {
+      "id": "2026-11-13-azure:deepseek/deepseek-v4.1-flash-1017-1",
+      "type": "new_model",
+      "offeringId": "azure:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-gmi:alibaba/qwen3-235b-a22b-2507-1",
+      "type": "removed",
+      "offeringId": "gmi:alibaba/qwen3-235b-a22b-2507",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-235b-a22b-2507",
+      "displayName": "Qwen3 235B A22B Instruct 2507",
+      "platform": "gmi",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-gmi:google/gemini-4-carbon-1",
+      "type": "new_model",
+      "offeringId": "gmi:google/gemini-4-carbon",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-carbon",
+      "displayName": "Gemini 4 Carbon",
+      "platform": "gmi",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-gmi:x-ai/grok4.7-1",
+      "type": "new_model",
+      "offeringId": "gmi:x-ai/grok4.7",
+      "vendor": "x-ai",
+      "modelSlug": "x-ai/grok4.7",
+      "displayName": "grok4.7",
+      "platform": "gmi",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-official:google/gemini-4-hydrogen-1",
+      "type": "new_model",
+      "offeringId": "official:google/gemini-4-hydrogen",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-hydrogen",
+      "displayName": "Gemini 4 Hydrogen",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:alibaba/qwen2.5-7b-instruct-1",
+      "type": "removed",
+      "offeringId": "openrouter:alibaba/qwen2.5-7b-instruct",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen2.5-7b-instruct",
+      "displayName": "Qwen2.5 7B Instruct",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:alibaba/qwen3-14b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3-14b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-14b",
+      "displayName": "Qwen3 14B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.1,
+          "new": 0.12,
+          "pct": 0.2
+        },
+        {
+          "field": "output",
+          "old": 0.22,
+          "new": 0.24,
+          "pct": 0.09091
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:alibaba/qwen3.5-9b-1",
+      "type": "price_down",
+      "offeringId": "openrouter:alibaba/qwen3.5-9b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-9b",
+      "displayName": "Qwen3.5-9B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.072,
+          "new": 0.071,
+          "pct": -0.01389
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.022,
+          "new": 0.3,
+          "pct": 12.64
+        },
+        {
+          "field": "output",
+          "old": 0.4,
+          "new": 1.2,
+          "pct": 2
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.004,
+          "new": 0.006,
+          "pct": 0.5
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:deepseek/deepseek-v4.1-flash-1017-batch-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash-1017-batch",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017-batch",
+      "displayName": "DeepSeek V4.1 Flash 1017 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.011,
+          "new": 0.05,
+          "pct": 3.545
+        },
+        {
+          "field": "output",
+          "old": 0.2,
+          "new": 0.15,
+          "pct": -0.25
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.002,
+          "new": 0.004,
+          "pct": 1
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:google/gemini-4-hydrogen-1",
+      "type": "new_model",
+      "offeringId": "openrouter:google/gemini-4-hydrogen",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-hydrogen",
+      "displayName": "Gemini 4 Hydrogen",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:google/gemini-4-hydrogen-batch-1",
+      "type": "new_model",
+      "offeringId": "openrouter:google/gemini-4-hydrogen-batch",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-hydrogen-batch",
+      "displayName": "Gemini 4 Hydrogen (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:google/gemma-4-26b-a4b-it-1",
+      "type": "price_up",
+      "offeringId": "openrouter:google/gemma-4-26b-a4b-it",
+      "vendor": "google",
+      "modelSlug": "google/gemma-4-26b-a4b-it",
+      "displayName": "Gemma 4 26B A4B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.08,
+          "new": 0.0765,
+          "pct": -0.04375
+        },
+        {
+          "field": "output",
+          "old": 0.1,
+          "new": 0.255,
+          "pct": 1.55
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.046,
+          "new": 0.0425,
+          "pct": -0.07609
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:moonshot/kimi-k2.5-1",
+      "type": "price_down",
+      "offeringId": "openrouter:moonshot/kimi-k2.5",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2.5",
+      "displayName": "Kimi K2.5",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.532,
+          "new": 0.5,
+          "pct": -0.06015
+        },
+        {
+          "field": "output",
+          "old": 3.325,
+          "new": 2.5,
+          "pct": -0.2481
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.209,
+          "new": 0.15,
+          "pct": -0.2823
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:moonshot/kimi-k3.1-pro-1",
+      "type": "price_down",
+      "offeringId": "openrouter:moonshot/kimi-k3.1-pro",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3.1-pro",
+      "displayName": "Kimi K3.1 Pro",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 2,
+          "new": 0.2375,
+          "pct": -0.8812
+        },
+        {
+          "field": "output",
+          "old": 10,
+          "new": 8.4114,
+          "pct": -0.1589
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:moonshot/kimi-k3.1-pro-batch-1",
+      "type": "new_model",
+      "offeringId": "openrouter:moonshot/kimi-k3.1-pro-batch",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3.1-pro-batch",
+      "displayName": "Kimi K3.1 Pro (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:openai/gpt-oss-20b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:openai/gpt-oss-20b",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-oss-20b",
+      "displayName": "gpt-oss-20b",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.018,
+          "new": 0.03,
+          "pct": 0.6667
+        },
+        {
+          "field": "output",
+          "old": 0.09,
+          "new": 0.13,
+          "pct": 0.4444
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.009,
+          "new": 0.03,
+          "pct": 2.333
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:zhipu/glm-5.2-batch-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.2-batch",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.2-batch",
+      "displayName": "GLM 5.2 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.35,
+          "new": 0.322,
+          "pct": -0.08
+        },
+        {
+          "field": "output",
+          "old": 1.075,
+          "new": 0.989,
+          "pct": -0.08
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.118,
+          "new": 0.109,
+          "pct": -0.07627
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:zhipu/glm-5.3-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3",
+      "displayName": "GLM 5.3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0699,
+          "new": 0.084,
+          "pct": 0.2017
+        },
+        {
+          "field": "output",
+          "old": 1.4,
+          "new": 3.6,
+          "pct": 1.571
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0689,
+          "new": 0.079,
+          "pct": 0.1466
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:zhipu/glm-5.3-batch-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3-batch",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-batch",
+      "displayName": "GLM 5.3 (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.35,
+          "new": 0.45,
+          "pct": 0.2857
+        },
+        {
+          "field": "output",
+          "old": 1.075,
+          "new": 2,
+          "pct": 0.8605
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.118,
+          "new": 0.1,
+          "pct": -0.1525
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-openrouter:zhipu/glm-5.3-flash-batch-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash-batch",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash-batch",
+      "displayName": "GLM 5.3 Flash (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.047,
+          "new": 0.05,
+          "pct": 0.06383
+        },
+        {
+          "field": "output",
+          "old": 0.061,
+          "new": 0.18,
+          "pct": 1.951
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.02,
+          "new": 0.01,
+          "pct": -0.5
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-sambanova:deepseek/deepseek-chat-v3.1-1",
+      "type": "removed",
+      "offeringId": "sambanova:deepseek/deepseek-chat-v3.1",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-chat-v3.1",
+      "displayName": "DeepSeek V3.1",
+      "platform": "sambanova",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
+    },
+    {
+      "id": "2026-11-13-vertex:google/gemini-4-hydrogen-1",
+      "type": "new_model",
+      "offeringId": "vertex:google/gemini-4-hydrogen",
+      "vendor": "google",
+      "modelSlug": "google/gemini-4-hydrogen",
+      "displayName": "Gemini 4 Hydrogen",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-13T03:27:44Z"
     }
   ]
 }

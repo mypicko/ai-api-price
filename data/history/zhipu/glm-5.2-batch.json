@@ -29,6 +29,13 @@
         "cacheRead": 0.118,
         "cacheWrite": null,
         "effectiveDate": "2026-11-12"
+      },
+      {
+        "input": 0.322,
+        "output": 0.989,
+        "cacheRead": 0.109,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-13"
       }
     ]
   }

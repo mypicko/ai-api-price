@@ -89,6 +89,13 @@
         "cacheRead": 0.2,
         "cacheWrite": null,
         "effectiveDate": "2026-10-24"
+      },
+      {
+        "input": 0.2375,
+        "output": 8.4114,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-13"
       }
     ],
     "parasail:moonshot/kimi-k3.1-pro": [

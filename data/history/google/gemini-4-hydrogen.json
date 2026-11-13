@@ -1,0 +1,32 @@
+{
+  "modelSlug": "google/gemini-4-hydrogen",
+  "series": {
+    "official:google/gemini-4-hydrogen": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-13"
+      }
+    ],
+    "openrouter:google/gemini-4-hydrogen": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": 0.075,
+        "cacheWrite": 0.0833333,
+        "effectiveDate": "2026-11-13"
+      }
+    ],
+    "vertex:google/gemini-4-hydrogen": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-13"
+      }
+    ]
+  }
+}

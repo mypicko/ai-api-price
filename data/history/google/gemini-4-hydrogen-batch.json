@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-4-hydrogen-batch",
+  "series": {
+    "openrouter:google/gemini-4-hydrogen-batch": [
+      {
+        "input": 0.75,
+        "output": 3.75,
+        "cacheRead": 0.0375,
+        "cacheWrite": 0.0833333,
+        "effectiveDate": "2026-11-13"
+      }
+    ]
+  }
+}

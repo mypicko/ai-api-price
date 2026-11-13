@@ -85,6 +85,13 @@
         "cacheRead": 0.209,
         "cacheWrite": null,
         "effectiveDate": "2026-11-08"
+      },
+      {
+        "input": 0.5,
+        "output": 2.5,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-13"
       }
     ],
     "siliconflow:moonshot/kimi-k2.5": [
