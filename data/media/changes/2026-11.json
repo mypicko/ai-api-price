@@ -65,6 +65,19 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-06T03:28:31Z"
+    },
+    {
+      "id": "2026-11-14-openrouter:bytedance/seedance-1.5-pro-1",
+      "type": "removed",
+      "offeringId": "openrouter:bytedance/seedance-1.5-pro",
+      "vendor": "bytedance",
+      "modelSlug": "bytedance/seedance-1.5-pro",
+      "displayName": "Seedance 1.5 Pro",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-14T03:23:30Z"
     }
   ]
 }
