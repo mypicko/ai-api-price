@@ -17,6 +17,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.072,
+        "output": 0.44,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-15"
       }
     ],
     "gmi:alibaba/qwen3-235b-a22b-2507": [
