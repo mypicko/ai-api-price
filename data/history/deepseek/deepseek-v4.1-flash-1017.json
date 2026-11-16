@@ -256,6 +256,13 @@
         "cacheRead": 0.01,
         "cacheWrite": null,
         "effectiveDate": "2026-11-14"
+      },
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-16"
       }
     ],
     "parasail:deepseek/deepseek-v4.1-flash-1017": [

@@ -87,6 +87,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-11-15"
+      },
+      {
+        "input": 0.5,
+        "output": 2.15,
+        "cacheRead": 0.35,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-16"
       }
     ],
     "together:deepseek/deepseek-r1-0528": [

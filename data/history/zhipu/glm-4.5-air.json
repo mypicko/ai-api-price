@@ -42,6 +42,13 @@
         "cacheRead": 0.03,
         "cacheWrite": null,
         "effectiveDate": "2026-11-10"
+      },
+      {
+        "input": 0.13,
+        "output": 0.85,
+        "cacheRead": 0.025,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-16"
       }
     ],
     "siliconflow-cn:zhipu/glm-4.5-air": [
