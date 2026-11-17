@@ -5,6 +5,10 @@ updates:
     schedule: { interval: weekly }
     groups:
       all: { patterns: ["*"] }
+    ignore:
+      # typescript-eslint 还不支持 TS 7，等它支持后再删掉这条
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule: { interval: weekly }
