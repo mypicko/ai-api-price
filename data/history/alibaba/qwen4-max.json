@@ -1,6 +1,24 @@
 {
   "modelSlug": "alibaba/qwen4-max",
   "series": {
+    "deepinfra:alibaba/qwen4-max": [
+      {
+        "input": 1.413,
+        "output": 4.24,
+        "cacheRead": 0.071,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
+      }
+    ],
+    "novita:alibaba/qwen4-max": [
+      {
+        "input": 1.413,
+        "output": 4.24,
+        "cacheRead": 0.071,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
+      }
+    ],
     "official:alibaba/qwen4-max": [
       {
         "input": 1.413,
@@ -17,6 +35,13 @@
         "cacheRead": 0.075,
         "cacheWrite": 1.875,
         "effectiveDate": "2026-11-16"
+      },
+      {
+        "input": 1.425,
+        "output": 4.275,
+        "cacheRead": 0.07125,
+        "cacheWrite": 1.78125,
+        "effectiveDate": "2026-11-17"
       }
     ]
   }

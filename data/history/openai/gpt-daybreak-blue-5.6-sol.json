@@ -1,0 +1,14 @@
+{
+  "modelSlug": "openai/gpt-daybreak-blue-5.6-sol",
+  "series": {
+    "bedrock:openai/gpt-daybreak-blue-5.6-sol": [
+      {
+        "input": 4.4,
+        "output": 22,
+        "cacheRead": 0.44,
+        "cacheWrite": 5.5,
+        "effectiveDate": "2026-11-17"
+      }
+    ]
+  }
+}

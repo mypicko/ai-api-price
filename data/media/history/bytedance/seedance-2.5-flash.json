@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/seedance-2.5-flash",
+  "series": {
+    "openrouter:bytedance/seedance-2.5-flash": [
+      {
+        "input": null,
+        "output": 0.0672525,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
+      }
+    ]
+  }
+}

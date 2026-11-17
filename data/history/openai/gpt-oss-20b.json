@@ -44,6 +44,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.03,
+        "output": 0.14,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
       }
     ],
     "fireworks:openai/gpt-oss-20b": [
@@ -126,6 +133,13 @@
         "cacheRead": 0.0375,
         "cacheWrite": null,
         "effectiveDate": "2026-11-16"
+      },
+      {
+        "input": 0.03,
+        "output": 0.13,
+        "cacheRead": 0.03,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
       }
     ],
     "parasail:openai/gpt-oss-20b": [

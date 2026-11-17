@@ -108,6 +108,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-11-14"
+      },
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
       }
     ],
     "novita:moonshot/kimi-k3": [

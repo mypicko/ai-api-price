@@ -51,6 +51,13 @@
         "cacheRead": 0.12,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.5,
+        "output": 2.2,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
       }
     ],
     "wandb:nvidia/nemotron-3-ultra-550b-a55b": [

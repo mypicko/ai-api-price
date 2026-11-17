@@ -1,0 +1,23 @@
+{
+  "modelSlug": "tencent/hy4-flash",
+  "series": {
+    "novita:tencent/hy4-flash": [
+      {
+        "input": 0.07,
+        "output": 0.281,
+        "cacheRead": 0.003,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
+      }
+    ],
+    "openrouter:tencent/hy4-flash": [
+      {
+        "input": 0.035,
+        "output": 0.1405,
+        "cacheRead": 0.0015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
+      }
+    ]
+  }
+}

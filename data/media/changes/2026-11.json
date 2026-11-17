@@ -78,6 +78,19 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-14T03:23:30Z"
+    },
+    {
+      "id": "2026-11-17-openrouter:bytedance/seedance-2.5-flash-1",
+      "type": "new_model",
+      "offeringId": "openrouter:bytedance/seedance-2.5-flash",
+      "vendor": "bytedance",
+      "modelSlug": "bytedance/seedance-2.5-flash",
+      "displayName": "Seedance 2.5 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-17T05:08:00Z"
     }
   ]
 }

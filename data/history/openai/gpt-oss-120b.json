@@ -80,6 +80,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.037,
+        "output": 0.17,
+        "cacheRead": 0.0185,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-17"
       }
     ],
     "digitalocean:openai/gpt-oss-120b": [
