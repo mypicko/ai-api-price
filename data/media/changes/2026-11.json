@@ -91,6 +91,52 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-17T05:08:00Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:bytedance/doubao-seedance-2.0-fast-260128-1",
+      "type": "price_up",
+      "offeringId": "openrouter:bytedance/doubao-seedance-2.0-fast-260128",
+      "vendor": "bytedance",
+      "modelSlug": "bytedance/doubao-seedance-2.0-fast-260128",
+      "displayName": "Seedance 2.0 Fast",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "output",
+          "old": 0.0403515,
+          "new": 0.053802,
+          "pct": 0.3333
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:heygen/heygen-avatar-6-1",
+      "type": "new_model",
+      "offeringId": "openrouter:heygen/heygen-avatar-6",
+      "vendor": "heygen",
+      "modelSlug": "heygen/heygen-avatar-6",
+      "displayName": "Avatar 6",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:heygen/heygen-avatar-6-turbo-1",
+      "type": "new_model",
+      "offeringId": "openrouter:heygen/heygen-avatar-6-turbo",
+      "vendor": "heygen",
+      "modelSlug": "heygen/heygen-avatar-6-turbo",
+      "displayName": "Avatar 6 Turbo",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
     }
   ]
 }

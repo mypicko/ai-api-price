@@ -8871,6 +8871,692 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-17T05:08:00Z"
+    },
+    {
+      "id": "2026-11-18-azure:openai/codex-mini-1",
+      "type": "removed",
+      "offeringId": "azure:openai/codex-mini",
+      "vendor": "openai",
+      "modelSlug": "openai/codex-mini",
+      "displayName": "codex-mini",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-azure:openai/gpt-6.2-astra-1",
+      "type": "new_model",
+      "offeringId": "azure:openai/gpt-6.2-astra",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-astra",
+      "displayName": "GPT-6.2 Astra",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-azure:openai/gpt-6.2-astra-pro-1",
+      "type": "new_model",
+      "offeringId": "azure:openai/gpt-6.2-astra-pro",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-astra-pro",
+      "displayName": "GPT-6.2 Astra Pro",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-azure:openai/gpt-6.2-sol-1",
+      "type": "new_model",
+      "offeringId": "azure:openai/gpt-6.2-sol",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-sol",
+      "displayName": "GPT-6.2 Sol",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-azure:openai/gpt-6.2-sol-pro-1",
+      "type": "new_model",
+      "offeringId": "azure:openai/gpt-6.2-sol-pro",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-sol-pro",
+      "displayName": "GPT-6.2 Sol Pro",
+      "platform": "azure",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-bedrock:moonshot/kimi-k3.1-pro-1",
+      "type": "new_model",
+      "offeringId": "bedrock:moonshot/kimi-k3.1-pro",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k3.1-pro",
+      "displayName": "Kimi K3.1 Pro",
+      "platform": "bedrock",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-bedrock:openai/gpt-6.2-astra-1",
+      "type": "new_model",
+      "offeringId": "bedrock:openai/gpt-6.2-astra",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-astra",
+      "displayName": "GPT-6.2 Astra",
+      "platform": "bedrock",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-bedrock:openai/gpt-6.2-sol-1",
+      "type": "new_model",
+      "offeringId": "bedrock:openai/gpt-6.2-sol",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-sol",
+      "displayName": "GPT-6.2 Sol",
+      "platform": "bedrock",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-nebius:deepseek/deepseek-v4.1-flash-1017-1",
+      "type": "price_down",
+      "offeringId": "nebius:deepseek/deepseek-v4.1-flash-1017",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "platform": "nebius",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.3,
+          "new": 0.18,
+          "pct": -0.4
+        },
+        {
+          "field": "output",
+          "old": 1.2,
+          "new": 0.72,
+          "pct": -0.4
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.006,
+          "new": 0.0036,
+          "pct": -0.4
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-official:cohere/north-mini-code-1.0-1",
+      "type": "new_model",
+      "offeringId": "official:cohere/north-mini-code-1.0",
+      "vendor": "cohere",
+      "modelSlug": "cohere/north-mini-code-1.0",
+      "displayName": "north-mini-code-1.0",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-official:cohere/north-small-translate-1.0-1",
+      "type": "new_model",
+      "offeringId": "official:cohere/north-small-translate-1.0",
+      "vendor": "cohere",
+      "modelSlug": "cohere/north-small-translate-1.0",
+      "displayName": "north-small-translate-1.0",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-official:openai/gpt-6.2-astra-1",
+      "type": "new_model",
+      "offeringId": "official:openai/gpt-6.2-astra",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-astra",
+      "displayName": "GPT-6.2 Astra",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-official:openai/gpt-6.2-astra-law-1",
+      "type": "new_model",
+      "offeringId": "official:openai/gpt-6.2-astra-law",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-astra-law",
+      "displayName": "gpt-6.2-astra-law",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-official:openai/gpt-6.2-sol-1",
+      "type": "new_model",
+      "offeringId": "official:openai/gpt-6.2-sol",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-sol",
+      "displayName": "GPT-6.2 Sol",
+      "platform": "official",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:alibaba/qwen3-next-80b-a3b-instruct-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3-next-80b-a3b-instruct",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-next-80b-a3b-instruct",
+      "displayName": "Qwen3 Next 80B A3B Instruct",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.09,
+          "new": 0.1,
+          "pct": 0.1111
+        },
+        {
+          "field": "cacheRead",
+          "old": null,
+          "new": 0.07,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:alibaba/qwen3-vl-30b-a3b-thinking-1",
+      "type": "removed",
+      "offeringId": "openrouter:alibaba/qwen3-vl-30b-a3b-thinking",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3-vl-30b-a3b-thinking",
+      "displayName": "Qwen3 VL 30B A3B Thinking",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:alibaba/qwen3.5-27b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.5-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-27b",
+      "displayName": "Qwen3.5-27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.26,
+          "new": 0.3,
+          "pct": 0.1538
+        },
+        {
+          "field": "output",
+          "old": 2.6,
+          "new": 2.4,
+          "pct": -0.07692
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:alibaba/qwen3.8-27b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.8-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.8-27b",
+      "displayName": "Qwen3.8 27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.06,
+          "pct": -0.6
+        },
+        {
+          "field": "output",
+          "old": 1.875,
+          "new": 2.2,
+          "pct": 0.1733
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0375,
+          "new": 0.059,
+          "pct": 0.5733
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:deepseek/deepseek-v4.1-flash-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4.1-flash",
+      "displayName": "DeepSeek V4.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.14,
+          "new": 0.051,
+          "pct": -0.6357
+        },
+        {
+          "field": "output",
+          "old": 0.42,
+          "new": 0.567,
+          "pct": 0.35
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0042,
+          "new": 0.018,
+          "pct": 3.286
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:google/gemma-3-27b-it-1",
+      "type": "price_up",
+      "offeringId": "openrouter:google/gemma-3-27b-it",
+      "vendor": "google",
+      "modelSlug": "google/gemma-3-27b-it",
+      "displayName": "Gemma 3 27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "output",
+          "old": 0.35,
+          "new": 0.45,
+          "pct": 0.2857
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:mistral/mistral-medium-3-1",
+      "type": "price_up",
+      "offeringId": "openrouter:mistral/mistral-medium-3",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-medium-3",
+      "displayName": "Mistral Medium 3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.4,
+          "new": 0.44,
+          "pct": 0.1
+        },
+        {
+          "field": "output",
+          "old": 2,
+          "new": 2.2,
+          "pct": 0.1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.04,
+          "new": 0.044,
+          "pct": 0.1
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:mistral/mistral-medium-3.1-1",
+      "type": "price_up",
+      "offeringId": "openrouter:mistral/mistral-medium-3.1",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-medium-3.1",
+      "displayName": "Mistral Medium 3.1",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.4,
+          "new": 0.44,
+          "pct": 0.1
+        },
+        {
+          "field": "output",
+          "old": 2,
+          "new": 2.2,
+          "pct": 0.1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.04,
+          "new": 0.044,
+          "pct": 0.1
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:mistral/mistral-small-3.2-24b-instruct-1",
+      "type": "price_down",
+      "offeringId": "openrouter:mistral/mistral-small-3.2-24b-instruct",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-small-3.2-24b-instruct",
+      "displayName": "Mistral Small 3.2 24B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.1,
+          "new": 0.075,
+          "pct": -0.25
+        },
+        {
+          "field": "output",
+          "old": 0.3,
+          "new": 0.2,
+          "pct": -0.3333
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.01,
+          "new": null,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:moonshot/kimi-k2.7-code-1",
+      "type": "price_up",
+      "offeringId": "openrouter:moonshot/kimi-k2.7-code",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2.7-code",
+      "displayName": "Kimi K2.7 Code",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.6,
+          "new": 0.7,
+          "pct": 0.1667
+        },
+        {
+          "field": "output",
+          "old": 3.5,
+          "new": 3.75,
+          "pct": 0.07143
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.16,
+          "new": 0.17,
+          "pct": 0.0625
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:openai/gpt-6.2-astra-1",
+      "type": "new_model",
+      "offeringId": "openrouter:openai/gpt-6.2-astra",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-astra",
+      "displayName": "GPT-6.2 Astra",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:openai/gpt-6.2-astra-batch-1",
+      "type": "new_model",
+      "offeringId": "openrouter:openai/gpt-6.2-astra-batch",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-astra-batch",
+      "displayName": "GPT-6.2 Astra (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:openai/gpt-6.2-astra-pro-1",
+      "type": "new_model",
+      "offeringId": "openrouter:openai/gpt-6.2-astra-pro",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-astra-pro",
+      "displayName": "GPT-6.2 Astra Pro",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:openai/gpt-6.2-astra-pro-batch-1",
+      "type": "new_model",
+      "offeringId": "openrouter:openai/gpt-6.2-astra-pro-batch",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-astra-pro-batch",
+      "displayName": "GPT-6.2 Astra Pro (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:openai/gpt-6.2-sol-1",
+      "type": "new_model",
+      "offeringId": "openrouter:openai/gpt-6.2-sol",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-sol",
+      "displayName": "GPT-6.2 Sol",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:openai/gpt-6.2-sol-batch-1",
+      "type": "new_model",
+      "offeringId": "openrouter:openai/gpt-6.2-sol-batch",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-sol-batch",
+      "displayName": "GPT-6.2 Sol (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:openai/gpt-6.2-sol-pro-1",
+      "type": "new_model",
+      "offeringId": "openrouter:openai/gpt-6.2-sol-pro",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-sol-pro",
+      "displayName": "GPT-6.2 Sol Pro",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:openai/gpt-6.2-sol-pro-batch-1",
+      "type": "new_model",
+      "offeringId": "openrouter:openai/gpt-6.2-sol-pro-batch",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-6.2-sol-pro-batch",
+      "displayName": "GPT-6.2 Sol Pro (batch)",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:openai/gpt-oss-20b-1",
+      "type": "price_down",
+      "offeringId": "openrouter:openai/gpt-oss-20b",
+      "vendor": "openai",
+      "modelSlug": "openai/gpt-oss-20b",
+      "displayName": "gpt-oss-20b",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.03,
+          "new": 0.018,
+          "pct": -0.4
+        },
+        {
+          "field": "output",
+          "old": 0.13,
+          "new": 0.09,
+          "pct": -0.3077
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.03,
+          "new": 0.009,
+          "pct": -0.7
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:stepfun/step-3.5-flash-1",
+      "type": "removed",
+      "offeringId": "openrouter:stepfun/step-3.5-flash",
+      "vendor": "stepfun",
+      "modelSlug": "stepfun/step-3.5-flash",
+      "displayName": "Step 3.5 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:tencent/hunyuan-a13b-instruct-1",
+      "type": "removed",
+      "offeringId": "openrouter:tencent/hunyuan-a13b-instruct",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hunyuan-a13b-instruct",
+      "displayName": "Hunyuan A13B Instruct",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:zhipu/glm-4.6v-1",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-4.6v",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.6v",
+      "displayName": "GLM 4.6V",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "cacheRead",
+          "old": 0.055,
+          "new": 0.05,
+          "pct": -0.09091
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:zhipu/glm-5.3-flash-1",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0399,
+          "new": 0.15,
+          "pct": 2.759
+        },
+        {
+          "field": "output",
+          "old": 0.0784,
+          "new": 0.5,
+          "pct": 5.378
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-18T04:31:36Z"
     }
   ]
 }

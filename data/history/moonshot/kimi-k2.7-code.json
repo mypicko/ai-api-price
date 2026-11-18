@@ -154,6 +154,13 @@
         "cacheRead": 0.16,
         "cacheWrite": null,
         "effectiveDate": "2026-11-06"
+      },
+      {
+        "input": 0.7,
+        "output": 3.75,
+        "cacheRead": 0.17,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-18"
       }
     ],
     "siliconflow:moonshot/kimi-k2.7-code": [

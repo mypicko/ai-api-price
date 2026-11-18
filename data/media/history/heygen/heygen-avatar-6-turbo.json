@@ -1,0 +1,14 @@
+{
+  "modelSlug": "heygen/heygen-avatar-6-turbo",
+  "series": {
+    "openrouter:heygen/heygen-avatar-6-turbo": [
+      {
+        "input": null,
+        "output": 0.05,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-18"
+      }
+    ]
+  }
+}

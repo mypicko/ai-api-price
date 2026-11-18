@@ -1,0 +1,14 @@
+{
+  "modelSlug": "cohere/north-small-translate-1.0",
+  "series": {
+    "official:cohere/north-small-translate-1.0": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-18"
+      }
+    ]
+  }
+}

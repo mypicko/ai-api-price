@@ -1,0 +1,41 @@
+{
+  "modelSlug": "openai/gpt-6.2-astra",
+  "series": {
+    "azure:openai/gpt-6.2-astra": [
+      {
+        "input": 8,
+        "output": 40,
+        "cacheRead": 0.4,
+        "cacheWrite": 10,
+        "effectiveDate": "2026-11-18"
+      }
+    ],
+    "bedrock:openai/gpt-6.2-astra": [
+      {
+        "input": 8,
+        "output": 40,
+        "cacheRead": 0.4,
+        "cacheWrite": 10,
+        "effectiveDate": "2026-11-18"
+      }
+    ],
+    "official:openai/gpt-6.2-astra": [
+      {
+        "input": 8,
+        "output": 40,
+        "cacheRead": 0.4,
+        "cacheWrite": 10,
+        "effectiveDate": "2026-11-18"
+      }
+    ],
+    "openrouter:openai/gpt-6.2-astra": [
+      {
+        "input": 8,
+        "output": 40,
+        "cacheRead": 0.4,
+        "cacheWrite": 10,
+        "effectiveDate": "2026-11-18"
+      }
+    ]
+  }
+}

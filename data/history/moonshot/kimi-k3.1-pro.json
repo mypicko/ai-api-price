@@ -10,6 +10,15 @@
         "effectiveDate": "2026-11-05"
       }
     ],
+    "bedrock:moonshot/kimi-k3.1-pro": [
+      {
+        "input": 4,
+        "output": 20,
+        "cacheRead": 0.2,
+        "cacheWrite": 5,
+        "effectiveDate": "2026-11-18"
+      }
+    ],
     "deepinfra:moonshot/kimi-k3.1-pro": [
       {
         "input": 1.9,
