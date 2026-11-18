@@ -40,6 +40,7 @@ function report(changes: readonly ChangeEvent[]): DailyReport {
 }
 
 const ctx: ArticleContext = {
+  usdCny: 7,
   vendorName: (id) => ({ deepseek: "DeepSeek", moonshot: "月之暗面 Kimi" })[id] ?? id,
   platformName: (id) => ({ official: "官方", together: "Together AI" })[id] ?? id,
   priceOf: (offeringId) =>
@@ -116,7 +117,7 @@ describe("buildWechatArticle：公众号日报文章", () => {
   it("正文：新模型补上当天价格，价格变动写出新旧价和涨跌幅，阅读原文指向网站", () => {
     const article = buildWechatArticle(report([event(), newKimi]), ctx);
     expect(article?.html).toContain("Kimi K3.1 Pro");
-    expect(article?.html).toContain("$2.00");
+    expect(article?.html).toContain("¥14.00");
     expect(article?.html).toContain("¥8.00");
     expect(article?.html).toContain("¥4.00");
     expect(article?.html).toContain("-50%");
@@ -156,6 +157,77 @@ describe("buildWechatArticle：公众号日报文章", () => {
     });
     expect(buildWechatArticle(report([or]), ctx)).toBeNull();
     expect(buildWechatArticle(report([or, event()]), ctx)?.html).not.toContain("GLM 5.3");
+  });
+
+  it("同一个新模型在多个平台上线只写一张卡，列出所有平台；价格相同只写一行", () => {
+    const on = (platform: string) => ({
+      ...newKimi,
+      id: `${platform}-kimi`,
+      platform,
+      offeringId: `${platform}:moonshot/kimi-k3.1-pro`,
+    });
+    const article = buildWechatArticle(report([newKimi, on("together"), on("azure")]), {
+      ...ctx,
+      priceOf: () => ({ input: 2, output: 10, currency: "USD" }),
+    });
+    const html = article?.html ?? "";
+    expect(html.match(/Kimi K3\.1 Pro/g)).toHaveLength(1);
+    expect(html).toContain("官方、Together AI、azure");
+    expect(html.match(/¥70\.00/g)).toHaveLength(1);
+    // 摘要按模型数计：3 个平台上线的是同 1 个新模型
+    expect(article?.digest).toContain("新模型 1");
+  });
+
+  it("同一个新模型各平台价格不同时，按价格分行并注明平台", () => {
+    const together = {
+      ...newKimi,
+      id: "together-kimi",
+      platform: "together",
+      offeringId: "together:moonshot/kimi-k3.1-pro",
+    };
+    const html =
+      buildWechatArticle(report([newKimi, together]), {
+        ...ctx,
+        priceOf: (id) =>
+          id.startsWith("together")
+            ? { input: 3, output: 12, currency: "USD" }
+            : { input: 2, output: 10, currency: "USD" },
+      })?.html ?? "";
+    expect(html.indexOf("官方")).toBeLessThan(html.indexOf("¥70.00"));
+    expect(html.indexOf("Together AI")).toBeLessThan(html.indexOf("¥84.00"));
+  });
+
+  it("开头有概览卡：各类变动的数量", () => {
+    const html = buildWechatArticle(report([event(), newKimi]), ctx)?.html ?? "";
+    const overview = html.slice(0, html.indexOf("Kimi K3.1 Pro"));
+    expect(overview).toContain("10 月 31 日");
+    expect(overview).toMatch(/>1<\/p><p[^>]*>新模型/);
+    expect(overview).toMatch(/>1<\/p><p[^>]*>降价/);
+  });
+
+  it("价格一律按人民币显示：美元价按汇率换算，开头注明汇率", () => {
+    const html = buildWechatArticle(report([event(), newKimi]), ctx)?.html ?? "";
+    expect(html).not.toContain("$");
+    expect(html).toContain("¥14.00");
+    expect(html).toContain("¥70.00");
+    expect(html).toContain("1 美元 ≈ 7.00 元");
+  });
+
+  it("美元价格变动的新旧价都换算成人民币", () => {
+    const usd = event({
+      currency: "USD",
+      fields: [{ field: "input", old: 1, new: 0.5, pct: -0.5 }],
+    });
+    const html = buildWechatArticle(report([usd]), ctx)?.html ?? "";
+    expect(html).toContain("¥7.00");
+    expect(html).toContain("¥3.50");
+    expect(html).toContain("-50%");
+  });
+
+  it("没有汇率时按原币种显示，不写汇率说明", () => {
+    const html = buildWechatArticle(report([newKimi]), { ...ctx, usdCny: null })?.html ?? "";
+    expect(html).toContain("$2.00");
+    expect(html).not.toContain("美元 ≈");
   });
 
   it("模型名等文字会转义", () => {

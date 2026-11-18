@@ -9,6 +9,7 @@ import type { ArticleContext } from "../../src/notify/wechat-article";
 import { createFakeHttp, makeConfig, NOW, NOW_ISO } from "../helpers";
 
 const ctx: ArticleContext = {
+  usdCny: 7,
   vendorName: (id) => id,
   platformName: (id) => id,
   priceOf: () => null,
