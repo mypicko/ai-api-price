@@ -9139,6 +9139,38 @@
       "detectedAt": "2026-11-18T04:31:36Z"
     },
     {
+      "id": "2026-11-18-openrouter:alibaba/qwen3.5-9b-1",
+      "type": "price_down",
+      "offeringId": "openrouter:alibaba/qwen3.5-9b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-9b",
+      "displayName": "Qwen3.5-9B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.17,
+          "new": 0.143,
+          "pct": -0.1588
+        },
+        {
+          "field": "output",
+          "old": 0.25,
+          "new": 0.211,
+          "pct": -0.156
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.153,
+          "new": 0.129,
+          "pct": -0.1569
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-18T04:51:08Z"
+    },
+    {
       "id": "2026-11-18-openrouter:alibaba/qwen3.8-27b-1",
       "type": "price_up",
       "offeringId": "openrouter:alibaba/qwen3.8-27b",
@@ -9557,6 +9589,32 @@
       ],
       "confirmedFromQuarantine": true,
       "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-18-openrouter:zhipu/glm-5.3-flash-2",
+      "type": "price_down",
+      "offeringId": "openrouter:zhipu/glm-5.3-flash",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.3-flash",
+      "displayName": "GLM 5.3 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.15,
+          "new": 0.0399,
+          "pct": -0.734
+        },
+        {
+          "field": "output",
+          "old": 0.5,
+          "new": 0.0784,
+          "pct": -0.8432
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-18T04:51:08Z"
     }
   ]
 }
