@@ -77,9 +77,10 @@ function shortDate(date: string): string {
   return `${Number(month)}/${Number(day)}`;
 }
 
-/** 标题主题：名字 + 动作 + 可选的涨跌幅 */
+/** 标题主题：名字 + 厂商 + 动作 + 可选的涨跌幅 */
 interface Headline {
   readonly name: string;
+  readonly vendor: string | null;
   readonly action: string;
   readonly pct: string | null;
 }
@@ -91,26 +92,42 @@ function headline(
 ): Headline {
   const official = (list: readonly ChangeEvent[]) => list.find(isOfficial);
   const pctOf = (e: ChangeEvent) => formatPct(maxPct(e)).replace("+", "");
+  const of = (e: ChangeEvent, action: string, pct: string | null): Headline => ({
+    name: e.displayName,
+    vendor: e.vendor,
+    action,
+    pct,
+  });
   const newModel = official(added);
-  if (newModel) return { name: newModel.displayName, action: "上线", pct: null };
+  if (newModel) return of(newModel, "上线", null);
   const drop = official(down) ?? down[0];
-  if (drop) return { name: drop.displayName, action: "降价", pct: pctOf(drop) };
+  if (drop) return of(drop, "降价", pctOf(drop));
   const rise = official(up) ?? up[0];
-  if (rise) return { name: rise.displayName, action: "涨价", pct: pctOf(rise) };
+  if (rise) return of(rise, "涨价", pctOf(rise));
   const first = added[0];
   return first
-    ? { name: first.displayName, action: "上线", pct: null }
-    : { name: "今日", action: "价格变动", pct: null };
+    ? of(first, "上线", null)
+    : { name: "今日", vendor: null, action: "价格变动", pct: null };
 }
 
-/** 超长时先去掉涨跌幅，仍放不下再截断名字，不在数字中间截断 */
-function buildTitle(date: string, h: Headline): string {
+/**
+ * 按顺序取第一个放得下的写法，不把名字截成半截：
+ * 名字 + 涨跌幅 → 名字 → 厂商 + 涨跌幅 → 厂商 → 通用说法（新模型上线 / 模型降价）
+ */
+function buildTitle(date: string, h: Headline, vendorName: (id: string) => string): string {
   const prefix = `AI 价格日报 ${shortDate(date)}｜`;
-  const full = `${prefix}${h.name} ${h.action}${h.pct ? ` ${h.pct}` : ""}`;
-  if (full.length <= MAX_TITLE_LENGTH) return full;
-  const tail = ` ${h.action}`;
-  const room = MAX_TITLE_LENGTH - prefix.length - tail.length;
-  return `${prefix}${truncate(h.name, room)}${tail}`;
+  const pct = h.pct ? ` ${h.pct}` : "";
+  const isNew = h.action === "上线";
+  const vendor = h.vendor ? vendorName(h.vendor) : null;
+  const byVendor = vendor ? (isNew ? `${vendor} 新模型上线` : `${vendor} ${h.action}`) : null;
+  const candidates = [
+    `${h.name} ${h.action}${pct}`,
+    `${h.name} ${h.action}`,
+    ...(byVendor ? [`${byVendor}${isNew ? "" : pct}`, byVendor] : []),
+    isNew ? "新模型上线" : `模型${h.action}`,
+  ];
+  const fits = candidates.find((c) => prefix.length + c.length <= MAX_TITLE_LENGTH);
+  return `${prefix}${fits ?? candidates[candidates.length - 1]}`;
 }
 
 function where(e: ChangeEvent, ctx: ArticleContext): string {
@@ -191,7 +208,7 @@ export function buildWechatArticle(report: DailyReport, ctx: ArticleContext): We
   const footer = `<p style="font-size:12px;color:${COLOR.muted};line-height:1.7;margin:28px 0 0;">数据每天自动抓取自各厂商官网和平台公开报价，仅供参考，以官方页面为准。点「阅读原文」查看完整价格榜、价格走势和成本计算器。</p>`;
 
   return {
-    title: buildTitle(report.date, headline(down, up, added)),
+    title: buildTitle(report.date, headline(down, up, added), ctx.vendorName),
     digest: truncate(
       `${counts.join(" · ")}。每天自动更新的 AI 模型 API 价格变动`,
       MAX_DIGEST_LENGTH,

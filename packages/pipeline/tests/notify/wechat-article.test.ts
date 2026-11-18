@@ -91,6 +91,28 @@ describe("buildWechatArticle：公众号日报文章", () => {
     expect(title.length).toBeLessThanOrEqual(MAX_TITLE_LENGTH);
   });
 
+  it("名字怎么都放不下时改用厂商名，不把名字截成半截", () => {
+    const longNew = { ...newKimi, displayName: "north-mini-code-1.0", vendor: "deepseek" };
+    expect(buildWechatArticle(report([longNew]), ctx)?.title).toBe(
+      "AI 价格日报 10/31｜DeepSeek 新模型上线",
+    );
+    const longDrop = event({ displayName: "deepseek-reasoner-ultra-2026" });
+    expect(buildWechatArticle(report([longDrop]), ctx)?.title).toBe(
+      "AI 价格日报 10/31｜DeepSeek 降价 50%",
+    );
+  });
+
+  it("厂商名也放不下时用通用说法", () => {
+    const longVendor = {
+      ...newKimi,
+      displayName: "north-mini-code-1.0",
+      vendor: "a-very-long-vendor-name-inc",
+    };
+    const title = buildWechatArticle(report([longVendor]), ctx)?.title ?? "";
+    expect(title).toBe("AI 价格日报 10/31｜新模型上线");
+    expect(title).not.toContain("…");
+  });
+
   it("正文：新模型补上当天价格，价格变动写出新旧价和涨跌幅，阅读原文指向网站", () => {
     const article = buildWechatArticle(report([event(), newKimi]), ctx);
     expect(article?.html).toContain("Kimi K3.1 Pro");
