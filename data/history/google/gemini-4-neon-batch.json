@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-4-neon-batch",
+  "series": {
+    "openrouter:google/gemini-4-neon-batch": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": 0.075,
+        "cacheWrite": 0.0833333,
+        "effectiveDate": "2026-11-19"
+      }
+    ]
+  }
+}

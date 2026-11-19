@@ -9,6 +9,15 @@
         "cacheWrite": 34.375,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "official:anthropic/claude-mythos-preview": [
+      {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": 12.5,
+        "effectiveDate": "2026-11-19"
+      }
     ]
   }
 }

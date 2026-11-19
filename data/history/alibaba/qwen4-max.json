@@ -43,6 +43,15 @@
         "cacheWrite": 1.78125,
         "effectiveDate": "2026-11-17"
       }
+    ],
+    "together:alibaba/qwen4-max": [
+      {
+        "input": 1.425,
+        "output": 4.275,
+        "cacheRead": 0.07125,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-19"
+      }
     ]
   }
 }

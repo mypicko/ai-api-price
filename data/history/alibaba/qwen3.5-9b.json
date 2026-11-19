@@ -80,6 +80,13 @@
         "cacheRead": 0.129,
         "cacheWrite": null,
         "effectiveDate": "2026-11-18"
+      },
+      {
+        "input": 0.17,
+        "output": 0.25,
+        "cacheRead": 0.153,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-19"
       }
     ],
     "parasail:alibaba/qwen3.5-9b": [

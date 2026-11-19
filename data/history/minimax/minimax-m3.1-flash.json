@@ -124,6 +124,13 @@
         "cacheRead": 0.015,
         "cacheWrite": null,
         "effectiveDate": "2026-10-31"
+      },
+      {
+        "input": 0.06,
+        "output": 0.24,
+        "cacheRead": 0.006,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-19"
       }
     ],
     "together:minimax/minimax-m3.1-flash": [

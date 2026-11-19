@@ -1,0 +1,32 @@
+{
+  "modelSlug": "google/gemini-4-neon",
+  "series": {
+    "official:google/gemini-4-neon": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-19"
+      }
+    ],
+    "openrouter:google/gemini-4-neon": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.15,
+        "cacheWrite": 0.0833333,
+        "effectiveDate": "2026-11-19"
+      }
+    ],
+    "vertex:google/gemini-4-neon": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-19"
+      }
+    ]
+  }
+}
