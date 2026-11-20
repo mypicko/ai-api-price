@@ -1,4 +1,4 @@
-import { aliyunSource } from "./aliyun";
+import { aliyunCnSource, aliyunSource } from "./aliyun";
 import { deepinfraSource } from "./deepinfra";
 import { deepseekSource } from "./deepseek";
 import { litellmSource } from "./litellm";
@@ -9,13 +9,14 @@ import { moonshotSource } from "./moonshot";
 import { novitaSource } from "./novita";
 import { openrouterSource } from "./openrouter";
 import { openrouterEndpointsSource } from "./openrouter-endpoints";
+import { qianfanSource } from "./qianfan";
 import { siliconflowSource } from "./siliconflow";
 import type { Source } from "./types";
 import { volcengineSource } from "./volcengine";
 import { zhipuSource } from "./zhipu";
 
 /**
- * 全部数据源。qianfan 暂未注册：定价页境外不可达（见 sources/qianfan.ts），等 manual 兜底或国内运行模式。
+ * 全部数据源。
  * 顺序无关（并发执行），但优先级见 steps/normalize 的 SOURCE_PRIORITY */
 export const ALL_SOURCES: readonly Source[] = [
   litellmSource,
@@ -26,6 +27,8 @@ export const ALL_SOURCES: readonly Source[] = [
   novitaSource,
   deepseekSource,
   aliyunSource,
+  aliyunCnSource,
+  qianfanSource,
   zhipuSource,
   moonshotSource,
   volcengineSource,

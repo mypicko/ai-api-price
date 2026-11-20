@@ -11,6 +11,9 @@
  * - 阶梯价：同一模型多行，「0<Token≤32K」「32K<Token≤128K」；「无阶梯计价」「不区分阶梯」= 单一价格
  * - 价格单元格可能是「原价$0.276（限时8折）」「忙时 $0.283闲时 $0.141」，取第一个数（原价 / 忙时价），优惠写进 notes
  * 最后核对：2026-10-18
+ *
+ * 百炼国内站（aliyun-cn）：help.aliyun.com 同一份文档的中国站版本，结构相同、以人民币标价，
+ * 平台为 official-cn。2026-11-20 实测 GitHub 托管运行器可以访问。
  */
 import type { RawOffering, RawTier } from "@aipb/shared";
 import * as cheerio from "cheerio";
@@ -34,9 +37,19 @@ import {
 import type { Source } from "./types";
 
 export const ALIYUN_URL = "https://www.alibabacloud.com/help/zh/model-studio/model-pricing";
-const SOURCE_ID = "aliyun";
+export const ALIYUN_CN_URL = "https://help.aliyun.com/zh/model-studio/model-pricing";
 const REGION_HEADING = "华北2（北京）";
 const MODEL_ID = /^[A-Za-z][\w.-]*$/;
+const FREE_TRIAL_ONLY = /仅供免费体验/;
+
+/** 国际站（美元）和中国站（人民币）用同一套解析，只有源 ID 和网址不同 */
+interface Variant {
+  readonly sourceId: string;
+  readonly url: string;
+}
+
+const INTL: Variant = { sourceId: "aliyun", url: ALIYUN_URL };
+const CN: Variant = { sourceId: "aliyun-cn", url: ALIYUN_CN_URL };
 
 interface Columns {
   readonly model: number;
@@ -108,10 +121,13 @@ function toPriceRow(
   row: readonly string[],
   columns: Columns,
   unitHint: ReturnType<typeof detectUnit>,
+  sourceId: string,
 ): PriceRow | null {
   const model = modelIdOf(row[columns.model] ?? "");
   if (!model) return null;
-  const ctx = { sourceId: SOURCE_ID, unit: unitHint };
+  // 「目前仅供免费体验」的模型没有价格，不是解析失败
+  if (FREE_TRIAL_ONLY.test(row[columns.input] ?? "")) return null;
+  const ctx = { sourceId, unit: unitHint };
   const input = resolvePrice(row[columns.input] ?? "", ctx);
   const output = resolvePrice(row[columns.output] ?? "", ctx);
   if (!input && !output) return null;
@@ -142,11 +158,11 @@ function buildTiers(rows: readonly PriceRow[]): readonly RawTier[] {
   }));
 }
 
-function toOffering(rows: readonly PriceRow[]): RawOffering {
+function toOffering(rows: readonly PriceRow[], v: Variant): RawOffering {
   const [first] = rows;
   const reference = first?.input ?? first?.output;
   if (!first || !reference)
-    throw new PipelineError("E2001", "aliyun：空的模型分组", { sourceId: SOURCE_ID });
+    throw new PipelineError("E2001", `${v.sourceId}：空的模型分组`, { sourceId: v.sourceId });
   const tiers = buildTiers(rows);
   const notes = joinNotes(rows.flatMap((r) => r.remarks));
   return {
@@ -158,22 +174,22 @@ function toOffering(rows: readonly PriceRow[]): RawOffering {
     output: first.output?.value ?? null,
     ...(first.cacheRead === null ? {} : { cacheRead: first.cacheRead }),
     ...(tiers.length > 1 ? { tiers: [...tiers] } : {}),
-    sourceUrl: ALIYUN_URL,
+    sourceUrl: v.url,
     ...(notes ? { notes } : {}),
   };
 }
 
-function parseTable(table: TableGrid, logger?: Logger): readonly PriceRow[] {
+function parseTable(table: TableGrid, v: Variant, logger?: Logger): readonly PriceRow[] {
   const columns = locateColumns(table);
   if (!columns) return [];
   const unitHint = detectUnit(table.headers[columns.input] ?? "");
   return table.rows.flatMap((row) => {
     try {
-      const parsed = toPriceRow(row, columns, unitHint);
+      const parsed = toPriceRow(row, columns, unitHint, v.sourceId);
       return parsed ? [parsed] : [];
     } catch (error) {
-      logger?.warn("aliyun：跳过无法识别的价格行", {
-        sourceId: SOURCE_ID,
+      logger?.warn(`${v.sourceId}：跳过无法识别的价格行`, {
+        sourceId: v.sourceId,
         code: "W2003",
         row: row.join(" | "),
         error,
@@ -183,39 +199,54 @@ function parseTable(table: TableGrid, logger?: Logger): readonly PriceRow[] {
   });
 }
 
-export function parseAliyunHtml(html: string, logger?: Logger): RawOffering[] {
+function parseVariant(html: string, v: Variant, logger?: Logger): RawOffering[] {
   const $ = cheerio.load(html);
   const sections = regionSections($);
   if (sections.length === 0) {
     throw new PipelineError(
       "E2001",
-      `aliyun：找不到「文本生成」下的「${REGION_HEADING}」价格区块`,
-      { sourceId: SOURCE_ID },
+      `${v.sourceId}：找不到「文本生成」下的「${REGION_HEADING}」价格区块`,
+      { sourceId: v.sourceId },
     );
   }
   const rows = sections.flatMap((section) =>
     $(section)
       .find("table")
       .toArray()
-      .flatMap((table) => parseTable(tableToGrid($, table), logger)),
+      .flatMap((table) => parseTable(tableToGrid($, table), v, logger)),
   );
   const groups = new Map<string, PriceRow[]>();
   for (const row of rows) groups.set(row.model, [...(groups.get(row.model) ?? []), row]);
-  const offerings = [...groups.values()].map(toOffering);
+  const offerings = [...groups.values()].map((g) => toOffering(g, v));
   if (offerings.length === 0)
-    throw new PipelineError("E2001", "aliyun：价格区块里没有可识别的模型", { sourceId: SOURCE_ID });
+    throw new PipelineError("E2001", `${v.sourceId}：价格区块里没有可识别的模型`, {
+      sourceId: v.sourceId,
+    });
   return offerings;
 }
 
-export const aliyunSource: Source = {
-  id: SOURCE_ID,
-  platform: "official",
-  kind: "html",
-  timeoutMs: 45_000,
-  async fetch(ctx) {
-    const html = await ctx.http.getText(ALIYUN_URL, { timeoutMs: 30_000 });
-    const offerings = parseAliyunHtml(html, ctx.logger);
-    ctx.logger.info("aliyun 解析完成", { sourceId: SOURCE_ID, count: offerings.length });
-    return offerings;
-  },
-};
+export function parseAliyunHtml(html: string, logger?: Logger): RawOffering[] {
+  return parseVariant(html, INTL, logger);
+}
+
+export function parseAliyunCnHtml(html: string, logger?: Logger): RawOffering[] {
+  return parseVariant(html, CN, logger);
+}
+
+function createAliyunSource(v: Variant, platform: string): Source {
+  return {
+    id: v.sourceId,
+    platform,
+    kind: "html",
+    timeoutMs: 45_000,
+    async fetch(ctx) {
+      const html = await ctx.http.getText(v.url, { timeoutMs: 30_000 });
+      const offerings = parseVariant(html, v, ctx.logger);
+      ctx.logger.info(`${v.sourceId} 解析完成`, { sourceId: v.sourceId, count: offerings.length });
+      return offerings;
+    },
+  };
+}
+
+export const aliyunSource: Source = createAliyunSource(INTL, "official");
+export const aliyunCnSource: Source = createAliyunSource(CN, "official-cn");

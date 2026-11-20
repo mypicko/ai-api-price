@@ -38,6 +38,9 @@ export const SOURCE_PRIORITY: Readonly<Record<string, number>> = {
   "litellm-resellers": 2,
   manual: 1,
   "manual-cn": 4,
+  // 国内站官网自动抓取（人民币原价）优先于人工核对的 manual-cn：每天更新，manual-cn 只作兜底
+  "aliyun-cn": 5,
+  qianfan: 5,
   // 平台官方接口（第一手价格）优先于 OpenRouter 服务商列表和 LiteLLM
   deepinfra: 4,
   novita: 4,
