@@ -175,7 +175,8 @@ vendors:
       website: "https://cloud.baidu.com/product/wenxinworkshop",
       pricingUrl: null,
       logo: null,
-      matchers: [baidu, ernie, 百度, 文心],
+      # PaddlePaddle（飞桨）是百度的开源组织，硅基流动上的 PaddleOCR 等模型以它为组织名
+      matchers: [baidu, ernie, 百度, 文心, paddlepaddle],
       allowedSourceDomains: [baidu.com],
     }
   - {
@@ -210,6 +211,41 @@ vendors:
       logo: null,
       matchers: [tencent, hunyuan, 腾讯],
       allowedSourceDomains: [tencent.com],
+    }
+  - {
+      id: meituan,
+      nameZh: 美团 LongCat,
+      nameEn: Meituan LongCat,
+      region: cn,
+      website: "https://longcat.chat",
+      pricingUrl: null,
+      logo: null,
+      matchers: [meituan, meituan-longcat, longcat],
+      allowedSourceDomains: [longcat.chat, longcat.ai],
+    }
+  # 蚂蚁集团的百灵（Ling / Ring / Ming）系列，以 inclusionAI 组织开源发布
+  - {
+      id: inclusionai,
+      nameZh: 蚂蚁百灵（inclusionAI）,
+      nameEn: inclusionAI (Ant Group),
+      region: cn,
+      website: "https://huggingface.co/inclusionAI",
+      pricingUrl: null,
+      logo: null,
+      matchers: [inclusionai, inclusion-ai, 百灵],
+      allowedSourceDomains: [tbox.cn],
+    }
+  # 中国电信人工智能研究院（TeleAI）的星辰（Xing）系列，TeleChat 的后续
+  - {
+      id: xingchen,
+      nameZh: 中国电信星辰,
+      nameEn: China Telecom XingChen,
+      region: cn,
+      website: "https://www.teleai.com.cn",
+      pricingUrl: null,
+      logo: null,
+      matchers: [xingchenagi, xingchen-agi, xingchen, teleai],
+      allowedSourceDomains: [teleai.com.cn],
     }
   # ── 以下厂商目前只有视频/图像生成模型（data/media/） ──
   - {
