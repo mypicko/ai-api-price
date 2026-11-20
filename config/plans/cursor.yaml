@@ -1,7 +1,7 @@
 provider: { id: cursor, nameZh: Cursor, nameEn: Cursor, region: intl }
 currency: USD
 sourceUrl: https://cursor.com/pricing
-verifiedAt: 2026-10-20
+verifiedAt: 2026-11-20
 toolsZh: Cursor 编辑器与云端智能体（套餐内只含 Grok 模型，第三方模型按 API 标价另计）
 toolsEn: Cursor editor and cloud agents (plans include Grok models only; third-party models billed at API rates)
 breakEvenModel: x-ai/grok-4.7

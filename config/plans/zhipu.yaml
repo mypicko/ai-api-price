@@ -1,7 +1,7 @@
 provider: { id: zhipu, nameZh: 智谱 GLM Coding Plan, nameEn: Zhipu GLM Coding Plan, region: cn }
 currency: CNY
 sourceUrl: https://bigmodel.cn/glm-coding
-verifiedAt: 2026-10-20
+verifiedAt: 2026-11-20
 toolsZh: ZCode、Claude Code、Cursor 等 20+ 指定编程工具（在指定工具外调用不能使用套餐额度）
 toolsEn: ZCode, Claude Code, Cursor and 20+ supported coding tools (plan quota only applies inside supported tools)
 breakEvenModel: zhipu/glm-5.3

@@ -1243,7 +1243,7 @@ curl -s ifconfig.me
 - **覆盖**（2026-10-20 核对，9 家 27 档）：国际 Claude、ChatGPT / Codex、GitHub Copilot、Cursor、Kimi Code（国际站）；国内智谱 GLM Coding Plan、火山方舟 Coding Plan、MiniMax M Plan、阿里云百炼 Coding Plan（Lite 已停售，只收 Pro）。国内套餐的价格页需国内网络核对。
 - **计价平台**：国内套餐（provider.region = cn）的计价模型优先取「官方（国内站）」人民币价，国际套餐优先取「官方」价。
 - **价格口径**：记录刊例价 / 原价；首月特惠、限时折扣、季付折扣写进 notes。
-- **待办**：套餐 `verifiedAt` 的过期提醒尚未接入管线（manual 价格有 W2004，套餐暂无）。
+- **过期提醒**：套餐 `verifiedAt` 超过 14 天记 W2005（与 manual 价格的 W2004 相同）。
 
 ### 3.16 纠错与提交报价（1.4）
 

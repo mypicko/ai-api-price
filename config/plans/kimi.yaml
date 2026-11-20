@@ -1,7 +1,7 @@
 provider: { id: kimi, nameZh: Kimi Code（月之暗面）, nameEn: Kimi Code (Moonshot AI), region: cn }
 currency: USD
 sourceUrl: https://www.kimi.com/code
-verifiedAt: 2026-10-20
+verifiedAt: 2026-11-20
 toolsZh: Kimi Code 桌面端、CLI 与 IDE 插件（国际站美元价）
 toolsEn: Kimi Code desktop, CLI and IDE plugins (international site, USD)
 breakEvenModel: moonshot/kimi-k3

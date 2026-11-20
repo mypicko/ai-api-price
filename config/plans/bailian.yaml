@@ -7,7 +7,7 @@ provider:
   }
 currency: CNY
 sourceUrl: https://help.aliyun.com/zh/model-studio/coding-plan
-verifiedAt: 2026-10-20
+verifiedAt: 2026-11-20
 toolsZh: 主流 AI 编程工具；可用千问、GLM、Kimi、MiniMax 等模型（Lite 套餐已停售）
 toolsEn: Mainstream AI coding tools; Qwen, GLM, Kimi, MiniMax and more (Lite plan discontinued)
 breakEvenModel: alibaba/qwen3.7-plus

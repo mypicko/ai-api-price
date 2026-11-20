@@ -1,7 +1,7 @@
 provider: { id: github-copilot, nameZh: GitHub Copilot, nameEn: GitHub Copilot, region: intl }
 currency: USD
 sourceUrl: https://github.com/features/copilot/plans
-verifiedAt: 2026-10-20
+verifiedAt: 2026-11-20
 toolsZh: VS Code、JetBrains 等 IDE，Copilot CLI，GitHub 网页
 toolsEn: VS Code, JetBrains and other IDEs, Copilot CLI, GitHub web
 breakEvenModel: anthropic/claude-sonnet-5.5

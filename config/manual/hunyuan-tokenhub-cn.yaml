@@ -6,8 +6,24 @@ vendor: tencent
 currency: CNY
 unit: per_1m
 sourceUrl: https://cloud.tencent.com/document/product/1823/130055
-verifiedAt: 2026-10-19
+verifiedAt: 2026-11-20
 models:
+  - {
+      model: hy4-flash,
+      displayName: Hy4 Flash,
+      input: 0.5,
+      output: 2,
+      cacheRead: 0.02,
+      notes: 2026-11-30 12:00 前限时 5 折（此处为目录价）,
+    }
+  - {
+      model: hy4,
+      displayName: Hy4,
+      input: 6,
+      output: 18,
+      cacheRead: 0.3,
+      notes: 2026-12-31 前限时 5 折（此处为目录价）,
+    }
   - { model: hy4-preview, displayName: Hy4 Preview, input: 6, output: 18, cacheRead: 0.3 }
   - { model: hy3, displayName: Hy3, input: 1, output: 4, cacheRead: 0.25 }
   - { model: hy-mt2-pro, displayName: Hy-MT2-Pro, input: 0.5, output: 2, notes: 翻译模型 }
@@ -20,3 +36,4 @@ models:
       output: 9.6,
       notes: 角色扮演模型,
     }
+  - { model: hy-role, displayName: Hy-Role, input: 2.4, output: 9.6, notes: 角色扮演模型 }

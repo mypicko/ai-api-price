@@ -6,7 +6,7 @@ vendor: tencent
 currency: CNY
 unit: per_1m
 sourceUrl: https://cloud.tencent.com/document/product/1729/97731
-verifiedAt: 2026-10-19
+verifiedAt: 2026-11-20
 models:
   - {
       model: hunyuan-a13b-instruct,
