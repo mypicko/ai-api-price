@@ -1,16 +1,18 @@
 import { aliyunCnSource, aliyunSource } from "./aliyun";
 import { deepinfraSource } from "./deepinfra";
 import { deepseekSource } from "./deepseek";
+import { hunyuanSource } from "./hunyuan";
 import { litellmSource } from "./litellm";
 import { litellmResellersSource } from "./litellm-resellers";
 import { manualCnSource, manualSource } from "./manual";
 import { modelsdevCnSource, modelsdevSiliconflowCnSource } from "./modelsdev";
-import { moonshotSource } from "./moonshot";
+import { moonshotCnSource, moonshotSource } from "./moonshot";
 import { novitaSource } from "./novita";
 import { openrouterSource } from "./openrouter";
 import { openrouterEndpointsSource } from "./openrouter-endpoints";
 import { qianfanSource } from "./qianfan";
 import { siliconflowSource } from "./siliconflow";
+import { siliconflowCnSource } from "./siliconflow-cn";
 import type { Source } from "./types";
 import { volcengineSource } from "./volcengine";
 import { zhipuSource } from "./zhipu";
@@ -29,10 +31,13 @@ export const ALL_SOURCES: readonly Source[] = [
   aliyunSource,
   aliyunCnSource,
   qianfanSource,
+  hunyuanSource,
   zhipuSource,
   moonshotSource,
+  moonshotCnSource,
   volcengineSource,
   siliconflowSource,
+  siliconflowCnSource,
   modelsdevCnSource,
   modelsdevSiliconflowCnSource,
   manualSource,

@@ -12,6 +12,11 @@
  * - 价格单元格形如 <>{"$"}3.00</>，单位列 "1M tokens"，上下文列 "1,048,576 tokens"
  * - K3 系列有缓存写入价（TTL 5min / 1h），cacheWrite 取默认的 5min，1h 写进 notes
  * 最后核对：2026-10-23
+ *
+ * Kimi 国内站（moonshot-cn）：https://platform.kimi.com/docs/pricing/chat，同样是 Mintlify 已编译 MDX，以人民币标价，平台为
+ *   official-cn。表头是「模型 | 输入 | 输出 | 缓存命中 | 缓存写入（5min）| 缓存写入（1h）」，没有单位列（单位写在价格里：
+ *   「¥13.00 / MTok」），也没有上下文列：上下文写在每张表上方的「K3 系列模型均支持 1,048,576 tokens 上下文窗口」，按表格顺序对应。
+ *   2026-11-20 实测 GitHub 托管运行器可以访问。
  */
 import type { RawOffering } from "@aipb/shared";
 import { PipelineError } from "../core/errors";
@@ -22,7 +27,16 @@ import type { Source } from "./types";
 export const MOONSHOT_FETCH_URL = "https://platform.kimi.ai/docs/pricing/chat";
 export const MOONSHOT_MARKDOWN_URL = "https://platform.kimi.ai/docs/pricing/chat.md";
 export const MOONSHOT_URL = "https://platform.moonshot.ai/docs/pricing/chat";
-const SOURCE_ID = "moonshot";
+export const MOONSHOT_CN_URL = "https://platform.kimi.com/docs/pricing/chat";
+/** 国际站（美元）和国内站（人民币）用同一套解析，只有源 ID 和证据链接不同 */
+interface Variant {
+  readonly sourceId: string;
+  readonly sourceUrl: string;
+}
+
+const INTL: Variant = { sourceId: "moonshot", sourceUrl: MOONSHOT_URL };
+const CN: Variant = { sourceId: "moonshot-cn", sourceUrl: MOONSHOT_CN_URL };
+const CONTEXT_HINT = /系列模型均支持\s*([\d,]+)\s*tokens\s*上下文/g;
 
 export interface DocTable {
   readonly headers: readonly string[];
@@ -180,9 +194,9 @@ function locateColumns(headers: readonly string[]): Columns | null {
     // 2026-10 下旬起表头改成 Input / Output / Cached Input / 5m writes / 1h writes
     input: findColumn(
       headers,
-      /^(Input( Price)?(?!.*Cache Hit)$|Input Price \(Cache Miss\)|输入价格(?!.*缓存命中))/i,
+      /^(Input( Price)?(?!.*Cache Hit)$|Input Price \(Cache Miss\)|输入价格(?!.*缓存命中)|输入$)/i,
     ),
-    output: findColumn(headers, /^(Output( Price)?|输出价格)/i),
+    output: findColumn(headers, /^(Output( Price)?|输出(价格)?$)/i),
     cacheRead: findColumn(headers, /Cache Hit|Cached Input|缓存命中/i),
     cacheWrite: findColumn(headers, /(Cache Write|缓存写入)(?!.*1\s*h)|^5\s*m(in)? writes?/i),
     cacheWrite1h: findColumn(headers, /(Cache Write|缓存写入).*1\s*h|^1\s*h(our)? writes?/i),
@@ -195,11 +209,16 @@ function cell(row: readonly string[], index: number): string {
   return index >= 0 ? (row[index] ?? "") : "";
 }
 
-function toOffering(row: readonly string[], columns: Columns): RawOffering | null {
+function toOffering(
+  row: readonly string[],
+  columns: Columns,
+  v: Variant,
+  contextHint: number | null,
+): RawOffering | null {
   const modelName = cell(row, columns.model);
   if (modelName === "") return null;
   const unitText = cell(row, columns.unit);
-  const ctx = { sourceId: SOURCE_ID, unit: detectUnit(unitText) };
+  const ctx = { sourceId: v.sourceId, unit: detectUnit(unitText) };
   const input = resolvePrice(cell(row, columns.input), ctx);
   const output = resolvePrice(cell(row, columns.output), ctx);
   const reference = input ?? output;
@@ -219,8 +238,8 @@ function toOffering(row: readonly string[], columns: Columns): RawOffering | nul
     output: output?.value ?? null,
     cacheRead: price(columns.cacheRead),
     ...(columns.cacheWrite >= 0 ? { cacheWrite: price(columns.cacheWrite) } : {}),
-    contextWindow: parseTokenCount(cell(row, columns.context)),
-    sourceUrl: MOONSHOT_URL,
+    contextWindow: parseTokenCount(cell(row, columns.context)) ?? contextHint,
+    sourceUrl: v.sourceUrl,
     ...(notes ? { notes } : {}),
   };
 }
@@ -228,14 +247,16 @@ function toOffering(row: readonly string[], columns: Columns): RawOffering | nul
 function safeOffering(
   row: readonly string[],
   columns: Columns,
+  v: Variant,
+  contextHint: number | null,
   logger?: Logger,
 ): readonly RawOffering[] {
   try {
-    const offering = toOffering(row, columns);
+    const offering = toOffering(row, columns, v, contextHint);
     return offering ? [offering] : [];
   } catch (error) {
-    logger?.warn("moonshot：跳过无法识别的价格行", {
-      sourceId: SOURCE_ID,
+    logger?.warn(`${v.sourceId}：跳过无法识别的价格行`, {
+      sourceId: v.sourceId,
       code: "W2003",
       row: row.join(" | "),
       error,
@@ -244,37 +265,54 @@ function safeOffering(
   }
 }
 
-function offeringsFrom(tables: readonly DocTable[], logger?: Logger): RawOffering[] {
-  return tables.flatMap((table) => {
+/** 第 i 张表上方说明里的上下文长度（页面里可能重复出现，按顺序对应前几张表） */
+function contextHints(html: string): readonly number[] {
+  return [...html.matchAll(CONTEXT_HINT)].map((m) => Number((m[1] ?? "").replace(/,/g, "")));
+}
+
+function offeringsFrom(
+  tables: readonly DocTable[],
+  v: Variant,
+  contexts: readonly number[],
+  logger?: Logger,
+): RawOffering[] {
+  return tables.flatMap((table, index) => {
     const columns = locateColumns(table.headers);
-    return columns ? table.rows.flatMap((row) => safeOffering(row, columns, logger)) : [];
+    const hint = contexts[index] ?? null;
+    return columns ? table.rows.flatMap((row) => safeOffering(row, columns, v, hint, logger)) : [];
   });
 }
 
-function noTable(): PipelineError {
-  return new PipelineError("E2001", "moonshot：找不到含 Model / Input / Output 列的价格表", {
-    sourceId: SOURCE_ID,
+function noTable(v: Variant): PipelineError {
+  return new PipelineError("E2001", `${v.sourceId}：找不到含 Model / Input / Output 列的价格表`, {
+    sourceId: v.sourceId,
   });
+}
+
+function parseHtmlVariant(html: string, v: Variant, logger?: Logger): RawOffering[] {
+  const offerings = offeringsFrom(parseCompiledDocTables(html), v, contextHints(html), logger);
+  if (offerings.length === 0) throw noTable(v);
+  return offerings;
 }
 
 /** HTML 页面（已编译 MDX） */
 export function parseMoonshotHtml(html: string, logger?: Logger): RawOffering[] {
-  const offerings = offeringsFrom(parseCompiledDocTables(html), logger);
-  if (offerings.length === 0) throw noTable();
-  return offerings;
+  return parseHtmlVariant(html, INTL, logger);
+}
+
+/** 国内站 HTML 页面（人民币） */
+export function parseMoonshotCnHtml(html: string, logger?: Logger): RawOffering[] {
+  return parseHtmlVariant(html, CN, logger);
 }
 
 export function parseMoonshotMarkdown(markdown: string, logger?: Logger): RawOffering[] {
-  const offerings = parseDocTables(markdown).flatMap((table) => {
-    const columns = locateColumns(table.headers);
-    return columns ? table.rows.flatMap((row) => safeOffering(row, columns, logger)) : [];
-  });
-  if (offerings.length === 0) throw noTable();
+  const offerings = offeringsFrom(parseDocTables(markdown), INTL, [], logger);
+  if (offerings.length === 0) throw noTable(INTL);
   return offerings;
 }
 
 export const moonshotSource: Source = {
-  id: SOURCE_ID,
+  id: INTL.sourceId,
   platform: "official",
   kind: "html",
   timeoutMs: 30_000,
@@ -283,10 +321,25 @@ export const moonshotSource: Source = {
     try {
       offerings = parseMoonshotHtml(await ctx.http.getText(MOONSHOT_FETCH_URL), ctx.logger);
     } catch (error) {
-      ctx.logger.warn("moonshot：HTML 里没有价格表，改用 .md 导出", { sourceId: SOURCE_ID, error });
+      ctx.logger.warn("moonshot：HTML 里没有价格表，改用 .md 导出", {
+        sourceId: INTL.sourceId,
+        error,
+      });
       offerings = parseMoonshotMarkdown(await ctx.http.getText(MOONSHOT_MARKDOWN_URL), ctx.logger);
     }
-    ctx.logger.info("moonshot 解析完成", { sourceId: SOURCE_ID, count: offerings.length });
+    ctx.logger.info("moonshot 解析完成", { sourceId: INTL.sourceId, count: offerings.length });
+    return offerings;
+  },
+};
+
+export const moonshotCnSource: Source = {
+  id: CN.sourceId,
+  platform: "official-cn",
+  kind: "html",
+  timeoutMs: 30_000,
+  async fetch(ctx) {
+    const offerings = parseMoonshotCnHtml(await ctx.http.getText(MOONSHOT_CN_URL), ctx.logger);
+    ctx.logger.info("moonshot-cn 解析完成", { sourceId: CN.sourceId, count: offerings.length });
     return offerings;
   },
 };

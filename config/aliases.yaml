@@ -19,3 +19,5 @@ deepseek/deepseek-v3.2: [v3.2]
 deepseek/deepseek-r1: [r1]
 nvidia/nemotron-nano-12b-v2: [nemotron-nano-12b]
 nvidia/nemotron-nano-9b-v2: [nemotron-nano-9b]
+# 混元：TokenHub 调用参数是 hunyuan-role-latest，沿用已发布的 hy-role-latest
+tencent/hy-role-latest: [hunyuan-role-latest]
