@@ -94,7 +94,7 @@ describe("公众号推送渠道（只存草稿）", () => {
         title: "AI 价格日报 10/31｜DeepSeek V3 降价 50%",
         author: "AI序言",
         thumbMediaId: "UPLOADED-THUMB",
-        contentSourceUrl: "https://example.com/board/changes",
+        contentSourceUrl: "https://example.com/board/changes/wechat/",
       }),
     ]);
   });

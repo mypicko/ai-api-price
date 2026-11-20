@@ -12,16 +12,24 @@ import { toEventView, vendorOptions } from "../lib/views";
 
 interface Props {
   locale: Locale;
+  /** 来源专用入口（如公众号「阅读原文」）：内容相同，不让搜索引擎收录，规范地址仍是 /changes/ */
+  noindex?: boolean;
 }
 
-const { locale } = Astro.props;
+const { locale, noindex = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const model = getSiteModel();
 const events = eventsWithinDays(model.events, model.generatedAt, RECENT_CHANGES_DAYS);
 const months = changeMonths(model).toReversed();
 ---
 
-<BaseLayout locale={locale} path="changes/" title={t(locale, "changes.title")} description={t(locale, "changes.lead")}>
+<BaseLayout
+  locale={locale}
+  path="changes/"
+  title={t(locale, "changes.title")}
+  description={t(locale, "changes.lead")}
+  noindex={noindex}
+>
   <div class="flex flex-col gap-8">
     <header class="flex flex-col gap-2">
       <h1 class="text-h1">{t(locale, "changes.title")}</h1>

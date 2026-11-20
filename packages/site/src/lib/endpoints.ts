@@ -84,7 +84,9 @@ export function sitemapResponse(site: URL | undefined): Response {
 
 export function robotsResponse(site: URL | undefined): Response {
   const sitemap = absoluteUrl(siteOrigin(site), joinBase(currentBase(), "sitemap.xml"));
-  return new Response(`User-agent: *\nAllow: /\n\nSitemap: ${sitemap}\n`, {
+  // 站外跳转页（lib/go.ts）只用来统计点击，不需要收录
+  const go = joinBase(currentBase(), "go/");
+  return new Response(`User-agent: *\nAllow: /\nDisallow: ${go}\n\nSitemap: ${sitemap}\n`, {
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });
 }

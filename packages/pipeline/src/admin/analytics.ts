@@ -7,6 +7,10 @@ import { z } from "zod";
 
 export const CLOUDFLARE_GRAPHQL_URL = "https://api.cloudflare.com/client/v4/graphql";
 const TOP_LIMIT = 10;
+/** 页面排行多取一些，用来从长尾里统计公众号落地页和 /go/ 跳转页（Cloudflare 不支持自定义事件） */
+const PATH_LIMIT = 500;
+const WECHAT_PATH = /\/changes\/wechat\/$/;
+const GO_PATH = /\/go\/([\w-]+)\/$/;
 const TIMEOUT_MS = 20_000;
 
 export interface AnalyticsConfig {
@@ -36,6 +40,10 @@ export interface TrafficReport {
   readonly topPaths: readonly RankItem[];
   readonly topReferers: readonly RankItem[];
   readonly topCountries: readonly RankItem[];
+  /** 公众号「阅读原文」落地页 /changes/wechat/ 的浏览量 */
+  readonly wechatVisits: number;
+  /** 站外点击：/go/<key>/ 跳转页的浏览量，按 key 合计、降序 */
+  readonly outbound: readonly RankItem[];
 }
 
 const ENV_KEYS = ["CF_API_TOKEN", "CF_ACCOUNT_ID", "CF_SITE_TAG"] as const;
@@ -64,7 +72,7 @@ const QUERY = `query AdminTraffic($accountTag: string, $filter: AccountRumPagelo
         sum { visits }
         dimensions { date }
       }
-      paths: rumPageloadEventsAdaptiveGroups(limit: ${TOP_LIMIT}, filter: $filter, orderBy: [count_DESC]) {
+      paths: rumPageloadEventsAdaptiveGroups(limit: ${PATH_LIMIT}, filter: $filter, orderBy: [count_DESC]) {
         count
         dimensions { requestPath }
       }
@@ -111,6 +119,22 @@ function rank(groups: readonly Group[], key: string, emptyLabel: string): readon
   return groups.map((g) => ({ label: g.dimensions[key] || emptyLabel, count: g.count }));
 }
 
+function pathStats(groups: readonly Group[]): Pick<TrafficReport, "wechatVisits" | "outbound"> {
+  const path = (g: Group) => g.dimensions["requestPath"] ?? "";
+  const wechatVisits = groups
+    .filter((g) => WECHAT_PATH.test(path(g)))
+    .reduce((n, g) => n + g.count, 0);
+  const clicks = new Map<string, number>();
+  for (const g of groups) {
+    const key = GO_PATH.exec(path(g))?.[1];
+    if (key) clicks.set(key, (clicks.get(key) ?? 0) + g.count);
+  }
+  const outbound = [...clicks.entries()]
+    .map(([label, count]) => ({ label, count }))
+    .toSorted((a, b) => b.count - a.count);
+  return { wechatVisits, outbound };
+}
+
 export function parseCloudflareResponse(body: unknown): TrafficReport {
   const parsed = ResponseSchema.safeParse(body);
   if (!parsed.success) throw new Error("Cloudflare 统计接口返回的格式和预期不一致");
@@ -130,9 +154,10 @@ export function parseCloudflareResponse(body: unknown): TrafficReport {
       pageViews: daily.reduce((n, d) => n + d.pageViews, 0),
       visits: daily.reduce((n, d) => n + d.visits, 0),
     },
-    topPaths: rank(account.paths, "requestPath", "（未知）"),
+    topPaths: rank(account.paths, "requestPath", "（未知）").slice(0, TOP_LIMIT),
     topReferers: rank(account.referers, "refererHost", "直接访问"),
     topCountries: rank(account.countries, "countryName", "（未知）"),
+    ...pathStats(account.paths),
   };
 }
 

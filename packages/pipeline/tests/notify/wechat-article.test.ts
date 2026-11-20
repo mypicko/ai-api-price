@@ -121,7 +121,8 @@ describe("buildWechatArticle：公众号日报文章", () => {
     expect(article?.html).toContain("¥8.00");
     expect(article?.html).toContain("¥4.00");
     expect(article?.html).toContain("-50%");
-    expect(article?.contentSourceUrl).toBe("https://example.com/ai-api-price/changes");
+    // 公众号专用落地页：内容同 /changes/，路径单独统计公众号带来的访问
+    expect(article?.contentSourceUrl).toBe("https://example.com/ai-api-price/changes/wechat/");
     // 公众号正文不允许脚本，外链也点不了
     expect(article?.html).not.toMatch(/<script|<a\s/i);
   });

@@ -15,7 +15,10 @@ const TRAFFIC = {
       accounts: [
         {
           daily: [{ count: 321, sum: { visits: 200 }, dimensions: { date: "2026-10-31" } }],
-          paths: [{ count: 99, dimensions: { requestPath: "/ai-api-price/compare/" } }],
+          paths: [
+            { count: 99, dimensions: { requestPath: "/ai-api-price/compare/" } },
+            { count: 4, dimensions: { requestPath: "/ai-api-price/go/p-openrouter/" } },
+          ],
           referers: [],
           countries: [],
         },
@@ -186,6 +189,8 @@ describe("本地后台服务", () => {
     const html = await (await fetch(s.url)).text();
     expect(html).toContain("321");
     expect(html).toContain("/ai-api-price/compare/");
+    expect(html).toContain("站外点击");
+    expect(html).toContain("p-openrouter");
     expect(html).not.toContain("secret-token");
     await fetch(s.url);
     expect(cf.calls()).toBe(1);

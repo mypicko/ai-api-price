@@ -53,7 +53,32 @@ describe("访问数据（Cloudflare Web Analytics）", () => {
         { label: "直接访问", count: 5 },
       ],
       topCountries: [{ label: "CN", count: 100 }],
+      wechatVisits: 0,
+      outbound: [],
     });
+  });
+
+  it("parseCloudflareResponse：热门页面只留前 10；统计公众号落地页访问和 /go/ 站外点击", () => {
+    const paths = [
+      ...Array.from({ length: 12 }, (_, i) =>
+        group(100 - i, { requestPath: `/ai-api-price/p${i}/` }),
+      ),
+      group(9, { requestPath: "/ai-api-price/changes/wechat/" }),
+      group(7, { requestPath: "/ai-api-price/go/p-openrouter/" }),
+      group(3, { requestPath: "/ai-api-price/go/v-alibaba/" }),
+      group(2, { requestPath: "/ai-api-price/go/p-openrouter/" }),
+    ];
+    const account = SAMPLE.data.viewer.accounts[0];
+    const report = parseCloudflareResponse({
+      ...SAMPLE,
+      data: { viewer: { accounts: [{ ...account, paths }] } },
+    });
+    expect(report.topPaths).toHaveLength(10);
+    expect(report.wechatVisits).toBe(9);
+    expect(report.outbound).toEqual([
+      { label: "p-openrouter", count: 9 },
+      { label: "v-alibaba", count: 3 },
+    ]);
   });
 
   it("parseCloudflareResponse：接口返回 errors 时抛出它的错误信息", () => {

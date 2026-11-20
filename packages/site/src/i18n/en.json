@@ -113,6 +113,7 @@
   "model.firstSeen": "First seen {date}",
   "model.source": "Source",
   "model.sourceLink": "Pricing page",
+  "model.visitPlatform": "Visit {name}",
   "model.notes": "Notes",
   "model.status.removed": "This model has been removed. Prices shown are the last published ones.",
   "model.status.missing": "This offering has not been seen for {days} days and may be removed soon.",

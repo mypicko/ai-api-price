@@ -1,0 +1,41 @@
+---
+/**
+ * 站外跳转页（lib/go.ts）：记一次 /go/<key>/ 访问，1 秒后跳到目标网站。
+ * 用 <meta refresh> 跳转，不需要内联脚本（CSP 不放行未登记的内联脚本）；统计脚本在跳转前加载并上报。
+ */
+import "../../styles/global.css";
+import { analyticsScript, parseAnalyticsConfig } from "../../lib/analytics";
+import { goTargets, type GoTarget } from "../../lib/go";
+import { getSiteModel } from "../../lib/site-data";
+
+export function getStaticPaths() {
+  return goTargets(getSiteModel()).map((target) => ({ params: { key: target.key }, props: { target } }));
+}
+
+interface Props {
+  target: GoTarget;
+}
+
+const { target } = Astro.props;
+const analytics = analyticsScript(parseAnalyticsConfig(process.env));
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta http-equiv="refresh" content={`1;url=${target.url}`} />
+    <title>正在前往 {target.nameZh} · Going to {target.nameEn}</title>
+    {analytics && <script is:inline defer src={analytics.src} {...analytics.attrs} />}
+  </head>
+  <body class="flex min-h-dvh items-center justify-center bg-bg p-6 text-text">
+    <main class="flex flex-col items-center gap-3 text-center">
+      <p class="text-h3">正在前往 {target.nameZh} 官网…</p>
+      <p class="text-small text-text-muted">Going to {target.nameEn}…</p>
+      <a class="link text-small" href={target.url} rel="noopener noreferrer nofollow">{target.url}</a>
+    </main>
+  </body>
+</html>

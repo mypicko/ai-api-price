@@ -89,17 +89,22 @@ function traffic(d: Dashboard): string {
     stat(`近 ${t.days} 天浏览量`, r.totals.pageViews),
     stat(`近 ${t.days} 天访问次数`, r.totals.visits),
     stat("日均浏览量", Math.round(r.totals.pageViews / Math.max(1, r.daily.length))),
+    stat("公众号带来的浏览", r.wechatVisits),
+    stat(
+      "站外点击",
+      r.outbound.reduce((n, o) => n + o.count, 0),
+    ),
   ].join("");
   const chart = barChart(
     r.daily.map((day) => ({ label: day.date, values: { pageViews: day.pageViews } })),
     [{ key: "pageViews", label: "浏览量", color: "#2563eb" }],
   );
-  const ranks = `<div class="grid2">${rankTable("热门页面", r.topPaths)}${rankTable("访问来源", r.topReferers)}${rankTable("国家/地区", r.topCountries)}</div>`;
+  const ranks = `<div class="grid2">${rankTable("热门页面", r.topPaths)}${rankTable("访问来源", r.topReferers)}${rankTable("国家/地区", r.topCountries)}${rankTable("站外点击（v- 厂商官方，p- 第三方平台）", r.outbound)}</div>`;
   return section(
     "traffic",
     "访问数据",
     `<div class="stats">${stats}</div>${chart}${ranks}`,
-    "数据来自 Cloudflare Web Analytics，结果缓存 10 分钟；地址后加 ?refresh=1 强制刷新。",
+    "数据来自 Cloudflare Web Analytics，结果缓存 10 分钟；地址后加 ?refresh=1 强制刷新。公众号带来的浏览 = 「阅读原文」落地页 /changes/wechat/ 的浏览量；站外点击 = 经 /go/ 跳转页去各平台官网的次数（只统计浏览量前 500 的页面）。",
   );
 }
 

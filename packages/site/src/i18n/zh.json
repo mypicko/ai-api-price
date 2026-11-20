@@ -113,6 +113,7 @@
   "model.firstSeen": "首次收录 {date}",
   "model.source": "来源",
   "model.sourceLink": "查看定价页",
+  "model.visitPlatform": "前往 {name} 官网",
   "model.notes": "备注",
   "model.status.removed": "该模型已下架，以下为下架前的最后价格。",
   "model.status.missing": "最近 {days} 天没有抓到这个报价，可能即将下架。",

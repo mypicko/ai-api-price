@@ -334,6 +334,6 @@ export function buildWechatArticle(report: DailyReport, ctx: ArticleContext): We
       MAX_DIGEST_LENGTH,
     ),
     html: `<section style="font-family:${FONT};color:${COLOR.text};">${overview(report.date, stats, ctx.usdCny)}${body}${footer()}</section>`,
-    contentSourceUrl: `${report.siteUrl}/changes`,
+    contentSourceUrl: `${report.siteUrl}/changes/wechat/`,
   };
 }
