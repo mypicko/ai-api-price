@@ -1,6 +1,15 @@
 {
   "modelSlug": "google/gemini-4-hydrogen",
   "series": {
+    "gmi:google/gemini-4-hydrogen": [
+      {
+        "input": 1.5,
+        "output": 7.5,
+        "cacheRead": 0.075,
+        "cacheWrite": 1.875,
+        "effectiveDate": "2026-11-20"
+      }
+    ],
     "official:google/gemini-4-hydrogen": [
       {
         "input": 1.5,

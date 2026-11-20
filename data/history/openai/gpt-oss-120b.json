@@ -187,6 +187,13 @@
         "cacheRead": 0.075,
         "cacheWrite": null,
         "effectiveDate": "2026-11-09"
+      },
+      {
+        "input": 0.09,
+        "output": 0.36,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-20"
       }
     ],
     "parasail:openai/gpt-oss-120b": [

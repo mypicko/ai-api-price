@@ -34,6 +34,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-11-05"
       }
+    ],
+    "together:tencent/hy4": [
+      {
+        "input": 0.834,
+        "output": 2.501,
+        "cacheRead": 0.042,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-20"
+      }
     ]
   }
 }

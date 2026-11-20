@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/genie-4",
+  "series": {
+    "official:google/genie-4": [
+      {
+        "input": 1.5,
+        "output": 9,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-20"
+      }
+    ]
+  }
+}

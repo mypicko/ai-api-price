@@ -8,6 +8,13 @@
         "cacheRead": 2,
         "cacheWrite": 2,
         "effectiveDate": "2026-11-12"
+      },
+      {
+        "input": 2.49998,
+        "output": 12.5,
+        "cacheRead": 0.12502,
+        "cacheWrite": 2.49998,
+        "effectiveDate": "2026-11-20"
       }
     ],
     "gmi:google/gemini-4-carbon": [
