@@ -940,9 +940,9 @@ concurrency: { group: daily, cancel-in-progress: false }
 
 LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
-### 8.9 腾讯云自托管运行器（公众号草稿）
+### 8.9 腾讯云自托管运行器（公众号草稿、国内站）
 
-公众号接口要求调用方 IP 在白名单里，GitHub 托管机器的 IP 不固定，所以 `daily.yml` 的 `wechat` 任务跑在腾讯云服务器上（`runs-on: [self-hosted, tencent]`）。抓取、提交数据、部署网站仍在 GitHub 托管机器上，服务器出问题只影响当天的草稿。
+公众号接口要求调用方 IP 在白名单里，GitHub 托管机器的 IP 不固定，所以 `daily.yml` 的 `wechat` 任务跑在腾讯云服务器上（`runs-on: [self-hosted, tencent]`）。国内站的构建发布（`deploy-cn`，§3.27）也在这台服务器上。抓取、提交数据、部署 GitHub Pages 仍在 GitHub 托管机器上，服务器出问题只影响当天的草稿和国内站更新（国内站保留前一天的版本）。
 
 **仓库是公开的，三条防护措施：**
 
@@ -956,18 +956,18 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 **当前部署（2026-11-02 安装）**
 
-| 项目       | 值                                                                                                 |
-| ---------- | -------------------------------------------------------------------------------------------------- |
-| 服务器     | 腾讯云轻量应用服务器 `82.156.6.167`（与 imagegen 网站共用），Ubuntu 24.04，2 核 3.6G               |
-| 管理员登录 | `ssh root@82.156.6.167`（SSH 密钥）                                                                |
-| 运行器     | `tencent-1`，v2.338.2，标签 `self-hosted, Linux, X64, tencent`，目录 `/home/runner/actions-runner` |
-| 运行用户   | `runner`（uid 1004，只在 `runner`、`users` 组，没有 sudo）                                         |
-| 系统服务   | `actions.runner.mypicko-ai-api-price.tencent-1.service`，开机自启，`User=runner`                   |
-| Node.js    | v24（NodeSource apt 源），pnpm 由任务里的 corepack 准备                                            |
+| 项目       | 值                                                                                                                                             |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 服务器     | 腾讯云轻量应用服务器 `82.156.6.167`，Ubuntu 24.04，2 核 3.6G。原来的 imagegen（灵感画室）网站已于 2026-11-21 下线删除，备份在本机 `~/Backups/` |
+| 管理员登录 | `ssh root@82.156.6.167`（SSH 密钥）                                                                                                            |
+| 运行器     | `tencent-1`，v2.338.2，标签 `self-hosted, Linux, X64, tencent`，目录 `/home/runner/actions-runner`                                             |
+| 运行用户   | `runner`（uid 1004，只在 `runner`、`users` 组，没有 sudo）                                                                                     |
+| 系统服务   | `actions.runner.mypicko-ai-api-price.tencent-1.service`，开机自启，`User=runner`                                                               |
+| Node.js    | v24（NodeSource apt 源），pnpm 由任务里的 corepack 准备                                                                                        |
 
 **网络限制**：这台服务器连不上 `github.com`（网页和 git 拉代码都超时），但 `api.github.com`、`codeload.github.com`、`objects.githubusercontent.com`、`*.actions.githubusercontent.com`、npm、微信接口都通。所以：
 
-- `wechat` 任务不用 `actions/checkout`、`setup-node`、`pnpm/action-setup`：代码从 `api.github.com/repos/<仓库>/tarball/main` 下载；Node.js 预装在服务器上；`corepack enable --install-directory "$RUNNER_TEMP/bin" pnpm` 把 pnpm 放进任务的 PATH。`tests/workflows.test.ts` 会拦住在这个任务里用 action 或 `https://github.com`。
+- `wechat`、`deploy-cn` 任务不用 `actions/checkout`、`setup-node`、`pnpm/action-setup`：代码从 `api.github.com/repos/<仓库>/tarball/main` 下载；Node.js 预装在服务器上；`corepack enable --install-directory "$RUNNER_TEMP/bin" pnpm` 把 pnpm 放进任务的 PATH。`tests/workflows.test.ts` 会拦住在这两个任务里用 action 或 `https://github.com`。
 - 运行器安装包在服务器上直接下载极慢（10 分钟约 1MB），改为在本机下载后 `scp` 上传。
 
 **重装步骤**（换服务器或重建时照做，以 root 登录）：
@@ -1342,3 +1342,12 @@ curl -s ifconfig.me
 - **跳转页**：`/go/<key>/`（`pages/go/[key].astro` + `lib/go.ts`），官方报价按厂商 `v-<vendor>`、第三方平台按平台 `p-<platform>`，目标是 `providers.yaml` 的 `pricingUrl`，没有就用 `website`；都没有的不生成。页面 `noindex, nofollow`，用 `<meta refresh>` 1 秒后跳转（不用内联脚本，符合 CSP），统计脚本先加载上报；`robots.txt` 禁止抓取 `/go/`。
 - **入口**：模型详情页「各平台报价」表第一列的平台名链接到对应跳转页（`data-testid="visit-platform"`）；「查看定价页」证据链接不变，仍直达原始来源。
 - **看数据**：本地后台「访问数据」的「站外点击」（§3.25）。以后接推广链接时，只改 `lib/go.ts` 的目标地址，并在页面上标注「推广链接」，排序不受影响。
+
+### 3.27 国内站 promptso.top（1.5）
+
+- **为什么**：国内直连 GitHub Pages 很慢（2026-11-21 实测首页 9～17 秒、下载 18～35 KB/s），公众号读者点「阅读原文」大多等不到页面出来。腾讯云服务器在北京，同一首页 0.23～0.3 秒（gzip 后 29KB；服务器下行约 5Mbps）。
+- **分工**：抓取、提交数据、GitHub Pages 都不变（GitHub Pages 作海外镜像）；`daily.yml` 的 `deploy-cn` 任务在 `update` 之后跑在腾讯云运行器上：从 `api.github.com` 下载 main（含当天 data/），`pnpm build`（`SITE_URL` = 仓库变量 `CN_SITE_URL`、`BASE_PATH=/`、`ICP_BEIAN`），发布到 `/var/www/price/releases/<时间>`，再原子切换 `current` 链接，保留最近 3 个版本。只读权限、不碰任何密钥；构建约 85 秒，每个版本约 200M。
+- **开关**：仓库变量 `CN_SITE_URL`（`https://promptso.top`）设置了才运行；`CN_DEPLOY_DIR` 可改发布目录（默认 `/var/www/price`）。设置了 `CN_SITE_URL` 后公众号「阅读原文」也指向国内站。
+- **备案号**：域名 `promptso.top` 已备案（个人，`豫ICP备2026013506号-1`，2026-04-10 通过）。页脚显示备案号并链接 `https://beian.miit.gov.cn/`（`lib/seo.ts` 的 `icpBeian`，环境变量 `ICP_BEIAN`，只在国内站构建时设置）。个人备案的网站不宜放商业内容，加推广链接前先确认备案规则。
+- **服务器 nginx**（`/etc/nginx/sites-available/default`）：`root /var/www/price/current`；`/_astro/` 带哈希的资源缓存 1 年，页面 `no-cache`；gzip；`try_files $uri $uri/ $uri.html =404`，404 用站点的 `404.html`；安全头放在 `snippets/price-security-headers.conf`，每个 location 都 include（location 里有 `add_header` 时不继承 server 级的）；www 和 http 都 301 到 `https://promptso.top`。证书 Let's Encrypt（webroot `/var/www/letsencrypt`，自动续期已验证）。发布目录 `/var/www/price` 属于 `runner` 用户。
+- **访问统计**：沿用同一个 Cloudflare Web Analytics 令牌，国内站和海外镜像的访问记在同一个站点下。

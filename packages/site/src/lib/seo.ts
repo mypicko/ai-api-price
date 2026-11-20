@@ -24,3 +24,18 @@ export function siteVerificationMeta(
     return value && TOKEN.test(value) ? [{ name, content: value }] : [];
   });
 }
+
+/**
+ * ICP 备案号（国内站，DEV §3.27）：大陆服务器上的网站要在页脚显示备案号并链接到工信部备案系统。
+ * 只在国内站构建时设置 ICP_BEIAN（如「豫ICP备2026013506号-1」）；海外镜像 GitHub Pages 不设置，不显示。
+ */
+export const BEIAN_URL = "https://beian.miit.gov.cn/";
+
+const BEIAN = /^[一-龥]{1,2}ICP备\d{6,12}号(-\d{1,3})?$/;
+
+export function icpBeian(
+  env: Readonly<Record<string, string | undefined>>,
+): { readonly text: string; readonly url: string } | null {
+  const value = env["ICP_BEIAN"]?.trim() ?? "";
+  return BEIAN.test(value) ? { text: value, url: BEIAN_URL } : null;
+}

@@ -1,6 +1,7 @@
 # 每日：抓取价格 → 提交 data/ → 构建网站 → 部署 GitHub Pages（DEV_DOCUMENT §2.2、§6.1、§8.2）
 # 抓取与部署必须在同一个 workflow：GITHUB_TOKEN 推送的提交不会触发其他 workflow。
 # 公众号草稿（wechat 任务）跑在腾讯云自托管运行器上（固定 IP 才能进公众号白名单，DEV_DOCUMENT §8.9）。
+# 国内站（deploy-cn 任务）也在腾讯云运行器上构建，发布到服务器本机的 nginx（DEV_DOCUMENT §3.27）；GitHub Pages 作海外镜像。
 # 仓库是公开的：本 workflow 只能由定时 / 手动触发，不要加 push / pull_request（tests/workflows.test.ts 会拦）。
 name: daily
 
@@ -187,10 +188,76 @@ jobs:
       - name: 存公众号草稿
         working-directory: ${{ env.SRC }}
         env:
-          SITE_URL: ${{ needs.update.outputs.site_url }}
-          BASE_PATH: ${{ needs.update.outputs.base_path }}
+          # 「阅读原文」优先指向国内站（国内打开快），没配置国内站时用 GitHub Pages
+          SITE_URL: ${{ vars.CN_SITE_URL || needs.update.outputs.site_url }}
+          BASE_PATH: ${{ vars.CN_SITE_URL && '/' || needs.update.outputs.base_path }}
           WECHAT_APPID: ${{ secrets.WECHAT_APPID }}
           WECHAT_APPSECRET: ${{ secrets.WECHAT_APPSECRET }}
           WECHAT_THUMB_MEDIA_ID: ${{ vars.WECHAT_THUMB_MEDIA_ID }}
           WECHAT_AUTHOR: ${{ vars.WECHAT_AUTHOR }}
         run: pnpm pipeline wechat:draft
+
+  # 国内站：在腾讯云服务器上构建网站，发布到本机 nginx 的目录（DEV_DOCUMENT §3.27）。
+  # 仓库变量 CN_SITE_URL（如 https://promptso.top）设置了才运行；ICP_BEIAN 是页脚显示的备案号。
+  # 每次发布放进 releases/<时间>，再原子地切换 current 链接，访客不会看到构建到一半的网站；保留最近 3 个版本。
+  # 失败不影响 GitHub Pages（海外镜像）。
+  deploy-cn:
+    needs: update
+    if: ${{ vars.CN_SITE_URL != '' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
+    runs-on: [self-hosted, tencent]
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      SRC: ${{ github.workspace }}/src
+      DEPLOY_DIR: ${{ vars.CN_DEPLOY_DIR || '/var/www/price' }}
+      COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
+    steps:
+      # 与 wechat 任务相同：服务器连不上 github.com，从 api.github.com 下载 main（已含 update 刚推上去的当天 data/）
+      - name: 下载最新代码
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          rm -rf "$SRC" && mkdir -p "$SRC"
+          curl -fsSL --retry 3 --max-time 120 \
+            -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/tarball/main" | tar -xz --strip-components=1 -C "$SRC"
+
+      - name: 准备 pnpm
+        run: |
+          node -v
+          mkdir -p "$RUNNER_TEMP/bin"
+          corepack enable --install-directory "$RUNNER_TEMP/bin" pnpm
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+
+      - name: 安装依赖
+        working-directory: ${{ env.SRC }}
+        run: pnpm install --frozen-lockfile
+
+      - name: 构建国内站
+        working-directory: ${{ env.SRC }}
+        env:
+          SITE_URL: ${{ vars.CN_SITE_URL }}
+          BASE_PATH: /
+          ICP_BEIAN: ${{ vars.ICP_BEIAN }}
+          ANALYTICS_PROVIDER: ${{ vars.ANALYTICS_PROVIDER }}
+          ANALYTICS_TOKEN: ${{ vars.ANALYTICS_TOKEN }}
+          ANALYTICS_SCRIPT_URL: ${{ vars.ANALYTICS_SCRIPT_URL }}
+          BAIDU_SITE_VERIFICATION: ${{ vars.BAIDU_SITE_VERIFICATION }}
+        run: pnpm build
+
+      - name: 发布
+        working-directory: ${{ env.SRC }}
+        run: |
+          test -f packages/site/dist/index.html
+          release="$DEPLOY_DIR/releases/$(date +%Y%m%d-%H%M%S)"
+          mkdir -p "$release"
+          cp -a packages/site/dist/. "$release/"
+          ln -sfn "$release" "$DEPLOY_DIR/current.tmp"
+          mv -T "$DEPLOY_DIR/current.tmp" "$DEPLOY_DIR/current"
+          echo "已发布：$release"
+          # 只保留最近 3 个版本（不删当前版本）
+          ls -1dt "$DEPLOY_DIR"/releases/*/ | tail -n +4 | while read -r old; do
+            [ "$(readlink -f "$old")" = "$(readlink -f "$DEPLOY_DIR/current")" ] || rm -rf "$old"
+          done

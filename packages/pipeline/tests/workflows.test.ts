@@ -66,15 +66,37 @@ describe("工作流安全守卫", () => {
     expect(job?.["permissions"]).toEqual({ contents: "read" });
   });
 
-  it("公众号任务不依赖 github.com（腾讯云服务器连不上）：不用 checkout / setup-node / pnpm 安装 action", () => {
+  it.each(["wechat", "deploy-cn"])(
+    "%s 任务不依赖 github.com（腾讯云服务器连不上）：不用任何 action，从 api.github.com 下载代码",
+    (name) => {
+      const steps = (load("daily.yml").jobs[name]?.["steps"] ?? []) as readonly {
+        readonly uses?: string;
+        readonly run?: string;
+      }[];
+      expect(steps.length).toBeGreaterThan(0);
+      const uses = steps.flatMap((s) => (s.uses ? [s.uses.split("@")[0]] : []));
+      expect(uses).toEqual([]);
+      const script = steps.map((s) => s.run ?? "").join("\n");
+      expect(script).toContain("https://api.github.com/repos/");
+      expect(script).not.toMatch(/https:\/\/github\.com/);
+    },
+  );
+
+  it("daily 有国内站部署任务：腾讯云运行器、在 update 之后、设置了 CN_SITE_URL 才运行、只读权限", () => {
+    const job = load("daily.yml").jobs["deploy-cn"];
+    expect(job?.["runs-on"]).toEqual(["self-hosted", "tencent"]);
+    expect(job?.["needs"]).toBe("update");
+    expect(job?.if).toContain("vars.CN_SITE_URL != ''");
+    expect(job?.["permissions"]).toEqual({ contents: "read" });
+    // 不碰任何密钥：只构建静态网站
+    expect(JSON.stringify(job)).not.toContain("secrets.");
+  });
+
+  it("公众号「阅读原文」优先用国内站地址", () => {
     const steps = (load("daily.yml").jobs["wechat"]?.["steps"] ?? []) as readonly {
-      readonly uses?: string;
-      readonly run?: string;
+      readonly env?: Readonly<Record<string, string>>;
     }[];
-    const uses = steps.flatMap((s) => (s.uses ? [s.uses.split("@")[0]] : []));
-    expect(uses).toEqual([]);
-    const script = steps.map((s) => s.run ?? "").join("\n");
-    expect(script).toContain("https://api.github.com/repos/");
-    expect(script).not.toMatch(/https:\/\/github\.com/);
+    const env = steps.find((s) => s.env?.["WECHAT_APPID"])?.env;
+    expect(env?.["SITE_URL"]).toContain("vars.CN_SITE_URL");
   });
 });
