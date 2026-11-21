@@ -13009,6 +13009,19 @@
       "detectedAt": "2026-11-21T22:00:17Z"
     },
     {
+      "id": "2026-11-22-vertex:google/gemini-3.6-flash-2",
+      "type": "restored",
+      "offeringId": "vertex:google/gemini-3.6-flash",
+      "vendor": "google",
+      "modelSlug": "google/gemini-3.6-flash",
+      "displayName": "Gemini 3.6 Flash",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-21T22:13:23Z"
+    },
+    {
       "id": "2026-11-22-vertex:meta/muse-ember-1.0-1",
       "type": "new_model",
       "offeringId": "vertex:meta/muse-ember-1.0",

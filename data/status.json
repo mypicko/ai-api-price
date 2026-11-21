@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "44954367757",
-    "startedAt": "2026-11-21T22:00:17Z",
-    "finishedAt": "2026-11-21T22:01:41Z",
-    "durationMs": 84603,
+    "id": "44955542427",
+    "startedAt": "2026-11-21T22:13:23Z",
+    "finishedAt": "2026-11-21T22:14:36Z",
+    "durationMs": 73441,
     "result": "success"
   },
   "sources": [
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 926,
+      "durationMs": 1548,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 68,
-      "durationMs": 2815,
+      "durationMs": 2299,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -34,10 +34,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 83,
-      "durationMs": 731,
+      "durationMs": 360,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -45,10 +45,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 683,
+      "durationMs": 553,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -56,10 +56,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 9,
-      "durationMs": 3349,
+      "durationMs": 4305,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -68,21 +68,21 @@
       "status": "ok",
       "offeringCount": 255,
       "mediaOfferingCount": 61,
-      "durationMs": 1825,
+      "durationMs": 2553,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
       "id": "litellm-resellers",
       "kind": "api",
       "status": "ok",
-      "offeringCount": 1277,
-      "durationMs": 2979,
+      "offeringCount": 1278,
+      "durationMs": 3546,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -90,10 +90,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 136,
+      "durationMs": 94,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -101,10 +101,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 27,
-      "durationMs": 143,
+      "durationMs": 99,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -112,10 +112,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 12,
-      "durationMs": 1914,
+      "durationMs": 2615,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -123,10 +123,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 37,
-      "durationMs": 1915,
+      "durationMs": 2616,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -134,10 +134,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 6,
-      "durationMs": 1635,
+      "durationMs": 2131,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -145,10 +145,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 6,
-      "durationMs": 2883,
+      "durationMs": 3209,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -156,10 +156,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 60,
-      "durationMs": 284,
+      "durationMs": 205,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -168,10 +168,10 @@
       "status": "ok",
       "offeringCount": 371,
       "mediaOfferingCount": 28,
-      "durationMs": 3027,
+      "durationMs": 2753,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -179,10 +179,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 364,
-      "durationMs": 83554,
+      "durationMs": 72374,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -190,10 +190,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 3,
-      "durationMs": 2869,
+      "durationMs": 3064,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -201,10 +201,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 56,
-      "durationMs": 1552,
+      "durationMs": 2123,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -212,10 +212,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 25,
-      "durationMs": 5460,
+      "durationMs": 4345,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -223,10 +223,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 6120,
+      "durationMs": 6130,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -234,10 +234,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 1669,
+      "durationMs": 1913,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T22:00:17Z",
+      "lastSuccessAt": "2026-11-21T22:13:23Z",
       "consecutiveFailures": 0
     }
   ],
