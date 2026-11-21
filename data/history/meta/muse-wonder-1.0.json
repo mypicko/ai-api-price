@@ -1,0 +1,14 @@
+{
+  "modelSlug": "meta/muse-wonder-1.0",
+  "series": {
+    "vertex:meta/muse-wonder-1.0": [
+      {
+        "input": 4,
+        "output": 20,
+        "cacheRead": 0.2,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-22"
+      }
+    ]
+  }
+}
