@@ -279,19 +279,28 @@ gh variable set GOOGLE_SITE_VERIFICATION --body 你复制的字符
 4. 执行 `gh workflow run daily`，等网站更新后（约 5 分钟）回到 Search Console 点「验证」
 5. 验证通过后，在左侧「站点地图」里提交 `sitemap.xml`
 
-**百度**
+**百度**（提交国内站 `https://promptso.top`；海外镜像的 canonical 已指向它，不用单独提交）
 
-1. 打开 [百度搜索资源平台](https://ziyuan.baidu.com/site/index)，添加网站 `https://mypicko.github.io/ai-api-price/`
+1. 打开 [百度搜索资源平台](https://ziyuan.baidu.com/site/index)，添加网站 `https://promptso.top`
 2. 验证方式选「HTML 标签验证」，复制 `content="…"` 里的字符（形如 `codeva-xxxx`）
-3. 设置变量，再执行 `gh workflow run daily`，网站更新后回到百度点「完成验证」：
+3. 设置变量，再执行 `gh workflow run daily`，国内站更新后回到百度点「完成验证」：
 
 ```bash
 gh variable set BAIDU_SITE_VERIFICATION --body 你复制的字符
 ```
 
-4. 验证通过后，在「普通收录 → sitemap」里提交 `https://mypicko.github.io/ai-api-price/sitemap.xml`
+4. 验证通过后，在「普通收录 → sitemap」里提交 `https://promptso.top/sitemap.xml`
+5. 在「普通收录 → API提交」里复制接口调用地址中 `token=` 后面的字符，存成密钥（不要发到聊天里）。之后每天国内站发布后，`daily` 的 `baidu-push` 任务会自动推送当天有变动的模型页、首页和变动页，其余页面按日期轮换（DEV_DOCUMENT §3.29）：
 
-> 百度对 github.io 子路径的网站收录较慢，迁到国内服务器并绑定自己的域名后效果会更好。
+```bash
+gh secret set BAIDU_PUSH_TOKEN
+```
+
+6. 每日额度默认按 10 条推送；百度后台显示的额度更高时可以调大：
+
+```bash
+gh variable set BAIDU_PUSH_LIMIT --body 50
+```
 
 ### 常见报错
 

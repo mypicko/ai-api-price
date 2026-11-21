@@ -128,6 +128,8 @@ jobs:
           ANALYTICS_SCRIPT_URL: ${{ vars.ANALYTICS_SCRIPT_URL }}
           GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
           BAIDU_SITE_VERIFICATION: ${{ vars.BAIDU_SITE_VERIFICATION }}
+          # 海外镜像：canonical / hreflang 指向国内主站，避免被搜索引擎当成重复站（DEV §3.28）
+          CANONICAL_URL: ${{ vars.CN_SITE_URL }}
         run: pnpm build
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
@@ -261,3 +263,33 @@ jobs:
           ls -1dt "$DEPLOY_DIR"/releases/*/ | tail -n +4 | while read -r old; do
             [ "$(readlink -f "$old")" = "$(readlink -f "$DEPLOY_DIR/current")" ] || rm -rf "$old"
           done
+
+  # 国内站发布后，把网址推送给百度普通收录（DEV_DOCUMENT §3.29）。没有配置密钥 BAIDU_PUSH_TOKEN 时命令自动跳过。
+  # 跑在 GitHub 托管运行器上（能直连百度接口），令牌不进腾讯云服务器；失败不影响网站。
+  baidu-push:
+    needs: deploy-cn
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      # 取 main 最新提交：含 update 刚推上去的当天变动（用来决定优先推哪些模型页）
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: 推送到百度
+        env:
+          CN_SITE_URL: ${{ vars.CN_SITE_URL }}
+          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+          BAIDU_PUSH_LIMIT: ${{ vars.BAIDU_PUSH_LIMIT }}
+        run: pnpm pipeline baidu:push

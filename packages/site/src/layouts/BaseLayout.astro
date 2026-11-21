@@ -12,7 +12,7 @@ import { DEFAULT_CURRENCY, HTML_LANG, type Locale } from "../lib/locale";
 import { THEME_SCRIPT } from "../lib/theme-script";
 import { SITE_OG_PATH, absoluteUrl, pageHref } from "../lib/url";
 import { OG_HEIGHT, OG_WIDTH } from "../lib/og";
-import { siteVerificationMeta } from "../lib/seo";
+import { canonicalSite, siteVerificationMeta } from "../lib/seo";
 
 interface Props {
   locale: Locale;
@@ -34,7 +34,10 @@ const other: Locale = locale === "zh" ? "en" : "zh";
 const siteName = t(locale, "site.name");
 const fullTitle = title ? `${title} · ${siteName}` : `${siteName} · ${t(locale, "site.tagline")}`;
 const desc = description ?? t(locale, "site.description");
-const href = (l: Locale): string => absoluteUrl(site, pageHref(base, l, path));
+// canonical / hreflang / og:url 指向主站（海外镜像设置 CANONICAL_URL，见 lib/seo.ts）
+const canonical = canonicalSite(process.env, { origin: site, base });
+const href = (l: Locale): string =>
+  absoluteUrl(canonical.origin, pageHref(canonical.base, l, path));
 const imageUrl = absoluteUrl(site, image ?? pageHref(base, locale, SITE_OG_PATH));
 const verification = siteVerificationMeta(process.env);
 // 可选访问统计（不使用 Cookie），由 ANALYTICS_* 环境变量开启，见 lib/analytics.ts

@@ -865,6 +865,9 @@ sequenceDiagram
 | `ANALYTICS_TOKEN`          | ❌   | 字符串                 | Variables         | —                      | `0123…cdef`                                         | Cloudflare beacon token（32 位十六进制）或 Umami 网站 ID（UUID）。公开值，不是密钥                                        |
 | `GOOGLE_SITE_VERIFICATION` | ❌   | 字符串                 | Variables         | 空                     | `AbC-123_x`                                         | Google Search Console「HTML 标记」验证值，写进 `<meta name="google-site-verification">`。公开值，只接受字母数字、`_`、`-` |
 | `BAIDU_SITE_VERIFICATION`  | ❌   | 字符串                 | Variables         | 空                     | `codeva-AbC123`                                     | 百度搜索资源平台「HTML 标签」验证值，写进 `<meta name="baidu-site-verification">`                                         |
+| `BAIDU_PUSH_TOKEN`         | ❌   | 字符串                 | Secrets           | 空（不推送）           | —                                                   | 百度普通收录 API 令牌（搜索资源平台「普通收录 → API提交」）。只在 `baidu-push` 任务里使用，不写进日志                     |
+| `BAIDU_PUSH_LIMIT`         | ❌   | 整数                   | Variables         | `10`                   | `50`                                                | 每天推送给百度的网址条数上限（1～2000），按百度后台显示的额度设置                                                         |
+| `CANONICAL_URL`            | ❌   | URL                    | workflow env      | 空（用本站域名）       | `https://promptso.top`                              | 主站地址：canonical / hreflang / og:url 指向它。daily 只在 GitHub Pages 构建时设成 `vars.CN_SITE_URL`，必须 https         |
 | `ANALYTICS_SCRIPT_URL`     | ❌   | URL                    | Variables         | Umami 官方云           | `https://stats.example.com/script.js`               | 仅 Umami 自建实例需要，必须 https                                                                                         |
 | `TZ`                       | ❌   | 时区                   | workflow env      | `Asia/Shanghai`        | —                                                   | 日志和"今天"按北京时间算                                                                                                  |
 
@@ -942,7 +945,7 @@ LiteLLM、OpenRouter、汇率接口都**不需要注册或 API Key**。
 
 ### 8.9 腾讯云自托管运行器（公众号草稿、国内站）
 
-公众号接口要求调用方 IP 在白名单里，GitHub 托管机器的 IP 不固定，所以 `daily.yml` 的 `wechat` 任务跑在腾讯云服务器上（`runs-on: [self-hosted, tencent]`）。国内站的构建发布（`deploy-cn`，§3.27）也在这台服务器上。抓取、提交数据、部署 GitHub Pages 仍在 GitHub 托管机器上，服务器出问题只影响当天的草稿和国内站更新（国内站保留前一天的版本）。
+公众号接口要求调用方 IP 在白名单里，GitHub 托管机器的 IP 不固定，所以 `daily.yml` 的 `wechat` 任务跑在腾讯云服务器上（`runs-on: [self-hosted, tencent]`）。国内站的构建发布（`deploy-cn`，§3.27）也在这台服务器上；发布后的百度推送（`baidu-push`，§3.29）回到 GitHub 托管机器上跑，令牌不进服务器。抓取、提交数据、部署 GitHub Pages 仍在 GitHub 托管机器上，服务器出问题只影响当天的草稿和国内站更新（国内站保留前一天的版本）。
 
 **仓库是公开的，三条防护措施：**
 
@@ -1351,3 +1354,20 @@ curl -s ifconfig.me
 - **备案号**：域名 `promptso.top` 已备案（个人，`豫ICP备2026013506号-1`，2026-04-10 通过）。页脚显示备案号并链接 `https://beian.miit.gov.cn/`（`lib/seo.ts` 的 `icpBeian`，环境变量 `ICP_BEIAN`，只在国内站构建时设置）。个人备案的网站不宜放商业内容，加推广链接前先确认备案规则。
 - **服务器 nginx**（`/etc/nginx/sites-available/default`）：`root /var/www/price/current`；`/_astro/` 带哈希的资源缓存 1 年，页面 `no-cache`；gzip；`try_files $uri $uri/ $uri.html =404`，404 用站点的 `404.html`；安全头放在 `snippets/price-security-headers.conf`，每个 location 都 include（location 里有 `add_header` 时不继承 server 级的）；www 和 http 都 301 到 `https://promptso.top`。证书 Let's Encrypt（webroot `/var/www/letsencrypt`，自动续期已验证）。发布目录 `/var/www/price` 属于 `runner` 用户。
 - **访问统计**：沿用同一个 Cloudflare Web Analytics 令牌，国内站和海外镜像的访问记在同一个站点下。
+
+### 3.28 双域名 canonical（1.5）
+
+- **为什么**：国内站 `promptso.top` 和海外镜像 GitHub Pages 内容完全相同，搜索引擎会当成重复站、互相分走权重。主站定为国内站。
+- **做法**：`lib/seo.ts` 的 `canonicalSite(env, 本站)` 读环境变量 `CANONICAL_URL`（只接受 https，可带子路径，子路径作主站 base）；`BaseLayout.astro` 的 `<link rel="canonical">`、三条 `hreflang` 和 `og:url` 都用主站域名 + 主站 base 生成。没设置时与原来一样指向本站。
+- **谁设置**：`daily.yml` 的 `update` 任务构建 GitHub Pages 时设 `CANONICAL_URL: ${{ vars.CN_SITE_URL }}`；`deploy-cn` 不设（自己就是主站）。没设 `CN_SITE_URL` 时变量为空，镜像照旧指向自己。
+- **不变的**：镜像的 sitemap、RSS、分享图仍用镜像自己的地址（sitemap 按规范只能列本域名的网址）；canonical 足以让搜索引擎合并到主站。
+- **测试**：`site/tests/canonical.test.ts`、`pipeline/tests/workflows.test.ts`（Pages 构建带 `CANONICAL_URL`、`deploy-cn` 不带）。
+
+### 3.29 百度普通收录推送（1.5）
+
+- **为什么**：百度靠自己爬 sitemap 收录新站很慢，主动推送能让新页面和价格有变动的页面更快进索引。
+- **做法**：`pipeline/src/tools/baidu-push.ts`，命令 `pnpm pipeline baidu:push [YYYY-MM-DD]`。读线上 `${CN_SITE_URL}/sitemap.xml`（保证推的都是已发布的页面），按优先级选网址：当天 `data/changes` 里有变动的模型页（中文）→ 首页 → `/changes/` → 其余页面按日期轮换（中文在前，几周覆盖全站），截到 `BAIDU_PUSH_LIMIT`（默认 10）条，`POST http://data.zz.baidu.com/urls?site=…&token=…`（text/plain，每行一个）。
+- **任务**：`daily.yml` 的 `baidu-push`，`needs: deploy-cn`，跑在 `ubuntu-latest`，只读权限；密钥 `BAIDU_PUSH_TOKEN` 只出现在这个任务里（`workflows.test.ts` 守卫）。没配令牌时打印「已跳过」并正常结束；百度返回错误（令牌无效、超额度 `over quota` 等）报 `E5001`，任务失败但不影响网站。
+- **安全**：令牌在请求地址里，报错信息不带原始错误（可能含地址），日志只打印推送的网址和成功数、剩余额度。
+- **前置**：百度搜索资源平台添加并验证 `https://promptso.top`（`BAIDU_SITE_VERIFICATION`，国内站和镜像构建都会写进 `<head>`），见 README「提交到 Google 和百度」。
+- **测试**：`pipeline/tests/tools/baidu-push.test.ts`（sitemap 解析、选网址与轮换、接口格式、错误不泄露令牌、未配置时跳过）。

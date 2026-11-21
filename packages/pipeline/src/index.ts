@@ -28,6 +28,7 @@ import { formatQuarantine, loadQuarantine } from "./tools/quarantine-list";
 import { runSnapshot } from "./tools/snapshot";
 import { validateDataDir } from "./tools/validate-data";
 import { migrateDataDir } from "./tools/migrate-slugs";
+import { runBaiduPush } from "./tools/baidu-push";
 import { reportForDate, runWechatPreview } from "./tools/wechat-preview";
 import { shanghaiDate } from "./steps/dates";
 import { DEFAULT_ADMIN_PORT, startAdminServer } from "./admin/server";
@@ -48,6 +49,7 @@ const USAGE = `用法：pnpm pipeline <命令>
   wechat:preview [YYYY-MM-DD]                  生成公众号日报的本地预览（.preview/），不调接口
   admin [--port 4400]                          启动本地后台（只在本机，只读），浏览器打开 http://localhost:4400
   wechat:draft [YYYY-MM-DD]                    把某一天（默认北京时间今天）的日报存进公众号草稿箱（需要 WECHAT_* 配置和 IP 白名单）
+  baidu:push [YYYY-MM-DD]                      把国内站网址推送给百度普通收录（需要 CN_SITE_URL 和 BAIDU_PUSH_TOKEN）
 `;
 
 function out(text: string): void {
@@ -192,6 +194,7 @@ async function dispatch(command: string | undefined, args: readonly string[]): P
   if (command === "migrate-slugs") return commandMigrateSlugs(args);
   if (command === "wechat:preview") return commandWechatPreview(args);
   if (command === "admin") return commandAdmin(args);
+  if (command === "baidu:push") return commandBaiduPush(args);
   if (command === "quarantine:list") {
     out(formatQuarantine(await loadQuarantine(DATA_DIR)));
     out(formatQuarantine(await loadQuarantine(DATA_DIR, MEDIA_DIR), "视频/图像隔离区"));
@@ -270,6 +273,26 @@ async function commandWechatDraft(args: readonly string[], rt: Runtime): Promise
   }
   await notifier.send(report);
   out(`${report.date} 的日报已存进草稿箱，去「公众号助手」确认后群发`);
+  return 0;
+}
+
+/** 当天有变动的模型页优先推送；没配置令牌时跳过（返回 0，不让每日任务失败） */
+async function commandBaiduPush(args: readonly string[]): Promise<number> {
+  loadDotEnv();
+  const report = await reportForDate({
+    dataDir: DATA_DIR,
+    siteUrl: "",
+    date: args[0] ?? shanghaiDate(new Date()),
+  });
+  const changedSlugs = [...new Set(report.changes.map((e) => e.modelSlug))];
+  const result = await runBaiduPush({ env: process.env, changedSlugs, date: report.date });
+  if (result.status === "skipped") {
+    out(`百度推送已跳过：${result.reason}`);
+    return 0;
+  }
+  out(
+    `百度推送：提交 ${result.urls.length} 条，成功 ${result.success} 条，今日剩余额度 ${result.remain}\n${result.urls.join("\n")}`,
+  );
   return 0;
 }
 

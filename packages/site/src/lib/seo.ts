@@ -1,3 +1,5 @@
+import { normalizeBase } from "./url";
+
 /**
  * 搜索引擎站点验证（DEV §3.21）：在 Google Search Console / 百度搜索资源平台选择「HTML 标签」验证方式，
  * 把 content 值设成仓库变量 GOOGLE_SITE_VERIFICATION / BAIDU_SITE_VERIFICATION，构建时写进 <head>。
@@ -38,4 +40,28 @@ export function icpBeian(
 ): { readonly text: string; readonly url: string } | null {
   const value = env["ICP_BEIAN"]?.trim() ?? "";
   return BEIAN.test(value) ? { text: value, url: BEIAN_URL } : null;
+}
+
+/**
+ * canonical 主站（DEV §3.28）：国内站 promptso.top 和海外镜像 GitHub Pages 内容相同，
+ * 镜像构建时设置 CANONICAL_URL=https://promptso.top，让 canonical / hreflang / og:url 都指向主站，
+ * 避免搜索引擎当成重复站分散权重。没设置或不是 https 地址时用本站自己的域名和 base。
+ */
+export interface CanonicalSite {
+  readonly origin: string;
+  readonly base: string;
+}
+
+export function canonicalSite(
+  env: Readonly<Record<string, string | undefined>>,
+  fallback: CanonicalSite,
+): CanonicalSite {
+  const value = env["CANONICAL_URL"]?.trim() ?? "";
+  if (!/^https:\/\/[^/\s]+/.test(value)) return fallback;
+  try {
+    const url = new URL(value);
+    return { origin: url.origin, base: normalizeBase(url.pathname) };
+  } catch {
+    return fallback;
+  }
 }

@@ -99,4 +99,29 @@ describe("工作流安全守卫", () => {
     const env = steps.find((s) => s.env?.["WECHAT_APPID"])?.env;
     expect(env?.["SITE_URL"]).toContain("vars.CN_SITE_URL");
   });
+
+  it("海外镜像（GitHub Pages）构建时 canonical 指向国内主站", () => {
+    const steps = (load("daily.yml").jobs["update"]?.["steps"] ?? []) as readonly {
+      readonly run?: string;
+      readonly env?: Readonly<Record<string, string>>;
+    }[];
+    const build = steps.find((s) => s.run === "pnpm build");
+    expect(build?.env?.["CANONICAL_URL"]).toBe("${{ vars.CN_SITE_URL }}");
+  });
+
+  it("国内站构建不设置 CANONICAL_URL（自己就是主站）", () => {
+    expect(JSON.stringify(load("daily.yml").jobs["deploy-cn"])).not.toContain("CANONICAL_URL");
+  });
+
+  it("百度推送在国内站发布之后、跑在 GitHub 托管运行器上，令牌只出现在这个任务里", () => {
+    const jobs = load("daily.yml").jobs;
+    const job = jobs["baidu-push"];
+    expect(job?.["runs-on"]).toBe("ubuntu-latest");
+    expect(job?.["needs"]).toBe("deploy-cn");
+    expect(job?.["permissions"]).toEqual({ contents: "read" });
+    expect(JSON.stringify(job)).toContain("secrets.BAIDU_PUSH_TOKEN");
+    expect(JSON.stringify(job)).toContain("pnpm pipeline baidu:push");
+    for (const [name, other] of Object.entries(jobs))
+      if (name !== "baidu-push") expect(JSON.stringify(other), name).not.toContain("BAIDU_PUSH");
+  });
 });
