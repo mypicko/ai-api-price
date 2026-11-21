@@ -62,7 +62,10 @@ export async function pushToBaidu(opts: {
   readonly fetchImpl?: FetchLike;
 }): Promise<PushResult> {
   const fetchImpl = opts.fetchImpl ?? fetch;
-  const url = `${BAIDU_PUSH_ENDPOINT}?site=${encodeURIComponent(opts.site)}&token=${encodeURIComponent(opts.token)}`;
+  if (!/^[A-Za-z0-9]{1,64}$/.test(opts.token))
+    throw new PipelineError("E5001", "百度推送：BAIDU_PUSH_TOKEN 格式不对（应只含字母和数字）");
+  // 与百度后台「API提交」给的调用地址完全一致：site 带协议、不做 URL 编码（编码后会报 site init fail）
+  const url = `${BAIDU_PUSH_ENDPOINT}?site=${opts.site}&token=${opts.token}`;
   let body: { success?: number; remain?: number; error?: number; message?: string };
   try {
     const response = await fetchImpl(url, {

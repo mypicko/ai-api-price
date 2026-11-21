@@ -58,7 +58,8 @@ describe("百度普通收录推送（DEV §3.29）", () => {
     });
     expect(result).toEqual({ success: 2, remain: 8 });
     const [url, init] = fetchImpl.mock.calls[0] as unknown as [string, RequestInit];
-    expect(url).toBe(`${BAIDU_PUSH_ENDPOINT}?site=${encodeURIComponent(SITE)}&token=tok`);
+    // 与百度后台给的调用地址完全一致：site 不做 URL 编码
+    expect(url).toBe(`${BAIDU_PUSH_ENDPOINT}?site=${SITE}&token=tok`);
     expect(init.method).toBe("POST");
     expect(init.body).toBe("a\nb");
     expect(new Headers(init.headers).get("content-type")).toBe("text/plain");
@@ -68,9 +69,17 @@ describe("百度普通收录推送（DEV §3.29）", () => {
     const fetchImpl = vi.fn(async () =>
       Response.json({ error: 401, message: "token is not valid" }, { status: 401 }),
     );
-    const promise = pushToBaidu({ site: SITE, token: "secret-tok", urls: ["a"], fetchImpl });
+    const promise = pushToBaidu({ site: SITE, token: "secretTok9", urls: ["a"], fetchImpl });
     await expect(promise).rejects.toThrow(/E5001.*token is not valid/);
-    await expect(promise).rejects.not.toThrow(/secret-tok/);
+    await expect(promise).rejects.not.toThrow(/secretTok9/);
+  });
+
+  it("令牌只能是字母和数字，否则不发请求", async () => {
+    const fetchImpl = vi.fn(async () => Response.json({ success: 1, remain: 1 }));
+    await expect(
+      pushToBaidu({ site: SITE, token: "a&b=c", urls: ["a"], fetchImpl }),
+    ).rejects.toThrow(/E5001/);
+    expect(fetchImpl).not.toHaveBeenCalled();
   });
 
   it("没配置令牌时跳过；有令牌时读线上 sitemap 再推送", async () => {
