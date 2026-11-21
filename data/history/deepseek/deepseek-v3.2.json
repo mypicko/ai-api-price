@@ -10,6 +10,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "bedrock:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.62,
+        "output": 1.85,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "deepinfra:deepseek/deepseek-v3.2": [
       {
         "input": 0.26,
@@ -28,6 +37,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "fireworks:deepseek/deepseek-v3.2": [
+      {
+        "input": 0.56,
+        "output": 1.68,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-10-19"
+      }
+    ],
     "gmi:deepseek/deepseek-v3.2": [
       {
         "input": 0.2088,
@@ -35,6 +53,13 @@
         "cacheRead": 0.0216,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.28,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "novita:deepseek/deepseek-v3.2": [
@@ -94,6 +119,13 @@
         "cacheRead": 0.059779,
         "cacheWrite": null,
         "effectiveDate": "2026-10-22"
+      },
+      {
+        "input": 4,
+        "output": 6,
+        "cacheRead": 0.4,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "siliconflow:deepseek/deepseek-v3.2": [
@@ -110,24 +142,6 @@
         "input": 0.56,
         "output": 1.68,
         "cacheRead": 0.056,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "fireworks:deepseek/deepseek-v3.2": [
-      {
-        "input": 0.56,
-        "output": 1.68,
-        "cacheRead": null,
-        "cacheWrite": null,
-        "effectiveDate": "2026-10-19"
-      }
-    ],
-    "bedrock:deepseek/deepseek-v3.2": [
-      {
-        "input": 0.62,
-        "output": 1.85,
-        "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }

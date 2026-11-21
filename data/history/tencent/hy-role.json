@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hy-role",
+  "series": {
+    "official-cn:tencent/hy-role": [
+      {
+        "input": 2.4,
+        "output": 9.6,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

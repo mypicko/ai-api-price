@@ -10,6 +10,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "official-cn:alibaba/qwen-mt-plus": [
+      {
+        "input": 1.8,
+        "output": 5.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen-mt-plus": [
       {
         "input": 0.259,

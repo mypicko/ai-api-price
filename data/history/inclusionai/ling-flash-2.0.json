@@ -1,0 +1,23 @@
+{
+  "modelSlug": "inclusionai/ling-flash-2.0",
+  "series": {
+    "siliconflow-cn:inclusionai/ling-flash-2.0": [
+      {
+        "input": 1,
+        "output": 4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
+    "siliconflow:inclusionai/ling-flash-2.0": [
+      {
+        "input": 0.14,
+        "output": 0.57,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

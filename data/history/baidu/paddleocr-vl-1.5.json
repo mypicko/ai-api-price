@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/paddleocr-vl-1.5",
+  "series": {
+    "siliconflow-cn:baidu/paddleocr-vl-1.5": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

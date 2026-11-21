@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen-mt-flash",
   "series": {
+    "official-cn:alibaba/qwen-mt-flash": [
+      {
+        "input": 0.7,
+        "output": 1.95,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen-mt-flash": [
       {
         "input": 0.101,

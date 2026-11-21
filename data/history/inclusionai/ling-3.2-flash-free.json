@@ -1,0 +1,14 @@
+{
+  "modelSlug": "inclusionai/ling-3.2-flash-free",
+  "series": {
+    "openrouter:inclusionai/ling-3.2-flash-free": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

@@ -120,6 +120,13 @@
         "cacheRead": 0.006,
         "cacheWrite": null,
         "effectiveDate": "2026-10-27"
+      },
+      {
+        "input": 0.195,
+        "output": 0.78,
+        "cacheRead": 0.0039,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "fireworks:deepseek/deepseek-v4.1-flash": [
@@ -305,6 +312,13 @@
         "cacheRead": 0.006,
         "cacheWrite": null,
         "effectiveDate": "2026-11-19"
+      },
+      {
+        "input": 0.0507,
+        "output": 0.2028,
+        "cacheRead": 0.001014,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "parasail:deepseek/deepseek-v4.1-flash": [
@@ -314,6 +328,15 @@
         "cacheRead": 0.006,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      }
+    ],
+    "siliconflow-cn:deepseek/deepseek-v4.1-flash": [
+      {
+        "input": 2,
+        "output": 8,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "siliconflow:deepseek/deepseek-v4.1-flash": [

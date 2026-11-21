@@ -1,0 +1,14 @@
+{
+  "modelSlug": "xingchen/xing4.0-29b",
+  "series": {
+    "siliconflow-cn:xingchen/xing4.0-29b": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

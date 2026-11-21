@@ -58,6 +58,13 @@
         "cacheRead": 0.03,
         "cacheWrite": null,
         "effectiveDate": "2026-10-21"
+      },
+      {
+        "input": 0.1005,
+        "output": 0.335,
+        "cacheRead": 0.0201,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "digitalocean:zhipu/glm-5.3-flash": [
@@ -74,6 +81,13 @@
         "cacheRead": 0.03,
         "cacheWrite": null,
         "effectiveDate": "2026-10-29"
+      },
+      {
+        "input": 0.0975,
+        "output": 0.325,
+        "cacheRead": 0.0195,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "fireworks:zhipu/glm-5.3-flash": [
@@ -279,6 +293,13 @@
         "cacheRead": 0.034485,
         "cacheWrite": null,
         "effectiveDate": "2026-11-01"
+      },
+      {
+        "input": 0.8,
+        "output": 2.8,
+        "cacheRead": 0.23,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "siliconflow:zhipu/glm-5.3-flash": [

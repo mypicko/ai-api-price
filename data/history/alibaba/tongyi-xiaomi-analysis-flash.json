@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/tongyi-xiaomi-analysis-flash",
+  "series": {
+    "official-cn:alibaba/tongyi-xiaomi-analysis-flash": [
+      {
+        "input": 0.2,
+        "output": 0.4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

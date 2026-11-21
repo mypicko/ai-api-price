@@ -15,6 +15,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-22"
+      },
+      {
+        "input": 1.5,
+        "output": 4,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "siliconflow:bytedance/seed-oss-36b-instruct": [

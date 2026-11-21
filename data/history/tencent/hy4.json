@@ -26,6 +26,15 @@
         "effectiveDate": "2026-11-06"
       }
     ],
+    "official-cn:tencent/hy4": [
+      {
+        "input": 6,
+        "output": 18,
+        "cacheRead": 0.3,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "openrouter:tencent/hy4": [
       {
         "input": 0.417,

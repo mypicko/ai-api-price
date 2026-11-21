@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-z1-9b-0414",
+  "series": {
+    "siliconflow-cn:zhipu/glm-z1-9b-0414": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

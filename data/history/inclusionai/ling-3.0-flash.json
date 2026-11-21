@@ -1,0 +1,32 @@
+{
+  "modelSlug": "inclusionai/ling-3.0-flash",
+  "series": {
+    "deepinfra:inclusionai/ling-3.0-flash": [
+      {
+        "input": 0.06,
+        "output": 0.18,
+        "cacheRead": 0.012,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
+    "novita:inclusionai/ling-3.0-flash": [
+      {
+        "input": 0.021,
+        "output": 0.063,
+        "cacheRead": 0.0042,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
+    "openrouter:inclusionai/ling-3.0-flash": [
+      {
+        "input": 0.021,
+        "output": 0.063,
+        "cacheRead": 0.0042,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

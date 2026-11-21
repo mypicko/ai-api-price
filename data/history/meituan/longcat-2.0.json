@@ -1,0 +1,23 @@
+{
+  "modelSlug": "meituan/longcat-2.0",
+  "series": {
+    "siliconflow-cn:meituan/longcat-2.0": [
+      {
+        "input": 5,
+        "output": 20,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
+    "siliconflow:meituan/longcat-2.0": [
+      {
+        "input": 0.75,
+        "output": 2.95,
+        "cacheRead": 0.015,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

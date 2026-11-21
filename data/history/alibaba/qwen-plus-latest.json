@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen-plus-latest",
   "series": {
+    "official-cn:alibaba/qwen-plus-latest": [
+      {
+        "input": 0.8,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen-plus-latest": [
       {
         "input": 0.115,

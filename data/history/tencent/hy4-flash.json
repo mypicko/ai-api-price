@@ -17,6 +17,15 @@
         "effectiveDate": "2026-11-19"
       }
     ],
+    "official-cn:tencent/hy4-flash": [
+      {
+        "input": 0.5,
+        "output": 2,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "openrouter:tencent/hy4-flash": [
       {
         "input": 0.035,

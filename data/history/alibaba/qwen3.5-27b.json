@@ -37,6 +37,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "official-cn:alibaba/qwen3.5-27b": [
+      {
+        "input": 0.6,
+        "output": 4.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen3.5-27b": [
       {
         "input": 0.086,
@@ -95,6 +104,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-11-20"
+      },
+      {
+        "input": 0.195,
+        "output": 1.56,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "siliconflow-cn:alibaba/qwen3.5-27b": [
@@ -111,6 +127,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-10-22"
+      },
+      {
+        "input": 0.6,
+        "output": 4.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "siliconflow:alibaba/qwen3.5-27b": [

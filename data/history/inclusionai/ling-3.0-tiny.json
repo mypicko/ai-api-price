@@ -1,0 +1,14 @@
+{
+  "modelSlug": "inclusionai/ling-3.0-tiny",
+  "series": {
+    "openrouter:inclusionai/ling-3.0-tiny": [
+      {
+        "input": 0.015,
+        "output": 0.045,
+        "cacheRead": 0.003,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

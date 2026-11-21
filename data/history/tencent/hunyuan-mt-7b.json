@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hunyuan-mt-7b",
+  "series": {
+    "siliconflow-cn:tencent/hunyuan-mt-7b": [
+      {
+        "input": 0,
+        "output": 0,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

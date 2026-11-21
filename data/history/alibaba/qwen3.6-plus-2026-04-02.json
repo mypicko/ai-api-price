@@ -10,6 +10,15 @@
         "effectiveDate": "2026-11-05"
       }
     ],
+    "official-cn:alibaba/qwen3.6-plus-2026-04-02": [
+      {
+        "input": 2,
+        "output": 12,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen3.6-plus-2026-04-02": [
       {
         "input": 0.276,

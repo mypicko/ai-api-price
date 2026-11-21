@@ -1,0 +1,14 @@
+{
+  "modelSlug": "baidu/ernie-light-dt",
+  "series": {
+    "official-cn:baidu/ernie-light-dt": [
+      {
+        "input": 8,
+        "output": 28,
+        "cacheRead": 0.8,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

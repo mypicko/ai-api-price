@@ -81,6 +81,13 @@
         "cacheRead": 0.02,
         "cacheWrite": null,
         "effectiveDate": "2026-11-16"
+      },
+      {
+        "input": 0.15,
+        "output": 0.47,
+        "cacheRead": 0.02,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "together:nvidia/nemotron-3.5-super-vl": [

@@ -28,6 +28,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "official-cn:alibaba/qwen3.6-27b": [
+      {
+        "input": 3,
+        "output": 18,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen3.6-27b": [
       {
         "input": 0.412564,
@@ -88,6 +97,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-11-01"
+      },
+      {
+        "input": 3,
+        "output": 18,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "siliconflow:alibaba/qwen3.6-27b": [

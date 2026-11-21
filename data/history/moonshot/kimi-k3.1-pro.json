@@ -44,6 +44,13 @@
         "cacheRead": 0.2,
         "cacheWrite": null,
         "effectiveDate": "2026-11-07"
+      },
+      {
+        "input": 1.9,
+        "output": 9.5,
+        "cacheRead": 0.19,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "fireworks:moonshot/kimi-k3.1-pro": [
@@ -89,6 +96,13 @@
         "cacheRead": 0.1944,
         "cacheWrite": 1.9437,
         "effectiveDate": "2026-10-24"
+      },
+      {
+        "input": 13,
+        "output": 68,
+        "cacheRead": 1.3,
+        "cacheWrite": 13,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "official:moonshot/kimi-k3.1-pro": [

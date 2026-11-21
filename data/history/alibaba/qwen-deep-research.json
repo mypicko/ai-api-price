@@ -1,6 +1,15 @@
 {
   "modelSlug": "alibaba/qwen-deep-research",
   "series": {
+    "official-cn:alibaba/qwen-deep-research": [
+      {
+        "input": 54,
+        "output": 163,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen-deep-research": [
       {
         "input": 7.742,

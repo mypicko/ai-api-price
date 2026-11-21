@@ -17,6 +17,13 @@
         "cacheRead": 0.1944,
         "cacheWrite": 3.8874,
         "effectiveDate": "2026-10-24"
+      },
+      {
+        "input": 26,
+        "output": 136,
+        "cacheRead": 1.3,
+        "cacheWrite": 26,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "official:moonshot/kimi-k3.1-pro-highspeed": [

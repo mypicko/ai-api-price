@@ -19,6 +19,15 @@
         "effectiveDate": "2026-11-17"
       }
     ],
+    "official-cn:alibaba/qwen4-max": [
+      {
+        "input": 10,
+        "output": 30,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen4-max": [
       {
         "input": 1.413,

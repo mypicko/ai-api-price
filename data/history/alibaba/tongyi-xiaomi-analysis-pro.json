@@ -1,0 +1,14 @@
+{
+  "modelSlug": "alibaba/tongyi-xiaomi-analysis-pro",
+  "series": {
+    "official-cn:alibaba/tongyi-xiaomi-analysis-pro": [
+      {
+        "input": 1,
+        "output": 2.7,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ]
+  }
+}

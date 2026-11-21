@@ -89,6 +89,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "official-cn:alibaba/qwen3.8-27b": [
+      {
+        "input": 3,
+        "output": 12,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen3.8-27b": [
       {
         "input": 0.424,
@@ -147,6 +156,13 @@
         "cacheRead": 0.059,
         "cacheWrite": null,
         "effectiveDate": "2026-11-18"
+      },
+      {
+        "input": 0.06,
+        "output": 1.96,
+        "cacheRead": 0.059,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "parasail:alibaba/qwen3.8-27b": [
@@ -165,6 +181,13 @@
         "cacheRead": null,
         "cacheWrite": null,
         "effectiveDate": "2026-11-01"
+      },
+      {
+        "input": 3,
+        "output": 12,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "wandb:alibaba/qwen3.8-27b": [

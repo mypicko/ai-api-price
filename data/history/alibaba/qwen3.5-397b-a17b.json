@@ -53,6 +53,15 @@
         "effectiveDate": "2026-10-19"
       }
     ],
+    "official-cn:alibaba/qwen3.5-397b-a17b": [
+      {
+        "input": 1.2,
+        "output": 7.2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
+    ],
     "official:alibaba/qwen3.5-397b-a17b": [
       {
         "input": 0.172,

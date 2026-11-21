@@ -9,6 +9,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "siliconflow-cn:zhipu/glm-4-32b-0414": [
+      {
+        "input": 1.89,
+        "output": 1.89,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
+      }
     ]
   }
 }

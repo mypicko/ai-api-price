@@ -67,6 +67,13 @@
         "cacheRead": 0.042,
         "cacheWrite": null,
         "effectiveDate": "2026-11-06"
+      },
+      {
+        "input": 0.6,
+        "output": 1.8,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-21"
       }
     ],
     "sambanova:minimax/minimax-m2.7": [
