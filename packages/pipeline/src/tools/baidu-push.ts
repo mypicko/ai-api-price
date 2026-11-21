@@ -2,8 +2,9 @@
  * 百度普通收录 API 推送（DEV_DOCUMENT §3.29）：国内站发布后，把网址主动提交给百度，加快收录。
  * - 接口：POST http://data.zz.baidu.com/urls?site=<站点>&token=<令牌>，正文每行一个网址（text/plain）
  * - 每天额度有限（新站通常 10 条，BAIDU_PUSH_LIMIT 可调），所以先推最有价值的：
- *   当天有价格变动的模型页（中文）→ 首页 → 价格变动页 → 其余页面按日期轮换（中文在前），几周下来覆盖全站
+ *   首页 → 价格变动页 → 当天有价格变动的模型页（中文）→ 其余页面按日期轮换（中文在前），几周下来覆盖全站
  * - 网址取自线上的 sitemap.xml，保证推送的都是已经发布、能打开的页面
+ * - 当天额度已用完（over quota）只提示、不算失败
  * - 令牌 BAIDU_PUSH_TOKEN 是密钥：只放 GitHub Secrets，不写进日志和报错信息
  */
 import { PipelineError } from "../core/errors";
@@ -36,8 +37,8 @@ export function pickUrls(opts: PickOptions): readonly string[] {
   const available = new Set(opts.locs);
   const origin = opts.locs[0] ? new URL(opts.locs[0]).origin : "";
   const priority = [
-    ...opts.changedSlugs.map((slug) => `${origin}/models/${slug}/`),
     ...PRIORITY_PATHS.map((p) => `${origin}${p}`),
+    ...opts.changedSlugs.map((slug) => `${origin}/models/${slug}/`),
   ].filter((u) => available.has(u));
   const chosen = new Set(priority);
   const rest = [
@@ -80,6 +81,8 @@ export async function pushToBaidu(opts: {
     const reason = error instanceof Error ? error.name : "未知错误";
     throw new PipelineError("E5001", `百度推送：请求失败（${reason}）`);
   }
+  // 当天额度已用完（例如同一天手动重跑过）：不算失败
+  if (body.message === "over quota") return { success: 0, remain: 0 };
   if (typeof body.success !== "number")
     throw new PipelineError(
       "E5001",

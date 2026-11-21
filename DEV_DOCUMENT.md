@@ -1366,8 +1366,8 @@ curl -s ifconfig.me
 ### 3.29 百度普通收录推送（1.5）
 
 - **为什么**：百度靠自己爬 sitemap 收录新站很慢，主动推送能让新页面和价格有变动的页面更快进索引。
-- **做法**：`pipeline/src/tools/baidu-push.ts`，命令 `pnpm pipeline baidu:push [YYYY-MM-DD]`。读线上 `${CN_SITE_URL}/sitemap.xml`（保证推的都是已发布的页面），按优先级选网址：当天 `data/changes` 里有变动的模型页（中文）→ 首页 → `/changes/` → 其余页面按日期轮换（中文在前，几周覆盖全站），截到 `BAIDU_PUSH_LIMIT`（默认 10）条，`POST http://data.zz.baidu.com/urls?site=…&token=…`（text/plain，每行一个）。
-- **任务**：`daily.yml` 的 `baidu-push`，`needs: deploy-cn`，跑在 `ubuntu-latest`，只读权限；密钥 `BAIDU_PUSH_TOKEN` 只出现在这个任务里（`workflows.test.ts` 守卫）。没配令牌时打印「已跳过」并正常结束；百度返回错误（令牌无效、超额度 `over quota` 等）报 `E5001`，任务失败但不影响网站。
+- **做法**：`pipeline/src/tools/baidu-push.ts`，命令 `pnpm pipeline baidu:push [YYYY-MM-DD]`。读线上 `${CN_SITE_URL}/sitemap.xml`（保证推的都是已发布的页面），按优先级选网址：首页 → `/changes/` → 当天 `data/changes` 里有变动的模型页（中文）→ 其余页面按日期轮换（中文在前，几周覆盖全站），截到 `BAIDU_PUSH_LIMIT`（默认 10）条，`POST http://data.zz.baidu.com/urls?site=…&token=…`（text/plain，每行一个）。
+- **任务**：`daily.yml` 的 `baidu-push`，`needs: deploy-cn`，跑在 `ubuntu-latest`，只读权限；密钥 `BAIDU_PUSH_TOKEN` 只出现在这个任务里（`workflows.test.ts` 守卫）。没配令牌时打印「已跳过」并正常结束；当天额度已用完（`over quota`，如同一天重跑过）只提示成功 0 条；其他错误（令牌无效、`site init fail` 等）报 `E5001`，任务失败但不影响网站。`site` 参数必须与百度后台调用地址一致（带协议、不做 URL 编码，编码后会报 `site init fail`）。2026-11-22 实测每日额度 10 条。
 - **安全**：令牌在请求地址里，报错信息不带原始错误（可能含地址），日志只打印推送的网址和成功数、剩余额度。
 - **前置**：百度搜索资源平台添加并验证 `https://promptso.top`（`BAIDU_SITE_VERIFICATION`，国内站和镜像构建都会写进 `<head>`），见 README「提交到 Google 和百度」。
 - **测试**：`pipeline/tests/tools/baidu-push.test.ts`（sitemap 解析、选网址与轮换、接口格式、错误不泄露令牌、未配置时跳过）。

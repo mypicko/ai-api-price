@@ -26,14 +26,14 @@ describe("百度普通收录推送（DEV §3.29）", () => {
     expect(parseSitemapLocs(sitemap(["/", "/en/"]))).toEqual([`${SITE}/`, `${SITE}/en/`]);
   });
 
-  it("先推当天有变动的模型页（中文）、首页和变动页，再按日期轮换补满额度，不重复", () => {
+  it("先推首页、变动页和当天有变动的模型页（中文），再按日期轮换补满额度，不重复", () => {
     const urls = pickUrls({
       locs: ALL.map((p) => SITE + p),
       changedSlugs: ["b/two", "zz/not-in-sitemap"],
       dayIndex: 0,
       limit: 5,
     });
-    expect(urls.slice(0, 3)).toEqual([`${SITE}/models/b/two/`, `${SITE}/`, `${SITE}/changes/`]);
+    expect(urls.slice(0, 3)).toEqual([`${SITE}/`, `${SITE}/changes/`, `${SITE}/models/b/two/`]);
     expect(urls).toHaveLength(5);
     expect(new Set(urls).size).toBe(5);
     // 轮换部分中文页排在英文页前面
@@ -72,6 +72,15 @@ describe("百度普通收录推送（DEV §3.29）", () => {
     const promise = pushToBaidu({ site: SITE, token: "secretTok9", urls: ["a"], fetchImpl });
     await expect(promise).rejects.toThrow(/E5001.*token is not valid/);
     await expect(promise).rejects.not.toThrow(/secretTok9/);
+  });
+
+  it("当天额度用完（over quota）不算失败，返回成功 0 条", async () => {
+    const fetchImpl = vi.fn(async () =>
+      Response.json({ error: 400, message: "over quota" }, { status: 400 }),
+    );
+    await expect(
+      pushToBaidu({ site: SITE, token: "tok", urls: ["a"], fetchImpl }),
+    ).resolves.toEqual({ success: 0, remain: 0 });
   });
 
   it("令牌只能是字母和数字，否则不发请求", async () => {
