@@ -1,9 +1,9 @@
 {
   "run": {
-    "id": "44963285909",
-    "startedAt": "2026-11-21T23:45:26Z",
-    "finishedAt": "2026-11-21T23:45:27Z",
-    "durationMs": 826,
+    "id": "44965255520",
+    "startedAt": "2026-11-22T00:10:07Z",
+    "finishedAt": "2026-11-22T00:10:08Z",
+    "durationMs": 913,
     "result": "success"
   },
   "sources": [
@@ -90,10 +90,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 13,
+      "durationMs": 8,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-21T23:45:26Z",
+      "lastSuccessAt": "2026-11-22T00:10:07Z",
       "consecutiveFailures": 0
     },
     {
