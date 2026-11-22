@@ -43,6 +43,9 @@ export const SOURCE_PRIORITY: Readonly<Record<string, number>> = {
   qianfan: 5,
   "moonshot-cn": 5,
   hunyuan: 5,
+  // MiniMax、阶跃星辰国内站官网（人民币原价）优先于 models.dev 社区数据（modelsdev-cn，默认 3）
+  "minimax-cn": 5,
+  "stepfun-cn": 5,
   // 硅基流动国内站官网（人民币原价）优先于 models.dev 社区数据（modelsdev-siliconflow-cn，默认 3）
   "siliconflow-cn": 5,
   // 平台官方接口（第一手价格）优先于 OpenRouter 服务商列表和 LiteLLM

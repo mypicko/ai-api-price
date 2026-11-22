@@ -185,10 +185,11 @@ vendors:
       nameEn: MiniMax,
       region: cn,
       website: "https://www.minimaxi.com",
-      pricingUrl: null,
+      pricingUrl: "https://platform.minimax.cn/docs/pricing/overview",
       logo: null,
       matchers: [minimax, minimaxai],
-      allowedSourceDomains: [minimaxi.com, minimax.io],
+      # 国内站文档 2026-11 起在 platform.minimax.cn
+      allowedSourceDomains: [minimaxi.com, minimax.io, minimax.cn],
     }
   - {
       id: stepfun,
@@ -196,7 +197,7 @@ vendors:
       nameEn: StepFun,
       region: cn,
       website: "https://platform.stepfun.com",
-      pricingUrl: "https://platform.stepfun.com/docs/zh/pricing/details",
+      pricingUrl: "https://platform.stepfun.com/docs/zh/guides/pricing/details",
       logo: null,
       matchers: [stepfun, stepfun-ai, 阶跃星辰],
       allowedSourceDomains: [stepfun.com],

@@ -5,6 +5,7 @@ import { hunyuanSource } from "./hunyuan";
 import { litellmSource } from "./litellm";
 import { litellmResellersSource } from "./litellm-resellers";
 import { manualCnSource, manualSource } from "./manual";
+import { minimaxCnSource } from "./minimax-cn";
 import { modelsdevCnSource, modelsdevSiliconflowCnSource } from "./modelsdev";
 import { moonshotCnSource, moonshotSource } from "./moonshot";
 import { novitaSource } from "./novita";
@@ -13,6 +14,7 @@ import { openrouterEndpointsSource } from "./openrouter-endpoints";
 import { qianfanSource } from "./qianfan";
 import { siliconflowSource } from "./siliconflow";
 import { siliconflowCnSource } from "./siliconflow-cn";
+import { stepfunCnSource } from "./stepfun-cn";
 import type { Source } from "./types";
 import { volcengineSource } from "./volcengine";
 import { zhipuSource } from "./zhipu";
@@ -35,6 +37,8 @@ export const ALL_SOURCES: readonly Source[] = [
   zhipuSource,
   moonshotSource,
   moonshotCnSource,
+  minimaxCnSource,
+  stepfunCnSource,
   volcengineSource,
   siliconflowSource,
   siliconflowCnSource,
