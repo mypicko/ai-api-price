@@ -1,6 +1,15 @@
 {
   "modelSlug": "tencent/hy4",
   "series": {
+    "deepinfra:tencent/hy4": [
+      {
+        "input": 0.834,
+        "output": 2.501,
+        "cacheRead": 0.042,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-22"
+      }
+    ],
     "gmi:tencent/hy4": [
       {
         "input": 0.417,

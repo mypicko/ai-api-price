@@ -24,6 +24,13 @@
         "cacheRead": 0.04035,
         "cacheWrite": null,
         "effectiveDate": "2026-10-22"
+      },
+      {
+        "input": 1.35,
+        "output": 8.1,
+        "cacheRead": 0.27,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-22"
       }
     ],
     "openrouter:stepfun/step-3.7-flash": [

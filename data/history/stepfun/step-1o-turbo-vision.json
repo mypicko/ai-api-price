@@ -1,0 +1,14 @@
+{
+  "modelSlug": "stepfun/step-1o-turbo-vision",
+  "series": {
+    "official-cn:stepfun/step-1o-turbo-vision": [
+      {
+        "input": 2.5,
+        "output": 8,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-22"
+      }
+    ]
+  }
+}

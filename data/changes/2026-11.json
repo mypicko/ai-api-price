@@ -12550,6 +12550,19 @@
       "detectedAt": "2026-11-21T22:00:17Z"
     },
     {
+      "id": "2026-11-22-deepinfra:tencent/hy4-1",
+      "type": "new_model",
+      "offeringId": "deepinfra:tencent/hy4",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy4",
+      "displayName": "Hy4",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-22T03:15:56Z"
+    },
+    {
       "id": "2026-11-22-fireworks:alibaba/qwen3.8-2.4t-a95b-1",
       "type": "new_model",
       "offeringId": "fireworks:alibaba/qwen3.8-2.4t-a95b",
@@ -12693,6 +12706,64 @@
       "detectedAt": "2026-11-21T22:00:17Z"
     },
     {
+      "id": "2026-11-22-openrouter:alibaba/qwen3.5-27b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.5-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.5-27b",
+      "displayName": "Qwen3.5-27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.195,
+          "new": 0.26,
+          "pct": 0.3333
+        },
+        {
+          "field": "output",
+          "old": 1.56,
+          "new": 2.6,
+          "pct": 0.6667
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-22T03:15:56Z"
+    },
+    {
+      "id": "2026-11-22-openrouter:alibaba/qwen3.8-27b-1",
+      "type": "price_down",
+      "offeringId": "openrouter:alibaba/qwen3.8-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.8-27b",
+      "displayName": "Qwen3.8 27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.06,
+          "new": 0.035,
+          "pct": -0.4167
+        },
+        {
+          "field": "output",
+          "old": 1.96,
+          "new": 1.5,
+          "pct": -0.2347
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.059,
+          "new": 0.0175,
+          "pct": -0.7034
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-22T03:15:56Z"
+    },
+    {
       "id": "2026-11-22-openrouter:cohere/north-mini-code-free-1",
       "type": "removed",
       "offeringId": "openrouter:cohere/north-mini-code-free",
@@ -12738,6 +12809,38 @@
       "detectedAt": "2026-11-21T22:00:17Z"
     },
     {
+      "id": "2026-11-22-openrouter:google/gemma-3-4b-it-1",
+      "type": "price_down",
+      "offeringId": "openrouter:google/gemma-3-4b-it",
+      "vendor": "google",
+      "modelSlug": "google/gemma-3-4b-it",
+      "displayName": "Gemma 3 4B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.05,
+          "new": 0.04,
+          "pct": -0.2
+        },
+        {
+          "field": "output",
+          "old": 0.1,
+          "new": 0.05,
+          "pct": -0.5
+        },
+        {
+          "field": "cacheRead",
+          "old": null,
+          "new": 0.02,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-22T03:15:56Z"
+    },
+    {
       "id": "2026-11-22-openrouter:minimax/minimax-m3.1-flash-1",
       "type": "price_down",
       "offeringId": "openrouter:minimax/minimax-m3.1-flash",
@@ -12768,6 +12871,38 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-21T22:00:17Z"
+    },
+    {
+      "id": "2026-11-22-openrouter:minimax/minimax-m3.1-flash-2",
+      "type": "price_up",
+      "offeringId": "openrouter:minimax/minimax-m3.1-flash",
+      "vendor": "minimax",
+      "modelSlug": "minimax/minimax-m3.1-flash",
+      "displayName": "MiniMax M3.1 Flash",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.075,
+          "new": 0.15,
+          "pct": 1
+        },
+        {
+          "field": "output",
+          "old": 0.3,
+          "new": 0.6,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0075,
+          "new": 0.015,
+          "pct": 1
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-22T03:15:56Z"
     },
     {
       "id": "2026-11-22-openrouter:tencent/hy3-1",
@@ -12802,6 +12937,38 @@
       "detectedAt": "2026-11-21T22:00:17Z"
     },
     {
+      "id": "2026-11-22-openrouter:tencent/hy3-2",
+      "type": "price_up",
+      "offeringId": "openrouter:tencent/hy3",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy3",
+      "displayName": "Hy3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.0825,
+          "new": 0.14,
+          "pct": 0.697
+        },
+        {
+          "field": "output",
+          "old": 0.33,
+          "new": 0.58,
+          "pct": 0.7576
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.020625,
+          "new": 0.035,
+          "pct": 0.697
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-22T03:15:56Z"
+    },
+    {
       "id": "2026-11-22-openrouter:tencent/hy4-preview-1",
       "type": "price_down",
       "offeringId": "openrouter:tencent/hy4-preview",
@@ -12832,6 +12999,38 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-21T22:00:17Z"
+    },
+    {
+      "id": "2026-11-22-openrouter:tencent/hy4-preview-2",
+      "type": "price_up",
+      "offeringId": "openrouter:tencent/hy4-preview",
+      "vendor": "tencent",
+      "modelSlug": "tencent/hy4-preview",
+      "displayName": "Hy4 preview",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.7506,
+          "new": 0.834,
+          "pct": 0.1111
+        },
+        {
+          "field": "output",
+          "old": 2.2509,
+          "new": 2.501,
+          "pct": 0.1111
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0378,
+          "new": 0.042,
+          "pct": 0.1111
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-22T03:15:56Z"
     },
     {
       "id": "2026-11-22-openrouter:x-ai/grok-build-0.1-1",
@@ -12877,6 +13076,38 @@
       ],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-21T22:00:17Z"
+    },
+    {
+      "id": "2026-11-22-openrouter:zhipu/glm-5.1-2",
+      "type": "price_up",
+      "offeringId": "openrouter:zhipu/glm-5.1",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-5.1",
+      "displayName": "GLM 5.1",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 1.4,
+          "new": 1.19,
+          "pct": -0.15
+        },
+        {
+          "field": "output",
+          "old": 4.4,
+          "new": 3.74,
+          "pct": -0.15
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.26,
+          "new": 0.6,
+          "pct": 1.308
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-22T03:15:56Z"
     },
     {
       "id": "2026-11-22-together:alibaba/qwen2-1.5b-instruct-1",

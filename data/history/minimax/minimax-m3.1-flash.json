@@ -74,6 +74,13 @@
         "cacheRead": 0.0149,
         "cacheWrite": null,
         "effectiveDate": "2026-10-20"
+      },
+      {
+        "input": 1,
+        "output": 4,
+        "cacheRead": 0.1,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-22"
       }
     ],
     "official:minimax/minimax-m3.1-flash": [
@@ -92,13 +99,6 @@
         "cacheRead": 0.015,
         "cacheWrite": null,
         "effectiveDate": "2026-10-23"
-      },
-      {
-        "input": 0.075,
-        "output": 0.3,
-        "cacheRead": 0.0075,
-        "cacheWrite": null,
-        "effectiveDate": "2026-11-22"
       }
     ],
     "parasail:minimax/minimax-m3.1-flash": [
