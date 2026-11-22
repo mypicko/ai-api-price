@@ -1,3 +1,4 @@
+import { CnIntlPayloadSchema } from "@aipb/shared";
 import { expect, test } from "@playwright/test";
 import { validateEnvelope, type EndpointKind } from "../../src/lib/api-validate";
 
@@ -14,6 +15,12 @@ const ENDPOINTS: readonly [string, EndpointKind][] = [
   ["/api/v1/media.json", "media"],
   ["/api/v1/media/changes.json", "mediaChanges"],
 ];
+
+test("cn-vs-intl.json 通过共享 schema 校验", async ({ request }) => {
+  const res = await request.get("/api/v1/cn-vs-intl.json");
+  expect(res.status()).toBe(200);
+  expect(CnIntlPayloadSchema.safeParse(await res.json()).success).toBe(true);
+});
 
 test.describe("公开接口", () => {
   for (const [path, kind] of ENDPOINTS) {

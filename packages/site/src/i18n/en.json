@@ -357,5 +357,18 @@
   "og.context": "{context} context",
   "og.unit": "input / output · per 1M tokens",
   "og.footer": "{host} · updated daily",
-  "og.siteStats": "{models} models · {count} offers · {platforms} platforms"
+  "og.siteStats": "{models} models · {count} offers · {platforms} platforms",
+  "cnIntl.title": "China vs. overseas: where is the same model cheaper?",
+  "cnIntl.lead": "Official China prices (CNY) side by side with OpenRouter and overseas official prices for the same model, compared by blended price (3 parts input + 1 part output). Updated daily.",
+  "cnIntl.statTotal": "Models compared",
+  "cnIntl.statCheaper": "Cheaper in China than OpenRouter",
+  "cnIntl.statSame": "Same official price in China and overseas",
+  "cnIntl.finding": "A vendor's own China and overseas prices usually differ by less than {pct} after conversion (mostly exchange rates). The real gaps come from third parties like OpenRouter: some models cost half as much in China, others twice as much.",
+  "cnIntl.colModel": "Model",
+  "cnIntl.colGap": "China vs. OpenRouter",
+  "cnIntl.colIntl": "Overseas official",
+  "cnIntl.vsIntl": "China vs. overseas {pct}",
+  "cnIntl.basis": "Prices are input / output per 1M tokens. The OpenRouter price is its cheapest provider's rate and is skipped when over 3× below the median of other platforms; Alibaba's official USD price is the Beijing-region rate, not an overseas price.",
+  "gap.viewAll": "See all comparisons →",
+  "nav.cnIntl": "China vs. overseas"
 }

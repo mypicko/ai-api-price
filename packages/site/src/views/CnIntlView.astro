@@ -1,0 +1,109 @@
+---
+/**
+ * 国内原价 vs 海外价（DEV §3.32）：/cn-vs-intl/。构建时渲染的静态表格，不增加前端 JS；
+ * 价格按当前选择的币种显示（GapPrices，USD/CNY 各渲染一份）。
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GapBadge from "../components/GapBadge.astro";
+import GapPrices from "../components/GapPrices.astro";
+import { cnIntlRows, cnIntlSummary } from "../lib/cn-intl";
+import { t } from "../lib/i18n";
+import type { Locale } from "../lib/locale";
+import { formatPct } from "../lib/shared-client";
+import { getSiteModel } from "../lib/site-data";
+import { vendorName } from "../lib/site-model";
+import { modelPath, pageHref } from "../lib/url";
+import { fxNote } from "../lib/views";
+
+interface Props {
+  locale: Locale;
+}
+
+/** 国内外官方价差在这个范围内视为「基本同价」（主要是汇率差） */
+const SAME_PRICE = 0.05;
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const model = getSiteModel();
+const rows = cnIntlRows(model);
+const summary = cnIntlSummary(rows);
+const samePrice = rows.filter((r) => r.intlPct !== null && Math.abs(r.intlPct) <= SAME_PRICE).length;
+const note = fxNote(model, locale);
+const stats = [
+  { value: String(summary.total), label: t(locale, "cnIntl.statTotal") },
+  {
+    value: `${summary.openrouter.cheaper}/${summary.openrouter.compared}`,
+    label: t(locale, "cnIntl.statCheaper"),
+  },
+  { value: `${samePrice}/${summary.intl.compared}`, label: t(locale, "cnIntl.statSame") },
+];
+---
+
+<BaseLayout locale={locale} path="cn-vs-intl/" title={t(locale, "cnIntl.title")} description={t(locale, "cnIntl.lead")}>
+  <div class="flex flex-col gap-6" data-testid="cn-intl">
+    <header class="flex flex-col gap-2">
+      <h1 class="text-h1">{t(locale, "cnIntl.title")}</h1>
+      <p class="max-w-2xl text-text-muted">{t(locale, "cnIntl.lead")}</p>
+    </header>
+
+    <dl class="grid gap-3 sm:grid-cols-3">
+      {
+        stats.map((s) => (
+          <div class="rounded-lg border border-border px-4 py-3">
+            <dt class="text-small text-text-muted">{s.label}</dt>
+            <dd class="text-h2 font-bold tabular">{s.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="text-small text-text-muted">{t(locale, "cnIntl.finding", { pct: formatPct(SAME_PRICE).replace("+", "") })}</p>
+
+    <div class="overflow-x-auto rounded-lg border border-border">
+      <table class="w-full border-collapse text-table" data-testid="cn-intl-table">
+        <caption class="sr-only">{t(locale, "cnIntl.title")}</caption>
+        <thead class="bg-surface text-small text-text-muted">
+          <tr>
+            <th scope="col" class="px-3 py-2 text-left font-semibold">{t(locale, "cnIntl.colModel")}</th>
+            <th scope="col" class="px-3 py-2 text-right font-semibold whitespace-nowrap">{t(locale, "gap.domestic")}</th>
+            <th scope="col" class="px-3 py-2 text-right font-semibold whitespace-nowrap">OpenRouter</th>
+            <th scope="col" class="px-3 py-2 text-right font-semibold whitespace-nowrap">{t(locale, "cnIntl.colGap")}</th>
+            <th scope="col" class="px-3 py-2 text-right font-semibold whitespace-nowrap">{t(locale, "cnIntl.colIntl")}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((r) => (
+              <tr class="border-t border-border" data-testid="cn-intl-row">
+                <td class="min-w-40 px-3 py-2">
+                  <a class="font-medium hover:text-accent hover:underline" href={pageHref(base, locale, modelPath(r.modelSlug))}>
+                    {r.displayName}
+                  </a>
+                  <div class="text-micro text-text-muted">{vendorName(model, r.vendor, locale)}</div>
+                </td>
+                <td class="px-3 py-2 text-right whitespace-nowrap">
+                  <GapPrices locale={locale} offering={r.domestic} fxNote={note} />
+                </td>
+                <td class="px-3 py-2 text-right whitespace-nowrap">
+                  {r.openrouter ? <GapPrices locale={locale} offering={r.openrouter} fxNote={note} /> : <span class="text-text-faint">—</span>}
+                </td>
+                <td class="px-3 py-2 text-right">
+                  {r.openrouterPct !== null ? <GapBadge locale={locale} pct={r.openrouterPct} /> : <span class="text-text-faint">—</span>}
+                </td>
+                <td class="px-3 py-2 text-right whitespace-nowrap">
+                  {r.intl ? (
+                    <>
+                      <GapPrices locale={locale} offering={r.intl} fxNote={note} />
+                      <div class="text-micro text-text-muted tabular">{t(locale, "cnIntl.vsIntl", { pct: formatPct(r.intlPct) })}</div>
+                    </>
+                  ) : (
+                    <span class="text-text-faint">—</span>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="text-small text-text-muted">{t(locale, "cnIntl.basis")} {note}</p>
+  </div>
+</BaseLayout>

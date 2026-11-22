@@ -357,5 +357,18 @@
   "og.context": "上下文 {context}",
   "og.unit": "输入 / 输出 · 每百万 tokens",
   "og.footer": "{host} · 每天自动更新",
-  "og.siteStats": "{models} 个模型 · {count} 个报价 · {platforms} 个平台"
+  "og.siteStats": "{models} 个模型 · {count} 个报价 · {platforms} 个平台",
+  "cnIntl.title": "国内 vs 海外：同一模型在哪买更便宜",
+  "cnIntl.lead": "同一个模型，国内官方人民币价和 OpenRouter、海外官方价放在一起比。按混合价（3 份输入 + 1 份输出）计算，每天自动更新。",
+  "cnIntl.statTotal": "可对比的模型",
+  "cnIntl.statCheaper": "国内比 OpenRouter 便宜",
+  "cnIntl.statSame": "国内外官方价基本一致",
+  "cnIntl.finding": "厂商自己的国内站和海外站价格换算后通常只差 {pct} 以内（主要是汇率）；真正的差价来自 OpenRouter 等第三方：有的模型在国内买便宜一半，有的反而贵一倍。",
+  "cnIntl.colModel": "模型",
+  "cnIntl.colGap": "国内 vs OpenRouter",
+  "cnIntl.colIntl": "海外官方",
+  "cnIntl.vsIntl": "国内 vs 海外官方 {pct}",
+  "cnIntl.basis": "价格为输入 / 输出（每百万 tokens）。OpenRouter 价是其最便宜服务商的报价，比其它平台中位数低 3 倍以上时不参与比较；阿里的官方美元价是北京地域价，不算海外官方价。",
+  "gap.viewAll": "查看全部对比 →",
+  "nav.cnIntl": "国内外"
 }

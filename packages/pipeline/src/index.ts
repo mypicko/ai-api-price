@@ -8,9 +8,10 @@
  * 退出码见 DEV_DOCUMENT §9.1。
  */
 import { appendFileSync, existsSync } from "node:fs";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { Warning } from "@aipb/shared";
+import { FxFileSchema, type Warning } from "@aipb/shared";
 import { loadConfig, type AppConfig } from "./config";
 import { createBrowserClient, type BrowserClient } from "./core/browser";
 import { isPipelineError } from "./core/errors";
@@ -37,7 +38,9 @@ import {
 } from "./notify/run-summary";
 import { runBaiduPush } from "./tools/baidu-push";
 import { buildWeekly, isMonday, writeWeeklyPreview } from "./tools/wechat-weekly";
-import { reportForDate, runWechatPreview } from "./tools/wechat-preview";
+import { buildCnIntlArticle, fetchCnIntl, parseCnIntl } from "./notify/wechat-topic";
+import { previewPage, reportForDate, runWechatPreview } from "./tools/wechat-preview";
+import { readJsonFile } from "./steps/state";
 import { shanghaiDate } from "./steps/dates";
 import { DEFAULT_ADMIN_PORT, startAdminServer } from "./admin/server";
 import { loadAliases } from "./config-files";
@@ -58,6 +61,7 @@ const USAGE = `用法：pnpm pipeline <命令>
   admin [--port 4400]                          启动本地后台（只在本机，只读），浏览器打开 http://localhost:4400
   wechat:draft [YYYY-MM-DD]                    把某一天（默认北京时间今天）的日报存进公众号草稿箱（需要 WECHAT_* 配置和 IP 白名单）
   wechat:weekly [YYYY-MM-DD] [--preview] [--monday-only]  公众号周报（统计运行日之前的那一周）：--preview 只写本地预览，否则存进草稿箱
+  wechat:topic cn-intl [--preview] [--from <文件>]  公众号专题「国内 vs 海外价格」：读网站的 /api/v1/cn-vs-intl.json（--from 改读本地文件）
   notify:summary                               每日任务结束后把各任务结果、国内站检查、公众号草稿标题汇总发到飞书（daily 的 summary 任务用）
   baidu:push [YYYY-MM-DD]                      把国内站网址推送给百度普通收录（需要 CN_SITE_URL 和 BAIDU_PUSH_TOKEN）
 `;
@@ -224,6 +228,7 @@ async function dispatch(command: string | undefined, args: readonly string[]): P
     if (command === "wechat:draft") return await commandWechatDraft(args, rt);
     if (command === "notify:summary") return await commandNotifySummary(rt);
     if (command === "wechat:weekly") return await commandWechatWeekly(args, rt);
+    if (command === "wechat:topic") return await commandWechatTopic(args, rt);
     out(`未知命令：${command}\n${USAGE}`);
     return 1;
   } finally {
@@ -353,6 +358,50 @@ async function commandWechatWeekly(args: readonly string[], rt: Runtime): Promis
   await save(result.article);
   setJobOutput("weekly_title", result.article.title);
   out(`${result.start}～${result.end} 的周报已存进草稿箱，去「公众号助手」确认后群发`);
+  return 0;
+}
+
+async function commandWechatTopic(args: readonly string[], rt: Runtime): Promise<number> {
+  if (args[0] !== "cn-intl") {
+    out("用法：pnpm pipeline wechat:topic cn-intl [--preview] [--from <文件>]");
+    return 1;
+  }
+  const fromIndex = args.indexOf("--from");
+  const from = fromIndex >= 0 ? args[fromIndex + 1] : undefined;
+  const data = from
+    ? parseCnIntl(
+        JSON.parse(
+          await readFile(path.resolve(process.env["INIT_CWD"] ?? process.cwd(), from), "utf8"),
+        ),
+        from,
+      )
+    : await fetchCnIntl(rt.config.siteUrl);
+  const fx = await readJsonFile(path.join(DATA_DIR, "fx.json"), FxFileSchema);
+  const article = buildCnIntlArticle(
+    data,
+    data.dataDate,
+    rt.config.siteUrl,
+    fx?.latest.usdCny ?? null,
+  );
+  if (!article) {
+    out("没有可对比的数据，不生成文章");
+    return 0;
+  }
+  out(`标题：${article.title}\n摘要：${article.digest}`);
+  if (args.includes("--preview")) {
+    const file = path.join(ROOT_DIR, ".preview", `wechat-cn-intl-${data.dataDate}.html`);
+    await mkdir(path.dirname(file), { recursive: true });
+    await writeFile(file, previewPage(article), "utf8");
+    out(`预览：${path.relative(ROOT_DIR, file)}`);
+    return 0;
+  }
+  const save = createWechatDrafter(rt.config, notifierDeps(rt));
+  if (!save) {
+    out("没有配置公众号：在 .env 里填写 WECHAT_APPID 和 WECHAT_APPSECRET");
+    return 1;
+  }
+  await save(article);
+  out("专题文章已存进草稿箱，去「公众号助手」确认后群发");
   return 0;
 }
 

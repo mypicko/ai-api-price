@@ -152,4 +152,18 @@ describe("工作流安全守卫", () => {
     );
     expect(wechatRuns).toContain("pnpm pipeline wechat:weekly --monday-only");
   });
+
+  it("公众号专题工作流：只能手动触发、跑在腾讯云运行器上、只读权限、不用 actions/checkout", () => {
+    const wf = load("wechat-topic.yml");
+    expect(triggers(wf)).toEqual(["workflow_dispatch"]);
+    const job = wf.jobs["draft"];
+    expect(job?.["runs-on"]).toEqual(["self-hosted", "tencent"]);
+    expect((wf as unknown as Record<string, unknown>)["permissions"]).toEqual({ contents: "read" });
+    const steps = (job?.["steps"] ?? []) as readonly { uses?: string; run?: string }[];
+    expect(steps.some((s) => s.uses)).toBe(false);
+    expect(steps.map((s) => s.run ?? "").join("\n")).toContain(
+      'pnpm pipeline wechat:topic "$TOPIC"',
+    );
+    for (const s of steps) expect(s.run ?? "").not.toContain("${{");
+  });
 });

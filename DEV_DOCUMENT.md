@@ -1393,3 +1393,13 @@ curl -s ifconfig.me
 - **命令**：`pnpm pipeline wechat:weekly [运行日] [--preview] [--monday-only]`；`--preview` 写 `.preview/wechat-weekly-<结束日>.html`。排版卡片、配色与日报共用（`wechat-article.ts` 导出的组件），存草稿与日报共用 `saveWechatDraft`。
 - **自动运行**：`daily.yml` 的 `wechat` 任务在日报之后加「存周报草稿（周一）」步骤（`--monday-only`，日报失败也运行），标题经任务输出 `weekly_title` 交给 `summary`，飞书提醒同时列出日报和周报标题，并提示订阅号每天只能群发一次（建议周一发周报）。
 - **测试**：`pipeline/tests/notify/wechat-weekly.test.ts`、`run-summary.test.ts`、`workflows.test.ts`。
+
+### 3.32 国内 vs 海外对比页（1.5）
+
+- **页面**：`/cn-vs-intl/`（英文 `/en/cn-vs-intl/`），导航「国内外」，首页「国内外价差」榜单右上角「查看全部对比 →」进入，已加入 sitemap。`views/CnIntlView.astro`，构建时渲染，不增加前端 JS。
+- **口径**（`lib/cn-intl.ts`）：国内官方人民币价（与 §3.17 相同的 `domesticOffering`）分别对比 OpenRouter 价和海外官方价（`official:` 平台、美元标价），都按混合价 3:1 换算成美元比较，价差 = (国内 − 海外) / 海外。OpenRouter 价异常低（V9）时不比。阿里的 `official:` 是国际站文档里的北京地域美元价，不算海外官方价。只要有一边可比就列出；有 OpenRouter 价的排前面，按国内便宜多少从多到少。
+- **内容**：三个统计（可对比模型数、国内比 OpenRouter 便宜的个数、国内外官方价差在 ±5% 内的个数）+ 一句结论 + 全量表格（国内官方 | OpenRouter | 国内 vs OpenRouter 徽章 | 海外官方及其价差），价格跟随币种切换（`GapPrices`）。
+- **2026-11-22 实测**：52 个模型可比；国内比 OpenRouter 便宜 28/48；Kimi、MiniMax 国内外官方价 11/11 基本一致（差价只有汇率），真正的差价来自 OpenRouter（智谱、通义多数国内便宜一半，混元、DeepSeek V4 Pro 国内贵近一倍）。
+- **接口**：`/api/v1/cn-vs-intl.json`（`cnIntlPayload`），价格换算成人民币；结构定义在 `shared/src/cn-intl.ts`（`CnIntlPayloadSchema`），网站和 pipeline 共用。
+- **公众号专题**：`pnpm pipeline wechat:topic cn-intl [--preview] [--from <文件>]`（`notify/wechat-topic.ts`）读线上国内站的接口（`--from` 改读本地 `packages/site/dist/api/v1/cn-vs-intl.json`）生成文章：概览统计 → 国内买更便宜（前 8）→ 国内反而更贵（前 5）→ 官方价国内外基本一致；阅读原文指向 `/cn-vs-intl/`。存草稿要在腾讯云运行器上：手动运行 `wechat-topic` 工作流（`gh workflow run wechat-topic`），不进每日任务。
+- **测试**：`site/tests/cn-intl.test.ts`、`theme-script.test.ts`（sitemap）、e2e「国内外对比页」和 `cn-vs-intl.json` 校验；`pipeline/tests/notify/wechat-topic.test.ts`、`workflows.test.ts`。

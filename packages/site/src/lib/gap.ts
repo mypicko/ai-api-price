@@ -18,7 +18,7 @@ export interface PriceGap {
   readonly pct: number;
 }
 
-function domesticOffering(model: SiteModel, slug: string): PublicOffering | null {
+export function domesticOffering(model: SiteModel, slug: string): PublicOffering | null {
   const cn = model.offeringsById.get(`official-cn:${slug}`);
   if (cn) return cn;
   const official = model.offeringsById.get(`official:${slug}`);

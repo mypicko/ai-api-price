@@ -26,7 +26,12 @@ const note = fxNote(model, locale);
   gaps.length > 0 && (
     <section aria-labelledby="price-gaps" class="flex flex-col gap-3" data-testid="gap-board">
       <div class="flex flex-col gap-1">
-        <h2 id="price-gaps" class="text-h2">{t(locale, "gap.boardTitle")}</h2>
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 id="price-gaps" class="text-h2">{t(locale, "gap.boardTitle")}</h2>
+          <a class="text-small text-accent hover:underline whitespace-nowrap" href={pageHref(base, locale, "cn-vs-intl/")} data-testid="gap-view-all">
+            {t(locale, "gap.viewAll")}
+          </a>
+        </div>
         <p class="text-small text-text-muted">{t(locale, "gap.boardLead")}</p>
       </div>
       <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

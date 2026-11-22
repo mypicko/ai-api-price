@@ -380,6 +380,21 @@ test.describe("其他页面", () => {
     await expect(page.getByTestId("gap-note")).toHaveCount(0);
   });
 
+  test("国内外对比页：首页「查看全部」进入，列出全部可比模型，有统计、价差和英文版", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await page.getByTestId("gap-view-all").click();
+    await expect(page).toHaveURL(/\/cn-vs-intl\/$/);
+    await expect(page.locator("h1")).toContainText("国内 vs 海外");
+    await expect(page.getByTestId("cn-intl-row")).toHaveCount(3);
+    await expect(page.getByTestId("cn-intl-table").getByTestId("gap-badge").first()).toHaveText(
+      /国内(便宜|贵)/,
+    );
+    await page.goto("/en/cn-vs-intl/");
+    await expect(page.locator("h1")).toContainText("China vs. overseas");
+  });
+
   test("单个模型的 RSS：详情页有订阅入口，订阅源只含该模型的变动", async ({ page, request }) => {
     await page.goto("/models/alibaba/qwen3-max/");
     const link = page.getByTestId("model-rss");

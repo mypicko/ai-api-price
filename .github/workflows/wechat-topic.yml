@@ -1,0 +1,64 @@
+# 公众号专题文章（DEV_DOCUMENT §3.32）：只能手动触发，把专题存进公众号草稿箱，由人在「公众号助手」里确认后群发。
+# 跑在腾讯云自托管运行器上（公众号接口要求固定 IP 白名单，DEV_DOCUMENT §8.9）；文章数据读线上国内站的
+# /api/v1/cn-vs-intl.json（所以要在国内站发布之后运行）。
+# 仓库是公开的：自托管运行器的工作流只能由定时 / 手动触发（tests/workflows.test.ts 会拦）。
+name: wechat-topic
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "专题"
+        type: choice
+        options: [cn-intl]
+        default: cn-intl
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wechat-topic
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: [self-hosted, tencent]
+    timeout-minutes: 15
+    env:
+      TZ: Asia/Shanghai
+      SRC: ${{ github.workspace }}/src
+      COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
+    steps:
+      # 与 daily 的 wechat 任务相同：服务器连不上 github.com，从 api.github.com 下载 main
+      - name: 下载最新代码
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          rm -rf "$SRC" && mkdir -p "$SRC"
+          curl -fsSL --retry 3 --max-time 120 \
+            -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/tarball/main" | tar -xz --strip-components=1 -C "$SRC"
+
+      - name: 准备 pnpm
+        run: |
+          node -v
+          mkdir -p "$RUNNER_TEMP/bin"
+          corepack enable --install-directory "$RUNNER_TEMP/bin" pnpm
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+
+      - name: 安装依赖
+        working-directory: ${{ env.SRC }}
+        run: pnpm install --frozen-lockfile
+
+      - name: 存专题草稿
+        working-directory: ${{ env.SRC }}
+        env:
+          TOPIC: ${{ inputs.topic }}
+          SITE_URL: ${{ vars.CN_SITE_URL }}
+          BASE_PATH: /
+          WECHAT_APPID: ${{ secrets.WECHAT_APPID }}
+          WECHAT_APPSECRET: ${{ secrets.WECHAT_APPSECRET }}
+          WECHAT_THUMB_MEDIA_ID: ${{ vars.WECHAT_THUMB_MEDIA_ID }}
+          WECHAT_AUTHOR: ${{ vars.WECHAT_AUTHOR }}
+        run: pnpm pipeline wechat:topic "$TOPIC"
