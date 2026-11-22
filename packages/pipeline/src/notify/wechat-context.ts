@@ -30,10 +30,19 @@ export async function loadArticleContext(
   rootDir: string,
   dataDir: string,
 ): Promise<ArticleContext> {
+  return (await loadArticleData(rootDir, dataDir)).ctx;
+}
+
+/** 上下文 + 当天全部报价（周报的最便宜排行要用） */
+export async function loadArticleData(
+  rootDir: string,
+  dataDir: string,
+): Promise<{ readonly ctx: ArticleContext; readonly offerings: readonly Offering[] }> {
   const [providers, latest, fx] = await Promise.all([
     loadProviders(rootDir),
     readJsonFile(path.join(dataDir, "latest.json"), LatestFileSchema),
     readJsonFile(path.join(dataDir, "fx.json"), FxFileSchema),
   ]);
-  return createArticleContext(providers, latest?.offerings ?? [], fx?.latest.usdCny ?? null);
+  const offerings = latest?.offerings ?? [];
+  return { ctx: createArticleContext(providers, offerings, fx?.latest.usdCny ?? null), offerings };
 }

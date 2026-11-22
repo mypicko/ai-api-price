@@ -159,6 +159,7 @@ jobs:
       contents: read
     outputs:
       draft_title: ${{ steps.draft.outputs.draft_title }}
+      weekly_title: ${{ steps.weekly.outputs.weekly_title }}
     env:
       SRC: ${{ github.workspace }}/src
       COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
@@ -201,6 +202,20 @@ jobs:
           WECHAT_THUMB_MEDIA_ID: ${{ vars.WECHAT_THUMB_MEDIA_ID }}
           WECHAT_AUTHOR: ${{ vars.WECHAT_AUTHOR }}
         run: pnpm pipeline wechat:draft
+
+      # 每周一另存一篇周报（上周一到上周日 + 国内最便宜排行，DEV_DOCUMENT §3.31）；日报失败也照常运行
+      - name: 存周报草稿（周一）
+        id: weekly
+        if: ${{ !cancelled() }}
+        working-directory: ${{ env.SRC }}
+        env:
+          SITE_URL: ${{ vars.CN_SITE_URL || needs.update.outputs.site_url }}
+          BASE_PATH: ${{ vars.CN_SITE_URL && '/' || needs.update.outputs.base_path }}
+          WECHAT_APPID: ${{ secrets.WECHAT_APPID }}
+          WECHAT_APPSECRET: ${{ secrets.WECHAT_APPSECRET }}
+          WECHAT_THUMB_MEDIA_ID: ${{ vars.WECHAT_THUMB_MEDIA_ID }}
+          WECHAT_AUTHOR: ${{ vars.WECHAT_AUTHOR }}
+        run: pnpm pipeline wechat:weekly --monday-only
 
   # 国内站：在腾讯云服务器上构建网站，发布到本机 nginx 的目录（DEV_DOCUMENT §3.27）。
   # 仓库变量 CN_SITE_URL（如 https://promptso.top）设置了才运行；ICP_BEIAN 是页脚显示的备案号。
@@ -330,6 +345,7 @@ jobs:
           JOB_WECHAT: ${{ needs.wechat.result }}
           JOB_BAIDU_PUSH: ${{ needs['baidu-push'].result }}
           WECHAT_DRAFT_TITLE: ${{ needs.wechat.outputs.draft_title }}
+          WECHAT_WEEKLY_TITLE: ${{ needs.wechat.outputs.weekly_title }}
           BAIDU_PUSH_RESULT: ${{ needs['baidu-push'].outputs.result }}
           CN_SITE_URL: ${{ vars.CN_SITE_URL }}
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}

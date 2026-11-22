@@ -50,7 +50,7 @@ export async function reportForDate(
   };
 }
 
-function page(article: WechatArticle): string {
+export function previewPage(article: WechatArticle): string {
   return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(article.title)}</title></head>
 <body style="margin:0;background:#ededed;">
 <div style="max-width:420px;margin:0 auto;background:#fff;padding:20px 16px 32px;min-height:100vh;box-sizing:border-box;">
@@ -70,6 +70,6 @@ export async function runWechatPreview(opts: PreviewOptions): Promise<PreviewRes
   if (!article) return { date: report.date, file: null, article: null };
   await mkdir(opts.outDir, { recursive: true });
   const file = path.join(opts.outDir, `wechat-${report.date}.html`);
-  await writeFile(file, page(article), "utf8");
+  await writeFile(file, previewPage(article), "utf8");
   return { date: report.date, file, article };
 }

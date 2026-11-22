@@ -27,6 +27,8 @@ export interface SummaryInput {
   readonly date: string;
   readonly jobs: Readonly<Record<JobName, JobResult>>;
   readonly draftTitle: string | null;
+  /** 周一的周报草稿标题 */
+  readonly weeklyTitle?: string | null;
   readonly baidu: string | null;
   /** 没配置国内站时为 null（不检查） */
   readonly health: SiteHealth | null;
@@ -59,7 +61,7 @@ const optional = (value: string | undefined): string | null => {
 /** 读 GitHub 传进来的 needs.<job>.result；空值（任务不存在或没运行）按 skipped 处理 */
 export function parseSummaryEnv(
   env: Readonly<Record<string, string | undefined>>,
-): Pick<SummaryInput, "jobs" | "draftTitle" | "baidu"> {
+): Pick<SummaryInput, "jobs" | "draftTitle" | "weeklyTitle" | "baidu"> {
   const jobs = Object.fromEntries(
     JOB_NAMES.map((name) => {
       const value = env[ENV_KEYS[name]]?.trim() ?? "";
@@ -69,6 +71,7 @@ export function parseSummaryEnv(
   return {
     jobs,
     draftTitle: optional(env["WECHAT_DRAFT_TITLE"]),
+    weeklyTitle: optional(env["WECHAT_WEEKLY_TITLE"]),
     baidu: optional(env["BAIDU_PUSH_RESULT"]),
   };
 }
@@ -80,6 +83,20 @@ const RESULT_TEXT: Readonly<Record<JobResult, string>> = {
   skipped: "— 跳过",
 };
 
+/** 草稿提醒：日报、周报各一行；订阅号每天只能群发一次，周一两篇都有时提示选一篇 */
+function draftLines(input: SummaryInput): readonly string[] {
+  const titles = [
+    ...(input.draftTitle ? [`📝 日报草稿：**${input.draftTitle}**`] : []),
+    ...(input.weeklyTitle ? [`📰 周报草稿：**${input.weeklyTitle}**`] : []),
+  ];
+  if (titles.length === 0) return [];
+  const hint =
+    titles.length > 1
+      ? "打开手机「公众号助手」→ 草稿箱，选一篇群发（订阅号每天只能群发一次，建议周一发周报）"
+      : "打开手机「公众号助手」→ 草稿箱 → 群发";
+  return [...titles, hint, ""];
+}
+
 export function buildRunSummary(input: SummaryInput): RunSummary {
   const failed = JOB_NAMES.filter(
     (n) => input.jobs[n] === "failure" || input.jobs[n] === "cancelled",
@@ -87,13 +104,7 @@ export function buildRunSummary(input: SummaryInput): RunSummary {
   const unhealthy = input.health !== null && !input.health.ok;
   const level = failed.length > 0 || unhealthy ? "error" : "ok";
   const lines = [
-    ...(input.draftTitle
-      ? [
-          `📝 公众号草稿已存好：**${input.draftTitle}**`,
-          "打开手机「公众号助手」→ 草稿箱 → 群发",
-          "",
-        ]
-      : []),
+    ...draftLines(input),
     ...JOB_NAMES.map((n) => {
       const extra = n === "baidu-push" && input.baidu ? `（${input.baidu}）` : "";
       return `${JOB_LABELS[n]}：${RESULT_TEXT[input.jobs[n]]}${extra}`;
@@ -107,7 +118,8 @@ export function buildRunSummary(input: SummaryInput): RunSummary {
     level === "error"
       ? `❌ ${input.date} 每日任务失败：${[...failed.map((n) => JOB_LABELS[n]), ...(unhealthy ? ["国内站检查"] : [])].join("、")}`
       : `📝 ${input.date} 公众号草稿待群发`;
-  return { shouldSend: level === "error" || input.draftTitle !== null, level, title, lines };
+  const hasDraft = input.draftTitle !== null || (input.weeklyTitle ?? null) !== null;
+  return { shouldSend: level === "error" || hasDraft, level, title, lines };
 }
 
 export function buildSummaryCard(summary: RunSummary, runUrl: string): Record<string, unknown> {

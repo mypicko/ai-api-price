@@ -8,7 +8,7 @@ import type { WechatConfig } from "../config";
 import { PipelineError } from "../core/errors";
 import type { DailyReport, Notifier } from "./types";
 import type { WechatApi } from "./wechat-api";
-import { buildWechatArticle, type ArticleContext } from "./wechat-article";
+import { buildWechatArticle, type ArticleContext, type WechatArticle } from "./wechat-article";
 
 export interface WechatNotifierDeps {
   readonly config: WechatConfig;
@@ -20,29 +20,36 @@ export interface WechatNotifierDeps {
   readonly onDraftCreated?: (title: string, mediaId: string) => void;
 }
 
-export function createWechatNotifier(deps: WechatNotifierDeps): Notifier {
-  async function thumbMediaId(): Promise<string> {
-    if (deps.config.thumbMediaId) return deps.config.thumbMediaId;
-    const id = await deps.api.uploadImage(await deps.fetchCover(), "cover.png");
-    deps.onCoverUploaded?.(id);
-    return id;
-  }
+/** 把一篇文章存进草稿箱（日报、周报共用） */
+export async function saveWechatDraft(
+  deps: WechatNotifierDeps,
+  article: WechatArticle,
+): Promise<void> {
+  const draftId = await deps.api.addDraft({
+    title: article.title,
+    author: deps.config.author,
+    digest: article.digest,
+    content: article.html,
+    contentSourceUrl: article.contentSourceUrl,
+    thumbMediaId: await thumbMediaId(deps),
+  });
+  deps.onDraftCreated?.(article.title, draftId);
+}
 
+async function thumbMediaId(deps: WechatNotifierDeps): Promise<string> {
+  if (deps.config.thumbMediaId) return deps.config.thumbMediaId;
+  const id = await deps.api.uploadImage(await deps.fetchCover(), "cover.png");
+  deps.onCoverUploaded?.(id);
+  return id;
+}
+
+export function createWechatNotifier(deps: WechatNotifierDeps): Notifier {
   return {
     id: "wechat",
     isConfigured: (config) => config.wechat !== null,
     async send(report: DailyReport) {
       const article = buildWechatArticle(report, await deps.loadContext());
-      if (!article) return;
-      const draftId = await deps.api.addDraft({
-        title: article.title,
-        author: deps.config.author,
-        digest: article.digest,
-        content: article.html,
-        contentSourceUrl: article.contentSourceUrl,
-        thumbMediaId: await thumbMediaId(),
-      });
-      deps.onDraftCreated?.(article.title, draftId);
+      if (article) await saveWechatDraft(deps, article);
     },
   };
 }

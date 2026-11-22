@@ -144,6 +144,12 @@ describe("工作流安全守卫", () => {
     for (const s of steps) expect(s.run ?? "").not.toContain("${{");
     expect(wf.jobs["wechat"]?.["outputs"]).toEqual({
       draft_title: "${{ steps.draft.outputs.draft_title }}",
+      weekly_title: "${{ steps.weekly.outputs.weekly_title }}",
     });
+    expect(step?.env?.["WECHAT_WEEKLY_TITLE"]).toBe("${{ needs.wechat.outputs.weekly_title }}");
+    const wechatRuns = ((wf.jobs["wechat"]?.["steps"] ?? []) as readonly { run?: string }[]).map(
+      (s) => s.run,
+    );
+    expect(wechatRuns).toContain("pnpm pipeline wechat:weekly --monday-only");
   });
 });

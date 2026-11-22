@@ -11,9 +11,14 @@ import { createEmailNotifier, type MailTransport } from "./email";
 import { createFeishuNotifier } from "./feishu";
 import { createTelegramNotifier } from "./telegram";
 import type { DailyReport, Notifier } from "./types";
-import { createWechatNotifier, fetchSiteCover } from "./wechat";
+import {
+  createWechatNotifier,
+  fetchSiteCover,
+  saveWechatDraft,
+  type WechatNotifierDeps,
+} from "./wechat";
 import { createWechatApi } from "./wechat-api";
-import type { ArticleContext } from "./wechat-article";
+import type { ArticleContext, WechatArticle } from "./wechat-article";
 
 export { buildReportText, shouldNotify } from "./format";
 export type { DailyReport, Notifier } from "./types";
@@ -27,10 +32,10 @@ export interface NotifierDeps {
   readonly logger?: Logger;
 }
 
-function createWechat(config: AppConfig, deps: NotifierDeps): Notifier | null {
+function wechatDeps(config: AppConfig, deps: NotifierDeps): WechatNotifierDeps | null {
   if (!config.wechat || !deps.wechatContext) return null;
   const { appId, appSecret } = config.wechat;
-  return createWechatNotifier({
+  return {
     config: config.wechat,
     api: createWechatApi({ appId, appSecret }),
     loadContext: deps.wechatContext,
@@ -44,7 +49,21 @@ function createWechat(config: AppConfig, deps: NotifierDeps): Notifier | null {
       ),
     onDraftCreated: (title, mediaId) =>
       deps.logger?.info("公众号：草稿已保存，去「公众号助手」确认后群发", { title, mediaId }),
-  });
+  };
+}
+
+function createWechat(config: AppConfig, deps: NotifierDeps): Notifier | null {
+  const wd = wechatDeps(config, deps);
+  return wd ? createWechatNotifier(wd) : null;
+}
+
+/** 直接存一篇文章进草稿箱（周报用）；没配置公众号时返回 null */
+export function createWechatDrafter(
+  config: AppConfig,
+  deps: NotifierDeps,
+): ((article: WechatArticle) => Promise<void>) | null {
+  const wd = wechatDeps(config, deps);
+  return wd ? (article) => saveWechatDraft(wd, article) : null;
 }
 
 /** 飞书排第一：默认且主要的渠道 */

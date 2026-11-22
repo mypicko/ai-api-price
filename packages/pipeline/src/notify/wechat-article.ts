@@ -25,10 +25,10 @@ export const MAX_TITLE_LENGTH = 32;
 export const MAX_DIGEST_LENGTH = 54;
 export const MAX_ROWS_PER_SECTION = 8;
 
-const OFFICIAL_PLATFORMS: ReadonlySet<string> = new Set(["official", "official-cn"]);
-const EXCLUDED_PLATFORMS: ReadonlySet<string> = new Set(["openrouter"]);
+export const OFFICIAL_PLATFORMS: ReadonlySet<string> = new Set(["official", "official-cn"]);
+export const EXCLUDED_PLATFORMS: ReadonlySet<string> = new Set(["openrouter"]);
 const PRICE_FIELDS = ["input", "output"] as const;
-const COLOR = {
+export const COLOR = {
   text: "#1f2328",
   muted: "#8a8f98",
   card: "#f6f7f9",
@@ -66,14 +66,14 @@ export interface WechatArticle {
   readonly contentSourceUrl: string;
 }
 
-const isOfficial = (e: ChangeEvent): boolean => OFFICIAL_PLATFORMS.has(e.platform);
+export const isOfficial = (e: ChangeEvent): boolean => OFFICIAL_PLATFORMS.has(e.platform);
 
 /** 事件里涨跌幅绝对值最大的一项 */
-function maxPct(e: ChangeEvent): number {
+export function maxPct(e: ChangeEvent): number {
   return Math.max(0, ...e.fields.map((f) => Math.abs(f.pct ?? 0)));
 }
 
-function byImportance(a: ChangeEvent, b: ChangeEvent): number {
+export function byImportance(a: ChangeEvent, b: ChangeEvent): number {
   return Number(isOfficial(b)) - Number(isOfficial(a)) || maxPct(b) - maxPct(a);
 }
 
@@ -84,11 +84,11 @@ function pick(report: DailyReport, type: ChangeEvent["type"]): readonly ChangeEv
     .toSorted(byImportance);
 }
 
-function truncate(text: string, max: number): string {
+export function truncate(text: string, max: number): string {
   return text.length <= max ? text : `${text.slice(0, max - 1)}…`;
 }
 
-function shortDate(date: string): string {
+export function shortDate(date: string): string {
   const [, month = "", day = ""] = date.split("-");
   return `${Number(month)}/${Number(day)}`;
 }
@@ -147,12 +147,12 @@ function buildTitle(date: string, h: Headline, vendorName: (id: string) => strin
 }
 
 /** 正文排版：只用内联样式；块用 section、文字用 p / span（公众号会过滤 class、style 标签和 flex 以外的大部分布局） */
-const FONT = "-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue',sans-serif";
+export const FONT = "-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue',sans-serif";
 
-const pill = (text: string, color: string, bg: string): string =>
+export const pill = (text: string, color: string, bg: string): string =>
   `<span style="display:inline-block;padding:0 6px;margin-left:6px;border-radius:4px;font-size:12px;line-height:20px;font-weight:600;color:${color};background:${bg};">${text}</span>`;
 
-function card(name: string, meta: string, lines: readonly string[]): string {
+export function card(name: string, meta: string, lines: readonly string[]): string {
   const body = lines
     .map(
       (l) =>
@@ -162,17 +162,17 @@ function card(name: string, meta: string, lines: readonly string[]): string {
   return `<section style="background:${COLOR.card};border-radius:10px;padding:12px 14px;margin:0 0 10px;"><p style="margin:0;font-size:16px;line-height:1.4;font-weight:600;color:${COLOR.text};">${escapeHtml(name)}</p><p style="margin:2px 0 0;font-size:12px;line-height:1.5;color:${COLOR.muted};">${escapeHtml(meta)}</p>${body}</section>`;
 }
 
-function heading(title: string, count: number, color: string, bg: string): string {
+export function heading(title: string, count: number, color: string, bg: string): string {
   return `<section style="margin:28px 0 12px;"><span style="display:inline-block;width:4px;height:18px;border-radius:2px;background:${color};vertical-align:middle;margin-right:8px;"></span><span style="font-size:18px;font-weight:700;color:${COLOR.text};vertical-align:middle;">${title}</span>${pill(String(count), color, bg)}</section>`;
 }
 
 /** 有汇率时换算成人民币，否则按原币种 */
-function money(value: number | null, currency: Currency, usdCny: number | null): string {
+export function money(value: number | null, currency: Currency, usdCny: number | null): string {
   if (usdCny === null) return formatPrice(value, currency);
   return formatPrice(convertCurrency(value, currency, "CNY", usdCny), "CNY");
 }
 
-const muted = (text: string): string => `<span style="color:${COLOR.muted};">${text}</span>`;
+export const muted = (text: string): string => `<span style="color:${COLOR.muted};">${text}</span>`;
 
 function changeLines(e: ChangeEvent, usdCny: number | null): readonly string[] {
   const fields = e.fields.filter((f) => (PRICE_FIELDS as readonly string[]).includes(f.field));
@@ -184,18 +184,18 @@ function changeLines(e: ChangeEvent, usdCny: number | null): readonly string[] {
   });
 }
 
-function priceText(price: PricePair | null, usdCny: number | null): string {
+export function priceText(price: PricePair | null, usdCny: number | null): string {
   if (!price) return muted("价格见网站");
   return `${muted("输入")} <strong>${money(price.input, price.currency, usdCny)}</strong>&nbsp;&nbsp;${muted("输出")} <strong>${money(price.output, price.currency, usdCny)}</strong>`;
 }
 
 /** 同一厂商、同名的新模型合并成一组（多个平台同时上线） */
-interface ModelGroup {
+export interface ModelGroup {
   readonly first: ChangeEvent;
   readonly events: readonly ChangeEvent[];
 }
 
-function groupModels(events: readonly ChangeEvent[]): readonly ModelGroup[] {
+export function groupModels(events: readonly ChangeEvent[]): readonly ModelGroup[] {
   const groups = new Map<string, ChangeEvent[]>();
   for (const e of events) {
     const key = `${e.vendor}|${e.displayName}`;
@@ -205,7 +205,7 @@ function groupModels(events: readonly ChangeEvent[]): readonly ModelGroup[] {
 }
 
 /** 价格相同的平台写在一起；全部相同时平台列在名字下面，只写一行价格 */
-function newModelCard(g: ModelGroup, ctx: ArticleContext): string {
+export function newModelCard(g: ModelGroup, ctx: ArticleContext): string {
   const byPrice = new Map<string, { price: PricePair | null; platforms: string[] }>();
   for (const e of g.events) {
     const price = ctx.priceOf(e.offeringId);
@@ -227,7 +227,7 @@ function newModelCard(g: ModelGroup, ctx: ArticleContext): string {
   );
 }
 
-function changeCard(e: ChangeEvent, ctx: ArticleContext): string {
+export function changeCard(e: ChangeEvent, ctx: ArticleContext): string {
   return card(
     e.displayName,
     `${ctx.vendorName(e.vendor)} · ${ctx.platformName(e.platform)}`,
@@ -241,7 +241,7 @@ function moreNote(rest: number, unit: string): string {
     : "";
 }
 
-function cards(items: readonly string[], unit: string): string {
+export function cards(items: readonly string[], unit: string): string {
   return `${items.slice(0, MAX_ROWS_PER_SECTION).join("")}${moreNote(items.length - MAX_ROWS_PER_SECTION, unit)}`;
 }
 
@@ -262,7 +262,7 @@ interface Stat {
   readonly color: string;
 }
 
-function unitNote(usdCny: number | null): string {
+export function unitNote(usdCny: number | null): string {
   return usdCny === null
     ? "价格单位：每百万 tokens，按各平台原币种显示。"
     : `价格单位：人民币 / 每百万 tokens；美元报价按 1 美元 ≈ ${usdCny.toFixed(2)} 元换算。`;
@@ -280,7 +280,7 @@ function overview(date: string, stats: readonly Stat[], usdCny: number | null): 
   return `<section style="background:linear-gradient(135deg,#eef4ff 0%,#f8faff 100%);border-radius:12px;padding:16px 16px 14px;"><p style="margin:0;font-size:12px;letter-spacing:1px;color:${COLOR.new};font-weight:600;">AI 模型 API 价格日报</p><p style="margin:4px 0 14px;font-size:20px;font-weight:700;color:${COLOR.text};">${Number(month)} 月 ${Number(day)} 日</p><section style="display:flex;">${cells}</section></section><p style="margin:10px 0 0;font-size:12px;line-height:1.6;color:${COLOR.muted};">${unitNote(usdCny)}</p>`;
 }
 
-function footer(): string {
+export function footer(): string {
   return `<section style="margin:32px 0 0;padding:14px 16px;border-radius:10px;border:1px solid ${COLOR.border};"><p style="margin:0;font-size:14px;line-height:1.6;color:${COLOR.text};font-weight:600;">查看完整价格榜</p><p style="margin:4px 0 0;font-size:13px;line-height:1.7;color:${COLOR.muted};">点左下角「阅读原文」，看全部模型的价格对比、价格走势和成本计算器。</p></section><p style="margin:16px 0 0;font-size:12px;line-height:1.7;color:${COLOR.muted};">数据每天自动抓取自各厂商官网和平台公开报价，仅供参考，以官方页面为准。</p>`;
 }
 

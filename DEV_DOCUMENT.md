@@ -1384,3 +1384,12 @@ curl -s ifconfig.me
 - **复用**：飞书发送抽成 `notify/feishu.ts` 的 `sendFeishuCard`（签名、错误处理与日报推送相同）。没配置飞书时只打印。
 - **安全**：草稿标题来自数据，经环境变量传入，不用 `${{ }}` 拼进脚本（`workflows.test.ts` 守卫）。
 - **测试**：`pipeline/tests/notify/run-summary.test.ts`、`pipeline/tests/workflows.test.ts`。
+
+### 3.31 公众号周报（1.5）
+
+- **为什么**：日报内容零碎、很多天没有官方变动；周报信息集中，更适合转发和涨粉。
+- **内容**（`notify/wechat-weekly.ts`）：上周一到上周日的新模型（只列官方，同名多平台合并）、降价、涨价（同一报价一周内多次变价合并成「周初价 → 周末价」，来回抵消的不算；不收 OpenRouter 聚合价），外加「国内最便宜的大模型」前 10：国内站官方（`official-cn`）、在售、文本、非免费、人民币报价，按 (3×输入 + 输出) / 4 混合价升序；去掉 OCR / 翻译 / 向量 / 语音等专用模型，带日期快照和 `-latest` 别名与主版本同价时只留主版本。一周没有变动也照常出（只有排行）。
+- **标题**：「AI 价格周报 11/16-11/22｜<主题>」，主题依次尝试：官方新模型上线 → 降价最大的模型 → 「新模型 N · 降价 M」→「国内最便宜模型榜」，取第一个不超过 32 字的。
+- **命令**：`pnpm pipeline wechat:weekly [运行日] [--preview] [--monday-only]`；`--preview` 写 `.preview/wechat-weekly-<结束日>.html`。排版卡片、配色与日报共用（`wechat-article.ts` 导出的组件），存草稿与日报共用 `saveWechatDraft`。
+- **自动运行**：`daily.yml` 的 `wechat` 任务在日报之后加「存周报草稿（周一）」步骤（`--monday-only`，日报失败也运行），标题经任务输出 `weekly_title` 交给 `summary`，飞书提醒同时列出日报和周报标题，并提示订阅号每天只能群发一次（建议周一发周报）。
+- **测试**：`pipeline/tests/notify/wechat-weekly.test.ts`、`run-summary.test.ts`、`workflows.test.ts`。

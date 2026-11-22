@@ -31,9 +31,18 @@ describe("每日任务汇总（失败告警 + 公众号草稿提醒，DEV §3.30
     const s = buildRunSummary({ ...BASE, draftTitle: "DeepSeek 降价 50%", baidu: "成功 10 条" });
     expect(s).toMatchObject({ shouldSend: true, level: "ok" });
     expect(s.title).toContain("草稿");
+    expect(s.lines.join("\n")).toContain("日报草稿");
     expect(s.lines.join("\n")).toContain("DeepSeek 降价 50%");
     expect(s.lines.join("\n")).toContain("公众号助手");
     expect(s.lines.join("\n")).toContain("成功 10 条");
+  });
+
+  it("周一有周报草稿时一起提醒，提示每天只能群发一次", () => {
+    const s = buildRunSummary({ ...BASE, draftTitle: "日报", weeklyTitle: "周报标题" });
+    expect(s.shouldSend).toBe(true);
+    expect(s.lines.join("\n")).toContain("周报标题");
+    expect(s.lines.join("\n")).toContain("每天只能群发一次");
+    expect(buildRunSummary({ ...BASE, weeklyTitle: "周报" }).shouldSend).toBe(true);
   });
 
   it("任何任务失败都告警（红色），列出失败的任务和运行链接", () => {
@@ -74,6 +83,7 @@ describe("每日任务汇总（失败告警 + 公众号草稿提醒，DEV §3.30
       JOB_WECHAT: "cancelled",
       JOB_BAIDU_PUSH: "",
       WECHAT_DRAFT_TITLE: " 标题 ",
+      WECHAT_WEEKLY_TITLE: "周报",
       BAIDU_PUSH_RESULT: "成功 3 条",
     });
     expect(input.jobs).toEqual({
@@ -84,6 +94,7 @@ describe("每日任务汇总（失败告警 + 公众号草稿提醒，DEV §3.30
       "baidu-push": "skipped",
     });
     expect(input.draftTitle).toBe("标题");
+    expect(input.weeklyTitle).toBe("周报");
     expect(input.baidu).toBe("成功 3 条");
   });
 });
