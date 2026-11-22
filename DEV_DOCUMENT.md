@@ -1371,3 +1371,14 @@ curl -s ifconfig.me
 - **安全**：令牌在请求地址里，报错信息不带原始错误（可能含地址），日志只打印推送的网址和成功数、剩余额度。
 - **前置**：百度搜索资源平台添加并验证 `https://promptso.top`（`BAIDU_SITE_VERIFICATION`，国内站和镜像构建都会写进 `<head>`），见 README「提交到 Google 和百度」。
 - **测试**：`pipeline/tests/tools/baidu-push.test.ts`（sitemap 解析、选网址与轮换、接口格式、错误不泄露令牌、未配置时跳过）。
+
+### 3.30 每日任务汇总：失败告警 + 公众号草稿提醒（1.5）
+
+- **为什么**：以前要自己去 GitHub Actions 看哪一步失败；公众号草稿存好后也没人提醒（个人主体未认证订阅号没有群发 / 发布接口，2025-07 起发布接口也被回收，只能在「公众号助手」里手动群发）。
+- **做法**：`daily.yml` 最后的 `summary` 任务（`needs` 全部五个任务，`if: always()`，ubuntu-latest）运行 `pnpm pipeline notify:summary`（`notify/run-summary.ts`）：
+  - 读 `needs.<job>.result`（`JOB_*` 环境变量）、`wechat` 任务输出的草稿标题（`draft_title`）、`baidu-push` 任务输出的推送结果（`result`）；
+  - 国内站健康检查：读 `${CN_SITE_URL}/api/v1/status.json` 的 `run.finishedAt`，换算成北京时间后必须是今天；
+  - 有任务失败 / 取消或国内站不正常 → 飞书红色告警（列出失败项和运行链接）；草稿存好了 → 蓝色提醒（标题 + 「公众号助手 → 草稿箱 → 群发」）；全部正常又没有草稿 → 不发。
+- **复用**：飞书发送抽成 `notify/feishu.ts` 的 `sendFeishuCard`（签名、错误处理与日报推送相同）。没配置飞书时只打印。
+- **安全**：草稿标题来自数据，经环境变量传入，不用 `${{ }}` 拼进脚本（`workflows.test.ts` 守卫）。
+- **测试**：`pipeline/tests/notify/run-summary.test.ts`、`pipeline/tests/workflows.test.ts`。

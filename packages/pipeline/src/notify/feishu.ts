@@ -68,6 +68,38 @@ function parseFeishuResponse(text: string): { readonly ok: boolean; readonly det
   }
 }
 
+/** 发一张任意的飞书卡片（每日任务汇总等也用它） */
+export async function sendFeishuCard(
+  deps: FeishuNotifierDeps,
+  card: Record<string, unknown>,
+): Promise<void> {
+  const base = { msg_type: "interactive", card };
+  const secret = deps.config.secret;
+  if (secret === null) return postFeishu(deps, base);
+  const timestamp = Math.floor(deps.now().getTime() / 1000).toString();
+  return postFeishu(deps, { timestamp, sign: feishuSign(timestamp, secret), ...base });
+}
+
+async function postFeishu(
+  deps: FeishuNotifierDeps,
+  payload: Record<string, unknown>,
+): Promise<void> {
+  let response: { status: number; text: string };
+  try {
+    response = await deps.http.post(deps.config.webhookUrl, payload);
+  } catch (error) {
+    const code = isPipelineError(error) ? error.code : "E1001";
+    throw new PipelineError("E5001", `飞书推送失败（${code}）`, { cause: error });
+  }
+  const parsed = parseFeishuResponse(response.text);
+  if (response.status < 200 || response.status >= 300 || !parsed.ok) {
+    throw new PipelineError(
+      "E5001",
+      redact(`飞书推送失败：HTTP ${response.status} ${parsed.detail}`),
+    );
+  }
+}
+
 export interface FeishuNotifierDeps {
   readonly config: FeishuConfig;
   readonly http: HttpClient;
@@ -79,21 +111,7 @@ export function createFeishuNotifier(deps: FeishuNotifierDeps): Notifier {
     id: "feishu",
     isConfigured: (config) => config.feishu !== null,
     async send(report) {
-      const payload = buildFeishuPayload(report, deps.config.secret, deps.now());
-      let response: { status: number; text: string };
-      try {
-        response = await deps.http.post(deps.config.webhookUrl, payload);
-      } catch (error) {
-        const code = isPipelineError(error) ? error.code : "E1001";
-        throw new PipelineError("E5001", `飞书推送失败（${code}）`, { cause: error });
-      }
-      const parsed = parseFeishuResponse(response.text);
-      if (response.status < 200 || response.status >= 300 || !parsed.ok) {
-        throw new PipelineError(
-          "E5001",
-          redact(`飞书推送失败：HTTP ${response.status} ${parsed.detail}`),
-        );
-      }
+      await postFeishu(deps, buildFeishuPayload(report, deps.config.secret, deps.now()));
     },
   };
 }

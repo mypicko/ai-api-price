@@ -7,7 +7,7 @@
  *   quarantine:list
  * 退出码见 DEV_DOCUMENT §9.1。
  */
-import { existsSync } from "node:fs";
+import { appendFileSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Warning } from "@aipb/shared";
@@ -28,6 +28,13 @@ import { formatQuarantine, loadQuarantine } from "./tools/quarantine-list";
 import { runSnapshot } from "./tools/snapshot";
 import { validateDataDir } from "./tools/validate-data";
 import { migrateDataDir } from "./tools/migrate-slugs";
+import { sendFeishuCard } from "./notify/feishu";
+import {
+  buildRunSummary,
+  buildSummaryCard,
+  checkSiteHealth,
+  parseSummaryEnv,
+} from "./notify/run-summary";
 import { runBaiduPush } from "./tools/baidu-push";
 import { reportForDate, runWechatPreview } from "./tools/wechat-preview";
 import { shanghaiDate } from "./steps/dates";
@@ -49,8 +56,15 @@ const USAGE = `用法：pnpm pipeline <命令>
   wechat:preview [YYYY-MM-DD]                  生成公众号日报的本地预览（.preview/），不调接口
   admin [--port 4400]                          启动本地后台（只在本机，只读），浏览器打开 http://localhost:4400
   wechat:draft [YYYY-MM-DD]                    把某一天（默认北京时间今天）的日报存进公众号草稿箱（需要 WECHAT_* 配置和 IP 白名单）
+  notify:summary                               每日任务结束后把各任务结果、国内站检查、公众号草稿标题汇总发到飞书（daily 的 summary 任务用）
   baidu:push [YYYY-MM-DD]                      把国内站网址推送给百度普通收录（需要 CN_SITE_URL 和 BAIDU_PUSH_TOKEN）
 `;
+
+/** 在 GitHub Actions 里把结果交给后面的任务（写进 $GITHUB_OUTPUT）；本地运行时什么都不做 */
+function setJobOutput(key: string, value: string): void {
+  const file = process.env["GITHUB_OUTPUT"];
+  if (file) appendFileSync(file, `${key}=${value.replace(/[\r\n]+/g, " ")}\n`);
+}
 
 function out(text: string): void {
   process.stdout.write(text.endsWith("\n") ? text : `${text}\n`);
@@ -206,6 +220,7 @@ async function dispatch(command: string | undefined, args: readonly string[]): P
     if (command === "snapshot") return await commandSnapshot(args, rt);
     if (command === "notify:test") return await commandNotifyTest(rt);
     if (command === "wechat:draft") return await commandWechatDraft(args, rt);
+    if (command === "notify:summary") return await commandNotifySummary(rt);
     out(`未知命令：${command}\n${USAGE}`);
     return 1;
   } finally {
@@ -267,11 +282,13 @@ async function commandWechatDraft(args: readonly string[], rt: Runtime): Promise
     siteUrl: rt.config.siteUrl,
     date: args[0] ?? shanghaiDate(new Date()),
   });
-  if (!buildWechatArticle(report, await loadArticleContext(ROOT_DIR, DATA_DIR))) {
+  const article = buildWechatArticle(report, await loadArticleContext(ROOT_DIR, DATA_DIR));
+  if (!article) {
     out(`${report.date} 没有值得发的变动，不生成草稿`);
     return 0;
   }
   await notifier.send(report);
+  setJobOutput("draft_title", article.title);
   out(`${report.date} 的日报已存进草稿箱，去「公众号助手」确认后群发`);
   return 0;
 }
@@ -288,11 +305,50 @@ async function commandBaiduPush(args: readonly string[]): Promise<number> {
   const result = await runBaiduPush({ env: process.env, changedSlugs, date: report.date });
   if (result.status === "skipped") {
     out(`百度推送已跳过：${result.reason}`);
+    setJobOutput("result", `已跳过（${result.reason}）`);
     return 0;
   }
+  setJobOutput(
+    "result",
+    result.success === 0 && result.remain === 0
+      ? "今日额度已用完"
+      : `成功 ${result.success} 条，剩余额度 ${result.remain}`,
+  );
   out(
     `百度推送：提交 ${result.urls.length} 条，成功 ${result.success} 条，今日剩余额度 ${result.remain}\n${result.urls.join("\n")}`,
   );
+  return 0;
+}
+
+/** 失败告警 + 公众号草稿提醒；没配置飞书时只打印 */
+async function commandNotifySummary(rt: Runtime): Promise<number> {
+  const env = process.env;
+  const date = shanghaiDate(new Date());
+  const site = env["CN_SITE_URL"]?.trim() ?? "";
+  const runUrl =
+    env["GITHUB_SERVER_URL"] && env["GITHUB_REPOSITORY"] && env["GITHUB_RUN_ID"]
+      ? `${env["GITHUB_SERVER_URL"]}/${env["GITHUB_REPOSITORY"]}/actions/runs/${env["GITHUB_RUN_ID"]}`
+      : `${rt.config.siteUrl}/`;
+  const summary = buildRunSummary({
+    ...parseSummaryEnv(env),
+    date,
+    health: site === "" ? null : await checkSiteHealth(site, date),
+    runUrl,
+  });
+  out(`${summary.title}\n${summary.lines.join("\n")}`);
+  if (!summary.shouldSend) {
+    out("全部正常且没有草稿，不发飞书");
+    return 0;
+  }
+  if (!rt.config.feishu) {
+    out("没有配置飞书（FEISHU_WEBHOOK_URL），只打印不发送");
+    return 0;
+  }
+  await sendFeishuCard(
+    { config: rt.config.feishu, http: rt.http, now: () => new Date() },
+    buildSummaryCard(summary, runUrl),
+  );
+  out("已发到飞书");
   return 0;
 }
 

@@ -122,6 +122,28 @@ describe("工作流安全守卫", () => {
     expect(JSON.stringify(job)).toContain("secrets.BAIDU_PUSH_TOKEN");
     expect(JSON.stringify(job)).toContain("pnpm pipeline baidu:push");
     for (const [name, other] of Object.entries(jobs))
-      if (name !== "baidu-push") expect(JSON.stringify(other), name).not.toContain("BAIDU_PUSH");
+      if (name !== "baidu-push")
+        expect(JSON.stringify(other), name).not.toContain("BAIDU_PUSH_TOKEN");
+  });
+
+  it("最后有汇总任务：等所有任务结束（失败也运行），读各任务结果，草稿标题经环境变量传入", () => {
+    const wf = load("daily.yml");
+    const job = wf.jobs["summary"];
+    expect(job?.["needs"]).toEqual(["update", "deploy", "deploy-cn", "wechat", "baidu-push"]);
+    expect(job?.if).toContain("always()");
+    expect(job?.["runs-on"]).toBe("ubuntu-latest");
+    expect(job?.["permissions"]).toEqual({ contents: "read" });
+    const steps = (job?.["steps"] ?? []) as readonly {
+      readonly run?: string;
+      readonly env?: Readonly<Record<string, string>>;
+    }[];
+    const step = steps.find((s) => s.run === "pnpm pipeline notify:summary");
+    expect(step?.env?.["WECHAT_DRAFT_TITLE"]).toBe("${{ needs.wechat.outputs.draft_title }}");
+    expect(step?.env?.["JOB_DEPLOY_CN"]).toContain("result");
+    // 不能把任务输出直接拼进脚本
+    for (const s of steps) expect(s.run ?? "").not.toContain("${{");
+    expect(wf.jobs["wechat"]?.["outputs"]).toEqual({
+      draft_title: "${{ steps.draft.outputs.draft_title }}",
+    });
   });
 });

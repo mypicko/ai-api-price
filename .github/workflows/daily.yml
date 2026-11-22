@@ -157,6 +157,8 @@ jobs:
     timeout-minutes: 15
     permissions:
       contents: read
+    outputs:
+      draft_title: ${{ steps.draft.outputs.draft_title }}
     env:
       SRC: ${{ github.workspace }}/src
       COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
@@ -188,6 +190,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: 存公众号草稿
+        id: draft
         working-directory: ${{ env.SRC }}
         env:
           # 「阅读原文」优先指向国内站（国内打开快），没配置国内站时用 GitHub Pages
@@ -272,6 +275,8 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: read
+    outputs:
+      result: ${{ steps.push.outputs.result }}
     steps:
       # 取 main 最新提交：含 update 刚推上去的当天变动（用来决定优先推哪些模型页）
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -288,8 +293,45 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: 推送到百度
+        id: push
         env:
           CN_SITE_URL: ${{ vars.CN_SITE_URL }}
           BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
           BAIDU_PUSH_LIMIT: ${{ vars.BAIDU_PUSH_LIMIT }}
         run: pnpm pipeline baidu:push
+
+  # 每日任务汇总（DEV_DOCUMENT §3.30）：任何任务失败、国内站打不开或数据不是今天的 → 飞书红色告警；
+  # 公众号草稿存好了 → 飞书提醒去「公众号助手」群发（个人订阅号没有群发接口）。全部正常又没有草稿时不发。
+  # 草稿标题等经环境变量传入，不直接拼进脚本（防注入）。
+  summary:
+    needs: [update, deploy, deploy-cn, wechat, baidu-push]
+    if: ${{ always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: 汇总并发飞书
+        env:
+          JOB_UPDATE: ${{ needs.update.result }}
+          JOB_DEPLOY: ${{ needs.deploy.result }}
+          JOB_DEPLOY_CN: ${{ needs['deploy-cn'].result }}
+          JOB_WECHAT: ${{ needs.wechat.result }}
+          JOB_BAIDU_PUSH: ${{ needs['baidu-push'].result }}
+          WECHAT_DRAFT_TITLE: ${{ needs.wechat.outputs.draft_title }}
+          BAIDU_PUSH_RESULT: ${{ needs['baidu-push'].outputs.result }}
+          CN_SITE_URL: ${{ vars.CN_SITE_URL }}
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          FEISHU_WEBHOOK_SECRET: ${{ secrets.FEISHU_WEBHOOK_SECRET }}
+        run: pnpm pipeline notify:summary
