@@ -137,6 +137,32 @@
       "fields": [],
       "confirmedFromQuarantine": false,
       "detectedAt": "2026-11-18T04:31:36Z"
+    },
+    {
+      "id": "2026-11-23-openrouter:alibaba/wan-2.6-1",
+      "type": "removed",
+      "offeringId": "openrouter:alibaba/wan-2.6",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/wan-2.6",
+      "displayName": "Wan 2.6",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-23T03:46:18Z"
+    },
+    {
+      "id": "2026-11-23-openrouter:alibaba/wan-2.7-1",
+      "type": "removed",
+      "offeringId": "openrouter:alibaba/wan-2.7",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/wan-2.7",
+      "displayName": "Wan 2.7",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-23T03:46:18Z"
     }
   ]
 }
