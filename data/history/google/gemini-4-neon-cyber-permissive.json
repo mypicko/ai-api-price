@@ -1,0 +1,14 @@
+{
+  "modelSlug": "google/gemini-4-neon-cyber-permissive",
+  "series": {
+    "vertex:google/gemini-4-neon-cyber-permissive": [
+      {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.15,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
+      }
+    ]
+  }
+}

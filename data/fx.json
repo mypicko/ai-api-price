@@ -1,10 +1,10 @@
 {
   "latest": {
-    "date": "2026-11-20",
-    "usdCny": 6.6777,
+    "date": "2026-11-23",
+    "usdCny": 6.6647,
     "provider": "frankfurter"
   },
-  "lastSuccessAt": "2026-11-23T03:46:18Z",
+  "lastSuccessAt": "2026-11-24T06:59:05Z",
   "history": [
     {
       "date": "2026-10-16",
@@ -134,6 +134,11 @@
     {
       "date": "2026-11-20",
       "usdCny": 6.6777,
+      "provider": "frankfurter"
+    },
+    {
+      "date": "2026-11-23",
+      "usdCny": 6.6647,
       "provider": "frankfurter"
     }
   ]

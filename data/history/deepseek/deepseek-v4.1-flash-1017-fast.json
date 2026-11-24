@@ -9,6 +9,15 @@
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
       }
+    ],
+    "together:deepseek/deepseek-v4.1-flash-1017-fast": [
+      {
+        "input": 0.6,
+        "output": 2.4,
+        "cacheRead": 0.012,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
+      }
     ]
   }
 }

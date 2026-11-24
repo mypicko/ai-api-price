@@ -26,6 +26,13 @@
         "cacheRead": 0.003,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      },
+      {
+        "input": 0.075,
+        "output": 0.3,
+        "cacheRead": 0.003,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
       }
     ],
     "coreweave:deepseek/deepseek-v4.1-flash-1017": [
@@ -58,6 +65,13 @@
         "cacheRead": 0.007,
         "cacheWrite": null,
         "effectiveDate": "2026-11-01"
+      },
+      {
+        "input": 0.1885,
+        "output": 0.78,
+        "cacheRead": 0.00455,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
       }
     ],
     "databricks:deepseek/deepseek-v4.1-flash-1017": [
@@ -120,6 +134,13 @@
         "cacheRead": 0.003,
         "cacheWrite": null,
         "effectiveDate": "2026-11-21"
+      },
+      {
+        "input": 0.195,
+        "output": 0.78,
+        "cacheRead": 0.0039,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
       }
     ],
     "fireworks:deepseek/deepseek-v4.1-flash-1017": [
@@ -326,6 +347,13 @@
         "cacheRead": 0.006,
         "cacheWrite": null,
         "effectiveDate": "2026-11-23"
+      },
+      {
+        "input": 0.03,
+        "output": 0.2,
+        "cacheRead": 0.001,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
       }
     ],
     "parasail:deepseek/deepseek-v4.1-flash-1017": [

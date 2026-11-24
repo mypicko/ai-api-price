@@ -51,6 +51,13 @@
         "cacheRead": 0.035,
         "cacheWrite": null,
         "effectiveDate": "2026-11-22"
+      },
+      {
+        "input": 0.132,
+        "output": 0.528,
+        "cacheRead": 0.033,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
       }
     ],
     "siliconflow:tencent/hy3": [

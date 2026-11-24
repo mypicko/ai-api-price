@@ -1,3 +1,36 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "offeringId": "openrouter:inclusionai/ling-3.0-flash",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.021,
+          "new": 0.06,
+          "pct": 1.857
+        },
+        {
+          "field": "output",
+          "old": 0.063,
+          "new": 0.18,
+          "pct": 1.857
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0042,
+          "new": 0.012,
+          "pct": 1.857
+        }
+      ],
+      "candidate": {
+        "input": 0.06,
+        "output": 0.18,
+        "cacheRead": 0.012,
+        "cacheWrite": null
+      },
+      "firstSeenAt": "2026-11-24T06:59:05Z",
+      "lastSeenAt": "2026-11-24T06:59:05Z",
+      "confirmations": 1
+    }
+  ]
 }

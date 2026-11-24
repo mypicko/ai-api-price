@@ -65,6 +65,13 @@
         "cacheRead": 0.007,
         "cacheWrite": null,
         "effectiveDate": "2026-11-01"
+      },
+      {
+        "input": 0.1885,
+        "output": 0.78,
+        "cacheRead": 0.00455,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
       }
     ],
     "databricks:deepseek/deepseek-v4.1-flash": [
@@ -127,6 +134,13 @@
         "cacheRead": 0.0039,
         "cacheWrite": null,
         "effectiveDate": "2026-11-21"
+      },
+      {
+        "input": 0.225,
+        "output": 0.9,
+        "cacheRead": 0.0045,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
       }
     ],
     "fireworks:deepseek/deepseek-v4.1-flash": [
@@ -175,6 +189,13 @@
         "cacheRead": 0.01,
         "cacheWrite": null,
         "effectiveDate": "2026-10-22"
+      },
+      {
+        "input": 0.24,
+        "output": 0.96,
+        "cacheRead": 0.008,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-24"
       }
     ],
     "novita:deepseek/deepseek-v4.1-flash": [
