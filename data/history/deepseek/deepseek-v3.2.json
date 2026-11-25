@@ -135,6 +135,13 @@
         "cacheRead": 0.135,
         "cacheWrite": null,
         "effectiveDate": "2026-10-18"
+      },
+      {
+        "input": 0.27,
+        "output": 0.42,
+        "cacheRead": 0.14,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-25"
       }
     ],
     "vertex:deepseek/deepseek-v3.2": [

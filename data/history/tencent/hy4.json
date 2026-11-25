@@ -8,6 +8,13 @@
         "cacheRead": 0.042,
         "cacheWrite": null,
         "effectiveDate": "2026-11-22"
+      },
+      {
+        "input": 0.7089,
+        "output": 2.12585,
+        "cacheRead": 0.0357,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-25"
       }
     ],
     "gmi:tencent/hy4": [

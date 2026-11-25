@@ -10,6 +10,15 @@
         "effectiveDate": "2026-11-24"
       }
     ],
+    "fireworks:tencent/hy4-flash": [
+      {
+        "input": 0.07,
+        "output": 0.281,
+        "cacheRead": 0.003,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-25"
+      }
+    ],
     "novita:tencent/hy4-flash": [
       {
         "input": 0.07,

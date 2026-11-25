@@ -1,0 +1,14 @@
+{
+  "modelSlug": "stepfun/stepaudio-2.5-chat",
+  "series": {
+    "official-cn:stepfun/stepaudio-2.5-chat": [
+      {
+        "input": 1.9463,
+        "output": 4.7909,
+        "cacheRead": 0.44915,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-25"
+      }
+    ]
+  }
+}

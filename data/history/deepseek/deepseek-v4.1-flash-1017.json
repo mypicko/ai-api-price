@@ -354,6 +354,13 @@
         "cacheRead": 0.001,
         "cacheWrite": null,
         "effectiveDate": "2026-11-24"
+      },
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.003,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-25"
       }
     ],
     "parasail:deepseek/deepseek-v4.1-flash-1017": [
@@ -363,6 +370,15 @@
         "cacheRead": 0.006,
         "cacheWrite": null,
         "effectiveDate": "2026-10-19"
+      }
+    ],
+    "siliconflow:deepseek/deepseek-v4.1-flash-1017": [
+      {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.003,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-25"
       }
     ],
     "together:deepseek/deepseek-v4.1-flash-1017": [

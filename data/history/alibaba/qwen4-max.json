@@ -10,6 +10,15 @@
         "effectiveDate": "2026-11-17"
       }
     ],
+    "fireworks:alibaba/qwen4-max": [
+      {
+        "input": 1.5,
+        "output": 4.5,
+        "cacheRead": 0.075,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-25"
+      }
+    ],
     "novita:alibaba/qwen4-max": [
       {
         "input": 1.413,

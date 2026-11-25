@@ -1,35 +1,35 @@
 {
   "entries": [
     {
-      "offeringId": "openrouter:inclusionai/ling-3.0-flash",
+      "offeringId": "siliconflow:moonshot/kimi-k2.5",
       "fields": [
         {
           "field": "input",
-          "old": 0.021,
-          "new": 0.06,
-          "pct": 1.857
+          "old": 0.45,
+          "new": 0.5,
+          "pct": 0.1111
         },
         {
           "field": "output",
-          "old": 0.063,
-          "new": 0.18,
-          "pct": 1.857
+          "old": 2.25,
+          "new": 2.5,
+          "pct": 0.1111
         },
         {
           "field": "cacheRead",
-          "old": 0.0042,
-          "new": 0.012,
-          "pct": 1.857
+          "old": 0.07,
+          "new": 0.15,
+          "pct": 1.143
         }
       ],
       "candidate": {
-        "input": 0.06,
-        "output": 0.18,
-        "cacheRead": 0.012,
+        "input": 0.5,
+        "output": 2.5,
+        "cacheRead": 0.15,
         "cacheWrite": null
       },
-      "firstSeenAt": "2026-11-24T06:59:05Z",
-      "lastSeenAt": "2026-11-24T06:59:05Z",
+      "firstSeenAt": "2026-11-25T05:29:05Z",
+      "lastSeenAt": "2026-11-25T05:29:05Z",
       "confirmations": 1
     }
   ]
