@@ -1,0 +1,14 @@
+{
+  "modelSlug": "tencent/hy-mt3-plus",
+  "series": {
+    "official-cn:tencent/hy-mt3-plus": [
+      {
+        "input": 0.5,
+        "output": 2,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-26"
+      }
+    ]
+  }
+}

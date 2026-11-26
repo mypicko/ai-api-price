@@ -1,0 +1,14 @@
+{
+  "modelSlug": "zhipu/glm-5.3-flex",
+  "series": {
+    "fireworks:zhipu/glm-5.3-flex": [
+      {
+        "input": 0.7,
+        "output": 2.2,
+        "cacheRead": 0.13,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-26"
+      }
+    ]
+  }
+}

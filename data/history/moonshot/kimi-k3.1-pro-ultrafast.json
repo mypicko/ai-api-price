@@ -1,0 +1,14 @@
+{
+  "modelSlug": "moonshot/kimi-k3.1-pro-ultrafast",
+  "series": {
+    "fireworks:moonshot/kimi-k3.1-pro-ultrafast": [
+      {
+        "input": 5,
+        "output": 25,
+        "cacheRead": 0.5,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-26"
+      }
+    ]
+  }
+}
