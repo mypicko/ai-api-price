@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/seedream-5.0-lite-260128",
+  "series": {
+    "official:bytedance/seedream-5.0-lite-260128": [
+      {
+        "input": null,
+        "output": 0.035,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-27"
+      }
+    ]
+  }
+}

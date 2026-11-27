@@ -1,0 +1,23 @@
+{
+  "modelSlug": "inclusionai/lingsante-3.1-air-vl",
+  "series": {
+    "deepinfra:inclusionai/lingsante-3.1-air-vl": [
+      {
+        "input": 0.06,
+        "output": 0.18,
+        "cacheRead": 0.012,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-27"
+      }
+    ],
+    "openrouter:inclusionai/lingsante-3.1-air-vl": [
+      {
+        "input": 0.06,
+        "output": 0.18,
+        "cacheRead": 0.012,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-27"
+      }
+    ]
+  }
+}

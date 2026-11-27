@@ -15664,6 +15664,432 @@
       ],
       "confirmedFromQuarantine": true,
       "detectedAt": "2026-11-26T05:10:09Z"
+    },
+    {
+      "id": "2026-11-27-deepinfra:inclusionai/lingsante-3.1-air-vl-1",
+      "type": "new_model",
+      "offeringId": "deepinfra:inclusionai/lingsante-3.1-air-vl",
+      "vendor": "inclusionai",
+      "modelSlug": "inclusionai/lingsante-3.1-air-vl",
+      "displayName": "LingSante 3.1 Air VL",
+      "platform": "deepinfra",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-novita:alibaba/qwen-mt-plus-1",
+      "type": "price_up",
+      "offeringId": "novita:alibaba/qwen-mt-plus",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen-mt-plus",
+      "displayName": "Qwen MT Plus",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.25,
+          "new": 0.259,
+          "pct": 0.036
+        },
+        {
+          "field": "output",
+          "old": 0.75,
+          "new": 0.775,
+          "pct": 0.03333
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-novita:moonshot/kimi-k2-1",
+      "type": "restored",
+      "offeringId": "novita:moonshot/kimi-k2",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2",
+      "displayName": "Kimi K2 0711",
+      "platform": "novita",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:alibaba/qwen3.8-27b-1",
+      "type": "price_up",
+      "offeringId": "openrouter:alibaba/qwen3.8-27b",
+      "vendor": "alibaba",
+      "modelSlug": "alibaba/qwen3.8-27b",
+      "displayName": "Qwen3.8 27B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.035,
+          "new": 0.06,
+          "pct": 0.7143
+        },
+        {
+          "field": "output",
+          "old": 1.5,
+          "new": 1.96,
+          "pct": 0.3067
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.0175,
+          "new": 0.059,
+          "pct": 2.371
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:deepseek/deepseek-v4-flash-0731-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash-0731",
+      "displayName": "DeepSeek V4 Flash 0731",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.06,
+          "new": 0.047,
+          "pct": -0.2167
+        },
+        {
+          "field": "output",
+          "old": 0.18,
+          "new": 0.3,
+          "pct": 0.6667
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.015,
+          "new": 0.035,
+          "pct": 1.333
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:deepseek/deepseek-v4-flash-vision-exp-1",
+      "type": "price_down",
+      "offeringId": "openrouter:deepseek/deepseek-v4-flash-vision-exp",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-flash-vision-exp",
+      "displayName": "DeepSeek V4 Flash Vision Exp",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.44,
+          "new": 0.2156,
+          "pct": -0.51
+        },
+        {
+          "field": "output",
+          "old": 1.32,
+          "new": 0.6468,
+          "pct": -0.51
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.028,
+          "new": 0.00686,
+          "pct": -0.755
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:deepseek/deepseek-v4-pro-0813-1",
+      "type": "price_up",
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro-0813",
+      "vendor": "deepseek",
+      "modelSlug": "deepseek/deepseek-v4-pro-0813",
+      "displayName": "DeepSeek V4 Pro 0813",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.111,
+          "new": 0.0999,
+          "pct": -0.1
+        },
+        {
+          "field": "output",
+          "old": 4.44,
+          "new": 5,
+          "pct": 0.1261
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.097,
+          "new": 0.0999,
+          "pct": 0.0299
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:google/gemma-3-4b-it-1",
+      "type": "price_up",
+      "offeringId": "openrouter:google/gemma-3-4b-it",
+      "vendor": "google",
+      "modelSlug": "google/gemma-3-4b-it",
+      "displayName": "Gemma 3 4B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.04,
+          "new": 0.05,
+          "pct": 0.25
+        },
+        {
+          "field": "output",
+          "old": 0.05,
+          "new": 0.1,
+          "pct": 1
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.02,
+          "new": null,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": true,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:inclusionai/lingsante-3.1-air-vl-1",
+      "type": "new_model",
+      "offeringId": "openrouter:inclusionai/lingsante-3.1-air-vl",
+      "vendor": "inclusionai",
+      "modelSlug": "inclusionai/lingsante-3.1-air-vl",
+      "displayName": "LingSante 3.1 Air VL",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:meta/llama-3.3-70b-instruct-1",
+      "type": "price_up",
+      "offeringId": "openrouter:meta/llama-3.3-70b-instruct",
+      "vendor": "meta",
+      "modelSlug": "meta/llama-3.3-70b-instruct",
+      "displayName": "Llama 3.3 70B Instruct",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.71,
+          "new": 0.59,
+          "pct": -0.169
+        },
+        {
+          "field": "output",
+          "old": 0.71,
+          "new": 0.79,
+          "pct": 0.1127
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.71,
+          "new": 0.295,
+          "pct": -0.5845
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:meta/muse-glimmer-30b-1",
+      "type": "price_down",
+      "offeringId": "openrouter:meta/muse-glimmer-30b",
+      "vendor": "meta",
+      "modelSlug": "meta/muse-glimmer-30b",
+      "displayName": "Muse Glimmer 30B",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.35,
+          "new": 0.3,
+          "pct": -0.1429
+        },
+        {
+          "field": "output",
+          "old": 1.5,
+          "new": 1.2,
+          "pct": -0.2
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:mistral/mistral-medium-3-1",
+      "type": "removed",
+      "offeringId": "openrouter:mistral/mistral-medium-3",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-medium-3",
+      "displayName": "Mistral Medium 3",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:mistral/mistral-medium-3.1-1",
+      "type": "removed",
+      "offeringId": "openrouter:mistral/mistral-medium-3.1",
+      "vendor": "mistral",
+      "modelSlug": "mistral/mistral-medium-3.1",
+      "displayName": "Mistral Medium 3.1",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:moonshot/kimi-k2-0905-1",
+      "type": "restored",
+      "offeringId": "openrouter:moonshot/kimi-k2-0905",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2-0905",
+      "displayName": "Kimi K2 0905",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:moonshot/kimi-k2-1",
+      "type": "restored",
+      "offeringId": "openrouter:moonshot/kimi-k2",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2",
+      "displayName": "Kimi K2 0711",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:moonshot/kimi-k2.5-1",
+      "type": "price_up",
+      "offeringId": "openrouter:moonshot/kimi-k2.5",
+      "vendor": "moonshot",
+      "modelSlug": "moonshot/kimi-k2.5",
+      "displayName": "Kimi K2.5",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "input",
+          "old": 0.5,
+          "new": 0.6,
+          "pct": 0.2
+        },
+        {
+          "field": "output",
+          "old": 2.5,
+          "new": 3,
+          "pct": 0.2
+        },
+        {
+          "field": "cacheRead",
+          "old": 0.15,
+          "new": null,
+          "pct": null
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-openrouter:zhipu/glm-4.6-1",
+      "type": "context_change",
+      "offeringId": "openrouter:zhipu/glm-4.6",
+      "vendor": "zhipu",
+      "modelSlug": "zhipu/glm-4.6",
+      "displayName": "GLM 4.6",
+      "platform": "openrouter",
+      "currency": "USD",
+      "fields": [
+        {
+          "field": "contextWindow",
+          "old": 204800,
+          "new": 202752,
+          "pct": -0.01
+        }
+      ],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-siliconflow:google/gemma-4-12b-it-1",
+      "type": "removed",
+      "offeringId": "siliconflow:google/gemma-4-12b-it",
+      "vendor": "google",
+      "modelSlug": "google/gemma-4-12b-it",
+      "displayName": "gemma-4-12B-it",
+      "platform": "siliconflow",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-vertex:anthropic/claude-opus-4.5-1",
+      "type": "removed",
+      "offeringId": "vertex:anthropic/claude-opus-4.5",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-opus-4.5",
+      "displayName": "Claude Opus 4.5",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
+    },
+    {
+      "id": "2026-11-27-vertex:anthropic/claude-opus-4.5-20251101-1",
+      "type": "removed",
+      "offeringId": "vertex:anthropic/claude-opus-4.5-20251101",
+      "vendor": "anthropic",
+      "modelSlug": "anthropic/claude-opus-4.5-20251101",
+      "displayName": "claude-opus-4-5-20251101",
+      "platform": "vertex",
+      "currency": "USD",
+      "fields": [],
+      "confirmedFromQuarantine": false,
+      "detectedAt": "2026-11-27T05:07:52Z"
     }
   ]
 }

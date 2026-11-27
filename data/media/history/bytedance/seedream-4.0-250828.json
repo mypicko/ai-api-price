@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/seedream-4.0-250828",
+  "series": {
+    "official:bytedance/seedream-4.0-250828": [
+      {
+        "input": null,
+        "output": 0.03,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-27"
+      }
+    ]
+  }
+}

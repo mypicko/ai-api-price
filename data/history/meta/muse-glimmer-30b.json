@@ -24,6 +24,13 @@
         "cacheRead": 0.04,
         "cacheWrite": null,
         "effectiveDate": "2026-11-17"
+      },
+      {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.04,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-27"
       }
     ],
     "together:meta/muse-glimmer-30b": [

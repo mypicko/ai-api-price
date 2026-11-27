@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/dola-seedream-5.0-pro-260628",
+  "series": {
+    "official:bytedance/dola-seedream-5.0-pro-260628": [
+      {
+        "input": 0.003,
+        "output": 0.09,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-27"
+      }
+    ]
+  }
+}

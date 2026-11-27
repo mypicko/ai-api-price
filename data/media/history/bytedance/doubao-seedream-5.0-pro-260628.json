@@ -1,0 +1,14 @@
+{
+  "modelSlug": "bytedance/doubao-seedream-5.0-pro-260628",
+  "series": {
+    "official:bytedance/doubao-seedream-5.0-pro-260628": [
+      {
+        "input": 0.00285714,
+        "output": 0.0857143,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-27"
+      }
+    ]
+  }
+}
