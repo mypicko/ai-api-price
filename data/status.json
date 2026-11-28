@@ -1,10 +1,10 @@
 {
   "run": {
-    "id": "45943873241",
-    "startedAt": "2026-11-27T05:07:52Z",
-    "finishedAt": "2026-11-27T05:09:07Z",
-    "durationMs": 74936,
-    "result": "partial"
+    "id": "46109045001",
+    "startedAt": "2026-11-28T04:46:23Z",
+    "finishedAt": "2026-11-28T04:47:31Z",
+    "durationMs": 68393,
+    "result": "success"
   },
   "sources": [
     {
@@ -12,10 +12,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 64,
-      "durationMs": 1123,
+      "durationMs": 1910,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -23,10 +23,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 68,
-      "durationMs": 2234,
+      "durationMs": 3246,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -34,10 +34,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 82,
-      "durationMs": 357,
+      "durationMs": 426,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -45,10 +45,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 564,
+      "durationMs": 1831,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -56,33 +56,33 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 9,
-      "durationMs": 3339,
+      "durationMs": 4494,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
       "id": "litellm",
       "kind": "api",
       "status": "ok",
-      "offeringCount": 261,
+      "offeringCount": 259,
       "mediaOfferingCount": 72,
-      "durationMs": 4292,
+      "durationMs": 5430,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
       "id": "litellm-resellers",
       "kind": "api",
       "status": "ok",
-      "offeringCount": 1282,
-      "durationMs": 5261,
+      "offeringCount": 1284,
+      "durationMs": 6427,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -90,10 +90,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 0,
-      "durationMs": 102,
+      "durationMs": 69,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -101,10 +101,10 @@
       "kind": "manual",
       "status": "ok",
       "offeringCount": 27,
-      "durationMs": 108,
+      "durationMs": 73,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -112,10 +112,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 2,
-      "durationMs": 4328,
+      "durationMs": 7087,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -123,10 +123,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 11,
-      "durationMs": 4519,
+      "durationMs": 5602,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -134,10 +134,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 37,
-      "durationMs": 4517,
+      "durationMs": 5602,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -145,55 +145,55 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 6,
-      "durationMs": 1448,
+      "durationMs": 3251,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
       "id": "moonshot-cn",
       "kind": "html",
-      "status": "failed",
-      "offeringCount": 0,
-      "durationMs": 15010,
-      "errorCode": "E2001",
-      "errorMessage": "[E2001] The operation was aborted due to timeout",
-      "lastSuccessAt": "2026-11-26T05:10:09Z",
-      "consecutiveFailures": 1
+      "status": "ok",
+      "offeringCount": 6,
+      "durationMs": 4562,
+      "errorCode": null,
+      "errorMessage": null,
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
+      "consecutiveFailures": 0
     },
     {
       "id": "novita",
       "kind": "api",
       "status": "ok",
       "offeringCount": 32,
-      "durationMs": 228,
+      "durationMs": 283,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
       "id": "openrouter",
       "kind": "api",
       "status": "ok",
-      "offeringCount": 373,
+      "offeringCount": 372,
       "mediaOfferingCount": 28,
-      "durationMs": 4607,
+      "durationMs": 5684,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
       "id": "openrouter-endpoints",
       "kind": "api",
       "status": "ok",
-      "offeringCount": 341,
-      "durationMs": 74067,
+      "offeringCount": 340,
+      "durationMs": 67544,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -201,10 +201,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 3,
-      "durationMs": 2359,
+      "durationMs": 5179,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -212,21 +212,21 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 59,
-      "durationMs": 2984,
+      "durationMs": 4698,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
       "id": "siliconflow-cn",
       "kind": "html",
       "status": "ok",
-      "offeringCount": 25,
-      "durationMs": 4461,
+      "offeringCount": 26,
+      "durationMs": 6060,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -234,10 +234,10 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 5,
-      "durationMs": 5652,
+      "durationMs": 7770,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -245,10 +245,10 @@
       "kind": "api",
       "status": "ok",
       "offeringCount": 8,
-      "durationMs": 7266,
+      "durationMs": 8407,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     },
     {
@@ -256,21 +256,15 @@
       "kind": "html",
       "status": "ok",
       "offeringCount": 33,
-      "durationMs": 3365,
+      "durationMs": 3023,
       "errorCode": null,
       "errorMessage": null,
-      "lastSuccessAt": "2026-11-27T05:07:52Z",
+      "lastSuccessAt": "2026-11-28T04:46:23Z",
       "consecutiveFailures": 0
     }
   ],
   "quarantine": [],
   "warnings": [
-    {
-      "code": "E2001",
-      "sourceId": "moonshot-cn",
-      "offeringId": null,
-      "message": "[E2001] The operation was aborted due to timeout"
-    },
     {
       "code": "W2003",
       "sourceId": "litellm",
@@ -365,7 +359,7 @@
       "code": "W3007",
       "sourceId": null,
       "offeringId": "official:deepseek/deepseek-v4-pro",
-      "message": "官方价与 OpenRouter 价差过大：input 34%，output 63%"
+      "message": "官方价与 OpenRouter 价差过大：input 73%，output 61%"
     },
     {
       "code": "W3007",
@@ -395,7 +389,7 @@
       "code": "W3007",
       "sourceId": null,
       "offeringId": "official:zhipu/glm-4.5-air",
-      "message": "官方价与 OpenRouter 价差过大：input 67%，output 266%"
+      "message": "官方价与 OpenRouter 价差过大：input 66%，output 266%"
     },
     {
       "code": "W3007",
@@ -419,7 +413,7 @@
       "code": "W3007",
       "sourceId": null,
       "offeringId": "official:zhipu/glm-5",
-      "message": "官方价与 OpenRouter 价差过大：input 67%"
+      "message": "官方价与 OpenRouter 价差过大：input 66%"
     },
     {
       "code": "W3007",
@@ -496,25 +490,31 @@
     {
       "code": "W3008",
       "sourceId": "openrouter",
-      "offeringId": "openrouter:alibaba/qwen3.8-27b",
-      "message": "接口复核一致，突变价格已直接发布：Qwen3.8 27B"
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
+      "message": "接口复核一致，突变价格已直接发布：DeepSeek V4.1 Flash"
     },
     {
-      "code": "W3008",
-      "sourceId": "openrouter",
+      "code": "W3009",
+      "sourceId": null,
       "offeringId": "openrouter:deepseek/deepseek-v4-flash-0731",
-      "message": "接口复核一致，突变价格已直接发布：DeepSeek V4 Flash 0731"
+      "message": "OpenRouter 价比其它平台中位数低 3 倍以上：input"
     },
     {
-      "code": "W3008",
-      "sourceId": "openrouter",
-      "offeringId": "openrouter:google/gemma-3-4b-it",
-      "message": "接口复核一致，突变价格已直接发布：Gemma 3 4B"
+      "code": "W3009",
+      "sourceId": null,
+      "offeringId": "openrouter:deepseek/deepseek-v4-pro",
+      "message": "OpenRouter 价比其它平台中位数低 3 倍以上：input"
     },
     {
       "code": "W3009",
       "sourceId": null,
       "offeringId": "openrouter:deepseek/deepseek-v4-pro-0813",
+      "message": "OpenRouter 价比其它平台中位数低 3 倍以上：input"
+    },
+    {
+      "code": "W3009",
+      "sourceId": null,
+      "offeringId": "openrouter:deepseek/deepseek-v4.1-flash",
       "message": "OpenRouter 价比其它平台中位数低 3 倍以上：input"
     },
     {

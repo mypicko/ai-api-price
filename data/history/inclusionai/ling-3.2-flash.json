@@ -1,0 +1,14 @@
+{
+  "modelSlug": "inclusionai/ling-3.2-flash",
+  "series": {
+    "openrouter:inclusionai/ling-3.2-flash": [
+      {
+        "input": 0.3,
+        "output": 0.9,
+        "cacheRead": 0.06,
+        "cacheWrite": null,
+        "effectiveDate": "2026-11-28"
+      }
+    ]
+  }
+}
